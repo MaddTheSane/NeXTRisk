@@ -22,9 +22,9 @@ struct image_names
 
 static struct image_names class_images[] =
 {
-    { @"Soldier.tiff",    &_soldierImage },
-    { @"5Soldiers.tiff",  &_fiveImage },
-    { @"10Soldiers.tiff", &_tenImage },
+    { @"Soldier",    &_soldierImage },
+    { @"5Soldiers",  &_fiveImage },
+    { @"10Soldiers", &_tenImage },
 };
 
 @implementation ArmyView
@@ -65,10 +65,7 @@ static struct image_names class_images[] =
         // load class images
         for (l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
         {
-            imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
-            NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
-
-            *(class_images[l].i_image) = [[NSImage alloc] initByReferencingFile:imagePath];
+            *(class_images[l].i_image) = [[NSImage imageNamed:class_images[l].i_name] retain];
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
     }

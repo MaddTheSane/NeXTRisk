@@ -37,8 +37,7 @@
 + (void) initialize;
 + (void) loadClassImages;
 
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
 - (void) showPanel;
 - (BOOL) isPanelOnScreen;

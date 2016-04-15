@@ -19,6 +19,10 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 #define RiskCard_VERSION 1
 
 @implementation RiskCard
+@synthesize country;
+@synthesize cardType;
+@synthesize image;
+@synthesize imageName;
 
 + (void) initialize
 {
@@ -40,22 +44,21 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 - initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName
 {
     NSBundle *thisBundle;
-    NSString *imagePath;
 
     if ([super init] == nil)
         return nil;
 
     country = [aCountry retain]; // Country can be nil.
     cardType = aCardType;
-    imageName = [anImageName retain];
+    imageName = [anImageName copy];
 
     thisBundle = [NSBundle bundleForClass:[self class]];
     NSAssert (thisBundle != nil, @"Could not get this bundle.");
-    
-    imagePath = [thisBundle pathForImageResource:imageName];
-    NSAssert1 (imagePath != nil, @"Could not find image: '%@'", imageName);
-
-    image = [[NSImage alloc] initByReferencingFile:imagePath];
+	
+	image = [[thisBundle imageForResource:imageName] retain];
+	if (!image) {
+		image = [[NSImage imageNamed:imageName] retain];
+	}
     NSAssert1 (image != nil, @"Couldn't load image: '%@'", imageName);
 
     return self;
@@ -70,34 +73,6 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
     SNRelease (image);
 
     [super dealloc];
-}
-
-//----------------------------------------------------------------------
-
-- (Country *) country
-{
-    return country;
-}
-
-//----------------------------------------------------------------------
-
-- (RiskCardType) cardType
-{
-    return cardType;
-}
-
-//----------------------------------------------------------------------
-
-- (NSString *) imageName
-{
-    return imageName;
-}
-
-//----------------------------------------------------------------------
-
-- (NSImage *) image
-{
-    return image;
 }
 
 //----------------------------------------------------------------------

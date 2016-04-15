@@ -24,13 +24,12 @@
 
 + (void) initialize;
 
-- initWithCountryName:(NSString *)aName
+- (instancetype)initWithCountryName:(NSString *)aName
         continentName:(NSString *)aContinentName
                 shape:(CountryShape *)aCountryShape
             continent:(RiskContinent)aContinent;
 
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 
 @property (readonly, copy) NSString *countryName;
 @property (readonly, retain) CountryShape *countryShape;

@@ -50,28 +50,34 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
     // For convenient access to a random number generator
     SNRandom *rng;
 }
+@property (readonly, retain) RiskGameManager *gameManager;
 
 + (void) load;
 + (void) initialize;
 
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
 
-- (NSString *) playerName;
-- (Player) playerNumber;
-- (NSArray *) playerCards;
+@property (readonly, copy) NSString *playerName;
+@property (readonly) Player playerNumber;
+@property (readonly, copy) NSArray<RiskCard*> * playerCards;
 
-- (NSMenu *) playerToolMenu;
-- (void) setPlayerToolMenu:(NSMenu *)theMenu;
+/// The Player N menu under the Tool menu for this player.  This
+/// allows players easy access for adding new menu items.  Each player
+/// always starts out with one menu item to display the Console window.
+@property (assign) NSMenu *playerToolMenu;
 
+/// The default attack method.  This is used mostly by the Human
+/// player.
 @property AttackMethod attackMethod;
 
-- (int) attackMethodValue;
-- (void) setAttackMethodValue:(int)newValue;
+/// The value associated with the default attack method.  This is
+/// used mostly by the Human player.
+@property int attackMethodValue;
 
 - (void) addCardToHand:(RiskCard *)newCard;
 - (void) removeCardFromHand:(RiskCard *)aCard;
 
-- (SNRandom *) rng;
+@property (readonly, retain) SNRandom *rng;
 
 - (void) turnDone;
 
@@ -111,6 +117,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 
 - (IBAction) showConsolePanel:sender;
 - (void) logMessage:(NSString *)format, ...;
+- (void) logMessage:(NSString *)format format:(va_list)vaList;
 
 - (void) waitForContinue;
 - (IBAction) continueAction:sender;

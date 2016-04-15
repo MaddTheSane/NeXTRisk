@@ -17,12 +17,7 @@
     NSArray *continents;
 }
 
-+ (void) initialize;
-
-- (void) awakeFromNib;
-
 - (instancetype)init;
-- (void) dealloc;
 
 //- (RiskWorld *) world;
 - (void) setWorld:(RiskWorld *)newWorld;

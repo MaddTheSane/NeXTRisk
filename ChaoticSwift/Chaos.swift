@@ -1,23 +1,28 @@
 //
-// Part of Risk by Mike Ferris
+//  Chaos.swift
+//  Risk
+//
+//  Created by C.W. Betts on 4/15/16.
+//  Copyright © 2016 C.W. Betts. All rights reserved.
 //
 
-#import <RiskKit/Risk.h>
+import Cocoa
+import RiskKit
 
-RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
+public class Chaos: RiskPlayer {
+	private var unoccupiedContinents = Set<String>()
+	private var attackingCountries = Set<Country>()
 
-#import "Chaotic.h"
+	override public init!(playerName aName: String!, number: Player, gameManager aManager: RiskGameManager!) {
+		super.init(playerName: aName, number: number, gameManager: aManager)
+		
+		let world = gameManager.world
+		let continents = world.continents
+		
+		unoccupiedContinents.intersectInPlace(continents.keys)
+	}
 
-#import "Country.h"
-#import "RiskGameManager.h"
-#import "RiskWorld.h"
-#import "SNRandom.h"
-
-//======================================================================
-// The Chaotic player provides a relatively simple but complete
-// implementation of a computer player.
-//======================================================================
-
+/*
 #define Chaotic_VERSION 1
 
 @implementation Chaotic
@@ -42,7 +47,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 - initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     RiskWorld *world;
-    NSDictionary<NSString*,Continent *> *continents;
+    NSDictionary *continents;
 
     [super initWithPlayerName:aName number:number gameManager:aManager];
 
@@ -71,20 +76,17 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 //======================================================================
 // Subclass Responsibilities
 //======================================================================
-
+*/
 //----------------------------------------------------------------------
-// Card management
+//MARK:- Card management
 //----------------------------------------------------------------------
-
-- (void) mustTurnInCards
-{
-    // While the game manager will automatically turn in our best sets for
-    // us if we don't choose the cards ourselves, we'll do it ourselves
-    // just to be nice.
-
-    [gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
-}
-
+	/// While the game manager will automatically turn in our best sets for
+	/// us if we don't choose the cards ourselves, we'll do it ourselves
+	/// just to be nice.
+	public override func mustTurnInCards() {
+		gameManager.automaticallyTurnInCardsForPlayerNumber(playerNumber)
+	}
+	/*
 //----------------------------------------------------------------------
 // Initial game phases
 //----------------------------------------------------------------------
@@ -286,52 +288,36 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 }
 
 //----------------------------------------------------------------------
-
-- (void) willEndTurn
-{
-    SNRelease (attackingCountries);
-}
-
+*/
+	public override func willEndTurn() {
+		attackingCountries.removeAll()
+	}
 //======================================================================
-// Custom methods
+//MARK: - Custom methods
 //======================================================================
 
-// attack the weakest neighbor (bully tactics).
-- (BOOL) doAttackFromCountry:(Country *)attacker
-{
-    NSSet<Country*> *enemies;
-    Country *weakest;
-    int weakestTroopCount;
-    NSEnumerator *countryEnumerator;
-    AttackResult attackResult;
-
-    attackResult.conqueredCountry = NO;
-    weakest = nil;
-    weakestTroopCount = 999999;
-    enemies = [attacker enemyNeighborCountries];
-    countryEnumerator = [enemies objectEnumerator];
-
-    for (Country *country in enemies)
-    {
-        int troopCount = [country troopCount];
-        if (troopCount < weakestTroopCount)
-        {
-            weakestTroopCount = troopCount;
-            weakest = country;
-        }
-    }
-
-    if (weakest != nil)
-    {
-        attackResult = [gameManager attackFromCountry:attacker
-                                    toCountry:weakest
-                                    untilArmiesRemain:(int)[[self rng] randomNumberBetween:1:[attacker troopCount]]
-                                    moveAllArmiesUponVictory:NO];
-
-        //NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
-    }
-
-    return attackResult.conqueredCountry;
+/// attack the weakest neighbor (bully tactics).
+	func doAttackFromCountry(attacker: Country) -> Bool {
+		let enemies = attacker.enemyNeighborCountries()!
+		var weakest: Country!
+		var attackResult = AttackResult()
+		attackResult.conqueredCountry = false
+		var weakestTroopCount = Int32(999999)
+		
+		for country in enemies {
+			let troopCount = country.troopCount
+			if troopCount < weakestTroopCount {
+				weakest = country
+				weakestTroopCount = troopCount
+			}
+		}
+		
+		if let weakest = weakest {
+			attackResult = gameManager.attackFromCountry(attacker, toCountry: weakest, untilArmiesRemain: Int32(rng.randomNumberBetween(1, Int(attacker.troopCount))), moveAllArmiesUponVictory: false)
+			
+			//NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
+		}
+		
+		return attackResult.conqueredCountry.boolValue
+	}
 }
-
-@end

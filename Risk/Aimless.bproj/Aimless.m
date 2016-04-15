@@ -1351,7 +1351,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         {
             attackResult = [gameManager attackFromCountry:attacker
                                         toCountry:weakest
-                                        untilArmiesRemain:[[self rng] randomNumberBetween:2:[attacker troopCount]]
+                                        untilArmiesRemain:(int)[[self rng] randomNumberBetween:2:[attacker troopCount]]
                                         moveAllArmiesUponVictory:NO];
         }
 #if 0

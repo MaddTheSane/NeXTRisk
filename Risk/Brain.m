@@ -170,34 +170,38 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     BOOL keepTrying;
     NSMutableDictionary *loadedBundles;
 
-    NSString *path;
-
     mainBundle = [NSBundle mainBundle];
     loadedRiskPlayerNames = [NSMutableSet set];
     delayedRiskPlayerPaths = [NSMutableSet set];
     tempPlayerNames = [NSMutableSet set];
     loadedBundles = [NSMutableDictionary dictionary];
+	NSURL *pluginURL = [mainBundle builtInPlugInsURL];
+	NSDirectoryEnumerator<NSURL *> * URLEnum = [[NSFileManager defaultManager] enumeratorAtURL:pluginURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles) errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
+		return false;
+	}];
 
-    resourcePaths = [mainBundle pathsForResourcesOfType:@"riskplayer" inDirectory:nil];
     //NSLog (@"resource paths: %@", resourcePaths);
 
     pathEnumerator = [resourcePaths objectEnumerator];
-    while (path = [pathEnumerator nextObject])
+    for (NSURL *subdirURL in URLEnum)
     {
-        NSString *str = [[path lastPathComponent] stringByDeletingPathExtension];
+		if ([[subdirURL pathExtension] caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
+			continue;
+		}
+        NSString *str = [[subdirURL lastPathComponent] stringByDeletingPathExtension];
 
         // refuse to load if the name matches a module already loaded
         if ([loadedRiskPlayerNames containsObject:str] == NO)
         {
             // OK, all is well -- go load the little bugger
             //NSLog (@"Load risk player bundle %@", path);
-            playerBundle = [NSBundle bundleWithPath:path];
+            playerBundle = [NSBundle bundleWithURL:subdirURL];
             if ([playerBundle principalClass] == nil)
             {
                 // Ugh, failed.  Put the class name in tempStorage in case
                 // it can't be loaded because it's a subclass of another
                 // CP who hasn't been loaded yet.
-                [delayedRiskPlayerPaths addObject:path];
+                [delayedRiskPlayerPaths addObject:[subdirURL path]];
             }
             else
             {
@@ -218,7 +222,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     {
         keepTrying = NO;
         pathEnumerator = [delayedRiskPlayerPaths objectEnumerator];
-        while (path = [pathEnumerator nextObject])
+        for (NSString *path in delayedRiskPlayerPaths)
         {
             playerBundle = [NSBundle bundleWithPath:path];
             if ([playerBundle principalClass] != nil)

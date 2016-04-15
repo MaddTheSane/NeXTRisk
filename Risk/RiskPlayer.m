@@ -25,6 +25,13 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 #define RiskPlayer_VERSION 1
 
 @implementation RiskPlayer
+@synthesize rng;
+@synthesize gameManager;
+@synthesize playerToolMenu;
+@synthesize attackMethod;
+@synthesize attackMethodValue;
+@synthesize playerName;
+@synthesize playerNumber;
 
 + (void) load
 {
@@ -94,81 +101,9 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (NSString *) playerName
-{
-    return playerName;
-}
-
-//----------------------------------------------------------------------
-
-- (Player) playerNumber
-{
-    return playerNumber;
-}
-
-//----------------------------------------------------------------------
-
 - (NSArray *) playerCards
 {
     return playerCards;
-}
-
-//----------------------------------------------------------------------
-// Returns the Player N menu under the Tool menu for this player.  This
-// allows players easy access for adding new menu items.  Each player
-// always starts out with one menu item to display the Console window.
-//----------------------------------------------------------------------
-
-- (NSMenu *) playerToolMenu
-{
-    return playerToolMenu;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setPlayerToolMenu:(NSMenu *)theMenu
-{
-    playerToolMenu = theMenu;
-}
-
-//----------------------------------------------------------------------
-// Return the default attack method.  This is used mostly by the Human
-// player.
-//----------------------------------------------------------------------
-
-- (AttackMethod) attackMethod
-{
-    return attackMethod;
-}
-
-//----------------------------------------------------------------------
-// Change the default attack method.  This is used mostly by the Human
-// player.
-//----------------------------------------------------------------------
-
-- (void) setAttackMethod:(AttackMethod)newMethod
-{
-    attackMethod = newMethod;
-}
-
-//----------------------------------------------------------------------
-// Return the value associated with the default attack method.  This is
-// used mostly by the Human player.
-//----------------------------------------------------------------------
-
-- (int) attackMethodValue
-{
-    return attackMethodValue;
-}
-
-//----------------------------------------------------------------------
-// Set the value associated with the default attack method.  This is
-// used mostly by the Human player.
-//----------------------------------------------------------------------
-
-- (void) setAttackMethodValue:(int)newValue
-{
-    attackMethodValue = newValue;
 }
 
 //----------------------------------------------------------------------
@@ -183,13 +118,6 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (void) removeCardFromHand:(RiskCard *)aCard
 {
     [playerCards removeObject:aCard];
-}
-
-//----------------------------------------------------------------------
-
-- (SNRandom *) rng
-{
-    return rng;
 }
 
 //----------------------------------------------------------------------
@@ -624,28 +552,33 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (void) logMessage:(NSString *)format, ...
 {
-    NSRange selected;
-    NSMutableString *str;
-    va_list ap;
+	va_list ap;
+	va_start(ap, format);
+	[self logMessage:format format:ap];
+	va_end(ap);
+}
 
-    if (consoleMessageText != nil)
-    {
-        va_start(ap, format);
-        str = [[[NSMutableString alloc] initWithFormat:format arguments:ap] autorelease];
-        [str appendString:@"\n"];
-        va_end(ap);
-
-        [consoleMessageText selectAll:nil];
-        selected = [consoleMessageText selectedRange];
-        selected.location = selected.length;
-        selected.length = 0;
-        [consoleMessageText setSelectedRange:selected];
-        [consoleMessageText replaceCharactersInRange:selected withString:str];
-        [consoleMessageText scrollRangeToVisible:selected];
-
-        if ([pauseForContinueButton state] == 1)
-            [self waitForContinue];
-    }
+- (void) logMessage:(NSString *)format format:(va_list)ap
+{
+	NSRange selected;
+	NSMutableString *str;
+	
+	if (consoleMessageText != nil)
+	{
+		str = [[[NSMutableString alloc] initWithFormat:format arguments:ap] autorelease];
+		[str appendString:@"\n"];
+		
+		[consoleMessageText selectAll:nil];
+		selected = [consoleMessageText selectedRange];
+		selected.location = selected.length;
+		selected.length = 0;
+		[consoleMessageText setSelectedRange:selected];
+		[consoleMessageText replaceCharactersInRange:selected withString:str];
+		[consoleMessageText scrollRangeToVisible:selected];
+		
+		if ([pauseForContinueButton state] == 1)
+			[self waitForContinue];
+	}
 }
 
 //----------------------------------------------------------------------

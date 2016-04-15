@@ -8,61 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
-		55377F761CC15C2400A2C08E /* ArmyPlacementValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
 		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
-		55377F791CC15C2400A2C08E /* BoardSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC71CC15C2300A2C08E /* BoardSetup.m */; };
 		55377F7A1CC15C2400A2C08E /* Brain.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC91CC15C2300A2C08E /* Brain.m */; };
 		55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECA1CC15C2300A2C08E /* CardBack.tiff */; };
-		55377F7C1CC15C2400A2C08E /* Afghanistan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */; };
-		55377F7D1CC15C2400A2C08E /* Alaska.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECD1CC15C2300A2C08E /* Alaska.tiff */; };
-		55377F7E1CC15C2400A2C08E /* Alberta.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECE1CC15C2300A2C08E /* Alberta.tiff */; };
-		55377F7F1CC15C2400A2C08E /* Argentina.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECF1CC15C2300A2C08E /* Argentina.tiff */; };
-		55377F801CC15C2400A2C08E /* Brazil.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED01CC15C2300A2C08E /* Brazil.tiff */; };
-		55377F811CC15C2400A2C08E /* CentralAmerica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */; };
-		55377F821CC15C2400A2C08E /* China.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED21CC15C2300A2C08E /* China.tiff */; };
-		55377F831CC15C2400A2C08E /* Congo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED31CC15C2300A2C08E /* Congo.tiff */; };
-		55377F841CC15C2400A2C08E /* EastAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED41CC15C2300A2C08E /* EastAfrica.tiff */; };
-		55377F851CC15C2400A2C08E /* EasternAustralia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */; };
-		55377F861CC15C2400A2C08E /* EasternUS.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED61CC15C2300A2C08E /* EasternUS.tiff */; };
-		55377F871CC15C2400A2C08E /* Egypt.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED71CC15C2300A2C08E /* Egypt.tiff */; };
-		55377F881CC15C2400A2C08E /* GreatBritain.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED81CC15C2300A2C08E /* GreatBritain.tiff */; };
-		55377F891CC15C2400A2C08E /* Greenland.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED91CC15C2300A2C08E /* Greenland.tiff */; };
-		55377F8B1CC15C2400A2C08E /* Iceland.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDB1CC15C2300A2C08E /* Iceland.tiff */; };
-		55377F8C1CC15C2400A2C08E /* India.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDC1CC15C2300A2C08E /* India.tiff */; };
-		55377F8D1CC15C2400A2C08E /* Indonesia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDD1CC15C2300A2C08E /* Indonesia.tiff */; };
-		55377F8E1CC15C2400A2C08E /* Irkutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */; };
-		55377F8F1CC15C2400A2C08E /* Japan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDF1CC15C2300A2C08E /* Japan.tiff */; };
-		55377F901CC15C2400A2C08E /* Joker1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE01CC15C2300A2C08E /* Joker1.tiff */; };
-		55377F911CC15C2400A2C08E /* Joker2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE11CC15C2300A2C08E /* Joker2.tiff */; };
-		55377F921CC15C2400A2C08E /* Kamchatka.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE21CC15C2300A2C08E /* Kamchatka.tiff */; };
-		55377F941CC15C2400A2C08E /* Madagascar.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE41CC15C2300A2C08E /* Madagascar.tiff */; };
-		55377F981CC15C2400A2C08E /* MiddleEast.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE81CC15C2300A2C08E /* MiddleEast.tiff */; };
-		55377F991CC15C2400A2C08E /* Mongolia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE91CC15C2300A2C08E /* Mongolia.tiff */; };
-		55377F9A1CC15C2400A2C08E /* NewGuinea.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */; };
-		55377F9B1CC15C2400A2C08E /* NorthAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */; };
-		55377F9C1CC15C2400A2C08E /* NorthernEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */; };
-		55377F9D1CC15C2400A2C08E /* NorthwestTerritory.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */; };
-		55377F9E1CC15C2400A2C08E /* Ontario.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEE1CC15C2300A2C08E /* Ontario.tiff */; };
-		55377FA01CC15C2400A2C08E /* Peru.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF01CC15C2300A2C08E /* Peru.tiff */; };
-		55377FA11CC15C2400A2C08E /* Quebec.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF11CC15C2300A2C08E /* Quebec.tiff */; };
-		55377FA21CC15C2400A2C08E /* Scandinavia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF21CC15C2300A2C08E /* Scandinavia.tiff */; };
-		55377FA31CC15C2400A2C08E /* Siam.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF31CC15C2300A2C08E /* Siam.tiff */; };
-		55377FA41CC15C2400A2C08E /* Siberia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF41CC15C2300A2C08E /* Siberia.tiff */; };
-		55377FA51CC15C2400A2C08E /* SouthAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */; };
-		55377FA61CC15C2400A2C08E /* SouthernEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */; };
-		55377FA71CC15C2400A2C08E /* Ukraine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF71CC15C2300A2C08E /* Ukraine.tiff */; };
-		55377FA81CC15C2400A2C08E /* Ural.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF81CC15C2300A2C08E /* Ural.tiff */; };
-		55377FA91CC15C2400A2C08E /* Venezuela.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF91CC15C2300A2C08E /* Venezuela.tiff */; };
-		55377FAA1CC15C2400A2C08E /* WesternAustralia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */; };
-		55377FAB1CC15C2400A2C08E /* WesternEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */; };
-		55377FAC1CC15C2400A2C08E /* WesternUS.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFC1CC15C2300A2C08E /* WesternUS.tiff */; };
-		55377FAD1CC15C2400A2C08E /* Yakutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */; };
-		55377FAE1CC15C2400A2C08E /* CardPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EFF1CC15C2300A2C08E /* CardPanelController.m */; };
-		55377FB11CC15C2400A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
-		55377FB21CC15C2400A2C08E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F061CC15C2300A2C08E /* Country.m */; };
 		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
-		55377FB51CC15C2400A2C08E /* DiceInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F0B1CC15C2300A2C08E /* DiceInspector.m */; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.nib */; };
 		55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.nib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.nib */; };
@@ -70,7 +20,6 @@
 		55377FC61CC15C2400A2C08E /* Risk.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F271CC15C2300A2C08E /* Risk.nib */; };
 		55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2F1CC15C2300A2C08E /* PreferencePanel.nib */; };
 		55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */; };
-		55377FCF1CC15C2400A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
 		55377FD61CC15C2400A2C08E /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F431CC15C2300A2C08E /* Human.m */; };
 		55377FD71CC15C2400A2C08E /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
 		55377FD91CC15C2400A2C08E /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F471CC15C2300A2C08E /* LineView.m */; };
@@ -78,15 +27,9 @@
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
 		55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F521CC15C2300A2C08E /* Risk_main.m */; };
-		55377FE31CC15C2400A2C08E /* RiskCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RiskCard.m */; };
-		55377FE41CC15C2400A2C08E /* RiskGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F581CC15C2400A2C08E /* RiskGameManager.m */; };
 		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
-		55377FE61CC15C2400A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
 		55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; };
-		55377FE91CC15C2400A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
-		55377FEA1CC15C2400A2C08E /* RiskWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F631CC15C2400A2C08E /* RiskWorld.m */; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
-		55377FF11CC15C2400A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
 		553780021CC15E1700A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553780011CC15E1700A2C08E /* Assets.xcassets */; };
 		5537801F1CC15E6A00A2C08E /* CardData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5537800A1CC15E6A00A2C08E /* CardData.txt */; };
@@ -181,6 +124,35 @@
 		553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */; };
 		553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537806B1CC1639C00A2C08E /* Aimless.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537808E1CC1642900A2C08E /* Chaotic.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		553780D51CC1993E00A2C08E /* Chaos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553780D41CC1993E00A2C08E /* Chaos.swift */; };
+		553780D61CC199FD00A2C08E /* Country.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F051CC15C2300A2C08E /* Country.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780D71CC199FD00A2C08E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F061CC15C2300A2C08E /* Country.m */; };
+		553780DD1CC19BB700A2C08E /* RiskGameManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F571CC15C2400A2C08E /* RiskGameManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780DE1CC19BBC00A2C08E /* RiskGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F581CC15C2400A2C08E /* RiskGameManager.m */; };
+		553780DF1CC19C9300A2C08E /* ArmyPlacementValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780E01CC19C9300A2C08E /* ArmyPlacementValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */; };
+		553780E11CC19CBD00A2C08E /* BoardSetup.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377EC61CC15C2300A2C08E /* BoardSetup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780E21CC19CC300A2C08E /* BoardSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC71CC15C2300A2C08E /* BoardSetup.m */; };
+		553780E31CC19D3C00A2C08E /* CardPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EFF1CC15C2300A2C08E /* CardPanelController.m */; };
+		553780E41CC19D4D00A2C08E /* CardPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377EFE1CC15C2300A2C08E /* CardPanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780E51CC19D6700A2C08E /* DiceInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F0B1CC15C2300A2C08E /* DiceInspector.m */; };
+		553780E61CC19D6A00A2C08E /* DiceInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F0A1CC15C2300A2C08E /* DiceInspector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780E71CC19D9700A2C08E /* GameConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F391CC15C2300A2C08E /* GameConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
+		553780E91CC19DB800A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
+		553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F701CC15C2400A2C08E /* WorldInfoController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
+		553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
+		553780ED1CC1A09400A2C08E /* Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F031CC15C2300A2C08E /* Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780EE1CC1A23E00A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
+		553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F621CC15C2400A2C08E /* RiskWorld.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780F01CC1A3F400A2C08E /* RiskWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F631CC15C2400A2C08E /* RiskWorld.m */; };
+		553780F11CC1A90100A2C08E /* RiskCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F551CC15C2400A2C08E /* RiskCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780F21CC1A90100A2C08E /* RiskCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RiskCard.m */; };
+		553780F31CC1A9FB00A2C08E /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
+		553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
+		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +190,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 553780811CC1642900A2C08E;
 			remoteInfo = Chaotic;
+		};
+		553780D81CC19A5700A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
+		553780F61CC1AC7700A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780CD1CC1990A00A2C08E;
+			remoteInfo = ChaoticSwift;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -404,6 +390,9 @@
 		553780A61CC1966300A2C08E /* RiskKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RiskKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780A81CC1966300A2C08E /* RiskKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskKit.h; sourceTree = "<group>"; };
 		553780AA1CC1966300A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaoticSwift.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		553780D01CC1990A00A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		553780D41CC1993E00A2C08E /* Chaos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chaos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +434,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		553780CB1CC1990A00A2C08E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -456,6 +452,7 @@
 				5537806C1CC1639C00A2C08E /* Aimless */,
 				553780901CC1645000A2C08E /* Chaotic */,
 				553780A71CC1966300A2C08E /* RiskKit */,
+				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -468,6 +465,7 @@
 				5537806B1CC1639C00A2C08E /* Aimless.riskplayer */,
 				5537808E1CC1642900A2C08E /* Chaotic.riskplayer */,
 				553780A61CC1966300A2C08E /* RiskKit.framework */,
+				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -693,6 +691,15 @@
 			path = RiskKit;
 			sourceTree = "<group>";
 		};
+		553780CF1CC1990A00A2C08E /* ChaoticSwift */ = {
+			isa = PBXGroup;
+			children = (
+				553780D41CC1993E00A2C08E /* Chaos.swift */,
+				553780D01CC1990A00A2C08E /* Info.plist */,
+			);
+			path = ChaoticSwift;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -701,10 +708,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780BC1CC1970E00A2C08E /* SNRandom.h in Headers */,
+				553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */,
+				553780F11CC1A90100A2C08E /* RiskCard.h in Headers */,
+				553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */,
+				553780E71CC19D9700A2C08E /* GameConfiguration.h in Headers */,
+				553780E61CC19D6A00A2C08E /* DiceInspector.h in Headers */,
 				553780A91CC1966300A2C08E /* RiskKit.h in Headers */,
 				553780BE1CC1975800A2C08E /* SNUtility.h in Headers */,
 				553780BB1CC196F200A2C08E /* CardSet.h in Headers */,
+				553780D61CC199FD00A2C08E /* Country.h in Headers */,
+				553780E11CC19CBD00A2C08E /* BoardSetup.h in Headers */,
+				553780DD1CC19BB700A2C08E /* RiskGameManager.h in Headers */,
 				553780B91CC196B400A2C08E /* RiskPlayer.h in Headers */,
+				553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */,
+				553780DF1CC19C9300A2C08E /* ArmyPlacementValidator.h in Headers */,
+				553780ED1CC1A09400A2C08E /* Continent.h in Headers */,
+				553780E41CC19D4D00A2C08E /* CardPanelController.h in Headers */,
 				553780B41CC1967D00A2C08E /* Risk.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +744,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				553780F71CC1AC7700A2C08E /* PBXTargetDependency */,
 				553780C41CC1984F00A2C08E /* PBXTargetDependency */,
 				553780C61CC1984F00A2C08E /* PBXTargetDependency */,
 				553780AC1CC1966300A2C08E /* PBXTargetDependency */,
@@ -805,6 +825,24 @@
 			productReference = 553780A61CC1966300A2C08E /* RiskKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		553780CD1CC1990A00A2C08E /* ChaoticSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553780D11CC1990A00A2C08E /* Build configuration list for PBXNativeTarget "ChaoticSwift" */;
+			buildPhases = (
+				553780CA1CC1990A00A2C08E /* Sources */,
+				553780CB1CC1990A00A2C08E /* Frameworks */,
+				553780CC1CC1990A00A2C08E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				553780D91CC19A5700A2C08E /* PBXTargetDependency */,
+			);
+			name = ChaoticSwift;
+			productName = ChaoticSwift;
+			productReference = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -824,6 +862,9 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					553780A51CC1966300A2C08E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					553780CD1CC1990A00A2C08E = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -847,6 +888,7 @@
 				5537806A1CC1639C00A2C08E /* Aimless */,
 				553780811CC1642900A2C08E /* Chaotic */,
 				553780A51CC1966300A2C08E /* RiskKit */,
+				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -856,65 +898,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55377FA71CC15C2400A2C08E /* Ukraine.tiff in Resources */,
-				55377FA81CC15C2400A2C08E /* Ural.tiff in Resources */,
 				55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */,
 				55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */,
-				55377F921CC15C2400A2C08E /* Kamchatka.tiff in Resources */,
 				55377FD71CC15C2400A2C08E /* Human.rtf in Resources */,
-				55377FA41CC15C2400A2C08E /* Siberia.tiff in Resources */,
-				55377F8D1CC15C2400A2C08E /* Indonesia.tiff in Resources */,
-				55377F851CC15C2400A2C08E /* EasternAustralia.tiff in Resources */,
-				55377FA61CC15C2400A2C08E /* SouthernEurope.tiff in Resources */,
-				55377F871CC15C2400A2C08E /* Egypt.tiff in Resources */,
-				55377F801CC15C2400A2C08E /* Brazil.tiff in Resources */,
-				55377FA21CC15C2400A2C08E /* Scandinavia.tiff in Resources */,
 				55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */,
-				55377FAD1CC15C2400A2C08E /* Yakutsk.tiff in Resources */,
-				55377F861CC15C2400A2C08E /* EasternUS.tiff in Resources */,
-				55377F9C1CC15C2400A2C08E /* NorthernEurope.tiff in Resources */,
-				55377F9E1CC15C2400A2C08E /* Ontario.tiff in Resources */,
 				55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */,
-				55377F7C1CC15C2400A2C08E /* Afghanistan.tiff in Resources */,
-				55377FA51CC15C2400A2C08E /* SouthAfrica.tiff in Resources */,
 				55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */,
-				55377F941CC15C2400A2C08E /* Madagascar.tiff in Resources */,
-				55377F8B1CC15C2400A2C08E /* Iceland.tiff in Resources */,
-				55377F7F1CC15C2400A2C08E /* Argentina.tiff in Resources */,
 				55377FC61CC15C2400A2C08E /* Risk.nib in Resources */,
-				55377F7E1CC15C2400A2C08E /* Alberta.tiff in Resources */,
-				55377F8F1CC15C2400A2C08E /* Japan.tiff in Resources */,
-				55377F8E1CC15C2400A2C08E /* Irkutsk.tiff in Resources */,
-				55377FA91CC15C2400A2C08E /* Venezuela.tiff in Resources */,
-				55377FAB1CC15C2400A2C08E /* WesternEurope.tiff in Resources */,
 				55377FC41CC15C2400A2C08E /* NewGamePanel.nib in Resources */,
-				55377F7D1CC15C2400A2C08E /* Alaska.tiff in Resources */,
-				55377FA11CC15C2400A2C08E /* Quebec.tiff in Resources */,
-				55377F9B1CC15C2400A2C08E /* NorthAfrica.tiff in Resources */,
-				55377F8C1CC15C2400A2C08E /* India.tiff in Resources */,
-				55377F9A1CC15C2400A2C08E /* NewGuinea.tiff in Resources */,
-				55377F841CC15C2400A2C08E /* EastAfrica.tiff in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
-				55377FAA1CC15C2400A2C08E /* WesternAustralia.tiff in Resources */,
-				55377F821CC15C2400A2C08E /* China.tiff in Resources */,
-				55377F811CC15C2400A2C08E /* CentralAmerica.tiff in Resources */,
 				553780991CC185A700A2C08E /* InfoPanel.xib in Resources */,
-				55377F881CC15C2400A2C08E /* GreatBritain.tiff in Resources */,
-				55377F991CC15C2400A2C08E /* Mongolia.tiff in Resources */,
-				55377FA31CC15C2400A2C08E /* Siam.tiff in Resources */,
-				55377F891CC15C2400A2C08E /* Greenland.tiff in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */,
-				55377F9D1CC15C2400A2C08E /* NorthwestTerritory.tiff in Resources */,
-				55377FAC1CC15C2400A2C08E /* WesternUS.tiff in Resources */,
 				55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */,
-				55377F831CC15C2400A2C08E /* Congo.tiff in Resources */,
-				55377F911CC15C2400A2C08E /* Joker2.tiff in Resources */,
 				55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */,
-				55377FE91CC15C2400A2C08E /* RiskWorld.data in Resources */,
-				55377F901CC15C2400A2C08E /* Joker1.tiff in Resources */,
 				55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */,
-				55377FA01CC15C2400A2C08E /* Peru.tiff in Resources */,
-				55377F981CC15C2400A2C08E /* MiddleEast.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1000,7 +997,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */,
 				553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */,
+				553780F31CC1A9FB00A2C08E /* Cards.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553780CC1CC1990A00A2C08E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */,
+				553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,29 +1019,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55377FCF1CC15C2400A2C08E /* GameConfiguration.m in Sources */,
 				55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */,
-				55377FF11CC15C2400A2C08E /* WorldInfoController.m in Sources */,
 				55377F7A1CC15C2400A2C08E /* Brain.m in Sources */,
 				55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */,
-				55377F791CC15C2400A2C08E /* BoardSetup.m in Sources */,
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
 				55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */,
-				55377FEA1CC15C2400A2C08E /* RiskWorld.m in Sources */,
-				55377FB11CC15C2400A2C08E /* Continent.m in Sources */,
-				55377FE41CC15C2400A2C08E /* RiskGameManager.m in Sources */,
 				55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */,
 				55377F771CC15C2400A2C08E /* ArmyView.m in Sources */,
 				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
-				55377FE61CC15C2400A2C08E /* RiskNeighbor.m in Sources */,
-				55377FE31CC15C2400A2C08E /* RiskCard.m in Sources */,
-				55377FB21CC15C2400A2C08E /* Country.m in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
 				55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */,
-				55377FAE1CC15C2400A2C08E /* CardPanelController.m in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,
-				55377FB51CC15C2400A2C08E /* DiceInspector.m in Sources */,
-				55377F761CC15C2400A2C08E /* ArmyPlacementValidator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,10 +1076,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */,
+				553780E91CC19DB800A2C08E /* WorldInfoController.m in Sources */,
+				553780E51CC19D6700A2C08E /* DiceInspector.m in Sources */,
+				553780E21CC19CC300A2C08E /* BoardSetup.m in Sources */,
 				553780B31CC1967900A2C08E /* Risk.m in Sources */,
+				553780EE1CC1A23E00A2C08E /* Continent.m in Sources */,
+				553780E01CC19C9300A2C08E /* ArmyPlacementValidator.m in Sources */,
 				553780B81CC196B100A2C08E /* RiskPlayer.m in Sources */,
+				553780F01CC1A3F400A2C08E /* RiskWorld.m in Sources */,
 				553780BA1CC196EF00A2C08E /* CardSet.m in Sources */,
 				553780BD1CC1970E00A2C08E /* SNRandom.m in Sources */,
+				553780DE1CC19BBC00A2C08E /* RiskGameManager.m in Sources */,
+				553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */,
+				553780F21CC1A90100A2C08E /* RiskCard.m in Sources */,
+				553780D71CC199FD00A2C08E /* Country.m in Sources */,
+				553780E31CC19D3C00A2C08E /* CardPanelController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553780CA1CC1990A00A2C08E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780D51CC1993E00A2C08E /* Chaos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1130,16 @@
 			isa = PBXTargetDependency;
 			target = 553780811CC1642900A2C08E /* Chaotic */;
 			targetProxy = 553780C51CC1984F00A2C08E /* PBXContainerItemProxy */;
+		};
+		553780D91CC19A5700A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 553780D81CC19A5700A2C08E /* PBXContainerItemProxy */;
+		};
+		553780F71CC1AC7700A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780CD1CC1990A00A2C08E /* ChaoticSwift */;
+			targetProxy = 553780F61CC1AC7700A2C08E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1425,6 +1451,41 @@
 			};
 			name = Release;
 		};
+		553780D21CC1990A00A2C08E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChaoticSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Debug;
+		};
+		553780D31CC1990A00A2C08E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChaoticSwift/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1476,6 +1537,14 @@
 			buildConfigurations = (
 				553780B01CC1966300A2C08E /* Debug */,
 				553780B11CC1966300A2C08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		553780D11CC1990A00A2C08E /* Build configuration list for PBXNativeTarget "ChaoticSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553780D21CC1990A00A2C08E /* Debug */,
+				553780D31CC1990A00A2C08E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

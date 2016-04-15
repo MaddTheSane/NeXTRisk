@@ -9,6 +9,8 @@
 
 @class Country;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface RiskCard : NSObject
 {
     Country *country;
@@ -17,18 +19,16 @@
     NSImage *image;
 }
 
-+ (void) initialize;
-
-+ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
++ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName;
 
 // Take card image name from country?
-- (instancetype)initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
+- (instancetype)initCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName;
 
-- (Country *) country;
-- (RiskCardType) cardType;
-- (NSString *) imageName;
-- (NSImage *) image;
-
-- (NSString *) description;
+@property (readonly, retain, nullable) Country *country;
+@property (readonly) RiskCardType cardType;
+@property (readonly, copy) NSString *imageName;
+@property (readonly, retain) NSImage *image;
 
 @end
+
+NS_ASSUME_NONNULL_END
