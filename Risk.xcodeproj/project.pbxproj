@@ -99,7 +99,6 @@
 		553780211CC15E6A00A2C08E /* CountryData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5537800C1CC15E6A00A2C08E /* CountryData.txt */; };
 		553780221CC15E6A00A2C08E /* CountryNeighbors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5537800D1CC15E6A00A2C08E /* CountryNeighbors.txt */; };
 		553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */; };
-		553780241CC15E6A00A2C08E /* RiskUtil.nib in Resources */ = {isa = PBXBuildFile; fileRef = 553780111CC15E6A00A2C08E /* RiskUtil.nib */; };
 		553780261CC15E6A00A2C08E /* Original.nib in Resources */ = {isa = PBXBuildFile; fileRef = 553780151CC15E6A00A2C08E /* Original.nib */; };
 		553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */; };
 		5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801E1CC15E6A00A2C08E /* RiskUtility.m */; };
@@ -169,6 +168,7 @@
 		553780961CC1655300A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
 		553780971CC1655300A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780991CC185A700A2C08E /* InfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553780981CC185A700A2C08E /* InfoPanel.xib */; };
+		5537809F1CC1943200A2C08E /* RiskUtil.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5537809E1CC1943200A2C08E /* RiskUtil.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -299,7 +299,6 @@
 		5537800D1CC15E6A00A2C08E /* CountryNeighbors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CountryNeighbors.txt; sourceTree = "<group>"; };
 		5537800E1CC15E6A00A2C08E /* CountryShapeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryShapeGenerator.h; sourceTree = "<group>"; };
 		5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryShapeGenerator.m; sourceTree = "<group>"; };
-		553780121CC15E6A00A2C08E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = RiskUtil.nib; sourceTree = "<group>"; };
 		553780161CC15E6A00A2C08E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = Original.nib; sourceTree = "<group>"; };
 		5537801B1CC15E6A00A2C08E /* RiskNeighborView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskNeighborView.h; sourceTree = "<group>"; };
 		5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskNeighborView.m; sourceTree = "<group>"; };
@@ -325,6 +324,7 @@
 		553780941CC1655300A2C08E /* Chaotic.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Chaotic.tiff; sourceTree = "<group>"; };
 		553780981CC185A700A2C08E /* InfoPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoPanel.xib; sourceTree = "<group>"; };
 		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cards.xcassets; sourceTree = "<group>"; };
+		5537809E1CC1943200A2C08E /* RiskUtil.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RiskUtil.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,7 +525,8 @@
 				5537800D1CC15E6A00A2C08E /* CountryNeighbors.txt */,
 				5537800E1CC15E6A00A2C08E /* CountryShapeGenerator.h */,
 				5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */,
-				553780101CC15E6A00A2C08E /* English.lproj */,
+				5537809E1CC1943200A2C08E /* RiskUtil.xib */,
+				553780151CC15E6A00A2C08E /* Original.nib */,
 				5537801B1CC15E6A00A2C08E /* RiskNeighborView.h */,
 				5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */,
 				5537801D1CC15E6A00A2C08E /* RiskUtility.h */,
@@ -534,15 +535,6 @@
 				553780061CC15E1700A2C08E /* Info.plist */,
 			);
 			path = RiskUtil;
-			sourceTree = "<group>";
-		};
-		553780101CC15E6A00A2C08E /* English.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				553780111CC15E6A00A2C08E /* RiskUtil.nib */,
-				553780151CC15E6A00A2C08E /* Original.nib */,
-			);
-			path = English.lproj;
 			sourceTree = "<group>";
 		};
 		5537806C1CC1639C00A2C08E /* Aimless */ = {
@@ -796,6 +788,7 @@
 				5537802F1CC161E500A2C08E /* Brazil.tiff in Resources */,
 				553780021CC15E1700A2C08E /* Assets.xcassets in Resources */,
 				553780351CC161E500A2C08E /* EasternUS.tiff in Resources */,
+				5537809F1CC1943200A2C08E /* RiskUtil.xib in Resources */,
 				553780471CC161E500A2C08E /* NorthwestTerritory.tiff in Resources */,
 				5537802B1CC161E500A2C08E /* Afghanistan.tiff in Resources */,
 				5537802E1CC161E500A2C08E /* Argentina.tiff in Resources */,
@@ -825,7 +818,6 @@
 				553780441CC161E500A2C08E /* NewGuinea.tiff in Resources */,
 				553780431CC161E500A2C08E /* Mongolia.tiff in Resources */,
 				553780321CC161E500A2C08E /* Congo.tiff in Resources */,
-				553780241CC15E6A00A2C08E /* RiskUtil.nib in Resources */,
 				553780451CC161E500A2C08E /* NorthAfrica.tiff in Resources */,
 				5537803E1CC161E500A2C08E /* Joker1.tiff in Resources */,
 				5537803B1CC161E500A2C08E /* Indonesia.tiff in Resources */,
@@ -1003,20 +995,13 @@
 			path = English.lproj;
 			sourceTree = "<group>";
 		};
-		553780111CC15E6A00A2C08E /* RiskUtil.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				553780121CC15E6A00A2C08E /* English */,
-			);
-			name = RiskUtil.nib;
-			sourceTree = "<group>";
-		};
 		553780151CC15E6A00A2C08E /* Original.nib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				553780161CC15E6A00A2C08E /* English */,
 			);
 			name = Original.nib;
+			path = English.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
