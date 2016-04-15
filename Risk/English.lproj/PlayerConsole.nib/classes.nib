@@ -1,0 +1,26 @@
+{
+    IBClasses =     (
+                {
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                continueAction = id;
+                pauseCheckAction = id;
+                showConsolePanel = id;
+            };
+            CLASS = RiskPlayer;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                consoleMessageText = id;
+                consoleWindow = id;
+                continueButton = id;
+                pauseForContinueButton = id;
+            };
+            SUPERCLASS = NSObject;
+        }
+    );
+    IBVersion = 1;
+}

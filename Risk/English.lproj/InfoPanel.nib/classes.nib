@@ -1,0 +1,26 @@
+{
+    IBClasses =     (
+                {
+            ACTIONS =             {
+                info = id;
+                newGame = id;
+            };
+            CLASS = Brain;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                diceInspectorPanel = id;
+                gameManager = id;
+                infoPanel = id;
+                newGamePanel = id;
+                versionTextField = id;
+            };
+            SUPERCLASS = NSObject;
+        },
+                {
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        }
+    );
+    IBVersion = 1;
+}

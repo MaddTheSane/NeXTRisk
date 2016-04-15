@@ -1,0 +1,66 @@
+{
+    IBClasses =     (
+                {
+            ACTIONS =             {
+                doneAction = id;
+                handAction = id;
+                setAction = id;
+                stopAction = id;
+                turnInSetAction = id;
+            };
+            CLASS = CardPanelController;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                amassedTextField = id;
+                cancelButton = id;
+                cardPanel = id;
+                doneButton = id;
+                forceTextField = id;
+                handMatrix = id;
+                handScrollView = id;
+                handStarMatrix = id;
+                setMatrix = id;
+                setStarMatrix = id;
+                turnInButton = id;
+                worthTextField = id;
+            };
+            SUPERCLASS = NSObject;
+        },
+                {
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                endTurn = id;
+                executeCurrentPhase = id;
+                fortify = id;
+            };
+            CLASS = RiskGameManager;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                armiesLeftToPlaceTextField = id;
+                armyView = id;
+                cardPanelController = id;
+                controlPanel = id;
+                countryNameTextField = id;
+                infoTextField = id;
+                initialArmiesLeftTextField = id;
+                mapView = id;
+                nameTextField = id;
+                phaseAttack = id;
+                phaseChooseCountries = id;
+                phaseComputerMove = id;
+                phaseFortify = id;
+                phasePlaceArmies = id;
+                phaseTextField = id;
+                playerColorWell = id;
+                statusView = id;
+                turnInCardsButton = id;
+            };
+            SUPERCLASS = NSObject;
+        }
+    );
+    IBVersion = 1;
+}

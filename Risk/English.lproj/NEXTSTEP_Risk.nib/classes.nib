@@ -1,0 +1,62 @@
+{
+    IBClasses =     (
+                {
+            ACTIONS =             {
+                info = id;
+                showGameSetupPanel = id;
+                showNewGamePanel = id;
+                showPreferencePanel = id;
+            };
+            CLASS = Brain;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                gameManager = id;
+                infoPanel = id;
+                newGamePanel = id;
+                versionTextField = id;
+            };
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                beginTournament = id;
+                info = id;
+                showControlPanel = id;
+                showDiceInspector = id;
+                showPlayerConsole = id;
+                showWorldInfoPanel = id;
+            };
+            CLASS = FirstResponder;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            ACTIONS =             {
+                endTurn = id;
+            };
+            CLASS = RiskGameManager;
+            LANGUAGE = ObjC;
+            SUPERCLASS = NSObject;
+        },
+                {
+            CLASS = RiskMapView;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                delegate = id;
+            };
+            SUPERCLASS = NSView;
+        },
+                {
+            CLASS = StatusView;
+            LANGUAGE = ObjC;
+            OUTLETS =             {
+                theCardManager = id;
+                theDefaultManager = id;
+                theGameSetup = id;
+                theMover = id;
+            };
+            SUPERCLASS = NSView;
+        }
+    );
+    IBVersion = 1;
+}
