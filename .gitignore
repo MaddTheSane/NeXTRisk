@@ -5,3 +5,5 @@ derived_src/
 *~
 *~.nib
 .dir.wmd
+ProjectHeaders/
+build/
