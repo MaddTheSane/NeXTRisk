@@ -9,7 +9,7 @@
 
 #define MAX_PLAYERS 7
 
-extern NSString *RGMGameOverNotification;
+extern NSString *const RGMGameOverNotification;
 
 @class RiskWorld, RiskPlayer, GameConfiguration, Country, RiskMapView, StatusView, ArmyView, CardPanelController;
 @class RiskCard, ArmyPlacementValidator, CardSet, DiceInspector, WorldInfoController, SNRandom;
@@ -88,17 +88,13 @@ extern NSString *RGMGameOverNotification;
     SNRandom *rng;
 }
 
-+ (void) initialize;
-
-- init;
-- (void) dealloc;
-- (void) awakeFromNib;
+- (instancetype)init;
 
 - (void) _logGameState;
 
-- (void) showControlPanel:sender;
-- (void) showDiceInspector:sender;
-- (void) showWorldInfoPanel:sender;
+- (IBAction) showControlPanel:sender;
+- (IBAction) showDiceInspector:sender;
+- (IBAction) showWorldInfoPanel:sender;
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
@@ -109,8 +105,7 @@ extern NSString *RGMGameOverNotification;
 // General access to world data
 //======================================================================
 
-- (RiskWorld *) world;
-- (void) setWorld:(RiskWorld *)newWorld;
+@property (retain) RiskWorld *world;
 
 - (GameConfiguration *) gameConfiguration;
 - (void) setGameConfiguration:(GameConfiguration *)newGameConfiguration;
@@ -131,7 +126,7 @@ extern NSString *RGMGameOverNotification;
 // Player menu support
 //======================================================================
 
-- (void) showPlayerConsole:sender;
+- (IBAction) showPlayerConsole:sender;
 
 //======================================================================
 // Establish Game
@@ -155,13 +150,13 @@ extern NSString *RGMGameOverNotification;
 - (void) leavingInitialArmyPlacementPhase;
 
 - (void) endTurn;
-- (void) executeCurrentPhase:sender;
+- (IBAction) executeCurrentPhase:sender;
 - (BOOL) nextActivePlayer;
 
-- (void) fortify:sender;
-- (void) endTurn:sender;
+- (IBAction) fortify:sender;
+- (IBAction) endTurn:sender;
 
-- (void) moveAttackingArmies:(int)minimum between:(Country *)source:(Country *)destination;
+- (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination;
 - (void) fortifyArmiesFrom:(Country *)source;
 - (void) forceCurrentPlayerToTurnInCards;
 
@@ -219,7 +214,7 @@ extern NSString *RGMGameOverNotification;
 - (void) setAttackMethodForPlayerNumber:(Player)number;
 - (void) setAttackingFromCountryName:(NSString *)string;
 
-- (void) attackMethodAction:sender;
+- (IBAction) attackMethodAction:sender;
 
 - (void) setArmiesLeftToPlace:(int)count;
 
@@ -236,8 +231,8 @@ extern NSString *RGMGameOverNotification;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
 
 // For the currently active (interactive) player
-- (void) reviewCards:sender;
-- (void) turnInCards:sender;
+- (IBAction) reviewCards:sender;
+- (IBAction) turnInCards:sender;
 
 - (void) _loadCardPanel;
 

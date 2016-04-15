@@ -19,7 +19,7 @@ RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 // Double click on the column titles to sort by that column.
 //======================================================================
 
-int WIOrderContinentsByName (id object1, id object2, void *context)
+NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
     NSComparisonResult result;
@@ -34,11 +34,11 @@ int WIOrderContinentsByName (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-int WIOrderContinentsByCountryCount (id object1, id object2, void *context)
+NSInteger WIOrderContinentsByCountryCount (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
     NSComparisonResult result;
-    int count1, count2;
+    NSInteger count1, count2;
 
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
@@ -64,7 +64,7 @@ int WIOrderContinentsByCountryCount (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-int WIOrderContinentsByBonusValue (id object1, id object2, void *context)
+NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
     NSComparisonResult result;
@@ -264,9 +264,9 @@ int WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 // NSTableView data source
 //======================================================================
 
-- (int) numberOfRowsInTableView:(NSTableView *)aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
-    int count;
+    NSInteger count;
 
     count = 0;
 
@@ -278,7 +278,7 @@ int WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-- tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     NSString *identifier;
     Continent *target;
@@ -297,7 +297,7 @@ int WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     }
     else if ([identifier isEqualToString:@"CountryCount"])
     {
-        value = [NSNumber numberWithInt:[[target countries] count]];
+        value = @([[target countries] count]);
     }
     else if ([identifier isEqualToString:@"BonusValue"])
     {

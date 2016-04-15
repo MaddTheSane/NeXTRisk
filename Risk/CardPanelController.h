@@ -39,17 +39,15 @@
     NSMutableArray *cardSets;
 }
 
-+ (void) initialize;
 + (void) loadClassImages;
 
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
-- (void) handAction:sender;
-- (void) setAction:sender;
-- (void) doneAction:sender;
-- (void) stopAction:sender;
-- (void) turnInSetAction:sender;
+- (IBAction) handAction:sender;
+- (IBAction) setAction:sender;
+- (IBAction) doneAction:sender;
+- (IBAction) stopAction:sender;
+- (IBAction) turnInSetAction:sender;
 
 - (void) enableButtons;
 

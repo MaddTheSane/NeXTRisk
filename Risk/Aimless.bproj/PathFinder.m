@@ -217,7 +217,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
         [countryHeap insertObject:country];
     }
 
-    while (country = [countryHeap extractObject])
+    while ((country = [countryHeap extractObject]))
     {
         neighborEnumerator = [[country ourNeighborCountries] objectEnumerator];
         while (neighbor = [neighborEnumerator nextObject])
@@ -272,7 +272,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     [path1 addObject:target];
 
     node = [nodeDictionary objectForKey:[target countryName]];
-    while (previous = [node previous])
+    while ((previous = [node previous]))
     {
         [path1 addObject:previous];
         target = previous;
@@ -305,7 +305,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     path = nil;
     countryHeap = [self _minimumDistanceCountryHeap];
-    while (country = [countryHeap extractObject])
+    while ((country = [countryHeap extractObject]))
     {
         if (isCountryAcceptableTarget (country, aContext) == YES)
         {

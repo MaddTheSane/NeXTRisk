@@ -8,41 +8,40 @@
 #import "Risk.h"
 
 @class Continent;
+@class Country;
+@class RiskCard;
+@class RiskNeighbor;
 
 // This should own the background image for the map view if there will
 // be more than one world.
 
-@interface RiskWorld : NSObject
+@interface RiskWorld : NSObject <NSCoding>
 {
     NSMutableSet *allCountries;
-    NSArray *countryNeighbors;
-    NSDictionary *continents;
-    NSArray *cards;
+    NSArray<RiskNeighbor*> *countryNeighbors;
+    NSDictionary<NSString*,Continent *> *continents;
+    NSArray<RiskCard*> *cards;
 }
 
-+ (void) initialize;
++ (RiskWorld*)defaultRiskWorld;
 
-+ defaultRiskWorld;
++ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards;
 
-+ riskWorldWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards;
+- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_DESIGNATED_INITIALIZER;
 
-- initWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards;
-- (void) dealloc;
-
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (void) _buildAllCountries;
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
-- (NSSet *) allCountries;
+- (NSSet<Country*> *) allCountries;
 - (Continent *) continentNamed:(NSString *)continentName;
-- (NSDictionary *) continents;
-- (NSArray *) cards;
+@property (readonly, retain) NSDictionary<NSString*,Continent *> *continents;
+@property (readonly, retain) NSArray<RiskCard*> *cards;
 
 - (int) continentBonusArmiesForPlayer:(Player)number;
-- (NSSet *) countriesForPlayer:(Player)number;
+- (NSSet<Country*> *) countriesForPlayer:(Player)number;
 
 @end
 
@@ -50,7 +49,7 @@
 // Some utility functions.
 //======================================================================
 
-NSSet *RWcountriesForPlayerNumber (NSSet *source, Player number);
-NSSet *RWcountriesInContinentNamed (NSSet *source, NSString *continentName);
-NSSet *RWcountriesWithArmies (NSSet *source);
-NSSet *RWneighborsOfCountries (NSSet *source);
+NSSet<Country*> *RWcountriesForPlayerNumber (NSSet<Country*> *source, Player number);
+NSSet<Country*> *RWcountriesInContinentNamed (NSSet<Country*> *source, NSString *continentName);
+NSSet<Country*> *RWcountriesWithArmies (NSSet<Country*> *source);
+NSSet<Country*> *RWneighborsOfCountries (NSSet<Country*> *source);

@@ -95,7 +95,6 @@
 		55377FDC1CC15C2400A2C08E /* MiniWorldInfo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4A1CC15C2300A2C08E /* MiniWorldInfo.tiff */; };
 		55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4C1CC15C2300A2C08E /* NewGameController.m */; };
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
-		55377FDF1CC15C2400A2C08E /* NSObjectExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4F1CC15C2300A2C08E /* NSObjectExtensions.m */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
 		55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F521CC15C2300A2C08E /* Risk_main.m */; };
 		55377FE21CC15C2400A2C08E /* Risk.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F541CC15C2300A2C08E /* Risk.m */; };
@@ -175,7 +174,6 @@
 		5537805A1CC1625600A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		5537805B1CC1626400A2C08E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F061CC15C2300A2C08E /* Country.m */; };
 		5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
-		5537805D1CC1628200A2C08E /* NSObjectExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4F1CC15C2300A2C08E /* NSObjectExtensions.m */; };
 		5537805E1CC1629600A2C08E /* Risk.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F541CC15C2300A2C08E /* Risk.m */; };
 		5537805F1CC1629A00A2C08E /* RiskCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RiskCard.m */; };
 		553780601CC162A800A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
@@ -301,8 +299,6 @@
 		55377F4B1CC15C2300A2C08E /* NewGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameController.h; sourceTree = "<group>"; };
 		55377F4C1CC15C2300A2C08E /* NewGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameController.m; sourceTree = "<group>"; };
 		55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = NotPlaying.rtf; sourceTree = "<group>"; };
-		55377F4E1CC15C2300A2C08E /* NSObjectExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectExtensions.h; sourceTree = "<group>"; };
-		55377F4F1CC15C2300A2C08E /* NSObjectExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectExtensions.m; sourceTree = "<group>"; };
 		55377F501CC15C2300A2C08E /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		55377F511CC15C2300A2C08E /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
 		55377F521CC15C2300A2C08E /* Risk_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk_main.m; sourceTree = "<group>"; };
@@ -459,8 +455,6 @@
 				55377F471CC15C2300A2C08E /* LineView.m */,
 				55377F4B1CC15C2300A2C08E /* NewGameController.h */,
 				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
-				55377F4E1CC15C2300A2C08E /* NSObjectExtensions.h */,
-				55377F4F1CC15C2300A2C08E /* NSObjectExtensions.m */,
 				55377F501CC15C2300A2C08E /* PreferenceController.h */,
 				55377F511CC15C2300A2C08E /* PreferenceController.m */,
 				55377F521CC15C2300A2C08E /* Risk_main.m */,
@@ -938,7 +932,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55377FCF1CC15C2400A2C08E /* GameConfiguration.m in Sources */,
-				55377FDF1CC15C2400A2C08E /* NSObjectExtensions.m in Sources */,
 				55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */,
 				55377FF11CC15C2400A2C08E /* WorldInfoController.m in Sources */,
 				55377F7A1CC15C2400A2C08E /* Brain.m in Sources */,
@@ -987,7 +980,6 @@
 				553780641CC162E400A2C08E /* SNUserPath.m in Sources */,
 				553780611CC162B400A2C08E /* RiskNeighbor.m in Sources */,
 				5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */,
-				5537805D1CC1628200A2C08E /* NSObjectExtensions.m in Sources */,
 				553780651CC162F400A2C08E /* SNUserPathOperation.m in Sources */,
 				553780601CC162A800A2C08E /* RiskMapView.m in Sources */,
 			);
@@ -1123,7 +1115,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1152,7 +1144,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1167,7 +1159,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1190,7 +1182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

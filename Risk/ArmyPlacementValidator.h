@@ -18,14 +18,11 @@
 
     ArmyPlacementType armyPlacementType;
     Player playerNumber;
-    NSMutableSet *primaryCountries;
-    NSMutableSet *secondaryCountries;
+    NSMutableSet<Country*> *primaryCountries;
+    NSMutableSet<Country*> *secondaryCountries;
 }
 
-+ (void) initialize;
-
-- initWithRiskWorld:(RiskWorld *)aWorld;
-- (void) dealloc;
+- (instancetype)initWithRiskWorld:(RiskWorld *)aWorld;
 
 - (void) _reset;
 

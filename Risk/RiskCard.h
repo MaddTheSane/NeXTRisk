@@ -19,11 +19,10 @@
 
 + (void) initialize;
 
-+ riskCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
++ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
 
 // Take card image name from country?
-- initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
-- (void) dealloc;
+- (instancetype)initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName;
 
 - (Country *) country;
 - (RiskCardType) cardType;

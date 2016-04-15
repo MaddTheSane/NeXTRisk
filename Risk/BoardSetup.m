@@ -55,6 +55,10 @@ NSData *defaultsDataForColor (NSColor *color)
 #define BoardSetup_VERSION 1
 
 @implementation BoardSetup
+@synthesize borderWidth;
+@synthesize regularBorderColor;
+@synthesize selectedBorderColor;
+@synthesize showCardSetCounts;
 
 + instance
 {
@@ -256,26 +260,12 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- (float) borderWidth
-{
-    return borderWidth;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setBorderWidth:(float)newWidth
+- (void) setBorderWidth:(CGFloat)newWidth
 {
     borderWidth = newWidth;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupChangedNotification
                                           object:self];
-}
-
-//----------------------------------------------------------------------
-
-- (NSColor *) regularBorderColor
-{
-    return regularBorderColor;
 }
 
 //----------------------------------------------------------------------
@@ -294,13 +284,6 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- (NSColor *) selectedBorderColor
-{
-    return selectedBorderColor;
-}
-
-//----------------------------------------------------------------------
-
 - (void) setSelectedBorderColor:(NSColor *)newColor
 {
     if (newColor == selectedBorderColor)
@@ -311,13 +294,6 @@ NSData *defaultsDataForColor (NSColor *color)
 
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupChangedNotification
                                           object:self];
-}
-
-//----------------------------------------------------------------------
-
-- (BOOL) showCardSetCounts
-{
-    return showCardSetCounts;
 }
 
 //----------------------------------------------------------------------

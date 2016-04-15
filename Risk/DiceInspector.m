@@ -220,7 +220,7 @@ static struct image_names class_images[] =
 
 - (void) waitForContinue
 {
-    int retVal;
+    NSInteger retVal;
 	
     NSBeep ();
     [dicePanel orderFront:self];

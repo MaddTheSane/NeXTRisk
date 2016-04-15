@@ -255,7 +255,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // can be occupied by both player three and player four.
 //----------------------------------------------------------------------
 
-- (NSSet *) countriesWithAllOptions:(int)options from:(NSSet *)source
+- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
 {
     NSEnumerator *countryEnumerator;
     NSMutableSet *resultingSet;
@@ -266,27 +266,27 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     BOOL hasEnemyNeighbors;
     resultingSet = [NSMutableSet set];
     countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (country in source)
     {
         number = [country playerNumber];
         troopCount = [country troopCount];
         movableTroopCount = [country movableTroopCount];
         hasEnemyNeighbors = [country hasEnemyNeighbors];
 
-        if (((options & OPT_PLAYER_NONE) && number != 0)
-            || ((options & OPT_PLAYER_ONE) && number != 1)
-            || ((options & OPT_PLAYER_TWO) && number != 2)
-            || ((options & OPT_PLAYER_THREE) && number != 3)
-            || ((options & OPT_PLAYER_FOUR) && number != 4)
-            || ((options & OPT_PLAYER_FIVE) && number != 5)
-            || ((options & OPT_PLAYER_SIX) && number != 6)
-            || ((options & OPT_THIS_PLAYER) && number != playerNumber)
-            || ((options & OPT_WITH_TROOPS) && troopCount < 1)
-            || ((options & OPT_WITHOUT_TROOPS) && troopCount > 0)
-            || ((options & OPT_WITH_MOVABLE_TROOPS) && movableTroopCount < 1)
-            || ((options & OPT_WITHOUT_MOVABLE_TROOPS) && movableTroopCount > 0)
-            || ((options & OPT_WITH_ENEMY_NEIGHBORS) && hasEnemyNeighbors == NO)
-            || ((options & OPT_WITHOUT_ENEMY_NEIGHBORS) && hasEnemyNeighbors == YES))
+        if (((options & CountryFlagsPlayerNone) && number != 0)
+            || ((options & CountryFlagsPlayerOne) && number != 1)
+            || ((options & CountryFlagsPlayerTwo) && number != 2)
+            || ((options & CountryFlagsPlayerThree) && number != 3)
+            || ((options & CountryFlagsPlayerFour) && number != 4)
+            || ((options & CountryFlagsPlayerFive) && number != 5)
+            || ((options & CountryFlagsPlayerSix) && number != 6)
+            || ((options & CountryFlagsThisPlayer) && number != playerNumber)
+            || ((options & CountryFlagsWithTroops) && troopCount < 1)
+            || ((options & CountryFlagsWithoutTroops) && troopCount > 0)
+            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount < 1)
+            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
+            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
+            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
         {
             continue;
         }
@@ -303,7 +303,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // constants that are defined in RiskPlayer.h.
 //----------------------------------------------------------------------
 
-- (NSSet *) countriesWithAnyOptions:(int)options from:(NSSet *)source
+- (NSSet *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet *)source
 {
     NSEnumerator *countryEnumerator;
     NSMutableSet *resultingSet;
@@ -322,20 +322,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         movableTroopCount = [country movableTroopCount];
         hasEnemyNeighbors = [country hasEnemyNeighbors];
 
-        if (((options & OPT_PLAYER_NONE) && number == 0)
-            || ((options & OPT_PLAYER_ONE) && number == 1)
-            || ((options & OPT_PLAYER_TWO) && number == 2)
-            || ((options & OPT_PLAYER_THREE) && number == 3)
-            || ((options & OPT_PLAYER_FOUR) && number == 4)
-            || ((options & OPT_PLAYER_FIVE) && number == 5)
-            || ((options & OPT_PLAYER_SIX) && number == 6)
-            || ((options & OPT_THIS_PLAYER) && number == playerNumber)
-            || ((options & OPT_WITH_TROOPS) && troopCount > 0)
-            || ((options & OPT_WITHOUT_TROOPS) && troopCount < 1)
-            || ((options & OPT_WITH_MOVABLE_TROOPS) && movableTroopCount > 0)
-            || ((options & OPT_WITHOUT_MOVABLE_TROOPS) && movableTroopCount < 1)
-            || ((options & OPT_WITH_ENEMY_NEIGHBORS) && hasEnemyNeighbors == YES)
-            || ((options & OPT_WITHOUT_ENEMY_NEIGHBORS) && hasEnemyNeighbors == NO))
+        if (((options & CountryFlagsPlayerNone) && number == 0)
+            || ((options & CountryFlagsPlayerOne) && number == 1)
+            || ((options & CountryFlagsPlayerTwo) && number == 2)
+            || ((options & CountryFlagsPlayerThree) && number == 3)
+            || ((options & CountryFlagsPlayerFour) && number == 4)
+            || ((options & CountryFlagsPlayerFive) && number == 5)
+            || ((options & CountryFlagsPlayerSix) && number == 6)
+            || ((options & CountryFlagsThisPlayer) && number == playerNumber)
+            || ((options & CountryFlagsWithTroops) && troopCount > 0)
+            || ((options & CountryFlagsWithoutTroops) && troopCount < 1)
+            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount > 0)
+            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
+            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
+            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
         {
             [resultingSet addObject:country];
         }
@@ -353,7 +353,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // can be occupied by both player three and player four.
 //----------------------------------------------------------------------
 
-- (BOOL) hasCountriesWithAllOptions:(int)options from:(NSSet *)source
+- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
 {
     NSEnumerator *countryEnumerator;
     Country *country;
@@ -373,20 +373,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         movableTroopCount = [country movableTroopCount];
         hasEnemyNeighbors = [country hasEnemyNeighbors];
 
-        if (((options & OPT_PLAYER_NONE) && number != 0)
-            || ((options & OPT_PLAYER_ONE) && number != 1)
-            || ((options & OPT_PLAYER_TWO) && number != 2)
-            || ((options & OPT_PLAYER_THREE) && number != 3)
-            || ((options & OPT_PLAYER_FOUR) && number != 4)
-            || ((options & OPT_PLAYER_FIVE) && number != 5)
-            || ((options & OPT_PLAYER_SIX) && number != 6)
-            || ((options & OPT_THIS_PLAYER) && number != playerNumber)
-            || ((options & OPT_WITH_TROOPS) && troopCount < 1)
-            || ((options & OPT_WITHOUT_TROOPS) && troopCount > 0)
-            || ((options & OPT_WITH_MOVABLE_TROOPS) && movableTroopCount < 1)
-            || ((options & OPT_WITHOUT_MOVABLE_TROOPS) && movableTroopCount > 0)
-            || ((options & OPT_WITH_ENEMY_NEIGHBORS) && hasEnemyNeighbors == NO)
-            || ((options & OPT_WITHOUT_ENEMY_NEIGHBORS) && hasEnemyNeighbors == YES))
+        if (((options & CountryFlagsPlayerNone) && number != 0)
+            || ((options & CountryFlagsPlayerOne) && number != 1)
+            || ((options & CountryFlagsPlayerTwo) && number != 2)
+            || ((options & CountryFlagsPlayerThree) && number != 3)
+            || ((options & CountryFlagsPlayerFour) && number != 4)
+            || ((options & CountryFlagsPlayerFive) && number != 5)
+            || ((options & CountryFlagsPlayerSix) && number != 6)
+            || ((options & CountryFlagsThisPlayer) && number != playerNumber)
+            || ((options & CountryFlagsWithTroops) && troopCount < 1)
+            || ((options & CountryFlagsWithoutTroops) && troopCount > 0)
+            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount < 1)
+            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
+            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
+            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
         {
             continue;
         }
@@ -404,7 +404,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // OPT_ constants that are defined in RiskPlayer.h.
 //----------------------------------------------------------------------
 
-- (BOOL) hasCountriesWithAnyOptions:(int)options from:(NSSet *)source
+- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet *)source
 {
     NSEnumerator *countryEnumerator;
     Country *country;
@@ -423,20 +423,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         movableTroopCount = [country movableTroopCount];
         hasEnemyNeighbors = [country hasEnemyNeighbors];
 
-        if (((options & OPT_PLAYER_NONE) && number == 0)
-            || ((options & OPT_PLAYER_ONE) && number == 1)
-            || ((options & OPT_PLAYER_TWO) && number == 2)
-            || ((options & OPT_PLAYER_THREE) && number == 3)
-            || ((options & OPT_PLAYER_FOUR) && number == 4)
-            || ((options & OPT_PLAYER_FIVE) && number == 5)
-            || ((options & OPT_PLAYER_SIX) && number == 6)
-            || ((options & OPT_THIS_PLAYER) && number == playerNumber)
-            || ((options & OPT_WITH_TROOPS) && troopCount > 0)
-            || ((options & OPT_WITHOUT_TROOPS) && troopCount < 1)
-            || ((options & OPT_WITH_MOVABLE_TROOPS) && movableTroopCount > 0)
-            || ((options & OPT_WITHOUT_MOVABLE_TROOPS) && movableTroopCount < 1)
-            || ((options & OPT_WITH_ENEMY_NEIGHBORS) && hasEnemyNeighbors == YES)
-            || ((options & OPT_WITHOUT_ENEMY_NEIGHBORS) && hasEnemyNeighbors == NO))
+        if (((options & CountryFlagsPlayerNone) && number == 0)
+            || ((options & CountryFlagsPlayerOne) && number == 1)
+            || ((options & CountryFlagsPlayerTwo) && number == 2)
+            || ((options & CountryFlagsPlayerThree) && number == 3)
+            || ((options & CountryFlagsPlayerFour) && number == 4)
+            || ((options & CountryFlagsPlayerFive) && number == 5)
+            || ((options & CountryFlagsPlayerSix) && number == 6)
+            || ((options & CountryFlagsThisPlayer) && number == playerNumber)
+            || ((options & CountryFlagsWithTroops) && troopCount > 0)
+            || ((options & CountryFlagsWithoutTroops) && troopCount < 1)
+            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount > 0)
+            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
+            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
+            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
         {
             flag = YES;
             break;
@@ -501,8 +501,8 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (NSSet *) allOurCardSets
 {
     NSMutableSet *allCardSets;
-    int i, j, k;
-    int count;
+    NSInteger i, j, k;
+    NSInteger count;
     RiskCard *card1, *card2, *card3;
     CardSet *cardSet;
 
@@ -565,8 +565,8 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (BOOL) canTurnInCardSet
 {
-    int i, j, k;
-    int count;
+    NSInteger i, j, k;
+    NSInteger count;
     RiskCard *card1, *card2, *card3;
     BOOL hasValidSet;
 
@@ -611,7 +611,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
 
-        [consoleWindow setTitle:[NSString stringWithFormat:@"Player %d Console", playerNumber]];
+        [consoleWindow setTitle:[NSString stringWithFormat:@"Player %ld Console", (long)playerNumber]];
     }
 
     [consoleWindow orderFront:self];
@@ -863,7 +863,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // self -turnDone.
 //----------------------------------------------------------------------
 
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
 {
     [self turnDone];
 }

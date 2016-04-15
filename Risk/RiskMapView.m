@@ -83,7 +83,6 @@ static NSImage *_boardBackingImage = nil;
     currentScaleFactor = 1;
 
     boardBackingImage = [_boardBackingImage copy];
-    [boardBackingImage setScalesWhenResized:YES];
 
     delegate = nil;
     selectedCountry = nil;
@@ -251,7 +250,7 @@ static NSImage *_boardBackingImage = nil;
 - (void) setCountryArray:(NSArray *)countries
 {
     [countryArray release];
-    countryArray = [countries retain];
+    countryArray = [countries mutableCopy];
 
     [self setNeedsDisplay:YES];
     [[self superview] setNeedsDisplay:YES];

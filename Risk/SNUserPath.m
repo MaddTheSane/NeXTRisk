@@ -6,9 +6,7 @@ RCSID ("$Id: SNUserPath.m,v 1.2 1997/12/15 07:44:18 nygard Exp $");
 #import "SNUserPath.h"
 
 #import <Foundation/NSObjCRuntime.h>
-#import <AppKit/dpsOpenStep.h>
 
-#import "NSObjectExtensions.h"
 #import "SNUserPathOperation.h"
 #import "SNUserPathWraps.h"
 
@@ -76,8 +74,6 @@ RCSID ("$Id: SNUserPath.m,v 1.2 1997/12/15 07:44:18 nygard Exp $");
 // Encodes operations, not the generated user path data structures
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeObject:operations];
     //[aCoder encodeValueOfObjCType:@encode (BOOL) at:&pathGenerated];
 }
@@ -86,7 +82,7 @@ RCSID ("$Id: SNUserPath.m,v 1.2 1997/12/15 07:44:18 nygard Exp $");
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    [super initWithCoder:aDecoder];
+    [super init];
 
     operations = [[aDecoder decodeObject] retain];
     pathGenerated = NO;

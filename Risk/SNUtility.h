@@ -32,9 +32,9 @@
 // Borrowed from Omni
 //
 
-#define NSSTRINGIFY(name) @ ## '"' ## name ## '"'
+#define NSSTRINGIFY(name) @ # name  
 
-#define DEFINE_NSSTRING(name) NSString *name = NSSTRINGIFY(name)
+#define DEFINE_NSSTRING(name) NSString *const name = NSSTRINGIFY(name)
 
 //
 // Other

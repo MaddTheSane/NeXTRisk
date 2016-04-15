@@ -7,7 +7,7 @@
 
 @class RiskWorld;
 
-@interface WorldInfoController : NSObject
+@interface WorldInfoController : NSObject <NSTableViewDataSource>
 {
     IBOutlet NSWindow *worldInfoWindow;
 
@@ -21,7 +21,7 @@
 
 - (void) awakeFromNib;
 
-- init;
+- (instancetype)init;
 - (void) dealloc;
 
 //- (RiskWorld *) world;
@@ -33,13 +33,6 @@
 - (void) orderByCountryCount;
 - (void) orderByBonusValue;
 
-- (void) reorder:sender;
-
-//======================================================================
-// NSTableView data source
-//======================================================================
-
-- (int) numberOfRowsInTableView:(NSTableView *)aTableView;
-- tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
+- (IBAction) reorder:sender;
 
 @end

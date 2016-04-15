@@ -9,7 +9,6 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 #import "RiskNeighbor.h"
 
 #import "Country.h"
-#import "NSObjectExtensions.h"
 
 //======================================================================
 // A RiskNeighbor represents two neighboring countries in a world.
@@ -21,6 +20,8 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 #define RiskNeighbor_VERSION 1
 
 @implementation RiskNeighbor
+@synthesize country1;
+@synthesize country2;
 
 + (void) initialize
 {
@@ -32,14 +33,14 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ riskNeighborWithCountries:(Country *)firstCountry:(Country *)secondCountry
++ riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
     return [[[RiskNeighbor alloc] initWithCountries:firstCountry:secondCountry] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initWithCountries:(Country *)firstCountry:(Country *)secondCountry
+- initWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
     if ([super init] == nil)
         return nil;

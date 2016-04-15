@@ -3,11 +3,11 @@
 //
 
 #import <AppKit/AppKit.h>
-#import <AppKit/dpsOpenStep.h>
+//#import <AppKit/dpsOpenStep.h>
 
-@interface SNUserPathOperation : NSObject
+@interface SNUserPathOperation : NSObject <NSCoding>
 {
-    DPSUserPathOp operator;
+    //DPSUserPathOp operator;
 
     NSPoint point1;
     NSPoint point2;
@@ -19,28 +19,28 @@
 
 + (void) initialize;
 
-+ _operation:(DPSUserPathOp)anOperator;
+//+ _operation:(DPSUserPathOp)anOperator;
 
-+ arc:(NSPoint)aPoint:(float)aRadius:(float)anAngle1:(float)anAngle2;
-+ arcn:(NSPoint)aPoint:(float)aRadius:(float)anAngle1:(float)anAngle2;
-+ arct:(NSPoint)aPoint1:(NSPoint)aPoint2:(float)aRadius;
++ arc:(NSPoint)aPoint :(float)aRadius :(float)anAngle1 :(float)anAngle2;
++ arcn:(NSPoint)aPoint :(float)aRadius :(float)anAngle1 :(float)anAngle2;
++ arct:(NSPoint)aPoint1 :(NSPoint)aPoint2 :(float)aRadius;
 + closepath;
-+ curveto:(NSPoint)aPoint1:(NSPoint)aPoint2:(NSPoint)aPoint3;
++ curveto:(NSPoint)aPoint1 :(NSPoint)aPoint2 :(NSPoint)aPoint3;
 + lineto:(NSPoint)aPoint;
 + moveto:(NSPoint)aPoint;
-+ rcurveto:(NSPoint)delta1:(NSPoint)delta2:(NSPoint)delta3;
++ rcurveto:(NSPoint)delta1 :(NSPoint)delta2 :(NSPoint)delta3;
 + rlineto:(NSPoint)delta;
 + rmoveto:(NSPoint)delta;
-+ setbbox:(NSPoint)lowerLeft:(NSPoint)upperRight;
++ setbbox:(NSPoint)lowerLeft :(NSPoint)upperRight;
 + ucache;
 
-- initWithOperator:(DPSUserPathOp)anOperator;
+//- initWithOperator:(DPSUserPathOp)anOperator;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder;
 - initWithCoder:(NSCoder *)aDecoder;
 
 - (int) operandCount;
-- (DPSUserPathOp) operator;
+//- (DPSUserPathOp) operator;
 - (void) operands:(float *)operands;
 
 - (NSPoint) lowerLeft;

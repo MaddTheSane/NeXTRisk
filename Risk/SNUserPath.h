@@ -6,33 +6,29 @@
 
 @class SNUserPathOperation;
 
-@interface SNUserPath : NSObject
+@interface SNUserPath : NSObject <NSCoding>
 {
     NSMutableArray *operations;
     BOOL pathGenerated;
 
     // Data after path created;
     BOOL cached;
-    DPSUserPathOp *operators;
+    //DPSUserPathOp *operators;
     int operatorCount;
     float *operands;
     int operandCount;
 }
 
-+ (void) initialize;
+- (instancetype)init;
 
-- init;
-- (void) dealloc;
-
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 
 - (void) addOperation:(SNUserPathOperation *)newOperation;
 
 - (void) createPathWithCache:(BOOL)flag;
 
 - (BOOL) isPathGenerated;
-- (DPSUserPathOp *) operators;
+//- (DPSUserPathOp *) operators;
 - (int) operatorCount;
 - (float *) operands;
 - (int) operandCount;
@@ -40,11 +36,12 @@
 
 - (NSRect) bounds;
 
+/*
 - (void) getUserPath:(DPSUserPathOp **)operatorPtr:(int *)operatorCountPtr:(float **)operandPtr:(int *)operandCountPtr
                     :(float **)bboxPtr;
 
 - (void) getFullUserPath:(DPSUserPathOp **)operatorPtr:(int *)operatorCountPtr:(float **)operandPtr:(int *)operandCountPtr;
-
+*/
 - (void) fill;
 - (void) evenOddFill;
 - (void) stroke;

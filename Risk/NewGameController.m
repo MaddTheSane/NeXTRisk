@@ -141,7 +141,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) aboutAction:sender
 {
     NSPopUpButton *thePopup;
-    int tag, itemIndex;
+    NSInteger tag, itemIndex;
     NSString *rtfPath, *imagePath;
     NSBundle *thisBundle, *playerBundle;
     NSArray *riskPlayerBundles;
@@ -195,7 +195,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     {
       case 0: // None
           [aboutPlayerImageView setImage:nil];
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%d. Not Playing", tag + 1]];
+          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. Not Playing", tag + 1]];
           rtfPath = [thisBundle pathForResource:@"NotPlaying" ofType:@"rtf"];
           if (rtfPath != nil)
           {
@@ -212,7 +212,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           image = [[[NSImage alloc] initByReferencingFile:imagePath] autorelease];
           [aboutPlayerImageView setImage:image];
 
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%d. Human Player", tag + 1]];
+          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. Human Player", tag + 1]];
           rtfPath = [thisBundle pathForResource:@"Human" ofType:@"rtf"];
           if (rtfPath != nil)
           {
@@ -233,7 +233,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           [aboutPlayerImageView setImage:image];
 
           playerTypeName = [playerBundleInfo objectForKey:@"PlayerTypeName"];
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%d. %@", tag + 1, playerTypeName]];
+          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName]];
 
           rtfPath = [playerBundle pathForResource:[playerBundleInfo objectForKey:@"AboutPlayerFile"] ofType:nil];
           if (rtfPath != nil)
@@ -264,7 +264,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) recalculateInitialArmies:sender
 {
     int playerCount;
-    int ps[7];
+    NSInteger ps[7];
     int l;
 
     ps[1] = [player1TypePopup indexOfSelectedItem];
@@ -333,7 +333,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     NSUserDefaults *defaults;
     RiskGameManager *gameManager;
-    int ps[7];
+    NSInteger ps[7];
     int l, playerCount;
     NSArray *riskPlayerBundles;
     NSBundle *playerBundle;
@@ -593,7 +593,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (GameConfiguration *) thisConfiguration
 {
     GameConfiguration *thisConfiguration;
-    int index;
+    NSInteger index;
     InitialCountryDistribution distribution[2] = { PlayerChosen, RandomlyChosen };
     InitialArmyPlacement placement[3] = { PlaceByOnes, PlaceByThrees, PlaceByFives };
     CardSetRedemption redemption[3] = { RemainConstant, IncreaseByOne, IncreaseByFive };

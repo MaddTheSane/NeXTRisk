@@ -143,7 +143,7 @@ static struct image_names class_images[] =
 - (void) handAction:sender
 {
     NSCell *cell;
-    int index;
+    NSInteger index;
 
     index = [handMatrix selectedColumn];
 	
@@ -176,7 +176,7 @@ static struct image_names class_images[] =
 
         // record which card it is
         currentSet[setMatrixCount] = [playerCards objectAtIndex:index];
-        currentIndices[setMatrixCount] = index;
+        currentIndices[setMatrixCount] = (int)index;
 
         // put it down below
         [[setMatrix cellAtRow:0 column:setMatrixCount] setImage:[currentSet[setMatrixCount] image]];
@@ -200,8 +200,8 @@ static struct image_names class_images[] =
 
 - (void) setAction:sender
 {
-    int index;
-    int l;
+    NSInteger index;
+    NSInteger l;
 	
     index = [setMatrix selectedColumn];
 
@@ -323,7 +323,7 @@ static struct image_names class_images[] =
 
 - (void) resetPanel
 {
-    int l, cardCount;
+    NSInteger l, cardCount;
     NSRect aFrame, boundsRect;
     RiskCard *card;
     NSView *superView;

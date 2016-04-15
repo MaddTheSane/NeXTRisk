@@ -33,13 +33,13 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 
 DEFINE_NSSTRING (RGMGameOverNotification);
 
-#define AGSReason(state1) [NSString stringWithFormat:@"Current game state is (Player %d, %@).  Expected game state to be %@.", currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1)]
+#define AGSReason(state1) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1)]
 
-#define AGSReason2(state1, state2) [NSString stringWithFormat:@"Current game state is (Player %d, %@).  Expected game state to be %@ or %@.", currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2)]
+#define AGSReason2(state1, state2) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@ or %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2)]
 
-#define AGSReason3(state1, state2, state3) [NSString stringWithFormat:@"Current game state is (Player %d, %@).  Expected game state to be %@, %@ or %@.", currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2), NSStringFromGameState (state3)]
+#define AGSReason3(state1, state2, state3) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@, %@ or %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2), NSStringFromGameState (state3)]
 
-#define AGSReason4(state1, state2, state3, state4) [NSString stringWithFormat:@"Current game state is (Player %d, %@).  Expected game state to be %@, %@, %@ or %@.", currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2), NSStringFromGameState (state3), NSStringFromGameState (state4)]
+#define AGSReason4(state1, state2, state3, state4) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@, %@, %@ or %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1), NSStringFromGameState (state2), NSStringFromGameState (state3), NSStringFromGameState (state4)]
 
 #define AssertGameState(state1) NSAssert1 (gameState == state1, @"%@", AGSReason (state1))
 #define AssertGameState2(state1, state2) NSAssert1 (gameState == state1 || gameState == state2, @"%@", AGSReason2 (state1, state2))
@@ -161,6 +161,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) awakeFromNib
 {
+	[super awakeFromNib];
     NSView *tmp1, *tmp2;
     
     // The windows should not be visible at launch time, so we can
@@ -210,31 +211,31 @@ DEFINE_NSSTRING (RGMGameOverNotification);
           break;
 
       case gs_choose_countries:
-          str = [NSString stringWithFormat:@"Choose countries -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Choose countries -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_place_initial_armies:
-          str = [NSString stringWithFormat:@"Place initial armies -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Place initial armies -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_place_armies:
-          str = [NSString stringWithFormat:@"Place armies -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Place armies -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_attack:
-          str = [NSString stringWithFormat:@"Attack -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Attack -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_move_attacking_armies:
-          str = [NSString stringWithFormat:@"Move attacking armies -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Move attacking armies -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_fortify:
-          str = [NSString stringWithFormat:@"Fortify -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Fortify -- player %ld.", (long)currentPlayerNumber];
           break;
 
       case gs_place_fortifying_armies:
-          str = [NSString stringWithFormat:@"Place fortifying armies -- player %d.", currentPlayerNumber];
+          str = [NSString stringWithFormat:@"Place fortifying armies -- player %ld.", (long)currentPlayerNumber];
           break;
 
       default:
@@ -283,7 +284,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     SEL action;
     BOOL valid;
-    int tag;
+    NSInteger tag;
 
     valid = NO;
     action = [menuCell action];
@@ -411,7 +412,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) showPlayerConsole:sender
 {
-    int tag;
+    NSInteger tag;
 
     tag = [sender tag];
     NSAssert (tag > 0 && tag < MAX_PLAYERS, @"Tag for player number out of range.");
@@ -462,7 +463,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     playersActive[number] = YES;
     activePlayerCount++;
 
-    [players[number] setPlayerToolMenu:[[toolMenu itemWithTitle:[NSString stringWithFormat:@"Player %d", number]] target]];
+    [players[number] setPlayerToolMenu:[[toolMenu itemWithTitle:[NSString stringWithFormat:@"Player %ld", (long)number]] target]];
 
     return YES;
 }
@@ -659,7 +660,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
       case gs_place_armies:
           if (armiesLeftToPlace > 0)
           {
-              NSLog (@"Player %d has %d unplaced armies.", currentPlayerNumber, armiesLeftToPlace);
+              NSLog (@"Player %ld has %d unplaced armies.", (long)currentPlayerNumber, armiesLeftToPlace);
           }
           gameState = gs_attack;
           break;
@@ -694,7 +695,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
           //NSLog (@"Fortify->next, Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
           if (armiesBefore != tmp)
           {
-              NSLog (@"!!Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
+              NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
           }
           [players[currentPlayerNumber] willEndTurn];
           gameState = gs_place_armies;
@@ -711,7 +712,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
               //NSLog (@"PlaceFortify->next, Player %d: armies before = %d, armies now = %d",currentPlayerNumber, armiesBefore, tmp);
               if (armiesBefore != tmp)
               {
-                  NSLog (@"!!Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
+                  NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
               }
               [players[currentPlayerNumber] willEndTurn];
               gameState = gs_place_armies;
@@ -967,7 +968,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) moveAttackingArmies:(int)minimum between:(Country *)source:(Country *)destination
+- (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination
 {
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
@@ -1199,7 +1200,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     NSMutableArray *array;
     Country *country;
-    int count, index;
+    NSInteger count, index;
 
     AssertGameState (gs_choose_countries);
 
@@ -1444,7 +1445,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (int) earnedArmyCountForPlayer:(Player)number
 {
-    int count;
+    NSInteger count;
     
     // Calculated the number of armies earned at the beginning of a turn,
     // based on the number of countries/continents controller by that
@@ -1455,7 +1456,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     if (count < 3)
         count = 3;
 
-    return count;
+    return (int)count;
 }
 
 //----------------------------------------------------------------------
@@ -1480,12 +1481,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
     // Roll dice and fill unused dice with 0 so that we can sort them.
     for (l = 0; l < diceRoll.attackerDieCount; l++)
-        diceRoll.attackerDice[l] = [rng rollDieWithSides:6];
+        diceRoll.attackerDice[l] = (int)[rng rollDieWithSides:6];
     for (l = diceRoll.attackerDieCount; l < 3; l++)
         diceRoll.attackerDice[l] = 0;
 
     for (l = 0; l < diceRoll.defenderDieCount; l++)
-        diceRoll.defenderDice[l] = [rng rollDieWithSides:6];
+        diceRoll.defenderDice[l] = (int)[rng rollDieWithSides:6];
     for (l = diceRoll.defenderDieCount; l < 2; l++)
         diceRoll.defenderDice[l] = 0;
 
@@ -1594,7 +1595,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) setAttackMethodForPlayerNumber:(Player)number
 {
-    int index;
+    NSInteger index;
     
     AttackMethod attackMethods[] = { AttackOnce, AttackMultipleTimes, AttackUntilArmiesRemain, AttackUntilUnableToContinue };
 
@@ -1661,7 +1662,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) dealCardToPlayerNumber:(Player)number
 {
     RiskCard *card;
-    int index, count;
+    NSInteger index, count;
     
     count = [cardDeck count];
     if (count == 0)

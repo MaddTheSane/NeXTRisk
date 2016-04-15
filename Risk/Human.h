@@ -13,10 +13,7 @@
     Country *attackingCountry;
 }
 
-+ (void) initialize;
-
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
-- (void) dealloc;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 //======================================================================
 // Subclass Responsibilities
@@ -49,7 +46,7 @@
 
 - (void) placeArmies:(int)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination;
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
 - (void) fortifyPhase:(FortifyRule)fortifyRule;
 - (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
 

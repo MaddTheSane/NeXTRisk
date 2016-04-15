@@ -76,6 +76,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 #define CardSet_VERSION 1
 
 @implementation CardSet
+@synthesize card1;
+@synthesize card2;
+@synthesize card3;
 
 + (void) initialize
 {
@@ -90,7 +93,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 // Valid if they are all the same, or if they are all different, or there
 // is at least one wildcard.
 
-+ (BOOL) isValidCardSet:(RiskCard *)aCard1:(RiskCard *)aCard2:(RiskCard *)aCard3
++ (BOOL) isValidCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     RiskCardType c1, c2, c3;
     BOOL valid;
@@ -128,14 +131,14 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-+ cardSet:(RiskCard *)aCard1:(RiskCard *)aCard2:(RiskCard *)aCard3
++ cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     return [[[CardSet alloc] initCardSet:aCard1:aCard2:aCard3] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initCardSet:(RiskCard *)aCard1:(RiskCard *)aCard2:(RiskCard *)aCard3
+- initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     if ([super init] == nil)
         return nil;
@@ -162,27 +165,6 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     SNRelease (card3);
     
     [super dealloc];
-}
-
-//----------------------------------------------------------------------
-
-- (RiskCard *) card1
-{
-    return card1;
-}
-
-//----------------------------------------------------------------------
-
-- (RiskCard *) card2
-{
-    return card2;
-}
-
-//----------------------------------------------------------------------
-
-- (RiskCard *) card3
-{
-    return card3;
 }
 
 //----------------------------------------------------------------------

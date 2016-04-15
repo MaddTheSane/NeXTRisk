@@ -9,7 +9,7 @@
 
 @class CountryShape, RiskMapView;
 
-@interface Country : NSObject
+@interface Country : NSObject <NSCoding>
 {
     NSString *name;
     CountryShape *countryShape;
@@ -28,15 +28,14 @@
         continentName:(NSString *)aContinentName
                 shape:(CountryShape *)aCountryShape
             continent:(RiskContinent)aContinent;
-- (void) dealloc;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder;
 - initWithCoder:(NSCoder *)aDecoder;
 
-- (NSString *) countryName;
-- (CountryShape *) countryShape;
-- (NSString *) continentName;
-- (NSSet *) neighborCountries;
+@property (readonly, copy) NSString *countryName;
+@property (readonly, retain) CountryShape *countryShape;
+@property (readonly, copy) NSString *continentName;
+@property (readonly) NSSet<Country*> *neighborCountries;
 
 - (void) setAdjacentToCountry:(Country *)aCountry;
 - (void) resetAdjacentCountries;
@@ -52,16 +51,13 @@
 // Army methods
 //----------------------------------------------------------------------
 
-- (Player) playerNumber;
-- (int) troopCount;
-- (int) movableTroopCount;
-
-- (void) setPlayerNumber:(Player)aPlayerNumber;
-- (void) setTroopCount:(int)count;
+@property (nonatomic) Player playerNumber;
+@property (nonatomic) int troopCount;
+@property (readonly) int movableTroopCount;
 
 - (void) addTroops:(int)count;
 
-- (int) unmovableTroopCount;
+@property (readonly) int unmovableTroopCount;
 - (void) addUnmovableTroopCount:(int)count;
 - (void) resetUnmovableTroops;
 
@@ -71,26 +67,26 @@
 // Useful methods:
 //======================================================================
 
-- (NSSet *) connectedCountries;
-- (NSSet *) ourNeighborCountries;
-- (NSSet *) ourConnectedCountries;
-- (NSSet *) enemyNeighborCountries;
+- (NSSet<Country*> *) connectedCountries;
+- (NSSet<Country*> *) ourNeighborCountries;
+- (NSSet<Country*> *) ourConnectedCountries;
+- (NSSet<Country*> *) enemyNeighborCountries;
 
-- (int) enemyNeighborTroopCount;
-- (int) ourNeighborTroopCount;
+@property (readonly) int enemyNeighborTroopCount;
+@property (readonly) int ourNeighborTroopCount;
 
 //======================================================================
 // Useful, somewhat optimized methods:
 //======================================================================
 
-- (BOOL) hasEnemyNeighbors;
-- (BOOL) hasFriendlyNeighborsWithEnemyNeighbors;
-- (BOOL) hasTroops;
-- (BOOL) hasMobileTroops;
+@property (readonly) BOOL hasEnemyNeighbors;
+@property (readonly) BOOL hasFriendlyNeighborsWithEnemyNeighbors;
+@property (readonly) BOOL hasTroops;
+@property (readonly) BOOL hasMobileTroops;
 
 - (BOOL) surroundedByPlayerNumber:(Player)number;
 - (BOOL) hasEnemyNeighborsExcludingCountry:(Country *)excludedCountry;
 
 @end
 
-extern NSString *CountryUpdatedNotification;
+extern NSString *const CountryUpdatedNotification;

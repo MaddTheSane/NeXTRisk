@@ -9,7 +9,6 @@ RCSID ("$Id: Country.m,v 1.2 1997/12/15 07:43:46 nygard Exp $");
 #import "Country.h"
 
 #import "CountryShape.h"
-#import "NSObjectExtensions.h"
 #import "RiskMapView.h"
 
 #define Country_VERSION 2
@@ -17,6 +16,12 @@ RCSID ("$Id: Country.m,v 1.2 1997/12/15 07:43:46 nygard Exp $");
 DEFINE_NSSTRING (CountryUpdatedNotification);
 
 @implementation Country
+@synthesize countryName = name;
+@synthesize countryShape;
+@synthesize continentName;
+@synthesize playerNumber;
+@synthesize troopCount;
+@synthesize unmovableTroopCount;
 
 + (void) initialize
 {
@@ -36,10 +41,10 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     if ([super init] == nil)
         return nil;
 
-    name = [aName retain];
+    name = [aName copy];
     countryShape = [aCountryShape retain];
-    continentName = [aContinentName retain];
-    neighborCountries = [[NSMutableSet set] retain];;
+    continentName = [aContinentName copy];
+    neighborCountries = [[NSMutableSet alloc] init];
 
     playerNumber = 0;
     troopCount = 0;
@@ -64,13 +69,11 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeObject:name];
     [aCoder encodeObject:countryShape];
     [aCoder encodeObject:continentName];
     // World will encode neighbors
-    [aCoder encodeValueOfObjCType:@encode (int) at:&playerNumber];
+    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&playerNumber];
     [aCoder encodeValueOfObjCType:@encode (int) at:&troopCount];
     [aCoder encodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
 }
@@ -79,7 +82,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     name = [[aDecoder decodeObject] retain];
@@ -92,27 +95,6 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     [aDecoder decodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (NSString *) countryName
-{
-    return name;
-}
-
-//----------------------------------------------------------------------
-
-- (CountryShape *) countryShape
-{
-    return countryShape;
-}
-
-//----------------------------------------------------------------------
-
-- (NSString *) continentName
-{
-    return continentName;
 }
 
 //----------------------------------------------------------------------
@@ -256,10 +238,12 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 // country at a time.
 //----------------------------------------------------------------------
 
+#if 0
 - (int) unmovableTroopCount
 {
     return unmovableTroopCount;
 }
+#endif
 
 //----------------------------------------------------------------------
 
@@ -296,7 +280,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
 
-    while (current = [greySet anyObject])
+    while ((current = [greySet anyObject]))
     {
         [greySet removeObject:current];
         [connectedSet addObject:current];
@@ -340,7 +324,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
 
-    while (current = [greySet anyObject])
+    while ((current = [greySet anyObject]))
     {
         [greySet removeObject:current];
         [connectedSet addObject:current];

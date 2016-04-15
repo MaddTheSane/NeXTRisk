@@ -7,7 +7,8 @@
 
 #import "Risk.h"
 
-@interface Continent : NSObject
+@class Country;
+@interface Continent : NSObject <NSCoding>
 {
     NSString *continentName;
     NSSet *countries;
@@ -16,22 +17,20 @@
 
 + (void) initialize;
 
-+ continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus;
++ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus;
 
-- initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus;
-- (void) dealloc;
+- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus NS_DESIGNATED_INITIALIZER;
 
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-- (NSString *) continentName;
-- (NSSet *) countries;
-- (int) continentBonus;
+@property (readonly, copy) NSString *continentName;
+@property (readonly, retain) NSSet<Country*> *countries;
+@property (readonly) int continentBonus;
 
 - (NSString *) description;
 
 - (int) bonusArmiesForPlayer:(Player)number;
 
-- (NSSet *) countriesAlongBorder;
+- (NSSet<Country*> *) countriesAlongBorder;
 
 @end

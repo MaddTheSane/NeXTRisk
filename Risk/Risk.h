@@ -17,17 +17,17 @@ typedef enum _RiskContinent
     Australia
 } RiskContinent;
 
-typedef int Player;
+typedef NSInteger Player;
 
-typedef enum _RiskCardType
+typedef NS_ENUM(int, RiskCardType)
 {
     Wildcard,
     Soldier,
     Cannon,
     Cavalry
-} RiskCardType;
+};
 
-typedef enum _GameState
+typedef NS_ENUM(int, GameState)
 {
     gs_no_game,
     gs_establishing_game,
@@ -38,7 +38,7 @@ typedef enum _GameState
     gs_move_attacking_armies,
     gs_fortify,
     gs_place_fortifying_armies
-} GameState;
+};
 
 //======================================================================
 // Game configuration
@@ -57,20 +57,20 @@ typedef enum _InitialArmyPlacement
     PlaceByFives
 } InitialArmyPlacement;
 
-typedef enum _CardSetRedemption
+typedef NS_ENUM(int, CardSetRedemption)
 {
     RemainConstant,
     IncreaseByOne,
     IncreaseByFive
-} CardSetRedemption;
+};
 
-typedef enum _FortifyRule
+typedef NS_ENUM(int, FortifyRule)
 {
     OneToOneNeighbor,
     OneToManyNeighbors,
     ManyToManyNeighbors,
     ManyToManyConnected
-} FortifyRule;
+};
 
 typedef struct _DiceRoll
 {
@@ -80,22 +80,22 @@ typedef struct _DiceRoll
     int defenderDice[2];
 } DiceRoll;
 
-typedef enum _AttackMethod
+typedef NS_ENUM(int, AttackMethod)
 {
     AttackOnce,
     AttackMultipleTimes,
     AttackUntilArmiesRemain,
     AttackUntilUnableToContinue
-} AttackMethod;
+};
 
-typedef enum _ArmyPlacementType
+typedef NS_ENUM(int, ArmyPlacementType)
 {
     PlaceInAnyCountry,
     PlaceInTwoCountries,
     PlaceInOneNeighborCountry,
     PlaceInAnyNeighborCountry,
     PlaceInAnyConnectedCountry
-} ArmyPlacementType;
+};
 
 typedef struct _AttackResult
 {

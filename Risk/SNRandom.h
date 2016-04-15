@@ -9,7 +9,7 @@
 }
 
 + (void) initialize;
-+ instance;
++ (SNRandom*)instance;
 
 + (void) seedGenerator:(int)seed;
 
@@ -20,7 +20,7 @@
 // Based on above primitive methods.
 - (long) randomNumberModulo:(long)modulus;
 - (long) randomNumberWithMaximum:(long)maximum;
-- (long) randomNumberBetween:(long)minimum:(long)maximum;
+- (long) randomNumberBetween:(long)minimum :(long)maximum;
 - (double) randomPercent;
 - (BOOL) randomBoolean;
 

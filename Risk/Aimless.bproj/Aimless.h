@@ -105,7 +105,7 @@ typedef enum _CountryChoiceType
 
 - (void) placeArmies:(int)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination;
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
 - (void) fortifyPhase:(FortifyRule)fortifyRule;
 - (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
 

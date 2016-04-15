@@ -12,7 +12,6 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 #import "BoardSetup.h"
 #import "SNUserPath.h"
 #import "SNUserPathOperation.h"
-#import "NSObjectExtensions.h"
 #import "Country.h"
 #import "RiskMapView.h"
 
@@ -91,8 +90,6 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeObject:userPath];
     [aCoder encodePoint:armyCellPoint];
     //[aCoder encodeRect:shapeBounds];
@@ -102,7 +99,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     userPath = [[aDecoder decodeObject] retain];

@@ -7,20 +7,22 @@
 
 #import "Risk.h"
 
-#define OPT_PLAYER_NONE             (1 << 0)
-#define OPT_PLAYER_ONE              (1 << 1)
-#define OPT_PLAYER_TWO              (1 << 2)
-#define OPT_PLAYER_THREE            (1 << 3)
-#define OPT_PLAYER_FOUR             (1 << 4)
-#define OPT_PLAYER_FIVE             (1 << 5)
-#define OPT_PLAYER_SIX              (1 << 6)
-#define OPT_THIS_PLAYER             (1 << 7)
-#define OPT_WITH_TROOPS             (1 << 8)
-#define OPT_WITHOUT_TROOPS          (1 << 9)
-#define OPT_WITH_MOVABLE_TROOPS     (1 << 10)
-#define OPT_WITHOUT_MOVABLE_TROOPS  (1 << 11)
-#define OPT_WITH_ENEMY_NEIGHBORS    (1 << 12)
-#define OPT_WITHOUT_ENEMY_NEIGHBORS (1 << 13)
+typedef NS_OPTIONS(uint32_t, CountryFlags) {
+	CountryFlagsPlayerNone = 1 << 0,
+	CountryFlagsPlayerOne = 1 << 1,
+	CountryFlagsPlayerTwo = 1 << 2,
+	CountryFlagsPlayerThree = 1 << 3,
+	CountryFlagsPlayerFour = 1 << 4,
+	CountryFlagsPlayerFive = 1 << 5,
+	CountryFlagsPlayerSix = 1 << 6,
+	CountryFlagsThisPlayer = 1 << 7,
+	CountryFlagsWithTroops = 1 << 8,
+	CountryFlagsWithoutTroops = 1 << 9,
+	CountryFlagsWithMovableTroops = 1 << 10,
+	CountryFlagsWithoutMovableTroops = 1 << 11,
+	CountryFlagsWithEnemyNeighbors = 1 << 12,
+	CountryFlagsWithoutEnemyNeighbors = 1 << 13,
+};
 
 @class RiskGameManager, Country, RiskCard, CardSet;
 @class SNRandom;
@@ -53,7 +55,6 @@
 + (void) initialize;
 
 - initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
-- (void) dealloc;
 
 - (NSString *) playerName;
 - (Player) playerNumber;
@@ -62,8 +63,7 @@
 - (NSMenu *) playerToolMenu;
 - (void) setPlayerToolMenu:(NSMenu *)theMenu;
 
-- (AttackMethod) attackMethod;
-- (void) setAttackMethod:(AttackMethod)newMethod;
+@property AttackMethod attackMethod;
 
 - (int) attackMethodValue;
 - (void) setAttackMethodValue:(int)newValue;
@@ -84,24 +84,24 @@
 // General methods for players
 //======================================================================
 
-- (NSSet *) ourCountries;
+- (NSSet<Country *> *) ourCountries;
 
 // - ours AND has enemy neighbors AND has armies
 // - ours OR enemies
-- (NSSet *) countriesWithAllOptions:(int)options from:(NSSet *)source;
-- (NSSet *) countriesWithAnyOptions:(int)options from:(NSSet *)source;
+- (NSSet<Country *> *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (NSSet<Country *> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
 
-- (BOOL) hasCountriesWithAllOptions:(int)options from:(NSSet *)source;
-- (BOOL) hasCountriesWithAnyOptions:(int)options from:(NSSet *)source;
+- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
 
-- (NSSet *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet *)source;
-- (NSSet *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet *)source;
+- (NSSet<Country *> *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source;
+- (NSSet<Country *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source;
 
 //======================================================================
 // Card set methods
 //======================================================================
 
-- (NSSet *) allOurCardSets;
+- (NSSet<CardSet*> *) allOurCardSets;
 - (CardSet *) bestSet;
 - (BOOL) canTurnInCardSet;
 
@@ -109,12 +109,12 @@
 // Console
 //======================================================================
 
-- (void) showConsolePanel:sender;
+- (IBAction) showConsolePanel:sender;
 - (void) logMessage:(NSString *)format, ...;
 
 - (void) waitForContinue;
-- (void) continueAction:sender;
-- (void) pauseCheckAction:sender;
+- (IBAction) continueAction:sender;
+- (IBAction) pauseCheckAction:sender;
 
 //======================================================================
 // Subclass Responsibilities
@@ -153,7 +153,7 @@
 
 - (void) placeArmies:(int)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination;
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
 - (void) fortifyPhase:(FortifyRule)fortifyRule;
 - (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
 

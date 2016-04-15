@@ -145,13 +145,13 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 - (void) placeArmies:(int)count
 {
     NSArray *ourCountries;
-    int countryCount;
+    NSInteger countryCount;
     BOOL okay;
-    int l;
+    NSInteger l;
     Country *country;
 
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-    ourCountries = [[self countriesWithAllOptions:OPT_WITH_ENEMY_NEIGHBORS from:[self ourCountries]] allObjects];
+    ourCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] allObjects];
     countryCount = [ourCountries count];
 
     NSAssert (countryCount > 0, @"We have no countries!");
@@ -177,7 +177,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
     if (attackingCountries == nil)
     {
-        attackingCountries = [[NSMutableSet setWithSet:[self countriesWithAllOptions:OPT_WITH_ENEMY_NEIGHBORS|OPT_WITH_TROOPS
+        attackingCountries = [[NSMutableSet setWithSet:[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
                                                              from:[self ourCountries]]] retain];
     }
 
@@ -198,7 +198,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 //----------------------------------------------------------------------
 
 // Move forward half of the remaining armies.
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
 {
     int tmp;
 
@@ -216,12 +216,11 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 - (void) fortifyPhase:(FortifyRule)fortifyRule
 {
     NSSet *sourceCountries;
-    Country *source;
-    int count;
+    Country *source = nil;
+    NSInteger count;
     NSArray *sourceArray;
 
-    source = nil;
-    sourceCountries = [self countriesWithAllOptions:OPT_WITH_MOVABLE_TROOPS|OPT_WITHOUT_ENEMY_NEIGHBORS from:[self ourCountries]];
+    sourceCountries = [self countriesWithAllOptions:CountryFlagsWithMovableTroops|CountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
     count = [sourceCountries count];
 
     if (count == 0)
@@ -259,7 +258,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSSet *ourNeighborCountries;
     NSEnumerator *countryEnumerator;
     Country *country, *destination;
-    int neighborCount;
+    NSInteger neighborCount;
 
     destination = nil;
 

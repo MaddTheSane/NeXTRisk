@@ -8,8 +8,6 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 #import "RiskPoint.h"
 
-#import "NSObjectExtensions.h"
-
 //======================================================================
 // A RiskPoint can be encoded on a stream and stored in arrays.
 //======================================================================
@@ -17,6 +15,7 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 #define RiskPoint_VERSION 1
 
 @implementation RiskPoint
+@synthesize point;
 
 + (void) initialize
 {
@@ -49,8 +48,6 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodePoint:point];
 }
 
@@ -58,19 +55,12 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     point = [aDecoder decodePoint];
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (NSPoint) point
-{
-    return point;
 }
 
 //----------------------------------------------------------------------

@@ -8,12 +8,12 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 #import "Continent.h"
 
-#import "NSObjectExtensions.h"
 #import "Country.h"
 
 #define Continent_VERSION 1
 
 @implementation Continent
+@synthesize continentName;
 
 + (void) initialize
 {
@@ -37,7 +37,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     if ([super init] == nil)
         return nil;
 
-    continentName = [aContinentName retain];
+    continentName = [aContinentName copy];
     countries = [someCountries retain];
     continentBonus = bonus;
 
@@ -58,8 +58,6 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeObject:continentName];
     [aCoder encodeObject:countries];
     [aCoder encodeValueOfObjCType:@encode (int) at:&continentBonus];
@@ -69,7 +67,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     continentName = [[aDecoder decodeObject] retain];

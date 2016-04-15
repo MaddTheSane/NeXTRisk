@@ -11,7 +11,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #import "Country.h"
 #import "RiskNeighbor.h"
 #import "Continent.h"
-#import "NSObjectExtensions.h"
 #import "RiskCard.h"
 
 //======================================================================
@@ -27,6 +26,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #define RiskWorld_VERSION 1
 
 @implementation RiskWorld
+@synthesize continents;
 
 + (void) initialize
 {
@@ -104,15 +104,13 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     RiskNeighbor *riskNeighbor;
     NSEnumerator *cardEnumerator;
     RiskCard *card;
-    int count;
-    int cardType;
+    NSInteger count;
+    RiskCardType cardType;
     
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeObject:continents];
     
     count = [countryNeighbors count];
-    [aCoder encodeValueOfObjCType:@encode (int) at:&count];
+    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&count];
 
     neighborEnumerator = [countryNeighbors objectEnumerator];
     while (riskNeighbor = [neighborEnumerator nextObject])
@@ -122,10 +120,10 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     }
 
     count = [cards count];
-    [aCoder encodeValueOfObjCType:@encode (int) at:&count];
+    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&count];
 
     cardEnumerator = [cards objectEnumerator];
-    while (card = [cardEnumerator nextObject])
+    for (card in cards)
     {
         [aCoder encodeObject:[[card country] countryName]];
         cardType = [card cardType];
@@ -149,7 +147,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     RiskCardType cardType;
     NSString *imageName;
     
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     continents = [[aDecoder decodeObject] retain];
@@ -266,13 +264,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (NSDictionary *) continents
-{
-    return continents;
-}
-
-//----------------------------------------------------------------------
-
 - (NSArray *) cards
 {
     return cards;
@@ -291,7 +282,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     int bonus = 0;
 
     continentEnumerator = [continents objectEnumerator];
-    while (continent = [continentEnumerator nextObject])
+    for (continent in continentEnumerator)
     {
         bonus += [continent bonusArmiesForPlayer:number];
     }
@@ -315,12 +306,9 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 NSSet *RWcountriesForPlayerNumber (NSSet *source, Player number)
 {
     NSMutableSet *newSet;
-    NSEnumerator *countryEnumerator;
-    Country *country;
 
     newSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
         if ([country playerNumber] == number)
             [newSet addObject:country];
@@ -334,12 +322,9 @@ NSSet *RWcountriesForPlayerNumber (NSSet *source, Player number)
 NSSet *RWcountriesInContinentNamed (NSSet *source, NSString *continentName)
 {
     NSMutableSet *newSet;
-    NSEnumerator *countryEnumerator;
-    Country *country;
 
     newSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
         if ([[country continentName] isEqualToString:continentName] == YES)
             [newSet addObject:country];
@@ -353,12 +338,9 @@ NSSet *RWcountriesInContinentNamed (NSSet *source, NSString *continentName)
 NSSet *RWcountriesWithArmies (NSSet *source)
 {
     NSMutableSet *newSet;
-    NSEnumerator *countryEnumerator;
-    Country *country;
 
     newSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
         if ([country troopCount] > 0)
             [newSet addObject:country];
@@ -369,15 +351,12 @@ NSSet *RWcountriesWithArmies (NSSet *source)
 
 //----------------------------------------------------------------------
 
-NSSet *RWneighborsOfCountries (NSSet *source)
+NSSet *RWneighborsOfCountries (NSSet<Country*> *source)
 {
     NSMutableSet *newSet;
-    NSEnumerator *countryEnumerator;
-    Country *country;
 
     newSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
         [newSet unionSet:[country neighborCountries]];
     }

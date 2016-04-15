@@ -104,7 +104,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     playerNumber = number;
     armyPlacementType = PlaceInAnyCountry;
 
-    primaryCountries = [[world countriesForPlayer:playerNumber] retain];
+    primaryCountries = [[world countriesForPlayer:playerNumber] mutableCopy];
 }
 
 //----------------------------------------------------------------------
@@ -119,7 +119,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     sourceCountry = [source retain];
     destinationCountry = [other retain];
 
-    primaryCountries = [[NSSet setWithObjects:source, other, nil] retain];
+    primaryCountries = [[NSMutableSet alloc] initWithObjects:source, other, nil];
 }
 
 //----------------------------------------------------------------------
@@ -166,7 +166,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     armyPlacementType = PlaceInAnyConnectedCountry;
     sourceCountry = [source retain];
 
-    primaryCountries = [[source ourConnectedCountries] retain];
+    primaryCountries = [[source ourConnectedCountries] mutableCopy];
 }
 
 //----------------------------------------------------------------------

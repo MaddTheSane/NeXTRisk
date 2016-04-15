@@ -4,7 +4,6 @@ RCSID ("$Id: SNUserPathOperation.m,v 1.2 1997/12/15 07:44:20 nygard Exp $");
 
 #import "SNUserPathOperation.h"
 
-#import "NSObjectExtensions.h"
 #import <Foundation/NSObjCRuntime.h>
 
 //======================================================================
@@ -202,8 +201,6 @@ RCSID ("$Id: SNUserPathOperation.m,v 1.2 1997/12/15 07:44:20 nygard Exp $");
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [super encodeWithCoder:aCoder];
-
     [aCoder encodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
     [aCoder encodePoint:point1];
     [aCoder encodePoint:point2];
@@ -217,7 +214,7 @@ RCSID ("$Id: SNUserPathOperation.m,v 1.2 1997/12/15 07:44:20 nygard Exp $");
 
 - initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super initWithCoder:aDecoder] == nil)
+    if ([super init] == nil)
         return nil;
 
     [aDecoder decodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];

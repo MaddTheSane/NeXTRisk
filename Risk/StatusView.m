@@ -83,10 +83,10 @@ static NSTextFieldCell *_textCell = nil;
 
 //----------------------------------------------------------------------
 
-#define INTERSPACE 5.0
-#define TEXTWIDTH 10.0
-#define TEXTHEIGHT 15.0
-#define INSET 5.0
+#define INTERSPACE (5.0)
+#define TEXTWIDTH (10.0)
+#define TEXTHEIGHT (15.0)
+#define INSET (5.0)
 
 - (void) drawRect:(NSRect)rect
 {
@@ -101,11 +101,7 @@ static NSTextFieldCell *_textCell = nil;
 
     boundsRect = [self bounds];
 
-#ifdef __APPLE_CPP__
     [[NSColor controlColor] set];
-#else
-    PSsetgray (NSLightGray);
-#endif
     NSRectFill (boundsRect);
 
     playerCount = [gameManager activePlayerCount];
@@ -139,9 +135,7 @@ static NSTextFieldCell *_textCell = nil;
             NSDrawWhiteBezel (boxRect, boundsRect);
             [[[BoardSetup instance] colorForPlayer:number] set];
 
-            PSrectfill (boxRect.origin.x + INSET, boxRect.origin.y + INSET,
-                        boxRect.size.width - (2 * INSET), 
-                        boxRect.size.height - (2 * INSET));
+			NSRectFill(NSInsetRect(boxRect, -INSET, -INSET));
             textRect.origin.y = ((offset + 1) * INTERSPACE) + 
                 (offset * boxHeight) +
                 ((boxHeight - TEXTHEIGHT) / 2);
@@ -149,7 +143,7 @@ static NSTextFieldCell *_textCell = nil;
             if (showCardSetCounts == YES)
             {
                 RiskPlayer *player;
-                int count;
+                NSInteger count;
 
                 player = [gameManager playerNumber:number];
                 count = [[player playerCards] count];
@@ -163,7 +157,7 @@ static NSTextFieldCell *_textCell = nil;
                 else
                     [_textCell setTextColor:[NSColor blackColor]];
 
-                [_textCell setIntValue:count];
+                [_textCell setIntegerValue:count];
                 [_textCell drawWithFrame:textRect inView:self];
             }
 

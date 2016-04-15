@@ -7,7 +7,6 @@
 RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
 
 #import "LineView.h"
-#import <AppKit/psops.h>
 
 //======================================================================
 // Provide a simple view to show the width of a line, for use when
@@ -15,8 +14,9 @@ RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
 //======================================================================
 
 @implementation LineView
+@synthesize lineWidth;
 
-- (void) setLineWidth:(float)lw
+- (void) setLineWidth:(CGFloat)lw
 {
     lineWidth = lw;
     [self display];
@@ -26,7 +26,7 @@ RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
 
 - (void) drawRect:(NSRect)rects
 {
-    float mp, begin, end;
+    CGFloat mp, begin, end;
     NSRect boundsRect = [self bounds];
 	
     NSDrawWhiteBezel (boundsRect, boundsRect);
@@ -34,12 +34,13 @@ RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
     begin = boundsRect.origin.x + 2;
     end = boundsRect.origin.x + boundsRect.size.width - 2;
 
-    PSsetgray (NSBlack);
-    PSsetlinewidth (lineWidth);
-    PSmoveto (begin, mp);
-    PSlineto (end, mp);
-    PSclosepath ();
-    PSstroke ();
+	[[NSColor blackColor] set];
+	NSBezierPath *path = [NSBezierPath bezierPath];
+	path.lineWidth = lineWidth;
+	[path moveToPoint:NSMakePoint(begin, mp)];
+	[path lineToPoint:NSMakePoint(end, mp)];
+	[path closePath];
+	[path stroke];
 }
 
 @end

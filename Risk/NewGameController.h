@@ -52,23 +52,20 @@
     BOOL runningAsPreferences;
 }
 
-+ (void) initialize;
-
 - (void) awakeFromNib;
 
-- initWithBrain:(Brain *)theBrain;
-- (void) dealloc;
+- (instancetype)initWithBrain:(Brain *)theBrain;
 
 - (void) showNewGamePanel;
 - (void) showGameSetupPanel;
 
-- (void) aboutAction:sender;
-- (void) aboutStopAction:sender;
+- (IBAction) aboutAction:sender;
+- (IBAction) aboutStopAction:sender;
 
-- (void) recalculateInitialArmies:sender;
+- (IBAction) recalculateInitialArmies:sender;
 
-- (void) acceptAction:sender;
-- (void) cancelAction:sender;
+- (IBAction) acceptAction:sender;
+- (IBAction) cancelAction:sender;
 
 - (void) createNewGame;
 

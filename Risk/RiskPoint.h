@@ -5,21 +5,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RiskPoint : NSObject
+@interface RiskPoint : NSObject <NSCoding>
 {
     NSPoint point;
 }
 
-+ (void) initialize;
++ (instancetype)riskPointWithPoint:(NSPoint)aPoint;
+- (instancetype)initWithPoint:(NSPoint)aPoint NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-+ riskPointWithPoint:(NSPoint)aPoint;
-
-- initWithPoint:(NSPoint)aPoint;
-
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
-
-- (NSPoint) point;
-- (NSString *) description;
+@property (readonly) NSPoint point;
 
 @end

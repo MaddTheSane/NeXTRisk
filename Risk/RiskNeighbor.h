@@ -13,13 +13,12 @@
     Country *country2;
 }
 
-+ riskNeighborWithCountries:(Country *)firstCountry:(Country *)secondCountry;
++ (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry;
 
-- initWithCountries:(Country *)firstCountry:(Country *)secondCountry;
-- (void) dealloc;
+- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry;
 
-- (Country *) country1;
-- (Country *) country2;
+@property (readonly, retain) Country *country1;
+@property (readonly, retain) Country *country2;
 
 - (NSString *) description;
 

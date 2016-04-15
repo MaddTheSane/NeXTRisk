@@ -8,7 +8,6 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 #import "RiskCard.h"
 
-#import "NSObjectExtensions.h"
 #import "Country.h"
 
 //======================================================================

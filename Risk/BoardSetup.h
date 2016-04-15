@@ -23,13 +23,13 @@ NSData *defaultsDataForColor (NSColor *color);
 #define DK_SelectedBorderColor @"SelectedBorderColor"
 #define DK_ShowCardSetCounts   @"ShowCardSetCounts"
 
-extern NSString *RiskBoardSetupChangedNotification;
-extern NSString *RiskBoardSetupPlayerColorsChangedNotification;
-extern NSString *RiskBoardSetupShowCardSetCountsChangedNotification;
+extern NSString *const RiskBoardSetupChangedNotification;
+extern NSString *const RiskBoardSetupPlayerColorsChangedNotification;
+extern NSString *const RiskBoardSetupShowCardSetCountsChangedNotification;
 
 @interface BoardSetup : NSObject
 {
-    float borderWidth;
+    CGFloat borderWidth;
     NSColor *regularBorderColor;
     NSColor *selectedBorderColor;
 
@@ -37,12 +37,11 @@ extern NSString *RiskBoardSetupShowCardSetCountsChangedNotification;
     NSColor *playerColors[7];
 }
 
-+ instance;
++ (BoardSetup*)instance;
 
 + (void) initialize;
 
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
 - (void) writeAllDefaults;
 - (void) writePlayerColorDefaults;
@@ -52,17 +51,13 @@ extern NSString *RiskBoardSetupShowCardSetCountsChangedNotification;
 - (void) revertPlayerColorsToDefaults;
 - (void) revertOtherToDefaults;
 
-- (float) borderWidth;
-- (void) setBorderWidth:(float)newWidth;
+@property (nonatomic) CGFloat borderWidth;
 
-- (NSColor *) regularBorderColor;
-- (void) setRegularBorderColor:(NSColor *)newColor;
+@property (nonatomic, retain) NSColor *regularBorderColor;
 
-- (NSColor *) selectedBorderColor;
-- (void) setSelectedBorderColor:(NSColor *)newColor;
+@property (nonatomic, retain) NSColor *selectedBorderColor;
 
-- (BOOL) showCardSetCounts;
-- (void) setShowCardSetCounts:(BOOL)newFlag;
+@property (nonatomic) BOOL showCardSetCounts;
 
 - (NSColor *) colorForPlayer:(Player)playerNumber;
 - (void) setColor:(NSColor *)aColor forPlayer:(Player)playerNumber;

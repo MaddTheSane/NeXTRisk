@@ -7,10 +7,9 @@
 
 @interface LineView : NSView
 {
-    float lineWidth;
+    CGFloat lineWidth;
 }
-
-- (void) setLineWidth:(float)lw;
+@property (nonatomic) CGFloat lineWidth;
 
 - (void) drawRect:(NSRect)rect;
 

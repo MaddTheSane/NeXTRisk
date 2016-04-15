@@ -205,7 +205,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) moveAttackingArmies:(int)count between:(Country *)source:(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
 {
     placeArmyCount = count;
     if (placeArmyCount == 0)

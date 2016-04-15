@@ -7,7 +7,7 @@
 
 @class SNUserPath, Country, RiskMapView;
 
-@interface CountryShape : NSObject
+@interface CountryShape : NSObject <NSCoding>
 {
     SNUserPath *userPath;
 
@@ -17,18 +17,16 @@
 
 + (void) initialize;
 
-+ countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
++ (instancetype)countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 
-- initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
-- (void) dealloc;
+- (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 
-- (void) encodeWithCoder:(NSCoder *)aCoder;
-- initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected;
 - (BOOL) pointInShape:(NSPoint)aPoint;
 
-- (NSPoint) centerPoint;
+@property (readonly) NSPoint centerPoint;
 - (NSRect) bounds;
 
 - (NSString *) description;

@@ -50,7 +50,7 @@ static SNRandom *_instance = nil;
         flag = [defaults boolForKey:DK_SeedRandom];
         if (flag == YES)
         {
-            [SNRandom seedGenerator:time (NULL)];
+            [SNRandom seedGenerator:time (NULL) & 0x7FFFFFFF];
         }
     }
 }
@@ -106,7 +106,7 @@ static SNRandom *_instance = nil;
 
 //----------------------------------------------------------------------
 
-- (long) randomNumberBetween:(long)minimum:(long)maximum
+- (long) randomNumberBetween:(long)minimum :(long)maximum
 {
     if (maximum <= minimum)
         return minimum;
