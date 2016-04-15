@@ -56,7 +56,7 @@
                     <button id="12">
                         <rect key="frame" x="6" y="12" width="136" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="Pause for continue" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="26">
+                        <buttonCell key="cell" type="check" title="Pause for continue" imagePosition="left" alignment="left" inset="2" id="26">
                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

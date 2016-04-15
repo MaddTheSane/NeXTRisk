@@ -54,16 +54,16 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="9">
-                                    <rect key="frame" x="4" y="85" width="38" height="15"/>
+                                    <rect key="frame" x="4" y="83" width="39" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="From:" id="70">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="From:" id="70">
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="10">
-                                    <rect key="frame" x="41" y="82" width="190" height="21"/>
+                                    <rect key="frame" x="49" y="82" width="182" height="21"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="left" id="71">
                                         <font key="font" size="12" name="Helvetica"/>
@@ -72,10 +72,10 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="5">
-                                    <rect key="frame" x="62" y="61" width="28" height="15"/>
+                                    <rect key="frame" x="56" y="59" width="34" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="with" id="72">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="with" id="72">
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -89,26 +89,17 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="18">
-                                    <rect key="frame" x="123" y="61" width="42" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="armies" id="74">
-                                        <font key="font" size="12" name="Helvetica"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
                                 <textField verticalHuggingPriority="750" id="28">
-                                    <rect key="frame" x="19" y="37" width="23" height="15"/>
+                                    <rect key="frame" x="20" y="37" width="23" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="To:" id="75">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="To:" id="75">
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="6">
-                                    <rect key="frame" x="41" y="34" width="190" height="21"/>
+                                    <rect key="frame" x="49" y="34" width="182" height="21"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="left" id="76">
                                         <font key="font" size="12" name="Helvetica"/>
@@ -117,10 +108,10 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="14">
-                                    <rect key="frame" x="62" y="13" width="28" height="15"/>
+                                    <rect key="frame" x="56" y="12" width="34" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="with" id="77">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="with" id="77">
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -135,10 +126,19 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="15">
-                                    <rect key="frame" x="123" y="13" width="42" height="15"/>
+                                    <rect key="frame" x="123" y="12" width="50" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="armies" id="79">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="armies" id="79">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="18">
+                                    <rect key="frame" x="123" y="59" width="50" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="left" title="armies" id="74">
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -153,7 +153,7 @@
                         <rect key="frame" x="4" y="36" width="117" height="168"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="zV2-mZ-vNa">
-                            <rect key="frame" x="2" y="2" width="113" height="150"/>
+                            <rect key="frame" x="2" y="2" width="113" height="151"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="3">
@@ -220,13 +220,12 @@
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Defender" id="26">
                         <rect key="frame" x="126" y="36" width="117" height="168"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="PZ3-PN-Pzn">
-                            <rect key="frame" x="2" y="2" width="113" height="150"/>
+                            <rect key="frame" x="2" y="2" width="113" height="151"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="12">
@@ -288,25 +287,24 @@
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <button id="21">
-                        <rect key="frame" x="0.0" y="10" width="125" height="15"/>
+                        <rect key="frame" x="-1" y="9" width="126" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Pause for continue" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="68">
+                        <buttonCell key="cell" type="check" title="Pause for continue" imagePosition="left" alignment="left" controlSize="small" inset="2" id="68">
                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
                             <action selector="pauseCheckAction:" target="-2" id="38"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="16">
-                        <rect key="frame" x="141" y="4" width="102" height="29"/>
+                        <rect key="frame" x="141" y="1" width="102" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Continue" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="67">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>

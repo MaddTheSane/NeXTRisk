@@ -44,7 +44,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     [tmp1 addSubview:tmp2 positioned:NSWindowBelow relativeTo:nil];
     [tmp2 release];
 
-    continentBonuses = [[RiskUtility readContinentTextfile] retain];
+    continentBonuses = [[RiskUtility readContinentTextfile] mutableCopy];
 
     continentNames = [NSSet setWithArray:[continentBonuses allKeys]];
 

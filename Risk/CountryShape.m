@@ -10,8 +10,6 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
 #import "RiskPoint.h"
 #import "BoardSetup.h"
-#import "SNUserPath.h"
-#import "SNUserPathOperation.h"
 #import "Country.h"
 #import "RiskMapView.h"
 
@@ -56,21 +54,19 @@ static NSTextFieldCell *_armyCell = nil;
 
 //----------------------------------------------------------------------
 
-+ countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint
++ countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     return [[[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint
+- initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     if ([super init] == nil)
         return nil;
 
     userPath = [aUserPath retain];
-    if ([userPath isPathGenerated] == NO)
-        [userPath createPathWithCache:YES];
     armyCellPoint = aPoint;
     //shapeBoudns = NSZeroRect;
 
@@ -103,8 +99,6 @@ static NSTextFieldCell *_armyCell = nil;
         return nil;
 
     userPath = [[aDecoder decodeObject] retain];
-    if ([userPath isPathGenerated] == NO)
-        [userPath createPathWithCache:YES];
     armyCellPoint = [aDecoder decodePoint];
     //shapeBounds = [aDecoder decodeRect];
 
@@ -117,9 +111,6 @@ static NSTextFieldCell *_armyCell = nil;
 {
     BoardSetup *boardSetup;
 
-    DPSUserPathOp *operators;
-    float *operands, *bbox;
-    int operatorCount, operandCount;
     int troopCount;
 
     troopCount = [aCountry troopCount];
@@ -135,23 +126,16 @@ static NSTextFieldCell *_armyCell = nil;
     else
         [[NSColor whiteColor] set];
 
-    if ([userPath isPathGenerated] == YES)
-    {
-        [userPath getUserPath:&operators:&operatorCount:&operands:&operandCount:&bbox];
-        PSDoUserPath (operands, operandCount, dps_float, operators, operatorCount, bbox, dps_ufill);
-    }
+	[userPath stroke];
 
     if (selected == YES)
         [[boardSetup selectedBorderColor] set];
     else
         [[boardSetup regularBorderColor] set];
-    PSsetlinewidth ([boardSetup borderWidth]);
-
-    if ([userPath isPathGenerated] == YES)
-    {
-        [userPath getUserPath:&operators:&operatorCount:&operands:&operandCount:&bbox];
-        PSDoUserPath (operands, operandCount, dps_float, operators, operatorCount, bbox, dps_ustroke);
-    }
+	CGFloat prevWidth = [userPath lineWidth];
+	userPath.lineWidth = boardSetup.borderWidth;
+	[userPath stroke];
+	userPath.lineWidth = prevWidth;
 
     if ([aCountry playerNumber] != 0 && troopCount > 0)
     {
@@ -168,52 +152,22 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (BOOL) pointInShape:(NSPoint)aPoint
 {
-    BOOL flag;
-
-    flag = NO;
-
-    if ([userPath isPathGenerated] == YES)
-    {
-        flag = [userPath inFill:aPoint];
-    }
-
-    return flag;
+	return [userPath containsPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
 
 - (NSPoint) centerPoint
 {
-    float *bbox;
-    float midx, midy;
-
-    NSAssert ([userPath isPathGenerated] == YES, @"Path not generated...");
-
-    midx = 0;
-    midy = 0;
-
-    bbox = [userPath bbox];
-
-    //NSLog (@"bbox: ll (%f,%f), ur (%f,%f)", bbox[0], bbox[1], bbox[2], bbox[3]);
-    midx += *bbox++;
-    midy += *bbox++;
-    midx += *bbox++;
-    midy += *bbox++;
-
-    midx /= 2;
-    midy /= 2;
-
-    //NSLog (@"middle: %f,%f", midx, midy);
-
-    return NSMakePoint (midx, midy);
+    NSRect bbox = [userPath bounds];
+	
+	return NSMakePoint(NSMidX(bbox), NSMidY(bbox));
 }
 
 //----------------------------------------------------------------------
 
 - (NSRect) bounds
 {
-    NSAssert ([userPath isPathGenerated] == YES, @"Path not generated...");
-
     return NSUnionRect ([userPath bounds], NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT));
     //return [userPath bounds];
 }

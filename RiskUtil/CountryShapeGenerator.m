@@ -12,9 +12,6 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 #import "CountryShape.h"
 #import "RiskPoint.h"
 
-#import "SNUserPath.h"
-#import "SNUserPathOperation.h"
-
 @implementation CountryShapeGenerator
 
 + countryShapeGenerator
@@ -165,14 +162,18 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (void) scanPoint:(NSPoint *)point
 {
     NSPoint aPoint;
+	float anX = 0, anY = 0;
 
-    if ([self scanFloat:&aPoint.x] == NO)
+    if ([self scanFloat:&anX] == NO)
         [NSException raise:ExpectException format:@"Expected float"];
     //NSLog (@"Scanned %f", aPoint.x);
-    if ([self scanFloat:&aPoint.y] == NO)
+    if ([self scanFloat:&anY] == NO)
         [NSException raise:ExpectException format:@"Expected float"];
     //NSLog (@"Scanned %f", aPoint.y);
 
+	aPoint.x = anX;
+	aPoint.y = anY;
+	
     *point = aPoint;
 }
 

@@ -47,11 +47,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" id="135">
-                        <rect key="frame" x="539" y="117" width="96" height="30"/>
+                        <rect key="frame" x="539" y="115" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="226">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="cancelAction:" target="-2" id="218"/>
@@ -59,11 +59,11 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="136">
-                        <rect key="frame" x="539" y="75" width="96" height="30"/>
+                        <rect key="frame" x="539" y="73" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Accept" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="227">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="acceptAction:" target="-2" id="208"/>
@@ -343,17 +343,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     <size key="cellSize" width="111" height="15"/>
                                     <size key="intercellSpacing" width="0.0" height="3"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="244">
+                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="244">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
-                                            <buttonCell type="radio" title="Player's Choose" imagePosition="left" alignment="left" state="on" imageScaling="proportionallyDown" inset="2" id="163">
+                                            <buttonCell type="radio" title="Player's Choose" imagePosition="left" alignment="left" state="on" inset="2" id="163">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="Random" imagePosition="left" alignment="left" tag="1" imageScaling="proportionallyDown" inset="2" id="162">
+                                            <buttonCell type="radio" title="Random" imagePosition="left" alignment="left" tag="1" inset="2" id="162">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
@@ -382,21 +382,21 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     <size key="cellSize" width="76" height="15"/>
                                     <size key="intercellSpacing" width="0.0" height="3"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="245">
+                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="245">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
-                                            <buttonCell type="radio" title="By Ones" imagePosition="left" alignment="left" state="on" imageScaling="proportionallyDown" inset="2" id="62">
+                                            <buttonCell type="radio" title="By Ones" imagePosition="left" alignment="left" state="on" inset="2" id="62">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="By Threes" imagePosition="left" alignment="left" tag="1" imageScaling="proportionallyDown" inset="2" id="63">
+                                            <buttonCell type="radio" title="By Threes" imagePosition="left" alignment="left" tag="1" inset="2" id="63">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="By Fives" imagePosition="left" alignment="left" tag="2" imageScaling="proportionallyDown" inset="2" id="70">
+                                            <buttonCell type="radio" title="By Fives" imagePosition="left" alignment="left" tag="2" inset="2" id="70">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
@@ -430,21 +430,21 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     <size key="cellSize" width="148" height="15"/>
                                     <size key="intercellSpacing" width="0.0" height="3"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="246">
+                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="246">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
-                                            <buttonCell type="radio" title="4,5,5,5,5,5,5,5..." imagePosition="left" alignment="left" state="on" imageScaling="proportionallyDown" inset="2" id="65">
+                                            <buttonCell type="radio" title="4,5,5,5,5,5,5,5..." imagePosition="left" alignment="left" state="on" inset="2" id="65">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="4,5,6,7,8,9,10,11..." imagePosition="left" alignment="left" tag="1" imageScaling="proportionallyDown" inset="2" id="66">
+                                            <buttonCell type="radio" title="4,5,6,7,8,9,10,11..." imagePosition="left" alignment="left" tag="1" inset="2" id="66">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="4,6,8,10,12,15,20,25..." imagePosition="left" alignment="left" tag="2" imageScaling="proportionallyDown" inset="2" id="71">
+                                            <buttonCell type="radio" title="4,6,8,10,12,15,20,25..." imagePosition="left" alignment="left" tag="2" inset="2" id="71">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
@@ -478,25 +478,25 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     <size key="cellSize" width="420" height="15"/>
                                     <size key="intercellSpacing" width="0.0" height="3"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="247">
+                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="247">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
-                                            <buttonCell type="radio" title="From one source to one neighboring destination (strict Risk rules)" imagePosition="left" alignment="left" state="on" imageScaling="proportionallyDown" inset="2" id="68">
+                                            <buttonCell type="radio" title="From one source to one neighboring destination (strict Risk rules)" imagePosition="left" alignment="left" state="on" inset="2" id="68">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="From one source to many neighboring destinations" imagePosition="left" alignment="left" tag="1" imageScaling="proportionallyDown" inset="2" id="69">
+                                            <buttonCell type="radio" title="From one source to many neighboring destinations" imagePosition="left" alignment="left" tag="1" inset="2" id="69">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="From many sources to many neighboring destinations (Mac Risk Rules)" imagePosition="left" alignment="left" tag="2" imageScaling="proportionallyDown" inset="2" id="72">
+                                            <buttonCell type="radio" title="From many sources to many neighboring destinations (Mac Risk Rules)" imagePosition="left" alignment="left" tag="2" inset="2" id="72">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="radio" title="From many sources to many connected destinations (alternate Risk rules)" imagePosition="left" alignment="left" tag="3" imageScaling="proportionallyDown" inset="2" id="73">
+                                            <buttonCell type="radio" title="From many sources to many connected destinations (alternate Risk rules)" imagePosition="left" alignment="left" tag="3" inset="2" id="73">
                                                 <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>

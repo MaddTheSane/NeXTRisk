@@ -40,8 +40,12 @@
 // Other
 //
 
+#if 0
 #define RCSID(str) \
     static inline const char *rcsid (void) \
     { \
         return str " cc:" __DATE__ " " __TIME__; \
     }
+#else
+#define RCSID(str)
+#endif

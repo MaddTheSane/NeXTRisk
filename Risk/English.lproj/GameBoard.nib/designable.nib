@@ -54,7 +54,7 @@
                         <rect key="frame" x="36" y="20" width="135" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="147">
-                            <font key="font" size="12" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -184,11 +184,11 @@ Stand By</string>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" id="39">
-                                    <rect key="frame" x="5" y="136" width="96" height="28"/>
+                                    <rect key="frame" x="-1" y="132" width="121" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <buttonCell key="cell" type="push" title="Turn in Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="163">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="turnInCards:" target="-2" id="120"/>
@@ -225,17 +225,6 @@ Stand By</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button verticalHuggingPriority="750" id="27">
-                                    <rect key="frame" x="109" y="136" width="96" height="28"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="167">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="reviewCards:" target="-2" id="119"/>
-                                    </connections>
-                                </button>
                                 <textField verticalHuggingPriority="750" id="47">
                                     <rect key="frame" x="230" y="155" width="119" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -254,6 +243,17 @@ Stand By</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                                <button verticalHuggingPriority="750" id="27">
+                                    <rect key="frame" x="115" y="132" width="115" height="32"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="167">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="reviewCards:" target="-2" id="119"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>

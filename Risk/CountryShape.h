@@ -9,7 +9,7 @@
 
 @interface CountryShape : NSObject <NSCoding>
 {
-    SNUserPath *userPath;
+    NSBezierPath *userPath;
 
     NSPoint armyCellPoint;
     //NSRect shapeBounds;
@@ -17,9 +17,9 @@
 
 + (void) initialize;
 
-+ (instancetype)countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
++ (instancetype)countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 
-- (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
+- (instancetype)initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder;
 
@@ -27,7 +27,7 @@
 - (BOOL) pointInShape:(NSPoint)aPoint;
 
 @property (readonly) NSPoint centerPoint;
-- (NSRect) bounds;
+@property (readonly) NSRect bounds;
 
 - (NSString *) description;
 

@@ -35,21 +35,11 @@
                             <rect key="frame" x="2" y="2" width="303" height="92"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <slider verticalHuggingPriority="750" id="5">
-                                    <rect key="frame" x="110" y="71" width="117" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.5" maxValue="5" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="41">
-                                        <font key="font" size="12" name="Helvetica"/>
-                                    </sliderCell>
-                                    <connections>
-                                        <action selector="borderWidthAction:" target="-2" id="31"/>
-                                    </connections>
-                                </slider>
                                 <textField verticalHuggingPriority="750" id="10">
-                                    <rect key="frame" x="71" y="69" width="35" height="21"/>
+                                    <rect key="frame" x="80" y="69" width="35" height="21"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" alignment="center" title="2.0" drawsBackground="YES" id="42">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -58,10 +48,10 @@
                                     </connections>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="7">
-                                    <rect key="frame" x="5" y="72" width="64" height="15"/>
+                                    <rect key="frame" x="5" y="70" width="69" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Line Width" id="43">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -79,10 +69,10 @@
                                     </connections>
                                 </colorWell>
                                 <textField verticalHuggingPriority="750" id="21">
-                                    <rect key="frame" x="18" y="42" width="126" height="15"/>
+                                    <rect key="frame" x="18" y="43" width="126" height="14"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="center" title="Regular Border Color" id="44">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" controlSize="small" alignment="center" title="Regular Border Color" id="44">
+                                        <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -96,14 +86,24 @@
                                     </connections>
                                 </colorWell>
                                 <textField verticalHuggingPriority="750" id="14">
-                                    <rect key="frame" x="155" y="42" width="132" height="15"/>
+                                    <rect key="frame" x="155" y="43" width="132" height="14"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="center" title="Selected Border Color" id="45">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" controlSize="small" alignment="center" title="Selected Border Color" id="45">
+                                        <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                                <slider verticalHuggingPriority="750" id="5">
+                                    <rect key="frame" x="121" y="71" width="117" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.5" maxValue="5" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="41">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </sliderCell>
+                                    <connections>
+                                        <action selector="borderWidthAction:" target="-2" id="31"/>
+                                    </connections>
+                                </slider>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -143,11 +143,11 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button id="11">
-                                    <rect key="frame" x="43" y="16" width="207" height="15"/>
+                                    <rect key="frame" x="22" y="13" width="228" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <buttonCell key="cell" type="check" title="Status view shows card set status" imagePosition="right" alignment="right" imageScaling="proportionallyDown" inset="2" id="40">
+                                    <buttonCell key="cell" type="check" title="Status view shows card set status" imagePosition="left" alignment="right" inset="2" id="40">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="statusCardSetsAction:" target="-2" id="35"/>
