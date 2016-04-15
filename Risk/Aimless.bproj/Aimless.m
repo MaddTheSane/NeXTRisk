@@ -20,7 +20,7 @@
 //     e-mail:  nygard@telusplanet.net
 //
 
-#import "../Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: Aimless.m,v 1.4 1997/12/15 21:09:47 nygard Exp $");
 

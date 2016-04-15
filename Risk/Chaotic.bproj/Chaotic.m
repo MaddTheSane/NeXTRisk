@@ -2,7 +2,7 @@
 // Part of Risk by Mike Ferris
 //
 
-#import "../Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
@@ -326,7 +326,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     {
         attackResult = [gameManager attackFromCountry:attacker
                                     toCountry:weakest
-                                    untilArmiesRemain:[[self rng] randomNumberBetween:1:[attacker troopCount]]
+                                    untilArmiesRemain:(int)[[self rng] randomNumberBetween:1:[attacker troopCount]]
                                     moveAllArmiesUponVictory:NO];
 
         //NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");

@@ -24,7 +24,7 @@
 //     e-mail:  nygard@telusplanet.net
 //
 
-#import "RiskPlayer.h"
+#import <RiskKit/RiskPlayer.h>
 #import <AppKit/AppKit.h>
 
 typedef enum _CountryChoiceType

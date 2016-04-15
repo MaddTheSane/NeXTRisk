@@ -606,7 +606,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     
     if (consoleWindow == nil)
     {
-        nibFile = @"PlayerConsole.nib";
+        nibFile = @"PlayerConsole";
         loaded = [NSBundle loadNibNamed:nibFile owner:self];
 
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);

@@ -59,7 +59,6 @@
 		55377FAC1CC15C2400A2C08E /* WesternUS.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFC1CC15C2300A2C08E /* WesternUS.tiff */; };
 		55377FAD1CC15C2400A2C08E /* Yakutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */; };
 		55377FAE1CC15C2400A2C08E /* CardPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EFF1CC15C2300A2C08E /* CardPanelController.m */; };
-		55377FAF1CC15C2400A2C08E /* CardSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F011CC15C2300A2C08E /* CardSet.m */; };
 		55377FB11CC15C2400A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		55377FB21CC15C2400A2C08E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F061CC15C2300A2C08E /* Country.m */; };
 		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
@@ -69,7 +68,6 @@
 		55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.nib */; };
 		55377FC41CC15C2400A2C08E /* NewGamePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F231CC15C2300A2C08E /* NewGamePanel.nib */; };
 		55377FC61CC15C2400A2C08E /* Risk.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F271CC15C2300A2C08E /* Risk.nib */; };
-		55377FC81CC15C2400A2C08E /* PlayerConsole.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */; };
 		55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2F1CC15C2300A2C08E /* PreferencePanel.nib */; };
 		55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */; };
 		55377FCF1CC15C2400A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
@@ -80,16 +78,13 @@
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
 		55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F521CC15C2300A2C08E /* Risk_main.m */; };
-		55377FE21CC15C2400A2C08E /* Risk.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F541CC15C2300A2C08E /* Risk.m */; };
 		55377FE31CC15C2400A2C08E /* RiskCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RiskCard.m */; };
 		55377FE41CC15C2400A2C08E /* RiskGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F581CC15C2400A2C08E /* RiskGameManager.m */; };
 		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		55377FE61CC15C2400A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
-		55377FE71CC15C2400A2C08E /* RiskPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5E1CC15C2400A2C08E /* RiskPlayer.m */; };
 		55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; };
 		55377FE91CC15C2400A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		55377FEA1CC15C2400A2C08E /* RiskWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F631CC15C2400A2C08E /* RiskWorld.m */; };
-		55377FEB1CC15C2400A2C08E /* SNRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F651CC15C2400A2C08E /* SNRandom.m */; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
 		55377FF11CC15C2400A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
@@ -169,7 +164,88 @@
 		553780971CC1655300A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780991CC185A700A2C08E /* InfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553780981CC185A700A2C08E /* InfoPanel.xib */; };
 		5537809F1CC1943200A2C08E /* RiskUtil.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5537809E1CC1943200A2C08E /* RiskUtil.xib */; };
+		553780A91CC1966300A2C08E /* RiskKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 553780A81CC1966300A2C08E /* RiskKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780AD1CC1966300A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
+		553780AE1CC1966300A2C08E /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		553780B31CC1967900A2C08E /* Risk.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F541CC15C2300A2C08E /* Risk.m */; };
+		553780B41CC1967D00A2C08E /* Risk.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F531CC15C2300A2C08E /* Risk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780B71CC1969700A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
+		553780B81CC196B100A2C08E /* RiskPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5E1CC15C2400A2C08E /* RiskPlayer.m */; };
+		553780B91CC196B400A2C08E /* RiskPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5D1CC15C2400A2C08E /* RiskPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780BA1CC196EF00A2C08E /* CardSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F011CC15C2300A2C08E /* CardSet.m */; };
+		553780BB1CC196F200A2C08E /* CardSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F001CC15C2300A2C08E /* CardSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780BC1CC1970E00A2C08E /* SNRandom.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F641CC15C2400A2C08E /* SNRandom.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780BD1CC1970E00A2C08E /* SNRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F651CC15C2400A2C08E /* SNRandom.m */; };
+		553780BE1CC1975800A2C08E /* SNUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F6B1CC15C2400A2C08E /* SNUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780C11CC197EE00A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
+		553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */; };
+		553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537806B1CC1639C00A2C08E /* Aimless.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537808E1CC1642900A2C08E /* Chaotic.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		553780AB1CC1966300A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
+		553780B51CC1969300A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
+		553780BF1CC197EB00A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
+		553780C31CC1984F00A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5537806A1CC1639C00A2C08E;
+			remoteInfo = Aimless;
+		};
+		553780C51CC1984F00A2C08E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780811CC1642900A2C08E;
+			remoteInfo = Chaotic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		553780B21CC1966300A2C08E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				553780AE1CC1966300A2C08E /* RiskKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553780C71CC1985800A2C08E /* Copy PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */,
+				553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */,
+			);
+			name = "Copy PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +401,9 @@
 		553780981CC185A700A2C08E /* InfoPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoPanel.xib; sourceTree = "<group>"; };
 		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cards.xcassets; sourceTree = "<group>"; };
 		5537809E1CC1943200A2C08E /* RiskUtil.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RiskUtil.xib; sourceTree = "<group>"; };
+		553780A61CC1966300A2C08E /* RiskKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RiskKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		553780A81CC1966300A2C08E /* RiskKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskKit.h; sourceTree = "<group>"; };
+		553780AA1CC1966300A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +411,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553780AD1CC1966300A2C08E /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,10 +426,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553780B71CC1969700A2C08E /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		553780871CC1642900A2C08E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780C11CC197EE00A2C08E /* RiskKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		553780A21CC1966300A2C08E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,6 +455,7 @@
 				55377FFA1CC15E1700A2C08E /* RiskUtil */,
 				5537806C1CC1639C00A2C08E /* Aimless */,
 				553780901CC1645000A2C08E /* Chaotic */,
+				553780A71CC1966300A2C08E /* RiskKit */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -377,6 +467,7 @@
 				55377FF91CC15E1700A2C08E /* RiskUtil.app */,
 				5537806B1CC1639C00A2C08E /* Aimless.riskplayer */,
 				5537808E1CC1642900A2C08E /* Chaotic.riskplayer */,
+				553780A61CC1966300A2C08E /* RiskKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -593,7 +684,32 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		553780A71CC1966300A2C08E /* RiskKit */ = {
+			isa = PBXGroup;
+			children = (
+				553780A81CC1966300A2C08E /* RiskKit.h */,
+				553780AA1CC1966300A2C08E /* Info.plist */,
+			);
+			path = RiskKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		553780A31CC1966300A2C08E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780BC1CC1970E00A2C08E /* SNRandom.h in Headers */,
+				553780A91CC1966300A2C08E /* RiskKit.h in Headers */,
+				553780BE1CC1975800A2C08E /* SNUtility.h in Headers */,
+				553780BB1CC196F200A2C08E /* CardSet.h in Headers */,
+				553780B91CC196B400A2C08E /* RiskPlayer.h in Headers */,
+				553780B41CC1967D00A2C08E /* Risk.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		55377EA81CC15AC900A2C08E /* Risk */ = {
@@ -603,10 +719,15 @@
 				55377EA51CC15AC900A2C08E /* Sources */,
 				55377EA61CC15AC900A2C08E /* Frameworks */,
 				55377EA71CC15AC900A2C08E /* Resources */,
+				553780B21CC1966300A2C08E /* Embed Frameworks */,
+				553780C71CC1985800A2C08E /* Copy PlugIns */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				553780C41CC1984F00A2C08E /* PBXTargetDependency */,
+				553780C61CC1984F00A2C08E /* PBXTargetDependency */,
+				553780AC1CC1966300A2C08E /* PBXTargetDependency */,
 			);
 			name = Risk;
 			productName = Risk;
@@ -641,6 +762,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				553780B61CC1969300A2C08E /* PBXTargetDependency */,
 			);
 			name = Aimless;
 			productName = Aimless;
@@ -658,11 +780,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				553780C01CC197EB00A2C08E /* PBXTargetDependency */,
 			);
 			name = Chaotic;
 			productName = Aimless;
 			productReference = 5537808E1CC1642900A2C08E /* Chaotic.riskplayer */;
 			productType = "com.apple.product-type.bundle";
+		};
+		553780A51CC1966300A2C08E /* RiskKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 553780AF1CC1966300A2C08E /* Build configuration list for PBXNativeTarget "RiskKit" */;
+			buildPhases = (
+				553780A11CC1966300A2C08E /* Sources */,
+				553780A21CC1966300A2C08E /* Frameworks */,
+				553780A31CC1966300A2C08E /* Headers */,
+				553780A41CC1966300A2C08E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RiskKit;
+			productName = RiskKit;
+			productReference = 553780A61CC1966300A2C08E /* RiskKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -680,6 +821,9 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					5537806A1CC1639C00A2C08E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					553780A51CC1966300A2C08E = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -702,6 +846,7 @@
 				55377FF81CC15E1700A2C08E /* RiskUtil */,
 				5537806A1CC1639C00A2C08E /* Aimless */,
 				553780811CC1642900A2C08E /* Chaotic */,
+				553780A51CC1966300A2C08E /* RiskKit */,
 			);
 		};
 /* End PBXProject section */
@@ -750,7 +895,6 @@
 				55377F9A1CC15C2400A2C08E /* NewGuinea.tiff in Resources */,
 				55377F841CC15C2400A2C08E /* EastAfrica.tiff in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
-				55377FC81CC15C2400A2C08E /* PlayerConsole.nib in Resources */,
 				55377FAA1CC15C2400A2C08E /* WesternAustralia.tiff in Resources */,
 				55377F821CC15C2400A2C08E /* China.tiff in Resources */,
 				55377F811CC15C2400A2C08E /* CentralAmerica.tiff in Resources */,
@@ -852,6 +996,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		553780A41CC1966300A2C08E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -868,20 +1020,16 @@
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
 				55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */,
 				55377FEA1CC15C2400A2C08E /* RiskWorld.m in Sources */,
-				55377FE21CC15C2400A2C08E /* Risk.m in Sources */,
 				55377FB11CC15C2400A2C08E /* Continent.m in Sources */,
 				55377FE41CC15C2400A2C08E /* RiskGameManager.m in Sources */,
 				55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */,
-				55377FEB1CC15C2400A2C08E /* SNRandom.m in Sources */,
 				55377F771CC15C2400A2C08E /* ArmyView.m in Sources */,
 				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
 				55377FE61CC15C2400A2C08E /* RiskNeighbor.m in Sources */,
-				55377FAF1CC15C2400A2C08E /* CardSet.m in Sources */,
 				55377FE31CC15C2400A2C08E /* RiskCard.m in Sources */,
 				55377FB21CC15C2400A2C08E /* Country.m in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
 				55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */,
-				55377FE71CC15C2400A2C08E /* RiskPlayer.m in Sources */,
 				55377FAE1CC15C2400A2C08E /* CardPanelController.m in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,
 				55377FB51CC15C2400A2C08E /* DiceInspector.m in Sources */,
@@ -928,7 +1076,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		553780A11CC1966300A2C08E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				553780B31CC1967900A2C08E /* Risk.m in Sources */,
+				553780B81CC196B100A2C08E /* RiskPlayer.m in Sources */,
+				553780BA1CC196EF00A2C08E /* CardSet.m in Sources */,
+				553780BD1CC1970E00A2C08E /* SNRandom.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		553780AC1CC1966300A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 553780AB1CC1966300A2C08E /* PBXContainerItemProxy */;
+		};
+		553780B61CC1969300A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 553780B51CC1969300A2C08E /* PBXContainerItemProxy */;
+		};
+		553780C01CC197EB00A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 553780BF1CC197EB00A2C08E /* PBXContainerItemProxy */;
+		};
+		553780C41CC1984F00A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5537806A1CC1639C00A2C08E /* Aimless */;
+			targetProxy = 553780C31CC1984F00A2C08E /* PBXContainerItemProxy */;
+		};
+		553780C61CC1984F00A2C08E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780811CC1642900A2C08E /* Chaotic */;
+			targetProxy = 553780C51CC1984F00A2C08E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		55377F131CC15C2300A2C08E /* CardPanel.nib */ = {
@@ -1196,6 +1383,48 @@
 			};
 			name = Release;
 		};
+		553780B01CC1966300A2C08E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = RiskKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		553780B11CC1966300A2C08E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = RiskKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1241,6 +1470,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		553780AF1CC1966300A2C08E /* Build configuration list for PBXNativeTarget "RiskKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				553780B01CC1966300A2C08E /* Debug */,
+				553780B11CC1966300A2C08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
