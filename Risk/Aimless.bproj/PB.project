@@ -1,0 +1,31 @@
+{
+    APPCLASS = Aimless; 
+    BUNDLE_EXTENSION = riskplayer; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        CLASSES = (Aimless.m, DNode.m, PathFinder.m, SNHeap.m); 
+        FRAMEWORKS = (Foundation.framework); 
+        H_FILES = (Aimless.h, DNode.h, PathFinder.h, SNHeap.h); 
+        IMAGES = (Aimless.tiff); 
+        INTERFACES = (); 
+        OTHER_LINKED = (); 
+        OTHER_RESOURCES = (Aimless.rtf); 
+        OTHER_SOURCES = (
+            Makefile.preamble, 
+            Makefile, 
+            Makefile.postamble, 
+            m.template, 
+            h.template, 
+            CustomInfo.plist
+        ); 
+    }; 
+    LANGUAGE = English; 
+    LOCALIZABLE_FILES = {}; 
+    MAKEFILEDIR = "$(NEXT_ROOT)/NextDeveloper/Makefiles/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/NextDeveloper/bin/make; 
+    PROJECTNAME = Aimless; 
+    PROJECTTYPE = "Loadable Bundle"; 
+    PROJECTVERSION = 2.6; 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/NextDeveloper/Executables/make; 
+}

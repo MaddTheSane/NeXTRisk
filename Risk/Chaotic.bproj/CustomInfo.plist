@@ -1,0 +1,6 @@
+{
+	SuperClass = RiskPlayer;
+	PlayerTypeName = Chaotic;
+	AboutPlayerFile = Chaotic.rtf;
+	PlayerIcon = Chaotic.tiff;
+}

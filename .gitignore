@@ -1,0 +1,7 @@
+.DS_Store
+project.xcworkspace/
+xcuserdata/
+derived_src/
+*~
+*~.nib
+.dir.wmd

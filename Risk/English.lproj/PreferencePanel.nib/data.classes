@@ -1,0 +1,29 @@
+"LineView" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    SUPERCLASS = NSView;
+};
+"PreferenceController" = {
+    ACTIONS = {
+        "borderColorAction:" = id; 
+        "borderWidthAction:" = id; 
+        "revertAction:" = id; 
+        "setAction:" = id; 
+        "statusCardSetsAction:" = id; 
+    };
+    OUTLETS = {
+        borderWidthLineView = id; 
+        borderWidthSlider = id; 
+        borderWidthTextField = id; 
+        preferencePanel = id; 
+        regularBorderWell = id; 
+        selectedBorderWell = id; 
+        showCardSetsButton = id; 
+    };
+    SUPERCLASS = NSObject;
+};
+"FirstResponder" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    CATEGORY = LocalActions;
+};

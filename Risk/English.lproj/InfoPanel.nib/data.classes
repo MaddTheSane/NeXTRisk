@@ -1,0 +1,16 @@
+"Brain" = {
+    ACTIONS = {"info:" = id; "newGame:" = id; };
+    OUTLETS = {
+        diceInspectorPanel = id; 
+        gameManager = id; 
+        infoPanel = id; 
+        newGamePanel = id; 
+        versionTextField = id; 
+    };
+    SUPERCLASS = NSObject;
+};
+"FirstResponder" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    CATEGORY = LocalActions;
+};

@@ -1,0 +1,15 @@
+"RiskPlayer" = {
+    ACTIONS = {"continueAction:" = id; "pauseCheckAction:" = id; "showConsolePanel:" = id; };
+    OUTLETS = {
+        consoleMessageText = id; 
+        consoleWindow = id; 
+        continueButton = id; 
+        pauseForContinueButton = id; 
+    };
+    SUPERCLASS = NSObject;
+};
+"FirstResponder" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    CATEGORY = LocalActions;
+};

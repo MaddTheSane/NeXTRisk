@@ -1,0 +1,102 @@
+{\rtf0\ansi{\fonttbl\f0\froman Times-Roman;}
+\paperw13040\paperh12940
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\qc
+
+\f0\fs72 \cf0 Risk
+\fs48 \
+General Help\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520
+
+\fs24 \cf0 \
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360
+\cf0 Risk is an implementation of the board game of the same name.  The original idea for the interface was taken from the Macintosh version, but it has evolved considerably (I hope to its benefit).\
+This section of the Help will tell how the game of Risk is played.  Other sections cover the details of user interface, how to play Risk on a NeXT, and how to write your own computer opponents to use with Risk.\
+\
+
+\fs36 The Rules\
+
+\fs24 \
+Risk is played on a map of the world which is divided into countries.  2 to 6 players can play.  Play begins by choosing countries.  This can be done randomly or by each player taking a country in turns until they are all occupied.  During play all countries must be occupied.  A country is occupied by a player when it contains at least one of the player's armies.\
+At the beginning of the game, each player receives a number of initial armies to place.  While the countries are being chosen, one army is put into each country by the player who occupies it.  After the countries are all occupied, each player gets a chance to place their remaining armies in the countries they occupy.\
+Once the countries are all occupied, and all of the initial armies are placed, the game can begin.  Players take turns placing armies, attacking other countries, and fortifying their positions.  Each turn consists of three phases.\
+\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+
+\i\b \cf0 Phase 1 - Placing armies
+\i0\b0 :  At the beginning of each turn the player receives a number of armies.  The number is equal to the number of countries the player occupies divided by three (always rounding down).  However, the player always gets a minimum of three armies.  In addition to the armies the player gets for his occupied countries, extra armies are awarded if the player controls whole continents as shown below.\
+\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360
+\cf0 	
+\i Continents:	Extra Armies
+\i0 \
+	North America	5\
+	South America	2\
+	Africa		3\
+	Asia		7\
+	Europe		5\
+	Australia		2\
+\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720
+\cf0 Cards can be used to get extra armies as well during this phase.  See below for card rules.  The player begins each turn by placing these armies in their countries.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 \
+
+\i\b Phase 2 - Attacking
+\i0\b0 :  After placing armies the player may attack from one of their countries to a neighboring opponent's country.  To attack from a country, the player must have at least two armies in the country.   The player may attack from as many countries as they wish.  One at a time.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li900
+
+\i \cf0 The following info is not necessary for playing Risk on the Next
+\i0 :  If the attacker has two armies in the country he must roll one die, if the attacker has three armies in the country he may roll two dice, and if the attacker has more than four armies in the country, he may roll up to three dice.  The number of dice rolled indicates the minimum number of armies that must be advanced into the defending country if the attack is successful.  The defender can roll two dice if the defending country has two or more armies, and one otherwise.  The minimum of the number of dice the attacker rolls and the number of dice the defender rolls is the number of dice which are actually used.  For example if the attacker rolls three dice and the defender only one, then the attacker would choose his highest die to match with the defender's die.  Ties go to the defender and one army is lost for each set of dice being compared.  For example if the attacker rolls a 6, 3, 2 and the defender rolls a 6, 2 then two comparisons are made (since they both rolled at least two dice) and the attacker uses his 6 and his 3.  The defender's 6 beats the attacker's 6 since ties go to the defender and the attacker loses an army.  The attacker's 3 beats the defender's 2 so the defender loses an army too.  In this implementation, you always roll the maximum number of dice for your situation, and it is all automatic.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 \
+
+\i\b Phase 3 - Fortifying
+\i0\b0 :  When the player has finished all of their attacks for the turn, they can fortify their position.  There are several rules for fortifying which can be chosen at the beginning of the game.\
+	\
+	
+\i Fortification rules
+\i0 :\
+	From one country to one neighboring country\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li1800
+\cf0 This rule allows the player to move as many armies as they wish from one (and only one) of their countries to one (and only one) neighboring country which they occupy.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 	From one country to many neighboring countries\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li1800
+\cf0 This rule allows the player to move armies from one (and only one) country into as many neighboring countries as they wish.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 	From many countries to many neighboring countries\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li1800
+\cf0 This rule allows the player to move armies from as many countries as they wish to as many neighboring countries as they wish\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 	From many countries to many connected countries\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li1800
+\cf0 This rule allows the player to move armies from as many countries as they wish into as many other countries as they wish anywhere on the map providing the player occupies a connected path from the source country to the destination country.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720
+\cf0 \
+No matter which rule you use, at least one army must be left in each country, and you may only move each individual army on the board once per turn.  When the player is done fortifying, the turn is over and the next player plays.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+\cf0 \
+
+\i\b Cards
+\i0\b0 : After each turn in which a player conquers at least one country, the player gets a card.  There is one card for each country, and each card has a symbol on it: a soldier, a horse, or a cannon.  At the beginning of each turn, the player has the option of turning in sets of cards for extra armies.  A set of cards is three cards which have either one of each symbol, or three of the same symbol.  There are three options for the worth of card sets.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li1140
+\cf0 \
+
+\i Card set rules
+\i0 :\
+4, 5, 5, 5, 5, 5....:  The first set turned in is worth 4, and all the rest are worth 5\
+4, 5, 6, 7, 8, 9....:  The first set is worth 4, and each set after is worth one more than the previous\
+4, 6, 8, 10, 12, 15....:  Once the 6th set is reached (worth 15), each set after is worth 5 more than the previous.\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720
+\cf0 \
+Additionally, for each card in the set which corresponds with a country the player occupies, the player receives 2 extra armies in that country.  (This does not comply strictly to original Risk rules)\
+\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\li720\fi-360
+
+\i\b \cf0 Losing
+\i0\b0 :  A player is out of the game when they no longer occupy any countries.  The opponent who conquered the player's last country gets all the player's unused cards.\
+\
+
+\i\b Winning
+\i0\b0 :  A player wins when he occupies all the countries on the map.\
+}

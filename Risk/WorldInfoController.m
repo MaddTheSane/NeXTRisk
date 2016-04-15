@@ -1,0 +1,310 @@
+//
+// This file is a part of Risk by Mike Ferris.
+//
+
+#import "Risk.h"
+
+RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
+
+#import "WorldInfoController.h"
+
+#import "RiskWorld.h"
+#import "Continent.h"
+#import "Country.h"
+
+//======================================================================
+// The World Info report shows the name of the world, and the name,
+// number of countries, and bonus value for each continent.
+//
+// Double click on the column titles to sort by that column.
+//======================================================================
+
+int WIOrderContinentsByName (id object1, id object2, void *context)
+{
+    Continent *continent1, *continent2;
+    NSComparisonResult result;
+
+    continent1 = (Continent *)object1;
+    continent2 = (Continent *)object2;
+
+    result = [[continent1 continentName] compare:[continent2 continentName]];
+
+    return result;
+}
+
+//----------------------------------------------------------------------
+
+int WIOrderContinentsByCountryCount (id object1, id object2, void *context)
+{
+    Continent *continent1, *continent2;
+    NSComparisonResult result;
+    int count1, count2;
+
+    continent1 = (Continent *)object1;
+    continent2 = (Continent *)object2;
+
+    count1 = [[continent1 countries] count];
+    count2 = [[continent2 countries] count];
+
+    if (count1 < count2)
+    {
+        result = NSOrderedAscending;
+    }
+    else if (count1 == count2)
+    {
+        result = NSOrderedSame;
+    }
+    else
+    {
+        result = NSOrderedDescending;
+    }
+
+    return result;
+}
+
+//----------------------------------------------------------------------
+
+int WIOrderContinentsByBonusValue (id object1, id object2, void *context)
+{
+    Continent *continent1, *continent2;
+    NSComparisonResult result;
+    int count1, count2;
+
+    continent1 = (Continent *)object1;
+    continent2 = (Continent *)object2;
+
+    count1 = [continent1 continentBonus];
+    count2 = [continent2 continentBonus];
+
+    if (count1 < count2)
+    {
+        result = NSOrderedAscending;
+    }
+    else if (count1 == count2)
+    {
+        result = NSOrderedSame;
+    }
+    else
+    {
+        result = NSOrderedDescending;
+    }
+
+    return result;
+}
+
+#define WorldInfoController_VERSION 1
+
+@implementation WorldInfoController
+
++ (void) initialize
+{
+    if (self == [WorldInfoController class])
+    {
+        [self setVersion:WorldInfoController_VERSION];
+    }
+}
+
+//----------------------------------------------------------------------
+
+- (void) awakeFromNib
+{
+    NSString *imagePath;
+    NSImage *image;
+
+    imagePath = [[NSBundle mainBundle] pathForImageResource:@"MiniWorldInfo.tiff"];
+    NSAssert (imagePath != nil, @"Couldn't find MiniWorldInfo.tiff");
+
+    image = [[[NSImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    NSAssert (image != nil, @"Couldn't load MiniWorldInfo.tiff");
+
+    [worldInfoWindow setMiniwindowImage:image];
+}
+
+//----------------------------------------------------------------------
+
+- init
+{
+    BOOL loaded, okay;
+    NSString *nibFile;
+
+    if ([super init] == nil)
+        return nil;
+
+    nibFile = @"WorldInfoPanel.nib";
+    loaded = [NSBundle loadNibNamed:nibFile owner:self];
+    if (loaded == NO)
+    {
+        NSLog (@"Could not load %@.", nibFile);
+        [super dealloc];
+        return nil;
+    }
+
+    [continentTable setDoubleAction:@selector (reorder:)];
+    [continentTable setTarget:self];
+
+    continents = nil;
+    //world = nil;
+
+    okay = [worldInfoWindow setFrameAutosaveName:[worldInfoWindow title]];
+    if (okay == NO)
+        NSLog (@"Could not set frame autosave name of World Info window.");
+
+    return self;
+}
+
+//----------------------------------------------------------------------
+
+- (void) dealloc
+{
+    SNRelease (continents);
+    //SNRelease (world);
+
+    [super dealloc];
+}
+
+//----------------------------------------------------------------------
+#if 0
+- (RiskWorld *) world
+{
+    return world;
+}
+#endif
+//----------------------------------------------------------------------
+
+- (void) setWorld:(RiskWorld *)newWorld
+{
+    SNRelease (continents);
+    if (newWorld != nil)
+    {
+        continents = [[[[newWorld continents] allValues] sortedArrayUsingFunction:WIOrderContinentsByName context:NULL] retain];
+    }
+#if 0
+    SNRelease (world);
+
+    world = [newWorld retain];
+#endif
+    [continentTable reloadData];
+}
+
+//----------------------------------------------------------------------
+
+- (void) showPanel
+{
+    [worldInfoWindow orderFront:self];
+}
+
+//----------------------------------------------------------------------
+
+- (void) orderByName
+{
+    NSArray *newOrder;
+
+    if (continents != nil)
+    {
+        newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByName context:NULL];
+        SNRelease (continents);
+        continents = [newOrder retain];
+        [continentTable reloadData];
+    }
+}
+
+//----------------------------------------------------------------------
+
+- (void) orderByCountryCount
+{
+    NSArray *newOrder;
+
+    if (continents != nil)
+    {
+        newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByCountryCount context:NULL];
+        SNRelease (continents);
+        continents = [newOrder retain];
+        [continentTable reloadData];
+    }
+}
+
+//----------------------------------------------------------------------
+
+- (void) orderByBonusValue
+{
+    NSArray *newOrder;
+
+    if (continents != nil)
+    {
+        newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByBonusValue context:NULL];
+        SNRelease (continents);
+        continents = [newOrder retain];
+        [continentTable reloadData];
+    }
+}
+
+//----------------------------------------------------------------------
+
+- (void) reorder:sender
+{
+    NSString *identifier;
+
+    identifier = [[[continentTable tableColumns] objectAtIndex:[continentTable clickedColumn]] identifier];
+
+    if ([identifier isEqualToString:@"ContinentName"])
+    {
+        [self orderByName];
+    }
+    else if ([identifier isEqualToString:@"CountryCount"])
+    {
+        [self orderByCountryCount];
+    }
+    else if ([identifier isEqualToString:@"BonusValue"])
+    {
+        [self orderByBonusValue];
+    }
+}
+
+//======================================================================
+// NSTableView data source
+//======================================================================
+
+- (int) numberOfRowsInTableView:(NSTableView *)aTableView
+{
+    int count;
+
+    count = 0;
+
+    if (continents != nil)
+        count = [continents count];
+
+    return count;
+}
+
+//----------------------------------------------------------------------
+
+- tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+{
+    NSString *identifier;
+    Continent *target;
+    id value;
+
+    //NSParameterAssert (rowIndex >= 0 && rowIndex < [mes count]);
+
+    value = nil;
+
+    target = [continents objectAtIndex:rowIndex];
+    identifier = [aTableColumn identifier];
+
+    if ([identifier isEqualToString:@"ContinentName"])
+    {
+        value = [target continentName];
+    }
+    else if ([identifier isEqualToString:@"CountryCount"])
+    {
+        value = [NSNumber numberWithInt:[[target countries] count]];
+    }
+    else if ([identifier isEqualToString:@"BonusValue"])
+    {
+        value = [NSNumber numberWithInt:[target continentBonus]];
+    }
+
+    return value;
+}
+
+@end

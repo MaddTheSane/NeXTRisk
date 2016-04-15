@@ -1,0 +1,70 @@
+{
+    APPCLASS = NSApplication; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        CLASSES = (
+            Country.m, 
+            CountryShape.m, 
+            RiskUtility.m, 
+            CountryShapeGenerator.m, 
+            RiskPoint.m, 
+            BoardSetup.m, 
+            SNUserPath.m, 
+            SNUserPathOperation.m, 
+            RiskMapView.m, 
+            RiskNeighbor.m, 
+            RiskNeighborView.m, 
+            RiskWorld.m, 
+            NSObjectExtensions.m, 
+            Continent.m, 
+            RiskCard.m, 
+            Risk.m
+        ); 
+        FRAMEWORKS = (AppKit.framework, Foundation.framework); 
+        H_FILES = (
+            Country.h, 
+            CountryShape.h, 
+            RiskUtility.h, 
+            CountryShapeGenerator.h, 
+            RiskPoint.h, 
+            Risk.h, 
+            SNUtility.h, 
+            BoardSetup.h, 
+            SNUserPath.h, 
+            SNUserPathOperation.h, 
+            RiskMapView.h, 
+            RiskNeighbor.h, 
+            RiskNeighborView.h, 
+            RiskWorld.h, 
+            NSObjectExtensions.h, 
+            Continent.h, 
+            RiskCard.h
+        ); 
+        IMAGES = (BoardBacking.tiff, CardBack.tiff); 
+        INTERFACES = (NEXTSTEP_RiskUtil.nib, WINDOWS_RiskUtil.nib); 
+        OTHER_LINKED = (RiskUtil_main.m, SNUserPathWraps.psw); 
+        OTHER_RESOURCES = (ContinentData.txt, CountryData.txt, CountryNeighbors.txt, CardData.txt); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, m.template, h.template); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (); 
+        PUBLIC_HEADERS = (); 
+        SUBPROJECTS = (CardImages.subproj); 
+    }; 
+    LANGUAGE = English; 
+    LOCALIZABLE_FILES = {
+        NEXTSTEP_RiskUtil.nib = NEXTSTEP_RiskUtil.nib; 
+        WINDOWS_RiskUtil.nib = WINDOWS_RiskUtil.nib; 
+    }; 
+    MAKEFILEDIR = "$(NEXT_ROOT)/NextDeveloper/Makefiles/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    NEXTSTEP_DOCUMENTEXTENSIONS = (); 
+    NEXTSTEP_INSTALLDIR = "$(HOME)/Apps"; 
+    NEXTSTEP_MAINNIB = NEXTSTEP_RiskUtil.nib; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/NextDeveloper/bin/make; 
+    PROJECTNAME = RiskUtil; 
+    PROJECTTYPE = Application; 
+    PROJECTVERSION = 2.6; 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/NextDeveloper/Executables/make; 
+    WINDOWS_INSTALLDIR = /MyApps; 
+    WINDOWS_MAINNIB = WINDOWS_RiskUtil.nib; 
+}

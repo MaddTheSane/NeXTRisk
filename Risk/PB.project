@@ -1,0 +1,153 @@
+{
+    APPCLASS = NSApplication; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        BUNDLES = (); 
+        CLASSES = (
+            ArmyView.m, 
+            BoardSetup.m, 
+            Brain.m, 
+            Continent.m, 
+            Country.m, 
+            CountryShape.m, 
+            GameConfiguration.m, 
+            Human.m, 
+            NewGameController.m, 
+            NSObjectExtensions.m, 
+            Risk.m, 
+            RiskGameManager.m, 
+            RiskMapView.m, 
+            RiskNeighbor.m, 
+            RiskPlayer.m, 
+            RiskPoint.m, 
+            RiskWorld.m, 
+            SNUserPath.m, 
+            SNUserPathOperation.m, 
+            RiskCard.m, 
+            StatusView.m, 
+            CardPanelController.m, 
+            SNRandom.m, 
+            ArmyPlacementValidator.m, 
+            CardSet.m, 
+            DiceInspector.m, 
+            WorldInfoController.m, 
+            PreferenceController.m, 
+            LineView.m
+        ); 
+        FRAMEWORKS = (AppKit.framework, Foundation.framework); 
+        H_FILES = (
+            ArmyView.h, 
+            BoardSetup.h, 
+            Brain.h, 
+            Continent.h, 
+            Country.h, 
+            CountryShape.h, 
+            GameConfiguration.h, 
+            Human.h, 
+            NewGameController.h, 
+            NSObjectExtensions.h, 
+            Risk.h, 
+            RiskGameManager.h, 
+            RiskMapView.h, 
+            RiskNeighbor.h, 
+            RiskPlayer.h, 
+            RiskPoint.h, 
+            RiskWorld.h, 
+            SNUserPath.h, 
+            SNUserPathOperation.h, 
+            SNUtility.h, 
+            RiskCard.h, 
+            StatusView.h, 
+            CardPanelController.h, 
+            SNRandom.h, 
+            ArmyPlacementValidator.h, 
+            CardSet.h, 
+            DiceInspector.h, 
+            WorldInfoController.h, 
+            Version.h, 
+            PreferenceController.h, 
+            LineView.h
+        ); 
+        IMAGES = (
+            10Soldiers.tiff, 
+            5Soldiers.tiff, 
+            AppIcon.tiff, 
+            AppIcon2.tiff, 
+            BoardBacking.tiff, 
+            CardBack.tiff, 
+            Computer.tiff, 
+            CPIcon.tiff, 
+            Die1.tiff, 
+            Die2.tiff, 
+            Die3.tiff, 
+            Die4.tiff, 
+            Die5.tiff, 
+            Die6.tiff, 
+            Human.tiff, 
+            LittleCardBack.tiff, 
+            LittleStar.tiff, 
+            MiniWorldInfo.tiff, 
+            Soldier.tiff
+        ); 
+        INTERFACES = (
+            NEXTSTEP_Risk.nib, 
+            WINDOWS_Risk.nib, 
+            NewGamePanel.nib, 
+            GameBoard.nib, 
+            InfoPanel.nib, 
+            CardPanel.nib, 
+            DiceInspector.nib, 
+            PlayerConsole.nib, 
+            WorldInfoPanel.nib, 
+            PreferencePanel.nib
+        ); 
+        LIBS = (); 
+        OTHER_LINKED = (Risk_main.m, SNUserPathWraps.psw); 
+        OTHER_RESOURCES = (Help, Human.rtf, NotPlaying.rtf, RiskWorld.data); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, m.template, h.template); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (
+            RiskPlayer.h, 
+            Country.h, 
+            RiskWorld.h, 
+            Risk.h, 
+            SNUtility.h, 
+            GameConfiguration.h, 
+            RiskGameManager.h, 
+            Human.h, 
+            SNRandom.h, 
+            Continent.h
+        ); 
+        PUBLIC_HEADERS = (); 
+        SUBPROJECTS = (Chaotic.bproj, Aimless.bproj, CardImages.subproj); 
+        TOOLS = (); 
+    }; 
+    LANGUAGE = English; 
+    LOCALIZABLE_FILES = {
+        CardPanel.nib = CardPanel.nib; 
+        DiceInspector.nib = DiceInspector.nib; 
+        GameBoard.nib = GameBoard.nib; 
+        InfoPanel.nib = InfoPanel.nib; 
+        NEXTSTEP_Risk.nib = NEXTSTEP_Risk.nib; 
+        NewGamePanel.nib = NewGamePanel.nib; 
+        PlayerConsole.nib = PlayerConsole.nib; 
+        PreferencePanel.nib = PreferencePanel.nib; 
+        WINDOWS_Risk.nib = WINDOWS_Risk.nib; 
+        WorldInfoPanel.nib = WorldInfoPanel.nib; 
+    }; 
+    MAKEFILEDIR = "$(NEXT_ROOT)/NextDeveloper/Makefiles/pb_makefiles"; 
+    NEXTSTEP_APPICON = AppIcon2.tiff; 
+    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    NEXTSTEP_DOCUMENTEXTENSIONS = ({Extension = riskplayer; Image = CPIcon.tiff; }); 
+    NEXTSTEP_HELPFILE = Help; 
+    NEXTSTEP_INSTALLDIR = "$(HOME)/Apps"; 
+    NEXTSTEP_MAINNIB = NEXTSTEP_Risk.nib; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/NextDeveloper/bin/make; 
+    PROJECTNAME = Risk; 
+    PROJECTTYPE = Application; 
+    PROJECTVERSION = 2.6; 
+    SYSTEMEXTENSIONS = (); 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/NextDeveloper/Executables/make; 
+    WINDOWS_INSTALLDIR = /MyApps; 
+    WINDOWS_MAINNIB = WINDOWS_Risk.nib; 
+}

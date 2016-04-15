@@ -1,0 +1,26 @@
+{
+    APPCLASS = Chaotic; 
+    BUNDLE_EXTENSION = riskplayer; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        CLASSES = (Chaotic.m); 
+        H_FILES = (Chaotic.h); 
+        IMAGES = (Chaotic.tiff); 
+        OTHER_RESOURCES = (Chaotic.rtf); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, CustomInfo.plist); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (Chaotic.h); 
+        PUBLIC_HEADERS = (); 
+        SUBPROJECTS = (); 
+    }; 
+    LANGUAGE = English; 
+    LOCALIZABLE_FILES = {}; 
+    MAKEFILEDIR = "$(NEXT_ROOT)/NextDeveloper/Makefiles/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(HOME)/Apps"; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/NextDeveloper/bin/make; 
+    PROJECTNAME = Chaotic; 
+    PROJECTTYPE = "Loadable Bundle"; 
+    PROJECTVERSION = 2.6; 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/NextDeveloper/Executables/make; 
+}

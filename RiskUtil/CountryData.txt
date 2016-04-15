@@ -1,0 +1,428 @@
+Country		"Argentina"
+Tag		argentina
+Continent	"South America"
+ArmyTFLoc	203 42
+Region		232.0 13.0,	224.0 12.0,	208.0 45.0,	203.0 79.0,
+		228.0 82.0,	229.0 69.0,	220.0 41.0,	232.0 13.0
+End
+
+Country		"Peru"
+Tag		peru
+Continent	"South America"
+ArmyTFLoc	189 92
+Region		228.0 82.0,	203.0 79.0,	198.0 106.0,	177.0 127.0,
+		176.0 135.0,	200.0 129.0,	219.0 108.0,	228.0 82.0
+End
+
+Country		"Venezuela"
+Tag		venezuela
+Continent	"South America"
+ArmyTFLoc	184 146
+Region		200.0 129.0,	176.0 135.0,	182.0 164.0,	190.0 166.0,
+		225.0 163.0,	243.0 152.0,	196.0 144.0,	200.0 129.0
+End
+
+Country		"Brazil"
+Tag		brazil
+Continent	"South America"
+ArmyTFLoc	229 107
+Region		229.0 69.0,	228.0 82.0,	219.0 108.0,	200.0 129.0,
+		196.0 144.0,	243.0 152.0,	275.0 128.0,	263.0 87.0,
+		229.0 69.0
+End
+
+
+
+
+
+
+
+
+
+
+
+Country		"Central America"
+Tag		centralAmerica
+Continent	"North America"
+ArmyTFLoc	136 186
+Region		190.0 166.0,	182.0 164.0,	137.0 195.0,	115.0 224.0,
+		114.0 206.0,	108.0 227.0,	139.0 224.0,	147.0 218.0,
+		150.0 203.0,	190.0 166.0
+End
+
+Country		"Western United States"
+Tag		westernUnitedStates
+Continent	"North America"
+ArmyTFLoc	111 237
+Region		139.0 224.0,	108.0 227.0,	89.0 247.0,	87.0 272.0,
+		93.0 267.0,	136.0 268.0,	156.0 268.0,	157.0 242.0,
+		139.0 224.0
+End
+
+Country		"Eastern United States"
+Tag		easternUnitedStates
+Continent	"North America"
+ArmyTFLoc	162 229
+Region		147.0 218.0,	139.0 224.0,	157.0 242.0,	156.0 268.0,
+		178.0 258.0,	194.0 245.0,	206.0 256.0,	222.0 265.0,
+		224.0 257.0,	199.0 235.0,	197.0 220.0,	201.0 202.0,
+		189.0 224.0,	147.0 218.0
+End
+
+Country		"Alberta"
+Tag		alberta
+Continent	"North America"
+ArmyTFLoc	99 280
+Region		136.0 268.0,	93.0 267.0,	87.0 272.0,	87.0 287.0,
+		82.0 300.0,	82.0 312.0,	136.0 310.0,	136.0 310.0
+End
+
+Country		"Northwest Territory"
+Tag		northwestTerritory
+Continent	"North America"
+ArmyTFLoc	99 321
+Region		136.0 310.0,	82.0 312.0,	80.0 354.0,	110.0 347.0,
+		126.0 355.0,	143.0 347.0,	143.0 310.0,	136.0 310.0
+Region		138.0 363.0,	117.0 363.0,	114.0 378.0,	136.0 377.0,
+		138.0 363.0
+Region		103.0 370.0,	92.0 370.0,	91.0 385.0,	103.0 385.0,
+		103.0 370.0
+End
+
+Country		"Ontario"
+Tag		ontario
+Continent	"North America"
+ArmyTFLoc	143 273
+Region		206.0 256.0,	194.0 245.0,	178.0 258.0,	156.0 268.0,
+		136.0 268.0,	136.0 310.0,	143.0 310.0,	156.0 310.0,
+		188.0 273.0,	195.0 256.0,	206.0 256.0
+End
+
+Country		"Alaska"
+Tag		alaska
+Continent	"North America"
+ArmyTFLoc	48 321
+Region		87.0 287.0,	73.0 292.0,	66.0 311.0,	40.0 309.0,
+		35.0 295.0,	25.0 291.0,	34.0 309.0,	41.0 352.0,
+		80.0 354.0,	82.0 312.0,	82.0 300.0,	87.0 287.0
+End
+
+Country		"Quebec"
+Tag		quebec
+Continent	"North America"
+ArmyTFLoc	204 278
+Region		224.0 257.0,	222.0 265.0,	206.0 256.0,	195.0 256.0,
+		188.0 273.0,	209.0 320.0,	225.0 320.0,	237.0 290.0,
+		247.0 289.0,	253.0 280.0,	231.0 271.0,	224.0 257.0
+Region		156.0 310.0,	143.0 310.0,	143.0 347.0,	154.0 354.0,
+		149.0 370.0,	157.0 371.0,	167.0 348.0,	177.0 355.0,
+		186.0 353.0,	185.0 339.0,	156.0 310.0
+Region		231.0 329.0,	202.0 328.0,	193.0 368.0,	173.0 370.0,
+		164.0 378.0,	202.0 381.0,	231.0 329.0
+End
+
+Country		"Greenland"
+Tag		greenland
+Continent	"North America"
+ArmyTFLoc	268 354
+Region		276.0 306.0,	260.0 331.0,	262.0 344.0,	252.0 351.0,
+		243.0 385.0,	328.0 385.0,	311.0 363.0,	306.0 341.0,
+		283.0 332.0,	276.0 306.0
+End
+
+
+
+
+
+
+
+
+
+
+
+Country		"Iceland"
+Tag		iceland
+Continent	"Europe"
+ArmyTFLoc	291 303
+Region		310.0 315.0,	296.0 316.0,	298.0 324.0,	307.0 325.0,
+		310.0 315.0
+End
+
+Country		"Great Britain"
+Tag		greatBritain
+Continent	"Europe"
+ArmyTFLoc	281 256
+Region		312.0 268.0,	301.0 266.0,	297.0 281.0,	300.0 297.0,
+		304.0 283.0,	312.0 268.0
+Region		290.0 266.0,	281.0 273.0,	286.0 280.0,	290.0 266.0
+End
+
+Country		"Western Europe"
+Tag		westernEurope
+Continent	"Europe"
+ArmyTFLoc	300 219
+Region		328.0 229.0,	314.0 216.0,	304.0 224.0,	301.0 238.0,
+		331.0 239.0,	324.0 259.0,	331.0 264.0,	340.0 246.0,
+		338.0 235.0,	328.0 229.0
+End
+
+Country		"Southern Europe"
+Tag		southernEurope
+Continent	"Europe"
+ArmyTFLoc	342 226
+Region		328.0 229.0,	338.0 235.0,	340.0 246.0,	363.0 255.0,
+		365.0 246.0,	372.0 242.0,	371.0 233.0,	359.0 228.0,
+		361.0 217.0,	344.0 231.0,	347.0 217.0,	342.0 211.0, 
+		344.0 220.0,	334.0 227.0,	328.0 229.0
+End
+
+Country		"Northern Europe"
+Tag		northernEurope
+Continent	"Europe"
+ArmyTFLoc	333 254
+Region		363.0 255.0,	340.0 246.0,	331.0 264.0,	337.0 282.0,	
+		341.0 271.0,	359.0 276.0,	363.0 255.0
+End
+
+Country		"Ukraine"
+Tag		ukraine
+Continent	"Europe"
+ArmyTFLoc	399 279
+Region		372.0 242.0,	365.0 246.0,	363.0 255.0,	359.0 276.0,
+		379.0 294.0,	374.0 303.0,	367.0 343.0,	374.0 356.0,
+		388.0 342.0,	385.0 333.0,	375.0 337.0,	385.0 316.0, 
+		393.0 321.0,	401.0 338.0,	452.0 349.0,	456.0 295.0,
+		454.0 267.0,	438.0 266.0,	433.0 236.0,	410.0 236.0,
+		401.0 250.0,	372.0 242.0
+End
+
+Country		"Scandanavia"
+Tag		scandanavia
+Continent	"Europe"
+ArmyTFLoc	331 315
+Region		374.0 303.0,	365.0 300.0,	358.0 316.0,	363.0 328.0,
+		356.0 335.0,	348.0 328.0,	353.0 292.0,	347.0 288.0,
+		340.0 302.0,	332.0 295.0,	326.0 311.0,	354.0 358.0, 
+		374.0 356.0,	367.0 343.0,	374.0 303.0
+End
+
+
+
+
+
+
+
+
+
+
+
+Country		"South Africa"
+Tag		southAfrica
+Continent	"Africa"
+ArmyTFLoc	349 63
+Region		367.0 48.0,	349.0 46.0,	345.0 94.0,	367.0 92.0,
+		382.0 94.0,	367.0 48.0
+End
+
+Country		"Congo"
+Tag		congo
+Continent	"Africa"
+ArmyTFLoc	341 98
+Region		367.0 92.0,	345.0 94.0,	336.0 117.0,	374.0 125.0,
+		367.0 92.0
+End
+
+Country		"North Africa"
+Tag		northAfrica
+Continent	"Africa"
+ArmyTFLoc	311 156
+Region		374.0 125.0,	336.0 117.0,	329.0 141.0,	295.0 145.0,
+		289.0 176.0,	316.0 206.0,	332.0 199.0,	356.0 173.0,
+		374.0 125.0
+End
+
+Country		"East Africa"
+Tag		eastAfrica
+Continent	"Africa"
+ArmyTFLoc	376 135
+Region		382.0 94.0,	367.0 92.0,	374.0 125.0,	356.0 173.0,
+		395.0 169.0,	415.0 143.0,	421.0 142.0,	420.0 131.0,
+		391.0 117.0,	382.0 94.0
+End
+
+Country		"Egypt"
+Tag		egypt
+Continent	"Africa"
+ArmyTFLoc	355 176
+Region		395.0 169.0,	356.0 173.0,	332.0 199.0,	380.0 200.0,
+		395.0 169.0
+End
+
+Country		"Madagascar"
+Tag		madagascar
+Continent	"Africa"
+ArmyTFLoc	396 65
+Region		392.0 57.0,	390.0 78.0,	404.0 97.0,	410.0 88.0,
+		392.0 57.0
+End
+
+
+
+
+
+
+
+
+
+
+
+Country		"Middle East"
+Tag		middleEast
+Continent	"Asia"
+ArmyTFLoc	396 193
+Region		451.0 186.0,	436.0 161.0,	418.0 154.0,	388.0 205.0,
+		397.0 216.0,	381.0 217.0,	380.0 230.0,	410.0 236.0,
+		433.0 236.0,	452.0 236.0,	456.0 204.0,	422.0 214.0,
+		426.0 196.0,	451.0 186.0
+End
+
+Country		"India"
+Tag		india
+Continent	"Asia"
+ArmyTFLoc	461 208
+Region		456.0 204.0,	452.0 236.0,	481.0 236.0,	515.0 195.0,
+		503.0 179.0,	498.0 163.0,	478.0 203.0,	456.0 204.0
+End
+
+Country		"Siam"
+Tag		siam
+Continent	"Asia"
+ArmyTFLoc	536 168
+Region		515.0 195.0,	537.0 202.0,	548.0 193.0,	539.0 189.0,
+		549.0 174.0,	550.0 165.0,	538.0 165.0,	528.0 177.0,
+		529.0 159.0,	540.0 150.0,	525.0 158.0,	523.0 185.0,
+		515.0 195.0
+End
+
+Country		"China"
+Tag		china
+Continent	"Asia"
+ArmyTFLoc	512 221
+Region		548.0 193.0,	537.0 202.0,	515.0 195.0,	481.0 236.0,
+		494.0 274.0,	501.0 277.0,	509.0 281.0,	539.0 248.0,
+		570.0 237.0,	567.0 222.0,	575.0 206.0,	548.0 193.0
+End
+
+Country		"Afghanistan"
+Tag		afghanistan
+Continent	"Asia"
+ArmyTFLoc	451 245
+Region		481.0 236.0,	452.0 236.0,	433.0 236.0,	438.0 266.0,
+		454.0 267.0,	456.0 295.0,	494.0 274.0,	481.0 236.0
+End
+
+Country		"Ural"
+Tag		ural
+Continent	"Asia"
+ArmyTFLoc	459 305
+Region		501.0 277.0,	494.0 274.0,	456.0 295.0,	452.0 349.0,
+		460.0 364.0,	455.0 374.0,	461.0 377.0,	466.0 366.0,
+		463.0 344.0,	471.0 357.0,	479.0 352.0,	501.0 277.0
+End
+
+Country		"Siberia"
+Tag		siberia
+Continent	"Asia"
+ArmyTFLoc	493 335
+Region		509.0 281.0,	501.0 277.0,	479.0 352.0,	476.0 371.0,
+		485.0 374.0,	487.0 358.0,	507.0 385.0,	542.0 385.0,
+		534.0 372.0,	547.0 373.0,	527.0 330.0,	511.0 309.0,
+		514.0 283.0,	509.0 281.0
+End
+
+Country		"Mongolia"
+Tag		mongolia
+Continent	"Asia"
+ArmyTFLoc	540 249
+Region		570.0 237.0,	539.0 248.0,	509.0 281.0,	514.0 283.0,
+		558.0 274.0,	583.0 253.0,	584.0 240.0,	592.0 225.0,
+		587.0 222.0,	578.0 239.0,	570.0 237.0
+End
+
+Country		"Irkutsk"
+Tag		irkutsk
+Continent	"Asia"
+ArmyTFLoc	529 292
+Region		583.0 253.0,	558.0 274.0,	514.0 283.0,	511.0 309.0,
+		527.0 330.0,	546.0 334.0,	568.0 311.0,	572.0 278.0,
+		588.0 263.0,	583.0 253.0
+End
+
+Country		"Yakutsk"
+Tag		yakutsk
+Continent	"Asia"
+ArmyTFLoc	569 329
+Region		568.0 311.0,	546.0 334.0,	527.0 330.0,	547.0 373.0,
+		579.0 371.0,	592.0 355.0,	634.0 354.0,	641.0 338.0,
+		636.0 321.0,	568.0 311.0
+End
+
+Country		"Kamchatka"
+Tag		kamchatka
+Continent	"Asia"
+ArmyTFLoc	645 317
+Region		584.0 240.0,	583.0 253.0,	588.0 263.0,	572.0 278.0,
+		568.0 311.0,	636.0 321.0,	641.0 338.0,	634.0 354.0,
+		633.0 365.0,	651.0 364.0,	667.0 351.0,	665.0 326.0,
+		644.0 308.0,	579.0 292.0,	594.0 271.0,	598.0 253.0,
+		584.0 240.0
+End
+
+Country		"Japan"
+Tag		japan
+Continent	"Asia"
+ArmyTFLoc	622 222
+Region		601.0 198.0,	603.0 211.0,	635.0 240.0,	634.0 258.0,
+		626.0 267.0,	633.0 278.0,	644.0 265.0,	640.0 226.0,
+		601.0 198.0
+End
+
+
+
+
+
+
+Country		"Western Australia"
+Tag		westernAustralia
+Continent	"Australia"
+ArmyTFLoc	574 41
+Region		631.0 20.0,	624.0 27.0,	566.0 31.0,	557.0 68.0,
+		592.0 90.0,	595.0 66.0,	630.0 48.0,	631.0 20.0
+End
+
+Country		"Eastern Australia"
+Tag		easternAustralia
+Continent	"Australia"
+ArmyTFLoc	634 49
+Region		631.0 20.0,	630.0 48.0,	595.0 66.0,	592.0 90.0,
+		613.0 92.0,	615.0 84.0,	639.0 77.0,	639.0 95.0,
+		670.0 61.0,	671.0 38.0,	644.0 12.0,	631.0 20.0
+End
+
+Country		"New Guinea"
+Tag		newGuinea
+Continent	"Australia"
+ArmyTFLoc	634 116
+Region		662.0 112.0,	631.0 113.0,	613.0 123.0,	667.0 118.0,
+		662.0 112.0
+End
+
+Country		"Indonesia"
+Tag		indonesia
+Continent	"Australia"
+ArmyTFLoc	565 124
+Region		600.0 130.0,	593.0 123.0,	578.0 134.0,	589.0 140.0,
+		600.0 130.0
+Region		586.0 110.0,	573.0 111.0,	551.0 140.0,	586.0 110.0
+Region		602.0 145.0,	592.0 162.0,	599.0 161.0,	602.0 145.0
+End

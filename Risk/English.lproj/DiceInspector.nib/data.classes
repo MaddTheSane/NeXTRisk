@@ -1,0 +1,27 @@
+"DiceInspector" = {
+    ACTIONS = {"continueAction:" = id; "pauseCheckAction:" = id; };
+    OUTLETS = {
+        attackerArmyCount = id; 
+        attackerCountryName = id; 
+        attackerDie1 = id; 
+        attackerDie2 = id; 
+        attackerDie3 = id; 
+        attackerRollingCount = id; 
+        attackerUsingDieCount = id; 
+        continueButton = id; 
+        defenderArmyCount = id; 
+        defenderCountryName = id; 
+        defenderDie1 = id; 
+        defenderDie2 = id; 
+        defenderRollingCount = id; 
+        defenderUsingDieCount = id; 
+        dicePanel = id; 
+        pauseCheckBox = id; 
+    };
+    SUPERCLASS = Object;
+};
+"FirstResponder" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    CATEGORY = LocalActions;
+};

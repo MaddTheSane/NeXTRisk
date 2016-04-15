@@ -1,0 +1,25 @@
+"RiskNeighborView" = {
+    ACTIONS = {};
+    OUTLETS = {datasource = id; };
+    SUPERCLASS = RiskMapView;
+};
+"RiskUtility" = {
+    ACTIONS = {"removeNeighbor:" = id; "saveWorld:" = id; "writeNeighborTextFile:" = id; };
+    OUTLETS = {
+        fromTextfield = id; 
+        neighborTableView = id; 
+        riskMapView = id; 
+        toTextfield = id; 
+    };
+    SUPERCLASS = NSObject;
+};
+"RiskMapView" = {
+    ACTIONS = {};
+    OUTLETS = {delegate = id; };
+    SUPERCLASS = NSView;
+};
+"FirstResponder" = {
+    ACTIONS = {};
+    OUTLETS = {};
+    CATEGORY = LocalActions;
+};

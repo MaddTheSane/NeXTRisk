@@ -1,0 +1,6 @@
+{
+	SuperClass = RiskPlayer;
+	PlayerTypeName = Aimless;
+	AboutPlayerFile = Aimless.rtf;
+	PlayerIcon = Aimless.tiff;
+}

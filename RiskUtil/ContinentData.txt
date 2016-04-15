@@ -1,0 +1,6 @@
+Continent "South America"	2
+Continent "North America"	5
+Continent "Europe"		5
+Continent "Africa"		3
+Continent "Asia"		7
+Continent "Australia"		2
