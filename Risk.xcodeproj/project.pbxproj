@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
-		55377F721CC15C2400A2C08E /* 5Soldiers.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EBD1CC15C2300A2C08E /* 5Soldiers.tiff */; };
-		55377F731CC15C2400A2C08E /* 10Soldiers.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EBE1CC15C2300A2C08E /* 10Soldiers.tiff */; };
-		55377F741CC15C2400A2C08E /* AppIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EBF1CC15C2300A2C08E /* AppIcon.tiff */; };
-		55377F751CC15C2400A2C08E /* AppIcon2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC01CC15C2300A2C08E /* AppIcon2.tiff */; };
 		55377F761CC15C2400A2C08E /* ArmyPlacementValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
 		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
@@ -64,17 +60,10 @@
 		55377FAD1CC15C2400A2C08E /* Yakutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */; };
 		55377FAE1CC15C2400A2C08E /* CardPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EFF1CC15C2300A2C08E /* CardPanelController.m */; };
 		55377FAF1CC15C2400A2C08E /* CardSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F011CC15C2300A2C08E /* CardSet.m */; };
-		55377FB01CC15C2400A2C08E /* Computer.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F021CC15C2300A2C08E /* Computer.tiff */; };
 		55377FB11CC15C2400A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		55377FB21CC15C2400A2C08E /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F061CC15C2300A2C08E /* Country.m */; };
 		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		55377FB51CC15C2400A2C08E /* DiceInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F0B1CC15C2300A2C08E /* DiceInspector.m */; };
-		55377FB61CC15C2400A2C08E /* Die1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F0C1CC15C2300A2C08E /* Die1.tiff */; };
-		55377FB71CC15C2400A2C08E /* Die2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F0D1CC15C2300A2C08E /* Die2.tiff */; };
-		55377FB81CC15C2400A2C08E /* Die3.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F0E1CC15C2300A2C08E /* Die3.tiff */; };
-		55377FB91CC15C2400A2C08E /* Die4.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F0F1CC15C2300A2C08E /* Die4.tiff */; };
-		55377FBA1CC15C2400A2C08E /* Die5.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F101CC15C2300A2C08E /* Die5.tiff */; };
-		55377FBB1CC15C2400A2C08E /* Die6.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F111CC15C2300A2C08E /* Die6.tiff */; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.nib */; };
 		55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.nib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.nib */; };
@@ -86,11 +75,7 @@
 		55377FCF1CC15C2400A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
 		55377FD61CC15C2400A2C08E /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F431CC15C2300A2C08E /* Human.m */; };
 		55377FD71CC15C2400A2C08E /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
-		55377FD81CC15C2400A2C08E /* Human.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F451CC15C2300A2C08E /* Human.tiff */; };
 		55377FD91CC15C2400A2C08E /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F471CC15C2300A2C08E /* LineView.m */; };
-		55377FDA1CC15C2400A2C08E /* LittleCardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F481CC15C2300A2C08E /* LittleCardBack.tiff */; };
-		55377FDB1CC15C2400A2C08E /* LittleStar.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F491CC15C2300A2C08E /* LittleStar.tiff */; };
-		55377FDC1CC15C2400A2C08E /* MiniWorldInfo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4A1CC15C2300A2C08E /* MiniWorldInfo.tiff */; };
 		55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4C1CC15C2300A2C08E /* NewGameController.m */; };
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
@@ -105,7 +90,6 @@
 		55377FE91CC15C2400A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		55377FEA1CC15C2400A2C08E /* RiskWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F631CC15C2400A2C08E /* RiskWorld.m */; };
 		55377FEB1CC15C2400A2C08E /* SNRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F651CC15C2400A2C08E /* SNRandom.m */; };
-		55377FEF1CC15C2400A2C08E /* Soldier.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377F6C1CC15C2400A2C08E /* Soldier.tiff */; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
 		55377FF11CC15C2400A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
@@ -191,10 +175,7 @@
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55377EB21CC15AC900A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55377EB71CC15AC900A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55377EBD1CC15C2300A2C08E /* 5Soldiers.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = 5Soldiers.tiff; sourceTree = "<group>"; };
-		55377EBE1CC15C2300A2C08E /* 10Soldiers.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = 10Soldiers.tiff; sourceTree = "<group>"; };
 		55377EBF1CC15C2300A2C08E /* AppIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AppIcon.tiff; sourceTree = "<group>"; };
-		55377EC01CC15C2300A2C08E /* AppIcon2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AppIcon2.tiff; sourceTree = "<group>"; };
 		55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyPlacementValidator.h; sourceTree = "<group>"; };
 		55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyPlacementValidator.m; sourceTree = "<group>"; };
 		55377EC31CC15C2300A2C08E /* ArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyView.h; sourceTree = "<group>"; };
@@ -253,7 +234,6 @@
 		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPanelController.m; sourceTree = "<group>"; };
 		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSet.h; sourceTree = "<group>"; };
 		55377F011CC15C2300A2C08E /* CardSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSet.m; sourceTree = "<group>"; };
-		55377F021CC15C2300A2C08E /* Computer.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Computer.tiff; sourceTree = "<group>"; };
 		55377F031CC15C2300A2C08E /* Continent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Continent.h; sourceTree = "<group>"; };
 		55377F041CC15C2300A2C08E /* Continent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Continent.m; sourceTree = "<group>"; };
 		55377F051CC15C2300A2C08E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
@@ -263,12 +243,6 @@
 		55377F091CC15C2300A2C08E /* CPIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CPIcon.tiff; sourceTree = "<group>"; };
 		55377F0A1CC15C2300A2C08E /* DiceInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiceInspector.h; sourceTree = "<group>"; };
 		55377F0B1CC15C2300A2C08E /* DiceInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiceInspector.m; sourceTree = "<group>"; };
-		55377F0C1CC15C2300A2C08E /* Die1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die1.tiff; sourceTree = "<group>"; };
-		55377F0D1CC15C2300A2C08E /* Die2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die2.tiff; sourceTree = "<group>"; };
-		55377F0E1CC15C2300A2C08E /* Die3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die3.tiff; sourceTree = "<group>"; };
-		55377F0F1CC15C2300A2C08E /* Die4.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die4.tiff; sourceTree = "<group>"; };
-		55377F101CC15C2300A2C08E /* Die5.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die5.tiff; sourceTree = "<group>"; };
-		55377F111CC15C2300A2C08E /* Die6.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Die6.tiff; sourceTree = "<group>"; };
 		55377F141CC15C2300A2C08E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = CardPanel.nib; sourceTree = "<group>"; };
 		55377F181CC15C2300A2C08E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = DiceInspector.nib; sourceTree = "<group>"; };
 		55377F1C1CC15C2300A2C08E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = GameBoard.nib; sourceTree = "<group>"; };
@@ -282,12 +256,8 @@
 		55377F421CC15C2300A2C08E /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		55377F431CC15C2300A2C08E /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		55377F441CC15C2300A2C08E /* Human.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Human.rtf; sourceTree = "<group>"; };
-		55377F451CC15C2300A2C08E /* Human.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Human.tiff; sourceTree = "<group>"; };
 		55377F461CC15C2300A2C08E /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
 		55377F471CC15C2300A2C08E /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
-		55377F481CC15C2300A2C08E /* LittleCardBack.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = LittleCardBack.tiff; sourceTree = "<group>"; };
-		55377F491CC15C2300A2C08E /* LittleStar.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = LittleStar.tiff; sourceTree = "<group>"; };
-		55377F4A1CC15C2300A2C08E /* MiniWorldInfo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MiniWorldInfo.tiff; sourceTree = "<group>"; };
 		55377F4B1CC15C2300A2C08E /* NewGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameController.h; sourceTree = "<group>"; };
 		55377F4C1CC15C2300A2C08E /* NewGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameController.m; sourceTree = "<group>"; };
 		55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = NotPlaying.rtf; sourceTree = "<group>"; };
@@ -314,7 +284,6 @@
 		55377F641CC15C2400A2C08E /* SNRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRandom.h; sourceTree = "<group>"; };
 		55377F651CC15C2400A2C08E /* SNRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRandom.m; sourceTree = "<group>"; };
 		55377F6B1CC15C2400A2C08E /* SNUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUtility.h; sourceTree = "<group>"; };
-		55377F6C1CC15C2400A2C08E /* Soldier.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Soldier.tiff; sourceTree = "<group>"; };
 		55377F6D1CC15C2400A2C08E /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		55377F6E1CC15C2400A2C08E /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		55377F6F1CC15C2400A2C08E /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
@@ -531,33 +500,18 @@
 		55377FF21CC15D8500A2C08E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5537809B1CC1897500A2C08E /* Cards.xcassets */,
+				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
 				55377ECB1CC15C2300A2C08E /* Card Images */,
+				5537809B1CC1897500A2C08E /* Cards.xcassets */,
+				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
+				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
 				55377ECA1CC15C2300A2C08E /* CardBack.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
-				55377EBD1CC15C2300A2C08E /* 5Soldiers.tiff */,
-				55377EBE1CC15C2300A2C08E /* 10Soldiers.tiff */,
-				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
-				55377EC01CC15C2300A2C08E /* AppIcon2.tiff */,
-				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
-				55377F021CC15C2300A2C08E /* Computer.tiff */,
-				55377F0C1CC15C2300A2C08E /* Die1.tiff */,
-				55377F0D1CC15C2300A2C08E /* Die2.tiff */,
-				55377F0E1CC15C2300A2C08E /* Die3.tiff */,
-				55377F0F1CC15C2300A2C08E /* Die4.tiff */,
-				55377F101CC15C2300A2C08E /* Die5.tiff */,
-				55377F111CC15C2300A2C08E /* Die6.tiff */,
-				55377F611CC15C2400A2C08E /* RiskWorld.data */,
-				55377F6C1CC15C2400A2C08E /* Soldier.tiff */,
-				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
-				55377F451CC15C2300A2C08E /* Human.tiff */,
-				55377F481CC15C2300A2C08E /* LittleCardBack.tiff */,
-				55377F491CC15C2300A2C08E /* LittleStar.tiff */,
-				55377F4A1CC15C2300A2C08E /* MiniWorldInfo.tiff */,
-				55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */,
 				55377FF31CC15DD700A2C08E /* Help */,
 				55377F441CC15C2300A2C08E /* Human.rtf */,
 				55377EB71CC15AC900A2C08E /* Info.plist */,
+				55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */,
+				55377F611CC15C2400A2C08E /* RiskWorld.data */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -762,18 +716,13 @@
 				55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */,
 				55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */,
 				55377F921CC15C2400A2C08E /* Kamchatka.tiff in Resources */,
-				55377FBA1CC15C2400A2C08E /* Die5.tiff in Resources */,
 				55377FD71CC15C2400A2C08E /* Human.rtf in Resources */,
 				55377FA41CC15C2400A2C08E /* Siberia.tiff in Resources */,
 				55377F8D1CC15C2400A2C08E /* Indonesia.tiff in Resources */,
 				55377F851CC15C2400A2C08E /* EasternAustralia.tiff in Resources */,
-				55377FB61CC15C2400A2C08E /* Die1.tiff in Resources */,
 				55377FA61CC15C2400A2C08E /* SouthernEurope.tiff in Resources */,
 				55377F871CC15C2400A2C08E /* Egypt.tiff in Resources */,
 				55377F801CC15C2400A2C08E /* Brazil.tiff in Resources */,
-				55377FDB1CC15C2400A2C08E /* LittleStar.tiff in Resources */,
-				55377F741CC15C2400A2C08E /* AppIcon.tiff in Resources */,
-				55377FEF1CC15C2400A2C08E /* Soldier.tiff in Resources */,
 				55377FA21CC15C2400A2C08E /* Scandinavia.tiff in Resources */,
 				55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */,
 				55377FAD1CC15C2400A2C08E /* Yakutsk.tiff in Resources */,
@@ -790,25 +739,18 @@
 				55377FC61CC15C2400A2C08E /* Risk.nib in Resources */,
 				55377F7E1CC15C2400A2C08E /* Alberta.tiff in Resources */,
 				55377F8F1CC15C2400A2C08E /* Japan.tiff in Resources */,
-				55377F721CC15C2400A2C08E /* 5Soldiers.tiff in Resources */,
 				55377F8E1CC15C2400A2C08E /* Irkutsk.tiff in Resources */,
 				55377FA91CC15C2400A2C08E /* Venezuela.tiff in Resources */,
 				55377FAB1CC15C2400A2C08E /* WesternEurope.tiff in Resources */,
 				55377FC41CC15C2400A2C08E /* NewGamePanel.nib in Resources */,
-				55377FB71CC15C2400A2C08E /* Die2.tiff in Resources */,
 				55377F7D1CC15C2400A2C08E /* Alaska.tiff in Resources */,
 				55377FA11CC15C2400A2C08E /* Quebec.tiff in Resources */,
 				55377F9B1CC15C2400A2C08E /* NorthAfrica.tiff in Resources */,
 				55377F8C1CC15C2400A2C08E /* India.tiff in Resources */,
 				55377F9A1CC15C2400A2C08E /* NewGuinea.tiff in Resources */,
 				55377F841CC15C2400A2C08E /* EastAfrica.tiff in Resources */,
-				55377FBB1CC15C2400A2C08E /* Die6.tiff in Resources */,
-				55377F731CC15C2400A2C08E /* 10Soldiers.tiff in Resources */,
-				55377FB81CC15C2400A2C08E /* Die3.tiff in Resources */,
-				55377FB01CC15C2400A2C08E /* Computer.tiff in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
 				55377FC81CC15C2400A2C08E /* PlayerConsole.nib in Resources */,
-				55377FB91CC15C2400A2C08E /* Die4.tiff in Resources */,
 				55377FAA1CC15C2400A2C08E /* WesternAustralia.tiff in Resources */,
 				55377F821CC15C2400A2C08E /* China.tiff in Resources */,
 				55377F811CC15C2400A2C08E /* CentralAmerica.tiff in Resources */,
@@ -816,12 +758,10 @@
 				55377F881CC15C2400A2C08E /* GreatBritain.tiff in Resources */,
 				55377F991CC15C2400A2C08E /* Mongolia.tiff in Resources */,
 				55377FA31CC15C2400A2C08E /* Siam.tiff in Resources */,
-				55377F751CC15C2400A2C08E /* AppIcon2.tiff in Resources */,
 				55377F891CC15C2400A2C08E /* Greenland.tiff in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */,
 				55377F9D1CC15C2400A2C08E /* NorthwestTerritory.tiff in Resources */,
 				55377FAC1CC15C2400A2C08E /* WesternUS.tiff in Resources */,
-				55377FD81CC15C2400A2C08E /* Human.tiff in Resources */,
 				55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */,
 				55377F831CC15C2400A2C08E /* Congo.tiff in Resources */,
 				55377F911CC15C2400A2C08E /* Joker2.tiff in Resources */,
@@ -831,8 +771,6 @@
 				55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */,
 				55377FA01CC15C2400A2C08E /* Peru.tiff in Resources */,
 				55377F981CC15C2400A2C08E /* MiddleEast.tiff in Resources */,
-				55377FDC1CC15C2400A2C08E /* MiniWorldInfo.tiff in Resources */,
-				55377FDA1CC15C2400A2C08E /* LittleCardBack.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

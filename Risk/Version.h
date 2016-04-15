@@ -3,4 +3,4 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#define RISK_VERSION @"0.98"
+#define RISK_VERSION @"0.99"
