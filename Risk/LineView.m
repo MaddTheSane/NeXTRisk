@@ -2,9 +2,9 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+//#import "Risk.h"
 
-RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
+//RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
 
 #import "LineView.h"
 

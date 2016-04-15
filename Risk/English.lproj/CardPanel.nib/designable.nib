@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CardPanelController">
+            <connections>
+                <outlet property="amassedTextField" destination="23" id="69"/>
+                <outlet property="cancelButton" destination="50" id="70"/>
+                <outlet property="cardPanel" destination="37" id="68"/>
+                <outlet property="doneButton" destination="5" id="71"/>
+                <outlet property="forceTextField" destination="12" id="72"/>
+                <outlet property="handMatrix" destination="111" id="117"/>
+                <outlet property="handScrollView" destination="47" id="74"/>
+                <outlet property="handStarMatrix" destination="86" id="88"/>
+                <outlet property="setMatrix" destination="120" id="124"/>
+                <outlet property="setStarMatrix" destination="97" id="101"/>
+                <outlet property="turnInButton" destination="45" id="78"/>
+                <outlet property="worthTextField" destination="9" id="79"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Card Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="37" userLabel="CardPanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="132" y="176" width="676" height="604"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="24">
+                <rect key="frame" x="0.0" y="0.0" width="676" height="604"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="Set to turn in" borderType="bezel" id="32">
+                        <rect key="frame" x="11" y="9" width="399" height="302"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="aEv-KN-Hc9">
+                            <rect key="frame" x="3" y="3" width="393" height="275"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" id="45">
+                                    <rect key="frame" x="264" y="3" width="124" height="32"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Turn in this set" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="131">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="turnInSetAction:" target="-2" id="82"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="17">
+                                    <rect key="frame" x="5" y="12" width="106" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="This set is worth" id="132">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="26">
+                                    <rect key="frame" x="162" y="12" width="46" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="armies." id="133">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" id="97">
+                                    <rect key="frame" x="5" y="53" width="385" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="cellSize" width="125" height="16"/>
+                                    <size key="intercellSpacing" width="5" height="4"/>
+                                    <imageCell key="prototype" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="139"/>
+                                    <cells>
+                                        <column>
+                                            <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="99"/>
+                                        </column>
+                                        <column>
+                                            <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="98"/>
+                                        </column>
+                                        <column>
+                                            <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="100"/>
+                                        </column>
+                                    </cells>
+                                </matrix>
+                                <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" id="120">
+                                    <rect key="frame" x="5" y="73" width="383" height="194"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="cellSize" width="125" height="194"/>
+                                    <size key="intercellSpacing" width="4" height="4"/>
+                                    <buttonCell key="prototype" type="bevel" image="CardBack" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="140">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <cells>
+                                        <column>
+                                            <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="119">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                        </column>
+                                        <column>
+                                            <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="1" imageScaling="proportionallyDown" inset="2" id="121">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                        </column>
+                                        <column>
+                                            <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="2" imageScaling="proportionallyDown" inset="2" id="122">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                        </column>
+                                    </cells>
+                                    <connections>
+                                        <action selector="setAction:" target="-2" id="123"/>
+                                    </connections>
+                                </matrix>
+                                <textField verticalHuggingPriority="750" id="9">
+                                    <rect key="frame" x="117" y="9" width="39" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="center" title="0" id="134">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system" size="18"/>
+                    </box>
+                    <textField verticalHuggingPriority="750" id="13">
+                        <rect key="frame" x="234" y="573" width="194" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" alignment="center" title="Your Cards" id="129">
+                            <font key="font" metaFont="system" size="18"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="5">
+                        <rect key="frame" x="471" y="140" width="133" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="127">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="doneAction:" target="-2" id="125"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" tag="1" id="50">
+                        <rect key="frame" x="471" y="97" width="133" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Cancel all sets" bezelStyle="rounded" alignment="center" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="130">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="stopAction:" target="-2" id="81"/>
+                        </connections>
+                    </button>
+                    <box title="Total" id="44">
+                        <rect key="frame" x="446" y="235" width="185" height="59"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="6x6-n7-E9p">
+                            <rect key="frame" x="2" y="2" width="181" height="41"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="33">
+                                    <rect key="frame" x="8" y="18" width="116" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Armies amassed:" id="135">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="23">
+                                    <rect key="frame" x="130" y="14" width="43" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="center" title="0" id="136">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <textField verticalHuggingPriority="750" id="12">
+                        <rect key="frame" x="435" y="179" width="206" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" alignment="center" title="You must turn in cards" id="128">
+                            <font key="font" metaFont="system" size="18"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="47">
+                        <rect key="frame" x="12" y="316" width="654" height="253"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <clipView key="contentView" autoresizesSubviews="NO" id="351-e1-oAk">
+                            <rect key="frame" x="1" y="1" width="652" height="251"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view id="22">
+                                    <rect key="frame" x="0.0" y="0.0" width="650" height="230"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" id="86">
+                                            <rect key="frame" x="5" y="7" width="645" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="cellSize" width="125" height="16"/>
+                                            <size key="intercellSpacing" width="5" height="4"/>
+                                            <imageCell key="prototype" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="137"/>
+                                            <cells>
+                                                <column>
+                                                    <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="85"/>
+                                                </column>
+                                                <column>
+                                                    <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="87"/>
+                                                </column>
+                                                <column>
+                                                    <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="106"/>
+                                                </column>
+                                                <column>
+                                                    <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="107"/>
+                                                </column>
+                                                <column>
+                                                    <imageCell refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleStar" id="108"/>
+                                                </column>
+                                            </cells>
+                                        </matrix>
+                                        <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" id="111">
+                                            <rect key="frame" x="6" y="28" width="641" height="194"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="cellSize" width="125" height="194"/>
+                                            <size key="intercellSpacing" width="4" height="4"/>
+                                            <buttonCell key="prototype" type="bevel" image="CardBack" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="138">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                            <cells>
+                                                <column>
+                                                    <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="110">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Helvetica"/>
+                                                    </buttonCell>
+                                                </column>
+                                                <column>
+                                                    <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="1" imageScaling="proportionallyDown" inset="2" id="112">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Helvetica"/>
+                                                    </buttonCell>
+                                                </column>
+                                                <column>
+                                                    <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="2" imageScaling="proportionallyDown" inset="2" id="113">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Helvetica"/>
+                                                    </buttonCell>
+                                                </column>
+                                                <column>
+                                                    <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="3" imageScaling="proportionallyDown" inset="2" id="114">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Helvetica"/>
+                                                    </buttonCell>
+                                                </column>
+                                                <column>
+                                                    <buttonCell type="bevel" image="CardBack" imagePosition="only" alignment="center" tag="4" imageScaling="proportionallyDown" inset="2" id="115">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" size="12" name="Helvetica"/>
+                                                    </buttonCell>
+                                                </column>
+                                            </cells>
+                                            <connections>
+                                                <action selector="handAction:" target="-2" id="116"/>
+                                            </connections>
+                                        </matrix>
+                                    </subviews>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="141">
+                            <rect key="frame" x="1" y="236" width="652" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="142">
+                            <rect key="frame" x="-100" y="-100" width="18" height="249"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+        </window>
+    </objects>
+    <resources>
+        <image name="CardBack" width="125" height="194"/>
+        <image name="LittleStar" width="16" height="16"/>
+    </resources>
+</document>

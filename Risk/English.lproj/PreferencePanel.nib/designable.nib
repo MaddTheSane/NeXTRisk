@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
+            <connections>
+                <outlet property="borderWidthLineView" destination="9" id="25"/>
+                <outlet property="borderWidthSlider" destination="5" id="24"/>
+                <outlet property="borderWidthTextField" destination="10" id="23"/>
+                <outlet property="preferencePanel" destination="20" id="22"/>
+                <outlet property="regularBorderWell" destination="17" id="26"/>
+                <outlet property="selectedBorderWell" destination="15" id="27"/>
+                <outlet property="showCardSetsButton" destination="11" id="28"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="20" userLabel="prefPanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="273" y="548" width="321" height="212"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="19">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="212"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="Country Borders" id="16">
+                        <rect key="frame" x="7" y="100" width="307" height="110"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="mbm-lp-p3Y">
+                            <rect key="frame" x="2" y="2" width="303" height="92"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <slider verticalHuggingPriority="750" id="5">
+                                    <rect key="frame" x="110" y="71" width="117" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.5" maxValue="5" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="41">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </sliderCell>
+                                    <connections>
+                                        <action selector="borderWidthAction:" target="-2" id="31"/>
+                                    </connections>
+                                </slider>
+                                <textField verticalHuggingPriority="750" id="10">
+                                    <rect key="frame" x="71" y="69" width="35" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" alignment="center" title="2.0" drawsBackground="YES" id="42">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="borderWidthAction:" target="-2" id="32"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="7">
+                                    <rect key="frame" x="5" y="72" width="64" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Line Width" id="43">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <customView id="9" customClass="LineView">
+                                    <rect key="frame" x="231" y="69" width="43" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </customView>
+                                <colorWell id="17">
+                                    <rect key="frame" x="54" y="5" width="53" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="borderColorAction:" target="-2" id="33"/>
+                                    </connections>
+                                </colorWell>
+                                <textField verticalHuggingPriority="750" id="21">
+                                    <rect key="frame" x="18" y="42" width="126" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" title="Regular Border Color" id="44">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <colorWell id="15">
+                                    <rect key="frame" x="194" y="5" width="53" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="borderColorAction:" target="-2" id="34"/>
+                                    </connections>
+                                </colorWell>
+                                <textField verticalHuggingPriority="750" id="14">
+                                    <rect key="frame" x="155" y="42" width="132" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" title="Selected Border Color" id="45">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica-Bold"/>
+                    </box>
+                    <button verticalHuggingPriority="750" id="18">
+                        <rect key="frame" x="122" y="6" width="92" height="27"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Revert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="39">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="revertAction:" target="-2" id="29"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="6">
+                        <rect key="frame" x="222" y="6" width="92" height="27"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Set" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="38">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setAction:" target="-2" id="30"/>
+                        </connections>
+                    </button>
+                    <box title="Status View" id="12">
+                        <rect key="frame" x="7" y="40" width="307" height="57"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="V8R-3m-acC">
+                            <rect key="frame" x="2" y="2" width="303" height="39"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button id="11">
+                                    <rect key="frame" x="43" y="16" width="207" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="check" title="Status view shows card set status" imagePosition="right" alignment="right" imageScaling="proportionallyDown" inset="2" id="40">
+                                        <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="statusCardSetsAction:" target="-2" id="35"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica-Bold"/>
+                    </box>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="initialFirstResponder" destination="6" id="36"/>
+            </connections>
+        </window>
+    </objects>
+</document>

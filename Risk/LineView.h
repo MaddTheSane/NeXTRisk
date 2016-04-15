@@ -5,10 +5,12 @@
 
 #import <AppKit/AppKit.h>
 
+IB_DESIGNABLE
 @interface LineView : NSView
 {
     CGFloat lineWidth;
 }
+IBInspectable
 @property (nonatomic) CGFloat lineWidth;
 
 - (void) drawRect:(NSRect)rect;

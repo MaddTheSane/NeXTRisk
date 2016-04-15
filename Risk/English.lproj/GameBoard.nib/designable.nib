@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="RiskGameManager">
+            <connections>
+                <outlet property="armiesLeftToPlaceTextField" destination="41" id="125"/>
+                <outlet property="armyView" destination="33" id="124"/>
+                <outlet property="attackMethodPopup" destination="56" id="127"/>
+                <outlet property="attackingFromTextField" destination="69" id="126"/>
+                <outlet property="controlPanel" destination="13" id="141"/>
+                <outlet property="countryNameTextField" destination="9" id="142"/>
+                <outlet property="infoTextField" destination="18" id="143"/>
+                <outlet property="initialArmiesLeftTextField" destination="55" id="140"/>
+                <outlet property="mapView" destination="10" id="144"/>
+                <outlet property="mapWindow" destination="7" id="145"/>
+                <outlet property="methodCountSlider" destination="46" id="139"/>
+                <outlet property="methodCountTextField" destination="63" id="138"/>
+                <outlet property="nameTextField" destination="22" id="137"/>
+                <outlet property="phaseAttack" destination="32" id="136"/>
+                <outlet property="phaseChooseCountries" destination="44" id="135"/>
+                <outlet property="phaseComputerMove" destination="40" id="134"/>
+                <outlet property="phaseFortify" destination="54" id="133"/>
+                <outlet property="phasePlaceArmies" destination="52" id="132"/>
+                <outlet property="phaseTextField" destination="16" id="131"/>
+                <outlet property="playerColorWell" destination="19" id="130"/>
+                <outlet property="statusView" destination="21" id="129"/>
+                <outlet property="turnInCardsButton" destination="39" id="128"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Risk" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="7" userLabel="Map Window">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="120" y="454" width="700" height="385"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="8">
+                <rect key="frame" x="0.0" y="0.0" width="700" height="385"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView id="10" customClass="RiskMapView">
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="385"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="122"/>
+                        </connections>
+                    </customView>
+                    <textField verticalHuggingPriority="750" id="9">
+                        <rect key="frame" x="36" y="20" width="135" height="21"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" selectable="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="147">
+                            <font key="font" size="12" name="Helvetica"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="121"/>
+                <outlet property="initialFirstResponder" destination="10" id="11"/>
+            </connections>
+        </window>
+        <window title="Control" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="13" userLabel="controlPanel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="120" y="198" width="699" height="209"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="17">
+                <rect key="frame" x="0.0" y="0.0" width="699" height="209"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="Turn Phase" id="12">
+                        <rect key="frame" x="104" y="8" width="173" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="pJ6-Ll-adY">
+                            <rect key="frame" x="2" y="2" width="169" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="16">
+                                    <rect key="frame" x="5" y="93" width="159" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" id="148">
+                                        <font key="font" size="18" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="18">
+                                    <rect key="frame" x="5" y="6" width="159" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" id="149">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="22">
+                                    <rect key="frame" x="6" y="148" width="123" height="29"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" id="150">
+                                        <font key="font" size="24" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <colorWell enabled="NO" id="19">
+                                    <rect key="frame" x="129" y="146" width="35" height="34"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </colorWell>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <box title="Game Status" id="20">
+                        <rect key="frame" x="4" y="8" width="97" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="lDw-zV-PfW">
+                            <rect key="frame" x="2" y="2" width="93" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView id="21" customClass="StatusView">
+                                    <rect key="frame" x="16" y="5" width="61" height="175"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <connections>
+                                        <outlet property="gameManager" destination="-2" id="123"/>
+                                    </connections>
+                                </customView>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                </subviews>
+            </view>
+        </window>
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="61" userLabel="controlViewCache" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="126" y="178" width="850" height="642"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="60">
+                <rect key="frame" x="0.0" y="0.0" width="850" height="642"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <box title="Phase Controls - Computer's Move" id="40">
+                        <rect key="frame" x="9" y="440" width="414" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="vLn-Ma-EDZ">
+                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="64">
+                                    <rect key="frame" x="5" y="42" width="400" height="112"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" id="161">
+                                        <font key="font" size="48" name="Helvetica"/>
+                                        <string key="title">Computer's Move
+Stand By</string>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <box title="Phase Controls - Place Armies" id="52">
+                        <rect key="frame" x="10" y="231" width="414" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="nbA-Za-v2U">
+                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" id="39">
+                                    <rect key="frame" x="5" y="136" width="96" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Turn in Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="163">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="turnInCards:" target="-2" id="120"/>
+                                    </connections>
+                                </button>
+                                <customView id="33" customClass="ArmyView">
+                                    <rect key="frame" x="5" y="65" width="400" height="56"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </customView>
+                                <textField verticalHuggingPriority="750" id="41">
+                                    <rect key="frame" x="349" y="126" width="56" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="center" title="10" id="164">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="29">
+                                    <rect key="frame" x="230" y="129" width="119" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Armies left to place:" id="165">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="43">
+                                    <rect key="frame" x="5" y="5" width="400" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Click in a country to place an army there. Shift-click to place five armies. Command-click to place all remaining armies." id="166">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" id="27">
+                                    <rect key="frame" x="109" y="136" width="96" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="167">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="reviewCards:" target="-2" id="119"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="47">
+                                    <rect key="frame" x="230" y="155" width="119" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Inital armies left:" id="168">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="55">
+                                    <rect key="frame" x="349" y="152" width="56" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" state="on" borderStyle="bezel" alignment="center" title="--" id="169">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <box title="Phase Controls - Fortify Position" id="54">
+                        <rect key="frame" x="429" y="232" width="414" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="Ptk-EJ-AHT">
+                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="62">
+                                    <rect key="frame" x="24" y="133" width="373" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Click one of your countries to fortify from it.  Then you may place the armies in any adjacent country which you control." id="170">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" id="28">
+                                    <rect key="frame" x="5" y="83" width="118" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="171">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="endTurn:" target="-2" id="112"/>
+                                    </connections>
+                                </button>
+                                <button verticalHuggingPriority="750" id="66">
+                                    <rect key="frame" x="5" y="46" width="118" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="172">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="reviewCards:" target="-2" id="111"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <box title="Phase Controls - Attack" id="32">
+                        <rect key="frame" x="428" y="440" width="414" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="YKx-WO-3kO">
+                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <slider verticalHuggingPriority="750" id="46">
+                                    <rect key="frame" x="163" y="125" width="159" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="20" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="151">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </sliderCell>
+                                    <connections>
+                                        <action selector="attackMethodAction:" target="-2" id="116"/>
+                                    </connections>
+                                </slider>
+                                <textField verticalHuggingPriority="750" id="68">
+                                    <rect key="frame" x="160" y="142" width="13" height="10"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" title="1" id="152">
+                                        <font key="font" size="8" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="58">
+                                    <rect key="frame" x="306" y="142" width="18" height="10"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" title="20" id="153">
+                                        <font key="font" size="8" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="42">
+                                    <rect key="frame" x="136" y="65" width="269" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" title="Attacking from:" id="154">
+                                        <font key="font" size="18" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="69">
+                                    <rect key="frame" x="136" y="42" width="269" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="center" id="155">
+                                        <font key="font" size="18" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" id="59">
+                                    <rect key="frame" x="5" y="53" width="118" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="156">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="reviewCards:" target="-2" id="113"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="49">
+                                    <rect key="frame" x="5" y="7" width="404" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" id="157">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <string key="title">Click one of your countries to attack from, then an opponent's to attack.
+Hold the shift key down to automatically move all armies on victory.</string>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <matrix verticalHuggingPriority="750" mode="highlight" drawsBackground="YES" allowsEmptySelection="NO" autosizesCells="NO" id="30">
+                                    <rect key="frame" x="5" y="89" width="245" height="28"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="cellSize" width="118" height="28"/>
+                                    <size key="intercellSpacing" width="9" height="4"/>
+                                    <buttonCell key="prototype" type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" tag="-1" imageScaling="proportionallyDown" inset="2" id="173">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                    </buttonCell>
+                                    <cells>
+                                        <column>
+                                            <buttonCell type="push" title="Fortify" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="35">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                                <connections>
+                                                    <action selector="fortify:" target="-2" id="114"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </column>
+                                        <column>
+                                            <buttonCell type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="34">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                                <connections>
+                                                    <action selector="endTurn:" target="-2" id="115"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </column>
+                                    </cells>
+                                </matrix>
+                                <textField verticalHuggingPriority="750" id="63">
+                                    <rect key="frame" x="131" y="122" width="27" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" selectable="YES" editable="YES" state="on" borderStyle="bezel" alignment="right" title="2" drawsBackground="YES" id="158">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="attackMethodAction:" target="-2" id="117"/>
+                                    </connections>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" id="56">
+                                    <rect key="frame" x="65" y="153" width="257" height="20"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <popUpButtonCell key="cell" type="push" title="Once only." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="159">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <menu key="menu" title="OtherViews" id="31">
+                                            <items>
+                                                <menuItem title="Once only." state="on" id="57"/>
+                                                <menuItem title="A specific number of times." id="37"/>
+                                                <menuItem title="Until a specific number of armies remain." id="51"/>
+                                                <menuItem title="Until unable to continue." id="53"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="attackMethodAction:" target="-2" id="118"/>
+                                    </connections>
+                                </popUpButton>
+                                <textField verticalHuggingPriority="750" id="67">
+                                    <rect key="frame" x="15" y="156" width="48" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Attack:" id="160">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                    <box title="Phase Controls - Choose Countries" id="44">
+                        <rect key="frame" x="9" y="25" width="414" height="198"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <view key="contentView" id="fzX-GG-BGc">
+                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" id="38">
+                                    <rect key="frame" x="22" y="133" width="373" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" alignment="left" title="Click on an unoccupied country to choose it.  The game will proceed when all the coutries are chosen." id="162">
+                                        <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" size="12" name="Helvetica"/>
+                    </box>
+                </subviews>
+            </view>
+        </window>
+    </objects>
+</document>
