@@ -519,20 +519,13 @@
 		55377FFA1CC15E1700A2C08E /* RiskUtil */ = {
 			isa = PBXGroup;
 			children = (
-				5537800A1CC15E6A00A2C08E /* CardData.txt */,
-				5537800B1CC15E6A00A2C08E /* ContinentData.txt */,
-				5537800C1CC15E6A00A2C08E /* CountryData.txt */,
-				5537800D1CC15E6A00A2C08E /* CountryNeighbors.txt */,
 				5537800E1CC15E6A00A2C08E /* CountryShapeGenerator.h */,
 				5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */,
-				5537809E1CC1943200A2C08E /* RiskUtil.xib */,
-				553780151CC15E6A00A2C08E /* Original.nib */,
 				5537801B1CC15E6A00A2C08E /* RiskNeighborView.h */,
 				5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */,
 				5537801D1CC15E6A00A2C08E /* RiskUtility.h */,
 				5537801E1CC15E6A00A2C08E /* RiskUtility.m */,
-				553780011CC15E1700A2C08E /* Assets.xcassets */,
-				553780061CC15E1700A2C08E /* Info.plist */,
+				553780A01CC195A700A2C08E /* Resources */,
 			);
 			path = RiskUtil;
 			sourceTree = "<group>";
@@ -542,14 +535,14 @@
 			children = (
 				553780711CC1640600A2C08E /* Aimless.h */,
 				553780721CC1640600A2C08E /* Aimless.m */,
-				553780731CC1640600A2C08E /* Aimless.rtf */,
-				553780741CC1640600A2C08E /* Aimless.tiff */,
 				553780751CC1640600A2C08E /* DNode.h */,
 				553780761CC1640600A2C08E /* DNode.m */,
 				553780771CC1640600A2C08E /* PathFinder.h */,
 				553780781CC1640600A2C08E /* PathFinder.m */,
 				553780791CC1640600A2C08E /* SNHeap.h */,
 				5537807A1CC1640600A2C08E /* SNHeap.m */,
+				553780731CC1640600A2C08E /* Aimless.rtf */,
+				553780741CC1640600A2C08E /* Aimless.tiff */,
 				5537806D1CC1639C00A2C08E /* Info.plist */,
 			);
 			name = Aimless;
@@ -583,6 +576,21 @@
 				55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */,
 			);
 			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		553780A01CC195A700A2C08E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5537800A1CC15E6A00A2C08E /* CardData.txt */,
+				5537800B1CC15E6A00A2C08E /* ContinentData.txt */,
+				5537800C1CC15E6A00A2C08E /* CountryData.txt */,
+				5537800D1CC15E6A00A2C08E /* CountryNeighbors.txt */,
+				5537809E1CC1943200A2C08E /* RiskUtil.xib */,
+				553780151CC15E6A00A2C08E /* Original.nib */,
+				553780011CC15E1700A2C08E /* Assets.xcassets */,
+				553780061CC15E1700A2C08E /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
