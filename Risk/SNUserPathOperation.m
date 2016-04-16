@@ -63,21 +63,20 @@ typedef NS_ENUM(unsigned char, DPSUserPathOp) {
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-	if ([super init] == nil)
-		return nil;
-	
-	[aDecoder decodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
-	point1 = [aDecoder decodePoint];
-	point2 = [aDecoder decodePoint];
-	point3 = [aDecoder decodePoint];
-	[aDecoder decodeValueOfObjCType:@encode (float) at:&radius];
-	[aDecoder decodeValueOfObjCType:@encode (float) at:&angle1];
-	[aDecoder decodeValueOfObjCType:@encode (float) at:&angle2];
+	if (self = [super init]) {
+		[aDecoder decodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
+		point1 = [aDecoder decodePoint];
+		point2 = [aDecoder decodePoint];
+		point3 = [aDecoder decodePoint];
+		[aDecoder decodeValueOfObjCType:@encode (float) at:&radius];
+		[aDecoder decodeValueOfObjCType:@encode (float) at:&angle1];
+		[aDecoder decodeValueOfObjCType:@encode (float) at:&angle2];
+	}
 	
 	return self;
 }
 
-- (void)insertIntoBezierPath:(NSBezierPath*)bPath
+- (void)applyToBezierPath:(NSBezierPath*)bPath
 {
 	switch (operator) {
 		case dps_arc:

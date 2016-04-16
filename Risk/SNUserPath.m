@@ -48,10 +48,11 @@
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-	[super init];
-	
-	operations = [[aDecoder decodeObject] retain];
-
+	if (self = [super init]) {
+		
+		operations = [[aDecoder decodeObject] retain];
+		
+	}
 	return self;
 }
 
@@ -59,7 +60,7 @@
 {
 	NSBezierPath *path = [NSBezierPath bezierPath];
 	for (SNUserPathOperation *op in operations) {
-		[op insertIntoBezierPath:path];
+		[op applyToBezierPath:path];
 	}
 	
 	return path;
