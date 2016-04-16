@@ -141,7 +141,6 @@ public class Chaos: RiskPlayer {
 	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country!) {
 		var destination: Country?
 		
-		
 		let ourNeighborCountries = source.ourNeighborCountries()
 		
 		for country in ourNeighborCountries {
