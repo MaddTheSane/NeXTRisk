@@ -12,12 +12,11 @@ RCSID ("$Id: RiskMapView.m,v 1.4 1997/12/18 21:03:47 nygard Exp $");
 #import "Country.h"
 #import "CountryShape.h"
 
-//======================================================================
-// The RiskMapView shows the background image and draws the countries
-// over it.  It notifies it's delegate when a country has been selected.
-//======================================================================
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
 
-#define BOARDBACKING @"BoardBacking.tiff"
+#define BOARDBACKING @"BoardBacking"
 
 static NSImage *_boardBackingImage = nil;
 

@@ -86,7 +86,10 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
-            NSData *fileData = [NSKeyedArchiver archivedDataWithRootObject:riskWorld];
+            NSData *fileData;
+            @autoreleasepool {
+                fileData = [NSKeyedArchiver archivedDataWithRootObject:riskWorld];
+            }
             if (!fileData) {
                 NSBeep();
                 

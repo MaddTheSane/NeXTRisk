@@ -13,7 +13,7 @@
 /// calculations are incomplete, but work with straight lines.
 ///
 /// The MiscKit provides a more complete implementation.  Under Rhapsody
-/// this will probably move towards using the NSBezierPath path.
+/// this will probably move towards using the <code>NSBezierPath</code> path.
 ///
 /// Note that this means curved paths could be easily supported to
 /// provide better looking maps, but RiskUtil.app would need to be

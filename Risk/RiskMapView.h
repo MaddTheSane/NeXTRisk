@@ -12,6 +12,8 @@
 - (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 @end
 
+/// The RiskMapView shows the background image and draws the countries
+/// over it.  It notifies its delegate when a country has been selected.
 @interface RiskMapView : NSView
 {
     NSImage *boardBackingImage;

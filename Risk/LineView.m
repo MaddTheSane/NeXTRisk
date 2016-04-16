@@ -8,11 +8,6 @@
 
 #import "LineView.h"
 
-//======================================================================
-// Provide a simple view to show the width of a line, for use when
-// changing the border width.
-//======================================================================
-
 @implementation LineView
 @synthesize lineWidth;
 
@@ -30,7 +25,7 @@
     NSRect boundsRect = [self bounds];
 	
     NSDrawWhiteBezel (boundsRect, boundsRect);
-    mp = boundsRect.origin.y + (boundsRect.size.height / 2);
+    mp = NSMidY(boundsRect);
     begin = boundsRect.origin.x + 2;
     end = boundsRect.origin.x + boundsRect.size.width - 2;
 

@@ -16,15 +16,14 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
 #include <libc.h>
 
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
+
 #define ARMYCELL_WIDTH   25.0
 #define ARMYCELL_HEIGHT  17.0
 
 static NSTextFieldCell *_armyCell = nil;
-
-//======================================================================
-// A CountryShape knows how to draw a country -- it's actual shape and
-// where to place the army textfield.
-//======================================================================
 
 #define CountryShape_VERSION 1
 

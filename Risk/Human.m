@@ -11,11 +11,6 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 #import "RiskGameManager.h"
 #import "Country.h"
 
-//======================================================================
-// The Human player is the standard interactive player that uses the
-// shared interfaces for a human to play.
-//======================================================================
-
 #define Human_VERSION 1
 
 @implementation Human

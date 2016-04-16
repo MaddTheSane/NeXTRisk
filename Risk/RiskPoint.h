@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+/// A RiskPoint can be encoded on a stream and stored in arrays.
 @interface RiskPoint : NSObject <NSCoding>
 
 + (instancetype)riskPointWithPoint:(NSPoint)aPoint NS_SWIFT_UNAVAILABLE("Use init(point:) instead");

@@ -7,6 +7,8 @@
 
 @class SNUserPath, Country, RiskMapView;
 
+/// A CountryShape knows how to draw a country -- it's actual shape and
+/// where to place the army textfield.
 @interface CountryShape : NSObject <NSCoding>
 {
     NSBezierPath *userPath;

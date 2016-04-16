@@ -8,9 +8,9 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 #import "RiskPoint.h"
 
-//======================================================================
-// A RiskPoint can be encoded on a stream and stored in arrays.
-//======================================================================
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
 
 #define RiskPoint_VERSION 1
 

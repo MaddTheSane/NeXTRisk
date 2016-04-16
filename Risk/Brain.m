@@ -161,19 +161,14 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (void) loadRiskPlayerBundles
 {
-    NSBundle *mainBundle;
-    NSMutableSet *loadedRiskPlayerNames;
-    NSMutableSet *delayedRiskPlayerPaths;
-    NSMutableSet *tempPlayerNames;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSMutableSet<NSString*> *loadedRiskPlayerNames = [NSMutableSet set];
+    NSMutableSet<NSString*> *delayedRiskPlayerPaths = [NSMutableSet set];
+    NSMutableSet<NSString*> *tempPlayerNames = [NSMutableSet set];
     NSBundle *playerBundle;
     BOOL keepTrying;
-    NSMutableDictionary *loadedBundles;
+    NSMutableDictionary *loadedBundles = [NSMutableDictionary dictionary];
 
-    mainBundle = [NSBundle mainBundle];
-    loadedRiskPlayerNames = [NSMutableSet set];
-    delayedRiskPlayerPaths = [NSMutableSet set];
-    tempPlayerNames = [NSMutableSet set];
-    loadedBundles = [NSMutableDictionary dictionary];
 	NSURL *pluginURL = [mainBundle builtInPlugInsURL];
 	NSDirectoryEnumerator<NSURL *> * URLEnum = [[NSFileManager defaultManager] enumeratorAtURL:pluginURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles) errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
 		return false;

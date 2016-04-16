@@ -115,11 +115,13 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     [aCoder encodeObject:continents forKey:kContinentsKey];
     
     NSMutableArray *tmpNeighbors = [NSMutableArray arrayWithCapacity:[countryNeighbors count]];
+    @autoreleasepool {
     for (riskNeighbor in countryNeighbors)
     {
         [tmpNeighbors addObject:@[[[riskNeighbor country1] countryName], [[riskNeighbor country2] countryName]]];
     }
     [aCoder encodeObject:tmpNeighbors forKey:kCountryNeighborsArrayKey];
+    }
 
     NSMutableArray<NSDictionary<NSString*,id>*> *tmpCards = [NSMutableArray arrayWithCapacity:cards.count];
     for (card in cards) {
