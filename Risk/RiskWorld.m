@@ -27,6 +27,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 @implementation RiskWorld
 @synthesize continents;
+@synthesize cards;
 
 + (void) initialize
 {
@@ -300,13 +301,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 - (Continent *) continentNamed:(NSString *)continentName
 {
     return [continents objectForKey:continentName];
-}
-
-//----------------------------------------------------------------------
-
-- (NSArray *) cards
-{
-    return cards;
 }
 
 //----------------------------------------------------------------------

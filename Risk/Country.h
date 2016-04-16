@@ -56,6 +56,10 @@
 
 - (void) addTroops:(int)count;
 
+/// We need to keep track of the unmovable troops (the troops that have
+/// already been fortified), otherwise under the "fortify many to many
+/// neighbors" rule, you could march the armies up to the front one
+/// country at a time.
 @property (readonly) int unmovableTroopCount;
 - (void) addUnmovableTroopCount:(int)count;
 - (void) resetUnmovableTroops;

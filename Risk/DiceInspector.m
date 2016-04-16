@@ -229,14 +229,14 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (void) continueAction:sender
+- (IBAction) continueAction:(id)sender
 {
     [NSApp stopModal];
 }
 
 //----------------------------------------------------------------------
 
-- (void) pauseCheckAction:sender
+- (IBAction) pauseCheckAction:(id)sender
 {
     [NSApp stopModal];
 

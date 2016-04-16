@@ -27,7 +27,7 @@
 
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotificaiton;
 
-- (void) saveWorld:sender;
+- (IBAction) saveWorld:(id)sender;
 - (void) writeRiskWorld:(RiskWorld *)riskWorld;
 
 + (NSDictionary *) readContinentTextfile;
@@ -51,8 +51,8 @@
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 - (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 
-- (void) removeNeighbor:sender;
-- (void) writeNeighborTextFile:sender;
+- (IBAction) removeNeighbor:(id)sender;
+- (IBAction) writeNeighborTextFile:(id)sender;
 
 - (NSArray *) riskNeighbors;
 

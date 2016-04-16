@@ -49,8 +49,8 @@
                       withDice:(DiceRoll)dice;
 
 - (void) waitForContinue;
-- (void) continueAction:sender;
-- (void) pauseCheckAction:sender;
+- (IBAction) continueAction:(id)sender;
+- (IBAction) pauseCheckAction:(id)sender;
 
 
 @end

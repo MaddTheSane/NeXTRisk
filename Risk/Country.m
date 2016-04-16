@@ -178,19 +178,10 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 // Army methods
 //----------------------------------------------------------------------
 
-- (Player) playerNumber
++ (NSSet *)keyPathsForValuesAffectingMovableTroopCount
 {
-    return playerNumber;
+    return [NSSet setWithObjects:@"troopCount", @"unmovableTroopCount", nil];
 }
-
-//----------------------------------------------------------------------
-
-- (int) troopCount
-{
-    return troopCount;
-}
-
-//----------------------------------------------------------------------
 
 - (int) movableTroopCount
 {
@@ -226,7 +217,9 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (void) addTroops:(int)count
 {
+    [self willChangeValueForKey:@"troopCount"];
     troopCount += count;
+    [self didChangeValueForKey:@"troopCount"];
     [self update];
 #if 0
     if (troopCount < 0)
@@ -235,24 +228,12 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 }
 
 //----------------------------------------------------------------------
-// We need to keep track of the unmovable troops (the troops that have
-// already been fortified), otherwise under the "fortify many to many
-// neighbors" rule, you could march the armies up to the front one
-// country at a time.
-//----------------------------------------------------------------------
-
-#if 0
-- (int) unmovableTroopCount
-{
-    return unmovableTroopCount;
-}
-#endif
-
-//----------------------------------------------------------------------
 
 - (void) addUnmovableTroopCount:(int)count
 {
+    [self willChangeValueForKey:@"unmovableTroopCount"];
     unmovableTroopCount += count;
+    [self didChangeValueForKey:@"unmovableTroopCount"];
     NSAssert (unmovableTroopCount <= troopCount, @"Too many unmovable troops!");
 }
 
@@ -260,7 +241,9 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (void) resetUnmovableTroops
 {
+    [self willChangeValueForKey:@"unmovableTroopCount"];
     unmovableTroopCount = 0;
+    [self didChangeValueForKey:@"unmovableTroopCount"];
 }
 
 //----------------------------------------------------------------------

@@ -248,14 +248,14 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) showControlPanel:sender
+- (IBAction) showControlPanel:(id)sender
 {
     [controlPanel orderFront:nil];
 }
 
 //----------------------------------------------------------------------
 
-- (void) showDiceInspector:sender
+- (IBAction) showDiceInspector:(id)sender
 {
     if (diceInspector == nil)
     {
@@ -267,7 +267,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) showWorldInfoPanel:sender
+- (IBAction) showWorldInfoPanel:(id)sender
 {
     if (worldInfoController == nil)
     {
@@ -410,7 +410,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Player menu support
 //======================================================================
 
-- (void) showPlayerConsole:sender
+- (IBAction) showPlayerConsole:(id)sender
 {
     NSInteger tag;
 
@@ -850,7 +850,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) executeCurrentPhase:sender
+- (IBAction) executeCurrentPhase:(id)sender
 {
     //NSLog (@"active player count: %d", activePlayerCount);
     //[self _logGameState];
@@ -945,7 +945,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) fortify:sender
+- (IBAction) fortify:(id)sender
 {
     // Fortify action should only be executed during the attack phase.
     AssertGameState (gs_attack);
@@ -956,7 +956,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 //----------------------------------------------------------------------
 
 // End turn for interactive player.  May skip over fortify phase.
-- (void) endTurn:sender
+- (IBAction) endTurn:(id)sender
 {
     // End turn action should only be executed in either the attack or fortify phase.
     AssertGameState2 (gs_attack, gs_fortify);
@@ -1619,7 +1619,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) attackMethodAction:sender
+- (IBAction) attackMethodAction:(id)sender
 {
     if (sender == methodCountSlider)
     {
@@ -1785,7 +1785,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // For the currently active (interactive) player
 //----------------------------------------------------------------------
 
-- (void) reviewCards:sender
+- (IBAction) reviewCards:(id)sender
 {
     [self _loadCardPanel];
     [cardPanelController runCardPanel:NO forPlayer:players[currentPlayerNumber]];
@@ -1793,7 +1793,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) turnInCards:sender
+- (IBAction) turnInCards:(id)sender
 {
     AssertGameState (gs_place_armies);
 

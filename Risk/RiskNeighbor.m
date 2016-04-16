@@ -63,20 +63,6 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (Country *) country1
-{
-    return country1;
-}
-
-//----------------------------------------------------------------------
-
-- (Country *) country2
-{
-    return country2;
-}
-
-//----------------------------------------------------------------------
-
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"<RiskNeighbor: country1 = %@, country2 = %@>", country1, country2];

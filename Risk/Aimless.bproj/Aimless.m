@@ -452,7 +452,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 
 //----------------------------------------------------------------------
 
-- (void) testMessage:sender
+- (IBAction) testMessage:(id)sender
 {
     [self logMessage:@"This is a test message."];
 }

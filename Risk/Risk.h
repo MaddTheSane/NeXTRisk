@@ -44,18 +44,18 @@ typedef NS_ENUM(int, GameState)
 // Game configuration
 //======================================================================
 
-typedef enum _InitialCountryDistribution
+typedef NS_ENUM(int, InitialCountryDistribution)
 {
     PlayerChosen,
     RandomlyChosen
-} InitialCountryDistribution;
+};
 
-typedef enum _InitialArmyPlacement
+typedef NS_ENUM(int, InitialArmyPlacement)
 {
     PlaceByOnes,
     PlaceByThrees,
     PlaceByFives
-} InitialArmyPlacement;
+};
 
 typedef NS_ENUM(int, CardSetRedemption)
 {

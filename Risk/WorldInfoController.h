@@ -28,6 +28,6 @@
 - (void) orderByCountryCount;
 - (void) orderByBonusValue;
 
-- (IBAction) reorder:sender;
+- (IBAction) reorder:(id)sender;
 
 @end

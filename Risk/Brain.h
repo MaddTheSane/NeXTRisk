@@ -31,7 +31,7 @@
 #define DK_ShowPlayer5Console @"ShowPlayer5Console"
 #define DK_ShowPlayer6Console @"ShowPlayer6Console"
 
-@interface Brain : NSObject
+@interface Brain : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSWindow *infoPanel;
     IBOutlet NSTextField *versionTextField;
@@ -40,24 +40,19 @@
     NewGameController *newGameController;
     PreferenceController *preferenceController;
 
-    NSMutableArray *riskPlayerBundles;
+    NSMutableArray<NSBundle*> *riskPlayerBundles;
 }
 
-+ (void) initialize;
+- (instancetype)init;
 
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotification;
-
-- init;
-- (void) dealloc;
-
-- (void) showNewGamePanel:sender;
-- (void) showGameSetupPanel:sender;
-- (void) info:sender;
-- (void) showPreferencePanel:sender;
+- (IBAction) showNewGamePanel:(id)sender;
+- (IBAction) showGameSetupPanel:(id)sender;
+- (IBAction) info:(id)sender;
+- (IBAction) showPreferencePanel:(id)sender;
 
 - (void) loadRiskPlayerBundles;
-- (NSArray *) riskPlayerBundles;
+- (NSArray<NSBundle*> *) riskPlayerBundles;
 
-- (RiskGameManager *) gameManager;
+@property (readonly, retain) RiskGameManager *gameManager;
 
 @end

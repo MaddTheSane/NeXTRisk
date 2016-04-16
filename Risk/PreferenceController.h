@@ -20,21 +20,18 @@
     IBOutlet NSButton *showCardSetsButton;
 }
 
-+ (void) initialize;
-
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
 - (void) showPanel;
 
-- (void) revertAction:sender;
-- (void) setAction:sender;
+- (IBAction) revertAction:(id)sender;
+- (IBAction) setAction:(id)sender;
 
 - (void) takePreferencesFromBoardSetup;
 
-- (void) borderWidthAction:sender;
-- (void) borderColorAction:sender;
-- (void) statusCardSetsAction:sender;
+- (IBAction) borderWidthAction:(id)sender;
+- (IBAction) borderColorAction:(id)sender;
+- (IBAction) statusCardSetsAction:(id)sender;
 
 - (void) boardSetupChanged:(NSNotification *)aNotification;
 

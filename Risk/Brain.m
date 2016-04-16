@@ -18,6 +18,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 #import "Version.h"
 
 @implementation Brain
+@synthesize gameManager;
 
 + (void) initialize
 {
@@ -106,7 +107,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) showNewGamePanel:sender
+- (IBAction) showNewGamePanel:(id)sender
 {
     if (newGameController == nil)
         newGameController = [[NewGameController alloc] initWithBrain:self];
@@ -116,7 +117,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) showGameSetupPanel:sender
+- (IBAction) showGameSetupPanel:(id)sender
 {
     if (newGameController == nil)
         newGameController = [[NewGameController alloc] initWithBrain:self];
@@ -126,7 +127,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) info:sender
+- (IBAction) info:(id)sender
 {
     NSString *nibFile;
     BOOL loaded;
@@ -146,7 +147,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) showPreferencePanel:sender
+- (IBAction) showPreferencePanel:(id)sender
 {
     if (preferenceController == nil)
     {
@@ -252,13 +253,6 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (NSArray *) riskPlayerBundles
 {
     return riskPlayerBundles;
-}
-
-//----------------------------------------------------------------------
-
-- (RiskGameManager *) gameManager
-{
-    return gameManager;
 }
 
 @end

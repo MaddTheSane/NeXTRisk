@@ -92,9 +92,9 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) _logGameState;
 
-- (IBAction) showControlPanel:sender;
-- (IBAction) showDiceInspector:sender;
-- (IBAction) showWorldInfoPanel:sender;
+- (IBAction) showControlPanel:(id)sender;
+- (IBAction) showDiceInspector:(id)sender;
+- (IBAction) showWorldInfoPanel:(id)sender;
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
@@ -126,7 +126,7 @@ extern NSString *const RGMGameOverNotification;
 // Player menu support
 //======================================================================
 
-- (IBAction) showPlayerConsole:sender;
+- (IBAction) showPlayerConsole:(id)sender;
 
 //======================================================================
 // Establish Game
@@ -150,11 +150,11 @@ extern NSString *const RGMGameOverNotification;
 - (void) leavingInitialArmyPlacementPhase;
 
 - (void) endTurn;
-- (IBAction) executeCurrentPhase:sender;
+- (IBAction) executeCurrentPhase:(id)sender;
 - (BOOL) nextActivePlayer;
 
-- (IBAction) fortify:sender;
-- (IBAction) endTurn:sender;
+- (IBAction) fortify:(id)sender;
+- (IBAction) endTurn:(id)sender;
 
 - (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination;
 - (void) fortifyArmiesFrom:(Country *)source;
@@ -214,7 +214,7 @@ extern NSString *const RGMGameOverNotification;
 - (void) setAttackMethodForPlayerNumber:(Player)number;
 - (void) setAttackingFromCountryName:(NSString *)string;
 
-- (IBAction) attackMethodAction:sender;
+- (IBAction) attackMethodAction:(id)sender;
 
 - (void) setArmiesLeftToPlace:(int)count;
 
@@ -231,8 +231,8 @@ extern NSString *const RGMGameOverNotification;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
 
 // For the currently active (interactive) player
-- (IBAction) reviewCards:sender;
-- (IBAction) turnInCards:sender;
+- (IBAction) reviewCards:(id)sender;
+- (IBAction) turnInCards:(id)sender;
 
 - (void) _loadCardPanel;
 

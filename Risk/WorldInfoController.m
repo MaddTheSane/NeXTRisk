@@ -240,7 +240,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-- (void) reorder:sender
+- (IBAction) reorder:(id)sender
 {
     NSString *identifier;
 

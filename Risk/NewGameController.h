@@ -59,13 +59,13 @@
 - (void) showNewGamePanel;
 - (void) showGameSetupPanel;
 
-- (IBAction) aboutAction:sender;
-- (IBAction) aboutStopAction:sender;
+- (IBAction) aboutAction:(id)sender;
+- (IBAction) aboutStopAction:(id)sender;
 
-- (IBAction) recalculateInitialArmies:sender;
+- (IBAction) recalculateInitialArmies:(id)sender;
 
-- (IBAction) acceptAction:sender;
-- (IBAction) cancelAction:sender;
+- (IBAction) acceptAction:(id)sender;
+- (IBAction) cancelAction:(id)sender;
 
 - (void) createNewGame;
 
@@ -78,6 +78,6 @@
 
 - (void) boardSetupChanged:(NSNotification *)aNotification;
 
-- (void) playerColorAction:sender;
+- (IBAction) playerColorAction:(id)sender;
 
 @end

@@ -140,7 +140,7 @@ static struct image_names class_images[] =
 // they don't allow a selected cell, and so we can't tell which cell
 // was clicked.
 
-- (void) handAction:sender
+- (IBAction) handAction:(id)sender
 {
     NSCell *cell;
     NSInteger index;
@@ -198,7 +198,7 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (void) setAction:sender
+- (IBAction) setAction:(id)sender
 {
     NSInteger index;
     NSInteger l;
@@ -239,7 +239,7 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (void) doneAction:sender
+- (IBAction) doneAction:(id)sender
 {
     NSEnumerator *cardSetEnumerator;
     CardSet *cardSet;
@@ -263,7 +263,7 @@ static struct image_names class_images[] =
 // Cancel sets -- remove cards sets, show all cards again, and enable
 // the done button.
 
-- (void) stopAction:sender
+- (IBAction) stopAction:(id)sender
 {
     [cardSets removeAllObjects];
     [self enableButtons];
@@ -272,7 +272,7 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (void) turnInSetAction:sender
+- (IBAction) turnInSetAction:(id)sender
 {
     CardSet *cardSet;
     int l;

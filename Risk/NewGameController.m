@@ -138,7 +138,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) aboutAction:sender
+- (IBAction) aboutAction:(id)sender
 {
     NSPopUpButton *thePopup;
     NSInteger tag, itemIndex;
@@ -254,14 +254,14 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) aboutStopAction:sender
+- (IBAction) aboutStopAction:(id)sender
 {
     [NSApp stopModal];
 }
 
 //----------------------------------------------------------------------
 
-- (void) recalculateInitialArmies:sender
+- (IBAction) recalculateInitialArmies:(id)sender
 {
     int playerCount;
     NSInteger ps[7];
@@ -293,7 +293,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) acceptAction:sender
+- (IBAction) acceptAction:(id)sender
 {
     if (runningAsPreferences == YES)
     {
@@ -308,7 +308,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) cancelAction:sender
+- (IBAction) cancelAction:(id)sender
 {
     if (runningAsPreferences == YES)
     {
@@ -645,7 +645,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) playerColorAction:sender
+- (IBAction) playerColorAction:(id)sender
 {
     if (sender == player1ColorWell)
         [boardSetup setColor:[player1ColorWell color] forPlayer:1];

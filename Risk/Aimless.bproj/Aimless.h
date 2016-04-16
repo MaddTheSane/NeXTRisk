@@ -70,7 +70,7 @@ typedef enum _CountryChoiceType
 - (void) dealloc;
 
 - (void) setPlayerToolMenu:(NSMenu *)theMenu;
-- (void) testMessage:sender;
+- (IBAction) testMessage:(id)sender;
 
 //======================================================================
 // Subclass Responsibilities

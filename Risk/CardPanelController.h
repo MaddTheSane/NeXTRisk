@@ -43,11 +43,11 @@
 
 - (instancetype)init;
 
-- (IBAction) handAction:sender;
-- (IBAction) setAction:sender;
-- (IBAction) doneAction:sender;
-- (IBAction) stopAction:sender;
-- (IBAction) turnInSetAction:sender;
+- (IBAction) handAction:(id)sender;
+- (IBAction) setAction:(id)sender;
+- (IBAction) doneAction:(id)sender;
+- (IBAction) stopAction:(id)sender;
+- (IBAction) turnInSetAction:(id)sender;
 
 - (void) enableButtons;
 

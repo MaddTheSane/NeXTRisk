@@ -22,130 +22,71 @@ public class Chaos: RiskPlayer {
 		unoccupiedContinents.intersectInPlace(continents.keys)
 	}
 
-/*
-#define Chaotic_VERSION 1
+    //MARK:- Subclass Responsibilities
 
-@implementation Chaotic
+    //MARK: Card management
 
-+ (void) load
-{
-    //NSLog (@"Chaotic.");
-}
-
-//----------------------------------------------------------------------
-
-+ (void) initialize
-{
-    if (self == [Chaotic class])
-    {
-        [self setVersion:Chaotic_VERSION];
-    }
-}
-
-//----------------------------------------------------------------------
-
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
-{
-    RiskWorld *world;
-    NSDictionary *continents;
-
-    [super initWithPlayerName:aName number:number gameManager:aManager];
-
-    // Contains the names of continents.
-    unoccupiedContinents = [[NSMutableSet set] retain];
-
-    world = [gameManager world];
-    continents = [world continents];
-
-    [unoccupiedContinents addObjectsFromArray:[continents allKeys]];
-    attackingCountries = nil;
-
-    return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (unoccupiedContinents);
-    SNRelease (attackingCountries);
-
-    [super dealloc];
-}
-
-//======================================================================
-// Subclass Responsibilities
-//======================================================================
-*/
-//----------------------------------------------------------------------
-//MARK:- Card management
-//----------------------------------------------------------------------
-	/// While the game manager will automatically turn in our best sets for
+    /// While the game manager will automatically turn in our best sets for
 	/// us if we don't choose the cards ourselves, we'll do it ourselves
 	/// just to be nice.
 	public override func mustTurnInCards() {
 		gameManager.automaticallyTurnInCardsForPlayerNumber(playerNumber)
 	}
-	/*
-//----------------------------------------------------------------------
-// Initial game phases
-//----------------------------------------------------------------------
 
-// A chaotic player seeks to wreak havoc (in a very limited way) on the
-// rest of the players.  Toward this end he tries to choose at least one
-// country in each continent.  After that he chooses random countries.
+    //MARK: Initial game phases
 
-- (void) chooseCountry
-{
-    NSMutableArray *array;
-    NSArray *unoccupiedCountries;
-    NSEnumerator *countryEnumerator;
-    Country *country;
-
-    // 1. Make a list of unoccupied countries in continents that we don't have a presence.
-    // 2. Randomly choose one of these, updating its continent flag
-    // 3. Otherwise, randomly pick country
-
-    unoccupiedCountries = [gameManager unoccupiedCountries];
-
-    NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
-
-    array = [NSMutableArray array];
-    countryEnumerator = [unoccupiedCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
-    {
-        if ([unoccupiedContinents containsObject:[country continentName]] == YES)
+    /// A chaotic player seeks to wreak havoc (in a very limited way) on the
+    /// rest of the players.  Toward this end he tries to choose at least one
+    /// country in each continent.  After that he chooses random countries.
+    public override func chooseCountry() {
+        /*
+        NSMutableArray *array;
+        NSArray *unoccupiedCountries;
+        NSEnumerator *countryEnumerator;
+        Country *country;
+        
+        // 1. Make a list of unoccupied countries in continents that we don't have a presence.
+        // 2. Randomly choose one of these, updating its continent flag
+        // 3. Otherwise, randomly pick country
+        
+        unoccupiedCountries = [gameManager unoccupiedCountries];
+        
+        NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
+        
+        array = [NSMutableArray array];
+        countryEnumerator = [unoccupiedCountries objectEnumerator];
+        while (country = [countryEnumerator nextObject])
+        {
+            if ([unoccupiedContinents containsObject:[country continentName]] == YES)
             [array addObject:country];
+        }
+        
+        if ([array count] > 0)
+        {
+            country = [array objectAtIndex:[[self rng] randomNumberModulo:[array count]]];
+            [unoccupiedContinents removeObject:[country continentName]];
+        }
+        else
+        {
+            country = [unoccupiedCountries objectAtIndex:[[self rng] randomNumberModulo:[unoccupiedCountries count]]];
+        }
+        
+        [gameManager player:self choseCountry:country];
+        [self turnDone];
+*/
+        turnDone()
     }
 
-    if ([array count] > 0)
-    {
-        country = [array objectAtIndex:[[self rng] randomNumberModulo:[array count]]];
-        [unoccupiedContinents removeObject:[country continentName]];
-    }
-    else
-    {
-        country = [unoccupiedCountries objectAtIndex:[[self rng] randomNumberModulo:[unoccupiedCountries count]]];
+
+    /// place all armies in random countries with -placeArmies:.
+    public override func placeInitialArmies(count: Int32) {
+        placeArmies(count)
     }
 
-    [gameManager player:self choseCountry:country];
-    [self turnDone];
-}
+	//MARK: Regular turn phases
 
-//----------------------------------------------------------------------
-
-// place all armies in random countries with -placeArmies:.
-- (void) placeInitialArmies:(int)count
-{
-    [self placeArmies:count];
-}
-
-//----------------------------------------------------------------------
-// Regular turn phases
-//----------------------------------------------------------------------
-
-- (void) placeArmies:(int)count
-{
+    public override func placeArmies(count: Int32) {
+    /*
     NSArray *ourCountries;
     NSInteger countryCount;
     BOOL okay;
@@ -165,58 +106,40 @@ public class Chaos: RiskPlayer {
         okay = [gameManager player:self placesArmies:1 inCountry:country];
         NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
     }
+*/
+		turnDone()
+	}
 
-    [self turnDone];
-}
+	public override func attackPhase() {
+		if attackingCountries.isEmpty {
+			attackingCountries = countriesWithAllOptions([.WithEnemyNeighbors, .WithTroops], from: ourCountries())
+		}
+		var mustEndTurn = false
+		
+		for country in attackingCountries {
+			mustEndTurn = doAttackFromCountry(country)
+			if mustEndTurn {
+				break
+			}
+		}
+		
+		if !mustEndTurn {
+			turnDone()
+		}
+		// Otherwise, automatically entered into different state
+	}
 
-//----------------------------------------------------------------------
+    /// Move forward half of the remaining armies.
+	public override func moveAttackingArmies(count: Int32, between source: Country!, _ destination: Country!) {
+		// Move half the armies to destination
+		// For odd count, leave extra army in the source country.
+		let tmp = count / 2;
+		gameManager.player(self, placesArmies: tmp, inCountry: destination)
+		gameManager.player(self, placesArmies: count - tmp, inCountry: source)
+	}
 
-- (void) attackPhase
-{
-    NSEnumerator *countryEnumerator;
-    BOOL mustEndTurn;
-    Country *country;
-
-    if (attackingCountries == nil)
-    {
-        attackingCountries = [[NSMutableSet setWithSet:[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
-                                                             from:[self ourCountries]]] retain];
-    }
-
-    mustEndTurn = NO;
-    countryEnumerator = [attackingCountries objectEnumerator];
-    while (mustEndTurn == NO && (country = [countryEnumerator nextObject]) != nil)
-    {
-        mustEndTurn = [self doAttackFromCountry:country];
-    };
-
-    if (mustEndTurn == NO)
-    {
-        [self turnDone];
-    }
-    // Otherwise, automatically entered into different state
-}
-
-//----------------------------------------------------------------------
-
-// Move forward half of the remaining armies.
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
-{
-    int tmp;
-
-    // Move half the armies to destination
-    // For odd count, leave extra army in the source country.
-    tmp = count / 2;
-    [gameManager player:self placesArmies:tmp inCountry:destination];
-    [gameManager player:self placesArmies:count - tmp inCountry:source];
-
-    [self turnDone];
-}
-
-//----------------------------------------------------------------------
-
-- (void) fortifyPhase:(FortifyRule)fortifyRule
-{
+	public override func fortifyPhase(fortifyRule: FortifyRule) {
+        /*
     NSSet *sourceCountries;
     Country *source = nil;
     NSInteger count;
@@ -248,15 +171,13 @@ public class Chaos: RiskPlayer {
 
         [gameManager fortifyArmiesFrom:source];
     }
-}
+         */
+	}
 
-//----------------------------------------------------------------------
-
-// Try to find a friendly neighbor who has unfriendly neighbors
-// Otherwise, pick random country.
-
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source
-{
+	/// Try to find a friendly neighbor who has unfriendly neighbors
+	/// Otherwise, pick random country.
+	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country!) {
+        /*
     NSSet *ourNeighborCountries;
     NSEnumerator *countryEnumerator;
     Country *country, *destination;
@@ -284,19 +205,17 @@ public class Chaos: RiskPlayer {
     }
 
     [gameManager player:self placesArmies:count inCountry:destination];
-    [self turnDone];
-}
+         */
+		turnDone()
+	}
 
-//----------------------------------------------------------------------
-*/
 	public override func willEndTurn() {
 		attackingCountries.removeAll()
 	}
-//======================================================================
-//MARK: - Custom methods
-//======================================================================
 
-/// attack the weakest neighbor (bully tactics).
+	//MARK: - Custom methods
+
+	/// attack the weakest neighbor (bully tactics).
 	func doAttackFromCountry(attacker: Country) -> Bool {
 		let enemies = attacker.enemyNeighborCountries()!
 		var weakest: Country!

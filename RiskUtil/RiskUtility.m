@@ -69,7 +69,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) saveWorld:sender
+- (IBAction) saveWorld:(id)sender
 {
     RiskWorld *riskWorld;
 
@@ -589,7 +589,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) removeNeighbor:sender
+- (IBAction) removeNeighbor:(id)sender
 {
     int index;
     
@@ -606,7 +606,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) writeNeighborTextFile:sender
+- (IBAction) writeNeighborTextFile:(id)sender
 {
     NSBundle *mainBundle;
     NSString *path;

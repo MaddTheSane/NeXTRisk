@@ -83,7 +83,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) revertAction:sender
+- (IBAction) revertAction:(id)sender
 {
     [[BoardSetup instance] revertOtherToDefaults];
     [preferencePanel setDocumentEdited:NO];
@@ -91,7 +91,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) setAction:sender
+- (IBAction) setAction:(id)sender
 {
     [[BoardSetup instance] writeAllDefaults];
     [preferencePanel setDocumentEdited:NO];
@@ -117,7 +117,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) borderWidthAction:sender
+- (IBAction) borderWidthAction:(id)sender
 {
     float newLineWidth;
 
@@ -141,7 +141,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) borderColorAction:sender
+- (IBAction) borderColorAction:(id)sender
 {
     if (sender == regularBorderWell)
     {
@@ -157,7 +157,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) statusCardSetsAction:sender
+- (IBAction) statusCardSetsAction:(id)sender
 {
     [[BoardSetup instance] setShowCardSetCounts:[showCardSetsButton state]];
     [preferencePanel setDocumentEdited:YES];

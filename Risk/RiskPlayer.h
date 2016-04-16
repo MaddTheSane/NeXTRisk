@@ -115,13 +115,13 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // Console
 //======================================================================
 
-- (IBAction) showConsolePanel:sender;
+- (IBAction) showConsolePanel:(id)sender;
 - (void) logMessage:(NSString *)format, ...;
 - (void) logMessage:(NSString *)format format:(va_list)vaList;
 
 - (void) waitForContinue;
-- (IBAction) continueAction:sender;
-- (IBAction) pauseCheckAction:sender;
+- (IBAction) continueAction:(id)sender;
+- (IBAction) pauseCheckAction:(id)sender;
 
 //======================================================================
 // Subclass Responsibilities

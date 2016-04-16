@@ -527,7 +527,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 // Console
 //======================================================================
 
-- (void) showConsolePanel:sender
+- (IBAction) showConsolePanel:(id)sender
 {
     NSString *nibFile;
     BOOL loaded;
@@ -591,14 +591,14 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) continueAction:sender
+- (IBAction) continueAction:(id)sender
 {
     [NSApp stopModal];
 }
 
 //----------------------------------------------------------------------
 
-- (void) pauseCheckAction:sender
+- (IBAction) pauseCheckAction:(id)sender
 {
     [NSApp stopModal];
 
