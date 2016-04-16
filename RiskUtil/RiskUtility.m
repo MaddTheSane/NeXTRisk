@@ -118,8 +118,10 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     path = [mainBundle pathForResource:@"ContinentData" ofType:@"txt"];
     NSLog (@"path: %@", path);
 
-    fileContents = [[[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                      encoding:NSASCIIStringEncoding] autorelease];
+    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    if (!fileContents)
+    fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
+                                      encoding:NSASCIIStringEncoding];
 
     scanner = [NSScanner scannerWithString:fileContents];
 
@@ -129,7 +131,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
             {
                 name = [scanner scanQuotedString];
                 [scanner scanInt:&value];
-                [dict setObject:[NSNumber numberWithInt:value] forKey:name];
+                [dict setObject:@(value) forKey:name];
             }
         }
     NS_HANDLER
@@ -138,6 +140,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         }
     NS_ENDHANDLER;
 
+    [fileContents release];
     return dict;
 }
 
@@ -160,42 +163,43 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     path = [mainBundle pathForResource:@"CountryData" ofType:@"txt"];
     NSLog (@"path: %@", path);
 
-    fileContents = [[[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                      encoding:NSASCIIStringEncoding] autorelease];
+    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    if (!fileContents)
+        fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
+                                             encoding:NSASCIIStringEncoding];
 
     scanner = [NSScanner scannerWithString:fileContents];
 
-    while (country = [RiskUtility scanCountry:scanner validContinents:continentNames])
+    while ((country = [RiskUtility scanCountry:scanner validContinents:continentNames]))
     {
         [array addObject:country];
     }
+    [fileContents release];
 
     return array;
 }
 
 //----------------------------------------------------------------------
 
-+ (NSMutableArray *) readCountryNeighborsTextfile:(NSArray *)countries
++ (NSMutableArray *) readCountryNeighborsTextfile:(NSArray<Country*> *)countries
 {
-    NSMutableArray *array;
+    NSMutableArray<RiskNeighbor*> *array;
     NSBundle *mainBundle;
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
     RiskNeighbor *riskNeighbor;
     NSMutableDictionary *countryDictionary;
-    NSEnumerator *countryEnumerator;
     Country *country;
 
     mainBundle = [NSBundle mainBundle];
     NSAssert (mainBundle != nil, @"main bundle nil");
 
-    array = [NSMutableArray array];
+    array = [[NSMutableArray alloc] init];
 
     // Set up country dictionary keyed on name
     countryDictionary = [NSMutableDictionary dictionary];
-    countryEnumerator = [countries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (country in countries)
     {
         [countryDictionary setObject:country forKey:[country countryName]];
     }
@@ -203,31 +207,34 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     path = [mainBundle pathForResource:@"CountryNeighbors" ofType:@"txt"];
     NSLog (@"path: %@", path);
 
-    fileContents = [[[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                      encoding:NSASCIIStringEncoding] autorelease];
+    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    if (!fileContents)
+    fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
+                                      encoding:NSASCIIStringEncoding];
 
     scanner = [NSScanner scannerWithString:fileContents];
 
-    while (riskNeighbor = [RiskUtility scanRiskNeighbor:scanner usingCountries:countryDictionary])
+    while ((riskNeighbor = [RiskUtility scanRiskNeighbor:scanner usingCountries:countryDictionary]))
     {
         [array addObject:riskNeighbor];
     }
+    [fileContents release];
 
-    return array;
+    return [array autorelease];
 }
 
 //----------------------------------------------------------------------
 
-+ (NSArray *) readCardTextfile:(NSArray *)countryArray
++ (NSArray<RiskCard*> *) readCardTextfile:(NSArray<Country*> *)countryArray
 {
-    NSMutableArray *array;
+    NSMutableArray<RiskCard*> *array;
     NSBundle *mainBundle;
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
     RiskCard *riskCard;
     NSMutableDictionary *countryDictionary;
-    NSEnumerator *countryEnumerator;
+    NSEnumerator<Country *> *countryEnumerator;
     Country *country;
 
     DSTART;
@@ -248,16 +255,19 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     path = [mainBundle pathForResource:@"CardData" ofType:@"txt"];
     NSLog (@"path: %@", path);
 
-    fileContents = [[[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                      encoding:NSASCIIStringEncoding] autorelease];
+    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    if (!fileContents)
+    fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
+                                         encoding:NSASCIIStringEncoding];
 
     scanner = [NSScanner scannerWithString:fileContents];
 
-    while (riskCard = [RiskUtility scanRiskCard:scanner usingCountries:countryDictionary])
+    while ((riskCard = [RiskUtility scanRiskCard:scanner usingCountries:countryDictionary]))
     {
         [array addObject:riskCard];
     }
 
+    [fileContents release];
     NSLog (@"array: %@", array);
 
     DEND;
@@ -269,20 +279,17 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 + (NSString *) neighborString:(NSArray *)neighbors
 {
-    NSEnumerator *neighborEnumerator;
-    RiskNeighbor *riskNeighbor;
     NSMutableString *str;
 
-    str = [NSMutableString string];
-    neighborEnumerator = [neighbors objectEnumerator];
-    while (riskNeighbor = [neighborEnumerator nextObject])
+    str = [[NSMutableString alloc] init];
+    for (RiskNeighbor *riskNeighbor in neighbors)
     {
         [str appendFormat:@"Adjacent\t\"%@\"\t\"%@\"\n",
              [[riskNeighbor country1] countryName],
              [[riskNeighbor country2] countryName]];
     }
 
-    return str;
+    return [str autorelease];
 }
 
 //----------------------------------------------------------------------
@@ -569,7 +576,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry
 {
-    int count;
+    NSInteger count;
 
     toCountry = aCountry;
     [toTextfield setStringValue:[aCountry countryName]];
@@ -579,7 +586,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         [countryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:fromCountry:toCountry]];
         [neighborTableView reloadData];
         count = [countryNeighbors count];
-        [neighborTableView selectRow:count - 1 byExtendingSelection:NO];
+        [neighborTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:count - 1] byExtendingSelection:NO];
         [neighborTableView scrollRowToVisible:count - 1];
         [riskMapView setNeedsDisplay:YES];
         // Otherwise the textfields will be obscured by the map view.
@@ -591,7 +598,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - (IBAction) removeNeighbor:(id)sender
 {
-    int index;
+    NSInteger index;
     
     index = [neighborTableView selectedRow];
     if (index >= 0)
@@ -637,7 +644,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (NSArray *) riskNeighbors
+- (NSArray<RiskNeighbor*> *) riskNeighbors
 {
     return countryNeighbors;
 }
@@ -646,9 +653,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 // NSTableDataSource
 //======================================================================
 
-- (int) numberOfRowsInTableView:(NSTableView *)aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
-    int count;
+    NSInteger count;
 
     count = [countryNeighbors count];
 
@@ -657,7 +664,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     NSString *identifier;
     RiskNeighbor *target;
@@ -672,7 +679,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
     if ([identifier isEqualToString:@"Index"])
     {
-        value = [NSNumber numberWithInt:rowIndex + 1];
+        value = [NSNumber numberWithInteger:rowIndex + 1];
     }
     else if ([identifier isEqualToString:@"Country1"])
     {

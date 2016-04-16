@@ -62,8 +62,6 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
     {
         xthresh = [self bounds].size.width / 2;
 
-        PSsetlinewidth (3);
-
         neighborArray = [datasource riskNeighbors];
         neighborEnumerator = [neighborArray objectEnumerator];
         while (riskNeighbor = [neighborEnumerator nextObject])
@@ -77,10 +75,12 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
                 [[NSColor blueColor] set]; // Try to make the Alaska-Kamchatka link stand out
             else
                 [[NSColor redColor] set];
-                
-            PSmoveto (p1.x, p1.y);
-            PSlineto (p2.x, p2.y);
-            PSstroke();
+            
+            NSBezierPath *path = [NSBezierPath bezierPath];
+            [path moveToPoint:p1];
+            [path lineToPoint:p2];
+            path.lineWidth = 3;
+            [path stroke];
         }
     }
 }

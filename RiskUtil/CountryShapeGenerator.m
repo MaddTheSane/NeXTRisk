@@ -82,22 +82,22 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     NSEnumerator *pointEnumerator;
     NSArray *region;
     RiskPoint *point;
-    SNUserPath *userPath;
+    NSBezierPath *userPath;
 
-    userPath = [[[SNUserPath alloc] init] autorelease];
+    userPath = [[[NSBezierPath alloc] init] autorelease];
 
     regionEnumerator = [regionArrays objectEnumerator];
     while (region = [regionEnumerator nextObject])
     {
         pointEnumerator = [region objectEnumerator];
         point = [pointEnumerator nextObject];
-        [userPath addOperation:[SNUserPathOperation moveto:[point point]]];
+        [userPath moveToPoint:point.point];
         while (point = [pointEnumerator nextObject])
         {
-            [userPath addOperation:[SNUserPathOperation lineto:[point point]]];
+            [userPath lineToPoint:point.point];
         }
     }
-    [userPath addOperation:[SNUserPathOperation closepath]];
+    [userPath closePath];
     //[userPath createPathWithCache:YES];
 
     //return [CountryShape countryShapeWithRegions:regionArrays];

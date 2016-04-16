@@ -11,6 +11,7 @@
 		551251E21CC22525000E7A52 /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		551251E31CC22525000E7A52 /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551251E91CC225AE000E7A52 /* RiskUtil.xib */; };
+		551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 551251EA1CC27D55000E7A52 /* RiskUtil_main.m */; };
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
 		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
@@ -254,6 +255,7 @@
 /* Begin PBXFileReference section */
 		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
+		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55377EB21CC15AC900A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55377EB71CC15AC900A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */,
 				5537801D1CC15E6A00A2C08E /* RiskUtility.h */,
 				5537801E1CC15E6A00A2C08E /* RiskUtility.m */,
+				551251EA1CC27D55000E7A52 /* RiskUtil_main.m */,
 				553780A01CC195A700A2C08E /* Resources */,
 			);
 			path = RiskUtil;
@@ -655,7 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				553780A81CC1966300A2C08E /* RiskKit.h */,
-				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
 				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
 				55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */,
 				55377EC61CC15C2300A2C08E /* BoardSetup.h */,
@@ -686,6 +688,7 @@
 				55377F631CC15C2400A2C08E /* RiskWorld.m */,
 				55377F641CC15C2400A2C08E /* SNRandom.h */,
 				55377F651CC15C2400A2C08E /* SNRandom.m */,
+				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
 				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
 				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
 				553780AA1CC1966300A2C08E /* Info.plist */,
@@ -1089,6 +1092,7 @@
 				5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */,
 				553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */,
 				553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */,
+				551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */,
 				5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */,
 				553780601CC162A800A2C08E /* RiskMapView.m in Sources */,
 			);

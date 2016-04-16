@@ -9,7 +9,7 @@
 
 @class Country, RiskMapView, RiskNeighbor, RiskWorld, RiskCard;
 
-@interface RiskUtility : NSObject
+@interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource>
 {
     IBOutlet RiskMapView *riskMapView;
     IBOutlet NSTextField *fromTextfield;
@@ -21,31 +21,29 @@
     IBOutlet NSTableView *neighborTableView;
 
     NSDictionary *continents;
-    NSMutableArray *countryNeighbors;
+    NSMutableArray<RiskNeighbor*> *countryNeighbors;
     NSArray *cards;
 }
-
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotificaiton;
 
 - (IBAction) saveWorld:(id)sender;
 - (void) writeRiskWorld:(RiskWorld *)riskWorld;
 
 + (NSDictionary *) readContinentTextfile;
-+ (NSArray *) readCountryTextfile:(NSSet *)continentNames;
-+ (NSMutableArray *) readCountryNeighborsTextfile:(NSArray *)countries;
++ (NSArray<Country*> *) readCountryTextfile:(NSSet<NSString*> *)continentNames;
++ (NSMutableArray<RiskNeighbor*> *) readCountryNeighborsTextfile:(NSArray<Country*> *)countries;
 
-+ (NSArray *) readCardTextfile:(NSArray *)countryArray;
++ (NSArray<RiskCard*> *) readCardTextfile:(NSArray<Country *> *)countryArray;
 
-+ (NSString *) neighborString:(NSArray *)neighborArray;
++ (NSString *) neighborString:(NSArray<RiskNeighbor*> *)neighborArray;
 
 + (NSDictionary *) buildContinents:(NSDictionary *)continentBonuses fromCountries:(NSArray *)countries;
 
-- init;
+- (instancetype)init;
 
-+ (Country *) scanCountry:(NSScanner *)scanner validContinents:(NSSet *)continentNames;
-+ (RiskNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary *)countries;
++ (Country *) scanCountry:(NSScanner *)scanner validContinents:(NSSet<NSString*> *)continentNames;
++ (RiskNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,Country*> *)countries;
 + (RiskContinent) continentFromString:(NSString *)str;
-+ (RiskCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary *)countries;
++ (RiskCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,Country*> *)countries;
 + (RiskCardType) riskCardTypeFromString:(NSString *)str;
 
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
@@ -54,13 +52,6 @@
 - (IBAction) removeNeighbor:(id)sender;
 - (IBAction) writeNeighborTextFile:(id)sender;
 
-- (NSArray *) riskNeighbors;
-
-//======================================================================
-// NSTableDataSource
-//======================================================================
-
-- (int) numberOfRowsInTableView:(NSTableView *)aTableView;
-- tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
+@property (readonly, copy) NSArray<RiskNeighbor*> *riskNeighbors;
 
 @end

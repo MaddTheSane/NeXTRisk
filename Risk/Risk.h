@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 #import "SNUtility.h"
 
-typedef enum _RiskContinent
+typedef NS_ENUM(int, RiskContinent)
 {
     Unknown = -1,
     SouthAmerica,
@@ -15,7 +15,7 @@ typedef enum _RiskContinent
     Africa,
     Asia,
     Australia
-} RiskContinent;
+};
 
 typedef NSInteger Player;
 
