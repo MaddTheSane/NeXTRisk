@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AboutPlayerFile</key>
+	<string>Chaotic.rtf</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,6 +25,12 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 C.W. Betts. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>$(PRODUCT_MODULE_NAME).Chaos</string>
+	<key>PlayerIcon</key>
+	<string>Chaotic.tiff</string>
+	<key>PlayerTypeName</key>
+	<string>SwiftChaos</string>
+	<key>SuperClass</key>
+	<string>RiskPlayer</string>
 </dict>
 </plist>

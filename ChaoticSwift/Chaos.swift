@@ -86,27 +86,18 @@ public class Chaos: RiskPlayer {
 	//MARK: Regular turn phases
 
     public override func placeArmies(count: Int32) {
-    /*
-    NSArray *ourCountries;
-    NSInteger countryCount;
-    BOOL okay;
-    NSInteger l;
-    Country *country;
-
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-    ourCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] allObjects];
-    countryCount = [ourCountries count];
+    var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries()))
+    let countryCount = ourCountries.count
 
-    NSAssert (countryCount > 0, @"We have no countries!");
+    assert(countryCount > 0, "We have no countries!");
 
-    for (l = 0; l < count; l++)
-    {
-        country = [ourCountries objectAtIndex:[[self rng] randomNumberModulo:countryCount]];
+    for _ in 0..<count {
+        let country = ourCountries[rng.randomNumberModulo(countryCount)]
 
-        okay = [gameManager player:self placesArmies:1 inCountry:country];
-        NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
+		let okay = gameManager.player(self, placesArmies: 1, inCountry: country)
+        assert(okay, "Could not place army in country: \(country)");
     }
-*/
 		turnDone()
 	}
 
@@ -177,35 +168,25 @@ public class Chaos: RiskPlayer {
 	/// Try to find a friendly neighbor who has unfriendly neighbors
 	/// Otherwise, pick random country.
 	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country!) {
-        /*
-    NSSet *ourNeighborCountries;
-    NSEnumerator *countryEnumerator;
-    Country *country, *destination;
-    NSInteger neighborCount;
-
-    destination = nil;
-
-    ourNeighborCountries = [source ourNeighborCountries];
-    countryEnumerator = [ourNeighborCountries objectEnumerator];
-    
-    while (country = [countryEnumerator nextObject])
-    {
-        if ([country hasEnemyNeighbors] == YES)
-        {
-            destination = country;
-            break;
-        }
-    }
-
-    if (destination == nil)
-    {
-        // Pick random country
-        neighborCount = [ourNeighborCountries count];
-        destination = [[ourNeighborCountries allObjects] objectAtIndex:[[self rng] randomNumberModulo:neighborCount]];
-    }
-
-    [gameManager player:self placesArmies:count inCountry:destination];
-         */
+		var destination: Country?
+		
+		
+		let ourNeighborCountries = source.ourNeighborCountries()
+		
+		for country in ourNeighborCountries {
+			if country.hasEnemyNeighbors {
+				destination = country
+				break
+			}
+		}
+		
+		if destination == nil {
+			// Pick random country
+			let neighborCount = ourNeighborCountries.count
+			destination = Array(ourNeighborCountries)[rng.randomNumberModulo(neighborCount)]
+		}
+		
+		gameManager.player(self, placesArmies: count, inCountry: destination!)
 		turnDone()
 	}
 

@@ -157,6 +157,7 @@
 		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
 		553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
 		553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
+		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */,
 				553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */,
 				553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */,
 			);
@@ -871,6 +873,7 @@
 		55377EA11CC15AC900A2C08E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SN;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
