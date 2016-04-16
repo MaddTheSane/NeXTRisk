@@ -31,7 +31,7 @@ static NSTextFieldCell *_textCell = nil;
     {
         [self setVersion:StatusView_VERSION];
 
-        _textCell = [[NSTextFieldCell allocWithZone:[self zone]] init];
+        _textCell = [[NSTextFieldCell alloc] init];
         [_textCell setBackgroundColor:[NSColor lightGrayColor]];
         [_textCell setBezeled:NO];
         [_textCell setBordered:NO];

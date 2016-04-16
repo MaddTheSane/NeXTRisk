@@ -55,7 +55,6 @@ static struct image_names class_images[] =
 {
     int l;
     NSBundle *thisBundle;
-    NSString *imagePath;
 
     if (self == [ArmyView class])
     {

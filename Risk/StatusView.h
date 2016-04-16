@@ -15,10 +15,7 @@
     BOOL showCardSetCounts;
 }
 
-+ (void) initialize;
-
-- initWithFrame:(NSRect)frameRect;
-- (void) dealloc;
+- (instancetype)initWithFrame:(NSRect)frameRect;
 
 - (BOOL) isFlipped;
 

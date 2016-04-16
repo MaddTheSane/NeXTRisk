@@ -484,64 +484,10 @@
 		55377EAB1CC15AC900A2C08E /* Risk */ = {
 			isa = PBXGroup;
 			children = (
+				553781031CC21B3F00A2C08E /* Classes */,
 				553780F91CC1B53D00A2C08E /* Migration purposes */,
 				5537809A1CC188A100A2C08E /* Interfaces */,
 				55377FF21CC15D8500A2C08E /* Resources */,
-				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
-				55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */,
-				55377EC31CC15C2300A2C08E /* ArmyView.h */,
-				55377EC41CC15C2300A2C08E /* ArmyView.m */,
-				55377EC61CC15C2300A2C08E /* BoardSetup.h */,
-				55377EC71CC15C2300A2C08E /* BoardSetup.m */,
-				55377EC81CC15C2300A2C08E /* Brain.h */,
-				55377EC91CC15C2300A2C08E /* Brain.m */,
-				55377EFE1CC15C2300A2C08E /* CardPanelController.h */,
-				55377EFF1CC15C2300A2C08E /* CardPanelController.m */,
-				55377F001CC15C2300A2C08E /* CardSet.h */,
-				55377F011CC15C2300A2C08E /* CardSet.m */,
-				55377F031CC15C2300A2C08E /* Continent.h */,
-				55377F041CC15C2300A2C08E /* Continent.m */,
-				55377F051CC15C2300A2C08E /* Country.h */,
-				55377F061CC15C2300A2C08E /* Country.m */,
-				55377F071CC15C2300A2C08E /* CountryShape.h */,
-				55377F081CC15C2300A2C08E /* CountryShape.m */,
-				55377F0A1CC15C2300A2C08E /* DiceInspector.h */,
-				55377F0B1CC15C2300A2C08E /* DiceInspector.m */,
-				55377F391CC15C2300A2C08E /* GameConfiguration.h */,
-				55377F3A1CC15C2300A2C08E /* GameConfiguration.m */,
-				55377F421CC15C2300A2C08E /* Human.h */,
-				55377F431CC15C2300A2C08E /* Human.m */,
-				55377F461CC15C2300A2C08E /* LineView.h */,
-				55377F471CC15C2300A2C08E /* LineView.m */,
-				55377F4B1CC15C2300A2C08E /* NewGameController.h */,
-				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
-				55377F501CC15C2300A2C08E /* PreferenceController.h */,
-				55377F511CC15C2300A2C08E /* PreferenceController.m */,
-				55377F521CC15C2300A2C08E /* Risk_main.m */,
-				55377F531CC15C2300A2C08E /* Risk.h */,
-				55377F541CC15C2300A2C08E /* Risk.m */,
-				55377F551CC15C2400A2C08E /* RiskCard.h */,
-				55377F561CC15C2400A2C08E /* RiskCard.m */,
-				55377F571CC15C2400A2C08E /* RiskGameManager.h */,
-				55377F581CC15C2400A2C08E /* RiskGameManager.m */,
-				55377F591CC15C2400A2C08E /* RiskMapView.h */,
-				55377F5A1CC15C2400A2C08E /* RiskMapView.m */,
-				55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */,
-				55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */,
-				55377F5D1CC15C2400A2C08E /* RiskPlayer.h */,
-				55377F5E1CC15C2400A2C08E /* RiskPlayer.m */,
-				55377F5F1CC15C2400A2C08E /* RiskPoint.h */,
-				55377F601CC15C2400A2C08E /* RiskPoint.m */,
-				55377F621CC15C2400A2C08E /* RiskWorld.h */,
-				55377F631CC15C2400A2C08E /* RiskWorld.m */,
-				55377F641CC15C2400A2C08E /* SNRandom.h */,
-				55377F651CC15C2400A2C08E /* SNRandom.m */,
-				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
-				55377F6D1CC15C2400A2C08E /* StatusView.h */,
-				55377F6E1CC15C2400A2C08E /* StatusView.m */,
-				55377F6F1CC15C2400A2C08E /* Version.h */,
-				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
-				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
 			);
 			path = Risk;
 			sourceTree = "<group>";
@@ -723,6 +669,68 @@
 			name = "Migration purposes";
 			sourceTree = "<group>";
 			usesTabs = 1;
+		};
+		553781031CC21B3F00A2C08E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
+				55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */,
+				55377EC31CC15C2300A2C08E /* ArmyView.h */,
+				55377EC41CC15C2300A2C08E /* ArmyView.m */,
+				55377EC61CC15C2300A2C08E /* BoardSetup.h */,
+				55377EC71CC15C2300A2C08E /* BoardSetup.m */,
+				55377EC81CC15C2300A2C08E /* Brain.h */,
+				55377EC91CC15C2300A2C08E /* Brain.m */,
+				55377EFE1CC15C2300A2C08E /* CardPanelController.h */,
+				55377EFF1CC15C2300A2C08E /* CardPanelController.m */,
+				55377F001CC15C2300A2C08E /* CardSet.h */,
+				55377F011CC15C2300A2C08E /* CardSet.m */,
+				55377F031CC15C2300A2C08E /* Continent.h */,
+				55377F041CC15C2300A2C08E /* Continent.m */,
+				55377F051CC15C2300A2C08E /* Country.h */,
+				55377F061CC15C2300A2C08E /* Country.m */,
+				55377F071CC15C2300A2C08E /* CountryShape.h */,
+				55377F081CC15C2300A2C08E /* CountryShape.m */,
+				55377F0A1CC15C2300A2C08E /* DiceInspector.h */,
+				55377F0B1CC15C2300A2C08E /* DiceInspector.m */,
+				55377F391CC15C2300A2C08E /* GameConfiguration.h */,
+				55377F3A1CC15C2300A2C08E /* GameConfiguration.m */,
+				55377F421CC15C2300A2C08E /* Human.h */,
+				55377F431CC15C2300A2C08E /* Human.m */,
+				55377F461CC15C2300A2C08E /* LineView.h */,
+				55377F471CC15C2300A2C08E /* LineView.m */,
+				55377F4B1CC15C2300A2C08E /* NewGameController.h */,
+				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
+				55377F501CC15C2300A2C08E /* PreferenceController.h */,
+				55377F511CC15C2300A2C08E /* PreferenceController.m */,
+				55377F521CC15C2300A2C08E /* Risk_main.m */,
+				55377F531CC15C2300A2C08E /* Risk.h */,
+				55377F541CC15C2300A2C08E /* Risk.m */,
+				55377F551CC15C2400A2C08E /* RiskCard.h */,
+				55377F561CC15C2400A2C08E /* RiskCard.m */,
+				55377F571CC15C2400A2C08E /* RiskGameManager.h */,
+				55377F581CC15C2400A2C08E /* RiskGameManager.m */,
+				55377F591CC15C2400A2C08E /* RiskMapView.h */,
+				55377F5A1CC15C2400A2C08E /* RiskMapView.m */,
+				55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */,
+				55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */,
+				55377F5D1CC15C2400A2C08E /* RiskPlayer.h */,
+				55377F5E1CC15C2400A2C08E /* RiskPlayer.m */,
+				55377F5F1CC15C2400A2C08E /* RiskPoint.h */,
+				55377F601CC15C2400A2C08E /* RiskPoint.m */,
+				55377F621CC15C2400A2C08E /* RiskWorld.h */,
+				55377F631CC15C2400A2C08E /* RiskWorld.m */,
+				55377F641CC15C2400A2C08E /* SNRandom.h */,
+				55377F651CC15C2400A2C08E /* SNRandom.m */,
+				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
+				55377F6D1CC15C2400A2C08E /* StatusView.h */,
+				55377F6E1CC15C2400A2C08E /* StatusView.m */,
+				55377F6F1CC15C2400A2C08E /* Version.h */,
+				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
+				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -1294,7 +1302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1332,7 +1340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
