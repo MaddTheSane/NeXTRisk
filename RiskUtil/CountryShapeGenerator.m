@@ -16,30 +16,19 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 
 + countryShapeGenerator
 {
-    return [[[CountryShapeGenerator alloc] init] autorelease];
+    return [[CountryShapeGenerator alloc] init];
 }
 
 //----------------------------------------------------------------------
 
 - init
 {
-    [super init];
+    if (!(self = [super init])) return nil;
 
-    regionArrays = [[NSMutableArray array] retain];
+    regionArrays = [NSMutableArray array];
     currentRegionPoints = nil;
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    [regionArrays release];
-    if (currentRegionPoints != nil)
-        [currentRegionPoints release];
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -51,7 +40,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     if (currentRegionPoints != nil)
         [self closeRegion];
 #endif
-    currentRegionPoints = [[NSMutableArray array] retain];
+    currentRegionPoints = [NSMutableArray array];
 }
 
 //----------------------------------------------------------------------
@@ -70,7 +59,6 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     NSAssert (currentRegionPoints != nil, @"Not defining a region.");
 
     [regionArrays addObject:currentRegionPoints];
-    [currentRegionPoints release];
     currentRegionPoints = nil;
 }
 
@@ -84,7 +72,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     RiskPoint *point;
     NSBezierPath *userPath;
 
-    userPath = [[[NSBezierPath alloc] init] autorelease];
+    userPath = [[NSBezierPath alloc] init];
 
     regionEnumerator = [regionArrays objectEnumerator];
     while (region = [regionEnumerator nextObject])

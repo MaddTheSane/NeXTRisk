@@ -18,9 +18,9 @@
     NSMutableArray *countryArray;
     Country *selectedCountry;
 
-    float currentScaleFactor;
+    CGFloat currentScaleFactor;
 
-    IBOutlet id delegate;
+    id delegate;
 }
 
 + (void) initialize;
@@ -39,16 +39,11 @@
 - (void) mouseDown:(NSEvent *)theEvent;
 - (void) mouseUp:(NSEvent *)theEvent;
 
-- (NSArray *) countryArray;
-- (void) setCountryArray:(NSArray *)countries;
+@property (copy) NSArray<Country*> *countryArray;
 
-- (float) scaleFactor;
-- (void) setScaleFactor:(float)newScaleFactor;
+@property (nonatomic) CGFloat scaleFactor;
 
-- delegate;
-- (void) setDelegate:newDelegate;
-
-//- (NSString *) description;
+@property (strong) IBOutlet id delegate;
 
 - (void) countryUpdated:(NSNotification *)aNotification;
 

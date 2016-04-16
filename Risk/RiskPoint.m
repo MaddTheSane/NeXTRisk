@@ -29,7 +29,7 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 + riskPointWithPoint:(NSPoint)aPoint
 {
-    return [[[RiskPoint alloc] initWithPoint:aPoint] autorelease];
+    return [[RiskPoint alloc] initWithPoint:aPoint];
 }
 
 //----------------------------------------------------------------------

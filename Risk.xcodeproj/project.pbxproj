@@ -17,7 +17,7 @@
 		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		55377F7A1CC15C2400A2C08E /* Brain.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC91CC15C2300A2C08E /* Brain.m */; };
 		55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECA1CC15C2300A2C08E /* CardBack.tiff */; };
-		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
+		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.nib */; };
 		55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.nib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.nib */; };
@@ -32,8 +32,8 @@
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
 		55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F521CC15C2300A2C08E /* Risk_main.m */; };
-		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
-		55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; };
+		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
 		553780021CC15E1700A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553780011CC15E1700A2C08E /* Assets.xcassets */; };
@@ -150,8 +150,8 @@
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
 		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
-		553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
-		553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
+		553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -1394,6 +1394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = RiskUtil/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1406,6 +1407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = RiskUtil/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

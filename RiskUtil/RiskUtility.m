@@ -39,24 +39,23 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
     // Make sure map view is below all other views.
     tmp1 = [riskMapView superview];
-    tmp2 = [riskMapView retain];
+    tmp2 = riskMapView;
     [tmp2 removeFromSuperview];
     [tmp1 addSubview:tmp2 positioned:NSWindowBelow relativeTo:nil];
-    [tmp2 release];
 
     continentBonuses = [[RiskUtility readContinentTextfile] mutableCopy];
 
     continentNames = [NSSet setWithArray:[continentBonuses allKeys]];
 
     // 1. read country data
-    countryArray = [[RiskUtility readCountryTextfile:continentNames] retain];
+    countryArray = [RiskUtility readCountryTextfile:continentNames];
     //NSLog (@"country array: %@", countryArray);
 
     // Create Continents
-    continents = [[RiskUtility buildContinents:continentBonuses fromCountries:countryArray] retain];
+    continents = [RiskUtility buildContinents:continentBonuses fromCountries:countryArray];
 
     // 2. read country connections
-    countryNeighbors = [[RiskUtility readCountryNeighborsTextfile:countryArray] retain];
+    countryNeighbors = [RiskUtility readCountryNeighborsTextfile:countryArray];
     //NSLog (@"country neighbors: %@", countryNeighbors);
 
     [neighborTableView reloadData];
@@ -64,7 +63,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     //[riskMapView setNeedsDisplay:YES];
 
     // 3. Create cards.
-    cards = [[RiskUtility readCardTextfile:countryArray] retain];
+    cards = [RiskUtility readCardTextfile:countryArray];
 }
 
 //----------------------------------------------------------------------
@@ -140,7 +139,6 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         }
     NS_ENDHANDLER;
 
-    [fileContents release];
     return dict;
 }
 
@@ -174,7 +172,6 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     {
         [array addObject:country];
     }
-    [fileContents release];
 
     return array;
 }
@@ -218,9 +215,8 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     {
         [array addObject:riskNeighbor];
     }
-    [fileContents release];
 
-    return [array autorelease];
+    return array;
 }
 
 //----------------------------------------------------------------------
@@ -267,7 +263,6 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         [array addObject:riskCard];
     }
 
-    [fileContents release];
     NSLog (@"array: %@", array);
 
     DEND;
@@ -289,7 +284,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
              [[riskNeighbor country2] countryName]];
     }
 
-    return [str autorelease];
+    return [str copy];
 }
 
 //----------------------------------------------------------------------
@@ -345,7 +340,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - init
 {
-    [super init];
+    if (!(self = [super init])) return nil;
 
     fromCountry = nil;
     toCountry = nil;
@@ -355,17 +350,6 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     cards = nil;
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (continents);
-    SNRelease (countryNeighbors);
-    SNRelease (cards);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -417,10 +401,10 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
                 NSLog (@"Continent %@ not found.", continentName);
             }
             
-            country = [[[Country alloc] initWithCountryName:name
+            country = [[Country alloc] initWithCountryName:name
                                         continentName:continentName
                                         shape:shape
-                                        continent:continent] autorelease];
+                                        continent:continent];
             NSLog (@"=== Defined country: '%@'", name);
         }
     NS_HANDLER
@@ -521,8 +505,8 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
             imageName = [scanner scanQuotedString];
 
             country = [countries objectForKey:countryName];
-            card = [[[RiskCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
-                                      withCountry:country imageNamed:imageName] autorelease];
+            card = [[RiskCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
+                                      withCountry:country imageNamed:imageName];
         }
     NS_HANDLER
         {

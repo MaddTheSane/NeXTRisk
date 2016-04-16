@@ -24,6 +24,8 @@ static NSImage *_boardBackingImage = nil;
 #define RiskMapView_VERSION 1
 
 @implementation RiskMapView
+@synthesize delegate;
+@synthesize scaleFactor = currentScaleFactor;
 
 + (void) initialize
 // set our version
@@ -111,13 +113,6 @@ static NSImage *_boardBackingImage = nil;
 // free all our lists
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    SNRelease (boardBackingImage);
-    SNRelease (countryArray);
-    SNRelease (selectedCountry);
-    SNRelease (delegate);
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -249,7 +244,6 @@ static NSImage *_boardBackingImage = nil;
 
 - (void) setCountryArray:(NSArray *)countries
 {
-    [countryArray release];
     countryArray = [countries mutableCopy];
 
     [self setNeedsDisplay:YES];
@@ -258,18 +252,11 @@ static NSImage *_boardBackingImage = nil;
 
 //----------------------------------------------------------------------
 
-- (float) scaleFactor
-{
-    return currentScaleFactor;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setScaleFactor:(float)newScaleFactor
+- (void) setScaleFactor:(CGFloat)newScaleFactor
 {
     NSSize imageSize;
     NSSize scaleSize;
-    float factor;
+    CGFloat factor;
 
     //NSLog (@"current: %f, new: %f", currentScaleFactor, newScaleFactor);
 
@@ -289,23 +276,6 @@ static NSImage *_boardBackingImage = nil;
     [boardBackingImage setSize:imageSize];
     [self setNeedsDisplay:YES];
     [[self superview] setNeedsDisplay:YES];
-}
-
-//----------------------------------------------------------------------
-
-- delegate
-{
-    return delegate;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setDelegate:newDelegate
-{
-    if (delegate != nil)
-        [delegate release];
-
-    delegate = [newDelegate retain];
 }
 
 //----------------------------------------------------------------------
@@ -337,12 +307,11 @@ static NSImage *_boardBackingImage = nil;
     //NSLog (@"old: %@, new: %@", selectedCountry, aCountry);
 
     tmp = selectedCountry;
-    selectedCountry = [aCountry retain];
+    selectedCountry = aCountry;
 
     if (tmp != nil)
     {
         [self drawCountry:tmp];
-        [tmp release];
     }
 
     if (selectedCountry != nil)

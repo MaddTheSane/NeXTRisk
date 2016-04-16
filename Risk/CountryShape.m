@@ -38,7 +38,7 @@ static NSTextFieldCell *_armyCell = nil;
 
         if (_armyCell == nil)
         {
-            _armyCell = [[NSTextFieldCell allocWithZone:[self zone]] init];
+            _armyCell = [[NSTextFieldCell alloc] init];
 
             [_armyCell setBackgroundColor:[NSColor whiteColor]];
             [_armyCell setBezeled:NO];
@@ -57,7 +57,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 + countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
-    return [[[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint] autorelease];
+    return [[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
@@ -67,7 +67,7 @@ static NSTextFieldCell *_armyCell = nil;
     if ([super init] == nil)
         return nil;
 
-    userPath = [aUserPath retain];
+    userPath = aUserPath;
     armyCellPoint = aPoint;
     //shapeBoudns = NSZeroRect;
 
@@ -75,13 +75,6 @@ static NSTextFieldCell *_armyCell = nil;
 }
 
 //----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (userPath);
-
-    [super dealloc];
-}
 
 #define kUserPathKey @"BezierUserPath"
 #define kArmyCellPoint @"ArmyCellPoint"
@@ -102,12 +95,12 @@ static NSTextFieldCell *_armyCell = nil;
     if ([super init] == nil)
         return nil;
 	if ([aDecoder allowsKeyedCoding]) {
-		userPath = [[aDecoder decodeObjectForKey:kUserPathKey] retain];
+		userPath = [aDecoder decodeObjectForKey:kUserPathKey];
 		armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
 	} else {
 		//For compatibility reasons, we have to jump through some hoops.
 		SNUserPath *oldPath = [aDecoder decodeObject];
-		userPath = [[oldPath toBezierPath] retain];
+		userPath = [oldPath toBezierPath];
 		armyCellPoint = [aDecoder decodePoint];
 		//shapeBounds = [aDecoder decodeRect];
 	}

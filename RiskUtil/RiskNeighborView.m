@@ -27,20 +27,11 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 
 - initWithFrame:(NSRect)frameRect
 {
-    [super initWithFrame:frameRect];
+    if (!(self = [super initWithFrame:frameRect])) return nil;
 
     datasource = nil;
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (datasource);
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
