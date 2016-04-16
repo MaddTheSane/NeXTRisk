@@ -89,26 +89,26 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-    if ([aDecoder allowsKeyedCoding]) {
-        name = [[aDecoder decodeObjectForKey:kCountryName] copy];
-        countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
-        continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
-        playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
-        troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
-        unmovableTroopCount = [aDecoder decodeIntForKey:kCountryUnmovableTroopCount];
-    } else {
-    name = [[aDecoder decodeObject] copy];
-    countryShape = [[aDecoder decodeObject] retain];
-    continentName = [[aDecoder decodeObject] copy];
+        if ([aDecoder allowsKeyedCoding]) {
+            name = [[aDecoder decodeObjectForKey:kCountryName] copy];
+            countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
+            continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
+            playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
+            troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
+            unmovableTroopCount = [aDecoder decodeIntForKey:kCountryUnmovableTroopCount];
+        } else {
+            name = [[aDecoder decodeObject] copy];
+            countryShape = [[aDecoder decodeObject] retain];
+            continentName = [[aDecoder decodeObject] copy];
 
-	int aTmp = 0;
-    [aDecoder decodeValueOfObjCType:@encode (int) at:&aTmp];
-	playerNumber = aTmp;
-    [aDecoder decodeValueOfObjCType:@encode (int) at:&troopCount];
-    [aDecoder decodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
-    }
-    // World has encoded neighbors
-    neighborCountries = [[NSMutableSet alloc] init];
+            int aTmp = 0;
+            [aDecoder decodeValueOfObjCType:@encode (int) at:&aTmp];
+            playerNumber = aTmp;
+            [aDecoder decodeValueOfObjCType:@encode (int) at:&troopCount];
+            [aDecoder decodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
+        }
+        // World has encoded neighbors
+        neighborCountries = [[NSMutableSet alloc] init];
     }
 
     return self;

@@ -60,66 +60,66 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
     NSString *nibFile;
     BOOL loaded;
     int l;
 
     if (self = [super init]) {
-    world = nil;
-    mapView = nil;
+        world = nil;
+        mapView = nil;
 
-    phaseComputerMove = nil;
-    phasePlaceArmies = nil;
-    phaseAttack = nil;
-    phaseFortify = nil;
-    phaseChooseCountries = nil;
-    currentPhaseView = nil;
+        phaseComputerMove = nil;
+        phasePlaceArmies = nil;
+        phaseAttack = nil;
+        phaseFortify = nil;
+        phaseChooseCountries = nil;
+        currentPhaseView = nil;
 
-    rng = [[SNRandom instance] retain];
+        rng = [[SNRandom instance] retain];
 
-    nibFile = @"GameBoard.nib";
-    loaded = [NSBundle loadNibNamed:nibFile owner:self];
-    if (loaded == NO)
-    {
-        NSLog (@"Could not load %@.", nibFile);
-        [super dealloc];
-        return nil;
-    }
+        nibFile = @"GameBoard.nib";
+        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        if (loaded == NO)
+        {
+            NSLog (@"Could not load %@.", nibFile);
+            [super dealloc];
+            return nil;
+        }
 
-    configuration = [[GameConfiguration alloc] init];;
+        configuration = [[GameConfiguration alloc] init];;
 
-    activePlayerCount = 0;
+        activePlayerCount = 0;
 
-    for (l = 0; l < MAX_PLAYERS; l++)
-    {
-        players[l] = nil;
-        playersActive[l] = NO;
-    }
+        for (l = 0; l < MAX_PLAYERS; l++)
+        {
+            players[l] = nil;
+            playersActive[l] = NO;
+        }
 
-    initialArmyCount = 0;
-    gameState = gs_no_game;
-    currentPlayerNumber = 0;
+        initialArmyCount = 0;
+        gameState = gs_no_game;
+        currentPlayerNumber = 0;
 
-    cardPanelController = nil;
-    cardDeck = nil;
-    discardDeck = [[NSMutableArray array] retain];
+        cardPanelController = nil;
+        cardDeck = nil;
+        discardDeck = [[NSMutableArray alloc] init];
 
-    playerHasConqueredCountry = NO;
+        playerHasConqueredCountry = NO;
 
-    armyPlacementValidator = nil;
-    nextCardSetValue = 4;
+        armyPlacementValidator = nil;
+        nextCardSetValue = 4;
 
-    diceInspector = nil;
-    worldInfoController = nil;
+        diceInspector = nil;
+        worldInfoController = nil;
 
-    toolMenu = [[[NSApp mainMenu] itemWithTitle:@"Tools"] target];
+        toolMenu = [[[NSApp mainMenu] itemWithTitle:@"Tools"] target];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (defaultsChanged:)
-                                          name:RiskBoardSetupPlayerColorsChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (defaultsChanged:)
+                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                   object:nil];
     }
 
     return self;

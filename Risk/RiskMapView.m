@@ -73,33 +73,33 @@ static NSImage *_boardBackingImage = nil;
 
 //----------------------------------------------------------------------
 
-- initWithFrame:(NSRect)frameRect
+- (id)initWithFrame:(NSRect)frameRect
 // designated initializer
 {
     if (self = [super initWithFrame:frameRect]) {
-    countryArray = nil;
+        countryArray = nil;
 
-    currentScaleFactor = 1;
+        currentScaleFactor = 1;
 
-    boardBackingImage = [_boardBackingImage copy];
+        boardBackingImage = [_boardBackingImage copy];
 
-    delegate = nil;
-    selectedCountry = nil;
+        delegate = nil;
+        selectedCountry = nil;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (countryUpdated:)
-                                          name:CountryUpdatedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (countryUpdated:)
+                                                     name:CountryUpdatedNotification
+                                                   object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (boardSetupChanged:)
-                                          name:RiskBoardSetupChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (boardSetupChanged:)
+                                                     name:RiskBoardSetupChangedNotification
+                                                   object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (boardSetupChanged:)
-                                          name:RiskBoardSetupPlayerColorsChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (boardSetupChanged:)
+                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                   object:nil];
     }
 
     return self;

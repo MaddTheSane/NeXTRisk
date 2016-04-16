@@ -52,17 +52,17 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
     NSUserDefaults *defaults;
 
     if (self = [super init]) {
-    defaults = [NSUserDefaults standardUserDefaults];
+        defaults = [NSUserDefaults standardUserDefaults];
 
-    initialCountryDistribution = initialCountryDistributionFromString ([defaults stringForKey:DK_InitialCountryDistribution]);
-    initialArmyPlacement = initialArmyPlacementFromString ([defaults stringForKey:DK_InitialArmyPlacement]);
-    cardSetRedemption = cardSetRedemptionFromString ([defaults stringForKey:DK_CardSetRedemption]);
-    fortifyRule = fortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
+        initialCountryDistribution = initialCountryDistributionFromString ([defaults stringForKey:DK_InitialCountryDistribution]);
+        initialArmyPlacement = initialArmyPlacementFromString ([defaults stringForKey:DK_InitialArmyPlacement]);
+        cardSetRedemption = cardSetRedemptionFromString ([defaults stringForKey:DK_CardSetRedemption]);
+        fortifyRule = fortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
     }
 
     return self;

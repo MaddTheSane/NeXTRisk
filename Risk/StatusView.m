@@ -48,17 +48,17 @@ static NSTextFieldCell *_textCell = nil;
 - initWithFrame:(NSRect)frameRect
 {
     if (self = [super initWithFrame:frameRect]) {
-    showCardSetCounts = [[BoardSetup instance] showCardSetCounts];
+        showCardSetCounts = [[BoardSetup instance] showCardSetCounts];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (defaultsChanged:)
-                                          name:RiskBoardSetupShowCardSetCountsChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (defaultsChanged:)
+                                                     name:RiskBoardSetupShowCardSetCountsChangedNotification
+                                                   object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (defaultsChanged:)
-                                          name:RiskBoardSetupPlayerColorsChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (defaultsChanged:)
+                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                   object:nil];
     }
 
     return self;

@@ -90,30 +90,30 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
     BOOL loaded;
     NSString *nibFile;
 
     if (self = [super init]) {
-    nibFile = @"DiceInspector.nib";
-    loaded = [NSBundle loadNibNamed:nibFile owner:self];
-    if (loaded == NO)
-    {
-        NSLog (@"Could not load %@.", nibFile);
-        [super dealloc];
-        return nil;
-    }
+        nibFile = @"DiceInspector.nib";
+        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        if (loaded == NO)
+        {
+            NSLog (@"Could not load %@.", nibFile);
+            [super dealloc];
+            return nil;
+        }
 
-    [attackerDie1 setImage:nil];
-    [attackerDie2 setImage:nil];
-    [attackerDie3 setImage:nil];
+        [attackerDie1 setImage:nil];
+        [attackerDie2 setImage:nil];
+        [attackerDie3 setImage:nil];
 
-    [defenderDie1 setImage:nil];
-    [defenderDie2 setImage:nil];
+        [defenderDie1 setImage:nil];
+        [defenderDie2 setImage:nil];
 
-    [dicePanel setBecomesKeyOnlyIfNeeded:YES];
-    [dicePanel orderFront:self];
+        [dicePanel setBecomesKeyOnlyIfNeeded:YES];
+        [dicePanel orderFront:self];
     }
 
     return self;

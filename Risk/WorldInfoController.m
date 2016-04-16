@@ -128,24 +128,24 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     NSString *nibFile;
 
     if (self = [super init]) {
-    nibFile = @"WorldInfoPanel.nib";
-    loaded = [NSBundle loadNibNamed:nibFile owner:self];
-    if (loaded == NO)
-    {
-        NSLog (@"Could not load %@.", nibFile);
-        [super dealloc];
-        return nil;
-    }
+        nibFile = @"WorldInfoPanel.nib";
+        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        if (loaded == NO)
+        {
+            NSLog (@"Could not load %@.", nibFile);
+            [super dealloc];
+            return nil;
+        }
 
-    [continentTable setDoubleAction:@selector (reorder:)];
-    [continentTable setTarget:self];
+        [continentTable setDoubleAction:@selector (reorder:)];
+        [continentTable setTarget:self];
 
-    continents = nil;
-    //world = nil;
+        continents = nil;
+        //world = nil;
 
-    okay = [worldInfoWindow setFrameAutosaveName:[worldInfoWindow title]];
-    if (okay == NO)
-        NSLog (@"Could not set frame autosave name of World Info window.");
+        okay = [worldInfoWindow setFrameAutosaveName:[worldInfoWindow title]];
+        if (okay == NO)
+            NSLog (@"Could not set frame autosave name of World Info window.");
     }
 
     return self;

@@ -33,18 +33,18 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry
++ (id)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
     return [[[RiskNeighbor alloc] initWithCountries:firstCountry:secondCountry] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initWithCountries:(Country *)firstCountry :(Country *)secondCountry
+- (id)initWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
     if (self = [super init]) {
-    country1 = [firstCountry retain];
-    country2 = [secondCountry retain];
+        country1 = [firstCountry retain];
+        country2 = [secondCountry retain];
     }
 
     return self;

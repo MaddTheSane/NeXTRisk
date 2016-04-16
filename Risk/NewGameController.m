@@ -66,35 +66,35 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- initWithBrain:(Brain *)theBrain
+- (id)initWithBrain:(Brain *)theBrain
 {
     NSString *nibFile;
     BOOL loaded;
 
     if (self = [super init]) {
-    gameConfiguration = [[GameConfiguration alloc] init];
-    boardSetup = [BoardSetup instance];
+        gameConfiguration = [[GameConfiguration alloc] init];
+        boardSetup = [BoardSetup instance];
 
-    brain = theBrain;
+        brain = theBrain;
 
-    // -awakeFromNib gets called immediately, so the above stuff must
-    // already be set up.
-    nibFile = @"NewGamePanel.nib";
-    loaded = [NSBundle loadNibNamed:nibFile owner:self];
-    if (loaded == NO)
-    {
-        NSLog (@"Could not load %@.", nibFile);
-        SNRelease (gameConfiguration);
-        [super dealloc];
-        return nil;
-    }
+        // -awakeFromNib gets called immediately, so the above stuff must
+        // already be set up.
+        nibFile = @"NewGamePanel.nib";
+        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        if (loaded == NO)
+        {
+            NSLog (@"Could not load %@.", nibFile);
+            SNRelease (gameConfiguration);
+            [super dealloc];
+            return nil;
+        }
 
-    runningAsPreferences = NO;
+        runningAsPreferences = NO;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector (boardSetupChanged:)
-                                          name:RiskBoardSetupPlayerColorsChangedNotification
-                                          object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector (boardSetupChanged:)
+                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                   object:nil];
     }
 
     return self;

@@ -93,26 +93,26 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
     BOOL loaded;
     NSString *nibFile;
 
     if (self = [super init]) {
-    nibFile = @"CardPanel.nib";
-    loaded = [NSBundle loadNibNamed:nibFile owner:self];
-    if (loaded == NO)
-    {
-        NSLog (@"Could not load %@.", nibFile);
-        [super dealloc];
-        return nil;
-    }
+        nibFile = @"CardPanel.nib";
+        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        if (loaded == NO)
+        {
+            NSLog (@"Could not load %@.", nibFile);
+            [super dealloc];
+            return nil;
+        }
 
-    currentPlayerNumber = 0;
+        currentPlayerNumber = 0;
 
-    gameManager = nil;
-    playerCards = nil;
-    cardSets = [[NSMutableArray array] retain];
+        gameManager = nil;
+        playerCards = nil;
+        cardSets = [[NSMutableArray array] retain];
     }
 
     return self;

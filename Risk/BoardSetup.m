@@ -129,19 +129,19 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
     int l;
 
     if (self = [super init]) {
-    borderWidth = 0.15;
-    regularBorderColor = [[NSColor blackColor] retain];;
-    selectedBorderColor = [[NSColor whiteColor] retain];;
+        borderWidth = 0.15;
+        regularBorderColor = [[NSColor blackColor] retain];;
+        selectedBorderColor = [[NSColor whiteColor] retain];;
 
-    for (l = 0; l < 7; l++)
-        playerColors[l] = nil;
+        for (l = 0; l < 7; l++)
+            playerColors[l] = nil;
 
-    [self revertAllToDefaults];
+        [self revertAllToDefaults];
     }
 
     return self;

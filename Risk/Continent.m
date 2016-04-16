@@ -36,9 +36,9 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
 {
     if (self = [super init]) {
-    continentName = [aContinentName copy];
-    countries = [someCountries retain];
-    continentBonus = bonus;
+        continentName = [aContinentName copy];
+        countries = [someCountries retain];
+        continentBonus = bonus;
     }
 
     return self;
@@ -72,15 +72,15 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-	if ([aDecoder allowsKeyedCoding]) {
-		continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
-		countries = [[aDecoder decodeObjectForKey:kCountriesKey] retain];
-		continentBonus = [aDecoder decodeIntForKey:kContinentBonusKey];
-	} else {
-		continentName = [[aDecoder decodeObject] copy];
-		countries = [[aDecoder decodeObject] retain];
-		[aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
-	}
+        if ([aDecoder allowsKeyedCoding]) {
+            continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
+            countries = [[aDecoder decodeObjectForKey:kCountriesKey] retain];
+            continentBonus = [aDecoder decodeIntForKey:kContinentBonusKey];
+        } else {
+            continentName = [[aDecoder decodeObject] copy];
+            countries = [[aDecoder decodeObject] retain];
+            [aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
+        }
     }
 
     return self;

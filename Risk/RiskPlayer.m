@@ -42,22 +42,22 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super init]) {
-    playerName = [aName retain];
-    playerNumber = number;
-    playerCards = [[NSMutableArray array] retain];
-    gameManager = [aManager retain];
+        playerName = [aName retain];
+        playerNumber = number;
+        playerCards = [[NSMutableArray array] retain];
+        gameManager = [aManager retain];
 
-    attackMethod = AttackOnce;
-    attackMethodValue = 1;
+        attackMethod = AttackOnce;
+        attackMethodValue = 1;
 
-    consoleWindow = nil;
-    consoleMessageText = nil;
-    continueButton = nil;
-    pauseForContinueButton = nil;
+        consoleWindow = nil;
+        consoleMessageText = nil;
+        continueButton = nil;
+        pauseForContinueButton = nil;
 
-    playerToolMenu = nil;
+        playerToolMenu = nil;
 
-    rng = [[SNRandom instance] retain];
+        rng = [[SNRandom instance] retain];
     }
 
     return self;

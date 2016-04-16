@@ -69,12 +69,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 - (instancetype)initWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
 {
     if (self = [super init]) {
-    allCountries = [[NSMutableSet set] retain];
-    countryNeighbors = [neighbors retain];
-    continents = [theContinents retain];
-    cards = [theCards retain];
+        allCountries = [[NSMutableSet set] retain];
+        countryNeighbors = [neighbors retain];
+        continents = [theContinents retain];
+        cards = [theCards retain];
 
-    [self _buildAllCountries];
+        [self _buildAllCountries];
     }
 
     return self;

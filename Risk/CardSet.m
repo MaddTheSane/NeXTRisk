@@ -141,15 +141,15 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 - initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     if (self = [super init]) {
-    if ([CardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)
-    {
-        [self dealloc];
-        return nil;
-    }
+        if ([CardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)
+        {
+            [self dealloc];
+            return nil;
+        }
 
-    card1 = [aCard1 retain];
-    card2 = [aCard2 retain];
-    card3 = [aCard3 retain];
+        card1 = [aCard1 retain];
+        card2 = [aCard2 retain];
+        card3 = [aCard3 retain];
     }
 
     return self;
