@@ -23,10 +23,10 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 
 - init
 {
-    if (!(self = [super init])) return nil;
-
-    regionArrays = [NSMutableArray array];
+    if (self = [super init]) {
+    regionArrays = [[NSMutableArray alloc] init];
     currentRegionPoints = nil;
+    }
 
     return self;
 }

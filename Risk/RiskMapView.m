@@ -76,9 +76,7 @@ static NSImage *_boardBackingImage = nil;
 - initWithFrame:(NSRect)frameRect
 // designated initializer
 {
-    if ([super initWithFrame:frameRect] == nil)
-        return nil;
-
+    if (self = [super initWithFrame:frameRect]) {
     countryArray = nil;
 
     currentScaleFactor = 1;
@@ -102,6 +100,7 @@ static NSImage *_boardBackingImage = nil;
                                           selector:@selector (boardSetupChanged:)
                                           name:RiskBoardSetupPlayerColorsChangedNotification
                                           object:nil];
+    }
 
     return self;
 }

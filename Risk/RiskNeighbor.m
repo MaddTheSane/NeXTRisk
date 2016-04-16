@@ -42,11 +42,10 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 - initWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     country1 = [firstCountry retain];
     country2 = [secondCountry retain];
+    }
 
     return self;
 }

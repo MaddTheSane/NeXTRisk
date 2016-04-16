@@ -44,8 +44,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     RiskWorld *world;
     NSDictionary<NSString*,Continent *> *continents;
 
-    [super initWithPlayerName:aName number:number gameManager:aManager];
-
+    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
     // Contains the names of continents.
     unoccupiedContinents = [[NSMutableSet set] retain];
 
@@ -54,6 +53,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
     [unoccupiedContinents addObjectsFromArray:[continents allKeys]];
     attackingCountries = nil;
+    }
 
     return self;
 }
@@ -302,15 +302,12 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSSet<Country*> *enemies;
     Country *weakest;
     int weakestTroopCount;
-    NSEnumerator *countryEnumerator;
     AttackResult attackResult;
 
     attackResult.conqueredCountry = NO;
     weakest = nil;
     weakestTroopCount = 999999;
     enemies = [attacker enemyNeighborCountries];
-    countryEnumerator = [enemies objectEnumerator];
-
     for (Country *country in enemies)
     {
         int troopCount = [country troopCount];

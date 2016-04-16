@@ -47,9 +47,7 @@ static NSTextFieldCell *_textCell = nil;
 
 - initWithFrame:(NSRect)frameRect
 {
-    if ([super initWithFrame:frameRect] == nil)
-        return nil;
-
+    if (self = [super initWithFrame:frameRect]) {
     showCardSetCounts = [[BoardSetup instance] showCardSetCounts];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -61,6 +59,7 @@ static NSTextFieldCell *_textCell = nil;
                                           selector:@selector (defaultsChanged:)
                                           name:RiskBoardSetupPlayerColorsChangedNotification
                                           object:nil];
+    }
 
     return self;
 }

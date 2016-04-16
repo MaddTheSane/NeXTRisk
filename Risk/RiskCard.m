@@ -45,9 +45,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 {
     NSBundle *thisBundle;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     country = [aCountry retain]; // Country can be nil.
     cardType = aCardType;
     imageName = [anImageName copy];
@@ -66,6 +64,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 		image = [[NSImage imageNamed:imageName] retain];
 	}
     NSAssert1 (image != nil, @"Couldn't load image: '%@'", imageName);
+    }
 
     return self;
 }

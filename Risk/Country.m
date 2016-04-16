@@ -38,9 +38,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
                 shape:(CountryShape *)aCountryShape
             continent:(RiskContinent)aContinent
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     name = [aName copy];
     countryShape = [aCountryShape retain];
     continentName = [aContinentName copy];
@@ -49,6 +47,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     playerNumber = 0;
     troopCount = 0;
     unmovableTroopCount = 0;
+    }
 
     return self;
 }
@@ -89,9 +88,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     if ([aDecoder allowsKeyedCoding]) {
         name = [[aDecoder decodeObjectForKey:kCountryName] copy];
         countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
@@ -112,6 +109,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     }
     // World has encoded neighbors
     neighborCountries = [[NSMutableSet alloc] init];
+    }
 
     return self;
 }

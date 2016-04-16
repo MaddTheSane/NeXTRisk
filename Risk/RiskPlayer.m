@@ -41,9 +41,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     playerName = [aName retain];
     playerNumber = number;
     playerCards = [[NSMutableArray array] retain];
@@ -60,6 +58,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     playerToolMenu = nil;
 
     rng = [[SNRandom instance] retain];
+    }
 
     return self;
 }
@@ -130,21 +129,13 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
 {
-    NSEnumerator *countryEnumerator;
-    NSMutableSet *resultingSet;
-    Country *country;
-
-    Player number;
-    int troopCount, movableTroopCount;
-    BOOL hasEnemyNeighbors;
-    resultingSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    for (country in source)
+    NSMutableSet *resultingSet = [NSMutableSet set];
+    for (Country *country in source)
     {
-        number = [country playerNumber];
-        troopCount = [country troopCount];
-        movableTroopCount = [country movableTroopCount];
-        hasEnemyNeighbors = [country hasEnemyNeighbors];
+        Player number = [country playerNumber];
+        int troopCount = [country troopCount];
+        int movableTroopCount = [country movableTroopCount];
+        BOOL hasEnemyNeighbors = [country hasEnemyNeighbors];
 
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)

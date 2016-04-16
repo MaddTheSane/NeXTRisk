@@ -95,9 +95,7 @@ static struct image_names class_images[] =
     BOOL loaded;
     NSString *nibFile;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     nibFile = @"DiceInspector.nib";
     loaded = [NSBundle loadNibNamed:nibFile owner:self];
     if (loaded == NO)
@@ -116,6 +114,7 @@ static struct image_names class_images[] =
 
     [dicePanel setBecomesKeyOnlyIfNeeded:YES];
     [dicePanel orderFront:self];
+    }
 
     return self;
 }

@@ -83,12 +83,11 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - init
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     riskPlayerBundles = [[NSMutableArray array] retain];
     gameManager = [[RiskGameManager alloc] init];
     preferenceController = nil;
+    }
 
     return self;
 }

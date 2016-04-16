@@ -27,11 +27,10 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 - initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
-    if ([super initWithPlayerName:aName number:number gameManager:aManager] == nil)
-        return nil;
-
+    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]){
     placeArmyCount = 0;
     attackingCountry = nil;
+    }
 
     return self;
 }

@@ -63,12 +63,11 @@ static NSTextFieldCell *_armyCell = nil;
 
 - initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     userPath = aUserPath;
     armyCellPoint = aPoint;
     //shapeBoudns = NSZeroRect;
+    }
 
     return self;
 }
@@ -91,8 +90,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super init] == nil)
-        return nil;
+    if (self = [super init]) {
 	if ([aDecoder allowsKeyedCoding]) {
 		userPath = [aDecoder decodeObjectForKey:kUserPathKey];
 		armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
@@ -103,6 +101,7 @@ static NSTextFieldCell *_armyCell = nil;
 		armyCellPoint = [aDecoder decodePoint];
 		//shapeBounds = [aDecoder decodeRect];
 	}
+    }
 	
     return self;
 }

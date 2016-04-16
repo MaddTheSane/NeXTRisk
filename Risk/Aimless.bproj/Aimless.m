@@ -395,8 +395,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSDictionary *continents;
     int l;
 
-    [super initWithPlayerName:aName number:number gameManager:aManager];
-
+    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
     // Contains the names of continents.
     unoccupiedContinents = [[NSMutableSet set] retain];
 
@@ -416,6 +415,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     attackingCountryHeap = nil;
 
     primaryChoice = ChooseAdjacentToCurrentCountries;
+    }
 
     return self;
 }

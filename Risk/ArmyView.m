@@ -77,10 +77,9 @@ static struct image_names class_images[] =
 
 - initWithFrame:(NSRect)frameRect
 {
-    if ([super initWithFrame:frameRect] == nil)
-        return nil;
-
+    if (self = [super initWithFrame:frameRect]) {
     armyCount = 0;
+    }
 	
     return self;
 }

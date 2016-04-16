@@ -33,9 +33,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 - initWithRiskWorld:(RiskWorld *)aWorld
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     world = [aWorld retain];
 
     sourceCountry = nil;
@@ -45,6 +43,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     playerNumber = 0;
     primaryCountries = nil;
     secondaryCountries = nil;
+    }
 
     return self;
 }
@@ -174,8 +173,6 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 - (BOOL) validatePlacement:(Country *)target
 {
     BOOL valid;
-
-    valid = YES;
 
     NSAssert ([target playerNumber] != 0, @"Expected army to be in target country.");
 

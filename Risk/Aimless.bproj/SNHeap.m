@@ -64,15 +64,15 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 - initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext
 {
-    [super init];
-
+    if (self = [super init]) {
     comparator_function = comparator;
     context = aContext;
     maximum_size = 8;
 
-    data = (id *)malloc (maximum_size * sizeof (id *));
+    data = (id *)malloc (maximum_size * sizeof (id));
     NSAssert (data != NULL, @"Malloc() failed.");
     current_size = 0;
+    }
 
     return self;
 }
@@ -141,7 +141,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
     if (current_size >= maximum_size)
     {
         // increase size
-        id *tmp = (id *)malloc (maximum_size * 2 * sizeof (id *));
+        id *tmp = (id *)malloc (maximum_size * 2 * sizeof (id));
 
         NSAssert (tmp != NULL, @"Could not malloc() additional memory");
         memcpy (tmp, data, current_size * sizeof (id *));

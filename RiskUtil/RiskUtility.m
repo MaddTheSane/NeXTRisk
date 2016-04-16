@@ -334,16 +334,16 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- init
+- (id)init
 {
-    if (!(self = [super init])) return nil;
-
+    if (self = [super init]) {
     fromCountry = nil;
     toCountry = nil;
 
     continents = nil;
     countryNeighbors = nil;
     cards = nil;
+    }
 
     return self;
 }

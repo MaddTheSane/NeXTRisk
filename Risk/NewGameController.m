@@ -71,9 +71,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     NSString *nibFile;
     BOOL loaded;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     gameConfiguration = [[GameConfiguration alloc] init];
     boardSetup = [BoardSetup instance];
 
@@ -97,6 +95,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
                                           selector:@selector (boardSetupChanged:)
                                           name:RiskBoardSetupPlayerColorsChangedNotification
                                           object:nil];
+    }
 
     return self;
 }

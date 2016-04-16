@@ -123,6 +123,7 @@ NSData *defaultsDataForColor (NSColor *color)
         [boardDefaults setObject:@YES forKey:DK_ShowCardSetCounts];
 
         [defaults registerDefaults:boardDefaults];
+        [boardDefaults release];
     });
 }
 
@@ -132,9 +133,7 @@ NSData *defaultsDataForColor (NSColor *color)
 {
     int l;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     borderWidth = 0.15;
     regularBorderColor = [[NSColor blackColor] retain];;
     selectedBorderColor = [[NSColor whiteColor] retain];;
@@ -143,6 +142,7 @@ NSData *defaultsDataForColor (NSColor *color)
         playerColors[l] = nil;
 
     [self revertAllToDefaults];
+    }
 
     return self;
 }

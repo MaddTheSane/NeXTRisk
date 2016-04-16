@@ -14,6 +14,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 @implementation Continent
 @synthesize continentName;
+@synthesize continentBonus;
 
 + (void) initialize
 {
@@ -34,12 +35,11 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     continentName = [aContinentName copy];
     countries = [someCountries retain];
     continentBonus = bonus;
+    }
 
     return self;
 }
@@ -71,9 +71,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
 	if ([aDecoder allowsKeyedCoding]) {
 		continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
 		countries = [[aDecoder decodeObjectForKey:kCountriesKey] retain];
@@ -83,15 +81,9 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 		countries = [[aDecoder decodeObject] retain];
 		[aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
 	}
+    }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (NSString *) continentName
-{
-    return continentName;
 }
 
 //----------------------------------------------------------------------
@@ -99,13 +91,6 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (NSSet *) countries
 {
     return countries;
-}
-
-//----------------------------------------------------------------------
-
-- (int) continentBonus
-{
-    return continentBonus;
 }
 
 //----------------------------------------------------------------------

@@ -153,8 +153,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
             context:(void *)aContext
    distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
 {
-    [super init];
-
+    if (self = [super init]) {
     acceptableCountries = [[NSMutableSet set] retain];
     nodeDictionary = [[NSMutableDictionary dictionary] retain];
     isCountryAcceptable = anIsCountryAcceptableFunction;
@@ -163,6 +162,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     world = [aWorld retain];
 
     [self _buildShortestPathsFromCountry:source];
+    }
 
     return self;
 }

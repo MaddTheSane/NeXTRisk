@@ -35,9 +35,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
     BOOL loaded, okay;
     NSString *nibFile;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     nibFile = @"PreferencePanel.nib";
     loaded = [NSBundle loadNibNamed:nibFile owner:self];
     if (loaded == NO)
@@ -60,6 +58,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
                                           selector:@selector (boardSetupChanged:)
                                           name:RiskBoardSetupShowCardSetCountsChangedNotification
                                           object:nil];
+    }
 
     return self;
 }

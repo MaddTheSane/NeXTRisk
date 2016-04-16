@@ -127,9 +127,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     BOOL loaded, okay;
     NSString *nibFile;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     nibFile = @"WorldInfoPanel.nib";
     loaded = [NSBundle loadNibNamed:nibFile owner:self];
     if (loaded == NO)
@@ -148,6 +146,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     okay = [worldInfoWindow setFrameAutosaveName:[worldInfoWindow title]];
     if (okay == NO)
         NSLog (@"Could not set frame autosave name of World Info window.");
+    }
 
     return self;
 }

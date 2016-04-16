@@ -28,10 +28,9 @@
 
 - (instancetype)init
 {
-	if ([super init] == nil)
-		return nil;
-	
+	if (self = [super init]) {
 	operations = [[NSMutableArray alloc] init];
+	}
 	return self;
 }
 

@@ -66,9 +66,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     BOOL loaded;
     int l;
 
-    if ([super init] == nil)
-        return nil;
-
+    if (self = [super init]) {
     world = nil;
     mapView = nil;
 
@@ -122,6 +120,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                                           selector:@selector (defaultsChanged:)
                                           name:RiskBoardSetupPlayerColorsChangedNotification
                                           object:nil];
+    }
 
     return self;
 }
