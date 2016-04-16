@@ -13,9 +13,9 @@
     Country *country2;
 }
 
-+ (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry;
++ (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countries:_:) instead");
 
-- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry;
+- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:));
 
 @property (readonly, retain) Country *country1;
 @property (readonly, retain) Country *country2;

@@ -124,7 +124,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // Subclass Responsibilities
 //======================================================================
 
-- (BOOL) isInteractive;
+@property (readonly, getter=isInteractive) BOOL interactive;
 
 //----------------------------------------------------------------------
 // Card management

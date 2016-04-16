@@ -17,7 +17,7 @@
 
 @interface RiskWorld : NSObject <NSCoding>
 {
-    NSMutableSet *allCountries;
+    NSMutableSet<Country*> *allCountries;
     NSArray<RiskNeighbor*> *countryNeighbors;
     NSDictionary<NSString*,Continent *> *continents;
     NSArray<RiskCard*> *cards;
@@ -25,9 +25,9 @@
 
 + (RiskWorld*)defaultRiskWorld;
 
-+ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards;
++ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
-- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RiskCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
@@ -35,7 +35,7 @@
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
-- (NSSet<Country*> *) allCountries;
+@property (readonly) NSSet<Country*> *allCountries;
 - (Continent *) continentNamed:(NSString *)continentName;
 @property (readonly, retain) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, retain) NSArray<RiskCard*> *cards;

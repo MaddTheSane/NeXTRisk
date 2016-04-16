@@ -15,9 +15,9 @@
     int continentBonus;
 }
 
-+ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus;
++ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(int)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");
 
-- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(int)bonus NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 

@@ -52,8 +52,6 @@
     BOOL runningAsPreferences;
 }
 
-- (void) awakeFromNib;
-
 - (instancetype)initWithBrain:(Brain *)theBrain;
 
 - (void) showNewGamePanel;

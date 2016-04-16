@@ -150,8 +150,6 @@
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
 		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
-		553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -468,6 +466,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551251EC1CC2D0E1000E7A52 /* Additional Sources */ = {
+			isa = PBXGroup;
+			children = (
+				55377F6F1CC15C2400A2C08E /* Version.h */,
+				55377F521CC15C2300A2C08E /* Risk_main.m */,
+			);
+			name = "Additional Sources";
+			sourceTree = "<group>";
+		};
 		55377EA01CC15AC900A2C08E = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +505,7 @@
 		55377EAB1CC15AC900A2C08E /* Risk */ = {
 			isa = PBXGroup;
 			children = (
+				551251EC1CC2D0E1000E7A52 /* Additional Sources */,
 				553781031CC21B3F00A2C08E /* Classes */,
 				553780F91CC1B53D00A2C08E /* Migration purposes */,
 				5537809A1CC188A100A2C08E /* Interfaces */,
@@ -734,14 +742,12 @@
 				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
 				55377F501CC15C2300A2C08E /* PreferenceController.h */,
 				55377F511CC15C2300A2C08E /* PreferenceController.m */,
-				55377F521CC15C2300A2C08E /* Risk_main.m */,
 				55377F591CC15C2400A2C08E /* RiskMapView.h */,
 				55377F5A1CC15C2400A2C08E /* RiskMapView.m */,
 				55377F5F1CC15C2400A2C08E /* RiskPoint.h */,
 				55377F601CC15C2400A2C08E /* RiskPoint.m */,
 				55377F6D1CC15C2400A2C08E /* StatusView.h */,
 				55377F6E1CC15C2400A2C08E /* StatusView.m */,
-				55377F6F1CC15C2400A2C08E /* Version.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1088,9 +1094,7 @@
 			files = (
 				553780621CC162C500A2C08E /* RiskPoint.m in Sources */,
 				553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */,
-				553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */,
 				5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */,
-				553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */,
 				553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */,
 				551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */,
 				5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */,
