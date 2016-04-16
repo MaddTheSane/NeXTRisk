@@ -9,19 +9,16 @@
 #import "CountryShape.h"
 #import "RiskMapView.h"
 
-@protocol RiskNeighborViewDataSource
+@protocol RiskNeighborViewDataSource <NSObject>
 - (NSArray *) riskNeighbors;
 @end
 
 @interface RiskNeighborView : RiskMapView
 {
-    id datasource;
+    id<RiskNeighborViewDataSource> datasource;
 }
 
-+ (void) initialize;
-
 - initWithFrame:(NSRect)frameRect;
-- (void) dealloc;
 
 - (void) drawRect:(NSRect)rect;
 

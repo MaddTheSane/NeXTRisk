@@ -14,10 +14,9 @@
     NSMutableArray *currentRegionPoints;
 }
 
-+ countryShapeGenerator;
++ (instancetype)countryShapeGenerator;
 
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
 - (void) defineNewRegion;
 - (void) addPoint:(NSPoint)newPoint;

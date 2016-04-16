@@ -8,6 +8,7 @@
 #import "Risk.h"
 
 @class Country, RiskMapView, RiskNeighbor, RiskWorld, RiskCard;
+@class Continent;
 
 @interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource>
 {
@@ -22,13 +23,14 @@
 
     NSDictionary *continents;
     NSMutableArray<RiskNeighbor*> *countryNeighbors;
-    NSArray *cards;
+    NSArray<RiskCard*> *cards;
 }
+@property (weak) IBOutlet NSWindow *window;
 
 - (IBAction) saveWorld:(id)sender;
 - (void) writeRiskWorld:(RiskWorld *)riskWorld;
 
-+ (NSDictionary *) readContinentTextfile;
++ (NSDictionary<NSString*,NSNumber*> *) readContinentTextfile;
 + (NSArray<Country*> *) readCountryTextfile:(NSSet<NSString*> *)continentNames;
 + (NSMutableArray<RiskNeighbor*> *) readCountryNeighborsTextfile:(NSArray<Country*> *)countries;
 
@@ -36,7 +38,7 @@
 
 + (NSString *) neighborString:(NSArray<RiskNeighbor*> *)neighborArray;
 
-+ (NSDictionary *) buildContinents:(NSDictionary *)continentBonuses fromCountries:(NSArray *)countries;
++ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<Country*> *)countries;
 
 - (instancetype)init;
 

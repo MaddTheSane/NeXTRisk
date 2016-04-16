@@ -67,16 +67,22 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
+#define kCountryName @"Name"
+#define kCountryShape @"CountryShape"
+#define kCountryContinentName @"ContinentName"
+#define kCountryPlayerNumber @"PlayerNumber"
+#define kCountryTroopCount @"TroopCount"
+#define kCountryUnmovableTroopCount @"UnmovableTroopCount"
+
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:name];
-    [aCoder encodeObject:countryShape];
-    [aCoder encodeObject:continentName];
+    [aCoder encodeObject:name forKey:kCountryName];
+    [aCoder encodeObject:countryShape forKey:kCountryShape];
+    [aCoder encodeObject:continentName forKey:kCountryContinentName];
     // World will encode neighbors
-	int aTmp = (int)playerNumber;
-    [aCoder encodeValueOfObjCType:@encode (int) at:&aTmp];
-    [aCoder encodeValueOfObjCType:@encode (int) at:&troopCount];
-    [aCoder encodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
+    [aCoder encodeInteger:playerNumber forKey:kCountryPlayerNumber];
+    [aCoder encodeInt:troopCount forKey:kCountryTroopCount];
+    [aCoder encodeInt:unmovableTroopCount forKey:kCountryUnmovableTroopCount];
 }
 
 //----------------------------------------------------------------------
@@ -86,16 +92,26 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     if ([super init] == nil)
         return nil;
 
+    if ([aDecoder allowsKeyedCoding]) {
+        name = [[aDecoder decodeObjectForKey:kCountryName] copy];
+        countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
+        continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
+        playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
+        troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
+        unmovableTroopCount = [aDecoder decodeIntForKey:kCountryUnmovableTroopCount];
+    } else {
     name = [[aDecoder decodeObject] copy];
     countryShape = [[aDecoder decodeObject] retain];
     continentName = [[aDecoder decodeObject] copy];
-    neighborCountries = [[NSMutableSet alloc] init];
 
 	int aTmp = 0;
     [aDecoder decodeValueOfObjCType:@encode (int) at:&aTmp];
 	playerNumber = aTmp;
     [aDecoder decodeValueOfObjCType:@encode (int) at:&troopCount];
     [aDecoder decodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
+    }
+    // World has encoded neighbors
+    neighborCountries = [[NSMutableSet alloc] init];
 
     return self;
 }

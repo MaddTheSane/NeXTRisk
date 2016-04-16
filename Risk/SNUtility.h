@@ -20,12 +20,19 @@
 // references to non-existant objects
 //
 
+#if __has_feature(objc_arc)
+
+#define SNRelease(name) name = nil
+
+#else
+
 #define SNRelease(name) \
     if (name != nil) \
     { \
         [name release]; \
         name = nil; \
     }
+#endif
 
 
 //

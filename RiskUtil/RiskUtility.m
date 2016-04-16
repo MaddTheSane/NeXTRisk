@@ -81,25 +81,28 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - (void) writeRiskWorld:(RiskWorld *)riskWorld
 {
-    NSBundle *mainBundle;
-    NSString *path;
-    NSString *targetFile;
-    BOOL rflag;
-
-    mainBundle = [NSBundle mainBundle];
-    NSAssert (mainBundle != nil, @"main bundle nil");
-
-    path = [mainBundle bundlePath];
-    targetFile = [path stringByAppendingPathComponent:@"RiskWorld.data"];
-    NSLog (@"target file: %@", targetFile);
-
-    rflag = [NSArchiver archiveRootObject:riskWorld toFile:targetFile];
-    NSAssert1 (rflag == YES, @"could not archive risk world to file: '%@'", targetFile);
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    panel.nameFieldStringValue = @"RiskWorld.data";
+    
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            NSData *fileData = [NSKeyedArchiver archivedDataWithRootObject:riskWorld];
+            if (!fileData) {
+                NSBeep();
+                
+                return;
+            }
+            NSError *err = nil;
+            if (![fileData writeToURL:[panel URL] options:NSDataWritingAtomic error:&err]) {
+                [[NSAlert alertWithError:err] runModal];
+            }
+        }
+    }];
 }
 
 //----------------------------------------------------------------------
 
-+ (NSDictionary *) readContinentTextfile
++ (NSDictionary<NSString*,NSNumber*> *) readContinentTextfile
 {
     NSBundle *mainBundle;
     NSMutableDictionary *dict;
@@ -124,20 +127,15 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
     scanner = [NSScanner scannerWithString:fileContents];
 
-    NS_DURING
-        {
-            while ([scanner scanString:@"Continent" intoString:NULL] == YES)
-            {
-                name = [scanner scanQuotedString];
-                [scanner scanInt:&value];
-                [dict setObject:@(value) forKey:name];
-            }
+    @try {
+        while ([scanner scanString:@"Continent" intoString:NULL] == YES) {
+            name = [scanner scanQuotedString];
+            [scanner scanInt:&value];
+            [dict setObject:@(value) forKey:name];
         }
-    NS_HANDLER
-        {
-            NSLog (@"Exception %@: %@", [localException name], [localException reason]);
-        }
-    NS_ENDHANDLER;
+    } @catch (NSException *localException) {
+        NSLog (@"Exception %@: %@", [localException name], [localException reason]);
+    }
 
     return dict;
 }
@@ -289,27 +287,23 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (NSDictionary *) buildContinents:(NSDictionary *)continentBonuses fromCountries:(NSArray *)countries
++ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<Country*> *)countries
 {
     NSMutableDictionary *theContinents;
-    NSMutableDictionary *setDict;
-    NSEnumerator *continentNameEnumerator, *countryEnumerator;
-    NSString *name;
+    NSMutableDictionary<NSString*,NSMutableSet*> *setDict;
     Country *country;
-    NSMutableArray *tmp;
+    NSMutableSet *tmp;
 
     // 1. Build mutable arrays for continents
 
     setDict = [NSMutableDictionary dictionary];
 
-    continentNameEnumerator = [[continentBonuses allKeys] objectEnumerator];
-    while (name = [continentNameEnumerator nextObject])
+    for (NSString *name in continentBonuses)
     {
         [setDict setObject:[NSMutableSet set] forKey:name];
     }
 
-    countryEnumerator = [countries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (country in countries)
     {
         tmp = [setDict objectForKey:[country continentName]];
         if (tmp == nil)
@@ -322,10 +316,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         }
     }
 
-    theContinents = [NSMutableDictionary dictionary];
+    theContinents = [[NSMutableDictionary alloc] init];
 
-    continentNameEnumerator = [[continentBonuses allKeys] objectEnumerator];
-    while (name = [continentNameEnumerator nextObject])
+    for (NSString *name in continentBonuses)
     {
         [theContinents setObject:[Continent continentWithName:name
                                             countries:[setDict objectForKey:name]
@@ -370,48 +363,41 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     shape = nil;
     name = nil;
 
-    NS_DURING
-        {
-            [scanner expect:@"Country"];
-            name = [scanner scanQuotedString];
-            [scanner expect:@"Tag"];
-            [scanner scanString];
-            [scanner expect:@"Continent"];
-            continentName = [scanner scanQuotedString];
-            continent = [self continentFromString:continentName];
-            [scanner expect:@"ArmyTFLoc"];
-            [scanner scanPoint:&textFieldPoint];
-            generator = [CountryShapeGenerator countryShapeGenerator];
-            while ([scanner scanString:@"Region" intoString:NULL] == YES)
-            {
-                [generator defineNewRegion];
+    @try {
+        [scanner expect:@"Country"];
+        name = [scanner scanQuotedString];
+        [scanner expect:@"Tag"];
+        [scanner scanString];
+        [scanner expect:@"Continent"];
+        continentName = [scanner scanQuotedString];
+        continent = [self continentFromString:continentName];
+        [scanner expect:@"ArmyTFLoc"];
+        [scanner scanPoint:&textFieldPoint];
+        generator = [CountryShapeGenerator countryShapeGenerator];
+        while ([scanner scanString:@"Region" intoString:NULL] == YES) {
+            [generator defineNewRegion];
+            [scanner scanPoint:&aPoint];
+            [generator addPoint:aPoint];
+            while ([scanner scanString:@"," intoString:NULL] == YES) {
                 [scanner scanPoint:&aPoint];
                 [generator addPoint:aPoint];
-                while ([scanner scanString:@"," intoString:NULL] == YES)
-                {
-                    [scanner scanPoint:&aPoint];
-                    [generator addPoint:aPoint];
-                }
-                [generator closeRegion];
             }
-            shape = [generator generateCountryShapeWithArmyCellPoint:textFieldPoint];
-            [scanner expect:@"End"];
-            if ([continentNames containsObject:continentName] == NO)
-            {
-                NSLog (@"Continent %@ not found.", continentName);
-            }
-            
-            country = [[Country alloc] initWithCountryName:name
-                                        continentName:continentName
-                                        shape:shape
-                                        continent:continent];
-            NSLog (@"=== Defined country: '%@'", name);
+            [generator closeRegion];
         }
-    NS_HANDLER
-        {
-            NSLog (@"Exception %@: %@", [localException name], [localException reason]);
+        shape = [generator generateCountryShapeWithArmyCellPoint:textFieldPoint];
+        [scanner expect:@"End"];
+        if ([continentNames containsObject:continentName] == NO) {
+            NSLog (@"Continent %@ not found.", continentName);
         }
-    NS_ENDHANDLER;
+        
+        country = [[Country alloc] initWithCountryName:name
+                                         continentName:continentName
+                                                 shape:shape
+                                             continent:continent];
+        NSLog (@"=== Defined country: '%@'", name);
+    } @catch (NSException *localException) {
+        NSLog (@"Exception %@: %@", [localException name], [localException reason]);
+    }
 
     return country;
 }
@@ -428,21 +414,17 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
     riskNeighbor = nil;
 
-    NS_DURING
-        {
-            [scanner expect:@"Adjacent"];
-            first = [scanner scanQuotedString];
-            second = [scanner scanQuotedString];
-
-            country1 = [countries objectForKey:first];
-            country2 = [countries objectForKey:second];
-            riskNeighbor = [RiskNeighbor riskNeighborWithCountries:country1:country2];
-        }
-    NS_HANDLER
-        {
-            NSLog (@"Exception %@: %@", [localException name], [localException reason]);
-        }
-    NS_ENDHANDLER;
+    @try {
+        [scanner expect:@"Adjacent"];
+        first = [scanner scanQuotedString];
+        second = [scanner scanQuotedString];
+        
+        country1 = [countries objectForKey:first];
+        country2 = [countries objectForKey:second];
+        riskNeighbor = [RiskNeighbor riskNeighborWithCountries:country1:country2];
+    } @catch (NSException *localException) {
+        NSLog (@"Exception %@: %@", [localException name], [localException reason]);
+    }
 
     return riskNeighbor;
 }
@@ -497,22 +479,18 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     card = nil;
 
-    NS_DURING
-        {
-            [scanner expect:@"Card"];
-            countryName = [scanner scanQuotedString];
-            cardType = [scanner scanString];
-            imageName = [scanner scanQuotedString];
-
-            country = [countries objectForKey:countryName];
-            card = [[RiskCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
-                                      withCountry:country imageNamed:imageName];
-        }
-    NS_HANDLER
-        {
-            NSLog (@"Exception %@: %@", [localException name], [localException reason]);
-        }
-    NS_ENDHANDLER;
+    @try {
+        [scanner expect:@"Card"];
+        countryName = [scanner scanQuotedString];
+        cardType = [scanner scanString];
+        imageName = [scanner scanQuotedString];
+        
+        country = [countries objectForKey:countryName];
+        card = [[RiskCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
+                                  withCountry:country imageNamed:imageName];
+    } @catch (NSException *localException) {
+        NSLog (@"Exception %@: %@", [localException name], [localException reason]);
+    }
 
     return card;
 }
@@ -663,7 +641,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
     if ([identifier isEqualToString:@"Index"])
     {
-        value = [NSNumber numberWithInteger:rowIndex + 1];
+        value = @(rowIndex + 1);
     }
     else if ([identifier isEqualToString:@"Country1"])
     {
