@@ -14,7 +14,7 @@
     NSString *name;
     CountryShape *countryShape;
     NSString *continentName;
-    NSMutableSet *neighborCountries;
+    NSMutableSet<Country*> *neighborCountries;
 
     // The occupying army:
     Player playerNumber;

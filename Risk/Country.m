@@ -73,7 +73,8 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     [aCoder encodeObject:countryShape];
     [aCoder encodeObject:continentName];
     // World will encode neighbors
-    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&playerNumber];
+	int aTmp = (int)playerNumber;
+    [aCoder encodeValueOfObjCType:@encode (int) at:&aTmp];
     [aCoder encodeValueOfObjCType:@encode (int) at:&troopCount];
     [aCoder encodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
 }
@@ -85,12 +86,14 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     if ([super init] == nil)
         return nil;
 
-    name = [[aDecoder decodeObject] retain];
+    name = [[aDecoder decodeObject] copy];
     countryShape = [[aDecoder decodeObject] retain];
-    continentName = [[aDecoder decodeObject] retain];
-    neighborCountries = [[NSMutableSet set] retain];;
+    continentName = [[aDecoder decodeObject] copy];
+    neighborCountries = [[NSMutableSet alloc] init];
 
-    [aDecoder decodeValueOfObjCType:@encode (int) at:&playerNumber];
+	int aTmp = 0;
+    [aDecoder decodeValueOfObjCType:@encode (int) at:&aTmp];
+	playerNumber = aTmp;
     [aDecoder decodeValueOfObjCType:@encode (int) at:&troopCount];
     [aDecoder decodeValueOfObjCType:@encode (int) at:&unmovableTroopCount];
 

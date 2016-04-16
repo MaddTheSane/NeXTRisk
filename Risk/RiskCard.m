@@ -54,6 +54,12 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
     thisBundle = [NSBundle bundleForClass:[self class]];
     NSAssert (thisBundle != nil, @"Could not get this bundle.");
+	if ([imageName pathExtension]) {
+		NSString *newImageName = [imageName stringByDeletingPathExtension];
+		NSString *oldImageName = imageName;
+		imageName = [newImageName retain];
+		[oldImageName release];
+	}
 	
 	image = [[thisBundle imageForResource:imageName] retain];
 	if (!image) {

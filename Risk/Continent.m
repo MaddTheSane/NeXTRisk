@@ -54,13 +54,17 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     [super dealloc];
 }
 
+#define kContinentNameKey @"ContinentName"
+#define kCountriesKey @"Countries"
+#define kContinentBonusKey @"ContinentBonus"
+
 //----------------------------------------------------------------------
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:continentName];
-    [aCoder encodeObject:countries];
-    [aCoder encodeValueOfObjCType:@encode (int) at:&continentBonus];
+	[aCoder encodeObject:continentName forKey:kContinentNameKey];
+	[aCoder encodeObject:countries forKey:kCountriesKey];
+	[aCoder encodeInt:continentBonus forKey:kContinentBonusKey];
 }
 
 //----------------------------------------------------------------------
@@ -70,9 +74,15 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     if ([super init] == nil)
         return nil;
 
-    continentName = [[aDecoder decodeObject] retain];
-    countries = [[aDecoder decodeObject] retain];
-    [aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
+	if ([aDecoder allowsKeyedCoding]) {
+		continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
+		countries = [[aDecoder decodeObjectForKey:kCountriesKey] retain];
+		continentBonus = [aDecoder decodeIntForKey:kContinentBonusKey];
+	} else {
+		continentName = [[aDecoder decodeObject] copy];
+		countries = [[aDecoder decodeObject] retain];
+		[aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
+	}
 
     return self;
 }

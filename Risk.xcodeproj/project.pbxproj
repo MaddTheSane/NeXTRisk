@@ -153,6 +153,10 @@
 		553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
+		553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
+		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
+		553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
+		553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -393,6 +397,10 @@
 		553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaoticSwift.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780D01CC1990A00A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		553780D41CC1993E00A2C08E /* Chaos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chaos.swift; sourceTree = "<group>"; };
+		553780FA1CC1B56300A2C08E /* SNUserPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserPath.h; sourceTree = "<group>"; };
+		553780FB1CC1B56300A2C08E /* SNUserPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPath.m; sourceTree = "<group>"; };
+		553780FD1CC1B68600A2C08E /* SNUserPathOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserPathOperation.h; sourceTree = "<group>"; };
+		553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPathOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +481,7 @@
 		55377EAB1CC15AC900A2C08E /* Risk */ = {
 			isa = PBXGroup;
 			children = (
+				553780F91CC1B53D00A2C08E /* Migration purposes */,
 				5537809A1CC188A100A2C08E /* Interfaces */,
 				55377FF21CC15D8500A2C08E /* Resources */,
 				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
@@ -698,6 +707,17 @@
 				553780D01CC1990A00A2C08E /* Info.plist */,
 			);
 			path = ChaoticSwift;
+			sourceTree = "<group>";
+		};
+		553780F91CC1B53D00A2C08E /* Migration purposes */ = {
+			isa = PBXGroup;
+			children = (
+				553780FA1CC1B56300A2C08E /* SNUserPath.h */,
+				553780FB1CC1B56300A2C08E /* SNUserPath.m */,
+				553780FD1CC1B68600A2C08E /* SNUserPathOperation.h */,
+				553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */,
+			);
+			name = "Migration purposes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1023,6 +1043,7 @@
 				55377F7A1CC15C2400A2C08E /* Brain.m in Sources */,
 				55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */,
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
+				553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */,
 				55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */,
 				55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */,
 				55377F771CC15C2400A2C08E /* ArmyView.m in Sources */,
@@ -1030,6 +1051,7 @@
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
 				55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,
+				553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,9 +1065,11 @@
 				553780621CC162C500A2C08E /* RiskPoint.m in Sources */,
 				553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */,
 				5537805A1CC1625600A2C08E /* Continent.m in Sources */,
+				553781001CC1B68600A2C08E /* SNUserPathOperation.m in Sources */,
 				5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */,
 				553780631CC162D600A2C08E /* RiskWorld.m in Sources */,
 				5537805B1CC1626400A2C08E /* Country.m in Sources */,
+				553781011CC1B68B00A2C08E /* SNUserPath.m in Sources */,
 				553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */,
 				553780611CC162B400A2C08E /* RiskNeighbor.m in Sources */,
 				5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */,

@@ -12,8 +12,9 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 #import "BoardSetup.h"
 #import "Country.h"
 #import "RiskMapView.h"
+#import "SNUserPath.h"
 
-#import <libc.h>
+#include <libc.h>
 
 #define ARMYCELL_WIDTH   25.0
 #define ARMYCELL_HEIGHT  17.0
@@ -82,12 +83,15 @@ static NSTextFieldCell *_armyCell = nil;
     [super dealloc];
 }
 
+#define kUserPathKey @"BezierUserPath"
+#define kArmyCellPoint @"ArmyCellPoint"
+
 //----------------------------------------------------------------------
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:userPath];
-    [aCoder encodePoint:armyCellPoint];
+    [aCoder encodeObject:userPath forKey:kUserPathKey];
+    [aCoder encodePoint:armyCellPoint forKey:kArmyCellPoint];
     //[aCoder encodeRect:shapeBounds];
 }
 
@@ -97,11 +101,17 @@ static NSTextFieldCell *_armyCell = nil;
 {
     if ([super init] == nil)
         return nil;
-
-    userPath = [[aDecoder decodeObject] retain];
-    armyCellPoint = [aDecoder decodePoint];
-    //shapeBounds = [aDecoder decodeRect];
-
+	if ([aDecoder allowsKeyedCoding]) {
+		userPath = [[aDecoder decodeObjectForKey:kUserPathKey] retain];
+		armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
+	} else {
+		//For compatibility reasons, we have to jump through some hoops.
+		SNUserPath *oldPath = [aDecoder decodeObject];
+		userPath = [[oldPath toBezierPath] retain];
+		armyCellPoint = [aDecoder decodePoint];
+		//shapeBounds = [aDecoder decodeRect];
+	}
+	
     return self;
 }
 

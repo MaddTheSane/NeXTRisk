@@ -164,8 +164,6 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     NSMutableSet *loadedRiskPlayerNames;
     NSMutableSet *delayedRiskPlayerPaths;
     NSMutableSet *tempPlayerNames;
-    NSArray *resourcePaths;
-    NSEnumerator *pathEnumerator;
     NSBundle *playerBundle;
     BOOL keepTrying;
     NSMutableDictionary *loadedBundles;
@@ -182,7 +180,6 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
     //NSLog (@"resource paths: %@", resourcePaths);
 
-    pathEnumerator = [resourcePaths objectEnumerator];
     for (NSURL *subdirURL in URLEnum)
     {
 		if ([[subdirURL pathExtension] caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
@@ -221,7 +218,6 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     do
     {
         keepTrying = NO;
-        pathEnumerator = [delayedRiskPlayerPaths objectEnumerator];
         for (NSString *path in delayedRiskPlayerPaths)
         {
             playerBundle = [NSBundle bundleWithPath:path];
