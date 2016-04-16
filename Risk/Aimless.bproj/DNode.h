@@ -38,23 +38,19 @@
 
 @interface DNode : NSObject
 {
-    int distance;
-    id previous;
+    NSInteger distance;
+    __unsafe_unretained id previous;
 }
 
-+ dNode;
++ (instancetype)dNode;
 
-- init;
-- (void) dealloc;
+- (instancetype)init;
 
-- previous;
+@property (readonly, assign) id previous;
 
-- (int) distance;
-- (void) setDistance:(int)newDistance;
-- (void) setDistance:(int)newDistance withPrevious:newPrevious;
+@property NSInteger distance;
+- (void) setDistance:(NSInteger)newDistance withPrevious:(id)newPrevious;
 
-- (void) relaxFrom:source distance:(int)x;
-
-- (NSString *) description;
+- (void) relaxFrom:(id)source distance:(NSInteger)x;
 
 @end

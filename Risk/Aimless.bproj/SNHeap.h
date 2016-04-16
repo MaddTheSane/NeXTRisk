@@ -26,37 +26,34 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SNHeap : NSObject
+@interface SNHeap<__covariant ObjectType> : NSObject
 {
     NSComparisonResult (*comparator_function)(id, id, void *);
     void *context;
     id *data;
-    int current_size;
-    int maximum_size;
+    NSInteger current_size;
+    NSInteger maximum_size;
 }
 
 // Private
 
-- (void) heapify:(int)i;
+- (void) heapify:(NSInteger)i;
 
 // Public
 
-+ heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext;
++ (instancetype)heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext;
 
-- initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext;
-- (void) dealloc;
-- (void) insertObject:anObject;
+- (instancetype)initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext;
+- (void) insertObject:(ObjectType)anObject;
 - (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator;
-- extractObject;
-- firstObject;
+- (ObjectType)extractObject;
+- (ObjectType)firstObject;
 
 - (void) removeAllObjects;
 
-- (int) count;
+@property (readonly) NSInteger count;
 
-- (void) heapifyFromObject:anObject;
-- (void) removeObject:anObject;
-
-- (NSString *) description;
+- (void) heapifyFromObject:(ObjectType)anObject;
+- (void) removeObject:(ObjectType)anObject;
 
 @end

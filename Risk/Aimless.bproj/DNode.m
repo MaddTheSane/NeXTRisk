@@ -27,6 +27,8 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 #import "DNode.h"
 
 @implementation DNode
+@synthesize distance;
+@synthesize previous;
 
 + dNode
 {
@@ -37,11 +39,11 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 - init
 {
-    [super init];
-
-    distance = D_INFINITY;
-    previous = nil;
-
+    if (self = [super init]) {
+        distance = D_INFINITY;
+        previous = nil;
+    }
+    
     return self;
 }
 
@@ -54,28 +56,7 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- previous
-{
-    return previous;
-}
-
-//----------------------------------------------------------------------
-
-- (int) distance
-{
-    return distance;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setDistance:(int)newDistance
-{
-    distance = newDistance;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setDistance:(int)newDistance withPrevious:newPrevious
+- (void) setDistance:(NSInteger)newDistance withPrevious:(id)newPrevious
 {
     distance = newDistance;
     previous = newPrevious;
@@ -83,9 +64,9 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) relaxFrom:source distance:(int)x
+- (void) relaxFrom:source distance:(NSInteger)x
 {
-    int aDistance;
+    NSInteger aDistance;
 
     NSAssert (source != nil, @"Source was nil.");
 
@@ -102,7 +83,7 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"<DNode: distance = %d>", distance];
+    return [NSString stringWithFormat:@"<DNode: distance = %ld>", (long)distance];
 }
 
 @end

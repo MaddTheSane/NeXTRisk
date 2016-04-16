@@ -20,27 +20,27 @@
 //     e-mail:  nygard@telusplanet.net
 //
 
-#import "../Risk.h"
+#import "Risk.h"
 
 RCSID ("$Id: SNHeap.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 #import "SNHeap.h"
 
-static inline int SNLeftIndex (int n)
+static inline NSInteger SNLeftIndex (NSInteger n)
 {
     return 2 * n + 1;
 }
 
 //----------------------------------------------------------------------
 
-static inline int SNRightIndex (int n)
+static inline NSInteger SNRightIndex (NSInteger n)
 {
     return 2 * n + 2;
 }
 
 //----------------------------------------------------------------------
 
-static inline int SNParentIndex (int n)
+static inline NSInteger SNParentIndex (NSInteger n)
 {
     return (n - 1) / 2;
 }
@@ -102,11 +102,11 @@ static inline int SNParentIndex (int n)
 //  0:
 //  1: NSOrderedDescending
 
-- (void) heapify:(int)i
+- (void) heapify:(NSInteger)i
 {
-    int l;
-    int r;
-    int smallest;
+    NSInteger l;
+    NSInteger r;
+    NSInteger smallest;
 
     l = SNLeftIndex (i);
     r = SNRightIndex (i);
@@ -133,7 +133,7 @@ static inline int SNParentIndex (int n)
 
 - (void) insertObject:anObject
 {
-    int i;
+    NSInteger i;
     id current;
     id parent;
 
@@ -233,7 +233,7 @@ static inline int SNParentIndex (int n)
 
 //----------------------------------------------------------------------
 
-- (int) count
+- (NSInteger) count
 {
     return current_size;
 }
@@ -242,13 +242,13 @@ static inline int SNParentIndex (int n)
 
 - (void) heapifyFromObject:anObject
 {
-    int l;
+    NSInteger l;
 
     for (l = 0; l < current_size; l++)
     {
         if (data[l] == anObject)
         {
-            NSLog (@"Heapifying from %d", l);
+            NSLog (@"Heapifying from %ld", (long)l);
             [self heapify:l];
             break;
         }
@@ -259,7 +259,7 @@ static inline int SNParentIndex (int n)
 
 - (void) removeObject:anObject
 {
-    int l;
+    NSInteger l;
 
     for (l = 0; l < current_size; l++)
     {
@@ -278,7 +278,7 @@ static inline int SNParentIndex (int n)
 - (NSString *) description
 {
     NSMutableArray *array;
-    int l;
+    NSInteger l;
 
     array = [NSMutableArray array];
     for (l = 0; l < current_size; l++)

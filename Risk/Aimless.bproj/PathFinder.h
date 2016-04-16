@@ -26,9 +26,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Risk.h"
+#import <RiskKit/RiskKit.h>
 
 @class Country, RiskWorld, SNHeap;
+@class DNode;
 
 extern NSComparisonResult PFCompareDistances (id country1, id country2, void *context);
 extern int PFConstantDistance (Country *country1, Country *country2);
@@ -40,8 +41,8 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
 
 @interface PathFinder : NSObject
 {
-    NSMutableSet *acceptableCountries;
-    NSMutableDictionary *nodeDictionary;
+    NSMutableSet<Country*> *acceptableCountries;
+    NSMutableDictionary<NSString*,DNode*> *nodeDictionary;
     BOOL (*isCountryAcceptable)(Country *, void *);
     void *context;
     int (*distanceFunction)(Country *, Country *);
@@ -49,19 +50,17 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
     RiskWorld *world;
 }
 
-+ shortestPathInRiskWorld:(RiskWorld *)aWorld
++ (instancetype)shortestPathInRiskWorld:(RiskWorld *)aWorld
               fromCountry:(Country *)source
              forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
                   context:(void *)aContext
          distanceFunction:(int (*)(Country *, Country *))aDistanceFunction;
 
-- initWithRiskWorld:(RiskWorld *)aWorld
+- (instancetype)initWithRiskWorld:(RiskWorld *)aWorld
         fromCountry:(Country *)source
        forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
             context:(void *)aContext
    distanceFunction:(int (*)(Country *, Country *))aDistanceFunction;
-
-- (void) dealloc;
 
 - (void) _buildShortestPathsFromCountry:(Country *)source;
 - (SNHeap *) _minimumDistanceCountryHeap;

@@ -34,9 +34,9 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
 {
-    NSDictionary *nodeDictionary;
+    NSDictionary<NSString*,DNode*> *nodeDictionary;
     NSString *name1, *name2;
-    int distance1, distance2;
+    NSInteger distance1, distance2;
     NSComparisonResult result;
 
     nodeDictionary = (NSDictionary *)context;
@@ -222,7 +222,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
         neighborEnumerator = [[country ourNeighborCountries] objectEnumerator];
         while (neighbor = [neighborEnumerator nextObject])
         {
-            int tmp;
+            NSInteger tmp;
 
             tmp = [[nodeDictionary objectForKey:[country countryName]] distance] + distanceFunction (country, neighbor);
             if ([[nodeDictionary objectForKey:[neighbor countryName]] distance] > tmp)

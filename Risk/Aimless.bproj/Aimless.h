@@ -38,7 +38,7 @@ typedef enum _CountryChoiceType
     ChooseAdjacentToCurrentCountries
 } CountryChoiceType;
 
-@class SNHeap, Continent;
+@class SNHeap<ObjectType>, Continent;
 
 @interface Aimless : RiskPlayer
 {
@@ -48,14 +48,14 @@ typedef enum _CountryChoiceType
     int lostCountryCount[7];
     int brokenContinentCount[7];
 
-    SNHeap *initialCountryHeap;
-    SNHeap *attackingCountryHeap;
+    SNHeap<Country*> *initialCountryHeap;
+    SNHeap<Country*> *attackingCountryHeap;
 
     // Choosing initial countries:
     CountryChoiceType primaryChoice;
 
     // For smallest/largest/leastBordered/mostBordered continent
-    SNHeap *continentChoiceHeap; 
+    SNHeap<Continent*> *continentChoiceHeap;
     // For random continents:
     NSMutableArray *continentChoiceArray;
 
@@ -63,11 +63,7 @@ typedef enum _CountryChoiceType
     // howToPlace;
 }
 
-+ (void) load;
-+ (void) initialize;
-
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
-- (void) dealloc;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 - (void) setPlayerToolMenu:(NSMenu *)theMenu;
 - (IBAction) testMessage:(id)sender;
@@ -125,13 +121,13 @@ typedef enum _CountryChoiceType
 
 - (BOOL) doAttackFromCountry:(Country *)attacker;
 
-- (NSSet *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
+- (NSSet<Country*> *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
 
 - (Continent *) continentWeAreClosestToControlling;
 
 - (int) perimeterCountryCount;
 - (int) perimeterCountryCountExcludingCountry:(Country *)excludedCountry;
-- (NSSet *) enemyCountriesAlongPerimeter;
+- (NSSet<Country*> *) enemyCountriesAlongPerimeter;
 
 - (void) analyzePerimeter;
 - (Country *) bestCountryToMinimizePerimeter:(NSSet *)potentialCountries;
@@ -141,7 +137,7 @@ typedef enum _CountryChoiceType
 
 - (void) _logCurrentWrathValues;
 
-- (NSSet *) mostConnectedCountries;
+- (NSSet<Country*> *) mostConnectedCountries;
 
 #if 0
 //======================================================================
