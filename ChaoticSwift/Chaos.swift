@@ -22,82 +22,68 @@ public class Chaos: RiskPlayer {
 		unoccupiedContinents.intersectInPlace(continents.keys)
 	}
 
-    //MARK:- Subclass Responsibilities
+	//MARK:- Subclass Responsibilities
 
-    //MARK: Card management
+	//MARK: Card management
 
-    /// While the game manager will automatically turn in our best sets for
+	/// While the game manager will automatically turn in our best sets for
 	/// us if we don't choose the cards ourselves, we'll do it ourselves
 	/// just to be nice.
 	public override func mustTurnInCards() {
 		gameManager.automaticallyTurnInCardsForPlayerNumber(playerNumber)
 	}
 
-    //MARK: Initial game phases
+	//MARK: Initial game phases
 
-    /// A chaotic player seeks to wreak havoc (in a very limited way) on the
-    /// rest of the players.  Toward this end he tries to choose at least one
-    /// country in each continent.  After that he chooses random countries.
-    public override func chooseCountry() {
-        /*
-        NSMutableArray *array;
-        NSArray *unoccupiedCountries;
-        NSEnumerator *countryEnumerator;
-        Country *country;
-        
-        // 1. Make a list of unoccupied countries in continents that we don't have a presence.
-        // 2. Randomly choose one of these, updating its continent flag
-        // 3. Otherwise, randomly pick country
-        
-        unoccupiedCountries = [gameManager unoccupiedCountries];
-        
-        NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
-        
-        array = [NSMutableArray array];
-        countryEnumerator = [unoccupiedCountries objectEnumerator];
-        while (country = [countryEnumerator nextObject])
-        {
-            if ([unoccupiedContinents containsObject:[country continentName]] == YES)
-            [array addObject:country];
-        }
-        
-        if ([array count] > 0)
-        {
-            country = [array objectAtIndex:[[self rng] randomNumberModulo:[array count]]];
-            [unoccupiedContinents removeObject:[country continentName]];
-        }
-        else
-        {
-            country = [unoccupiedCountries objectAtIndex:[[self rng] randomNumberModulo:[unoccupiedCountries count]]];
-        }
-        
-        [gameManager player:self choseCountry:country];
-        [self turnDone];
-*/
-        turnDone()
-    }
+	/// A chaotic player seeks to wreak havoc (in a very limited way) on the
+	/// rest of the players.  Toward this end he tries to choose at least one
+	/// country in each continent.  After that he chooses random countries.
+	public override func chooseCountry() {
+		// 1. Make a list of unoccupied countries in continents that we don't have a presence.
+		// 2. Randomly choose one of these, updating its continent flag
+		// 3. Otherwise, randomly pick country
+		
+		let unoccupiedCountries = gameManager.unoccupiedCountries()!
+		assert(unoccupiedCountries.count > 0, "No unoccupied countries.")
+		var array = [Country]()
+		let country: Country
+		for country in unoccupiedCountries {
+			if unoccupiedContinents.contains(country.continentName) {
+				array.append(country)
+			}
+		}
+		
+		if array.count > 0 {
+			country = array[rng.randomNumberModulo(array.count)]
+			unoccupiedContinents.remove(country.continentName)
+		} else {
+			country = unoccupiedCountries[rng.randomNumberModulo(unoccupiedCountries.count)]
+		}
+		gameManager.player(self, choseCountry: country)
+		turnDone()
+	}
 
 
-    /// place all armies in random countries with -placeArmies:.
-    public override func placeInitialArmies(count: Int32) {
-        placeArmies(count)
-    }
+	/// place all armies in random countries with -placeArmies:.
+	public override func placeInitialArmies(count: Int32) {
+		placeArmies(count)
+	}
 
 	//MARK: Regular turn phases
 
-    public override func placeArmies(count: Int32) {
-    //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-    var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries()))
-    let countryCount = ourCountries.count
-
-    assert(countryCount > 0, "We have no countries!");
-
-    for _ in 0..<count {
-        let country = ourCountries[rng.randomNumberModulo(countryCount)]
-
-		let okay = gameManager.player(self, placesArmies: 1, inCountry: country)
-        assert(okay, "Could not place army in country: \(country)");
-    }
+	public override func placeArmies(count: Int32) {
+		//myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
+		var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries()))
+		let countryCount = ourCountries.count
+		
+		assert(countryCount > 0, "We have no countries!");
+		
+		for _ in 0..<count {
+			let country = ourCountries[rng.randomNumberModulo(countryCount)]
+			
+			let okay = gameManager.player(self, placesArmies: 1, inCountry: country)
+			assert(okay, "Could not place army in country: \(country)");
+		}
 		turnDone()
 	}
 
@@ -120,7 +106,7 @@ public class Chaos: RiskPlayer {
 		// Otherwise, automatically entered into different state
 	}
 
-    /// Move forward half of the remaining armies.
+	/// Move forward half of the remaining armies.
 	public override func moveAttackingArmies(count: Int32, between source: Country!, _ destination: Country!) {
 		// Move half the armies to destination
 		// For odd count, leave extra army in the source country.
@@ -130,39 +116,24 @@ public class Chaos: RiskPlayer {
 	}
 
 	public override func fortifyPhase(fortifyRule: FortifyRule) {
-        /*
-    NSSet *sourceCountries;
-    Country *source = nil;
-    NSInteger count;
-    NSArray *sourceArray;
-
-    sourceCountries = [self countriesWithAllOptions:CountryFlagsWithMovableTroops|CountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
-    count = [sourceCountries count];
-
-    if (count == 0)
-    {
-        [self turnDone];
-    }
-    else
-    {
-        switch (fortifyRule)
-        {
-          case ManyToManyNeighbors:
-          case ManyToManyConnected:
-              source = [sourceCountries anyObject]; // All of them will be done in turn.
-              break;
-              
-          case OneToOneNeighbor:
-          case OneToManyNeighbors:
-          default:
-              sourceArray = [sourceCountries allObjects];
-              source = [sourceArray objectAtIndex:[[self rng] randomNumberModulo:count]];
-              break;
-        }
-
-        [gameManager fortifyArmiesFrom:source];
-    }
-         */
+		let sourceCountries = countriesWithAllOptions([.WithMovableTroops, .WithoutEnemyNeighbors], from: ourCountries())
+		let source: Country
+		
+		guard !sourceCountries.isEmpty else {
+			turnDone()
+			return
+		}
+		
+		switch fortifyRule {
+		case .ManyToManyNeighbors, .ManyToManyConnected:
+			source = sourceCountries.first!; // All of them will be done in turn.
+			
+		case .OneToOneNeighbor, .OneToManyNeighbors:
+			let sourceArray = Array(sourceCountries)
+			source = sourceArray[rng.randomNumberModulo(sourceArray.count)]
+		}
+		
+		gameManager.fortifyArmiesFrom(source)
 	}
 
 	/// Try to find a friendly neighbor who has unfriendly neighbors

@@ -167,7 +167,7 @@ extern NSString *const RGMGameOverNotification;
 //======================================================================
 
 - (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(Country *)country;
-- (NSArray *) unoccupiedCountries; // Better in RiskWorld?
+- (NSArray<Country*> *) unoccupiedCountries; // Better in RiskWorld?
 - (void) randomlyChooseCountriesForActivePlayers;
 
 //======================================================================
