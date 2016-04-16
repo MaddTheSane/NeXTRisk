@@ -67,8 +67,8 @@ static NSImage *_boardBackingImage = nil;
 //----------------------------------------------------------------------
 
 - (void) awakeFromNib
-// post init initialization stuff
 {
+    [super awakeFromNib];
 }
 
 //----------------------------------------------------------------------
