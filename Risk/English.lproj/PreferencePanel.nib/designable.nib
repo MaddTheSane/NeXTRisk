@@ -32,7 +32,7 @@
                         <rect key="frame" x="7" y="100" width="307" height="110"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="mbm-lp-p3Y">
-                            <rect key="frame" x="2" y="2" width="303" height="92"/>
+                            <rect key="frame" x="2" y="2" width="303" height="93"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="10">
@@ -95,7 +95,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <slider verticalHuggingPriority="750" id="5">
-                                    <rect key="frame" x="121" y="71" width="117" height="16"/>
+                                    <rect key="frame" x="121" y="71" width="104" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.5" maxValue="5" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="41">
                                         <font key="font" size="12" name="Helvetica"/>
@@ -108,7 +108,6 @@
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica-Bold"/>
                     </box>
                     <button verticalHuggingPriority="750" id="18">
                         <rect key="frame" x="122" y="6" width="92" height="27"/>
@@ -139,7 +138,7 @@ DQ
                         <rect key="frame" x="7" y="40" width="307" height="57"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="V8R-3m-acC">
-                            <rect key="frame" x="2" y="2" width="303" height="39"/>
+                            <rect key="frame" x="2" y="2" width="303" height="40"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button id="11">
@@ -157,7 +156,6 @@ DQ
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica-Bold"/>
                     </box>
                 </subviews>
             </view>

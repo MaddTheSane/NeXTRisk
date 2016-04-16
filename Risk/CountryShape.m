@@ -97,7 +97,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 //----------------------------------------------------------------------
 
-- initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if ([super init] == nil)
         return nil;

@@ -8,6 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+/// An SNUserPath provides an interface for creating user paths and
+/// using them for drawing or hit detection.  The bounding box
+/// calculations are incomplete, but work with straight lines.
+///
+/// The MiscKit provides a more complete implementation.  Under Rhapsody
+/// this will probably move towards using the NSBezierPath path.
+///
+/// Note that this means curved paths could be easily supported to
+/// provide better looking maps, but RiskUtil.app would need to be
+/// able to support them.
 @interface SNUserPath : NSObject <NSCoding>
 
 - (NSBezierPath*)toBezierPath;

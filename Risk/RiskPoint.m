@@ -44,21 +44,31 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
     return self;
 }
 
-//----------------------------------------------------------------------
-
-- (void) encodeWithCoder:(NSCoder *)aCoder
+- (instancetype)init
 {
-    [aCoder encodePoint:point];
+    return [self initWithPoint:NSZeroPoint];
 }
 
 //----------------------------------------------------------------------
 
-- initWithCoder:(NSCoder *)aDecoder
+#define kRiskPoint @"Point"
+- (void) encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodePoint:point forKey:kRiskPoint];
+}
+
+//----------------------------------------------------------------------
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if ([super init] == nil)
         return nil;
 
+    if ([aDecoder allowsKeyedCoding]) {
+        point = [aDecoder decodePointForKey:kRiskPoint];
+    } else {
     point = [aDecoder decodePoint];
+    }
 
     return self;
 }

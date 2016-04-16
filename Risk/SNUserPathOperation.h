@@ -11,7 +11,7 @@
 /// An SNUserPathOperation represents an user path operator and its
 /// operands so that is can be stored in an array.
 ///
-/// Please migrate over to <code>NSBezierPath</code>s instead
+/// Please migrate over to <code>NSBezierPath</code>s instead!
 @interface SNUserPathOperation : NSObject <NSCoding>
 
 - (void)insertIntoBezierPath:(NSBezierPath*)bPath;

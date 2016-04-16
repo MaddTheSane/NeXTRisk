@@ -81,7 +81,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if ([super init] == nil)
         return nil;

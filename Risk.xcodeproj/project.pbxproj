@@ -464,6 +464,7 @@
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		55377EAA1CC15AC900A2C08E /* Products */ = {
 			isa = PBXGroup;
@@ -719,6 +720,7 @@
 			);
 			name = "Migration purposes";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 /* End PBXGroup section */
 

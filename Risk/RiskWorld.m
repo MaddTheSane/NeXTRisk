@@ -38,7 +38,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ defaultRiskWorld
++ (RiskWorld*)defaultRiskWorld
 {
     NSBundle *thisBundle;
     NSString *path;
@@ -60,14 +60,14 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ riskWorldWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
++ (instancetype)riskWorldWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
 {
     return [[[RiskWorld alloc] initWithContinents:theContinents countryNeighbors:neighbors cards:theCards] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
+- (instancetype)initWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
 {
     if ([super init] == nil)
         return nil;
@@ -98,43 +98,49 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
+#define kContinentsKey @"Continents"
+#define kCountryNeighborsArrayKey @"CountryNeighbors"
+#define kCardsArrayKey @"Cards"
+
+#define kCardCountryName @"CountryName"
+#define kCardCardType @"CardType"
+#define kCardImageName @"ImageName"
+
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    NSEnumerator *neighborEnumerator;
     RiskNeighbor *riskNeighbor;
-    NSEnumerator *cardEnumerator;
     RiskCard *card;
-    NSInteger count;
-    RiskCardType cardType;
     
-    [aCoder encodeObject:continents];
+    [aCoder encodeObject:continents forKey:kContinentsKey];
     
-    count = [countryNeighbors count];
-    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&count];
-
-    neighborEnumerator = [countryNeighbors objectEnumerator];
-    while (riskNeighbor = [neighborEnumerator nextObject])
+    NSMutableArray *tmpNeighbors = [NSMutableArray arrayWithCapacity:[countryNeighbors count]];
+    for (riskNeighbor in countryNeighbors)
     {
-        [aCoder encodeObject:[[riskNeighbor country1] countryName]];
-        [aCoder encodeObject:[[riskNeighbor country2] countryName]];
+        [tmpNeighbors addObject:@[[[riskNeighbor country1] countryName], [[riskNeighbor country2] countryName]]];
     }
+    [aCoder encodeObject:tmpNeighbors forKey:kCountryNeighborsArrayKey];
 
-    count = [cards count];
-    [aCoder encodeValueOfObjCType:@encode (NSInteger) at:&count];
+    NSMutableArray<NSDictionary<NSString*,id>*> *tmpCards = [NSMutableArray arrayWithCapacity:cards.count];
+    for (card in cards) {
+        NSDictionary *cardDict = @{
+                                   kCardCardType: @([card cardType]),
+                                   kCardImageName: [card imageName]
+                                   };
+        
+        if ([[card country] countryName]) {
+            NSMutableDictionary *mdict = [NSMutableDictionary dictionaryWithDictionary:cardDict];
+            mdict[kCardCountryName] = [[card country] countryName];
+            cardDict = mdict;
+        }
 
-    cardEnumerator = [cards objectEnumerator];
-    for (card in cards)
-    {
-        [aCoder encodeObject:[[card country] countryName]];
-        cardType = [card cardType];
-        [aCoder encodeValueOfObjCType:@encode (RiskCardType) at:&cardType];
-        [aCoder encodeObject:[card imageName]];
+        [tmpCards addObject:cardDict];
     }
+    [aCoder encodeObject:tmpCards forKey:kCardsArrayKey];
 }
 
 //----------------------------------------------------------------------
 
-- initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     NSMutableDictionary *countryDictionary;
     NSEnumerator *countryEnumerator;
@@ -145,11 +151,46 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
     NSMutableArray *tmpCards;
     RiskCardType cardType;
-    NSString *imageName;
     
     if ([super init] == nil)
         return nil;
+    if ([aDecoder allowsKeyedCoding]) {
+        continents = [[aDecoder decodeObjectForKey:kContinentsKey] retain];
 
+        allCountries = [[NSMutableSet alloc] init];
+        [self _buildAllCountries];
+        
+        // Set up country dictionary keyed on name
+        countryDictionary = [NSMutableDictionary dictionary];
+        countryEnumerator = [allCountries objectEnumerator];
+        while (country1 = [countryEnumerator nextObject])
+        {
+            [countryDictionary setObject:country1 forKey:[country1 countryName]];
+        }
+        
+        NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayKey];
+        
+        tmpCountryNeighbors = [NSMutableArray array];
+        for (NSArray<NSString*> *conCat in tmptmp) {
+            NSString *name1 = [conCat objectAtIndex:0];
+            NSString *name2 = [conCat objectAtIndex:1];
+            Country *country1 = [countryDictionary objectForKey:name1];
+            Country *country2 = [countryDictionary objectForKey:name2];
+            [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
+        }
+        countryNeighbors = [tmpCountryNeighbors copy];
+        NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayKey];
+        
+        for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
+            NSString *name1 = [tmpCard objectForKey:kCardCountryName];
+            Country *country1 = [countryDictionary objectForKey:name1];
+            cardType = [[tmpCard objectForKey:kCardCardType] intValue];
+            NSString *imageName = [tmpCard objectForKey:kCardImageName];
+            [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+        }
+        
+        cards = [tmpCards copy];
+    } else {
     continents = [[aDecoder decodeObject] retain];
 
     allCountries = [[NSMutableSet set] retain];
@@ -179,15 +220,15 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
     for (l = 0; l < count; l++)
     {
-        name1 = [aDecoder decodeObject];
-        country1 = [countryDictionary objectForKey:name1];
+        NSString *name1 = [aDecoder decodeObject];
+        Country *country1 = [countryDictionary objectForKey:name1];
         [aDecoder decodeValueOfObjCType:@encode (RiskCardType) at:&cardType];
-        imageName = [aDecoder decodeObject];
+        NSString *imageName = [aDecoder decodeObject];
         [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
     }
 
-    cards = [[NSArray alloc] initWithArray:tmpCards];
-
+    cards = [tmpCards copy];
+    }
     [self _connectCountries];
 
     return self;
@@ -198,12 +239,11 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 - (void) _buildAllCountries
 {
     NSEnumerator *continentEnumerator;
-    Continent *continent;
 
     [allCountries removeAllObjects];
 
     continentEnumerator = [continents objectEnumerator];
-    while (continent = [continentEnumerator nextObject])
+    for (Continent *continent in continentEnumerator)
     {
         [allCountries unionSet:[continent countries]];
     }
