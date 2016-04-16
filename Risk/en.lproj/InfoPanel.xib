@@ -121,7 +121,7 @@ http://www.codefab.com/users/mferris/</string>
                                     <rect key="frame" x="0.0" y="30" width="424" height="408"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="424" height="235"/>
+                                    <size key="minSize" width="425" height="235"/>
                                     <size key="maxSize" width="431" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -427,7 +427,7 @@ Mike Ferris</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="424" height="235"/>
+                                    <size key="minSize" width="425" height="235"/>
                                     <size key="maxSize" width="431" height="10000000"/>
                                 </textView>
                             </subviews>
