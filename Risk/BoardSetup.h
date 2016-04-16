@@ -39,8 +39,6 @@ extern NSString *const RiskBoardSetupShowCardSetCountsChangedNotification;
 
 + (BoardSetup*)instance;
 
-+ (void) initialize;
-
 - (instancetype)init;
 
 - (void) writeAllDefaults;

@@ -6,11 +6,12 @@
 #import <AppKit/AppKit.h>
 
 #import "Risk.h"
+#import "RiskMapView.h"
 
-@class Country, RiskMapView, RiskNeighbor, RiskWorld, RiskCard;
+@class Country, RiskNeighbor, RiskWorld, RiskCard;
 @class Continent;
 
-@interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource>
+@interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource, RiskMapViewDelegate>
 {
     IBOutlet RiskMapView *riskMapView;
     IBOutlet NSTextField *fromTextfield;

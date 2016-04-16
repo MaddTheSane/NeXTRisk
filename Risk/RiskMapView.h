@@ -7,7 +7,7 @@
 
 @class Country;
 
-@protocol RiskMapViewDelegate
+@protocol RiskMapViewDelegate <NSObject>
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 - (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 @end
@@ -20,17 +20,12 @@
 
     CGFloat currentScaleFactor;
 
-    id delegate;
+    __strong id<RiskMapViewDelegate> delegate;
 }
 
-+ (void) initialize;
 + (void) loadClassImages;
-- (void) awakeFromNib;
 
-- initWithFrame:(NSRect)frameRect;
-- (void) dealloc;
-
-- (BOOL) isOpaque;
+- (instancetype)initWithFrame:(NSRect)frameRect;
 
 - (void) drawBackground:(NSRect)rect;
 - (void) drawRect:(NSRect)rect;
@@ -43,7 +38,7 @@
 
 @property (nonatomic) CGFloat scaleFactor;
 
-@property (strong) IBOutlet id delegate;
+@property (strong) IBOutlet id<RiskMapViewDelegate> delegate;
 
 - (void) countryUpdated:(NSNotification *)aNotification;
 

@@ -34,13 +34,12 @@
     IBOutlet NSButton *pauseCheckBox;
 }
 
-+ (void) initialize;
 + (void) loadClassImages;
 
 - (instancetype)init;
 
 - (void) showPanel;
-- (BOOL) isPanelOnScreen;
+@property (readonly, getter=isPanelOnScreen) BOOL panelOnScreen;
 
 - (void) setDieImage:(NSImageView *)aView fromInt:(int)value;
 
@@ -51,6 +50,5 @@
 - (void) waitForContinue;
 - (IBAction) continueAction:(id)sender;
 - (IBAction) pauseCheckAction:(id)sender;
-
 
 @end

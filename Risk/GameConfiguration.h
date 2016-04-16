@@ -15,25 +15,16 @@
     FortifyRule fortifyRule;
 }
 
-+ (void) initialize;
++ (instancetype)defaultConfiguration NS_SWIFT_UNAVAILABLE("Use init() instead");
 
-+ defaultConfiguration;
+- (instancetype)init;
 
-- init;
+@property InitialCountryDistribution initialCountryDistribution;
+@property InitialArmyPlacement initialArmyPlacement;
+@property CardSetRedemption cardSetRedemption;
+@property FortifyRule fortifyRule;
 
-- (InitialCountryDistribution) initialCountryDistribution;
-- (void) setInitialCountryDistribution:(InitialCountryDistribution)newCountryDistribution;
-
-- (InitialArmyPlacement) initialArmyPlacement;
-- (void) setInitialArmyPlacement:(InitialArmyPlacement)newArmyPlacement;
-
-- (CardSetRedemption) cardSetRedemption;
-- (void) setCardSetRedemption:(CardSetRedemption)newCardSetRedemption;
-
-- (FortifyRule) fortifyRule;
-- (void) setFortifyRule:(FortifyRule)newFortifyRule;
-
-- (int) armyPlacementCount;
+@property (readonly) int armyPlacementCount;
 
 - (void) writeDefaults;
 

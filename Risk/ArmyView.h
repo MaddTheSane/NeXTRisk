@@ -6,18 +6,12 @@
 #import <AppKit/AppKit.h>
 
 @interface ArmyView : NSView
-{
-    int armyCount;
-}
 
-+ (void) initialize;
 + (void) loadClassImages;
 
-- initWithFrame:(NSRect)frameRect;
-- (void) dealloc;
+- (instancetype)initWithFrame:(NSRect)frameRect;
 
-- (int) armyCount;
-- (void) setArmyCount:(int)newCount;
+@property (nonatomic) int armyCount;
 
 - (void) drawRect:(NSRect)rect;
 

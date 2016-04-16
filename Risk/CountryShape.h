@@ -15,20 +15,16 @@
     //NSRect shapeBounds;
 }
 
-+ (void) initialize;
-
 + (instancetype)countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 
-- (instancetype)initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
+- (instancetype)initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected;
 - (BOOL) pointInShape:(NSPoint)aPoint;
 
 @property (readonly) NSPoint centerPoint;
 @property (readonly) NSRect bounds;
-
-- (NSString *) description;
 
 @end

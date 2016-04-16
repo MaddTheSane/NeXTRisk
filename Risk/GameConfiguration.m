@@ -17,25 +17,30 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 #define GameConfiguration_VERSION 1
 
 @implementation GameConfiguration
+@synthesize initialCountryDistribution;
+@synthesize initialArmyPlacement;
+@synthesize cardSetRedemption;
+@synthesize fortifyRule;
 
 + (void) initialize
 {
-    NSUserDefaults *defaults;
-    NSMutableDictionary *gameDefaults;
-    
     if (self == [GameConfiguration class])
     {
         [self setVersion:GameConfiguration_VERSION];
-
-        defaults = [NSUserDefaults standardUserDefaults];
-        gameDefaults = [NSMutableDictionary dictionary];
+    }
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSMutableDictionary *gameDefaults = [[NSMutableDictionary alloc] initWithCapacity:4];
 
         [gameDefaults setObject:DV_PlayerChosen     forKey:DK_InitialCountryDistribution];
         [gameDefaults setObject:DV_PlaceByThrees    forKey:DK_InitialArmyPlacement];
         [gameDefaults setObject:DV_RemainConstant   forKey:DK_CardSetRedemption];
         [gameDefaults setObject:DV_OneToOneNeighbor forKey:DK_FortifyRule];
         [defaults registerDefaults:gameDefaults];
-    }
+        [gameDefaults release];
+    });
 }
 
 //----------------------------------------------------------------------
@@ -62,62 +67,6 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     fortifyRule = fortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (InitialCountryDistribution) initialCountryDistribution
-{
-    return initialCountryDistribution;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setInitialCountryDistribution:(InitialCountryDistribution)newCountryDistribution
-{
-    initialCountryDistribution = newCountryDistribution;
-}
-
-//----------------------------------------------------------------------
-
-- (InitialArmyPlacement) initialArmyPlacement
-{
-    return initialArmyPlacement;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setInitialArmyPlacement:(InitialArmyPlacement)newArmyPlacement
-{
-    initialArmyPlacement = newArmyPlacement;
-}
-
-//----------------------------------------------------------------------
-
-- (CardSetRedemption) cardSetRedemption
-{
-    return cardSetRedemption;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setCardSetRedemption:(CardSetRedemption)newCardSetRedemption
-{
-    cardSetRedemption = newCardSetRedemption;
-}
-
-//----------------------------------------------------------------------
-
-- (FortifyRule) fortifyRule
-{
-    return fortifyRule;
-}
-
-//----------------------------------------------------------------------
-
-- (void) setFortifyRule:(FortifyRule)newFortifyRule
-{
-    fortifyRule = newFortifyRule;
 }
 
 //----------------------------------------------------------------------

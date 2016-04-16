@@ -8,7 +8,6 @@
 {
 }
 
-+ (void) initialize;
 + (SNRandom*)instance;
 
 + (void) seedGenerator:(int)seed;

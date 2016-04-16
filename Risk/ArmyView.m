@@ -28,6 +28,7 @@ static struct image_names class_images[] =
 };
 
 @implementation ArmyView
+@synthesize armyCount;
 
 + (void) initialize
 {
@@ -89,13 +90,6 @@ static struct image_names class_images[] =
 - (void) dealloc
 {
     [super dealloc];
-}
-
-//----------------------------------------------------------------------
-
-- (int) armyCount
-{
-    return armyCount;
 }
 
 //----------------------------------------------------------------------

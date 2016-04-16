@@ -22,8 +22,6 @@
     int unmovableTroopCount;
 }
 
-+ (void) initialize;
-
 - (instancetype)initWithCountryName:(NSString *)aName
         continentName:(NSString *)aContinentName
                 shape:(CountryShape *)aCountryShape

@@ -27,11 +27,11 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 @class RiskGameManager, Country, RiskCard, CardSet;
 @class SNRandom;
 
-@interface RiskPlayer : NSObject
+@interface RiskPlayer : NSObject <NSWindowDelegate>
 {
     NSString *playerName;
     Player playerNumber;
-    NSMutableArray *playerCards;
+    NSMutableArray<RiskCard*> *playerCards;
 
     RiskGameManager *gameManager;
 
@@ -39,7 +39,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
     AttackMethod attackMethod;
     int attackMethodValue;
 
-    NSMenu *playerToolMenu;
+    __unsafe_unretained NSMenu *playerToolMenu;
 
     // Console
     IBOutlet NSWindow *consoleWindow;
@@ -51,9 +51,6 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
     SNRandom *rng;
 }
 @property (readonly, retain) RiskGameManager *gameManager;
-
-+ (void) load;
-+ (void) initialize;
 
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
 

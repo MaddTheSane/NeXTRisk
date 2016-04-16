@@ -11,11 +11,9 @@
 @interface Continent : NSObject <NSCoding>
 {
     NSString *continentName;
-    NSSet *countries;
+    NSSet<Country*> *countries;
     int continentBonus;
 }
-
-+ (void) initialize;
 
 + (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus;
 
