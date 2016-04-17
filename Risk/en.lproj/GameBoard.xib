@@ -33,7 +33,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Risk" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="7" userLabel="Map Window">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -51,7 +51,7 @@
                         </connections>
                     </customView>
                     <textField verticalHuggingPriority="750" id="9">
-                        <rect key="frame" x="36" y="20" width="135" height="21"/>
+                        <rect key="frame" x="20" y="20" width="151" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="147">
                             <font key="font" metaFont="system"/>
@@ -79,7 +79,7 @@
                         <rect key="frame" x="104" y="8" width="173" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="pJ6-Ll-adY">
-                            <rect key="frame" x="2" y="2" width="169" height="180"/>
+                            <rect key="frame" x="2" y="2" width="169" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="16">
@@ -118,13 +118,12 @@
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Game Status" id="20">
                         <rect key="frame" x="4" y="8" width="97" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="lDw-zV-PfW">
-                            <rect key="frame" x="2" y="2" width="93" height="180"/>
+                            <rect key="frame" x="2" y="2" width="93" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView id="21" customClass="StatusView">
@@ -138,7 +137,6 @@
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                 </subviews>
             </view>
@@ -156,14 +154,14 @@
                         <rect key="frame" x="9" y="440" width="414" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="vLn-Ma-EDZ">
-                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <rect key="frame" x="2" y="2" width="410" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="64">
                                     <rect key="frame" x="5" y="42" width="400" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="center" id="161">
-                                        <font key="font" size="48" name="Helvetica"/>
+                                        <font key="font" metaFont="system" size="47"/>
                                         <string key="title">Computer's Move
 Stand By</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,13 +172,12 @@ Stand By</string>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Phase Controls - Place Armies" id="52">
                         <rect key="frame" x="10" y="231" width="414" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="nbA-Za-v2U">
-                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <rect key="frame" x="2" y="2" width="410" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" id="39">
@@ -220,7 +217,7 @@ Stand By</string>
                                     <rect key="frame" x="5" y="5" width="400" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Click in a country to place an army there. Shift-click to place five armies. Command-click to place all remaining armies." id="166">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -258,41 +255,40 @@ Stand By</string>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Phase Controls - Fortify Position" id="54">
                         <rect key="frame" x="429" y="232" width="414" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="Ptk-EJ-AHT">
-                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <rect key="frame" x="2" y="2" width="410" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="62">
-                                    <rect key="frame" x="24" y="133" width="373" height="30"/>
+                                    <rect key="frame" x="24" y="129" width="373" height="34"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Click one of your countries to fortify from it.  Then you may place the armies in any adjacent country which you control." id="170">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" id="28">
-                                    <rect key="frame" x="5" y="83" width="118" height="28"/>
+                                    <rect key="frame" x="5" y="79" width="118" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <buttonCell key="cell" type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="171">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="endTurn:" target="-2" id="112"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" id="66">
-                                    <rect key="frame" x="5" y="46" width="118" height="28"/>
+                                    <rect key="frame" x="5" y="42" width="118" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="172">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="reviewCards:" target="-2" id="111"/>
@@ -302,13 +298,12 @@ Stand By</string>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Phase Controls - Attack" id="32">
                         <rect key="frame" x="428" y="440" width="414" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="YKx-WO-3kO">
-                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <rect key="frame" x="2" y="2" width="410" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <slider verticalHuggingPriority="750" id="46">
@@ -343,7 +338,7 @@ Stand By</string>
                                     <rect key="frame" x="136" y="65" width="269" height="22"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="center" title="Attacking from:" id="154">
-                                        <font key="font" size="18" name="Helvetica"/>
+                                        <font key="font" metaFont="system" size="18"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -358,21 +353,21 @@ Stand By</string>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" id="59">
-                                    <rect key="frame" x="5" y="53" width="118" height="28"/>
+                                    <rect key="frame" x="5" y="49" width="118" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <buttonCell key="cell" type="push" title="Review Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="156">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
                                         <action selector="reviewCards:" target="-2" id="113"/>
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" id="49">
-                                    <rect key="frame" x="5" y="7" width="404" height="30"/>
+                                    <rect key="frame" x="5" y="3" width="400" height="33"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" id="157">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                    <textFieldCell key="cell" controlSize="small" alignment="left" id="157">
+                                        <font key="font" metaFont="smallSystem"/>
                                         <string key="title">Click one of your countries to attack from, then an opponent's to attack.
 Hold the shift key down to automatically move all armies on victory.</string>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -387,13 +382,13 @@ Hold the shift key down to automatically move all armies on victory.</string>
                                     <size key="intercellSpacing" width="9" height="4"/>
                                     <buttonCell key="prototype" type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" tag="-1" imageScaling="proportionallyDown" inset="2" id="173">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <cells>
                                         <column>
                                             <buttonCell type="push" title="Fortify" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="35">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="12" name="Helvetica"/>
+                                                <font key="font" metaFont="system"/>
                                                 <connections>
                                                     <action selector="fortify:" target="-2" id="114"/>
                                                 </connections>
@@ -402,7 +397,7 @@ Hold the shift key down to automatically move all armies on victory.</string>
                                         <column>
                                             <buttonCell type="push" title="End Turn" bezelStyle="rounded" alignment="center" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="34">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" size="12" name="Helvetica"/>
+                                                <font key="font" metaFont="system"/>
                                                 <connections>
                                                     <action selector="endTurn:" target="-2" id="115"/>
                                                 </connections>
@@ -422,15 +417,24 @@ Hold the shift key down to automatically move all armies on victory.</string>
                                         <action selector="attackMethodAction:" target="-2" id="117"/>
                                     </connections>
                                 </textField>
-                                <popUpButton verticalHuggingPriority="750" id="56">
-                                    <rect key="frame" x="65" y="153" width="257" height="20"/>
+                                <textField verticalHuggingPriority="750" id="67">
+                                    <rect key="frame" x="15" y="156" width="48" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <popUpButtonCell key="cell" type="push" title="Once only." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="159">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <textFieldCell key="cell" alignment="left" title="Attack:" id="160">
                                         <font key="font" size="12" name="Helvetica"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" id="56">
+                                    <rect key="frame" x="66" y="150" width="257" height="26"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="159">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
                                         <menu key="menu" title="OtherViews" id="31">
                                             <items>
-                                                <menuItem title="Once only." state="on" id="57"/>
+                                                <menuItem title="Once only." id="57"/>
                                                 <menuItem title="A specific number of times." id="37"/>
                                                 <menuItem title="Until a specific number of armies remain." id="51"/>
                                                 <menuItem title="Until unable to continue." id="53"/>
@@ -441,33 +445,23 @@ Hold the shift key down to automatically move all armies on victory.</string>
                                         <action selector="attackMethodAction:" target="-2" id="118"/>
                                     </connections>
                                 </popUpButton>
-                                <textField verticalHuggingPriority="750" id="67">
-                                    <rect key="frame" x="15" y="156" width="48" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" alignment="left" title="Attack:" id="160">
-                                        <font key="font" size="12" name="Helvetica"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <box title="Phase Controls - Choose Countries" id="44">
                         <rect key="frame" x="9" y="25" width="414" height="198"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView" id="fzX-GG-BGc">
-                            <rect key="frame" x="2" y="2" width="410" height="180"/>
+                            <rect key="frame" x="2" y="2" width="410" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="38">
-                                    <rect key="frame" x="22" y="133" width="373" height="30"/>
+                                    <rect key="frame" x="22" y="129" width="373" height="34"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" alignment="left" title="Click on an unoccupied country to choose it.  The game will proceed when all the coutries are chosen." id="162">
-                                        <font key="font" size="12" name="Helvetica"/>
+                                        <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -476,7 +470,6 @@ Hold the shift key down to automatically move all armies on victory.</string>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                 </subviews>
             </view>

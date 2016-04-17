@@ -459,7 +459,7 @@ Mike Ferris</string>
                         <rect key="frame" x="12" y="5" width="41" height="13"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" alignment="left" title="Version" id="60">
-                            <font key="font" size="10" name="Helvetica"/>
+                            <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -479,7 +479,7 @@ Mike Ferris</string>
                         <rect key="frame" x="135" y="5" width="285" height="13"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" alignment="left" title="Copyright 1993, Stultus Enterprises,  All Rights Reserved." id="61">
-                            <font key="font" size="10" name="Helvetica"/>
+                            <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -562,7 +562,7 @@ Mike Ferris</string>
                                     <rect key="frame" x="0.0" y="0.0" width="399" height="182"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="400" height="117"/>
+                                    <size key="minSize" width="399" height="117"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -650,7 +650,7 @@ Mike Ferris</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="400" height="117"/>
+                                    <size key="minSize" width="399" height="117"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                 </textView>
                             </subviews>
@@ -669,7 +669,7 @@ Mike Ferris</string>
                         <rect key="frame" x="56" y="5" width="65" height="13"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" alignment="left" title="0.00" id="63">
-                            <font key="font" size="10" name="Helvetica"/>
+                            <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
