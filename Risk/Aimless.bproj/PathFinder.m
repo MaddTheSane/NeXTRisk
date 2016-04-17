@@ -40,11 +40,11 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
     NSComparisonResult result;
 
     nodeDictionary = (NSDictionary *)context;
-    name1 = [(Country *)country1 countryName];
-    name2 = [(Country *)country2 countryName];
+    name1 = ((Country *)country1).countryName;
+    name2 = ((Country *)country2).countryName;
 
-    distance1 = [[nodeDictionary objectForKey:name1] distance];
-    distance2 = [[nodeDictionary objectForKey:name2] distance];
+    distance1 = nodeDictionary[name1].distance;
+    distance2 = nodeDictionary[name2].distance;
 
     if (distance1 < distance2)
         result = NSOrderedAscending;
@@ -53,8 +53,8 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
         int troopCount1, troopCount2;
 
         // Choose country with fewest troops.
-        troopCount1 = [(Country *)country1 troopCount];
-        troopCount2 = [(Country *)country2 troopCount];
+        troopCount1 = ((Country *)country1).troopCount;
+        troopCount2 = ((Country *)country2).troopCount;
         
         if (troopCount1 < troopCount2)
         {
@@ -106,7 +106,7 @@ BOOL PFCountryForPlayer (Country *country, void *context)
     Player number;
 
     number = (Player)context;
-    flag = [country playerNumber] == number;
+    flag = country.playerNumber == number;
 
     return flag;
 }
@@ -119,7 +119,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     Player number;
 
     number = (Player)context;
-    if ([country playerNumber] == number && [[country enemyNeighborCountries] count] > 0)
+    if (country.playerNumber == number && [country enemyNeighborCountries].count > 0)
         flag = YES;
     else
         flag = NO;
@@ -147,7 +147,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- initWithRiskWorld:(RiskWorld *)aWorld
+- (instancetype) initWithRiskWorld:(RiskWorld *)aWorld
         fromCountry:(Country *)source
        forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
             context:(void *)aContext
@@ -191,7 +191,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     [nodeDictionary removeAllObjects];
     [acceptableCountries removeAllObjects];
 
-    allCountries = [world allCountries];
+    allCountries = world.allCountries;
 
     // Build acceptable countries.
     countryEnumerator = [allCountries objectEnumerator];
@@ -201,12 +201,12 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
         {
             [acceptableCountries addObject:country];
             node = [DNode dNode];
-            [nodeDictionary setObject:node forKey:[country countryName]];
+            nodeDictionary[country.countryName] = node;
         }
     }
 
-    node = [nodeDictionary objectForKey:[source countryName]];
-    [node setDistance:0];
+    node = nodeDictionary[source.countryName];
+    node.distance = 0;
 
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:nodeDictionary];
@@ -224,10 +224,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
         {
             NSInteger tmp;
 
-            tmp = [[nodeDictionary objectForKey:[country countryName]] distance] + distanceFunction (country, neighbor);
-            if ([[nodeDictionary objectForKey:[neighbor countryName]] distance] > tmp)
+            tmp = nodeDictionary[country.countryName].distance + distanceFunction (country, neighbor);
+            if (nodeDictionary[neighbor.countryName].distance > tmp)
             {
-                [[nodeDictionary objectForKey:[neighbor countryName]] setDistance:tmp withPrevious:country];
+                [nodeDictionary[neighbor.countryName] setDistance:tmp withPrevious:country];
                 //[countryHeap heapifyFromObject:neighbor];
                 [countryHeap removeObject:neighbor];
                 [countryHeap insertObject:neighbor];
@@ -271,12 +271,12 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     [path1 addObject:target];
 
-    node = [nodeDictionary objectForKey:[target countryName]];
-    while ((previous = [node previous]))
+    node = nodeDictionary[target.countryName];
+    while ((previous = node.previous))
     {
         [path1 addObject:previous];
         target = previous;
-        node = [nodeDictionary objectForKey:[target countryName]];
+        node = nodeDictionary[target.countryName];
     }
 
     objectEnumerator = [path1 reverseObjectEnumerator];
@@ -287,7 +287,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     //NSLog (@"Initial path is: %@", path2);
     // Remove first object?  It should be the source.
-    if ([path2 count] > 0)
+    if (path2.count > 0)
     {
         [path2 removeObjectAtIndex:0];
     }
@@ -326,8 +326,8 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     path = [self shortestPathToCountry:target];
 
-    if ([path count] > 0)
-        first = [path objectAtIndex:0];
+    if (path.count > 0)
+        first = path[0];
     else
         first = nil;
 
@@ -345,8 +345,8 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     //NSLog (@"path is: %@", path);
 
-    if ([path count] > 0)
-        first = [path objectAtIndex:0];
+    if (path.count > 0)
+        first = path[0];
     else
         first = nil;
 #if 0

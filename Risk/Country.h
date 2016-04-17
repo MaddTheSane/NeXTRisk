@@ -25,9 +25,9 @@
 - (instancetype)initWithCountryName:(NSString *)aName
         continentName:(NSString *)aContinentName
                 shape:(CountryShape *)aCountryShape
-            continent:(RiskContinent)aContinent;
+            continent:(RiskContinent)aContinent NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, copy) NSString *countryName;
 @property (readonly, retain) CountryShape *countryShape;
@@ -37,12 +37,12 @@
 - (void) setAdjacentToCountry:(Country *)aCountry;
 - (void) resetAdjacentCountries;
 - (BOOL) isAdjacentToCountry:(Country *)aCountry;
-- (BOOL) bordersAnotherContinent;
+@property (readonly) BOOL bordersAnotherContinent;
 
 - (void) drawInView:(RiskMapView *)aView isSelected:(BOOL)selected;
 - (BOOL) pointInCountry:(NSPoint)aPoint;
 
-- (NSString *) description;
+@property (readonly, copy) NSString *description;
 
 //----------------------------------------------------------------------
 // Army methods
@@ -68,10 +68,10 @@
 // Useful methods:
 //======================================================================
 
-- (NSSet<Country*> *) connectedCountries;
-- (NSSet<Country*> *) ourNeighborCountries;
-- (NSSet<Country*> *) ourConnectedCountries;
-- (NSSet<Country*> *) enemyNeighborCountries;
+@property (readonly, copy) NSSet<Country *> *connectedCountries;
+@property (readonly, copy) NSSet<Country *> *ourNeighborCountries;
+@property (readonly, copy) NSSet<Country *> *ourConnectedCountries;
+@property (readonly, copy) NSSet<Country *> *enemyNeighborCountries;
 
 @property (readonly) int enemyNeighborTroopCount;
 @property (readonly) int ourNeighborTroopCount;

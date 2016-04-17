@@ -22,12 +22,12 @@
     NSMutableSet<Country*> *secondaryCountries;
 }
 
-- (instancetype)initWithRiskWorld:(RiskWorld *)aWorld;
+- (instancetype)initWithRiskWorld:(RiskWorld *)aWorld NS_DESIGNATED_INITIALIZER;
 
 - (void) _reset;
 
-- (Country *) sourceCountry;
-- (Country *) destinationCountry;
+@property (readonly, strong) Country *sourceCountry;
+@property (readonly, strong) Country *destinationCountry;
 
 //----------------------------------------------------------------------
 // All of these methods deal only with the given player's countries.

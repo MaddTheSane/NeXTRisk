@@ -33,7 +33,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- initWithCountryName:(NSString *)aName
+- (instancetype) initWithCountryName:(NSString *)aName
         continentName:(NSString *)aContinentName
                 shape:(CountryShape *)aCountryShape
             continent:(RiskContinent)aContinent
@@ -89,7 +89,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        if ([aDecoder allowsKeyedCoding]) {
+        if (aDecoder.allowsKeyedCoding) {
             name = [[aDecoder decodeObjectForKey:kCountryName] copy];
             countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
             continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
@@ -154,7 +154,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([[country continentName] isEqualToString:continentName] == NO)
+        if ([country.continentName isEqualToString:continentName] == NO)
         {
             flag = YES;
             break;
@@ -286,7 +286,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
         [connectedSet addObject:current];
 
         // Now, add neighbors:
-        tmpSet = [NSMutableSet setWithSet:[current neighborCountries]];
+        tmpSet = [NSMutableSet setWithSet:current.neighborCountries];
         [tmpSet minusSet:connectedSet];
         [greySet unionSet:tmpSet];
     }
@@ -303,11 +303,11 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     Country *country;
 
     ourNeighborCountries = [NSMutableSet set];
-    countryEnumerator = [[self neighborCountries] objectEnumerator];
+    countryEnumerator = [self.neighborCountries objectEnumerator];
 
     while (country = [countryEnumerator nextObject])
     {
-        if ([country playerNumber] == playerNumber)
+        if (country.playerNumber == playerNumber)
             [ourNeighborCountries addObject:country];
     }
 
@@ -347,11 +347,11 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     Country *country;
 
     enemyNeighborCountries = [NSMutableSet set];
-    countryEnumerator = [[self neighborCountries] objectEnumerator];
+    countryEnumerator = [self.neighborCountries objectEnumerator];
 
     while (country = [countryEnumerator nextObject])
     {
-        if ([country playerNumber] != playerNumber)
+        if (country.playerNumber != playerNumber)
             [enemyNeighborCountries addObject:country];
     }
 
@@ -370,7 +370,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [[self enemyNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        count += [country troopCount];
+        count += country.troopCount;
     }
 
     return count;
@@ -388,7 +388,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        count += [country troopCount];
+        count += country.troopCount;
     }
 
     return count;
@@ -408,7 +408,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([country playerNumber] != playerNumber)
+        if (country.playerNumber != playerNumber)
         {
             flag = YES;
             break;
@@ -430,7 +430,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([country hasEnemyNeighbors] == YES)
+        if (country.hasEnemyNeighbors == YES)
         {
             flag = YES;
             break;
@@ -451,7 +451,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (BOOL) hasMobileTroops
 {
-    return [self movableTroopCount] > 0;
+    return self.movableTroopCount > 0;
 }
 
 //----------------------------------------------------------------------
@@ -463,10 +463,10 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     BOOL flag;
 
     flag = YES;
-    countryEnumerator = [[self neighborCountries] objectEnumerator];
+    countryEnumerator = [self.neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([country playerNumber] != number)
+        if (country.playerNumber != number)
         {
             flag = NO;
             break;
@@ -488,7 +488,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if (country != excludedCountry && [country playerNumber] != playerNumber)
+        if (country != excludedCountry && country.playerNumber != playerNumber)
         {
             flag = YES;
             break;

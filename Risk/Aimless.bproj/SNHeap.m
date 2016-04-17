@@ -51,7 +51,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-+ heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
++ (instancetype) heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
 {
     id newHeap;
 
@@ -62,7 +62,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-- initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext
+- (instancetype) initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext
 {
     if (self = [super init]) {
     comparator_function = comparator;

@@ -14,7 +14,7 @@
 + (void) load;
 + (void) initialize;
 
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 - (void) dealloc;
 
 //======================================================================

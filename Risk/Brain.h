@@ -51,7 +51,7 @@
 - (IBAction) showPreferencePanel:(id)sender;
 
 - (void) loadRiskPlayerBundles;
-- (NSArray<NSBundle*> *) riskPlayerBundles;
+@property (readonly, copy) NSArray<NSBundle *> *riskPlayerBundles;
 
 @property (readonly, retain) RiskGameManager *gameManager;
 

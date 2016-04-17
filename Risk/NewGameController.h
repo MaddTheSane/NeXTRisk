@@ -52,7 +52,7 @@
     BOOL runningAsPreferences;
 }
 
-- (instancetype)initWithBrain:(Brain *)theBrain;
+- (instancetype)initWithBrain:(Brain *)theBrain NS_DESIGNATED_INITIALIZER;
 
 - (void) showNewGamePanel;
 - (void) showGameSetupPanel;
@@ -70,7 +70,7 @@
 - (void) writeDefaults;
 - (void) revertToDefaults;
 
-- (GameConfiguration *) thisConfiguration;
+@property (readonly, strong) GameConfiguration *thisConfiguration;
 
 - (void) takePreferencesFromCurrent;
 

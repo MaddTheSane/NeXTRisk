@@ -27,7 +27,7 @@ NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
 
-    result = [[continent1 continentName] compare:[continent2 continentName]];
+    result = [continent1.continentName compare:continent2.continentName];
 
     return result;
 }
@@ -43,8 +43,8 @@ NSInteger WIOrderContinentsByCountryCount (id object1, id object2, void *context
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
 
-    count1 = [[continent1 countries] count];
-    count2 = [[continent2 countries] count];
+    count1 = continent1.countries.count;
+    count2 = continent2.countries.count;
 
     if (count1 < count2)
     {
@@ -73,8 +73,8 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
 
-    count1 = [continent1 continentBonus];
-    count2 = [continent2 continentBonus];
+    count1 = continent1.continentBonus;
+    count2 = continent2.continentBonus;
 
     if (count1 < count2)
     {
@@ -116,12 +116,12 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     image = [NSImage imageNamed:@"MiniWorldInfo"];
     NSAssert (image != nil, @"Couldn't load MiniWorldInfo.tiff");
 
-    [worldInfoWindow setMiniwindowImage:image];
+    worldInfoWindow.miniwindowImage = image;
 }
 
 //----------------------------------------------------------------------
 
-- init
+- (instancetype) init
 {
     BOOL loaded, okay;
     NSString *nibFile;
@@ -136,13 +136,13 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
             return nil;
         }
 
-        [continentTable setDoubleAction:@selector (reorder:)];
-        [continentTable setTarget:self];
+        continentTable.doubleAction = @selector (reorder:);
+        continentTable.target = self;
 
         continents = nil;
         //world = nil;
 
-        okay = [worldInfoWindow setFrameAutosaveName:[worldInfoWindow title]];
+        okay = [worldInfoWindow setFrameAutosaveName:worldInfoWindow.title];
         if (okay == NO)
             NSLog (@"Could not set frame autosave name of World Info window.");
     }
@@ -174,7 +174,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     SNRelease (continents);
     if (newWorld != nil)
     {
-        continents = [[[[newWorld continents] allValues] sortedArrayUsingFunction:WIOrderContinentsByName context:NULL] retain];
+        continents = [[newWorld.continents.allValues sortedArrayUsingFunction:WIOrderContinentsByName context:NULL] retain];
     }
 #if 0
     SNRelease (world);
@@ -242,7 +242,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSString *identifier;
 
-    identifier = [[[continentTable tableColumns] objectAtIndex:[continentTable clickedColumn]] identifier];
+    identifier = continentTable.tableColumns[continentTable.clickedColumn].identifier;
 
     if ([identifier isEqualToString:@"ContinentName"])
     {
@@ -269,7 +269,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     count = 0;
 
     if (continents != nil)
-        count = [continents count];
+        count = continents.count;
 
     return count;
 }
@@ -286,20 +286,20 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
     value = nil;
 
-    target = [continents objectAtIndex:rowIndex];
-    identifier = [aTableColumn identifier];
+    target = continents[rowIndex];
+    identifier = aTableColumn.identifier;
 
     if ([identifier isEqualToString:@"ContinentName"])
     {
-        value = [target continentName];
+        value = target.continentName;
     }
     else if ([identifier isEqualToString:@"CountryCount"])
     {
-        value = @([[target countries] count]);
+        value = @(target.countries.count);
     }
     else if ([identifier isEqualToString:@"BonusValue"])
     {
-        value = [NSNumber numberWithInt:[target continentBonus]];
+        value = @(target.continentBonus);
     }
 
     return value;

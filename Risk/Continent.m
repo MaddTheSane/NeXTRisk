@@ -26,14 +26,14 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
++ (instancetype) continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
 {
     return [[[Continent alloc] initWithName:aContinentName countries:someCountries bonusValue:bonus] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
+- (instancetype) initWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
 {
     if (self = [super init]) {
         continentName = [aContinentName copy];
@@ -72,7 +72,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        if ([aDecoder allowsKeyedCoding]) {
+        if (aDecoder.allowsKeyedCoding) {
             continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
             countries = [[aDecoder decodeObjectForKey:kCountriesKey] retain];
             continentBonus = [aDecoder decodeIntForKey:kContinentBonusKey];
@@ -114,7 +114,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     countryEnumerator = [countries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([country playerNumber] != number)
+        if (country.playerNumber != number)
         {
             flag = NO;
             break;

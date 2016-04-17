@@ -32,23 +32,23 @@ static NSTextFieldCell *_textCell = nil;
         [self setVersion:StatusView_VERSION];
 
         _textCell = [[NSTextFieldCell alloc] init];
-        [_textCell setBackgroundColor:[NSColor lightGrayColor]];
+        _textCell.backgroundColor = [NSColor lightGrayColor];
         [_textCell setBezeled:NO];
         [_textCell setBordered:NO];
-        [_textCell setFont:[NSFont fontWithName:@"Helvetica" size:10.0]];
-        [_textCell setAlignment:NSCenterTextAlignment];
+        _textCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
+        _textCell.alignment = NSCenterTextAlignment;
         [_textCell setEditable:NO];
         [_textCell setSelectable:NO];
-        [_textCell setTextColor:[NSColor blackColor]];
+        _textCell.textColor = [NSColor blackColor];
     }
 }
 
 //----------------------------------------------------------------------
 
-- initWithFrame:(NSRect)frameRect
+- (instancetype) initWithFrame:(NSRect)frameRect
 {
     if (self = [super initWithFrame:frameRect]) {
-        showCardSetCounts = [[BoardSetup instance] showCardSetCounts];
+        showCardSetCounts = [BoardSetup instance].showCardSetCounts;
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
@@ -98,7 +98,7 @@ static NSTextFieldCell *_textCell = nil;
     Player number;
 	
 
-    boundsRect = [self bounds];
+    boundsRect = self.bounds;
 
     [[NSColor controlColor] set];
     NSRectFill (boundsRect);
@@ -145,18 +145,18 @@ static NSTextFieldCell *_textCell = nil;
                 NSInteger count;
 
                 player = [gameManager playerNumber:number];
-                count = [[player playerCards] count];
+                count = player.playerCards.count;
 
                 if ([player canTurnInCardSet] == YES)
 #ifdef __APPLE_CPP__
                     [_textCell setTextColor:[NSColor darkGrayColor]];
 #else
-                    [_textCell setTextColor:[NSColor whiteColor]];
+                    _textCell.textColor = [NSColor whiteColor];
 #endif
                 else
-                    [_textCell setTextColor:[NSColor blackColor]];
+                    _textCell.textColor = [NSColor blackColor];
 
-                [_textCell setIntegerValue:count];
+                _textCell.integerValue = count;
                 [_textCell drawWithFrame:textRect inView:self];
             }
 
@@ -169,7 +169,7 @@ static NSTextFieldCell *_textCell = nil;
 
 - (void) defaultsChanged:(NSNotification *)aNotification
 {
-    showCardSetCounts = [[BoardSetup instance] showCardSetCounts];
+    showCardSetCounts = [BoardSetup instance].showCardSetCounts;
     [self setNeedsDisplay:YES];
 }
 

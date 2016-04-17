@@ -34,10 +34,10 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *gameDefaults = [[NSMutableDictionary alloc] initWithCapacity:4];
 
-        [gameDefaults setObject:DV_PlayerChosen     forKey:DK_InitialCountryDistribution];
-        [gameDefaults setObject:DV_PlaceByThrees    forKey:DK_InitialArmyPlacement];
-        [gameDefaults setObject:DV_RemainConstant   forKey:DK_CardSetRedemption];
-        [gameDefaults setObject:DV_OneToOneNeighbor forKey:DK_FortifyRule];
+        gameDefaults[DK_InitialCountryDistribution] = DV_PlayerChosen;
+        gameDefaults[DK_InitialArmyPlacement] = DV_PlaceByThrees;
+        gameDefaults[DK_CardSetRedemption] = DV_RemainConstant;
+        gameDefaults[DK_FortifyRule] = DV_OneToOneNeighbor;
         [defaults registerDefaults:gameDefaults];
         [gameDefaults release];
     });
@@ -45,14 +45,14 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ defaultConfiguration
++ (GameConfiguration*) defaultConfiguration
 {
     return [[[GameConfiguration alloc] init] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     NSUserDefaults *defaults;
 

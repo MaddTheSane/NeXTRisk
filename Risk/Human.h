@@ -21,7 +21,7 @@
 // Subclass Responsibilities
 //======================================================================
 
-- (BOOL) isInteractive;
+@property (getter=isInteractive, readonly) BOOL interactive;
 
 //----------------------------------------------------------------------
 // User input

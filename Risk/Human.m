@@ -25,7 +25,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (id)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]){
         placeArmyCount = 0;
@@ -63,12 +63,12 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     int count;
     unsigned int flags;
 
-    flags = [theEvent modifierFlags];
+    flags = theEvent.modifierFlags;
     gameState = [gameManager gameState];
     switch (gameState)
     {
       case gs_choose_countries:
-          if ([aCountry playerNumber] == playerNumber)
+          if (aCountry.playerNumber == playerNumber)
               [gameManager selectCountry:aCountry];
     
           if ([gameManager player:self choseCountry:aCountry] == YES)
@@ -112,7 +112,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
       case gs_attack:
           // If the country is ours, set that as the attacking country (if >0 troops),
           // otherwise, attack the target country.
-          if ([aCountry playerNumber] == playerNumber)
+          if (aCountry.playerNumber == playerNumber)
           {
               [self setAttackingCountry:aCountry];
           }
@@ -135,7 +135,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
           break;
 
       case gs_fortify:
-          if ([aCountry playerNumber] == playerNumber)
+          if (aCountry.playerNumber == playerNumber)
           {
               [gameManager fortifyArmiesFrom:aCountry];
           }
@@ -146,7 +146,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
           break;
           
       default:
-          if ([aCountry playerNumber] == playerNumber)
+          if (aCountry.playerNumber == playerNumber)
               [gameManager selectCountry:aCountry];
     }
 }
@@ -193,7 +193,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     [gameManager selectCountry:attackingCountry];
     if (attackingCountry != nil)
     {
-        [gameManager setAttackingFromCountryName:[attackingCountry countryName]];
+        [gameManager setAttackingFromCountryName:attackingCountry.countryName];
     }
 }
 
@@ -288,7 +288,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     {
         attackingCountry = [attacker retain];
 
-        [gameManager setAttackingFromCountryName:[attackingCountry countryName]];
+        [gameManager setAttackingFromCountryName:attackingCountry.countryName];
         [gameManager selectCountry:attackingCountry];
     }
 }

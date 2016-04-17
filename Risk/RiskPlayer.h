@@ -106,7 +106,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // General methods for players
 //======================================================================
 
-- (NSSet<Country *> *) ourCountries;
+@property (readonly, copy) NSSet<Country *> *ourCountries;
 
 // - ours AND has enemy neighbors AND has armies
 // - ours OR enemies
@@ -147,16 +147,16 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 //======================================================================
 
 /// Returns a set of all the valid card sets from this player's hand.
-- (NSSet<CardSet*> *) allOurCardSets;
+@property (readonly, copy) NSSet<CardSet *> *allOurCardSets;
 /// Returns the best set to turn in.  To determine which of all possible
 /// sets is best, this method looks for the set:
 ///     1) with the least jokers in it, and
 ///     2) with the most countries that this player occupies
 /// It does not take into account things like the proximity of the
 /// countries to the action or anything amorphous like that.
-- (CardSet *) bestSet;
+@property (readonly, strong) CardSet *bestSet;
 /// Returns \c YES if this player has at least one valid card set.
-- (BOOL) canTurnInCardSet;
+@property (readonly) BOOL canTurnInCardSet;
 
 //======================================================================
 // Console

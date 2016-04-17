@@ -50,7 +50,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     bundleEnumerator = [riskPlayerBundles objectEnumerator];
     while (bundle = [bundleEnumerator nextObject])
     {
-        name = [[bundle infoDictionary] objectForKey:@"PlayerTypeName"];
+        name = bundle.infoDictionary[@"PlayerTypeName"];
         [playerTypeNames addObject:name];
     }
 
@@ -66,7 +66,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (id)initWithBrain:(Brain *)theBrain
+- (instancetype)initWithBrain:(Brain *)theBrain
 {
     NSString *nibFile;
     BOOL loaded;
@@ -117,9 +117,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) showNewGamePanel
 {
     runningAsPreferences = NO;
-    [newGamePanel setTitle:@"New Game"];
-    [acceptButton setTitle:@"Accept"];
-    [cancelButton setTitle:@"Cancel"];
+    newGamePanel.title = @"New Game";
+    acceptButton.title = @"Accept";
+    cancelButton.title = @"Cancel";
     [newGamePanel makeKeyAndOrderFront:self];
 }
 
@@ -128,9 +128,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) showGameSetupPanel
 {
     runningAsPreferences = YES;
-    [newGamePanel setTitle:@"New Game Setup"];
-    [acceptButton setTitle:@"Set"];
-    [cancelButton setTitle:@"Revert"];
+    newGamePanel.title = @"New Game Setup";
+    acceptButton.title = @"Set";
+    cancelButton.title = @"Revert";
     [self takePreferencesFromCurrent];
     [newGamePanel makeKeyAndOrderFront:self];
 }
@@ -188,13 +188,13 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     NSAssert (thePopup != nil, @"Bad tag.");
 
-    itemIndex = [thePopup indexOfSelectedItem];
+    itemIndex = thePopup.indexOfSelectedItem;
 
     switch (itemIndex)
     {
       case 0: // None
           [aboutPlayerImageView setImage:nil];
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. Not Playing", tag + 1]];
+          aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Not Playing", tag + 1];
           rtfPath = [thisBundle pathForResource:@"NotPlaying" ofType:@"rtf"];
           if (rtfPath != nil)
           {
@@ -202,16 +202,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           }
           else
           {
-              [aboutPlayerText setString:@""];
+              aboutPlayerText.string = @"";
           }
           break;
           
       case 1: // Human
           imagePath = [thisBundle pathForResource:@"Human" ofType:@"tiff"];
           image = [[[NSImage alloc] initByReferencingFile:imagePath] autorelease];
-          [aboutPlayerImageView setImage:image];
+          aboutPlayerImageView.image = image;
 
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. Human Player", tag + 1]];
+          aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Human Player", tag + 1];
           rtfPath = [thisBundle pathForResource:@"Human" ofType:@"rtf"];
           if (rtfPath != nil)
           {
@@ -219,29 +219,29 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           }
           else
           {
-              [aboutPlayerText setString:@""];
+              aboutPlayerText.string = @"";
           }
           break;
 
       default: // Computer player
-          playerBundle = [riskPlayerBundles objectAtIndex:itemIndex - 2];
-          playerBundleInfo = [playerBundle infoDictionary];
+          playerBundle = riskPlayerBundles[itemIndex - 2];
+          playerBundleInfo = playerBundle.infoDictionary;
           
-          imagePath = [playerBundle pathForResource:[playerBundleInfo objectForKey:@"PlayerIcon"] ofType:nil];
+          imagePath = [playerBundle pathForResource:playerBundleInfo[@"PlayerIcon"] ofType:nil];
           image = [[[NSImage alloc] initByReferencingFile:imagePath] autorelease];
-          [aboutPlayerImageView setImage:image];
+          aboutPlayerImageView.image = image;
 
-          playerTypeName = [playerBundleInfo objectForKey:@"PlayerTypeName"];
-          [aboutPlayerNameTextfield setStringValue:[NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName]];
+          playerTypeName = playerBundleInfo[@"PlayerTypeName"];
+          aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
 
-          rtfPath = [playerBundle pathForResource:[playerBundleInfo objectForKey:@"AboutPlayerFile"] ofType:nil];
+          rtfPath = [playerBundle pathForResource:playerBundleInfo[@"AboutPlayerFile"] ofType:nil];
           if (rtfPath != nil)
           {
               [aboutPlayerText readRTFDFromFile:rtfPath];
           }
           else
           {
-              [aboutPlayerText setString:@""];
+              aboutPlayerText.string = @"";
           }
           break;
     }
@@ -266,12 +266,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     NSInteger ps[7];
     int l;
 
-    ps[1] = [player1TypePopup indexOfSelectedItem];
-    ps[2] = [player2TypePopup indexOfSelectedItem];
-    ps[3] = [player3TypePopup indexOfSelectedItem];
-    ps[4] = [player4TypePopup indexOfSelectedItem];
-    ps[5] = [player5TypePopup indexOfSelectedItem];
-    ps[6] = [player6TypePopup indexOfSelectedItem];
+    ps[1] = player1TypePopup.indexOfSelectedItem;
+    ps[2] = player2TypePopup.indexOfSelectedItem;
+    ps[3] = player3TypePopup.indexOfSelectedItem;
+    ps[4] = player4TypePopup.indexOfSelectedItem;
+    ps[5] = player5TypePopup.indexOfSelectedItem;
+    ps[6] = player6TypePopup.indexOfSelectedItem;
 
     playerCount = 0;
     for (l = 1; l < 7; l++)
@@ -282,11 +282,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     if (playerCount > 1)
     {
-        [initialArmyCountTextfield setIntValue:RiskInitialArmyCountForPlayers (playerCount)];
+        initialArmyCountTextfield.intValue = RiskInitialArmyCountForPlayers (playerCount);
     }
     else
     {
-        [initialArmyCountTextfield setStringValue:@"--"];
+        initialArmyCountTextfield.stringValue = @"--";
     }
 }
 
@@ -342,7 +342,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     GameConfiguration *thisConfiguration;
     BOOL showPlayerConsole;
     
-    gameManager = [brain gameManager];
+    gameManager = brain.gameManager;
 
     if ([gameManager gameInProgress] == YES)
     {
@@ -354,12 +354,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         [gameManager stopGame];
     }
 
-    ps[1] = [player1TypePopup indexOfSelectedItem];
-    ps[2] = [player2TypePopup indexOfSelectedItem];
-    ps[3] = [player3TypePopup indexOfSelectedItem];
-    ps[4] = [player4TypePopup indexOfSelectedItem];
-    ps[5] = [player5TypePopup indexOfSelectedItem];
-    ps[6] = [player6TypePopup indexOfSelectedItem];
+    ps[1] = player1TypePopup.indexOfSelectedItem;
+    ps[2] = player2TypePopup.indexOfSelectedItem;
+    ps[3] = player3TypePopup.indexOfSelectedItem;
+    ps[4] = player4TypePopup.indexOfSelectedItem;
+    ps[5] = player5TypePopup.indexOfSelectedItem;
+    ps[6] = player6TypePopup.indexOfSelectedItem;
 
     playerCount = 0;
     for (l = 1; l < 7; l++)
@@ -401,8 +401,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
               break;
 
           default: // Computer
-              playerBundle = [riskPlayerBundles objectAtIndex:ps[l] - 2];
-              playerClass = [playerBundle principalClass];
+              playerBundle = riskPlayerBundles[ps[l] - 2];
+              playerClass = playerBundle.principalClass;
               //NSAssert ([playerClass isKindOfClass:[RiskPlayer class]] == YES, @"Player class must be a subclass of RiskPlayer.");
               player = [[[playerClass alloc] initWithPlayerName:name number:l gameManager:gameManager] autorelease];
               //[gameManager addPlayer:player number:l];
@@ -440,12 +440,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     [defaults setObject:[[playerNameForm cellAtIndex:4] stringValue] forKey:DK_DefaultPlayer5Name];
     [defaults setObject:[[playerNameForm cellAtIndex:5] stringValue] forKey:DK_DefaultPlayer6Name];
 
-    [defaults setObject:[player1TypePopup title] forKey:DK_DefaultPlayer1Type];
-    [defaults setObject:[player2TypePopup title] forKey:DK_DefaultPlayer2Type];
-    [defaults setObject:[player3TypePopup title] forKey:DK_DefaultPlayer3Type];
-    [defaults setObject:[player4TypePopup title] forKey:DK_DefaultPlayer4Type];
-    [defaults setObject:[player5TypePopup title] forKey:DK_DefaultPlayer5Type];
-    [defaults setObject:[player6TypePopup title] forKey:DK_DefaultPlayer6Type];
+    [defaults setObject:player1TypePopup.title forKey:DK_DefaultPlayer1Type];
+    [defaults setObject:player2TypePopup.title forKey:DK_DefaultPlayer2Type];
+    [defaults setObject:player3TypePopup.title forKey:DK_DefaultPlayer3Type];
+    [defaults setObject:player4TypePopup.title forKey:DK_DefaultPlayer4Type];
+    [defaults setObject:player5TypePopup.title forKey:DK_DefaultPlayer5Type];
+    [defaults setObject:player6TypePopup.title forKey:DK_DefaultPlayer6Type];
 
     [defaults synchronize];
 }
@@ -500,18 +500,18 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     [player6TypePopup selectItemWithTitle:tmp];
 
     [boardSetup revertPlayerColorsToDefaults];
-    [player1ColorWell setColor:[boardSetup colorForPlayer:1]];
-    [player2ColorWell setColor:[boardSetup colorForPlayer:2]];
-    [player3ColorWell setColor:[boardSetup colorForPlayer:3]];
-    [player4ColorWell setColor:[boardSetup colorForPlayer:4]];
-    [player5ColorWell setColor:[boardSetup colorForPlayer:5]];
-    [player6ColorWell setColor:[boardSetup colorForPlayer:6]];
+    player1ColorWell.color = [boardSetup colorForPlayer:1];
+    player2ColorWell.color = [boardSetup colorForPlayer:2];
+    player3ColorWell.color = [boardSetup colorForPlayer:3];
+    player4ColorWell.color = [boardSetup colorForPlayer:4];
+    player5ColorWell.color = [boardSetup colorForPlayer:5];
+    player6ColorWell.color = [boardSetup colorForPlayer:6];
 
     //----------------------------------------
     // Now the game configuration rules.
     oldConfiguration = [GameConfiguration defaultConfiguration];
 
-    switch ([oldConfiguration initialCountryDistribution])
+    switch (oldConfiguration.initialCountryDistribution)
     {
       case RandomlyChosen:
           index = 1;
@@ -525,7 +525,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     [initialCountryDistributionMatrix selectCellWithTag:index];
 
-    switch ([oldConfiguration initialArmyPlacement])
+    switch (oldConfiguration.initialArmyPlacement)
     {
       case PlaceByThrees:
           index = 1;
@@ -543,7 +543,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     [initialArmyPlacementMatrix selectCellWithTag:index];
 
-    switch ([oldConfiguration cardSetRedemption])
+    switch (oldConfiguration.cardSetRedemption)
     {
       case IncreaseByOne:
           index = 1;
@@ -561,7 +561,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     [cardRedemptionMatrix selectCellWithTag:index];
 
-    switch ([oldConfiguration fortifyRule])
+    switch (oldConfiguration.fortifyRule)
     {
       case OneToManyNeighbors:
           index = 1;
@@ -600,25 +600,25 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
     thisConfiguration = [GameConfiguration defaultConfiguration];
 
-    index = [initialCountryDistributionMatrix selectedRow];
+    index = initialCountryDistributionMatrix.selectedRow;
     if (index < 0 || index > 1)
         index = 0;
-    [thisConfiguration setInitialCountryDistribution:distribution[index]];
+    thisConfiguration.initialCountryDistribution = distribution[index];
 
-    index = [initialArmyPlacementMatrix selectedRow];
+    index = initialArmyPlacementMatrix.selectedRow;
     if (index < 0 || index > 2)
         index = 0;
-    [thisConfiguration setInitialArmyPlacement:placement[index]];
+    thisConfiguration.initialArmyPlacement = placement[index];
             
-    index = [cardRedemptionMatrix selectedRow];
+    index = cardRedemptionMatrix.selectedRow;
     if (index < 0 || index > 2)
         index = 0;
-    [thisConfiguration setCardSetRedemption:redemption[index]];
+    thisConfiguration.cardSetRedemption = redemption[index];
 
-    index = [fortifyRuleMatrix selectedRow];
+    index = fortifyRuleMatrix.selectedRow;
     if (index < 0 || index > 3)
         index = 0;
-    [thisConfiguration setFortifyRule:rule[index]];
+    thisConfiguration.fortifyRule = rule[index];
 
     return thisConfiguration;
 }
@@ -627,12 +627,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (void) takePreferencesFromCurrent
 {
-    [player1ColorWell setColor:[boardSetup colorForPlayer:1]];
-    [player2ColorWell setColor:[boardSetup colorForPlayer:2]];
-    [player3ColorWell setColor:[boardSetup colorForPlayer:3]];
-    [player4ColorWell setColor:[boardSetup colorForPlayer:4]];
-    [player5ColorWell setColor:[boardSetup colorForPlayer:5]];
-    [player6ColorWell setColor:[boardSetup colorForPlayer:6]];
+    player1ColorWell.color = [boardSetup colorForPlayer:1];
+    player2ColorWell.color = [boardSetup colorForPlayer:2];
+    player3ColorWell.color = [boardSetup colorForPlayer:3];
+    player4ColorWell.color = [boardSetup colorForPlayer:4];
+    player5ColorWell.color = [boardSetup colorForPlayer:5];
+    player6ColorWell.color = [boardSetup colorForPlayer:6];
 }
 
 //----------------------------------------------------------------------
@@ -647,17 +647,17 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (IBAction) playerColorAction:(id)sender
 {
     if (sender == player1ColorWell)
-        [boardSetup setColor:[player1ColorWell color] forPlayer:1];
+        [boardSetup setColor:player1ColorWell.color forPlayer:1];
     else if (sender == player2ColorWell)
-        [boardSetup setColor:[player2ColorWell color] forPlayer:2];
+        [boardSetup setColor:player2ColorWell.color forPlayer:2];
     else if (sender == player3ColorWell)
-        [boardSetup setColor:[player3ColorWell color] forPlayer:3];
+        [boardSetup setColor:player3ColorWell.color forPlayer:3];
     else if (sender == player4ColorWell)
-        [boardSetup setColor:[player4ColorWell color] forPlayer:4];
+        [boardSetup setColor:player4ColorWell.color forPlayer:4];
     else if (sender == player5ColorWell)
-        [boardSetup setColor:[player5ColorWell color] forPlayer:5];
+        [boardSetup setColor:player5ColorWell.color forPlayer:5];
     else if (sender == player6ColorWell)
-        [boardSetup setColor:[player6ColorWell color] forPlayer:6];
+        [boardSetup setColor:player6ColorWell.color forPlayer:6];
 }
 
 @end

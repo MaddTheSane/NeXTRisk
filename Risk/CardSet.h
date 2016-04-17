@@ -17,13 +17,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context);
 
 + (instancetype)cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3 NS_SWIFT_UNAVAILABLE("Use init(cardSet:_:_:) instead");
 
-- (instancetype)initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3;
+- (instancetype)initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3 NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, retain) RiskCard *card1;
 @property (readonly, retain) RiskCard *card2;
 @property (readonly, retain) RiskCard *card3;
 
-- (int) wildcardCount;
+@property (readonly) int wildcardCount;
 - (int) countryCountForPlayerNumber:(Player)number;
 
 @end

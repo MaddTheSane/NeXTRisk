@@ -15,11 +15,11 @@
 
 + (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countries:_:) instead");
 
-- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:));
+- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:)) NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, retain) Country *country1;
 @property (readonly, retain) Country *country2;
 
-- (NSString *) description;
+@property (readonly, copy) NSString *description;
 
 @end

@@ -67,7 +67,7 @@
 
 - (NSString *)description
 {
-	return [operations description];
+	return operations.description;
 }
 
 @end

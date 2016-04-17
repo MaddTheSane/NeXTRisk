@@ -30,14 +30,14 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 @synthesize distance;
 @synthesize previous;
 
-+ dNode
++ (instancetype) dNode
 {
     return [[[DNode alloc] init] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- init
+- (instancetype) init
 {
     if (self = [super init]) {
         distance = D_INFINITY;

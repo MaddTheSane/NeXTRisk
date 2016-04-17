@@ -22,7 +22,7 @@
 - (void) drawRect:(NSRect)rects
 {
     CGFloat mp, begin, end;
-    NSRect boundsRect = [self bounds];
+    NSRect boundsRect = self.bounds;
 	
     NSDrawWhiteBezel (boundsRect, boundsRect);
     mp = NSMidY(boundsRect);

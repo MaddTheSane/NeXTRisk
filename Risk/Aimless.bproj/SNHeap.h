@@ -43,11 +43,11 @@
 
 + (instancetype)heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext;
 
-- (instancetype)initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext;
+- (instancetype)initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext NS_DESIGNATED_INITIALIZER;
 - (void) insertObject:(ObjectType)anObject;
 - (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator;
 - (ObjectType)extractObject;
-- (ObjectType)firstObject;
+@property (readonly, strong) ObjectType firstObject;
 
 - (void) removeAllObjects;
 

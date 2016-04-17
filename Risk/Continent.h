@@ -25,10 +25,10 @@
 @property (readonly, retain) NSSet<Country*> *countries;
 @property (readonly) int continentBonus;
 
-- (NSString *) description;
+@property (readonly, copy) NSString *description;
 
 - (int) bonusArmiesForPlayer:(Player)number;
 
-- (NSSet<Country*> *) countriesAlongBorder;
+@property (readonly, copy) NSSet<Country *> *countriesAlongBorder;
 
 @end

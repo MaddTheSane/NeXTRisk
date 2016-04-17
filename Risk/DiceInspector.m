@@ -91,7 +91,7 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     BOOL loaded;
     NSString *nibFile;
@@ -138,7 +138,7 @@ static struct image_names class_images[] =
 
 - (BOOL) isPanelOnScreen
 {
-    return [dicePanel isVisible];
+    return dicePanel.visible;
 }
 
 //----------------------------------------------------------------------
@@ -178,7 +178,7 @@ static struct image_names class_images[] =
           break;
     }
 
-    [aView setImage:image];
+    aView.image = image;
 }
 
 //----------------------------------------------------------------------
@@ -191,15 +191,15 @@ static struct image_names class_images[] =
     
     tmp = MIN (dice.attackerDieCount, dice.defenderDieCount);
 
-    [attackerCountryName setStringValue:[attacker countryName]];
-    [attackerArmyCount setIntValue:[attacker troopCount]];
-    [attackerUsingDieCount setIntValue:tmp];
-    [attackerRollingCount setIntValue:dice.attackerDieCount];
+    attackerCountryName.stringValue = attacker.countryName;
+    attackerArmyCount.intValue = attacker.troopCount;
+    attackerUsingDieCount.intValue = tmp;
+    attackerRollingCount.intValue = dice.attackerDieCount;
 
-    [defenderCountryName setStringValue:[defender countryName]];
-    [defenderArmyCount setIntValue:[defender troopCount]];
-    [defenderUsingDieCount setIntValue:tmp];
-    [defenderRollingCount setIntValue:dice.defenderDieCount];
+    defenderCountryName.stringValue = defender.countryName;
+    defenderArmyCount.intValue = defender.troopCount;
+    defenderUsingDieCount.intValue = tmp;
+    defenderRollingCount.intValue = dice.defenderDieCount;
 
     tmp = dice.attackerDieCount;
     [self setDieImage:attackerDie1 fromInt:((tmp > 0) ? dice.attackerDice[0] : 0)];
@@ -210,7 +210,7 @@ static struct image_names class_images[] =
     [self setDieImage:defenderDie1 fromInt:((tmp > 0) ? dice.defenderDice[0] : 0)];
     [self setDieImage:defenderDie2 fromInt:((tmp > 1) ? dice.defenderDice[1] : 0)];
 
-    if ([pauseCheckBox state] == 1)
+    if (pauseCheckBox.state == 1)
     {
         [self waitForContinue];
     }

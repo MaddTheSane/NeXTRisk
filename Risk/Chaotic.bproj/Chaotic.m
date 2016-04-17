@@ -39,7 +39,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     RiskWorld *world;
     NSDictionary<NSString*,Continent *> *continents;
@@ -48,10 +48,10 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     // Contains the names of continents.
     unoccupiedContinents = [[NSMutableSet set] retain];
 
-    world = [gameManager world];
-    continents = [world continents];
+    world = gameManager.world;
+    continents = world.continents;
 
-    [unoccupiedContinents addObjectsFromArray:[continents allKeys]];
+    [unoccupiedContinents addObjectsFromArray:continents.allKeys];
     attackingCountries = nil;
     }
 
@@ -112,18 +112,18 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     countryEnumerator = [unoccupiedCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([unoccupiedContinents containsObject:[country continentName]] == YES)
+        if ([unoccupiedContinents containsObject:country.continentName] == YES)
             [array addObject:country];
     }
 
-    if ([array count] > 0)
+    if (array.count > 0)
     {
-        country = [array objectAtIndex:[[self rng] randomNumberModulo:[array count]]];
-        [unoccupiedContinents removeObject:[country continentName]];
+        country = array[[self.rng randomNumberModulo:array.count]];
+        [unoccupiedContinents removeObject:country.continentName];
     }
     else
     {
-        country = [unoccupiedCountries objectAtIndex:[[self rng] randomNumberModulo:[unoccupiedCountries count]]];
+        country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
     }
 
     [gameManager player:self choseCountry:country];
@@ -151,14 +151,14 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     Country *country;
 
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-    ourCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] allObjects];
-    countryCount = [ourCountries count];
+    ourCountries = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]].allObjects;
+    countryCount = ourCountries.count;
 
     NSAssert (countryCount > 0, @"We have no countries!");
 
     for (l = 0; l < count; l++)
     {
-        country = [ourCountries objectAtIndex:[[self rng] randomNumberModulo:countryCount]];
+        country = ourCountries[[self.rng randomNumberModulo:countryCount]];
 
         okay = [gameManager player:self placesArmies:1 inCountry:country];
         NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
@@ -221,7 +221,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSArray *sourceArray;
 
     sourceCountries = [self countriesWithAllOptions:CountryFlagsWithMovableTroops|CountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
-    count = [sourceCountries count];
+    count = sourceCountries.count;
 
     if (count == 0)
     {
@@ -239,8 +239,8 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
           case OneToOneNeighbor:
           case OneToManyNeighbors:
           default:
-              sourceArray = [sourceCountries allObjects];
-              source = [sourceArray objectAtIndex:[[self rng] randomNumberModulo:count]];
+              sourceArray = sourceCountries.allObjects;
+              source = sourceArray[[self.rng randomNumberModulo:count]];
               break;
         }
 
@@ -267,7 +267,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     
     while (country = [countryEnumerator nextObject])
     {
-        if ([country hasEnemyNeighbors] == YES)
+        if (country.hasEnemyNeighbors == YES)
         {
             destination = country;
             break;
@@ -277,8 +277,8 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     if (destination == nil)
     {
         // Pick random country
-        neighborCount = [ourNeighborCountries count];
-        destination = [[ourNeighborCountries allObjects] objectAtIndex:[[self rng] randomNumberModulo:neighborCount]];
+        neighborCount = ourNeighborCountries.count;
+        destination = ourNeighborCountries.allObjects[[self.rng randomNumberModulo:neighborCount]];
     }
 
     [gameManager player:self placesArmies:count inCountry:destination];
@@ -310,7 +310,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     enemies = [attacker enemyNeighborCountries];
     for (Country *country in enemies)
     {
-        int troopCount = [country troopCount];
+        int troopCount = country.troopCount;
         if (troopCount < weakestTroopCount)
         {
             weakestTroopCount = troopCount;
@@ -322,7 +322,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     {
         attackResult = [gameManager attackFromCountry:attacker
                                     toCountry:weakest
-                                    untilArmiesRemain:(int)[[self rng] randomNumberBetween:1:[attacker troopCount]]
+                                    untilArmiesRemain:(int)[self.rng randomNumberBetween:1:attacker.troopCount]
                                     moveAllArmiesUponVictory:NO];
 
         //NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");

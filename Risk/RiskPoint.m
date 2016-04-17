@@ -27,14 +27,14 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ riskPointWithPoint:(NSPoint)aPoint
++ (instancetype) riskPointWithPoint:(NSPoint)aPoint
 {
     return [[RiskPoint alloc] initWithPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
 
-- initWithPoint:(NSPoint)aPoint
+- (instancetype) initWithPoint:(NSPoint)aPoint
 {
     if (self = [super init]) {
         point = aPoint;
@@ -61,7 +61,7 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        if ([aDecoder allowsKeyedCoding]) {
+        if (aDecoder.allowsKeyedCoding) {
             point = [aDecoder decodePointForKey:kRiskPoint];
         } else {
             point = [aDecoder decodePoint];

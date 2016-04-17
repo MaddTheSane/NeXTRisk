@@ -123,11 +123,11 @@ typedef enum _CountryChoiceType
 
 - (NSSet<Country*> *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
 
-- (Continent *) continentWeAreClosestToControlling;
+@property (readonly, strong) Continent *continentWeAreClosestToControlling;
 
-- (int) perimeterCountryCount;
+@property (readonly) int perimeterCountryCount;
 - (int) perimeterCountryCountExcludingCountry:(Country *)excludedCountry;
-- (NSSet<Country*> *) enemyCountriesAlongPerimeter;
+@property (readonly, copy) NSSet<Country *> *enemyCountriesAlongPerimeter;
 
 - (void) analyzePerimeter;
 - (Country *) bestCountryToMinimizePerimeter:(NSSet *)potentialCountries;
@@ -137,7 +137,7 @@ typedef enum _CountryChoiceType
 
 - (void) _logCurrentWrathValues;
 
-- (NSSet<Country*> *) mostConnectedCountries;
+@property (readonly, copy) NSSet<Country *> *mostConnectedCountries;
 
 #if 0
 //======================================================================

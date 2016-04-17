@@ -39,7 +39,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     }
 }
 
-- initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super init]) {
         playerName = [aName retain];
@@ -112,10 +112,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (void) windowWillClose:(NSNotification *)aNotification
 {
     // Stop pausing if we close the window, otherwise we're stuck!
-    if ([aNotification object] == consoleWindow && [pauseForContinueButton state] == 1)
+    if (aNotification.object == consoleWindow && pauseForContinueButton.state == 1)
     {
         [NSApp stopModal];
-        [pauseForContinueButton setState:0];
+        pauseForContinueButton.state = 0;
         [continueButton setEnabled:NO];
     }
 }
@@ -124,7 +124,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (NSSet *) ourCountries
 {
-    return [[gameManager world] countriesForPlayer:playerNumber];
+    return [gameManager.world countriesForPlayer:playerNumber];
 }
 
 - (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
@@ -132,10 +132,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSMutableSet *resultingSet = [NSMutableSet set];
     for (Country *country in source)
     {
-        Player number = [country playerNumber];
-        int troopCount = [country troopCount];
-        int movableTroopCount = [country movableTroopCount];
-        BOOL hasEnemyNeighbors = [country hasEnemyNeighbors];
+        Player number = country.playerNumber;
+        int troopCount = country.troopCount;
+        int movableTroopCount = country.movableTroopCount;
+        BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
 
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)
@@ -175,10 +175,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        number = [country playerNumber];
-        troopCount = [country troopCount];
-        movableTroopCount = [country movableTroopCount];
-        hasEnemyNeighbors = [country hasEnemyNeighbors];
+        number = country.playerNumber;
+        troopCount = country.troopCount;
+        movableTroopCount = country.movableTroopCount;
+        hasEnemyNeighbors = country.hasEnemyNeighbors;
 
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
@@ -217,10 +217,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        number = [country playerNumber];
-        troopCount = [country troopCount];
-        movableTroopCount = [country movableTroopCount];
-        hasEnemyNeighbors = [country hasEnemyNeighbors];
+        number = country.playerNumber;
+        troopCount = country.troopCount;
+        movableTroopCount = country.movableTroopCount;
+        hasEnemyNeighbors = country.hasEnemyNeighbors;
 
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)
@@ -261,10 +261,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        number = [country playerNumber];
-        troopCount = [country troopCount];
-        movableTroopCount = [country movableTroopCount];
-        hasEnemyNeighbors = [country hasEnemyNeighbors];
+        number = country.playerNumber;
+        troopCount = country.troopCount;
+        movableTroopCount = country.movableTroopCount;
+        hasEnemyNeighbors = country.hasEnemyNeighbors;
 
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
@@ -299,7 +299,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([[country continentName] isEqualToString:continentName] == YES)
+        if ([country.continentName isEqualToString:continentName] == YES)
             [resultingSet addObject:country];
     }
     
@@ -316,7 +316,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
-        if ([[country continentName] isEqualToString:continentName] == NO)
+        if ([country.continentName isEqualToString:continentName] == NO)
             [resultingSet addObject:country];
     }
     
@@ -333,19 +333,19 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     RiskCard *card1, *card2, *card3;
     CardSet *cardSet;
 
-    count = [playerCards count];
+    count = playerCards.count;
 
     allCardSets = [NSMutableSet set];
 
     for (i = 0; i < count; i++)
     {
-        card1 = [playerCards objectAtIndex:i];
+        card1 = playerCards[i];
         for (j = i + 1; j < count; j++)
         {
-            card2 = [playerCards objectAtIndex:j];
+            card2 = playerCards[j];
             for (k = j + 1; k < count; k++)
             {
-                card3 = [playerCards objectAtIndex:k];
+                card3 = playerCards[k];
 
                 cardSet = [CardSet cardSet:card1:card2:card3];
                 if (cardSet != nil)
@@ -385,17 +385,17 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     BOOL hasValidSet;
 
     hasValidSet = NO;
-    count = [playerCards count];
+    count = playerCards.count;
 
     for (i = 0; hasValidSet == NO && i < count; i++)
     {
-        card1 = [playerCards objectAtIndex:i];
+        card1 = playerCards[i];
         for (j = i + 1; hasValidSet == NO && j < count; j++)
         {
-            card2 = [playerCards objectAtIndex:j];
+            card2 = playerCards[j];
             for (k = j + 1; k < count; k++)
             {
-                card3 = [playerCards objectAtIndex:k];
+                card3 = playerCards[k];
 
                 if ([CardSet isValidCardSet:card1:card2:card3] == YES)
                 {
@@ -423,7 +423,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
 
-        [consoleWindow setTitle:[NSString stringWithFormat:@"Player %ld Console", (long)playerNumber]];
+        consoleWindow.title = [NSString stringWithFormat:@"Player %ld Console", (long)playerNumber];
     }
 
     [consoleWindow orderFront:self];
@@ -455,7 +455,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 		[consoleMessageText replaceCharactersInRange:selected withString:str];
 		[consoleMessageText scrollRangeToVisible:selected];
 		
-		if ([pauseForContinueButton state] == 1)
+		if (pauseForContinueButton.state == 1)
 			[self waitForContinue];
 	}
 }
@@ -518,7 +518,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     Country *country;
 
     unoccupiedCountries = [gameManager unoccupiedCountries];
-    country = [unoccupiedCountries objectAtIndex:[[self rng] randomNumberModulo:[unoccupiedCountries count]]];
+    country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
 
     [gameManager player:self choseCountry:country];
     // Possible to choose more than one country...

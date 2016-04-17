@@ -30,7 +30,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     BOOL loaded, okay;
     NSString *nibFile;
@@ -45,7 +45,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
             return nil;
         }
 
-        okay = [preferencePanel setFrameAutosaveName:[preferencePanel title]];
+        okay = [preferencePanel setFrameAutosaveName:preferencePanel.title];
         if (okay == NO)
             NSLog (@"Could not set frame autosave name of Preference panel.");
 
@@ -105,13 +105,13 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
     boardSetup = [BoardSetup instance];
 
-    [regularBorderWell setColor:[boardSetup regularBorderColor]];
-    [selectedBorderWell setColor:[boardSetup selectedBorderColor]];
-    borderWidth = [boardSetup borderWidth];
-    [borderWidthSlider setFloatValue:borderWidth];
-    [borderWidthTextField setFloatValue:borderWidth];
-    [borderWidthLineView setLineWidth:borderWidth];
-    [showCardSetsButton setState:[boardSetup showCardSetCounts]];
+    regularBorderWell.color = boardSetup.regularBorderColor;
+    selectedBorderWell.color = boardSetup.selectedBorderColor;
+    borderWidth = boardSetup.borderWidth;
+    borderWidthSlider.floatValue = borderWidth;
+    borderWidthTextField.floatValue = borderWidth;
+    borderWidthLineView.lineWidth = borderWidth;
+    showCardSetsButton.state = boardSetup.showCardSetCounts;
 }
 
 //----------------------------------------------------------------------
@@ -124,16 +124,16 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
     if (sender == borderWidthSlider)
     {
-        [borderWidthTextField setFloatValue:newLineWidth];
-        [borderWidthLineView setLineWidth:newLineWidth];
-        [[BoardSetup instance] setBorderWidth:newLineWidth];
+        borderWidthTextField.floatValue = newLineWidth;
+        borderWidthLineView.lineWidth = newLineWidth;
+        [BoardSetup instance].borderWidth = newLineWidth;
         [preferencePanel setDocumentEdited:YES];
     }
     else
     {
-        [borderWidthSlider setFloatValue:newLineWidth];
-        [borderWidthLineView setLineWidth:newLineWidth];
-        [[BoardSetup instance] setBorderWidth:newLineWidth];
+        borderWidthSlider.floatValue = newLineWidth;
+        borderWidthLineView.lineWidth = newLineWidth;
+        [BoardSetup instance].borderWidth = newLineWidth;
         [preferencePanel setDocumentEdited:YES];
     }
 }
@@ -144,12 +144,12 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 {
     if (sender == regularBorderWell)
     {
-        [[BoardSetup instance] setRegularBorderColor:[regularBorderWell color]];
+        [BoardSetup instance].regularBorderColor = regularBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
     }
     else if (sender == selectedBorderWell)
     {
-        [[BoardSetup instance] setSelectedBorderColor:[selectedBorderWell color]];
+        [BoardSetup instance].selectedBorderColor = selectedBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
     }
 }
@@ -158,7 +158,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) statusCardSetsAction:(id)sender
 {
-    [[BoardSetup instance] setShowCardSetCounts:[showCardSetsButton state]];
+    [BoardSetup instance].showCardSetCounts = showCardSetsButton.state;
     [preferencePanel setDocumentEdited:YES];
 }
 

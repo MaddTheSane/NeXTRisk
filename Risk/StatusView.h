@@ -17,7 +17,7 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect;
 
-- (BOOL) isFlipped;
+@property (getter=isFlipped, readonly) BOOL flipped;
 
 - (void) drawRect:(NSRect)rect;
 

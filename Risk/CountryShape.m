@@ -39,14 +39,14 @@ static NSTextFieldCell *_armyCell = nil;
         {
             _armyCell = [[NSTextFieldCell alloc] init];
 
-            [_armyCell setBackgroundColor:[NSColor whiteColor]];
+            _armyCell.backgroundColor = [NSColor whiteColor];
             [_armyCell setBezeled:NO];
-            [_armyCell setFont:[NSFont fontWithName:@"Helvetica" size:10.0]];
-            [_armyCell setAlignment:NSCenterTextAlignment];
+            _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
+            _armyCell.alignment = NSCenterTextAlignment;
             [_armyCell setEditable:NO];
             [_armyCell setSelectable:NO];
             [_armyCell setBordered:YES];
-            [_armyCell setTextColor:[NSColor blackColor]];
+            _armyCell.textColor = [NSColor blackColor];
             [_armyCell setDrawsBackground:YES];
         }
     }
@@ -54,14 +54,14 @@ static NSTextFieldCell *_armyCell = nil;
 
 //----------------------------------------------------------------------
 
-+ countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
++ (instancetype) countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     return [[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
 
-- initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
+- (instancetype) initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     if (self = [super init]) {
         userPath = aUserPath;
@@ -91,7 +91,7 @@ static NSTextFieldCell *_armyCell = nil;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        if ([aDecoder allowsKeyedCoding]) {
+        if (aDecoder.allowsKeyedCoding) {
             userPath = [aDecoder decodeObjectForKey:kUserPathKey];
             armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
         } else {
@@ -114,7 +114,7 @@ static NSTextFieldCell *_armyCell = nil;
 
     int troopCount;
 
-    troopCount = [aCountry troopCount];
+    troopCount = aCountry.troopCount;
     if (troopCount == 0)
     {
         [aView drawBackground:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)];
@@ -122,28 +122,28 @@ static NSTextFieldCell *_armyCell = nil;
 
     boardSetup = [BoardSetup instance];
 
-    if ([aCountry playerNumber] != 0)
-        [[boardSetup colorForPlayer:[aCountry playerNumber]] set];
+    if (aCountry.playerNumber != 0)
+        [[boardSetup colorForPlayer:aCountry.playerNumber] set];
     else
         [[NSColor whiteColor] set];
 
 	[userPath stroke];
 
     if (selected == YES)
-        [[boardSetup selectedBorderColor] set];
+        [boardSetup.selectedBorderColor set];
     else
-        [[boardSetup regularBorderColor] set];
-	CGFloat prevWidth = [userPath lineWidth];
+        [boardSetup.regularBorderColor set];
+	CGFloat prevWidth = userPath.lineWidth;
 	userPath.lineWidth = boardSetup.borderWidth;
 	[userPath stroke];
 	userPath.lineWidth = prevWidth;
 
-    if ([aCountry playerNumber] != 0 && troopCount > 0)
+    if (aCountry.playerNumber != 0 && troopCount > 0)
     {
         // No -- If by default every country has at least one army in it, and it
         // affects combat, add the army at combat.  Otherwise, perhaps it is never an issue...
         //[_armyCell setIntValue:troopCount - 1];
-        [_armyCell setIntValue:troopCount];
+        _armyCell.intValue = troopCount;
         [_armyCell drawWithFrame:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)
                    inView:aView];
     }
@@ -160,7 +160,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (NSPoint) centerPoint
 {
-    NSRect bbox = [userPath bounds];
+    NSRect bbox = userPath.bounds;
 	
 	return NSMakePoint(NSMidX(bbox), NSMidY(bbox));
 }
@@ -169,7 +169,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (NSRect) bounds
 {
-    return NSUnionRect ([userPath bounds], NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT));
+    return NSUnionRect (userPath.bounds, NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT));
     //return [userPath bounds];
 }
 

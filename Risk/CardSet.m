@@ -104,9 +104,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     }
     else
     {
-        c1 = [aCard1 cardType];
-        c2 = [aCard2 cardType];
-        c3 = [aCard3 cardType];
+        c1 = aCard1.cardType;
+        c2 = aCard2.cardType;
+        c3 = aCard3.cardType;
 
         if (c1 == Wildcard || c2 == Wildcard || c3 == Wildcard)
         {
@@ -131,14 +131,14 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-+ cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
++ (instancetype) cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     return [[[CardSet alloc] initCardSet:aCard1:aCard2:aCard3] autorelease];
 }
 
 //----------------------------------------------------------------------
 
-- initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
+- (instancetype) initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     if (self = [super init]) {
         if ([CardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)
@@ -174,13 +174,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
     count = 0;
 
-    if ([card1 cardType] == Wildcard)
+    if (card1.cardType == Wildcard)
         count++;
 
-    if ([card2 cardType] == Wildcard)
+    if (card2.cardType == Wildcard)
         count++;
 
-    if ([card3 cardType] == Wildcard)
+    if (card3.cardType == Wildcard)
         count++;
 
     return count;
@@ -194,13 +194,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
     count = 0;
 
-    if ([[card1 country] playerNumber] == number)
+    if (card1.country.playerNumber == number)
         count++;
 
-    if ([[card2 country] playerNumber] == number)
+    if (card2.country.playerNumber == number)
         count++;
 
-    if ([[card3 country] playerNumber] == number)
+    if (card3.country.playerNumber == number)
         count++;
 
     return count;

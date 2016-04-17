@@ -107,18 +107,17 @@ extern NSString *const RGMGameOverNotification;
 
 @property (retain) RiskWorld *world;
 
-- (GameConfiguration *) gameConfiguration;
-- (void) setGameConfiguration:(GameConfiguration *)newGameConfiguration;
+@property (nonatomic, strong) GameConfiguration *gameConfiguration;
 
-- (GameState) gameState;
+@property (readonly) GameState gameState;
 
 //======================================================================
 // For status view.
 //======================================================================
 
 - (BOOL) isPlayerActive:(Player)number;
-- (Player) currentPlayerNumber;
-- (int) activePlayerCount;
+@property (readonly) Player currentPlayerNumber;
+@property (readonly) int activePlayerCount;
 
 - (RiskPlayer *) playerNumber:(Player)number;
 
@@ -142,7 +141,7 @@ extern NSString *const RGMGameOverNotification;
 // Game State
 //======================================================================
 
-- (BOOL) gameInProgress;
+@property (readonly) BOOL gameInProgress;
 
 - (void) enteringChooseCountriesPhase;
 - (void) leavingChooseCountriesPhase;
@@ -151,7 +150,7 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) endTurn;
 - (IBAction) executeCurrentPhase:(id)sender;
-- (BOOL) nextActivePlayer;
+@property (readonly) BOOL nextActivePlayer;
 
 - (IBAction) fortify:(id)sender;
 - (IBAction) endTurn:(id)sender;
@@ -167,7 +166,7 @@ extern NSString *const RGMGameOverNotification;
 //======================================================================
 
 - (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(Country *)country;
-- (NSArray<Country*> *) unoccupiedCountries; // Better in RiskWorld?
+@property (readonly, copy) NSArray<Country *> *unoccupiedCountries; // Better in RiskWorld?
 - (void) randomlyChooseCountriesForActivePlayers;
 
 //======================================================================
@@ -225,7 +224,7 @@ extern NSString *const RGMGameOverNotification;
 - (void) _recycleDiscardedCards;
 - (void) dealCardToPlayerNumber:(Player)number;
 - (int) _valueOfNextCardSet:(int)currentValue;
-- (int) armiesForNextCardSet;
+@property (readonly) int armiesForNextCardSet;
 - (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number;
 - (void) automaticallyTurnInCardsForPlayerNumber:(Player)number;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;

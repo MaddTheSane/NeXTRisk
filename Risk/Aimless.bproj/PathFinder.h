@@ -60,10 +60,10 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
         fromCountry:(Country *)source
        forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
             context:(void *)aContext
-   distanceFunction:(int (*)(Country *, Country *))aDistanceFunction;
+   distanceFunction:(int (*)(Country *, Country *))aDistanceFunction NS_DESIGNATED_INITIALIZER;
 
 - (void) _buildShortestPathsFromCountry:(Country *)source;
-- (SNHeap *) _minimumDistanceCountryHeap;
+@property (readonly, strong) SNHeap *_minimumDistanceCountryHeap;
 
 - (NSArray *) shortestPathToCountry:(Country *)target;
 - (NSArray *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;

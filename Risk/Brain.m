@@ -30,27 +30,27 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         defaults = [NSUserDefaults standardUserDefaults];
         riskDefaults = [NSMutableDictionary dictionary];
 
-        [riskDefaults setObject:@"NO"      forKey:DK_DMakeActive];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer1Type];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer2Type];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer3Type];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer4Type];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer5Type];
-        [riskDefaults setObject:@"None"    forKey:DK_DefaultPlayer6Type];
+        riskDefaults[DK_DMakeActive] = @"NO";
+        riskDefaults[DK_DefaultPlayer1Type] = @"None";
+        riskDefaults[DK_DefaultPlayer2Type] = @"None";
+        riskDefaults[DK_DefaultPlayer3Type] = @"None";
+        riskDefaults[DK_DefaultPlayer4Type] = @"None";
+        riskDefaults[DK_DefaultPlayer5Type] = @"None";
+        riskDefaults[DK_DefaultPlayer6Type] = @"None";
                                                                        
-        [riskDefaults setObject:@"Dopey"   forKey:DK_DefaultPlayer1Name];
-        [riskDefaults setObject:@"Sneezy"  forKey:DK_DefaultPlayer2Name];
-        [riskDefaults setObject:@"Grumpy"  forKey:DK_DefaultPlayer3Name];
-        [riskDefaults setObject:@"Doc"     forKey:DK_DefaultPlayer4Name];
-        [riskDefaults setObject:@"Bashful" forKey:DK_DefaultPlayer5Name];
-        [riskDefaults setObject:@"Sleepy"  forKey:DK_DefaultPlayer6Name];
+        riskDefaults[DK_DefaultPlayer1Name] = @"Dopey";
+        riskDefaults[DK_DefaultPlayer2Name] = @"Sneezy";
+        riskDefaults[DK_DefaultPlayer3Name] = @"Grumpy";
+        riskDefaults[DK_DefaultPlayer4Name] = @"Doc";
+        riskDefaults[DK_DefaultPlayer5Name] = @"Bashful";
+        riskDefaults[DK_DefaultPlayer6Name] = @"Sleepy";
 
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer1Console];
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer2Console];
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer3Console];
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer4Console];
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer5Console];
-        [riskDefaults setObject:@"NO"      forKey:DK_ShowPlayer6Console];
+        riskDefaults[DK_ShowPlayer1Console] = @"NO";
+        riskDefaults[DK_ShowPlayer2Console] = @"NO";
+        riskDefaults[DK_ShowPlayer3Console] = @"NO";
+        riskDefaults[DK_ShowPlayer4Console] = @"NO";
+        riskDefaults[DK_ShowPlayer5Console] = @"NO";
+        riskDefaults[DK_ShowPlayer6Console] = @"NO";
 
         [defaults registerDefaults:riskDefaults];
     }
@@ -81,7 +81,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     if (self = [super init]) {
         riskPlayerBundles = [[NSMutableArray array] retain];
@@ -168,7 +168,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     BOOL keepTrying;
     NSMutableDictionary *loadedBundles = [NSMutableDictionary dictionary];
 
-	NSURL *pluginURL = [mainBundle builtInPlugInsURL];
+	NSURL *pluginURL = mainBundle.builtInPlugInsURL;
 	NSDirectoryEnumerator<NSURL *> * URLEnum = [[NSFileManager defaultManager] enumeratorAtURL:pluginURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles) errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
 		return false;
 	}];
@@ -177,10 +177,10 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
     for (NSURL *subdirURL in URLEnum)
     {
-		if ([[subdirURL pathExtension] caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
+		if ([subdirURL.pathExtension caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
 			continue;
 		}
-        NSString *str = [[subdirURL lastPathComponent] stringByDeletingPathExtension];
+        NSString *str = subdirURL.lastPathComponent.stringByDeletingPathExtension;
 
         // refuse to load if the name matches a module already loaded
         if ([loadedRiskPlayerNames containsObject:str] == NO)
@@ -188,17 +188,17 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
             // OK, all is well -- go load the little bugger
             //NSLog (@"Load risk player bundle %@", path);
             playerBundle = [NSBundle bundleWithURL:subdirURL];
-            if ([playerBundle principalClass] == nil)
+            if (playerBundle.principalClass == nil)
             {
                 // Ugh, failed.  Put the class name in tempStorage in case
                 // it can't be loaded because it's a subclass of another
                 // CP who hasn't been loaded yet.
-                [delayedRiskPlayerPaths addObject:[subdirURL path]];
+                [delayedRiskPlayerPaths addObject:subdirURL.path];
             }
             else
             {
                 // it loaded so add it to the list.
-                [loadedBundles setObject:playerBundle forKey:str];
+                loadedBundles[str] = playerBundle;
                 //NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
                 //NSLog (@"priciple class is %@", [playerBundle principalClass]);
                 [loadedRiskPlayerNames addObject:str];
@@ -216,11 +216,11 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         for (NSString *path in delayedRiskPlayerPaths)
         {
             playerBundle = [NSBundle bundleWithPath:path];
-            if ([playerBundle principalClass] != nil)
+            if (playerBundle.principalClass != nil)
             {
-                NSString *str = [[path lastPathComponent] stringByDeletingPathExtension];
+                NSString *str = path.lastPathComponent.stringByDeletingPathExtension;
 
-                [loadedBundles setObject:playerBundle forKey:str];
+                loadedBundles[str] = playerBundle;
                 //NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
                 //NSLog (@"(delayed) priciple class is %@", [playerBundle principalClass]);
                 keepTrying = YES;
@@ -239,7 +239,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
     //NSLog (@"info: %@", [testBundle infoDictionary]);
 
-    [riskPlayerBundles addObjectsFromArray:[loadedBundles allValues]];
+    [riskPlayerBundles addObjectsFromArray:loadedBundles.allValues];
 }
 
 //----------------------------------------------------------------------

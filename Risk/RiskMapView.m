@@ -73,7 +73,7 @@ static NSImage *_boardBackingImage = nil;
 
 //----------------------------------------------------------------------
 
-- (id)initWithFrame:(NSRect)frameRect
+- (instancetype)initWithFrame:(NSRect)frameRect
 // designated initializer
 {
     if (self = [super initWithFrame:frameRect]) {
@@ -150,7 +150,7 @@ static NSImage *_boardBackingImage = nil;
         countryEnumerator = [countryArray objectEnumerator];
         while (country = [countryEnumerator nextObject])
         {
-            countryBounds = [[country countryShape] bounds];
+            countryBounds = country.countryShape.bounds;
             if (NSIsEmptyRect (NSIntersectionRect (countryBounds, rect)) == NO)
                 [country drawInView:self isSelected:country == selectedCountry];
         }
@@ -182,7 +182,7 @@ static NSImage *_boardBackingImage = nil;
 #else
     [self displayRect:[[aCountry countryShape] bounds]]; // This cuts off the textfields at the bounding box.
 #endif
-    [[self window] flushWindow];
+    [self.window flushWindow];
 }
 
 //----------------------------------------------------------------------
@@ -197,7 +197,7 @@ static NSImage *_boardBackingImage = nil;
     countryEnumerator = [countryArray objectEnumerator];
     while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
     {
-        hit = [country pointInCountry:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
+        hit = [country pointInCountry:[self convertPoint:theEvent.locationInWindow fromView:nil]];
         if (hit == YES)
         {
             if (delegate != nil && [delegate respondsToSelector:@selector (mouseDown:inCountry:)] == YES)
@@ -220,7 +220,7 @@ static NSImage *_boardBackingImage = nil;
     countryEnumerator = [countryArray objectEnumerator];
     while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
     {
-        hit = [country pointInCountry:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
+        hit = [country pointInCountry:[self convertPoint:theEvent.locationInWindow fromView:nil]];
         if (hit == YES)
         {
             if (delegate != nil && [delegate respondsToSelector:@selector (mouseUp:inCountry:)] == YES)
@@ -245,7 +245,7 @@ static NSImage *_boardBackingImage = nil;
     countryArray = [countries mutableCopy];
 
     [self setNeedsDisplay:YES];
-    [[self superview] setNeedsDisplay:YES];
+    [self.superview setNeedsDisplay:YES];
 }
 
 //----------------------------------------------------------------------
@@ -268,12 +268,12 @@ static NSImage *_boardBackingImage = nil;
 
     [self scaleUnitSquareToSize:scaleSize];
 
-    imageSize = [_boardBackingImage size];
+    imageSize = _boardBackingImage.size;
     imageSize.width *= currentScaleFactor;
     imageSize.height *= currentScaleFactor;
-    [boardBackingImage setSize:imageSize];
+    boardBackingImage.size = imageSize;
     [self setNeedsDisplay:YES];
-    [[self superview] setNeedsDisplay:YES];
+    [self.superview setNeedsDisplay:YES];
 }
 
 //----------------------------------------------------------------------
@@ -292,7 +292,7 @@ static NSImage *_boardBackingImage = nil;
     
     // Make sure country in array...
 
-    country = [aNotification object];
+    country = aNotification.object;
     [self drawCountry:country];
 }
 
@@ -324,7 +324,7 @@ static NSImage *_boardBackingImage = nil;
 {
     // Note: This covers up the country name textfield.
     [self setNeedsDisplay:YES];
-    [[self superview] setNeedsDisplay:YES];
+    [self.superview setNeedsDisplay:YES];
 }
 
 @end

@@ -93,7 +93,7 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     BOOL loaded;
     NSString *nibFile;
@@ -144,14 +144,14 @@ static struct image_names class_images[] =
     NSCell *cell;
     NSInteger index;
 
-    index = [handMatrix selectedColumn];
+    index = handMatrix.selectedColumn;
 	
     if (index != -1 && canTurnInCards == YES && setMatrixCount < 3 )
     {
         cell = [handMatrix cellAtRow:0 column:index];
         
         // if there is room in the box and they didn't click on an empty cell
-        if ([cell image] == _cardBackImage)
+        if (cell.image == _cardBackImage)
         {
             return;
         }
@@ -160,7 +160,7 @@ static struct image_names class_images[] =
         {
             RiskCard *lastCard;
 
-            lastCard = [playerCards objectAtIndex:index];
+            lastCard = playerCards[index];
 
             // check to see if this one will make a third
             if ([CardSet isValidCardSet:currentSet[0]:currentSet[1]:lastCard] == NO)
@@ -171,14 +171,14 @@ static struct image_names class_images[] =
         }
 
         // turn the card over
-        [cell setImage:_cardBackImage];
+        cell.image = _cardBackImage;
 
         // record which card it is
-        currentSet[setMatrixCount] = [playerCards objectAtIndex:index];
+        currentSet[setMatrixCount] = playerCards[index];
         currentIndices[setMatrixCount] = (int)index;
 
         // put it down below
-        [[setMatrix cellAtRow:0 column:setMatrixCount] setImage:[currentSet[setMatrixCount] image]];
+        [[setMatrix cellAtRow:0 column:setMatrixCount] setImage:currentSet[setMatrixCount].image];
         [[setStarMatrix cellAtRow:0 column:setMatrixCount] setImage:[[handStarMatrix cellAtRow:0 column:index] image]];
 		
         setMatrixCount++;
@@ -202,12 +202,12 @@ static struct image_names class_images[] =
     NSInteger index;
     NSInteger l;
 	
-    index = [setMatrix selectedColumn];
+    index = setMatrix.selectedColumn;
 
     // put it back up above
     if (index >= 0 && index < setMatrixCount)
     {
-        [[handMatrix cellAtRow:0 column:currentIndices[index]] setImage:[currentSet[index] image]];
+        [[handMatrix cellAtRow:0 column:currentIndices[index]] setImage:currentSet[index].image];
 
         // move the others back a step
         for (l = index; l < setMatrixCount - 1; l++)
@@ -293,26 +293,26 @@ static struct image_names class_images[] =
         [setMatrix setNeedsDisplay:YES];
         [setStarMatrix setNeedsDisplay:YES];
 
-        [amassedTextField setIntValue:[amassedTextField intValue] + currentCardSetValue];
+        amassedTextField.intValue = amassedTextField.intValue + currentCardSetValue;
         currentCardSetValue = [gameManager _valueOfNextCardSet:currentCardSetValue];
 
         [cardSets addObject:cardSet];
         [self enableButtons];
     }
 
-    [worthTextField setIntValue:currentCardSetValue];
+    worthTextField.intValue = currentCardSetValue;
 }
 
 //----------------------------------------------------------------------
 
 - (void) enableButtons
 {
-    if (canTurnInCards == YES && [playerCards count] - ([cardSets count] * 3) > 4)
+    if (canTurnInCards == YES && playerCards.count - (cardSets.count * 3) > 4)
         [doneButton setEnabled:NO];
     else
         [doneButton setEnabled:YES];
 
-    if ([cardSets count] > 0)
+    if (cardSets.count > 0)
         [cancelButton setEnabled:YES];
     else
         [cancelButton setEnabled:NO];
@@ -327,7 +327,7 @@ static struct image_names class_images[] =
     RiskCard *card;
     NSView *superView;
 
-    cardCount = [playerCards count];
+    cardCount = playerCards.count;
 
     [handMatrix renewRows:1 columns:cardCount];
     [handStarMatrix renewRows:1 columns:cardCount];
@@ -335,10 +335,10 @@ static struct image_names class_images[] =
     [handMatrix sizeToCells];
     [handStarMatrix sizeToCells];
 
-    aFrame = NSUnionRect ([handMatrix frame], [handStarMatrix frame]);
+    aFrame = NSUnionRect (handMatrix.frame, handStarMatrix.frame);
 
-    superView = [handMatrix superview];
-    boundsRect = [superView bounds];
+    superView = handMatrix.superview;
+    boundsRect = superView.bounds;
 
     boundsRect.size.width = aFrame.origin.x + aFrame.size.width;
     [superView setFrameSize:boundsRect.size]; // -setBounds: is ineffective..
@@ -346,9 +346,9 @@ static struct image_names class_images[] =
 
     for (l = 0; l < cardCount; l++)
     {
-        card = [playerCards objectAtIndex:l];
-        [[handMatrix cellAtRow:0 column:l] setImage:[card image]];
-        if ([[card country] playerNumber] == currentPlayerNumber)
+        card = playerCards[l];
+        [[handMatrix cellAtRow:0 column:l] setImage:card.image];
+        if (card.country.playerNumber == currentPlayerNumber)
             [[handStarMatrix cellAtRow:0 column:l] setImage:_littleStarImage];
         else
             [[handStarMatrix cellAtRow:0 column:l] setImage:nil];
@@ -367,20 +367,20 @@ static struct image_names class_images[] =
 
     if (cardCount > 4 && canTurnInCards == YES)
     {
-        [forceTextField setStringValue:@"You must turn in cards."];
+        forceTextField.stringValue = @"You must turn in cards.";
     }
     else
     {
-        [forceTextField setStringValue:@""];
+        forceTextField.stringValue = @"";
     }
 
     [self enableButtons];
-    [amassedTextField setIntValue:0];
+    amassedTextField.intValue = 0;
 
     setMatrixCount = 0;
 
     currentCardSetValue = [gameManager armiesForNextCardSet];
-    [worthTextField setIntValue:currentCardSetValue];
+    worthTextField.intValue = currentCardSetValue;
 
     [cardSets removeAllObjects];
 }
@@ -391,8 +391,8 @@ static struct image_names class_images[] =
 {
     SNRelease (playerCards);
 
-    currentPlayerNumber = [player playerNumber];
-    playerCards = [[player playerCards] retain];
+    currentPlayerNumber = player.playerNumber;
+    playerCards = [player.playerCards retain];
     [self resetPanel];
 }
 

@@ -43,7 +43,7 @@ static SNRandom *_instance = nil;
         defaults = [NSUserDefaults standardUserDefaults];
         riskDefaults = [NSMutableDictionary dictionary];
 
-        [riskDefaults setObject:@"YES"      forKey:DK_SeedRandom];
+        riskDefaults[DK_SeedRandom] = @YES;
 
         [defaults registerDefaults:riskDefaults];
 

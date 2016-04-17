@@ -90,37 +90,37 @@ NSData *defaultsDataForColor (NSColor *color)
 
         //color = [NSColor colorWithCalibratedRed:0.9  green:0.9  blue:0.9  alpha:1.0];
         color = [NSColor greenColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer1Color];
+        boardDefaults[DK_DefaultPlayer1Color] = defaultsDataForColor (color);
 
         //color = [NSColor colorWithCalibratedRed:0.8  green:0.8  blue:0.8  alpha:1.0];
         color = [NSColor blueColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer2Color];
+        boardDefaults[DK_DefaultPlayer2Color] = defaultsDataForColor (color);
 
         //color = [NSColor colorWithCalibratedRed:0.66 green:0.66 blue:0.66 alpha:1.0];
         color = [NSColor yellowColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer3Color];
+        boardDefaults[DK_DefaultPlayer3Color] = defaultsDataForColor (color);
 
         //color = [NSColor colorWithCalibratedRed:0.33 green:0.33 blue:0.33 alpha:1.0];
         color = [NSColor purpleColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer4Color];
+        boardDefaults[DK_DefaultPlayer4Color] = defaultsDataForColor (color);
 
         //color = [NSColor colorWithCalibratedRed:0.15 green:0.15 blue:0.15 alpha:1.0];
         color = [NSColor cyanColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer5Color];
+        boardDefaults[DK_DefaultPlayer5Color] = defaultsDataForColor (color);
 
         //color = [NSColor colorWithCalibratedRed:0.0  green:0.0  blue:0.0  alpha:1.0];
         color = [NSColor redColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_DefaultPlayer6Color];
+        boardDefaults[DK_DefaultPlayer6Color] = defaultsDataForColor (color);
 
-        [boardDefaults setObject:@1 forKey:DK_BorderWidth];
+        boardDefaults[DK_BorderWidth] = @1;
 
         color = [NSColor blackColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_RegularBorderColor];
+        boardDefaults[DK_RegularBorderColor] = defaultsDataForColor (color);
 
         color = [NSColor whiteColor];
-        [boardDefaults setObject:defaultsDataForColor (color) forKey:DK_SelectedBorderColor];
+        boardDefaults[DK_SelectedBorderColor] = defaultsDataForColor (color);
 
-        [boardDefaults setObject:@YES forKey:DK_ShowCardSetCounts];
+        boardDefaults[DK_ShowCardSetCounts] = @YES;
 
         [defaults registerDefaults:boardDefaults];
         [boardDefaults release];
@@ -129,7 +129,7 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- (id)init
+- (instancetype)init
 {
     int l;
 

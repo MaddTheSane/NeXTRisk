@@ -43,7 +43,7 @@ public class Chaos: RiskPlayer {
 		// 2. Randomly choose one of these, updating its continent flag
 		// 3. Otherwise, randomly pick country
 		
-		let unoccupiedCountries = gameManager.unoccupiedCountries()!
+		let unoccupiedCountries = gameManager.unoccupiedCountries!
 		assert(unoccupiedCountries.count > 0, "No unoccupied countries.")
 		var array = [Country]()
 		let country: Country
@@ -73,7 +73,7 @@ public class Chaos: RiskPlayer {
 
 	public override func placeArmies(count: Int32) {
 		//myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-		var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries()))
+		var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries))
 		let countryCount = ourCountries.count
 		
 		assert(countryCount > 0, "We have no countries!");
@@ -89,7 +89,7 @@ public class Chaos: RiskPlayer {
 
 	public override func attackPhase() {
 		if attackingCountries.isEmpty {
-			attackingCountries = countriesWithAllOptions([.WithEnemyNeighbors, .WithTroops], from: ourCountries())
+			attackingCountries = countriesWithAllOptions([.WithEnemyNeighbors, .WithTroops], from: ourCountries)
 		}
 		var mustEndTurn = false
 		
@@ -116,7 +116,7 @@ public class Chaos: RiskPlayer {
 	}
 
 	public override func fortifyPhase(fortifyRule: FortifyRule) {
-		let sourceCountries = countriesWithAllOptions([.WithMovableTroops, .WithoutEnemyNeighbors], from: ourCountries())
+		let sourceCountries = countriesWithAllOptions([.WithMovableTroops, .WithoutEnemyNeighbors], from: ourCountries)
 		let source: Country
 		
 		guard !sourceCountries.isEmpty else {
@@ -141,7 +141,7 @@ public class Chaos: RiskPlayer {
 	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country!) {
 		var destination: Country?
 		
-		let ourNeighborCountries = source.ourNeighborCountries()
+		let ourNeighborCountries = source.ourNeighborCountries
 		
 		for country in ourNeighborCountries {
 			if country.hasEnemyNeighbors {
@@ -168,7 +168,7 @@ public class Chaos: RiskPlayer {
 
 	/// attack the weakest neighbor (bully tactics).
 	func doAttackFromCountry(attacker: Country) -> Bool {
-		let enemies = attacker.enemyNeighborCountries()!
+		let enemies = attacker.enemyNeighborCountries!
 		var weakest: Country!
 		var attackResult = AttackResult()
 		attackResult.conqueredCountry = false
