@@ -114,7 +114,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     //NSAssert (imagePath != nil, @"Couldn't find MiniWorldInfo.tiff");
 
     image = [NSImage imageNamed:@"MiniWorldInfo"];
-    NSAssert (image != nil, @"Couldn't load MiniWorldInfo.tiff");
+    NSAssert (image != nil, @"Couldn't load MiniWorldInfo");
 
     worldInfoWindow.miniwindowImage = image;
 }

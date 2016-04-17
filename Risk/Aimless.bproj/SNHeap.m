@@ -53,7 +53,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 + (instancetype) heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
 {
-    SNHeap newHeap;
+    SNHeap *newHeap;
 
     newHeap = [[[SNHeap alloc] initUsingFunction:comparator context:aContext] autorelease];
 
@@ -284,7 +284,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
     for (l = 0; l < current_size; l++)
         [array addObject:data[l]];
 
-    return [NSString stringWithFormat:@"%@", array];
+    return array.description;
 }
 
 @end

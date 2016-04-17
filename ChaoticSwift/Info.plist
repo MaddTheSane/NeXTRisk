@@ -27,7 +27,7 @@
 	<key>NSPrincipalClass</key>
 	<string>$(PRODUCT_MODULE_NAME).Chaos</string>
 	<key>PlayerIcon</key>
-	<string>Chaotic.tiff</string>
+	<string>Chaotic</string>
 	<key>PlayerTypeName</key>
 	<string>SwiftChaos</string>
 	<key>SuperClass</key>

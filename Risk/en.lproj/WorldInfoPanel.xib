@@ -88,7 +88,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="26">
-                            <rect key="frame" x="317" y="23" width="16" height="144"/>
+                            <rect key="frame" x="318" y="23" width="15" height="144"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="25">
@@ -104,7 +104,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13">
                         <rect key="frame" x="116" y="196" width="238" height="17"/>
                         <textFieldCell key="cell" alignment="left" title="Standard Risk World" id="20">
                             <font key="font" metaFont="system"/>

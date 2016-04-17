@@ -22,7 +22,7 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="20" userLabel="prefPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="273" y="548" width="342" height="256"/>
+            <rect key="contentRect" x="326" y="467" width="342" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="19">
                 <rect key="frame" x="0.0" y="0.0" width="342" height="256"/>
@@ -48,7 +48,7 @@
                                         <action selector="borderWidthAction:" target="-2" id="32"/>
                                     </connections>
                                 </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7">
                                     <rect key="frame" x="18" y="75" width="69" height="17"/>
                                     <textFieldCell key="cell" alignment="left" title="Line Width" id="43">
                                         <font key="font" metaFont="system"/>
@@ -74,7 +74,7 @@
                                         <action selector="borderColorAction:" target="-2" id="33"/>
                                     </connections>
                                 </colorWell>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="21">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
                                     <rect key="frame" x="18" y="46" width="118" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" alignment="center" title="Regular Border Color" id="44">
                                         <font key="font" metaFont="smallSystem"/>
@@ -93,7 +93,7 @@
                                         <action selector="borderColorAction:" target="-2" id="34"/>
                                     </connections>
                                 </colorWell>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
                                     <rect key="frame" x="162" y="46" width="124" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" alignment="center" title="Selected Border Color" id="45">
                                         <font key="font" metaFont="smallSystem"/>
