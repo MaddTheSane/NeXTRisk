@@ -150,7 +150,7 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) endTurn;
 - (IBAction) executeCurrentPhase:(id)sender;
-@property (readonly) BOOL nextActivePlayer;
+- (BOOL) nextActivePlayer;
 
 - (IBAction) fortify:(id)sender;
 - (IBAction) endTurn:(id)sender;
@@ -224,7 +224,7 @@ extern NSString *const RGMGameOverNotification;
 - (void) _recycleDiscardedCards;
 - (void) dealCardToPlayerNumber:(Player)number;
 - (int) _valueOfNextCardSet:(int)currentValue;
-@property (readonly) int armiesForNextCardSet;
+- (int) armiesForNextCardSet;
 - (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number;
 - (void) automaticallyTurnInCardsForPlayerNumber:(Player)number;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
