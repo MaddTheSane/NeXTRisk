@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="Risk" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="Risk" id="14">
@@ -328,10 +328,10 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="KV6-Ha-bN0"/>
-                            <menuItem title="Player 1" id="95">
+                            <menuItem title="Player 1" tag="1" id="95">
                                 <menu key="submenu" title="Player 1" id="98">
                                     <items>
-                                        <menuItem title="Console..." id="143">
+                                        <menuItem title="Console..." tag="1" id="143">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="149"/>
                                             </connections>
@@ -339,10 +339,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 2" id="115">
+                            <menuItem title="Player 2" tag="2" id="115">
                                 <menu key="submenu" title="Player 2" id="117">
                                     <items>
-                                        <menuItem title="Console..." id="118">
+                                        <menuItem title="Console..." tag="2" id="118">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="150"/>
                                             </connections>
@@ -350,10 +350,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 3" id="119">
+                            <menuItem title="Player 3" tag="3" id="119">
                                 <menu key="submenu" title="Player 3" id="121">
                                     <items>
-                                        <menuItem title="Console..." id="122">
+                                        <menuItem title="Console..." tag="3" id="122">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="151"/>
                                             </connections>
@@ -361,10 +361,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 4" id="123">
+                            <menuItem title="Player 4" tag="4" id="123">
                                 <menu key="submenu" title="Player 4" id="125">
                                     <items>
-                                        <menuItem title="Console..." id="126">
+                                        <menuItem title="Console..." tag="4" id="126">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="152"/>
                                             </connections>
@@ -372,10 +372,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 5" id="135">
+                            <menuItem title="Player 5" tag="5" id="135">
                                 <menu key="submenu" title="Player 5" id="138">
                                     <items>
-                                        <menuItem title="Console..." id="136">
+                                        <menuItem title="Console..." tag="5" id="136">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="153"/>
                                             </connections>
@@ -383,10 +383,10 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 6" id="139">
+                            <menuItem title="Player 6" tag="6" id="139">
                                 <menu key="submenu" title="Player 6" id="140">
                                     <items>
-                                        <menuItem title="Console..." id="142">
+                                        <menuItem title="Console..." tag="6" id="142">
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="154"/>
                                             </connections>

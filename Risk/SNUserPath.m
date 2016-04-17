@@ -65,4 +65,9 @@
 	return path;
 }
 
+- (NSString *)description
+{
+	return [operations description];
+}
+
 @end

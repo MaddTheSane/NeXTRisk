@@ -108,13 +108,12 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 - (void) awakeFromNib
 {
-    NSString *imagePath;
     NSImage *image;
 
-    imagePath = [[NSBundle mainBundle] pathForImageResource:@"MiniWorldInfo.tiff"];
-    NSAssert (imagePath != nil, @"Couldn't find MiniWorldInfo.tiff");
+    //imagePath = [[NSBundle mainBundle] pathForImageResource:@"MiniWorldInfo.tiff"];
+    //NSAssert (imagePath != nil, @"Couldn't find MiniWorldInfo.tiff");
 
-    image = [[[NSImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [NSImage imageNamed:@"MiniWorldInfo"];
     NSAssert (image != nil, @"Couldn't load MiniWorldInfo.tiff");
 
     [worldInfoWindow setMiniwindowImage:image];

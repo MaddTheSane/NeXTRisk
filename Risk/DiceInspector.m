@@ -31,12 +31,12 @@ struct image_names
 
 static struct image_names class_images[] =
 {
-    { @"Die1.tiff",    &_die1Image },
-    { @"Die2.tiff",    &_die2Image },
-    { @"Die3.tiff",    &_die3Image },
-    { @"Die4.tiff",    &_die4Image },
-    { @"Die5.tiff",    &_die5Image },
-    { @"Die6.tiff",    &_die6Image },
+    { @"Die1",    &_die1Image },
+    { @"Die2",    &_die2Image },
+    { @"Die3",    &_die3Image },
+    { @"Die4",    &_die4Image },
+    { @"Die5",    &_die5Image },
+    { @"Die6",    &_die6Image },
 };
 
 @implementation DiceInspector
@@ -77,10 +77,11 @@ static struct image_names class_images[] =
         // load class images
         for (l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
         {
-            imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
-            NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
+            imagePath = class_images[l].i_name;
+            //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
+            //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
 
-            *(class_images[l].i_image) = [[NSImage alloc] initByReferencingFile:imagePath];
+            *(class_images[l].i_image) = [[NSImage imageNamed:imagePath] retain];
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
     }
