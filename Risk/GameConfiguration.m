@@ -39,7 +39,6 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
         gameDefaults[DK_CardSetRedemption] = DV_RemainConstant;
         gameDefaults[DK_FortifyRule] = DV_OneToOneNeighbor;
         [defaults registerDefaults:gameDefaults];
-        [gameDefaults release];
     });
 }
 
@@ -47,7 +46,7 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 + (GameConfiguration*) defaultConfiguration
 {
-    return [[[GameConfiguration alloc] init] autorelease];
+    return [[GameConfiguration alloc] init];
 }
 
 //----------------------------------------------------------------------

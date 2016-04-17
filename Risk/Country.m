@@ -40,7 +40,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 {
     if (self = [super init]) {
     name = [aName copy];
-    countryShape = [aCountryShape retain];
+    countryShape = aCountryShape;
     continentName = [aContinentName copy];
     neighborCountries = [[NSMutableSet alloc] init];
 
@@ -52,17 +52,6 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     return self;
 }
 
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (name);
-    SNRelease (continentName);
-    SNRelease (countryShape);
-    SNRelease (neighborCountries);
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------
 
@@ -91,14 +80,14 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding) {
             name = [[aDecoder decodeObjectForKey:kCountryName] copy];
-            countryShape = [[aDecoder decodeObjectForKey:kCountryShape] retain];
+            countryShape = [aDecoder decodeObjectForKey:kCountryShape];
             continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
             playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
             troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
             unmovableTroopCount = [aDecoder decodeIntForKey:kCountryUnmovableTroopCount];
         } else {
             name = [[aDecoder decodeObject] copy];
-            countryShape = [[aDecoder decodeObject] retain];
+            countryShape = [aDecoder decodeObject];
             continentName = [[aDecoder decodeObject] copy];
 
             int aTmp = 0;

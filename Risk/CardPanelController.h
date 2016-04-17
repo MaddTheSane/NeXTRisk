@@ -39,6 +39,8 @@
     NSMutableArray *cardSets;
 }
 
+@property (strong) RiskGameManager *gameManager;
+
 + (void) loadClassImages;
 
 - (instancetype)init;
@@ -55,7 +57,5 @@
 
 - (void) setupPanelForPlayer:(RiskPlayer *)player;
 - (void) runCardPanel:(BOOL)canTurnInCardsFlag forPlayer:(RiskPlayer *)player;
-
-- (void) setGameManager:(RiskGameManager *)newGameManager;
 
 @end

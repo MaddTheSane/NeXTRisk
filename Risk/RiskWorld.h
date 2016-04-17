@@ -35,10 +35,10 @@
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
-@property (readonly) NSSet<Country*> *allCountries;
+@property (weak, readonly) NSSet<Country*> *allCountries;
 - (Continent *) continentNamed:(NSString *)continentName;
-@property (readonly, retain) NSDictionary<NSString*,Continent *> *continents;
-@property (readonly, retain) NSArray<RiskCard*> *cards;
+@property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
+@property (readonly, strong) NSArray<RiskCard*> *cards;
 
 /// Calculate the number of bonus armies earned for a player at the
 /// beginning of a turn based on the continents that they completely

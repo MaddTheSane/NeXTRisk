@@ -41,7 +41,6 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
-            [super dealloc];
             return nil;
         }
 
@@ -68,8 +67,6 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

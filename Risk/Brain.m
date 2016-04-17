@@ -30,7 +30,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         defaults = [NSUserDefaults standardUserDefaults];
         riskDefaults = [NSMutableDictionary dictionary];
 
-        riskDefaults[DK_DMakeActive] = @"NO";
+        riskDefaults[DK_DMakeActive] = @NO;
         riskDefaults[DK_DefaultPlayer1Type] = @"None";
         riskDefaults[DK_DefaultPlayer2Type] = @"None";
         riskDefaults[DK_DefaultPlayer3Type] = @"None";
@@ -45,12 +45,12 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         riskDefaults[DK_DefaultPlayer5Name] = @"Bashful";
         riskDefaults[DK_DefaultPlayer6Name] = @"Sleepy";
 
-        riskDefaults[DK_ShowPlayer1Console] = @"NO";
-        riskDefaults[DK_ShowPlayer2Console] = @"NO";
-        riskDefaults[DK_ShowPlayer3Console] = @"NO";
-        riskDefaults[DK_ShowPlayer4Console] = @"NO";
-        riskDefaults[DK_ShowPlayer5Console] = @"NO";
-        riskDefaults[DK_ShowPlayer6Console] = @"NO";
+        riskDefaults[DK_ShowPlayer1Console] = @NO;
+        riskDefaults[DK_ShowPlayer2Console] = @NO;
+        riskDefaults[DK_ShowPlayer3Console] = @NO;
+        riskDefaults[DK_ShowPlayer4Console] = @NO;
+        riskDefaults[DK_ShowPlayer5Console] = @NO;
+        riskDefaults[DK_ShowPlayer6Console] = @NO;
 
         [defaults registerDefaults:riskDefaults];
     }
@@ -84,24 +84,12 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (instancetype)init
 {
     if (self = [super init]) {
-        riskPlayerBundles = [[NSMutableArray array] retain];
+        riskPlayerBundles = [NSMutableArray array];
         gameManager = [[RiskGameManager alloc] init];
         preferenceController = nil;
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (gameManager);
-    SNRelease (newGameController);
-    SNRelease (riskPlayerBundles);
-    SNRelease (preferenceController);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

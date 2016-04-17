@@ -16,15 +16,15 @@ static NSImage *_tenImage;
 
 struct image_names
 {
-    NSString *i_name;
-    NSImage **i_image;
+    CFStringRef i_name;
+    NSImage *__strong*i_image;
 };
 
 static struct image_names class_images[] =
 {
-    { @"Soldier",    &_soldierImage },
-    { @"5Soldiers",  &_fiveImage },
-    { @"10Soldiers", &_tenImage },
+    { CFSTR("Soldier"),    &_soldierImage },
+    { CFSTR("5Soldiers"),  &_fiveImage },
+    { CFSTR("10Soldiers"), &_tenImage },
 };
 
 @implementation ArmyView
@@ -65,7 +65,7 @@ static struct image_names class_images[] =
         // load class images
         for (l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
         {
-            *(class_images[l].i_image) = [[NSImage imageNamed:class_images[l].i_name] retain];
+            *(class_images[l].i_image) = [NSImage imageNamed:(__bridge NSString * _Nonnull)(class_images[l].i_name)];
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
     }
@@ -82,13 +82,6 @@ static struct image_names class_images[] =
     }
 	
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

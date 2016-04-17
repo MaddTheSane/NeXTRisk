@@ -34,12 +34,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[operations release];
-	[super dealloc];
-}
-
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject:operations];
@@ -49,7 +43,7 @@
 {
 	if (self = [super init]) {
 		
-		operations = [[aDecoder decodeObject] retain];
+		operations = [aDecoder decodeObject];
 		
 	}
 	return self;

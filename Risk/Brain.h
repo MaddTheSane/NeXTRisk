@@ -53,6 +53,6 @@
 - (void) loadRiskPlayerBundles;
 @property (readonly, copy) NSArray<NSBundle *> *riskPlayerBundles;
 
-@property (readonly, retain) RiskGameManager *gameManager;
+@property (readonly, strong) RiskGameManager *gameManager;
 
 @end

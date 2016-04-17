@@ -35,7 +35,7 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 + (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
-    return [[[RiskNeighbor alloc] initWithCountries:firstCountry:secondCountry] autorelease];
+    return [[RiskNeighbor alloc] initWithCountries:firstCountry:secondCountry];
 }
 
 //----------------------------------------------------------------------
@@ -43,21 +43,11 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 - (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry
 {
     if (self = [super init]) {
-        country1 = [firstCountry retain];
-        country2 = [secondCountry retain];
+        country1 = firstCountry;
+        country2 = secondCountry;
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (country1);
-    SNRelease (country2);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

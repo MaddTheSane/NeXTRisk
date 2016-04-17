@@ -132,7 +132,6 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
-            [super dealloc];
             return nil;
         }
 
@@ -151,16 +150,6 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 }
 
 //----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (continents);
-    //SNRelease (world);
-
-    [super dealloc];
-}
-
-//----------------------------------------------------------------------
 #if 0
 - (RiskWorld *) world
 {
@@ -174,7 +163,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     SNRelease (continents);
     if (newWorld != nil)
     {
-        continents = [[newWorld.continents.allValues sortedArrayUsingFunction:WIOrderContinentsByName context:NULL] retain];
+        continents = [newWorld.continents.allValues sortedArrayUsingFunction:WIOrderContinentsByName context:NULL];
     }
 #if 0
     SNRelease (world);
@@ -200,8 +189,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByName context:NULL];
-        SNRelease (continents);
-        continents = [newOrder retain];
+        continents = newOrder;
         [continentTable reloadData];
     }
 }
@@ -215,8 +203,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByCountryCount context:NULL];
-        SNRelease (continents);
-        continents = [newOrder retain];
+        continents = newOrder;
         [continentTable reloadData];
     }
 }
@@ -230,8 +217,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByBonusValue context:NULL];
-        SNRelease (continents);
-        continents = [newOrder retain];
+        continents = newOrder;
         [continentTable reloadData];
     }
 }
@@ -264,9 +250,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
-    NSInteger count;
-
-    count = 0;
+    NSInteger count = 0;
 
     if (continents != nil)
         count = continents.count;

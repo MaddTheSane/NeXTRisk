@@ -105,7 +105,7 @@ extern NSString *const RGMGameOverNotification;
 // General access to world data
 //======================================================================
 
-@property (retain) RiskWorld *world;
+@property (nonatomic, strong) RiskWorld *world;
 
 @property (nonatomic, strong) GameConfiguration *gameConfiguration;
 

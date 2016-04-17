@@ -32,17 +32,18 @@ static NSImage *_littleStarImage = nil;
 
 struct image_names
 {
-    NSString *i_name;
-    NSImage **i_image;
+    CFStringRef i_name;
+    NSImage *__strong*i_image;
 };
 
 static struct image_names class_images[] =
 {
-    { @"CardBack",    &_cardBackImage },
-    { @"LittleStar",  &_littleStarImage },
+    { CFSTR("CardBack"),    &_cardBackImage },
+    { CFSTR("LittleStar"),  &_littleStarImage },
 };
 
 @implementation CardPanelController
+@synthesize gameManager;
 
 + (void) initialize
 {
@@ -70,7 +71,6 @@ static struct image_names class_images[] =
 {
     int l;
     NSBundle *thisBundle;
-    NSString *imagePath;
 
     if (self == [CardPanelController class])
     {
@@ -83,7 +83,7 @@ static struct image_names class_images[] =
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
 
-            *(class_images[l].i_image) = [[NSImage imageNamed:class_images[l].i_name] retain];
+            *(class_images[l].i_image) = [NSImage imageNamed:(__bridge NSString * _Nonnull)(class_images[l].i_name)];
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
     }
@@ -104,7 +104,6 @@ static struct image_names class_images[] =
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
-            [super dealloc];
             return nil;
         }
 
@@ -112,25 +111,10 @@ static struct image_names class_images[] =
 
         gameManager = nil;
         playerCards = nil;
-        cardSets = [[NSMutableArray array] retain];
+        cardSets = [[NSMutableArray alloc] init];
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (currentSet[0]);
-    SNRelease (currentSet[1]);
-    SNRelease (currentSet[2]);
-
-    SNRelease (gameManager);
-    SNRelease (playerCards);
-    SNRelease (cardSets);
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -392,7 +376,7 @@ static struct image_names class_images[] =
     SNRelease (playerCards);
 
     currentPlayerNumber = player.playerNumber;
-    playerCards = [player.playerCards retain];
+    playerCards = player.playerCards;
     [self resetPanel];
 }
 
@@ -406,15 +390,6 @@ static struct image_names class_images[] =
     [cardPanel makeKeyAndOrderFront:self];
     [NSApp runModalForWindow:cardPanel];
     [cardPanel orderOut:self];
-}
-
-//----------------------------------------------------------------------
-
-- (void) setGameManager:(RiskGameManager *)newGameManager
-{
-    SNRelease (gameManager);
-
-    gameManager = [newGameManager retain];
 }
 
 @end

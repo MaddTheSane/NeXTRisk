@@ -35,15 +35,6 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     return self;
 }
 
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (attackingCountry);
-
-    [super dealloc];
-}
-
 //======================================================================
 // Subclass Responsibilities
 //======================================================================
@@ -286,7 +277,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     SNRelease (attackingCountry);
     if (attacker != nil)
     {
-        attackingCountry = [attacker retain];
+        attackingCountry = attacker;
 
         [gameManager setAttackingFromCountryName:attackingCountry.countryName];
         [gameManager selectCountry:attackingCountry];

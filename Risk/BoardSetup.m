@@ -123,7 +123,6 @@ NSData *defaultsDataForColor (NSColor *color)
         boardDefaults[DK_ShowCardSetCounts] = @YES;
 
         [defaults registerDefaults:boardDefaults];
-        [boardDefaults release];
     });
 }
 
@@ -135,8 +134,8 @@ NSData *defaultsDataForColor (NSColor *color)
 
     if (self = [super init]) {
         borderWidth = 0.15;
-        regularBorderColor = [[NSColor blackColor] retain];;
-        selectedBorderColor = [[NSColor whiteColor] retain];;
+        regularBorderColor = [NSColor blackColor];
+        selectedBorderColor = [NSColor whiteColor];
 
         for (l = 0; l < 7; l++)
             playerColors[l] = nil;
@@ -145,13 +144,6 @@ NSData *defaultsDataForColor (NSColor *color)
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -222,12 +214,12 @@ NSData *defaultsDataForColor (NSColor *color)
         SNRelease (playerColors[l]);
     }
 
-    playerColors[1] = [getColorForDefault (DK_DefaultPlayer1Color) retain];
-    playerColors[2] = [getColorForDefault (DK_DefaultPlayer2Color) retain];
-    playerColors[3] = [getColorForDefault (DK_DefaultPlayer3Color) retain];
-    playerColors[4] = [getColorForDefault (DK_DefaultPlayer4Color) retain];
-    playerColors[5] = [getColorForDefault (DK_DefaultPlayer5Color) retain];
-    playerColors[6] = [getColorForDefault (DK_DefaultPlayer6Color) retain];
+    playerColors[1] = getColorForDefault (DK_DefaultPlayer1Color);
+    playerColors[2] = getColorForDefault (DK_DefaultPlayer2Color);
+    playerColors[3] = getColorForDefault (DK_DefaultPlayer3Color);
+    playerColors[4] = getColorForDefault (DK_DefaultPlayer4Color);
+    playerColors[5] = getColorForDefault (DK_DefaultPlayer5Color);
+    playerColors[6] = getColorForDefault (DK_DefaultPlayer6Color);
 
     // Notify of updated defaults.
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupPlayerColorsChangedNotification
@@ -244,11 +236,9 @@ NSData *defaultsDataForColor (NSColor *color)
 
     borderWidth = [defaults floatForKey:DK_BorderWidth];
 
-    SNRelease (regularBorderColor);
-    regularBorderColor = [getColorForDefault (DK_RegularBorderColor) retain];
+    regularBorderColor = getColorForDefault (DK_RegularBorderColor);
 
-    SNRelease (selectedBorderColor);
-    selectedBorderColor = [getColorForDefault (DK_SelectedBorderColor) retain];
+    selectedBorderColor = getColorForDefault (DK_SelectedBorderColor);
 
     showCardSetCounts = [defaults boolForKey:DK_ShowCardSetCounts];
 
@@ -277,8 +267,7 @@ NSData *defaultsDataForColor (NSColor *color)
     if (newColor == regularBorderColor)
         return;
 
-    SNRelease (regularBorderColor);
-    regularBorderColor = [newColor retain];
+    regularBorderColor = newColor;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupChangedNotification
                                           object:self];
@@ -291,8 +280,7 @@ NSData *defaultsDataForColor (NSColor *color)
     if (newColor == selectedBorderColor)
         return;
 
-    SNRelease (selectedBorderColor);
-    selectedBorderColor = [newColor retain];
+    selectedBorderColor = newColor;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupChangedNotification
                                           object:self];
@@ -323,8 +311,7 @@ NSData *defaultsDataForColor (NSColor *color)
 {
     NSAssert (playerNumber > 0 && playerNumber < 7, @"Player number out of range.");
 
-    SNRelease (playerColors[playerNumber]);
-    playerColors[playerNumber] = [aColor retain];
+    playerColors[playerNumber] = aColor;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:RiskBoardSetupPlayerColorsChangedNotification
                                           object:self];

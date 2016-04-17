@@ -50,6 +50,8 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 @implementation RiskGameManager
 @synthesize gameConfiguration = configuration;
+@synthesize world;
+@synthesize gameState;
 
 + (void) initialize
 {
@@ -78,14 +80,13 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         phaseChooseCountries = nil;
         currentPhaseView = nil;
 
-        rng = [[SNRandom instance] retain];
+        rng = [SNRandom instance];
 
         nibFile = @"GameBoard.nib";
         loaded = [NSBundle loadNibNamed:nibFile owner:self];
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
-            [super dealloc];
             return nil;
         }
 
@@ -154,7 +155,6 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
     SNRelease (rng);
 
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -173,20 +173,19 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     [controlPanel setFrameAutosaveName:controlPanel.title];
     [controlPanel orderFront:self];
 
-    [[phaseComputerMove retain] removeFromSuperview];
-    [[phasePlaceArmies retain] removeFromSuperview];
-    [[phaseAttack retain] removeFromSuperview];
-    [[phaseFortify retain] removeFromSuperview];
-    [[phaseChooseCountries retain] removeFromSuperview];
+    [phaseComputerMove removeFromSuperview];
+    [phasePlaceArmies removeFromSuperview];
+    [phaseAttack removeFromSuperview];
+    [phaseFortify removeFromSuperview];
+    [phaseChooseCountries removeFromSuperview];
 
     // Try to make sure the map view doesn't obscure any peer
     // views when it redraws.  It must also set it's superview
     // to need display whenever it needs display.
     tmp1 = mapView.superview;
-    tmp2 = [mapView retain];
+    tmp2 = mapView;
     [tmp2 removeFromSuperview];
     [tmp1 addSubview:tmp2 positioned:NSWindowBelow relativeTo:nil];
-    [tmp2 release];
 
 #ifdef __APPLE_CPP__
     // We don't want to have to validate the items like we do menu items.
@@ -338,8 +337,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Can't change world while game is in progress.
     AssertGameState (gs_no_game);
 
-    SNRelease (world);
-    world = [newWorld retain];
+    world = newWorld;
 
     mapView.countryArray = world.allCountries.allObjects;
 
@@ -354,15 +352,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Can't change the rules of a game in progress.
     AssertGameState (gs_no_game);
 
-    SNRelease (configuration);
-    configuration = [newGameConfiguration retain];
-}
-
-//----------------------------------------------------------------------
-
-- (GameState) gameState
-{
-    return gameState;
+    configuration = newGameConfiguration;
 }
 
 //======================================================================
@@ -452,7 +442,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     NSAssert (players[number] == nil, @"Already have a player in that slot.");
     //NSAssert ([type isKindOfClass:[RiskPlayer class]] == YES, @"Player class must be a subclass of RiskPlayer.");
     
-    players[number] = [aPlayer retain];
+    players[number] = aPlayer;
     playersActive[number] = YES;
     activePlayerCount++;
 
@@ -1976,7 +1966,6 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             }
 
             // Best to autorelease, especially for the Human player.
-            [players[number] autorelease];
             players[number] = nil;
         }
 

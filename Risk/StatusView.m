@@ -69,8 +69,6 @@ static NSTextFieldCell *_textCell = nil;
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

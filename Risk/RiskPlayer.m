@@ -42,10 +42,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super init]) {
-        playerName = [aName retain];
+        playerName = [aName copy];
         playerNumber = number;
-        playerCards = [[NSMutableArray array] retain];
-        gameManager = [aManager retain];
+        playerCards = [[NSMutableArray alloc] init];
+        gameManager = aManager;
 
         attackMethod = AttackOnce;
         attackMethodValue = 1;
@@ -57,7 +57,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
         playerToolMenu = nil;
 
-        rng = [[SNRandom instance] retain];
+        rng = [SNRandom instance];
     }
 
     return self;
@@ -65,11 +65,6 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (void) dealloc
 {
-    SNRelease (playerName);
-    SNRelease (gameManager);
-    SNRelease (playerCards);
-    SNRelease (rng);
-
     if (consoleWindow != nil)
     {
         // What happens to a window that is already closed when it gets this message?
@@ -77,8 +72,6 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         [continueButton setEnabled:NO];
         [pauseForContinueButton setEnabled:NO];
     }
-
-    [super dealloc];
 }
 
 - (NSArray *) playerCards
@@ -444,7 +437,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 	
 	if (consoleMessageText != nil)
 	{
-		str = [[[NSMutableString alloc] initWithFormat:format arguments:ap] autorelease];
+		str = [[NSMutableString alloc] initWithFormat:format arguments:ap];
 		[str appendString:@"\n"];
 		
 		[consoleMessageText selectAll:nil];

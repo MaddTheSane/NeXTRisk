@@ -36,7 +36,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 + (instancetype) riskCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName
 {
-    return [[[RiskCard alloc] initCardType:aCardType withCountry:aCountry imageNamed:anImageName] autorelease];
+    return [[RiskCard alloc] initCardType:aCardType withCountry:aCountry imageNamed:anImageName];
 }
 
 //----------------------------------------------------------------------
@@ -46,38 +46,24 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
     NSBundle *thisBundle;
 
     if (self = [super init]) {
-        country = [aCountry retain]; // Country can be nil.
+        country = aCountry; // Country can be nil.
         cardType = aCardType;
         imageName = [anImageName copy];
 
         thisBundle = [NSBundle bundleForClass:[self class]];
         NSAssert (thisBundle != nil, @"Could not get this bundle.");
         if (imageName.pathExtension) {
-            NSString *newImageName = imageName.stringByDeletingPathExtension;
-            NSString *oldImageName = imageName;
-            imageName = [newImageName retain];
-            [oldImageName release];
+            imageName = imageName.stringByDeletingPathExtension;
         }
 
-        image = [[thisBundle imageForResource:imageName] retain];
+        image = [thisBundle imageForResource:imageName];
         if (!image) {
-            image = [[NSImage imageNamed:imageName] retain];
+            image = [NSImage imageNamed:imageName];
         }
         NSAssert1 (image != nil, @"Couldn't load image: '%@'", imageName);
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (country);
-    SNRelease (imageName);
-    SNRelease (image);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

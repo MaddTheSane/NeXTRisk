@@ -22,7 +22,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, copy) NSString *continentName;
-@property (readonly, retain) NSSet<Country*> *countries;
+@property (readonly, strong) NSSet<Country*> *countries;
 @property (readonly) int continentBonus;
 
 @property (readonly, copy) NSString *description;

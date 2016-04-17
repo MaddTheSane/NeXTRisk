@@ -85,7 +85,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         {
             NSLog (@"Could not load %@.", nibFile);
             SNRelease (gameConfiguration);
-            [super dealloc];
             return nil;
         }
 
@@ -105,11 +104,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-    SNRelease (gameConfiguration);
-    //SNRelease (boardSetup);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -208,7 +202,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           
       case 1: // Human
           imagePath = [thisBundle pathForResource:@"Human" ofType:@"tiff"];
-          image = [[[NSImage alloc] initByReferencingFile:imagePath] autorelease];
+          image = [NSImage imageNamed:@"Human"];
           aboutPlayerImageView.image = image;
 
           aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Human Player", tag + 1];
@@ -228,7 +222,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
           playerBundleInfo = playerBundle.infoDictionary;
           
           imagePath = [playerBundle pathForResource:playerBundleInfo[@"PlayerIcon"] ofType:nil];
-          image = [[[NSImage alloc] initByReferencingFile:imagePath] autorelease];
+          image = [NSImage imageNamed:playerBundleInfo[@"PlayerIcon"]];
           aboutPlayerImageView.image = image;
 
           playerTypeName = playerBundleInfo[@"PlayerTypeName"];
@@ -330,7 +324,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (void) createNewGame
 {
-    NSUserDefaults *defaults;
     RiskGameManager *gameManager;
     NSInteger ps[7];
     int l, playerCount;
@@ -383,7 +376,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     [gameManager startNewGame];
     
     riskPlayerBundles = [brain riskPlayerBundles];
-    defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     for (l = 1; l < 7; l++)
     {
@@ -396,7 +389,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
               break;
 
           case 1: // Human
-              player = [[[Human alloc] initWithPlayerName:name number:l gameManager:gameManager] autorelease];
+              player = [[Human alloc] initWithPlayerName:name number:l gameManager:gameManager];
               //[gameManager addPlayer:player number:l];
               break;
 
@@ -404,7 +397,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
               playerBundle = riskPlayerBundles[ps[l] - 2];
               playerClass = playerBundle.principalClass;
               //NSAssert ([playerClass isKindOfClass:[RiskPlayer class]] == YES, @"Player class must be a subclass of RiskPlayer.");
-              player = [[[playerClass alloc] initWithPlayerName:name number:l gameManager:gameManager] autorelease];
+              player = [[playerClass alloc] initWithPlayerName:name number:l gameManager:gameManager];
               //[gameManager addPlayer:player number:l];
               break;
         }

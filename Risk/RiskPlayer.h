@@ -54,7 +54,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
     // For convenient access to a random number generator
     SNRandom *rng;
 }
-@property (readonly, retain) RiskGameManager *gameManager;
+@property (readonly, strong) RiskGameManager *gameManager;
 
 /// Initializes a newly allocated \c RiskPlayer with the given name and
 /// number.  The controlling game manager is also saved so that the
@@ -81,7 +81,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 - (void) addCardToHand:(RiskCard *)newCard;
 - (void) removeCardFromHand:(RiskCard *)aCard;
 
-@property (readonly, retain) SNRandom *rng;
+@property (readonly, strong) SNRandom *rng;
 
 /// The player should call this function at the end of certain phases in
 /// order to continue game play.  This is required, as interactive

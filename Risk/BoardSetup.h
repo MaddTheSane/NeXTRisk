@@ -50,11 +50,8 @@ extern NSString *const RiskBoardSetupShowCardSetCountsChangedNotification;
 - (void) revertOtherToDefaults;
 
 @property (nonatomic) CGFloat borderWidth;
-
-@property (nonatomic, retain) NSColor *regularBorderColor;
-
-@property (nonatomic, retain) NSColor *selectedBorderColor;
-
+@property (nonatomic, strong) NSColor *regularBorderColor;
+@property (nonatomic, strong) NSColor *selectedBorderColor;
 @property (nonatomic) BOOL showCardSetCounts;
 
 - (NSColor *) colorForPlayer:(Player)playerNumber;

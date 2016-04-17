@@ -30,9 +30,9 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, copy) NSString *countryName;
-@property (readonly, retain) CountryShape *countryShape;
+@property (readonly, strong) CountryShape *countryShape;
 @property (readonly, copy) NSString *continentName;
-@property (readonly) NSSet<Country*> *neighborCountries;
+@property (weak, readonly) NSSet<Country*> *neighborCountries;
 
 - (void) setAdjacentToCountry:(Country *)aCountry;
 - (void) resetAdjacentCountries;

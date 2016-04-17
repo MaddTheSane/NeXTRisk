@@ -19,9 +19,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context);
 
 - (instancetype)initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3 NS_DESIGNATED_INITIALIZER;
 
-@property (readonly, retain) RiskCard *card1;
-@property (readonly, retain) RiskCard *card2;
-@property (readonly, retain) RiskCard *card3;
+@property (readonly, strong) RiskCard *card1;
+@property (readonly, strong) RiskCard *card2;
+@property (readonly, strong) RiskCard *card3;
 
 @property (readonly) int wildcardCount;
 - (int) countryCountForPlayerNumber:(Player)number;

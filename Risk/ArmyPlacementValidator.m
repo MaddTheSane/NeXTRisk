@@ -36,7 +36,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 - (instancetype) initWithRiskWorld:(RiskWorld *)aWorld
 {
     if (self = [super init]) {
-    world = [aWorld retain];
+    world = aWorld;
 
     sourceCountry = nil;
     destinationCountry = nil;
@@ -52,21 +52,6 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) dealloc
-{
-    SNRelease (world);
-
-    SNRelease (sourceCountry);
-    SNRelease (destinationCountry);
-
-    SNRelease (primaryCountries);
-    SNRelease (secondaryCountries);
-
-    [super dealloc];
-}
-
-//----------------------------------------------------------------------
-
 - (void) _reset
 {
     SNRelease (sourceCountry);
@@ -74,20 +59,6 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
     SNRelease (primaryCountries);
     SNRelease (secondaryCountries);
-}
-
-//----------------------------------------------------------------------
-
-- (Country *) sourceCountry
-{
-    return sourceCountry;
-}
-
-//----------------------------------------------------------------------
-
-- (Country *) destinationCountry
-{
-    return destinationCountry;
 }
 
 //----------------------------------------------------------------------
@@ -117,8 +88,8 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     [self _reset];
     playerNumber = number;
     armyPlacementType = PlaceInTwoCountries;
-    sourceCountry = [source retain];
-    destinationCountry = [other retain];
+    sourceCountry = source;
+    destinationCountry = other;
 
     primaryCountries = [[NSMutableSet alloc] initWithObjects:source, other, nil];
 }
@@ -133,10 +104,10 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     [self _reset];
     playerNumber = number;
     armyPlacementType = PlaceInOneNeighborCountry;
-    sourceCountry = [source retain];
+    sourceCountry = source;
 
-    primaryCountries = [[NSMutableSet setWithObject:source] retain];
-    secondaryCountries = [[NSMutableSet setWithSet:[source ourNeighborCountries]] retain];
+    primaryCountries = [NSMutableSet setWithObject:source];
+    secondaryCountries = [[source ourNeighborCountries] mutableCopy];
 }
 
 //----------------------------------------------------------------------
@@ -149,9 +120,9 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     [self _reset];
     playerNumber = number;
     armyPlacementType = PlaceInAnyNeighborCountry;
-    sourceCountry = [source retain];
+    sourceCountry = source;
 
-    primaryCountries = [[NSMutableSet setWithSet:[source ourNeighborCountries]] retain];
+    primaryCountries = [NSMutableSet setWithSet:[source ourNeighborCountries]];
     [primaryCountries addObject:source];
 }
 
@@ -165,7 +136,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     [self _reset];
     playerNumber = number;
     armyPlacementType = PlaceInAnyConnectedCountry;
-    sourceCountry = [source retain];
+    sourceCountry = source;
 
     primaryCountries = [[source ourConnectedCountries] mutableCopy];
 }

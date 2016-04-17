@@ -33,6 +33,7 @@ typedef NS_ENUM(unsigned char, DPSUserPathOp) {
 	NSPoint point1;
 	NSPoint point2;
 	NSPoint point3;
+	//These aren't CGFloat to make decodeValue not mangle the double
 	float radius;
 	float angle1;
 	float angle2;

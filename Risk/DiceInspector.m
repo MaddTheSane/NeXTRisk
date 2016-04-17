@@ -25,18 +25,18 @@ static NSImage *_die6Image;
 
 struct image_names
 {
-    NSString *i_name;
-    NSImage **i_image;
+    CFStringRef i_name;
+    NSImage *__strong*i_image;
 };
 
 static struct image_names class_images[] =
 {
-    { @"Die1",    &_die1Image },
-    { @"Die2",    &_die2Image },
-    { @"Die3",    &_die3Image },
-    { @"Die4",    &_die4Image },
-    { @"Die5",    &_die5Image },
-    { @"Die6",    &_die6Image },
+    { CFSTR("Die1"),    &_die1Image },
+    { CFSTR("Die2"),    &_die2Image },
+    { CFSTR("Die3"),    &_die3Image },
+    { CFSTR("Die4"),    &_die4Image },
+    { CFSTR("Die5"),    &_die5Image },
+    { CFSTR("Die6"),    &_die6Image },
 };
 
 @implementation DiceInspector
@@ -77,11 +77,11 @@ static struct image_names class_images[] =
         // load class images
         for (l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
         {
-            imagePath = class_images[l].i_name;
+            imagePath = (__bridge NSString *)(class_images[l].i_name);
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
 
-            *(class_images[l].i_image) = [[NSImage imageNamed:imagePath] retain];
+            *(class_images[l].i_image) = [NSImage imageNamed:imagePath];
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
     }
@@ -102,7 +102,6 @@ static struct image_names class_images[] =
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
-            [super dealloc];
             return nil;
         }
 
@@ -118,13 +117,6 @@ static struct image_names class_images[] =
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------

@@ -61,7 +61,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 + (instancetype)riskWorldWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
 {
-    return [[[RiskWorld alloc] initWithContinents:theContinents countryNeighbors:neighbors cards:theCards] autorelease];
+    return [[RiskWorld alloc] initWithContinents:theContinents countryNeighbors:neighbors cards:theCards];
 }
 
 //----------------------------------------------------------------------
@@ -69,10 +69,10 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 - (instancetype)initWithContinents:(NSDictionary *)theContinents countryNeighbors:(NSArray *)neighbors cards:(NSArray *)theCards
 {
     if (self = [super init]) {
-        allCountries = [[NSMutableSet set] retain];
-        countryNeighbors = [neighbors retain];
-        continents = [theContinents retain];
-        cards = [theCards retain];
+        allCountries = [[NSMutableSet alloc] init];
+        countryNeighbors = neighbors;
+        continents = theContinents;
+        cards = theCards;
 
         [self _buildAllCountries];
     }
@@ -85,13 +85,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 - (void) dealloc
 {
     [self _disconnectCountries];
-
-    SNRelease (allCountries);
-    SNRelease (countryNeighbors);
-    SNRelease (continents);
-    SNRelease (cards);
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -190,9 +183,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         }
         
         cards = [tmpCards copy];
-        [countryDictionary release];
     } else {
-    continents = [[aDecoder decodeObject] retain];
+    continents = [aDecoder decodeObject];
 
     [self _buildAllCountries];
 
@@ -214,7 +206,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         country2 = countryDictionary[name2];
         [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
     }
-    countryNeighbors = [tmpCountryNeighbors retain];
+    countryNeighbors = tmpCountryNeighbors;
 
     [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
     for (l = 0; l < count; l++)
