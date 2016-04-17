@@ -34,7 +34,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="184"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="328" height="184"/>
+                                    <size key="minSize" width="327" height="184"/>
                                     <size key="maxSize" width="333" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -83,7 +83,7 @@ http://www.codefab.com/users/mferris/</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="328" height="184"/>
+                                    <size key="minSize" width="327" height="184"/>
                                     <size key="maxSize" width="333" height="10000000"/>
                                 </textView>
                             </subviews>
