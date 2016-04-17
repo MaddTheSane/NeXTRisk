@@ -1,0 +1,63 @@
+Risk by Mike Ferris
+===================
+
+This is the distribution for Risk version 0.98.
+
+Risk is an implementation of the board game of the same name, for
+Openstep and Rhapsody.  It supports up to six players, any number of
+which can be played by the computer.
+
+This is an update of the classic Nextstep game.  It should look and
+feel very much like the original.  The source now compiles and runs on
+both Openstep and Rhapsody.  It hasn't been compiled on Openstep/NT,
+but this shouldn't require many changes.
+
+Comments and suggestions are welcomed.
+
+- Steve Nygard <nygard@telusplanet.net>
+  December 18, 1997.
+
+
+New since 0.97
+--------------
+
+- Version 0.98 compiles and runs under Openstep and Rhapsody.  Old
+computer players are not compatible with this version, and due to
+internal changes they will require a bit more than just an Openstep
+conversion.
+
+- There is a World Info panel, which gives you the name of the world,
+and shows the name, number of countries, and bonus value for each
+continent.  The list may be sorted by double clicking the column
+title.
+
+- I haven't run this under ObjectAlloc, so there may be a few memory
+leaks.
+
+
+Not added to this version (or why this isn't 1.0)
+-------------------------------------------------
+
+- Better graphics: I would love to find someone willing to do some
+  graphics for me, but I haven't found anyone yet.
+
+- Different worlds: It would be relatively easy to have more worlds
+  than the standard layout.  Each world would have a name, a background
+  image, images for all of the cards, and data representing continents,
+  countries, and neighboring countries.  RiskUtil.app could be enhanced
+  to make this easier.  Worlds could then be bundles that are
+  dynamically loaded just like computer players.
+
+- More computer strategies:  There are a few more strategies that have
+  been created for the previous version, but they would need to be
+  updated to work with this version.
+
+- Saving games:  This should be quite easy, unless the following
+  feature is added.
+
+- Network multi-player option.  It might generate a lot of traffic if
+  you want all the players to have dynamic updates of the number of
+  armies in each country, but otherwise should be straight forward,
+  since there is very little information private to players.
+
+- Anything else you want to see (just let me know).

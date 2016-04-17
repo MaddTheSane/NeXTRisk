@@ -1,0 +1,86 @@
+Risk by Mike Ferris
+mferris@trirex.com  (Nextmail accepted)
+
+This is the distribution for Risk version 0.97.
+
+This readme file is included separately, in the directory created by unpacking the distribution file, and in the app wrapper itself.
+
+Risk is an implementation of the board game of the same name for the NeXT computer.  It supports up to six players, any number of which can be played by the computer.
+
+As of version 0.97, Risk is again free.  The shareware fee of $15 which was requested in version .95 has been lifted and the few people who paid me have been refunded.  Thank you to Tracy Miller for being the first paying registered user and the other few who sent their fees.  Also as an added bonus, a separate source distribution is being made.  Last version (.95) I promised more computer player strategies... sadly there aren't any new ones yet.  I will try, but I now have a new job which is keeping me busy.  Several things have changed though in this version.
+
+Where to look for more info
+---------------------------
+
+The Info panel (try clicking the icon buttons), and the Help files both contain further information about Risk.
+
+
+New since 0.95
+-------------
+This is primarily a policy change release.  The shareware fee has been lifted due to enormous indifference.
+
+- There are a few new things (that I can think of off hand).  There is now a preference for being able to tell by looking at the status view who has card sets to turn in.  You always have been able to tell how many cards you (and all other players) had by looking at the status view, but now if the preference is set the number of cards will display in white if there are three cards which make a set among the hand.  The reason this is a preference is because this can give you an unfair advantage when playing with the computer players.  (ie They DON'T know when you have a set to turn in.)
+
+- Another new feature is really a bug fix that nobody found.  It only occurs when you are trying to write a computer strategy of your own to use with Risk.  Prior to this version, if you tried to implement a computer strategy as a subclass of another strategy, you potentially had problems with the order in which Risk loaded them (the order was not guaranteed to be the same each time or even predictable).  Most concretely this meant that it was not really possible to use the Diagnostic class included with the release to develop strategies.  This is now fixed.  Risk now makes multiple passes at loading modules which fail the first time.  It keeps trying until it fails to load everything it tries.  The upshot is, that if Risk tries to load your player before loading another which yours is dependant on in the first pass, Risk will try again (after the dependant module has been loaded in the first pass).  This works recursively so you can depend on a class which depends on a class etc...
+
+- Also several memory leaks have been plugged.
+
+New since 0.9
+-------------
+
+There are loads of improvements, bug fixes, and new features, and I will mention only a few.
+
+- Computer players:  this version supports dynamically loaded computer player classes.  One strategy is included in this distribution, but it is possible to write your own too.  This is explained in the manual.  The included player is Chaotic, and it plays about as the name suggests.  Source code is included for the computer players in this release.  The needed header files for writing your own player are also included.
+
+- New fortify rules:  there are now four options for the rule to use while fortifying.  They are explained in the manual.
+
+- Manual:  there is now a comprehensive manual detailing everything about the game and implementation.  In particular it explains some of the less obvious interface stuff.
+
+- Defaults and Preferences:  there is now a preferences panel to set a couple of options.  Your chosen options are saved in the defaults database.  Risk also remembers the names and colors of players as well the rule settings from game to game (even after you quit).  If you like to play with random countries, 5 initial armies at a time, with the third card redemption rule, and the second fortify rule, Risk will remember this.
+
+- Speed improvements:  several things have been sped up considerably.  Particularly fortifying.
+
+- Dice Inspector panel:  a new panel allows you to see what the actual dice rolls were for each attack.  Some people thought Risk cheated.
+
+- many many more which you can notice for yourself.
+
+- a Suggestion menu item to facilitate communicating with me, the author.
+
+NOTE (A promise from Risk to you):  I, Risk.app promise NEVER to send anything (like mail) out from your machine without your specific say so.
+
+Not added to this version (or why this isn't 1.0)
+-------------------------------------------------
+
+- Better graphics:  I would love to find someone willing to do some graphics for me, but I haven't found anyone yet.
+
+- More computer strategies:  I want to include at least two more strategies in 1.0.
+
+- Saving games:  this actually probably won't make it into 1.0, but I do hope to do it someday.
+
+- Network multi-player option.
+
+- anything else you want to see (just let me know)
+
+
+From the info panel
+-------------------
+
+Risk is an implementation of the board game Risk by Parker Brothers.  It was written in Objective C on a Next Cube 040 running OS2.0.
+
+I am grateful to the following people for ideas and code:
+
+* Contemporary Design Studios and Gregor N. Purdy for his class Random1.1
+
+	Random
+	Version 1.1
+	1992 Feb 27
+	Written by Gregor N. Purdy
+	Copyright 1991, 1992 Contemporary Design Studios. All rights reserved.
+	
+	The entire distribution of Random 1.1 is included as per the author's requirements.  It can be found in the app wrapper (choose Open as Folder while Risk.app is selected in the Workspace).
+
+* Samuel G. Streeper for BackSpace on whose code the code to dynamically load computer player classes is modeled.
+
+* Michael Hawley for Opener on whose code the code to message Workspace and Mail was derived.  (Note: I do NOT send mail automatically from your machine.  The Suggestion item in the Info menu automates sending a suggestion)
+
+* Countless individuals from usenet and the readers of the NextDeveloper mailing list for miscellanious help.

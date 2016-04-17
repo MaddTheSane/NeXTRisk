@@ -1,0 +1,21 @@
+RiskUtil is the app used to generate the RiskWorld.data object
+archives.  It reads data from the following four text files:
+
+	CardData.txt
+	ContinentData.txt
+	CountryData.txt
+	CountryNeighbors.txt
+
+Their format should be pretty easy to understand.
+
+RiskUtil allows you to easily generate the neighbor data.  Just click
+on a source country and release over the destination country, and
+a connection will be made and shown on the map and in the neighbor list.
+Lines are shown between neighbors, with long lines having a different
+color to set them apart.  Connections may be removed by selecting a
+pair of neighbors in the list and using the Remove button.
+
+Use the "Write Text File" button to generate a new text file suitable
+for input, so you don't have to do this by hand or make all of the
+connections each time.  Use the "Save World" button to generate the
+RiskWorld.data file that Risk.app will use.
