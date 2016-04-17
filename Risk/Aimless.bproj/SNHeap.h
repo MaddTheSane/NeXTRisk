@@ -30,7 +30,7 @@
 {
     NSComparisonResult (*comparator_function)(id, id, void *);
     void *context;
-    id *data;
+    id __strong *  data;
     NSInteger current_size;
     NSInteger maximum_size;
 }

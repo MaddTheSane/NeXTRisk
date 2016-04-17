@@ -53,7 +53,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 + (instancetype) heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
 {
-    id newHeap;
+    SNHeap newHeap;
 
     newHeap = [[[SNHeap alloc] initUsingFunction:comparator context:aContext] autorelease];
 
@@ -65,13 +65,13 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - (instancetype) initUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)aContext
 {
     if (self = [super init]) {
-    comparator_function = comparator;
-    context = aContext;
-    maximum_size = 8;
+        comparator_function = comparator;
+        context = aContext;
+        maximum_size = 8;
 
-    data = (id *)malloc (maximum_size * sizeof (id));
-    NSAssert (data != NULL, @"Malloc() failed.");
-    current_size = 0;
+        data = (id *)malloc (maximum_size * sizeof (id));
+        NSAssert (data != NULL, @"Malloc() failed.");
+        current_size = 0;
     }
 
     return self;

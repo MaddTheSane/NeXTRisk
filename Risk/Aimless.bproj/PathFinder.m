@@ -39,7 +39,7 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
     NSInteger distance1, distance2;
     NSComparisonResult result;
 
-    nodeDictionary = (NSDictionary *)context;
+    nodeDictionary = (__bridge NSDictionary *)context;
     name1 = ((Country *)country1).countryName;
     name2 = ((Country *)country2).countryName;
 
@@ -138,11 +138,11 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
                   context:(void *)aContext
          distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
 {
-    return [[[PathFinder alloc] initWithRiskWorld:aWorld
+    return [[PathFinder alloc] initWithRiskWorld:aWorld
                                 fromCountry:source
                                 forCountries:anIsCountryAcceptableFunction
                                 context:aContext
-                                distanceFunction:aDistanceFunction] autorelease];
+                                distanceFunction:aDistanceFunction];
 }
 
 //----------------------------------------------------------------------
@@ -154,28 +154,17 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
    distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
 {
     if (self = [super init]) {
-    acceptableCountries = [[NSMutableSet set] retain];
-    nodeDictionary = [[NSMutableDictionary dictionary] retain];
+    acceptableCountries = [[NSMutableSet alloc] init];
+    nodeDictionary = [[NSMutableDictionary alloc] init];
     isCountryAcceptable = anIsCountryAcceptableFunction;
     context = aContext;
     distanceFunction = aDistanceFunction;
-    world = [aWorld retain];
+    world = aWorld;
 
     [self _buildShortestPathsFromCountry:source];
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    [acceptableCountries release];
-    [nodeDictionary release];
-    [world release];
-
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -209,7 +198,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     node.distance = 0;
 
 
-    countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:nodeDictionary];
+    countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
 
     countryEnumerator = [acceptableCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -244,7 +233,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     NSEnumerator *countryEnumerator;
     Country *country;
 
-    countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:nodeDictionary];
+    countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
     countryEnumerator = [acceptableCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {

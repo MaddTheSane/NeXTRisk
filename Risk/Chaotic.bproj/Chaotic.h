@@ -11,11 +11,7 @@
     NSMutableSet *attackingCountries;
 }
 
-+ (void) load;
-+ (void) initialize;
-
 - (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
-- (void) dealloc;
 
 //======================================================================
 // Subclass Responsibilities

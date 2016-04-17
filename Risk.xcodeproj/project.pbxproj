@@ -98,7 +98,7 @@
 		5537807D1CC1640600A2C08E /* Aimless.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780741CC1640600A2C08E /* Aimless.tiff */; };
 		5537807E1CC1640600A2C08E /* DNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780761CC1640600A2C08E /* DNode.m */; };
 		5537807F1CC1640600A2C08E /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780781CC1640600A2C08E /* PathFinder.m */; };
-		553780801CC1640600A2C08E /* SNHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537807A1CC1640600A2C08E /* SNHeap.m */; };
+		553780801CC1640600A2C08E /* SNHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537807A1CC1640600A2C08E /* SNHeap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		553780951CC1655300A2C08E /* Chaotic.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780921CC1655300A2C08E /* Chaotic.m */; };
 		553780961CC1655300A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
 		553780971CC1655300A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
@@ -1425,6 +1425,7 @@
 		5537806F1CC1639C00A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1438,6 +1439,7 @@
 		553780701CC1639C00A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1451,6 +1453,7 @@
 		5537808C1CC1642900A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1464,6 +1467,7 @@
 		5537808D1CC1642900A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";

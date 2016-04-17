@@ -397,7 +397,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
     // Contains the names of continents.
-    unoccupiedContinents = [[NSMutableSet set] retain];
+    unoccupiedContinents = [[NSMutableSet alloc] init];
 
     world = gameManager.world;
     continents = world.continents;
@@ -418,18 +418,6 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (initialCountryHeap);
-    SNRelease (attackingCountryHeap);
-    SNRelease (continentChoiceHeap);
-    SNRelease (continentChoiceArray);
-    
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------
@@ -533,7 +521,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
               NSMutableArray *remainingContinents;
               NSInteger count, index;
               
-              continentChoiceArray = [[NSMutableArray array] retain];
+              continentChoiceArray = [[NSMutableArray alloc] init];
               remainingContinents = [NSMutableArray arrayWithArray:world.continents.allValues];
               count = remainingContinents.count;
 
@@ -744,7 +732,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     best = [self continentWeAreClosestToControlling];
     [self logMessage:@"The best continent appears to be %@", best.continentName];
 
-    initialCountryHeap = [[SNHeap heapUsingFunction:minimumTroops context:NULL] retain];
+    initialCountryHeap = [[SNHeap alloc] initUsingFunction:minimumTroops context:NULL];
 
     countryEnumerator = [best.countries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -959,7 +947,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 
         // I'm not sure this heap function is working.  I think it means that if we take over a new
         // country, we have to redo it.  Possible take out all it's neighbors and re-insert them.
-        attackingCountryHeap = [[SNHeap heapUsingFunction:leastEnemyNeighbors context:NULL] retain];
+        attackingCountryHeap = [[SNHeap alloc] initUsingFunction:leastEnemyNeighbors context:NULL];
         [attackingCountryHeap insertObjectsFromEnumerator:[attackers objectEnumerator]];
     }
 

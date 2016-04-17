@@ -46,7 +46,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
     // Contains the names of continents.
-    unoccupiedContinents = [[NSMutableSet set] retain];
+    unoccupiedContinents = [[NSMutableSet alloc] init];
 
     world = gameManager.world;
     continents = world.continents;
@@ -56,16 +56,6 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     }
 
     return self;
-}
-
-//----------------------------------------------------------------------
-
-- (void) dealloc
-{
-    SNRelease (unoccupiedContinents);
-    SNRelease (attackingCountries);
-
-    [super dealloc];
 }
 
 //======================================================================
@@ -177,8 +167,8 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
     if (attackingCountries == nil)
     {
-        attackingCountries = [[NSMutableSet setWithSet:[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
-                                                             from:[self ourCountries]]] retain];
+        attackingCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
+                                                      from:[self ourCountries]] mutableCopy];
     }
 
     mustEndTurn = NO;
