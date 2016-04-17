@@ -12,12 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RiskCard : NSObject
-{
-    Country *country;
-    RiskCardType cardType;
-    NSString *imageName;
-    NSImage *image;
-}
 
 + (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:withCountry:imageNamed:) instead");
 

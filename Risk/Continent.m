@@ -95,14 +95,10 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (int) bonusArmiesForPlayer:(Player)number
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
-    BOOL flag;
     int bonus;
 
-    flag = YES;
-    countryEnumerator = [countries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    BOOL flag = YES;
+    for (Country *country in countries)
     {
         if (country.playerNumber != number)
         {
@@ -120,14 +116,9 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (NSSet *) countriesAlongBorder
 {
-    NSEnumerator *countryEnumerator;
-    NSMutableSet *resultingSet;
-    Country *country;
+    NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
 
-    resultingSet = [NSMutableSet set];
-
-    countryEnumerator = [countries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in countries)
     {
         if ([country bordersAnotherContinent] == YES)
             [resultingSet addObject:country];

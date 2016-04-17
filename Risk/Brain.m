@@ -28,7 +28,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     if (self == [Brain class])
     {
         defaults = [NSUserDefaults standardUserDefaults];
-        riskDefaults = [NSMutableDictionary dictionary];
+        riskDefaults = [[NSMutableDictionary alloc] init];
 
         riskDefaults[DK_DMakeActive] = @NO;
         riskDefaults[DK_DefaultPlayer1Type] = @"None";

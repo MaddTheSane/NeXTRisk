@@ -373,8 +373,6 @@ static struct image_names class_images[] =
 
 - (void) setupPanelForPlayer:(RiskPlayer *)player
 {
-    SNRelease (playerCards);
-
     currentPlayerNumber = player.playerNumber;
     playerCards = player.playerCards;
     [self resetPanel];

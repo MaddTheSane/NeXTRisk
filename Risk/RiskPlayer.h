@@ -43,7 +43,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
     AttackMethod attackMethod;
     int attackMethodValue;
 
-    __unsafe_unretained NSMenu *playerToolMenu;
+    __weak NSMenu *playerToolMenu;
 
     // Console
     IBOutlet NSWindow *consoleWindow;
@@ -68,7 +68,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// The Player N menu under the Tool menu for this player.  This
 /// allows players easy access for adding new menu items.  Each player
 /// always starts out with one menu item to display the Console window.
-@property (assign) NSMenu *playerToolMenu;
+@property (weak) NSMenu *playerToolMenu;
 
 /// The default attack method.  This is used mostly by the Human
 /// player.

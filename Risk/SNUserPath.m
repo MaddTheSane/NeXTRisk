@@ -42,10 +42,9 @@
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 	if (self = [super init]) {
-		
 		operations = [aDecoder decodeObject];
-		
 	}
+	
 	return self;
 }
 

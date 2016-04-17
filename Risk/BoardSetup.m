@@ -204,12 +204,9 @@ NSData *defaultsDataForColor (NSColor *color)
 
 - (void) revertPlayerColorsToDefaults
 {
-    NSUserDefaults *defaults;
-    int l;
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    defaults = [NSUserDefaults standardUserDefaults];
-
-    for (l = 1; l < 7; l++)
+    for (int l = 1; l < 7; l++)
     {
         SNRelease (playerColors[l]);
     }

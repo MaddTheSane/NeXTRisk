@@ -36,15 +36,15 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 - (instancetype) initWithRiskWorld:(RiskWorld *)aWorld
 {
     if (self = [super init]) {
-    world = aWorld;
+        world = aWorld;
 
-    sourceCountry = nil;
-    destinationCountry = nil;
+        sourceCountry = nil;
+        destinationCountry = nil;
 
-    armyPlacementType = PlaceInAnyCountry;
-    playerNumber = 0;
-    primaryCountries = nil;
-    secondaryCountries = nil;
+        armyPlacementType = PlaceInAnyCountry;
+        playerNumber = 0;
+        primaryCountries = nil;
+        secondaryCountries = nil;
     }
 
     return self;
@@ -122,7 +122,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     armyPlacementType = PlaceInAnyNeighborCountry;
     sourceCountry = source;
 
-    primaryCountries = [NSMutableSet setWithSet:[source ourNeighborCountries]];
+    primaryCountries = [[source ourNeighborCountries] mutableCopy];
     [primaryCountries addObject:source];
 }
 
@@ -165,9 +165,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 - (BOOL) placeArmies:(int)count inCountry:(Country *)target
 {
-    BOOL valid;
-
-    valid = [self validatePlacement:target];
+    BOOL valid = [self validatePlacement:target];
 
     if (valid == YES)
     {

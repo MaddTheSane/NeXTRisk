@@ -396,25 +396,25 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     int l;
 
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
-    // Contains the names of continents.
-    unoccupiedContinents = [[NSMutableSet alloc] init];
+        // Contains the names of continents.
+        unoccupiedContinents = [[NSMutableSet alloc] init];
 
-    world = gameManager.world;
-    continents = world.continents;
+        world = gameManager.world;
+        continents = world.continents;
 
-    [unoccupiedContinents addObjectsFromArray:continents.allKeys];
+        [unoccupiedContinents addObjectsFromArray:continents.allKeys];
 
-    for (l = 0; l < 7; l++)
-    {
-        attackedCount[l] = 0;
-        lostCountryCount[l] = 0;
-        brokenContinentCount[l] = 0;
-    }
+        for (l = 0; l < 7; l++)
+        {
+            attackedCount[l] = 0;
+            lostCountryCount[l] = 0;
+            brokenContinentCount[l] = 0;
+        }
 
-    initialCountryHeap = nil;
-    attackingCountryHeap = nil;
+        initialCountryHeap = nil;
+        attackingCountryHeap = nil;
 
-    primaryChoice = ChooseAdjacentToCurrentCountries;
+        primaryChoice = ChooseAdjacentToCurrentCountries;
     }
 
     return self;

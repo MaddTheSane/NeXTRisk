@@ -45,14 +45,14 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSDictionary<NSString*,Continent *> *continents;
 
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
-    // Contains the names of continents.
-    unoccupiedContinents = [[NSMutableSet alloc] init];
+        // Contains the names of continents.
+        unoccupiedContinents = [[NSMutableSet alloc] init];
 
-    world = gameManager.world;
-    continents = world.continents;
+        world = gameManager.world;
+        continents = world.continents;
 
-    [unoccupiedContinents addObjectsFromArray:continents.allKeys];
-    attackingCountries = nil;
+        [unoccupiedContinents addObjectsFromArray:continents.allKeys];
+        attackingCountries = nil;
     }
 
     return self;

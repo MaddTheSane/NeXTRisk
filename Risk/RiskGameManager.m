@@ -52,6 +52,8 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 @synthesize gameConfiguration = configuration;
 @synthesize world;
 @synthesize gameState;
+@synthesize currentPlayerNumber;
+@synthesize activePlayerCount;
 
 + (void) initialize
 {
@@ -135,26 +137,6 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     [self stopGame];
-
-    SNRelease (world);
-
-    SNRelease (phaseComputerMove);
-    SNRelease (phasePlaceArmies);
-    SNRelease (phaseAttack);
-    SNRelease (phaseFortify);
-    SNRelease (phaseChooseCountries);
-
-    SNRelease (cardDeck);
-    SNRelease (discardDeck);
-    SNRelease (cardPanelController);
-
-    SNRelease (armyPlacementValidator);
-
-    SNRelease (diceInspector);
-    SNRelease (worldInfoController);
-
-    SNRelease (rng);
-
 }
 
 //----------------------------------------------------------------------
@@ -364,20 +346,6 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     NSAssert (number > 0 && number < MAX_PLAYERS, @"Player number out of range.");
 
     return playersActive[number];
-}
-
-//----------------------------------------------------------------------
-
-- (Player) currentPlayerNumber
-{
-    return currentPlayerNumber;
-}
-
-//----------------------------------------------------------------------
-
-- (int) activePlayerCount
-{
-    return activePlayerCount;
 }
 
 //----------------------------------------------------------------------
@@ -1011,13 +979,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
-    FortifyRule fortifyRule;
-    int count;
 
     //NSLog (@"source: %@", source);
 
     AssertGameState (gs_fortify);
-    count = source.movableTroopCount;
+    int count = source.movableTroopCount;
 
     if (count < 1)
         return;
@@ -1026,7 +992,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
     // Need to base this on current fortify rule
 
-    fortifyRule = configuration.fortifyRule;
+    FortifyRule fortifyRule = configuration.fortifyRule;
     switch (fortifyRule)
     {
       case OneToOneNeighbor:
