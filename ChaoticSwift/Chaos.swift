@@ -13,7 +13,7 @@ public class Chaos: RiskPlayer {
 	private var unoccupiedContinents = Set<String>()
 	private var attackingCountries = Set<Country>()
 
-	override public init!(playerName aName: String!, number: Player, gameManager aManager: RiskGameManager!) {
+	override public init(playerName aName: String, number: Player, gameManager aManager: RiskGameManager) {
 		super.init(playerName: aName, number: number, gameManager: aManager)
 		
 		let world = gameManager.world
@@ -107,7 +107,7 @@ public class Chaos: RiskPlayer {
 	}
 
 	/// Move forward half of the remaining armies.
-	public override func moveAttackingArmies(count: Int32, between source: Country!, _ destination: Country!) {
+	public override func moveAttackingArmies(count: Int32, between source: Country, _ destination: Country) {
 		// Move half the armies to destination
 		// For odd count, leave extra army in the source country.
 		let tmp = count / 2;
@@ -138,7 +138,7 @@ public class Chaos: RiskPlayer {
 
 	/// Try to find a friendly neighbor who has unfriendly neighbors
 	/// Otherwise, pick random country.
-	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country!) {
+	public override func placeFortifyingArmies(count: Int32, fromCountry source: Country) {
 		var destination: Country?
 		
 		let ourNeighborCountries = source.ourNeighborCountries

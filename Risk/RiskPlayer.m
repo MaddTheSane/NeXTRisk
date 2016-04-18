@@ -325,24 +325,14 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (NSSet *) allOurCardSets
 {
     NSMutableSet *allCardSets = [NSMutableSet set];
-    NSInteger i, j, k;
-    NSInteger count;
-    RiskCard *card1, *card2, *card3;
-    CardSet *cardSet;
     
-    count = playerCards.count;
-    
-    for (i = 0; i < count; i++)
+    for (RiskCard *card1 in playerCards)
     {
-        card1 = playerCards[i];
-        for (j = i + 1; j < count; j++)
+        for (RiskCard *card2 in playerCards)
         {
-            card2 = playerCards[j];
-            for (k = j + 1; k < count; k++)
+            for (RiskCard *card3 in playerCards)
             {
-                card3 = playerCards[k];
-                
-                cardSet = [CardSet cardSet:card1:card2:card3];
+                CardSet *cardSet = [CardSet cardSet:card1:card2:card3];
                 if (cardSet != nil)
                     [allCardSets addObject:cardSet];
             }

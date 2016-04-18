@@ -9,7 +9,7 @@
 
 @class RiskCard;
 
-NSComparisonResult compareCardSetValues (id __nonnull object1, id __nonnull object2, void * __nullable context);
+NSComparisonResult compareCardSetValues (id __nullable object1, id __nullable object2, void * __nullable context);
 
 @interface CardSet : NSObject
 

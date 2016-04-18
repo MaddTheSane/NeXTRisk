@@ -105,6 +105,8 @@ typedef struct _AttackResult
 
 int RiskInitialArmyCountForPlayers (int playerCount);
 
+NS_ASSUME_NONNULL_BEGIN
+
 InitialCountryDistribution initialCountryDistributionFromString (NSString *str);
 InitialArmyPlacement initialArmyPlacementFromString (NSString *str);
 CardSetRedemption cardSetRedemptionFromString (NSString *str);
@@ -119,6 +121,7 @@ NSString *NSStringFromRiskCardType (RiskCardType cardType);
 NSString *NSStringFromGameState (GameState gameState);
 NSString *gameStateInfo (GameState gameState);
 
+NS_ASSUME_NONNULL_END
 
 // Default Key (DK) / Default Value (DV)
 

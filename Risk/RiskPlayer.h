@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_OPTIONS(uint32_t, CountryFlags) {
 	CountryFlagsPlayerNone = 1 << 0,
 	CountryFlagsPlayerOne = 1 << 1,
@@ -31,29 +33,30 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// computer.  It has generally useful methods, and defines methods
 /// the subclasses must implement to provide behavior for distinct
 /// parts of game play.
-@interface RiskPlayer : NSObject <NSWindowDelegate>
-{
+@interface RiskPlayer : NSObject <NSWindowDelegate> {
+@protected
     NSString *playerName;
     Player playerNumber;
     NSMutableArray<RiskCard*> *playerCards;
-
+    
     RiskGameManager *gameManager;
-
+    
     // Default attack method (and optional value)
     AttackMethod attackMethod;
     int attackMethodValue;
-
+    
     __weak NSMenu *playerToolMenu;
-
+    
     // Console
     IBOutlet NSWindow *consoleWindow;
     IBOutlet NSTextView *consoleMessageText;
     IBOutlet NSButton *continueButton;
     IBOutlet NSButton *pauseForContinueButton;
-
+    
     // For convenient access to a random number generator
     SNRandom *rng;
 }
+
 @property (readonly, strong) RiskGameManager *gameManager;
 
 /// Initializes a newly allocated \c RiskPlayer with the given name and
@@ -68,7 +71,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// The Player N menu under the Tool menu for this player.  This
 /// allows players easy access for adding new menu items.  Each player
 /// always starts out with one menu item to display the Console window.
-@property (weak) NSMenu *playerToolMenu;
+@property (weak, nullable) NSMenu *playerToolMenu;
 
 /// The default attack method.  This is used mostly by the Human
 /// player.
@@ -154,7 +157,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 ///     2) with the most countries that this player occupies
 /// It does not take into account things like the proximity of the
 /// countries to the action or anything amorphous like that.
-@property (readonly, strong) CardSet *bestSet;
+@property (readonly, strong, nullable) CardSet *bestSet;
 /// Returns \c YES if this player has at least one valid card set.
 @property (readonly) BOOL canTurnInCardSet;
 
@@ -294,3 +297,5 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 - (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
 @end
+
+NS_ASSUME_NONNULL_END

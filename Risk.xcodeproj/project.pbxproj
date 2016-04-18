@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.xib */; };
 		551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
+		551098191CC56F0F00DE6DFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551098181CC56F0F00DE6DFE /* AppDelegate.swift */; };
+		5510981B1CC56F0F00DE6DFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5510981A1CC56F0F00DE6DFE /* Assets.xcassets */; };
+		5510981E1CC56F1000DE6DFE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5510981C1CC56F1000DE6DFE /* MainMenu.xib */; };
+		551098251CC56F2400DE6DFE /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551251D81CC2229A000E7A52 /* InfoPanel.xib */; };
 		551251E21CC22525000E7A52 /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		551251E31CC22525000E7A52 /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -109,6 +113,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		551098231CC56F1E00DE6DFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
 		551251E41CC22525000E7A52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
@@ -207,6 +218,11 @@
 
 /* Begin PBXFileReference section */
 		551098101CC563FE00DE6DFE /* RKImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RKImages.xcassets; sourceTree = "<group>"; };
+		551098161CC56F0F00DE6DFE /* Risk World Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Risk World Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		551098181CC56F0F00DE6DFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5510981A1CC56F0F00DE6DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5510981D1CC56F1000DE6DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5510981F1CC56F1000DE6DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
@@ -372,6 +388,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		551098131CC56F0F00DE6DFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551098251CC56F2400DE6DFE /* RiskKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55377EA61CC15AC900A2C08E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +503,17 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		551098171CC56F0F00DE6DFE /* Risk World Maker */ = {
+			isa = PBXGroup;
+			children = (
+				551098181CC56F0F00DE6DFE /* AppDelegate.swift */,
+				5510981A1CC56F0F00DE6DFE /* Assets.xcassets */,
+				5510981C1CC56F1000DE6DFE /* MainMenu.xib */,
+				5510981F1CC56F1000DE6DFE /* Info.plist */,
+			);
+			path = "Risk World Maker";
+			sourceTree = "<group>";
+		};
 		551251EC1CC2D0E1000E7A52 /* Additional Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +532,7 @@
 				553780901CC1645000A2C08E /* Chaotic */,
 				553780A71CC1966300A2C08E /* RiskKit */,
 				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
+				551098171CC56F0F00DE6DFE /* Risk World Maker */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -511,6 +547,7 @@
 				5537808E1CC1642900A2C08E /* Chaotic.riskplayer */,
 				553780A61CC1966300A2C08E /* RiskKit.framework */,
 				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
+				551098161CC56F0F00DE6DFE /* Risk World Maker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -762,6 +799,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		551098151CC56F0F00DE6DFE /* Risk World Maker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 551098201CC56F1000DE6DFE /* Build configuration list for PBXNativeTarget "Risk World Maker" */;
+			buildPhases = (
+				551098121CC56F0F00DE6DFE /* Sources */,
+				551098131CC56F0F00DE6DFE /* Frameworks */,
+				551098141CC56F0F00DE6DFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				551098241CC56F1E00DE6DFE /* PBXTargetDependency */,
+			);
+			name = "Risk World Maker";
+			productName = "Risk World Maker";
+			productReference = 551098161CC56F0F00DE6DFE /* Risk World Maker.app */;
+			productType = "com.apple.product-type.application";
+		};
 		55377EA81CC15AC900A2C08E /* Risk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55377EBA1CC15AC900A2C08E /* Build configuration list for PBXNativeTarget "Risk" */;
@@ -883,9 +938,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SN;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
+					551098151CC56F0F00DE6DFE = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					55377EA81CC15AC900A2C08E = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -922,11 +981,21 @@
 				553780811CC1642900A2C08E /* Chaotic */,
 				553780A51CC1966300A2C08E /* RiskKit */,
 				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
+				551098151CC56F0F00DE6DFE /* Risk World Maker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		551098141CC56F0F00DE6DFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5510981B1CC56F0F00DE6DFE /* Assets.xcassets in Resources */,
+				5510981E1CC56F1000DE6DFE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55377EA71CC15AC900A2C08E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1002,6 +1071,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		551098121CC56F0F00DE6DFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551098191CC56F0F00DE6DFE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55377EA51CC15AC900A2C08E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1089,6 +1166,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		551098241CC56F1E00DE6DFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 551098231CC56F1E00DE6DFE /* PBXContainerItemProxy */;
+		};
 		551251E51CC22525000E7A52 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 553780A51CC1966300A2C08E /* RiskKit */;
@@ -1132,6 +1214,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5510981C1CC56F1000DE6DFE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5510981D1CC56F1000DE6DFE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		551251D81CC2229A000E7A52 /* InfoPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1223,6 +1313,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		551098211CC56F1000DE6DFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Risk World Maker/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		551098221CC56F1000DE6DFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Risk World Maker/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		55377EB81CC15AC900A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1484,6 +1601,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		551098201CC56F1000DE6DFE /* Build configuration list for PBXNativeTarget "Risk World Maker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				551098211CC56F1000DE6DFE /* Debug */,
+				551098221CC56F1000DE6DFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
