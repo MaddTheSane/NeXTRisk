@@ -37,16 +37,16 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     if (self = [super init]) {
         world = aWorld;
-
+        
         sourceCountry = nil;
         destinationCountry = nil;
-
+        
         armyPlacementType = PlaceInAnyCountry;
         playerNumber = 0;
         primaryCountries = nil;
         secondaryCountries = nil;
     }
-
+    
     return self;
 }
 
@@ -56,7 +56,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     SNRelease (sourceCountry);
     SNRelease (destinationCountry);
-
+    
     SNRelease (primaryCountries);
     SNRelease (secondaryCountries);
 }
@@ -75,7 +75,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     [self _reset];
     playerNumber = number;
     armyPlacementType = PlaceInAnyCountry;
-
+    
     primaryCountries = [[world countriesForPlayer:playerNumber] mutableCopy];
 }
 
@@ -90,7 +90,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     armyPlacementType = PlaceInTwoCountries;
     sourceCountry = source;
     destinationCountry = other;
-
+    
     primaryCountries = [[NSMutableSet alloc] initWithObjects:source, other, nil];
 }
 
@@ -105,7 +105,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     playerNumber = number;
     armyPlacementType = PlaceInOneNeighborCountry;
     sourceCountry = source;
-
+    
     primaryCountries = [NSMutableSet setWithObject:source];
     secondaryCountries = [[source ourNeighborCountries] mutableCopy];
 }
@@ -121,7 +121,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     playerNumber = number;
     armyPlacementType = PlaceInAnyNeighborCountry;
     sourceCountry = source;
-
+    
     primaryCountries = [[source ourNeighborCountries] mutableCopy];
     [primaryCountries addObject:source];
 }
@@ -137,7 +137,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     playerNumber = number;
     armyPlacementType = PlaceInAnyConnectedCountry;
     sourceCountry = source;
-
+    
     primaryCountries = [[source ourConnectedCountries] mutableCopy];
 }
 
@@ -146,9 +146,9 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 - (BOOL) validatePlacement:(Country *)target
 {
     BOOL valid;
-
+    
     NSAssert ([target playerNumber] != 0, @"Expected army to be in target country.");
-
+    
     if (target.playerNumber != playerNumber)
     {
         valid = NO;
@@ -157,7 +157,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     {
         valid = [primaryCountries member:target] != nil || [secondaryCountries member:target] != nil;
     }
-
+    
     return valid;
 }
 
@@ -166,21 +166,21 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 - (BOOL) placeArmies:(int)count inCountry:(Country *)target
 {
     BOOL valid = [self validatePlacement:target];
-
+    
     if (valid == YES)
     {
         // Place the armies
         NSAssert ([target playerNumber] != 0, @"Expected army to be in target country.");
-
+        
         [target addTroops:count];
-
+        
         if (armyPlacementType == PlaceInOneNeighborCountry && [secondaryCountries member:target] != nil)
         {
             [primaryCountries addObject:target];
             [secondaryCountries removeAllObjects];
         }
     }
-
+    
     return valid;
 }
 

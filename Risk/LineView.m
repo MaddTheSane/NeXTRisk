@@ -23,19 +23,19 @@
 {
     CGFloat mp, begin, end;
     NSRect boundsRect = self.bounds;
-	
+    
     NSDrawWhiteBezel (boundsRect, boundsRect);
     mp = NSMidY(boundsRect);
     begin = boundsRect.origin.x + 2;
     end = boundsRect.origin.x + boundsRect.size.width - 2;
-
-	[[NSColor blackColor] set];
-	NSBezierPath *path = [NSBezierPath bezierPath];
-	path.lineWidth = lineWidth;
-	[path moveToPoint:NSMakePoint(begin, mp)];
-	[path lineToPoint:NSMakePoint(end, mp)];
-	[path closePath];
-	[path stroke];
+    
+    [[NSColor blackColor] set];
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    path.lineWidth = lineWidth;
+    [path moveToPoint:NSMakePoint(begin, mp)];
+    [path lineToPoint:NSMakePoint(end, mp)];
+    [path closePath];
+    [path stroke];
 }
 
 @end

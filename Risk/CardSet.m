@@ -26,11 +26,11 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     CardSet *cardSet1, *cardSet2;
     int wildcardCount1, wildcardCount2;
     int countryCount1, countryCount2;
-
+    
     number = (Player)context;
     cardSet1 = object1;
     cardSet2 = object2;
-
+    
     if (cardSet1 == nil && cardSet2 == nil)
     {
         result = NSOrderedSame;
@@ -47,13 +47,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     {
         wildcardCount1 = [cardSet1 wildcardCount];
         wildcardCount2 = [cardSet2 wildcardCount];
-
+        
         if (wildcardCount1 == wildcardCount2)
         {
             // Otherwise, compare number of countries owned by player.
             countryCount1 = [cardSet1 countryCountForPlayerNumber:number];
             countryCount2 = [cardSet2 countryCountForPlayerNumber:number];
-
+            
             if (countryCount1 == countryCount2)
             {
                 result = NSOrderedSame;
@@ -69,7 +69,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
             result = (wildcardCount1 < wildcardCount2) ? NSOrderedAscending : NSOrderedDescending;
         }
     }
-
+    
     return result;
 }
 
@@ -97,7 +97,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 {
     RiskCardType c1, c2, c3;
     BOOL valid;
-
+    
     if (aCard1 == nil || aCard2 == nil || aCard3 == nil)
     {
         valid = NO;
@@ -107,7 +107,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
         c1 = aCard1.cardType;
         c2 = aCard2.cardType;
         c3 = aCard3.cardType;
-
+        
         if (c1 == Wildcard || c2 == Wildcard || c3 == Wildcard)
         {
             valid = YES;
@@ -125,7 +125,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
             valid = NO;
         }
     }
-
+    
     return valid;
 }
 
@@ -145,12 +145,12 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
         {
             return nil;
         }
-
+        
         card1 = aCard1;
         card2 = aCard2;
         card3 = aCard3;
     }
-
+    
     return self;
 }
 
@@ -159,18 +159,18 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 - (int) wildcardCount
 {
     int count;
-
+    
     count = 0;
-
+    
     if (card1.cardType == Wildcard)
         count++;
-
+    
     if (card2.cardType == Wildcard)
         count++;
-
+    
     if (card3.cardType == Wildcard)
         count++;
-
+    
     return count;
 }
 
@@ -179,18 +179,18 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 - (int) countryCountForPlayerNumber:(Player)number
 {
     int count;
-
+    
     count = 0;
-
+    
     if (card1.country.playerNumber == number)
         count++;
-
+    
     if (card2.country.playerNumber == number)
         count++;
-
+    
     if (card3.country.playerNumber == number)
         count++;
-
+    
     return count;
 }
 

@@ -40,7 +40,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         countries = someCountries;
         continentBonus = bonus;
     }
-
+    
     return self;
 }
 
@@ -52,9 +52,9 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-	[aCoder encodeObject:continentName forKey:kContinentNameKey];
-	[aCoder encodeObject:countries forKey:kCountriesKey];
-	[aCoder encodeInt:continentBonus forKey:kContinentBonusKey];
+    [aCoder encodeObject:continentName forKey:kContinentNameKey];
+    [aCoder encodeObject:countries forKey:kCountriesKey];
+    [aCoder encodeInt:continentBonus forKey:kContinentBonusKey];
 }
 
 //----------------------------------------------------------------------
@@ -72,7 +72,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
             [aDecoder decodeValueOfObjCType:@encode (int) at:&continentBonus];
         }
     }
-
+    
     return self;
 }
 
@@ -88,7 +88,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"<Continent: name = %@, bonus = %d, countries = %@",
-                     continentName, continentBonus, countries];
+            continentName, continentBonus, countries];
 }
 
 //----------------------------------------------------------------------
@@ -96,7 +96,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (int) bonusArmiesForPlayer:(Player)number
 {
     int bonus;
-
+    
     BOOL flag = YES;
     for (Country *country in countries)
     {
@@ -106,9 +106,9 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
             break;
         }
     }
-
+    
     bonus = (flag == YES) ? continentBonus : 0;
-
+    
     return bonus;
 }
 
@@ -117,13 +117,13 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 - (NSSet *) countriesAlongBorder
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
-
+    
     for (Country *country in countries)
     {
         if ([country bordersAnotherContinent] == YES)
             [resultingSet addObject:country];
     }
-
+    
     return resultingSet;
 }
 

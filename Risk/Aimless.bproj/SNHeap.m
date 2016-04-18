@@ -54,9 +54,9 @@ static inline NSInteger SNParentIndex (NSInteger n)
 + (instancetype) heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
 {
     SNHeap *newHeap;
-
+    
     newHeap = [[[SNHeap alloc] initUsingFunction:comparator context:aContext] autorelease];
-
+    
     return newHeap;
 }
 
@@ -68,12 +68,12 @@ static inline NSInteger SNParentIndex (NSInteger n)
         comparator_function = comparator;
         context = aContext;
         maximum_size = 8;
-
+        
         data = (id *)malloc (maximum_size * sizeof (id));
         NSAssert (data != NULL, @"Malloc() failed.");
         current_size = 0;
     }
-
+    
     return self;
 }
 
@@ -89,10 +89,10 @@ static inline NSInteger SNParentIndex (NSInteger n)
         {
             [data[l] autorelease];
         }
-
+        
         free (data);
     }
-
+    
     [super dealloc];
 }
 
@@ -107,24 +107,24 @@ static inline NSInteger SNParentIndex (NSInteger n)
     NSInteger l;
     NSInteger r;
     NSInteger smallest;
-
+    
     l = SNLeftIndex (i);
     r = SNRightIndex (i);
-
+    
     if (l < current_size && comparator_function (data[l], data[i], context) == NSOrderedAscending)
         smallest = l;
     else
         smallest = i;
-
+    
     if (r < current_size && comparator_function (data[r], data[smallest], context) == NSOrderedAscending)
         smallest = r;
-
+    
     if (smallest != i)
     {
         id tmp = data[i];
         data[i] = data[smallest];
         data[smallest] = tmp;
-
+        
         [self heapify:smallest];
     }
 }
@@ -136,13 +136,13 @@ static inline NSInteger SNParentIndex (NSInteger n)
     NSInteger i;
     id current;
     id parent;
-
+    
     //NSLog (@"before: current: %d, maximum: %d", current_size, maximum_size);
     if (current_size >= maximum_size)
     {
         // increase size
         id *tmp = (id *)malloc (maximum_size * 2 * sizeof (id));
-
+        
         NSAssert (tmp != NULL, @"Could not malloc() additional memory");
         memcpy (tmp, data, current_size * sizeof (id *));
         free (data);
@@ -150,22 +150,22 @@ static inline NSInteger SNParentIndex (NSInteger n)
         maximum_size *= 2;
     }
     //NSLog (@" after: current: %d, maximum: %d", current_size, maximum_size);
-
+    
     NSAssert (current_size < maximum_size, @"Too big!");
-
+    
     [anObject retain];
     
     i = current_size++;
     current = data[i] = anObject;
     parent = data[SNParentIndex (i)];
-
+    
     while (i > 0 && comparator_function (parent, current, context) == NSOrderedDescending)
     {
         data[i] = parent;
         i = SNParentIndex (i);
         parent = data[SNParentIndex (i)];
     }
-
+    
     data[i] = current;
 }
 
@@ -174,7 +174,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator
 {
     id object;
-
+    
     while (object = [objectEnumerator nextObject])
     {
         [self insertObject:object];
@@ -187,21 +187,21 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - extractObject
 {
     id min;
-
+    
     if (current_size > 0)
     {
         min = data[0];
         data[0] = data[current_size - 1];
         current_size--;
         [self heapify:0];
-
+        
         [min autorelease];
     }
     else
     {
         min = nil;
     }
-
+    
     return min;
 }
 
@@ -210,12 +210,12 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - firstObject
 {
     id min;
-
+    
     if (current_size > 0)
         min = data[0];
     else
         min = nil;
-
+    
     return min;
 }
 
@@ -243,7 +243,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - (void) heapifyFromObject:anObject
 {
     NSInteger l;
-
+    
     for (l = 0; l < current_size; l++)
     {
         if (data[l] == anObject)
@@ -260,7 +260,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 - (void) removeObject:anObject
 {
     NSInteger l;
-
+    
     for (l = 0; l < current_size; l++)
     {
         if (data[l] == anObject)
@@ -279,11 +279,11 @@ static inline NSInteger SNParentIndex (NSInteger n)
 {
     NSMutableArray *array;
     NSInteger l;
-
+    
     array = [NSMutableArray array];
     for (l = 0; l < current_size; l++)
         [array addObject:data[l]];
-
+    
     return array.description;
 }
 

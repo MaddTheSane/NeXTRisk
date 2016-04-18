@@ -34,21 +34,21 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 //----------------------------------------------------------------------
 
 - (instancetype) initWithCountryName:(NSString *)aName
-        continentName:(NSString *)aContinentName
-                shape:(CountryShape *)aCountryShape
-            continent:(RiskContinent)aContinent
+                       continentName:(NSString *)aContinentName
+                               shape:(CountryShape *)aCountryShape
+                           continent:(RiskContinent)aContinent
 {
     if (self = [super init]) {
-    name = [aName copy];
-    countryShape = aCountryShape;
-    continentName = [aContinentName copy];
-    neighborCountries = [[NSMutableSet alloc] init];
-
-    playerNumber = 0;
-    troopCount = 0;
-    unmovableTroopCount = 0;
+        name = [aName copy];
+        countryShape = aCountryShape;
+        continentName = [aContinentName copy];
+        neighborCountries = [[NSMutableSet alloc] init];
+        
+        playerNumber = 0;
+        troopCount = 0;
+        unmovableTroopCount = 0;
     }
-
+    
     return self;
 }
 
@@ -89,7 +89,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             name = [[aDecoder decodeObject] copy];
             countryShape = [aDecoder decodeObject];
             continentName = [[aDecoder decodeObject] copy];
-
+            
             int aTmp = 0;
             [aDecoder decodeValueOfObjCType:@encode (int) at:&aTmp];
             playerNumber = aTmp;
@@ -99,7 +99,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
         // World has encoded neighbors
         neighborCountries = [[NSMutableSet alloc] init];
     }
-
+    
     return self;
 }
 
@@ -138,7 +138,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     flag = NO;
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -149,7 +149,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             break;
         }
     }
-
+    
     return flag;
 }
 
@@ -196,11 +196,11 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (void) setPlayerNumber:(Player)aPlayerNumber
 {
     playerNumber = aPlayerNumber;
-
+    
     // These need to be reset when a country is captured.
     troopCount = 0;
     unmovableTroopCount = 0;
-
+    
     [self update];
 }
 
@@ -254,7 +254,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (void) update
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:CountryUpdatedNotification
-                                          object:self];
+                                                        object:self];
 }
 
 //======================================================================
@@ -265,21 +265,21 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 {
     NSMutableSet *connectedSet, *greySet, *tmpSet;
     Country *current;
-
+    
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
-
+    
     while ((current = [greySet anyObject]))
     {
         [greySet removeObject:current];
         [connectedSet addObject:current];
-
+        
         // Now, add neighbors:
         tmpSet = [NSMutableSet setWithSet:current.neighborCountries];
         [tmpSet minusSet:connectedSet];
         [greySet unionSet:tmpSet];
     }
-
+    
     return connectedSet;
 }
 
@@ -290,16 +290,16 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSMutableSet *ourNeighborCountries;
     NSEnumerator *countryEnumerator;
     Country *country;
-
+    
     ourNeighborCountries = [NSMutableSet set];
     countryEnumerator = [self.neighborCountries objectEnumerator];
-
+    
     while (country = [countryEnumerator nextObject])
     {
         if (country.playerNumber == playerNumber)
             [ourNeighborCountries addObject:country];
     }
-
+    
     return ourNeighborCountries;
 }
 
@@ -309,21 +309,21 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 {
     NSMutableSet *connectedSet, *greySet, *tmpSet;
     Country *current;
-
+    
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
-
+    
     while ((current = [greySet anyObject]))
     {
         [greySet removeObject:current];
         [connectedSet addObject:current];
-
+        
         // Now, add neighbors:
         tmpSet = [NSMutableSet setWithSet:[current ourNeighborCountries]];
         [tmpSet minusSet:connectedSet];
         [greySet unionSet:tmpSet];
     }
-
+    
     return connectedSet;
 }
 
@@ -334,16 +334,16 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSMutableSet *enemyNeighborCountries;
     NSEnumerator *countryEnumerator;
     Country *country;
-
+    
     enemyNeighborCountries = [NSMutableSet set];
     countryEnumerator = [self.neighborCountries objectEnumerator];
-
+    
     while (country = [countryEnumerator nextObject])
     {
         if (country.playerNumber != playerNumber)
             [enemyNeighborCountries addObject:country];
     }
-
+    
     return enemyNeighborCountries;
 }
 
@@ -354,14 +354,14 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     int count;
-
+    
     count = 0;
     countryEnumerator = [[self enemyNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
         count += country.troopCount;
     }
-
+    
     return count;
 }
 
@@ -372,14 +372,14 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     int count;
-
+    
     count = 0;
     countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
         count += country.troopCount;
     }
-
+    
     return count;
 }
 
@@ -392,7 +392,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     flag = NO;
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -403,7 +403,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             break;
         }
     }
-
+    
     return flag;
 }
 
@@ -414,7 +414,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     flag = NO;
     countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -425,7 +425,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             break;
         }
     }
-
+    
     return flag;
 }
 
@@ -450,7 +450,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     flag = YES;
     countryEnumerator = [self.neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -461,7 +461,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             break;
         }
     }
-
+    
     return flag;
 }
 
@@ -472,7 +472,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     flag = NO;
     countryEnumerator = [neighborCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -483,7 +483,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
             break;
         }
     }
-
+    
     return flag;
 }
 

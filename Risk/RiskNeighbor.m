@@ -46,7 +46,7 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
         country1 = firstCountry;
         country2 = secondCountry;
     }
-
+    
     return self;
 }
 

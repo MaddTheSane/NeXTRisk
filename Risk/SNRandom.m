@@ -34,19 +34,19 @@ static SNRandom *_instance = nil;
     NSUserDefaults *defaults;
     NSMutableDictionary *riskDefaults;
     BOOL flag;
-
+    
     if (self == [SNRandom class])
     {
         [self setVersion:SNRandom_VERSION];
-
+        
         // Optionally (defaults) seed here? or in +instance?
         defaults = [NSUserDefaults standardUserDefaults];
         riskDefaults = [NSMutableDictionary dictionary];
-
+        
         riskDefaults[DK_SeedRandom] = @YES;
-
+        
         [defaults registerDefaults:riskDefaults];
-
+        
         flag = [defaults boolForKey:DK_SeedRandom];
         if (flag == YES)
         {
@@ -64,7 +64,7 @@ static SNRandom *_instance = nil;
     {
         _instance = [[SNRandom alloc] init];
     }
-
+    
     return _instance;
 }
 

@@ -23,12 +23,12 @@ NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
     NSComparisonResult result;
-
+    
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
-
+    
     result = [continent1.continentName compare:continent2.continentName];
-
+    
     return result;
 }
 
@@ -39,13 +39,13 @@ NSInteger WIOrderContinentsByCountryCount (id object1, id object2, void *context
     Continent *continent1, *continent2;
     NSComparisonResult result;
     NSInteger count1, count2;
-
+    
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
-
+    
     count1 = continent1.countries.count;
     count2 = continent2.countries.count;
-
+    
     if (count1 < count2)
     {
         result = NSOrderedAscending;
@@ -58,7 +58,7 @@ NSInteger WIOrderContinentsByCountryCount (id object1, id object2, void *context
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -69,13 +69,13 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     Continent *continent1, *continent2;
     NSComparisonResult result;
     int count1, count2;
-
+    
     continent1 = (Continent *)object1;
     continent2 = (Continent *)object2;
-
+    
     count1 = continent1.continentBonus;
     count2 = continent2.continentBonus;
-
+    
     if (count1 < count2)
     {
         result = NSOrderedAscending;
@@ -88,7 +88,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -109,13 +109,13 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (void) awakeFromNib
 {
     NSImage *image;
-
+    
     //imagePath = [[NSBundle mainBundle] pathForImageResource:@"MiniWorldInfo.tiff"];
     //NSAssert (imagePath != nil, @"Couldn't find MiniWorldInfo.tiff");
-
+    
     image = [NSImage imageNamed:@"MiniWorldInfo"];
     NSAssert (image != nil, @"Couldn't load MiniWorldInfo");
-
+    
     worldInfoWindow.miniwindowImage = image;
 }
 
@@ -125,7 +125,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     BOOL loaded, okay;
     NSString *nibFile;
-
+    
     if (self = [super init]) {
         nibFile = @"WorldInfoPanel.nib";
         loaded = [NSBundle loadNibNamed:nibFile owner:self];
@@ -134,18 +134,18 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
             NSLog (@"Could not load %@.", nibFile);
             return nil;
         }
-
+        
         continentTable.doubleAction = @selector (reorder:);
         continentTable.target = self;
-
+        
         continents = nil;
         //world = nil;
-
+        
         okay = [worldInfoWindow setFrameAutosaveName:worldInfoWindow.title];
         if (okay == NO)
             NSLog (@"Could not set frame autosave name of World Info window.");
     }
-
+    
     return self;
 }
 
@@ -167,7 +167,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     }
 #if 0
     SNRelease (world);
-
+    
     world = [newWorld retain];
 #endif
     [continentTable reloadData];
@@ -185,7 +185,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (void) orderByName
 {
     NSArray *newOrder;
-
+    
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByName context:NULL];
@@ -199,7 +199,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (void) orderByCountryCount
 {
     NSArray *newOrder;
-
+    
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByCountryCount context:NULL];
@@ -213,7 +213,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (void) orderByBonusValue
 {
     NSArray *newOrder;
-
+    
     if (continents != nil)
     {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByBonusValue context:NULL];
@@ -227,9 +227,9 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (IBAction) reorder:(id)sender
 {
     NSString *identifier;
-
+    
     identifier = continentTable.tableColumns[continentTable.clickedColumn].identifier;
-
+    
     if ([identifier isEqualToString:@"ContinentName"])
     {
         [self orderByName];
@@ -251,10 +251,10 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
     NSInteger count = 0;
-
+    
     if (continents != nil)
         count = continents.count;
-
+    
     return count;
 }
 
@@ -265,14 +265,14 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     NSString *identifier;
     Continent *target;
     id value;
-
+    
     //NSParameterAssert (rowIndex >= 0 && rowIndex < [mes count]);
-
+    
     value = nil;
-
+    
     target = continents[rowIndex];
     identifier = aTableColumn.identifier;
-
+    
     if ([identifier isEqualToString:@"ContinentName"])
     {
         value = target.continentName;
@@ -285,7 +285,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     {
         value = @(target.continentBonus);
     }
-
+    
     return value;
 }
 

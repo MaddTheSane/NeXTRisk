@@ -39,7 +39,7 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
     if (self = [super init]) {
         point = aPoint;
     }
-
+    
     return self;
 }
 
@@ -67,7 +67,7 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
             point = [aDecoder decodePoint];
         }
     }
-
+    
     return self;
 }
 

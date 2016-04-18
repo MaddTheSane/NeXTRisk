@@ -30,7 +30,7 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
     if (self = [super initWithFrame:frameRect]) {
         datasource = nil;
     }
-
+    
     return self;
 }
 
@@ -44,15 +44,15 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
     NSPoint p1, p2;
     float xdelta;
     float xthresh;
-
+    
     [super drawRect:rect];
-
+    
     //NSLog (@"datasource: %@", datasource);
-
+    
     if (datasource != nil && [datasource respondsToSelector:@selector (riskNeighbors)] == YES)
     {
         xthresh = [self bounds].size.width / 2;
-
+        
         neighborArray = [datasource riskNeighbors];
         neighborEnumerator = [neighborArray objectEnumerator];
         while (riskNeighbor = [neighborEnumerator nextObject])

@@ -32,13 +32,13 @@ static NSImage *_boardBackingImage = nil;
     if (self == [RiskMapView class])
     {
         [self setVersion:RiskMapView_VERSION];
-
+        
         if ([NSBundle bundleForClass:self] == nil)
         {
             [[NSNotificationCenter defaultCenter] addObserver:self
-                                                  selector:@selector (loadClassImages)
-                                                  name:NSApplicationDidFinishLaunchingNotification
-                                                  object:NSApp];
+                                                     selector:@selector (loadClassImages)
+                                                         name:NSApplicationDidFinishLaunchingNotification
+                                                       object:NSApp];
         }
         else
         {
@@ -56,7 +56,7 @@ static NSImage *_boardBackingImage = nil;
     
     thisBundle = [NSBundle bundleForClass:self];
     NSAssert (thisBundle != nil, @"Could not get bundle.");
-
+    
     imagePath = [thisBundle pathForImageResource:BOARDBACKING];
     NSAssert1 (imagePath != nil, @"Could not find image: '%@'", BOARDBACKING);
     
@@ -78,30 +78,30 @@ static NSImage *_boardBackingImage = nil;
 {
     if (self = [super initWithFrame:frameRect]) {
         countryArray = nil;
-
+        
         currentScaleFactor = 1;
-
+        
         boardBackingImage = [_boardBackingImage copy];
-
+        
         delegate = nil;
         selectedCountry = nil;
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (countryUpdated:)
                                                      name:CountryUpdatedNotification
                                                    object:nil];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
                                                      name:RiskBoardSetupChangedNotification
                                                    object:nil];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
                                                      name:RiskBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
-
+    
     return self;
 }
 
@@ -125,14 +125,14 @@ static NSImage *_boardBackingImage = nil;
 - (void) drawBackground:(NSRect)rect
 {
     NSPoint aPoint;
-
+    
     if (boardBackingImage != nil)
     {
         // draw backing
         aPoint = NSMakePoint (0, 0);
         //[boardBackingImage setSize:[self bounds].size]; // May want to make the image per instance (not per class)
         //[boardBackingImage compositeToPoint:aPoint operation:NSCompositeCopy];
-		[boardBackingImage drawAtPoint:rect.origin fromRect:rect operation:NSCompositeCopy fraction:1];
+        [boardBackingImage drawAtPoint:rect.origin fromRect:rect operation:NSCompositeCopy fraction:1];
     }
 }
 
@@ -142,9 +142,9 @@ static NSImage *_boardBackingImage = nil;
     NSEnumerator *countryEnumerator;
     Country *country;
     NSRect countryBounds;
-
+    
     [self drawBackground:rect];
-
+    
     if (countryArray != nil)
     {
         countryEnumerator = [countryArray objectEnumerator];
@@ -155,7 +155,7 @@ static NSImage *_boardBackingImage = nil;
                 [country drawInView:self isSelected:country == selectedCountry];
         }
     }
-
+    
     // Redraw the selected country so that border is not overwritten.
     if (selectedCountry != nil)
         [selectedCountry drawInView:self isSelected:YES];
@@ -167,17 +167,17 @@ static NSImage *_boardBackingImage = nil;
 {
     // Get the union of country bounding box and the army cell,
     // and draw that.
-
+    
 #if 1
     // Currently, if troopCount drops to zero, the textfield is not
     // drawn, but the area it covers is not updated...
     [self lockFocus];
     [aCountry drawInView:self isSelected:aCountry == selectedCountry];
-
+    
     // Redraw the selected country so that border is not overwritten.
     if (selectedCountry != nil && selectedCountry != aCountry)
         [selectedCountry drawInView:self isSelected:YES];
-
+    
     [self unlockFocus];
 #else
     [self displayRect:[[aCountry countryShape] bounds]]; // This cuts off the textfields at the bounding box.
@@ -192,7 +192,7 @@ static NSImage *_boardBackingImage = nil;
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL hit;
-
+    
     hit = NO;
     countryEnumerator = [countryArray objectEnumerator];
     while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
@@ -215,7 +215,7 @@ static NSImage *_boardBackingImage = nil;
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL hit;
-
+    
     hit = NO;
     countryEnumerator = [countryArray objectEnumerator];
     while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
@@ -243,7 +243,7 @@ static NSImage *_boardBackingImage = nil;
 - (void) setCountryArray:(NSArray *)countries
 {
     countryArray = [countries mutableCopy];
-
+    
     [self setNeedsDisplay:YES];
     [self.superview setNeedsDisplay:YES];
 }
@@ -255,19 +255,19 @@ static NSImage *_boardBackingImage = nil;
     NSSize imageSize;
     NSSize scaleSize;
     CGFloat factor;
-
+    
     //NSLog (@"current: %f, new: %f", currentScaleFactor, newScaleFactor);
-
+    
 #if 1
     NSAssert (newScaleFactor != 0, @"Cannot scale to 0.");
     NSAssert (currentScaleFactor != 0, @"Current scale factor is 0.");
-#endif    
+#endif
     factor = newScaleFactor / currentScaleFactor;
     scaleSize = NSMakeSize (factor, factor);
     currentScaleFactor = newScaleFactor;
-
+    
     [self scaleUnitSquareToSize:scaleSize];
-
+    
     imageSize = _boardBackingImage.size;
     imageSize.width *= currentScaleFactor;
     imageSize.height *= currentScaleFactor;
@@ -291,7 +291,7 @@ static NSImage *_boardBackingImage = nil;
     Country *country;
     
     // Make sure country in array...
-
+    
     country = aNotification.object;
     [self drawCountry:country];
 }
@@ -301,17 +301,17 @@ static NSImage *_boardBackingImage = nil;
 - (void) selectCountry:(Country *)aCountry
 {
     Country *tmp;
-
+    
     //NSLog (@"old: %@, new: %@", selectedCountry, aCountry);
-
+    
     tmp = selectedCountry;
     selectedCountry = aCountry;
-
+    
     if (tmp != nil)
     {
         [self drawCountry:tmp];
     }
-
+    
     if (selectedCountry != nil)
     {
         [self drawCountry:selectedCountry];

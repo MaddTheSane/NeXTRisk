@@ -24,12 +24,12 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     NSUserDefaults *defaults;
     NSMutableDictionary *riskDefaults;
-
+    
     if (self == [Brain class])
     {
         defaults = [NSUserDefaults standardUserDefaults];
         riskDefaults = [[NSMutableDictionary alloc] init];
-
+        
         riskDefaults[DK_DMakeActive] = @NO;
         riskDefaults[DK_DefaultPlayer1Type] = @"None";
         riskDefaults[DK_DefaultPlayer2Type] = @"None";
@@ -37,21 +37,21 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         riskDefaults[DK_DefaultPlayer4Type] = @"None";
         riskDefaults[DK_DefaultPlayer5Type] = @"None";
         riskDefaults[DK_DefaultPlayer6Type] = @"None";
-                                                                       
+        
         riskDefaults[DK_DefaultPlayer1Name] = @"Dopey";
         riskDefaults[DK_DefaultPlayer2Name] = @"Sneezy";
         riskDefaults[DK_DefaultPlayer3Name] = @"Grumpy";
         riskDefaults[DK_DefaultPlayer4Name] = @"Doc";
         riskDefaults[DK_DefaultPlayer5Name] = @"Bashful";
         riskDefaults[DK_DefaultPlayer6Name] = @"Sleepy";
-
+        
         riskDefaults[DK_ShowPlayer1Console] = @NO;
         riskDefaults[DK_ShowPlayer2Console] = @NO;
         riskDefaults[DK_ShowPlayer3Console] = @NO;
         riskDefaults[DK_ShowPlayer4Console] = @NO;
         riskDefaults[DK_ShowPlayer5Console] = @NO;
         riskDefaults[DK_ShowPlayer6Console] = @NO;
-
+        
         [defaults registerDefaults:riskDefaults];
     }
 }
@@ -63,16 +63,16 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     NSUserDefaults *defaults;
     RiskWorld *riskWorld;
     BOOL flag;
-
+    
     defaults = [NSUserDefaults standardUserDefaults];
-
+    
     riskWorld = [RiskWorld defaultRiskWorld];
     [gameManager setWorld:riskWorld];
-
+    
     [self loadRiskPlayerBundles];
-
+    
     flag = [defaults boolForKey:DK_DMakeActive];
-
+    
     if (flag == YES)
     {
         [NSApp activateIgnoringOtherApps:YES];
@@ -88,7 +88,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
         gameManager = [[RiskGameManager alloc] init];
         preferenceController = nil;
     }
-
+    
     return self;
 }
 
@@ -98,7 +98,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     if (newGameController == nil)
         newGameController = [[NewGameController alloc] initWithBrain:self];
-
+    
     [newGameController showNewGamePanel];
 }
 
@@ -108,7 +108,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     if (newGameController == nil)
         newGameController = [[NewGameController alloc] initWithBrain:self];
-
+    
     [newGameController showGameSetupPanel];
 }
 
@@ -118,17 +118,17 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     NSString *nibFile;
     BOOL loaded;
-
+    
     if (infoPanel == nil)
     {
         nibFile = @"InfoPanel.nib";
         loaded = [NSBundle loadNibNamed:nibFile owner:self];
-
+        
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
-
+        
         [versionTextField setStringValue:RISK_VERSION];
     }
-
+    
     [infoPanel makeKeyAndOrderFront:self];
 }
 
@@ -140,7 +140,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     {
         preferenceController = [[PreferenceController alloc] init];
     }
-
+    
     [preferenceController showPanel];
 }
 
@@ -155,21 +155,21 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     NSBundle *playerBundle;
     BOOL keepTrying;
     NSMutableDictionary *loadedBundles = [NSMutableDictionary dictionary];
-
-	NSURL *pluginURL = mainBundle.builtInPlugInsURL;
-	NSDirectoryEnumerator<NSURL *> * URLEnum = [[NSFileManager defaultManager] enumeratorAtURL:pluginURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles) errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
-		return false;
-	}];
-
+    
+    NSURL *pluginURL = mainBundle.builtInPlugInsURL;
+    NSDirectoryEnumerator<NSURL *> * URLEnum = [[NSFileManager defaultManager] enumeratorAtURL:pluginURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles) errorHandler:^BOOL(NSURL * _Nonnull url, NSError * _Nonnull error) {
+        return NO;
+    }];
+    
     //NSLog (@"resource paths: %@", resourcePaths);
-
+    
     for (NSURL *subdirURL in URLEnum)
     {
-		if ([subdirURL.pathExtension caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
-			continue;
-		}
+        if ([subdirURL.pathExtension caseInsensitiveCompare:@"riskplayer"] != NSOrderedSame) {
+            continue;
+        }
         NSString *str = subdirURL.lastPathComponent.stringByDeletingPathExtension;
-
+        
         // refuse to load if the name matches a module already loaded
         if ([loadedRiskPlayerNames containsObject:str] == NO)
         {
@@ -193,11 +193,11 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
             }
         }
     }
-
+    
     // now loop and keep trying to load the ones in tempStorage.  Keep trying
     // as long as at least one of the failed ones succeeds each time through
     // the loop
-
+    
     do
     {
         keepTrying = NO;
@@ -207,7 +207,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
             if (playerBundle.principalClass != nil)
             {
                 NSString *str = path.lastPathComponent.stringByDeletingPathExtension;
-
+                
                 loadedBundles[str] = playerBundle;
                 //NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
                 //NSLog (@"(delayed) priciple class is %@", [playerBundle principalClass]);
@@ -216,17 +216,17 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
                 [loadedRiskPlayerNames addObject:str];
             }
         }
-
+        
         [delayedRiskPlayerPaths minusSet:tempPlayerNames];
         [tempPlayerNames removeAllObjects];
     }
     while (keepTrying == YES);
-
+    
     // now cpNameStorage contains a list of all the menu strings.
     // we must add them to the menus in the panel.
-
+    
     //NSLog (@"info: %@", [testBundle infoDictionary]);
-
+    
     [riskPlayerBundles addObjectsFromArray:loadedBundles.allValues];
 }
 

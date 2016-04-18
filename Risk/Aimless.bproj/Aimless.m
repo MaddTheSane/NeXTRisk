@@ -119,16 +119,16 @@ NSComparisonResult minimumTroops (id object1, id object2, void *context)
     Country *country1, *country2;
     int troopCount1, troopCount2;
     NSComparisonResult result;
-
+    
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
-
+    
     country1 = (Country *) object1;
     country2 = (Country *) object2;
-
+    
     troopCount1 = country1.troopCount;
     troopCount2 = country2.troopCount;
-
+    
     if (troopCount1 < troopCount2)
     {
         result = NSOrderedAscending;
@@ -141,7 +141,7 @@ NSComparisonResult minimumTroops (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -152,16 +152,16 @@ NSComparisonResult maximumVulnerability (id object1, id object2, void *context)
     Country *country1, *country2;
     int vulnerability1, vulnerability2;
     NSComparisonResult result;
-
+    
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
-
+    
     country1 = (Country *) object1;
     country2 = (Country *) object2;
-
+    
     vulnerability1 = country1.troopCount - country1.enemyNeighborTroopCount;
     vulnerability2 = country2.troopCount - country2.enemyNeighborTroopCount;
-
+    
     if (vulnerability1 < vulnerability2)
     {
         result = NSOrderedAscending;
@@ -174,7 +174,7 @@ NSComparisonResult maximumVulnerability (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -185,16 +185,16 @@ NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
     Country *country1, *country2;
     int troopCount1, troopCount2;
     NSComparisonResult result;
-
+    
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
-
+    
     country1 = (Country *) object1;
     country2 = (Country *) object2;
-
+    
     troopCount1 = country1.movableTroopCount;
     troopCount2 = country2.movableTroopCount;
-
+    
     if (troopCount1 > troopCount2)
     {
         result = NSOrderedAscending;
@@ -207,7 +207,7 @@ NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -218,16 +218,16 @@ NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
     Country *country1, *country2;
     NSInteger count1, count2;
     NSComparisonResult result;
-
+    
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
-
+    
     country1 = (Country *) object1;
     country2 = (Country *) object2;
-
+    
     count1 = [country1 enemyNeighborCountries].count;
     count2 = [country2 enemyNeighborCountries].count;
-
+    
     if (count1 > count2)
     {
         result = NSOrderedAscending;
@@ -240,7 +240,7 @@ NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -251,13 +251,13 @@ NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
     NSComparisonResult result;
     Continent *continent1, *continent2;
     NSInteger size1, size2;
-
+    
     continent1 = (Continent *) object1;
     continent2 = (Continent *) object2;
-
+    
     size1 = continent1.countries.count;
     size2 = continent2.countries.count;
-
+    
     if (size1 < size2)
     {
         result = NSOrderedAscending;
@@ -270,7 +270,7 @@ NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -281,13 +281,13 @@ NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
     NSComparisonResult result;
     Continent *continent1, *continent2;
     NSInteger size1, size2;
-
+    
     continent1 = (Continent *) object1;
     continent2 = (Continent *) object2;
-
+    
     size1 = continent1.countries.count;
     size2 = continent2.countries.count;
-
+    
     if (size1 > size2)
     {
         result = NSOrderedAscending;
@@ -300,7 +300,7 @@ NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -311,13 +311,13 @@ NSComparisonResult minimumContinentBorder (id object1, id object2, void *context
     NSComparisonResult result;
     Continent *continent1, *continent2;
     NSInteger size1, size2;
-
+    
     continent1 = (Continent *) object1;
     continent2 = (Continent *) object2;
-
+    
     size1 = [continent1 countriesAlongBorder].count;
     size2 = [continent2 countriesAlongBorder].count;
-
+    
     if (size1 < size2)
     {
         result = NSOrderedAscending;
@@ -330,7 +330,7 @@ NSComparisonResult minimumContinentBorder (id object1, id object2, void *context
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -341,13 +341,13 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSComparisonResult result;
     Continent *continent1, *continent2;
     NSInteger size1, size2;
-
+    
     continent1 = (Continent *) object1;
     continent2 = (Continent *) object2;
-
+    
     size1 = [continent1 countriesAlongBorder].count;
     size2 = [continent2 countriesAlongBorder].count;
-
+    
     if (size1 > size2)
     {
         result = NSOrderedAscending;
@@ -360,7 +360,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     {
         result = NSOrderedDescending;
     }
-
+    
     return result;
 }
 
@@ -394,29 +394,29 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     RiskWorld *world;
     NSDictionary *continents;
     int l;
-
+    
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
         // Contains the names of continents.
         unoccupiedContinents = [[NSMutableSet alloc] init];
-
+        
         world = gameManager.world;
         continents = world.continents;
-
+        
         [unoccupiedContinents addObjectsFromArray:continents.allKeys];
-
+        
         for (l = 0; l < 7; l++)
         {
             attackedCount[l] = 0;
             lostCountryCount[l] = 0;
             brokenContinentCount[l] = 0;
         }
-
+        
         initialCountryHeap = nil;
         attackingCountryHeap = nil;
-
+        
         primaryChoice = ChooseAdjacentToCurrentCountries;
     }
-
+    
     return self;
 }
 
@@ -428,12 +428,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     NSMenuItem *item;
     super.playerToolMenu = theMenu;
-
+    
     if (playerToolMenu != nil)
     {
         item = [playerToolMenu addItemWithTitle:@"Test"
-                               action:@selector (testMessage:)
-                               keyEquivalent:@""];
+                                         action:@selector (testMessage:)
+                                  keyEquivalent:@""];
         item.target = self;
     }
 }
@@ -457,9 +457,9 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     CardSetRedemption redemption;
     CardSet *cardSet;
-
+    
     redemption = [gameManager gameConfiguration].cardSetRedemption;
-
+    
     if (redemption == RemainConstant || [self ourCountries].count < 4)
     {
         // Constant: Might as well turn in cards immediately. (Unless we want to wait to get bonus armies for our countries.)
@@ -483,7 +483,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     // While the game manager will automatically turn in our best sets for
     // us if we don't choose the cards ourselves, we'll do it ourselves
     // just to be nice.
-
+    
     [gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
     [self logMessage:@"Had to turn in cards."];
 }
@@ -508,168 +508,168 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Country *country;
     RiskWorld *world;
     SNRandom *anRng;
-
+    
     anRng = self.rng;
     world = gameManager.world;
-
+    
     country = nil;
     switch (primaryChoice)
     {
-      case ChooseRandomContinents:
-          if (continentChoiceArray == nil)
-          {
-              NSMutableArray *remainingContinents;
-              NSInteger count, index;
-              
-              continentChoiceArray = [[NSMutableArray alloc] init];
-              remainingContinents = [NSMutableArray arrayWithArray:world.continents.allValues];
-              count = remainingContinents.count;
-
-              while (count > 0)
-              {
-                  index = [anRng randomNumberModulo:count];
-                  continent = remainingContinents[index];
-                  [continentChoiceArray addObject:continent];
-                  [remainingContinents removeObject:continent];
-                  count--;
-              }
-          }
-          
-          country = nil;
-          while ((continent = continentChoiceArray[0]))
-          {
-              NSSet *source;
-              NSInteger count;
-
-              source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
-              count = source.count;
-              if (count > 0)
-              {
-                  [self logMessage:@"Choosing randomly from random continent: %@", continent.continentName];
-                  country = source.allObjects[[anRng randomNumberModulo:count]];
-                  break;
-              }
-              else
-              {
-                  [continentChoiceArray removeObjectAtIndex:0];
-              }
-          }
-
-          break;
-
-      case ChooseSmallestContinent:
-      case ChooseLargestContinent:
-      case ChooseLeastBorderedContinent:
-      case ChooseMostBorderedContinent:
-          if (continentChoiceHeap == nil)
-          {
-              NSComparisonResult (*func)(id, id, void *);
-
-              switch (primaryChoice)
-              {
-                case ChooseLargestContinent:
-                    func = maximumContinentSize;
+        case ChooseRandomContinents:
+            if (continentChoiceArray == nil)
+            {
+                NSMutableArray *remainingContinents;
+                NSInteger count, index;
+                
+                continentChoiceArray = [[NSMutableArray alloc] init];
+                remainingContinents = [NSMutableArray arrayWithArray:world.continents.allValues];
+                count = remainingContinents.count;
+                
+                while (count > 0)
+                {
+                    index = [anRng randomNumberModulo:count];
+                    continent = remainingContinents[index];
+                    [continentChoiceArray addObject:continent];
+                    [remainingContinents removeObject:continent];
+                    count--;
+                }
+            }
+            
+            country = nil;
+            while ((continent = continentChoiceArray[0]))
+            {
+                NSSet *source;
+                NSInteger count;
+                
+                source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
+                count = source.count;
+                if (count > 0)
+                {
+                    [self logMessage:@"Choosing randomly from random continent: %@", continent.continentName];
+                    country = source.allObjects[[anRng randomNumberModulo:count]];
                     break;
-                    
-                case ChooseLeastBorderedContinent:
-                    func = minimumContinentBorder;
-                    break;
-                    
-                case ChooseMostBorderedContinent:
-                    func = maximumContinentBorder;
-                    break;
-                    
-                case ChooseSmallestContinent:
-                default:
-                    func = minimumContinentSize;
-                    break;
-              }
-
-              continentChoiceHeap = [[SNHeap alloc] initUsingFunction:func context:NULL];
-              [continentChoiceHeap insertObjectsFromEnumerator:[world.continents objectEnumerator]];
-          }
-          
-          country = nil;
-          while ((continent = [continentChoiceHeap firstObject]))
-          {
-              NSSet *source;
-              NSInteger count;
-
-              source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
-              count = source.count;
-              if (count > 0)
-              {
-                  NSString *how;
-                  
-                  switch (primaryChoice)
-                  {
+                }
+                else
+                {
+                    [continentChoiceArray removeObjectAtIndex:0];
+                }
+            }
+            
+            break;
+            
+        case ChooseSmallestContinent:
+        case ChooseLargestContinent:
+        case ChooseLeastBorderedContinent:
+        case ChooseMostBorderedContinent:
+            if (continentChoiceHeap == nil)
+            {
+                NSComparisonResult (*func)(id, id, void *);
+                
+                switch (primaryChoice)
+                {
                     case ChooseLargestContinent:
-                        how = @"largest";
+                        func = maximumContinentSize;
                         break;
-                    
+                        
                     case ChooseLeastBorderedContinent:
-                        how = @"least bordered";
+                        func = minimumContinentBorder;
                         break;
-                    
+                        
                     case ChooseMostBorderedContinent:
-                        how = @"most bordered";
+                        func = maximumContinentBorder;
                         break;
-                    
+                        
                     case ChooseSmallestContinent:
                     default:
-                        how = @"smallest";
+                        func = minimumContinentSize;
                         break;
-                  }
-
-                  [self logMessage:@"Choosing randomly from %@ continent: %@", how, continent.continentName];
-                  country = source.allObjects[[anRng randomNumberModulo:count]];
-                  break;
-              }
-              else
-              {
-                  [continentChoiceHeap extractObject];
-              }
-          }
-          break;
-          
-      case ChooseAdjacentToCurrentCountries:
-      {
-          NSEnumerator *countryEnumerator;
-          NSMutableSet *source;
-          NSSet *unoccupied;
-          NSInteger count;
-
-          source = [NSMutableSet set];
-          countryEnumerator = [[self ourCountries] objectEnumerator];
-          while (country = [countryEnumerator nextObject])
-          {
-              [source unionSet:country.neighborCountries];
-          }
-
-          country = nil;
-          unoccupied = [self countriesWithAllOptions:CountryFlagsPlayerNone from:source];
-          count = unoccupied.count;
-          if (count > 0)
-          {
-              country = unoccupied.allObjects[[anRng randomNumberModulo:count]];
-              [self logMessage:@"Choosing country %@ next to our chosen countries...", country.countryName];
-          }
-      }
-          break;
-
-      case ChooseRandomCountry:
-      default:
-          country = nil;
-          break;
+                }
+                
+                continentChoiceHeap = [[SNHeap alloc] initUsingFunction:func context:NULL];
+                [continentChoiceHeap insertObjectsFromEnumerator:[world.continents objectEnumerator]];
+            }
+            
+            country = nil;
+            while ((continent = [continentChoiceHeap firstObject]))
+            {
+                NSSet *source;
+                NSInteger count;
+                
+                source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
+                count = source.count;
+                if (count > 0)
+                {
+                    NSString *how;
+                    
+                    switch (primaryChoice)
+                    {
+                        case ChooseLargestContinent:
+                            how = @"largest";
+                            break;
+                            
+                        case ChooseLeastBorderedContinent:
+                            how = @"least bordered";
+                            break;
+                            
+                        case ChooseMostBorderedContinent:
+                            how = @"most bordered";
+                            break;
+                            
+                        case ChooseSmallestContinent:
+                        default:
+                            how = @"smallest";
+                            break;
+                    }
+                    
+                    [self logMessage:@"Choosing randomly from %@ continent: %@", how, continent.continentName];
+                    country = source.allObjects[[anRng randomNumberModulo:count]];
+                    break;
+                }
+                else
+                {
+                    [continentChoiceHeap extractObject];
+                }
+            }
+            break;
+            
+        case ChooseAdjacentToCurrentCountries:
+        {
+            NSEnumerator *countryEnumerator;
+            NSMutableSet *source;
+            NSSet *unoccupied;
+            NSInteger count;
+            
+            source = [NSMutableSet set];
+            countryEnumerator = [[self ourCountries] objectEnumerator];
+            while (country = [countryEnumerator nextObject])
+            {
+                [source unionSet:country.neighborCountries];
+            }
+            
+            country = nil;
+            unoccupied = [self countriesWithAllOptions:CountryFlagsPlayerNone from:source];
+            count = unoccupied.count;
+            if (count > 0)
+            {
+                country = unoccupied.allObjects[[anRng randomNumberModulo:count]];
+                [self logMessage:@"Choosing country %@ next to our chosen countries...", country.countryName];
+            }
+        }
+            break;
+            
+        case ChooseRandomCountry:
+        default:
+            country = nil;
+            break;
     }
-
+    
     if (country == nil)
     {
         NSArray *unoccupied;
         unoccupied = [gameManager unoccupiedCountries];
         country = unoccupied[[anRng randomNumberModulo:unoccupied.count]];
     }
-
+    
     [gameManager player:self choseCountry:country];
     [self turnDone];
 }
@@ -682,15 +682,15 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSArray *unoccupiedCountries;
     NSEnumerator *countryEnumerator;
     Country *country;
-
+    
     // 1. Make a list of unoccupied countries in continents that we don't have a presence.
     // 2. randomly choose one of these, updating its continent flag
     // 3. otherwise, randomly pick country
-
+    
     unoccupiedCountries = [gameManager unoccupiedCountries];
-
+    
     NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
-
+    
     array = [NSMutableArray array];
     countryEnumerator = [unoccupiedCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -698,7 +698,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         if ([unoccupiedContinents containsObject:country.continentName] == YES)
             [array addObject:country];
     }
-
+    
     if (array.count > 0)
     {
         country = array[[self.rng randomNumberModulo:array.count]];
@@ -708,7 +708,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     {
         country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
     }
-
+    
     [gameManager player:self choseCountry:country];
     [self turnDone];
 }
@@ -728,12 +728,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Continent *best;
     Country *country;
-
+    
     best = [self continentWeAreClosestToControlling];
     [self logMessage:@"The best continent appears to be %@", best.continentName];
-
+    
     initialCountryHeap = [[SNHeap alloc] initUsingFunction:minimumTroops context:NULL];
-
+    
     countryEnumerator = [best.countries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
@@ -760,10 +760,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Country *country;
     int l;
     BOOL okay;
-
+    
     NSAssert (initialCountryHeap != nil, @"Initial country heap was not set up.");
     NSAssert ([initialCountryHeap count] > 0, @"No countries in initial countyr heap.");
-
+    
     for (l = 0; l < count; l++)
     {
         country = [initialCountryHeap extractObject];
@@ -771,7 +771,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
         [initialCountryHeap insertObject:country];
     }
-
+    
     [self turnDone];
 }
 
@@ -822,9 +822,9 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Country *first, *second;
     int difference;
     NSEnumerator *enumerator;
-
+    
     //[self _logCurrentWrathValues];
-
+    
 #if 1
     placeCountries = [SNHeap heapUsingFunction:minimumTroops context:NULL];
     enumerator = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
@@ -833,12 +833,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     placeCountries = [SNHeap heapUsingFunction:minimumTroops context:NULL];
     [placeCountries insertObjectsFromEnumerator:[[self mostConnectedCountries] objectEnumerator]];
 #endif
-
+    
     // Most vulnerable doesn't take advantage of attacking weakest neighbors
     //placeCountries = [SNHeap heapUsingFunction:maximumVulnerability context:NULL];
     //enumerator = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
     //[placeCountries insertObjectsFromEnumerator:enumerator];
-
+    
     special = 0;
     bestTarget = [self bestCountryToMinimizePerimeter:[self enemyCountriesAlongPerimeter]];
     if (bestTarget != nil)
@@ -847,13 +847,13 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         count -= special;
         [self logMessage:@"Reserving %d armies to place next to %@.", special, bestTarget.countryName];
     }
-
+    
 #if 1
     while (count > 0)
     {
         first = [placeCountries extractObject];
         second = [placeCountries extractObject];
-
+        
         if (second == nil)
         {
             okay = [gameManager player:self placesArmies:count inCountry:first];
@@ -877,7 +877,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
                 count -= difference;
             }
         }
-
+        
         [placeCountries insertObject:first];
         if (second != nil)
             [placeCountries insertObject:second];
@@ -886,10 +886,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     for (l = 0; l < count; l++)
     {
         country = [placeCountries extractObject];
-
+        
         okay = [gameManager player:self placesArmies:1 inCountry:country];
         NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
-
+        
         // And put it back again.
         [placeCountries insertObject:country];
     }
@@ -901,10 +901,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     if (bestTarget != nil)
     {
         NSEnumerator *countryEnumerator;
-
+        
         best = nil;
         bestTroops = 0;
-
+        
         // Place 'em in one of our neighboring countries (the one with the most armies.)... nyi
         countryEnumerator = [bestTarget.neighborCountries objectEnumerator];
         while (country = [countryEnumerator nextObject])
@@ -919,12 +919,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
                 }
             }
         }
-
+        
         [self logMessage:@"Placing extra %d armies in %@", special, best.countryName];
         okay = [gameManager player:self placesArmies:special inCountry:best];
         NSAssert1 (okay == YES, @"Could not place army in country: %@", best);
     }
-
+    
     [self turnDone];
 }
 
@@ -937,22 +937,22 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     BOOL won;
     Country *country;
     //SNHeap *attackingCountryHeap;
-
+    
     //[self analyzePerimeter];
-
+    
     if (attackingCountryHeap == nil)
     {
         attackers = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
-                           from:[self ourCountries]].allObjects;
-
+                                             from:[self ourCountries]].allObjects;
+        
         // I'm not sure this heap function is working.  I think it means that if we take over a new
         // country, we have to redo it.  Possible take out all it's neighbors and re-insert them.
         attackingCountryHeap = [[SNHeap alloc] initUsingFunction:leastEnemyNeighbors context:NULL];
         [attackingCountryHeap insertObjectsFromEnumerator:[attackers objectEnumerator]];
     }
-
+    
     //won = [self doAttackFromCountry:[attackers objectAtIndex:[[self rng] randomNumberModulo:[attackers count]]]];
-
+    
     won = NO;
     //countryEnumerator = [attackers objectEnumerator];
     //while (won == NO && (country = [countryEnumerator nextObject]) != nil)
@@ -965,9 +965,9 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         else
             won = [self doAttackFromCountry:country];
     };
-
+    
     // Possibly make it more aggressive -- attack again from all countries that have, say, >20 armies left.
-
+    
     if (won == NO)
         [self turnDone];
     // Otherwise, automatically entered into different state
@@ -978,19 +978,19 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 - (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
 {
     int tmp, forced;
-
+    
     // Move half the armies to destination
-
+    
     [self logMessage:@"move %d armies between %@ and %@.", count, source.countryName, destination.countryName];
-
+    
     //if ([[source enemyNeighborCountries] count] > 0)
     if (destination.hasEnemyNeighbors == NO)
     {
         // Leave as many as we can in the source.
         [gameManager player:self placesArmies:count inCountry:source];
         [self logMessage:@"Destination %@ has no enemy neighbors, leaving them all in %@.",
-              destination.countryName, source.countryName];
-
+         destination.countryName, source.countryName];
+        
         // Perhaps, move them to the country closest to the front // nyi
     }
     else if (source.hasEnemyNeighbors == YES)
@@ -1003,7 +1003,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         //tmp = (count / 2);
         [gameManager player:self placesArmies:tmp inCountry:destination];
         [gameManager player:self placesArmies:count - tmp inCountry:source];
-
+        
         //NSLog (@"Placing %d armies in %@.", tmp, destination);
         //NSLog (@"Placing %d armies in %@.", count - tmp, source);
     }
@@ -1014,7 +1014,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         // Move all the armies if there are no enemies by the source country.
         [gameManager player:self placesArmies:count inCountry:destination];
     }
-
+    
     [self turnDone];
 }
 
@@ -1025,10 +1025,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country, *source;
     SNHeap *primaryCountries, *secondaryCountries;
-
+    
     primaryCountries = [SNHeap heapUsingFunction:maximumMovableTroops context:NULL];
     secondaryCountries = [SNHeap heapUsingFunction:maximumMovableTroops context:NULL];
-
+    
     source = nil;
     countryEnumerator = [[self ourCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -1045,7 +1045,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             }
         }
     }
-
+    
     if (primaryCountries.count == 0 && secondaryCountries.count == 0)
     {
         [self turnDone];
@@ -1054,19 +1054,19 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     {
         switch (fortifyRule)
         {
-          case ManyToManyNeighbors:
-          case ManyToManyConnected:
-          case OneToOneNeighbor:
-          case OneToManyNeighbors:
-          default:
-              //source = [sourceCountries extractObject]; // Do them starting with the most movable troops.
-              source = [primaryCountries extractObject];
-              if (source == nil)
-                  source = [secondaryCountries extractObject];
-              NSAssert (source != nil, @"Primary/secondary count check failed.");
-              break;
+            case ManyToManyNeighbors:
+            case ManyToManyConnected:
+            case OneToOneNeighbor:
+            case OneToManyNeighbors:
+            default:
+                //source = [sourceCountries extractObject]; // Do them starting with the most movable troops.
+                source = [primaryCountries extractObject];
+                if (source == nil)
+                    source = [secondaryCountries extractObject];
+                NSAssert (source != nil, @"Primary/secondary count check failed.");
+                break;
         }
-
+        
         //NSLog (@"======================================== Fortify from: %@", source);
         [gameManager fortifyArmiesFrom:source];
     }
@@ -1086,46 +1086,46 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     FortifyRule fortifyRule;
     int l;
     BOOL thisCase = NO;
-
+    
     //NSLog (@"source: %@", [source countryName]);
-
+    
     if (source.hasEnemyNeighbors == NO && source.hasFriendlyNeighborsWithEnemyNeighbors == NO)
     {
         NSSet *connectedCountries;
-
+        
         //NSLog (@"%@ has no hostile neighbors.", [source countryName]);
-
+        
         connectedCountries = [source ourConnectedCountries];
-
+        
         NSAssert ([connectedCountries count] > 0, @"Connected countries does not appear to include itself.");
-
+        
         if (connectedCountries.count == 1) // It includes itself.
         {
             //NSLog (@"========================================");
             //NSLog (@"The connected countries are: %@", connectedCountries);
-
+            
             // Just leave them alone.  Perhaps try to filter out in above method.
             [gameManager player:self placesArmies:count inCountry:source];
         }
         else
         {
             PathFinder *pathFinder;
-
+            
             // Move 1 step toward nearest (connected) country with hostile neighbors.
-
+            
             //NSLog (@"Moving one step toward one or our countries with hostile neighbors.");
-
+            
             pathFinder = [PathFinder shortestPathInRiskWorld:gameManager.world
-                                     fromCountry:source
-                                     forCountries:PFCountryForPlayer
-                                     context:(void *)playerNumber
-                                     distanceFunction:PFConstantDistance];
-
+                                                 fromCountry:source
+                                                forCountries:PFCountryForPlayer
+                                                     context:(void *)playerNumber
+                                            distanceFunction:PFConstantDistance];
+            
             destination = [pathFinder firstStepToAcceptableCountry:PFCountryForPlayerHasEnemyNeighbors
-                                      context:(void *)playerNumber];
-
+                                                           context:(void *)playerNumber];
+            
             //NSLog (@"%@ -> %@", [source countryName], [destination countryName]);
-
+            
             [gameManager player:self placesArmies:count inCountry:destination];
         }
     }
@@ -1136,14 +1136,14 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             //NSLog (@"New special case.");
             thisCase = YES;
         }
-
+        
         //NSLog (@"Hostile neighbors: %@", [source enemyNeighborCountries]);
-
+        
         fortifyRule = [gameManager gameConfiguration].fortifyRule;
         countryHeap = [SNHeap heapUsingFunction:minimumTroops context:NULL];
-
+        
         destination = nil;
-
+        
         if (fortifyRule == ManyToManyConnected)
         {
             potentialTargetCountries = [source ourConnectedCountries];
@@ -1153,7 +1153,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             potentialTargetCountries = [source ourNeighborCountries];
         }
         countryEnumerator = [potentialTargetCountries objectEnumerator];
-    
+        
         while (country = [countryEnumerator nextObject])
         {
             // Our neighbors with enemies
@@ -1166,52 +1166,52 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 #endif
             }
         }
-
+        
         // In this case, the source has hostile neighbors.
         if (source.hasEnemyNeighbors == YES)
             [countryHeap insertObject:source];
-
+        
         NSAssert ([countryHeap count] != 0, @"This shouldn't happen.");
-
+        
         switch (fortifyRule)
         {
-          case OneToManyNeighbors:
-          case ManyToManyNeighbors:
-              // No neighbors with enemies: Move armies toward nearest country with enemy neighbors
-              // Neighbors with enemies: move armies to weakest neighbor with enemies
-              
-          case ManyToManyConnected:
-              for (l = 0; l < count; l++)
-              {
-                  destination = [countryHeap extractObject];
-                  [gameManager player:self placesArmies:1 inCountry:destination];
-                  [countryHeap insertObject:destination];
-              }
-              break;
-
-          case OneToOneNeighbor:
-          default:
-              // Distribute troops evenly between source and destination
-
-              destination = [countryHeap extractObject];
-              if (source.hasEnemyNeighbors == YES)
-              {
-                  [countryHeap removeAllObjects];
-                  [countryHeap insertObject:source];
-                  [countryHeap insertObject:destination];
-
-                  for (l = 0; l < count; l++)
-                  {
-                      destination = [countryHeap extractObject];
-                      [gameManager player:self placesArmies:1 inCountry:destination];
-                      [countryHeap insertObject:destination];
-                  }
-              }
-              else
-              {
-                  [gameManager player:self placesArmies:count inCountry:destination];
-              }
-              break;
+            case OneToManyNeighbors:
+            case ManyToManyNeighbors:
+                // No neighbors with enemies: Move armies toward nearest country with enemy neighbors
+                // Neighbors with enemies: move armies to weakest neighbor with enemies
+                
+            case ManyToManyConnected:
+                for (l = 0; l < count; l++)
+                {
+                    destination = [countryHeap extractObject];
+                    [gameManager player:self placesArmies:1 inCountry:destination];
+                    [countryHeap insertObject:destination];
+                }
+                break;
+                
+            case OneToOneNeighbor:
+            default:
+                // Distribute troops evenly between source and destination
+                
+                destination = [countryHeap extractObject];
+                if (source.hasEnemyNeighbors == YES)
+                {
+                    [countryHeap removeAllObjects];
+                    [countryHeap insertObject:source];
+                    [countryHeap insertObject:destination];
+                    
+                    for (l = 0; l < count; l++)
+                    {
+                        destination = [countryHeap extractObject];
+                        [gameManager player:self placesArmies:1 inCountry:destination];
+                        [countryHeap insertObject:destination];
+                    }
+                }
+                else
+                {
+                    [gameManager player:self placesArmies:count inCountry:destination];
+                }
+                break;
         }
     }
     
@@ -1224,7 +1224,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     // I think it's still best (simplest) to just rebuild the data structure.
     SNRelease (attackingCountryHeap);
-
+    
     [self logMessage:@"--- End\n"];
 }
 
@@ -1236,7 +1236,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 - (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry
 {
     NSAssert (number < 7, @"Player number out of range.");
-
+    
     attackedCount[number]++;
 }
 
@@ -1248,13 +1248,13 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Country *country;
     Continent *continent;
     BOOL flag;
-
+    
     flag = YES;
-
+    
     NSAssert (number < 7, @"Player number out of range.");
-
+    
     lostCountryCount[number]++;
-
+    
     // And then check if we had the rest of the continent.
     continent = [gameManager.world continentNamed:capturedCountry.continentName];
     countryEnumerator = [continent.countries objectEnumerator];
@@ -1266,12 +1266,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             break;
         }
     }
-
+    
     if (flag == YES)
     {
         brokenContinentCount[number]++;
     }
-
+    
     [self logMessage:@"%@ was captured by player number %d.", capturedCountry.countryName, number];
 }
 
@@ -1287,11 +1287,11 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country;
     AttackResult attackResult;
-
+    
     attackResult.conqueredCountry = NO;
     
     [self logMessage:@"Attacking from %@.", attacker.countryName];
-
+    
     weakest = [self bestCountryToMinimizePerimeter:[attacker enemyNeighborCountries]];
     if (weakest != nil)
     {
@@ -1311,7 +1311,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         weakestTroopCount = 999999;
         enemies = [attacker enemyNeighborCountries];
         countryEnumerator = [enemies objectEnumerator];
-
+        
         while (country = [countryEnumerator nextObject])
         {
             troopCount = country.troopCount;
@@ -1321,32 +1321,32 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
                 weakest = country;
             }
         }
-
+        
         if (weakest != nil)
             [self logMessage:@"Chose %@ as weakest neighbor.", weakest.countryName];
     }
-
+    
     if (weakest != nil)
     {
         if (attacker.troopCount > 5)
         {
             attackResult = [gameManager attackFromCountry:attacker
-                                        toCountry:weakest
+                                                toCountry:weakest
                                         untilArmiesRemain:2
-                                        moveAllArmiesUponVictory:NO];
+                                 moveAllArmiesUponVictory:NO];
         }
         else
         {
             attackResult = [gameManager attackFromCountry:attacker
-                                        toCountry:weakest
+                                                toCountry:weakest
                                         untilArmiesRemain:(int)[self.rng randomNumberBetween:2:attacker.troopCount]
-                                        moveAllArmiesUponVictory:NO];
+                                 moveAllArmiesUponVictory:NO];
         }
 #if 0
         //NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
 #endif
     }
-
+    
     return attackResult.conqueredCountry;
 }
 
@@ -1359,9 +1359,9 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country;
     RiskWorld *world;
-
+    
     world = gameManager.world;
-
+    
     set = [NSMutableSet set];
     countryEnumerator = [[world continentNamed:continentName].countries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -1369,7 +1369,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
         if (country.playerNumber == 0)
             [set addObject:country];
     }
-
+    
     return set;
 }
 
@@ -1391,7 +1391,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Continent *continent, *best;
     Country *country;
     NSInteger total, ours, minimum;
-
+    
     minimum = 1000000;
     best = nil;
     
@@ -1408,17 +1408,17 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             if (country.playerNumber == playerNumber)
                 ours++;
         }
-
+        
         if (ours > 0 && total - ours < minimum && ours != total)
         {
             minimum = total - ours;
             best = continent;
         }
     }
-
+    
     //NSLog (@"Our best continent (%d left) would be: %@", minimum, [best continentName]);
     NSAssert (best != nil, @"Couldn't determine best continent.");
-
+    
     return best;
 }
 
@@ -1429,7 +1429,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country;
     int count;
-
+    
     count = 0;
     countryEnumerator = [[self ourCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -1448,7 +1448,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country;
     int count;
-
+    
     count = 0;
     countryEnumerator = [[self ourCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -1467,14 +1467,14 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     Country *country;
     NSMutableSet *enemies;
-
+    
     enemies = [NSMutableSet set];
     countryEnumerator = [[self ourCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
         [enemies unionSet:[country enemyNeighborCountries]];
     }
-
+    
     return enemies;
 }
 
@@ -1484,12 +1484,12 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     int currentPerimeterCount;
     Country *best;
-
+    
     best = nil;
     currentPerimeterCount = [self perimeterCountryCount];
-
+    
     best = [self minimizePerimeter:currentPerimeterCount ofCountries:[self enemyCountriesAlongPerimeter]];
-
+    
     //NSLog (@"best is %@", best);
     //NSLog (@"Perimeter: %d, best: %d by taking %@", currentPerimeterCount, bestCount, [best countryName]);
 }
@@ -1500,10 +1500,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     int currentPerimeterCount;
     Country *best;
-
+    
     currentPerimeterCount = [self perimeterCountryCount];
     best = [self minimizePerimeter:currentPerimeterCount ofCountries:potentialCountries];
-
+    
     return best;
 }
 
@@ -1514,10 +1514,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSEnumerator *countryEnumerator;
     int bestCount, tmp;
     Country *country, *best;
-
+    
     bestCount = current;
     best = nil;
-
+    
     countryEnumerator = [potentialCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
@@ -1528,7 +1528,7 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             best = country;
         }
     }
-
+    
     return best;
 }
 
@@ -1543,9 +1543,9 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     Country *country, *bestCountry;
     NSInteger total, ours, minimum, current;
     NSMutableDictionary *continentValues;
-
+    
     continentValues = [NSMutableDictionary dictionary];
-
+    
     world = gameManager.world;
     continents = world.continents.allValues;
     continentEnumerator = [continents objectEnumerator];
@@ -1559,15 +1559,15 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             if (country.playerNumber == playerNumber)
                 ours++;
         }
-
+        
         continentValues[continent.continentName] = @(total - ours);
     }
-
+    
     // Now determine best country, based on calculated continent values
-
+    
     bestCountry = nil;
     minimum = 100000;
-
+    
     countryEnumerator = [potentialCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
@@ -1579,10 +1579,10 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             bestCountry = country;
         }
     }
-
+    
     //NSLog (@"Our best continent (%d left) would be: %@ with %@", minimum, [bestCountry continentName], [bestCountry countryName]);
     NSAssert (bestCountry != nil, @"Couldn't determine best country.");
-
+    
     return bestCountry;
 }
 
@@ -1592,11 +1592,11 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
 {
     int l;
     int total;
-
+    
     for (l = 1; l < 7; l++)
     {
         total = attackedCount[l] * WRATH_ATTACKED +
-            lostCountryCount[l] * WRATH_LOST_COUNTRY + brokenContinentCount[l] * WRATH_BROKEN_CONTINENT;
+        lostCountryCount[l] * WRATH_LOST_COUNTRY + brokenContinentCount[l] * WRATH_BROKEN_CONTINENT;
         NSLog (@"%d: attacked: %d, lost: %d, broken: %d, total: %d",
                l, attackedCount[l], lostCountryCount[l], brokenContinentCount[l], total);
     }
@@ -1612,13 +1612,13 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
     NSSet *connected;
     NSMutableSet *exteriorCountries;
     NSEnumerator *countryEnumerator;
-
+    
     count = 0;
     maximum = nil;
-
+    
     //remainingCountries = [NSMutableSet setWithSet:[self ourCountries]];
     remainingCountries = [NSMutableSet setWithSet:[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors
-                                                        from:[self ourCountries]]];
+                                                                           from:[self ourCountries]]];
     while ((country = [remainingCountries anyObject]))
     {
         connected = [country ourConnectedCountries];
@@ -1628,19 +1628,19 @@ NSComparisonResult maximumContinentBorder (id object1, id object2, void *context
             count = tmp;
             maximum = country;
         }
-
+        
         [remainingCountries minusSet:connected];
     }
-
+    
     exteriorCountries = [NSMutableSet set];
-
+    
     countryEnumerator = [[maximum ourConnectedCountries] objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
         if (country.hasEnemyNeighbors == YES)
             [exteriorCountries addObject:country];
     }
-
+    
     return exteriorCountries;
 }
 

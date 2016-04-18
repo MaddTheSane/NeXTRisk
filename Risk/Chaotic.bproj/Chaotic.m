@@ -43,18 +43,18 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 {
     RiskWorld *world;
     NSDictionary<NSString*,Continent *> *continents;
-
+    
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
         // Contains the names of continents.
         unoccupiedContinents = [[NSMutableSet alloc] init];
-
+        
         world = gameManager.world;
         continents = world.continents;
-
+        
         [unoccupiedContinents addObjectsFromArray:continents.allKeys];
         attackingCountries = nil;
     }
-
+    
     return self;
 }
 
@@ -71,7 +71,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     // While the game manager will automatically turn in our best sets for
     // us if we don't choose the cards ourselves, we'll do it ourselves
     // just to be nice.
-
+    
     [gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
 }
 
@@ -89,15 +89,15 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSArray *unoccupiedCountries;
     NSEnumerator *countryEnumerator;
     Country *country;
-
+    
     // 1. Make a list of unoccupied countries in continents that we don't have a presence.
     // 2. Randomly choose one of these, updating its continent flag
     // 3. Otherwise, randomly pick country
-
+    
     unoccupiedCountries = [gameManager unoccupiedCountries];
-
+    
     NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
-
+    
     array = [NSMutableArray array];
     countryEnumerator = [unoccupiedCountries objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -105,7 +105,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
         if ([unoccupiedContinents containsObject:country.continentName] == YES)
             [array addObject:country];
     }
-
+    
     if (array.count > 0)
     {
         country = array[[self.rng randomNumberModulo:array.count]];
@@ -115,7 +115,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     {
         country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
     }
-
+    
     [gameManager player:self choseCountry:country];
     [self turnDone];
 }
@@ -139,21 +139,21 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     BOOL okay;
     NSInteger l;
     Country *country;
-
+    
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
     ourCountries = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]].allObjects;
     countryCount = ourCountries.count;
-
+    
     NSAssert (countryCount > 0, @"We have no countries!");
-
+    
     for (l = 0; l < count; l++)
     {
         country = ourCountries[[self.rng randomNumberModulo:countryCount]];
-
+        
         okay = [gameManager player:self placesArmies:1 inCountry:country];
         NSAssert1 (okay == YES, @"Could not place army in country: %@", country);
     }
-
+    
     [self turnDone];
 }
 
@@ -164,20 +164,20 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSEnumerator *countryEnumerator;
     BOOL mustEndTurn;
     Country *country;
-
+    
     if (attackingCountries == nil)
     {
         attackingCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
-                                                      from:[self ourCountries]] mutableCopy];
+                                                       from:[self ourCountries]] mutableCopy];
     }
-
+    
     mustEndTurn = NO;
     countryEnumerator = [attackingCountries objectEnumerator];
     while (mustEndTurn == NO && (country = [countryEnumerator nextObject]) != nil)
     {
         mustEndTurn = [self doAttackFromCountry:country];
     };
-
+    
     if (mustEndTurn == NO)
     {
         [self turnDone];
@@ -191,13 +191,13 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 - (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
 {
     int tmp;
-
+    
     // Move half the armies to destination
     // For odd count, leave extra army in the source country.
     tmp = count / 2;
     [gameManager player:self placesArmies:tmp inCountry:destination];
     [gameManager player:self placesArmies:count - tmp inCountry:source];
-
+    
     [self turnDone];
 }
 
@@ -209,10 +209,10 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     Country *source = nil;
     NSInteger count;
     NSArray *sourceArray;
-
+    
     sourceCountries = [self countriesWithAllOptions:CountryFlagsWithMovableTroops|CountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
     count = sourceCountries.count;
-
+    
     if (count == 0)
     {
         [self turnDone];
@@ -221,19 +221,19 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     {
         switch (fortifyRule)
         {
-          case ManyToManyNeighbors:
-          case ManyToManyConnected:
-              source = [sourceCountries anyObject]; // All of them will be done in turn.
-              break;
-              
-          case OneToOneNeighbor:
-          case OneToManyNeighbors:
-          default:
-              sourceArray = sourceCountries.allObjects;
-              source = sourceArray[[self.rng randomNumberModulo:count]];
-              break;
+            case ManyToManyNeighbors:
+            case ManyToManyConnected:
+                source = [sourceCountries anyObject]; // All of them will be done in turn.
+                break;
+                
+            case OneToOneNeighbor:
+            case OneToManyNeighbors:
+            default:
+                sourceArray = sourceCountries.allObjects;
+                source = sourceArray[[self.rng randomNumberModulo:count]];
+                break;
         }
-
+        
         [gameManager fortifyArmiesFrom:source];
     }
 }
@@ -249,9 +249,9 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSEnumerator *countryEnumerator;
     Country *country, *destination;
     NSInteger neighborCount;
-
+    
     destination = nil;
-
+    
     ourNeighborCountries = [source ourNeighborCountries];
     countryEnumerator = [ourNeighborCountries objectEnumerator];
     
@@ -263,14 +263,14 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
             break;
         }
     }
-
+    
     if (destination == nil)
     {
         // Pick random country
         neighborCount = ourNeighborCountries.count;
         destination = ourNeighborCountries.allObjects[[self.rng randomNumberModulo:neighborCount]];
     }
-
+    
     [gameManager player:self placesArmies:count inCountry:destination];
     [self turnDone];
 }
@@ -293,7 +293,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     Country *weakest;
     int weakestTroopCount;
     AttackResult attackResult;
-
+    
     attackResult.conqueredCountry = NO;
     weakest = nil;
     weakestTroopCount = 999999;
@@ -307,17 +307,17 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
             weakest = country;
         }
     }
-
+    
     if (weakest != nil)
     {
         attackResult = [gameManager attackFromCountry:attacker
-                                    toCountry:weakest
+                                            toCountry:weakest
                                     untilArmiesRemain:(int)[self.rng randomNumberBetween:1:attacker.troopCount]
-                                    moveAllArmiesUponVictory:NO];
-
+                             moveAllArmiesUponVictory:NO];
+        
         //NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
     }
-
+    
     return attackResult.conqueredCountry;
 }
 

@@ -33,7 +33,7 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     dispatch_once(&onceToken, ^{
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *gameDefaults = [[NSMutableDictionary alloc] initWithCapacity:4];
-
+        
         gameDefaults[DK_InitialCountryDistribution] = DV_PlayerChosen;
         gameDefaults[DK_InitialArmyPlacement] = DV_PlaceByThrees;
         gameDefaults[DK_CardSetRedemption] = DV_RemainConstant;
@@ -54,16 +54,16 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 - (instancetype)init
 {
     NSUserDefaults *defaults;
-
+    
     if (self = [super init]) {
         defaults = [NSUserDefaults standardUserDefaults];
-
+        
         initialCountryDistribution = initialCountryDistributionFromString ([defaults stringForKey:DK_InitialCountryDistribution]);
         initialArmyPlacement = initialArmyPlacementFromString ([defaults stringForKey:DK_InitialArmyPlacement]);
         cardSetRedemption = cardSetRedemptionFromString ([defaults stringForKey:DK_CardSetRedemption]);
         fortifyRule = fortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
     }
-
+    
     return self;
 }
 
@@ -75,23 +75,23 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     
     switch (initialArmyPlacement)
     {
-      case PlaceByOnes:
-          count = 1;
-          break;
-
-      case PlaceByThrees:
-          count = 3;
-          break;
-
-      case PlaceByFives:
-          count = 5;
-          break;
-
-      default:
-          NSLog (@"Invalid army placement type.");
-          count = 1;
+        case PlaceByOnes:
+            count = 1;
+            break;
+            
+        case PlaceByThrees:
+            count = 3;
+            break;
+            
+        case PlaceByFives:
+            count = 5;
+            break;
+            
+        default:
+            NSLog (@"Invalid army placement type.");
+            count = 1;
     }
-
+    
     return count;
 }
 
@@ -100,13 +100,13 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 - (void) writeDefaults
 {
     NSUserDefaults *defaults;
-
+    
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:NSStringFromInitialCountryDistribution (initialCountryDistribution) forKey:DK_InitialCountryDistribution];
     [defaults setObject:NSStringFromInitialArmyPlacement (initialArmyPlacement)             forKey:DK_InitialArmyPlacement];
     [defaults setObject:NSStringFromCardSetRedemption (cardSetRedemption)                   forKey:DK_CardSetRedemption];
     [defaults setObject:NSStringFromFortifyRule (fortifyRule)                               forKey:DK_FortifyRule];
-
+    
     [defaults synchronize];
 }
 

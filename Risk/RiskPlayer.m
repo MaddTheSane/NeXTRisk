@@ -46,20 +46,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         playerNumber = number;
         playerCards = [[NSMutableArray alloc] init];
         gameManager = aManager;
-
+        
         attackMethod = AttackOnce;
         attackMethodValue = 1;
-
+        
         consoleWindow = nil;
         consoleMessageText = nil;
         continueButton = nil;
         pauseForContinueButton = nil;
-
+        
         playerToolMenu = nil;
-
+        
         rng = [SNRandom instance];
     }
-
+    
     return self;
 }
 
@@ -129,7 +129,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         int troopCount = country.troopCount;
         int movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
-
+        
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)
             || ((options & CountryFlagsPlayerTwo) && number != 2)
@@ -147,7 +147,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         {
             continue;
         }
-
+        
         [resultingSet addObject:country];
     }
     
@@ -159,11 +159,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSEnumerator *countryEnumerator;
     NSMutableSet *resultingSet;
     Country *country;
-
+    
     Player number;
     int troopCount, movableTroopCount;
     BOOL hasEnemyNeighbors;
-
+    
     resultingSet = [NSMutableSet set];
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -172,7 +172,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         troopCount = country.troopCount;
         movableTroopCount = country.movableTroopCount;
         hasEnemyNeighbors = country.hasEnemyNeighbors;
-
+        
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
             || ((options & CountryFlagsPlayerTwo) && number == 2)
@@ -200,13 +200,13 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     Player number;
     int troopCount, movableTroopCount;
     BOOL hasEnemyNeighbors;
-
+    
     flag = NO;
-
+    
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
     {
@@ -214,7 +214,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         troopCount = country.troopCount;
         movableTroopCount = country.movableTroopCount;
         hasEnemyNeighbors = country.hasEnemyNeighbors;
-
+        
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)
             || ((options & CountryFlagsPlayerTwo) && number != 2)
@@ -232,11 +232,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         {
             continue;
         }
-
+        
         flag = YES;
         break;
     }
-
+    
     return flag;
 }
 
@@ -245,11 +245,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSEnumerator *countryEnumerator;
     Country *country;
     BOOL flag;
-
+    
     Player number;
     int troopCount, movableTroopCount;
     BOOL hasEnemyNeighbors;
-
+    
     flag = NO;
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -258,7 +258,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         troopCount = country.troopCount;
         movableTroopCount = country.movableTroopCount;
         hasEnemyNeighbors = country.hasEnemyNeighbors;
-
+        
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
             || ((options & CountryFlagsPlayerTwo) && number == 2)
@@ -287,7 +287,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSEnumerator *countryEnumerator;
     NSMutableSet *resultingSet;
     Country *country;
-
+    
     resultingSet = [NSMutableSet set];
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -304,7 +304,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSEnumerator *countryEnumerator;
     NSMutableSet *resultingSet;
     Country *country;
-
+    
     resultingSet = [NSMutableSet set];
     countryEnumerator = [source objectEnumerator];
     while (country = [countryEnumerator nextObject])
@@ -325,11 +325,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSInteger count;
     RiskCard *card1, *card2, *card3;
     CardSet *cardSet;
-
+    
     count = playerCards.count;
-
+    
     allCardSets = [NSMutableSet set];
-
+    
     for (i = 0; i < count; i++)
     {
         card1 = playerCards[i];
@@ -339,14 +339,14 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
             for (k = j + 1; k < count; k++)
             {
                 card3 = playerCards[k];
-
+                
                 cardSet = [CardSet cardSet:card1:card2:card3];
                 if (cardSet != nil)
                     [allCardSets addObject:cardSet];
             }
         }
     }
-
+    
     return allCardSets;
 }
 
@@ -356,17 +356,17 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSSet *allSets;
     NSEnumerator *cardSetEnumerator;
     CardSet *cardSet;
-
+    
     bestSet = nil;
     allSets = [self allOurCardSets];
     cardSetEnumerator = [allSets objectEnumerator];
-
+    
     while (cardSet = [cardSetEnumerator nextObject])
     {
         if (compareCardSetValues (cardSet, bestSet, (void *)playerNumber) == NSOrderedAscending)
             bestSet = cardSet;
     }
-
+    
     return bestSet;
 }
 
@@ -376,10 +376,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     NSInteger count;
     RiskCard *card1, *card2, *card3;
     BOOL hasValidSet;
-
+    
     hasValidSet = NO;
     count = playerCards.count;
-
+    
     for (i = 0; hasValidSet == NO && i < count; i++)
     {
         card1 = playerCards[i];
@@ -389,7 +389,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
             for (k = j + 1; k < count; k++)
             {
                 card3 = playerCards[k];
-
+                
                 if ([CardSet isValidCardSet:card1:card2:card3] == YES)
                 {
                     hasValidSet = YES;
@@ -398,7 +398,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
             }
         }
     }
-
+    
     return hasValidSet;
 }
 
@@ -413,44 +413,44 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     {
         nibFile = @"PlayerConsole";
         loaded = [NSBundle loadNibNamed:nibFile owner:self];
-
+        
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
-
+        
         consoleWindow.title = [NSString stringWithFormat:@"Player %ld Console", (long)playerNumber];
     }
-
+    
     [consoleWindow orderFront:self];
 }
 
 - (void) logMessage:(NSString *)format, ...
 {
-	va_list ap;
-	va_start(ap, format);
-	[self logMessage:format format:ap];
-	va_end(ap);
+    va_list ap;
+    va_start(ap, format);
+    [self logMessage:format format:ap];
+    va_end(ap);
 }
 
 - (void) logMessage:(NSString *)format format:(va_list)ap
 {
-	NSRange selected;
-	NSMutableString *str;
-	
-	if (consoleMessageText != nil)
-	{
-		str = [[NSMutableString alloc] initWithFormat:format arguments:ap];
-		[str appendString:@"\n"];
-		
-		[consoleMessageText selectAll:nil];
-		selected = [consoleMessageText selectedRange];
-		selected.location = selected.length;
-		selected.length = 0;
-		[consoleMessageText setSelectedRange:selected];
-		[consoleMessageText replaceCharactersInRange:selected withString:str];
-		[consoleMessageText scrollRangeToVisible:selected];
-		
-		if (pauseForContinueButton.state == 1)
-			[self waitForContinue];
-	}
+    NSRange selected;
+    NSMutableString *str;
+    
+    if (consoleMessageText != nil)
+    {
+        str = [[NSMutableString alloc] initWithFormat:format arguments:ap];
+        [str appendString:@"\n"];
+        
+        [consoleMessageText selectAll:nil];
+        selected = [consoleMessageText selectedRange];
+        selected.location = selected.length;
+        selected.length = 0;
+        [consoleMessageText setSelectedRange:selected];
+        [consoleMessageText replaceCharactersInRange:selected withString:str];
+        [consoleMessageText scrollRangeToVisible:selected];
+        
+        if (pauseForContinueButton.state == 1)
+            [self waitForContinue];
+    }
 }
 
 - (void) waitForContinue
@@ -467,7 +467,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (IBAction) pauseCheckAction:(id)sender
 {
     [NSApp stopModal];
-
+    
     if ([sender state] == 1)
     {
         [continueButton setEnabled:YES];
@@ -509,13 +509,13 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 {
     NSArray *unoccupiedCountries;
     Country *country;
-
+    
     unoccupiedCountries = [gameManager unoccupiedCountries];
     country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
-
+    
     [gameManager player:self choseCountry:country];
     // Possible to choose more than one country...
-
+    
     [self turnDone];
 }
 

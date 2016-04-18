@@ -34,11 +34,11 @@ static NSTextFieldCell *_armyCell = nil;
     if (self == [CountryShape class])
     {
         [self setVersion:CountryShape_VERSION];
-
+        
         if (_armyCell == nil)
         {
             _armyCell = [[NSTextFieldCell alloc] init];
-
+            
             _armyCell.backgroundColor = [NSColor whiteColor];
             [_armyCell setBezeled:NO];
             _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
@@ -68,7 +68,7 @@ static NSTextFieldCell *_armyCell = nil;
         armyCellPoint = aPoint;
         //shapeBoudns = NSZeroRect;
     }
-
+    
     return self;
 }
 
@@ -102,7 +102,7 @@ static NSTextFieldCell *_armyCell = nil;
             //shapeBounds = [aDecoder decodeRect];
         }
     }
-	
+    
     return self;
 }
 
@@ -111,33 +111,33 @@ static NSTextFieldCell *_armyCell = nil;
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected
 {
     BoardSetup *boardSetup;
-
+    
     int troopCount;
-
+    
     troopCount = aCountry.troopCount;
     if (troopCount == 0)
     {
         [aView drawBackground:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)];
     }
-
+    
     boardSetup = [BoardSetup instance];
-
+    
     if (aCountry.playerNumber != 0)
         [[boardSetup colorForPlayer:aCountry.playerNumber] set];
     else
         [[NSColor whiteColor] set];
-
-	[userPath stroke];
-
+    
+    [userPath stroke];
+    
     if (selected == YES)
         [boardSetup.selectedBorderColor set];
     else
         [boardSetup.regularBorderColor set];
-	CGFloat prevWidth = userPath.lineWidth;
-	userPath.lineWidth = boardSetup.borderWidth;
-	[userPath stroke];
-	userPath.lineWidth = prevWidth;
-
+    CGFloat prevWidth = userPath.lineWidth;
+    userPath.lineWidth = boardSetup.borderWidth;
+    [userPath stroke];
+    userPath.lineWidth = prevWidth;
+    
     if (aCountry.playerNumber != 0 && troopCount > 0)
     {
         // No -- If by default every country has at least one army in it, and it
@@ -145,7 +145,7 @@ static NSTextFieldCell *_armyCell = nil;
         //[_armyCell setIntValue:troopCount - 1];
         _armyCell.intValue = troopCount;
         [_armyCell drawWithFrame:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)
-                   inView:aView];
+                          inView:aView];
     }
 }
 
@@ -153,7 +153,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (BOOL) pointInShape:(NSPoint)aPoint
 {
-	return [userPath containsPoint:aPoint];
+    return [userPath containsPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
@@ -161,8 +161,8 @@ static NSTextFieldCell *_armyCell = nil;
 - (NSPoint) centerPoint
 {
     NSRect bbox = userPath.bounds;
-	
-	return NSMakePoint(NSMidX(bbox), NSMidY(bbox));
+    
+    return NSMakePoint(NSMidX(bbox), NSMidY(bbox));
 }
 
 //----------------------------------------------------------------------
@@ -178,7 +178,7 @@ static NSTextFieldCell *_armyCell = nil;
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"<CountryShape: userPath = %@, armyCellPoint = %f,%f>",
-                     userPath, armyCellPoint.x, armyCellPoint.y];
+            userPath, armyCellPoint.x, armyCellPoint.y];
 }
 
 @end

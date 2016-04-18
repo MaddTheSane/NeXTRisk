@@ -30,7 +30,7 @@ static NSTextFieldCell *_textCell = nil;
     if (self == [StatusView class])
     {
         [self setVersion:StatusView_VERSION];
-
+        
         _textCell = [[NSTextFieldCell alloc] init];
         _textCell.backgroundColor = [NSColor lightGrayColor];
         [_textCell setBezeled:NO];
@@ -49,18 +49,18 @@ static NSTextFieldCell *_textCell = nil;
 {
     if (self = [super initWithFrame:frameRect]) {
         showCardSetCounts = [BoardSetup instance].showCardSetCounts;
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
                                                      name:RiskBoardSetupShowCardSetCountsChangedNotification
                                                    object:nil];
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
                                                      name:RiskBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
-
+    
     return self;
 }
 
@@ -94,25 +94,25 @@ static NSTextFieldCell *_textCell = nil;
     int l, offset;
     NSRect boundsRect;
     Player number;
-	
-
+    
+    
     boundsRect = self.bounds;
-
+    
     [[NSColor controlColor] set];
     NSRectFill (boundsRect);
-
+    
     playerCount = [gameManager activePlayerCount];
-
+    
     if (playerCount == 0 || [gameManager gameInProgress] == NO)
     {
         return;
     }
-
+    
     currentPlayer = [gameManager currentPlayerNumber];
-
+    
     boxHeight = (boundsRect.size.height - ((playerCount + 1) * INTERSPACE)) / playerCount;
     boxWidth = (boundsRect.size.width - (3 * INTERSPACE)) - TEXTWIDTH;
-	
+    
     boxRect.origin.x = INTERSPACE;
     boxRect.size.width = boxWidth;
     boxRect.size.height = boxHeight;
@@ -120,7 +120,7 @@ static NSTextFieldCell *_textCell = nil;
     textRect.size.width = TEXTWIDTH;
     textRect.size.height = TEXTHEIGHT;
     offset = 0;
-
+    
     for (l = 0; l < 6; l++)
     {
         number = 1 + ((l + currentPlayer - 1) % 6);
@@ -131,33 +131,33 @@ static NSTextFieldCell *_textCell = nil;
             boxRect.origin.y = ((offset + 1) * INTERSPACE) + (offset * boxHeight);
             NSDrawWhiteBezel (boxRect, boundsRect);
             [[[BoardSetup instance] colorForPlayer:number] set];
-
-			NSRectFill(NSInsetRect(boxRect, -INSET, -INSET));
-            textRect.origin.y = ((offset + 1) * INTERSPACE) + 
-                (offset * boxHeight) +
-                ((boxHeight - TEXTHEIGHT) / 2);
-
+            
+            NSRectFill(NSInsetRect(boxRect, -INSET, -INSET));
+            textRect.origin.y = ((offset + 1) * INTERSPACE) +
+            (offset * boxHeight) +
+            ((boxHeight - TEXTHEIGHT) / 2);
+            
             if (showCardSetCounts == YES)
             {
                 RiskPlayer *player;
                 NSInteger count;
-
+                
                 player = [gameManager playerNumber:number];
                 count = player.playerCards.count;
-
+                
                 if ([player canTurnInCardSet] == YES)
 #ifdef __APPLE_CPP__
                     [_textCell setTextColor:[NSColor darkGrayColor]];
 #else
-                    _textCell.textColor = [NSColor whiteColor];
+                _textCell.textColor = [NSColor whiteColor];
 #endif
                 else
                     _textCell.textColor = [NSColor blackColor];
-
+                
                 _textCell.integerValue = count;
                 [_textCell drawWithFrame:textRect inView:self];
             }
-
+            
             offset++;
         }
     }

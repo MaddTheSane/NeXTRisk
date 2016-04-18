@@ -31,7 +31,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
         placeArmyCount = 0;
         attackingCountry = nil;
     }
-
+    
     return self;
 }
 
@@ -53,92 +53,92 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     GameState gameState;
     int count;
     unsigned int flags;
-
+    
     flags = theEvent.modifierFlags;
     gameState = [gameManager gameState];
     switch (gameState)
     {
-      case gs_choose_countries:
-          if (aCountry.playerNumber == playerNumber)
-              [gameManager selectCountry:aCountry];
-    
-          if ([gameManager player:self choseCountry:aCountry] == YES)
-              [self turnDone];
-          else
-              NSBeep ();
-          break;
-          
-      case gs_place_initial_armies:
-      case gs_place_armies:
-      case gs_move_attacking_armies:
-      case gs_place_fortifying_armies:
-          if (flags & NSShiftKeyMask)
-              count = 5;
-          else if (flags & NSCommandKeyMask)
-              count = placeArmyCount;
-          else
-              count = 1;
-
-          if (count > placeArmyCount)
-              count = placeArmyCount;
-          
-          if (placeArmyCount > 0)
-          {
-              if ([gameManager player:self placesArmies:count inCountry:aCountry] == YES)
-              {
-                  [self setAttackingCountry:aCountry];
-
-                  placeArmyCount -= count;
-                  if (placeArmyCount == 0)
-                      [self turnDone];
-              }
-              else
-              {
-                  NSBeep ();
-              }
-          }
-
-          break;
-
-      case gs_attack:
-          // If the country is ours, set that as the attacking country (if >0 troops),
-          // otherwise, attack the target country.
-          if (aCountry.playerNumber == playerNumber)
-          {
-              [self setAttackingCountry:aCountry];
-          }
-          else
-          {
-              AttackResult attackResult;
-              BOOL moveFlag;
-
-              NSAssert (attackingCountry != nil, @"attacking country not set.");
-
-              moveFlag = (flags & NSShiftKeyMask) ? YES : NO;
-
-              if ([attackingCountry isAdjacentToCountry:aCountry] == YES)
-              {
-                  // Attack target country
-                  attackResult = [self attackFromCountry:attackingCountry toCountry:aCountry moveAllArmiesUponVictory:moveFlag];
-                  [gameManager selectCountry:attackingCountry];
-              }
-          }
-          break;
-
-      case gs_fortify:
-          if (aCountry.playerNumber == playerNumber)
-          {
-              [gameManager fortifyArmiesFrom:aCountry];
-          }
-          else
-          {
-              NSBeep ();
-          }
-          break;
-          
-      default:
-          if (aCountry.playerNumber == playerNumber)
-              [gameManager selectCountry:aCountry];
+        case gs_choose_countries:
+            if (aCountry.playerNumber == playerNumber)
+                [gameManager selectCountry:aCountry];
+            
+            if ([gameManager player:self choseCountry:aCountry] == YES)
+                [self turnDone];
+            else
+                NSBeep ();
+            break;
+            
+        case gs_place_initial_armies:
+        case gs_place_armies:
+        case gs_move_attacking_armies:
+        case gs_place_fortifying_armies:
+            if (flags & NSShiftKeyMask)
+                count = 5;
+            else if (flags & NSCommandKeyMask)
+                count = placeArmyCount;
+            else
+                count = 1;
+            
+            if (count > placeArmyCount)
+                count = placeArmyCount;
+            
+            if (placeArmyCount > 0)
+            {
+                if ([gameManager player:self placesArmies:count inCountry:aCountry] == YES)
+                {
+                    [self setAttackingCountry:aCountry];
+                    
+                    placeArmyCount -= count;
+                    if (placeArmyCount == 0)
+                        [self turnDone];
+                }
+                else
+                {
+                    NSBeep ();
+                }
+            }
+            
+            break;
+            
+        case gs_attack:
+            // If the country is ours, set that as the attacking country (if >0 troops),
+            // otherwise, attack the target country.
+            if (aCountry.playerNumber == playerNumber)
+            {
+                [self setAttackingCountry:aCountry];
+            }
+            else
+            {
+                AttackResult attackResult;
+                BOOL moveFlag;
+                
+                NSAssert (attackingCountry != nil, @"attacking country not set.");
+                
+                moveFlag = (flags & NSShiftKeyMask) ? YES : NO;
+                
+                if ([attackingCountry isAdjacentToCountry:aCountry] == YES)
+                {
+                    // Attack target country
+                    attackResult = [self attackFromCountry:attackingCountry toCountry:aCountry moveAllArmiesUponVictory:moveFlag];
+                    [gameManager selectCountry:attackingCountry];
+                }
+            }
+            break;
+            
+        case gs_fortify:
+            if (aCountry.playerNumber == playerNumber)
+            {
+                [gameManager fortifyArmiesFrom:aCountry];
+            }
+            else
+            {
+                NSBeep ();
+            }
+            break;
+            
+        default:
+            if (aCountry.playerNumber == playerNumber)
+                [gameManager selectCountry:aCountry];
     }
 }
 
@@ -237,36 +237,36 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     
     switch (attackMethod)
     {
-      case AttackUntilUnableToContinue:
-          attackResult = [gameManager attackUntilUnableToContinueFromCountry:attacker
-                                      toCountry:defender
-                                      moveAllArmiesUponVictory:moveFlag];
-          break;
-          
-      case AttackMultipleTimes:
-          attackResult = [gameManager attackMultipleTimes:attackMethodValue
-                                      fromCountry:attacker
-                                      toCountry:defender
-                                      moveAllArmiesUponVictory:moveFlag];
-          break;
-          
-      case AttackUntilArmiesRemain:
-          attackResult = [gameManager attackFromCountry:attacker
-                                      toCountry:defender
-                                      untilArmiesRemain:attackMethodValue
-                                      moveAllArmiesUponVictory:moveFlag];
-          break;
-          
-      case AttackOnce:
-      default:
-          attackResult = [gameManager attackOnceFromCountry:attacker
-                                      toCountry:defender
-                                      moveAllArmiesUponVictory:moveFlag];
+        case AttackUntilUnableToContinue:
+            attackResult = [gameManager attackUntilUnableToContinueFromCountry:attacker
+                                                                     toCountry:defender
+                                                      moveAllArmiesUponVictory:moveFlag];
+            break;
+            
+        case AttackMultipleTimes:
+            attackResult = [gameManager attackMultipleTimes:attackMethodValue
+                                                fromCountry:attacker
+                                                  toCountry:defender
+                                   moveAllArmiesUponVictory:moveFlag];
+            break;
+            
+        case AttackUntilArmiesRemain:
+            attackResult = [gameManager attackFromCountry:attacker
+                                                toCountry:defender
+                                        untilArmiesRemain:attackMethodValue
+                                 moveAllArmiesUponVictory:moveFlag];
+            break;
+            
+        case AttackOnce:
+        default:
+            attackResult = [gameManager attackOnceFromCountry:attacker
+                                                    toCountry:defender
+                                     moveAllArmiesUponVictory:moveFlag];
     }
-
+    
     if (attackResult.conqueredCountry == YES)
         [self setAttackingCountry:defender];
-
+    
     return attackResult;
 }
 
@@ -278,7 +278,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     if (attacker != nil)
     {
         attackingCountry = attacker;
-
+        
         [gameManager setAttackingFromCountryName:attackingCountry.countryName];
         [gameManager selectCountry:attackingCountry];
     }

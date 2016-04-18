@@ -27,7 +27,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
         regionArrays = [[NSMutableArray alloc] init];
         currentRegionPoints = nil;
     }
-
+    
     return self;
 }
 
@@ -48,7 +48,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (void) addPoint:(NSPoint)newPoint
 {
     NSAssert (currentRegionPoints != nil, @"Not defining a region.");
-
+    
     [currentRegionPoints addObject:[RiskPoint riskPointWithPoint:newPoint]];
 }
 
@@ -57,7 +57,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (void) closeRegion
 {
     NSAssert (currentRegionPoints != nil, @"Not defining a region.");
-
+    
     [regionArrays addObject:currentRegionPoints];
     currentRegionPoints = nil;
 }
@@ -71,9 +71,9 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     NSArray *region;
     RiskPoint *point;
     NSBezierPath *userPath;
-
+    
     userPath = [[NSBezierPath alloc] init];
-
+    
     regionEnumerator = [regionArrays objectEnumerator];
     while (region = [regionEnumerator nextObject])
     {
@@ -87,7 +87,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
     }
     [userPath closePath];
     //[userPath createPathWithCache:YES];
-
+    
     //return [CountryShape countryShapeWithRegions:regionArrays];
     return [CountryShape countryShapeWithUserPath:userPath armyCellPoint:aPoint];
 }
@@ -108,7 +108,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 {
     if ([self scanString:str intoString:NULL] == NO)
         [NSException raise:ExpectException format:@"Expected %@", str];
-
+    
     //NSLog (@"Got %@", str);
 }
 
@@ -117,15 +117,15 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (NSString *) scanQuotedString
 {
     NSString *str;
-
+    
     str = nil;
-
+    
     [self expect:@"\""];
     [self scanUpToString:@"\"" intoString:&str];
     [self expect:@"\""];
-
+    
     //NSLog (@"scanned \"%@\"", str);
-
+    
     return str;
 }
 
@@ -134,14 +134,14 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (NSString *) scanString
 {
     NSString *str;
-
+    
     str = nil;
-
+    
     if ([self scanCharactersFromSet:[NSCharacterSet letterCharacterSet] intoString:&str] == NO)
         [NSException raise:ExpectException format:@"Expected letter"];
-
+    
     //NSLog (@"scanned %@", str);
-
+    
     return str;
 }
 
@@ -150,18 +150,18 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 - (void) scanPoint:(NSPoint *)point
 {
     NSPoint aPoint;
-	float anX = 0, anY = 0;
-
+    float anX = 0, anY = 0;
+    
     if ([self scanFloat:&anX] == NO)
         [NSException raise:ExpectException format:@"Expected float"];
     //NSLog (@"Scanned %f", aPoint.x);
     if ([self scanFloat:&anY] == NO)
         [NSException raise:ExpectException format:@"Expected float"];
     //NSLog (@"Scanned %f", aPoint.y);
-
-	aPoint.x = anX;
-	aPoint.y = anY;
-	
+    
+    aPoint.x = anX;
+    aPoint.y = anY;
+    
     *point = aPoint;
 }
 

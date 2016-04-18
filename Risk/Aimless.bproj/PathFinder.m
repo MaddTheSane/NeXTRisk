@@ -38,20 +38,20 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
     NSString *name1, *name2;
     NSInteger distance1, distance2;
     NSComparisonResult result;
-
+    
     nodeDictionary = (__bridge NSDictionary *)context;
     name1 = ((Country *)country1).countryName;
     name2 = ((Country *)country2).countryName;
-
+    
     distance1 = nodeDictionary[name1].distance;
     distance2 = nodeDictionary[name2].distance;
-
+    
     if (distance1 < distance2)
         result = NSOrderedAscending;
     else if (distance1 == distance2)
     {
         int troopCount1, troopCount2;
-
+        
         // Choose country with fewest troops.
         troopCount1 = ((Country *)country1).troopCount;
         troopCount2 = ((Country *)country2).troopCount;
@@ -71,7 +71,7 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
             result = NSOrderedDescending;
             //NSLog (@">");
         }
-
+        
         if (result == NSOrderedAscending)
         {
             NSCAssert (troopCount1 < troopCount2, @"troopCount1 >= troopCount2");
@@ -87,7 +87,7 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
     }
     else
         result = NSOrderedDescending;
-
+    
     return result;
 }
 
@@ -104,10 +104,10 @@ BOOL PFCountryForPlayer (Country *country, void *context)
 {
     BOOL flag;
     Player number;
-
+    
     number = (Player)context;
     flag = country.playerNumber == number;
-
+    
     return flag;
 }
 
@@ -117,13 +117,13 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 {
     BOOL flag;
     Player number;
-
+    
     number = (Player)context;
     if (country.playerNumber == number && [country enemyNeighborCountries].count > 0)
         flag = YES;
     else
         flag = NO;
-
+    
     return flag;
 }
 
