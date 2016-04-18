@@ -44,50 +44,6 @@
 		553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */; };
 		553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */; };
 		5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801E1CC15E6A00A2C08E /* RiskUtility.m */; };
-		5537802B1CC161E500A2C08E /* Afghanistan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */; };
-		5537802C1CC161E500A2C08E /* Alaska.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECD1CC15C2300A2C08E /* Alaska.tiff */; };
-		5537802D1CC161E500A2C08E /* Alberta.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECE1CC15C2300A2C08E /* Alberta.tiff */; };
-		5537802E1CC161E500A2C08E /* Argentina.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECF1CC15C2300A2C08E /* Argentina.tiff */; };
-		5537802F1CC161E500A2C08E /* Brazil.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED01CC15C2300A2C08E /* Brazil.tiff */; };
-		553780301CC161E500A2C08E /* CentralAmerica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */; };
-		553780311CC161E500A2C08E /* China.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED21CC15C2300A2C08E /* China.tiff */; };
-		553780321CC161E500A2C08E /* Congo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED31CC15C2300A2C08E /* Congo.tiff */; };
-		553780331CC161E500A2C08E /* EastAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED41CC15C2300A2C08E /* EastAfrica.tiff */; };
-		553780341CC161E500A2C08E /* EasternAustralia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */; };
-		553780351CC161E500A2C08E /* EasternUS.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED61CC15C2300A2C08E /* EasternUS.tiff */; };
-		553780361CC161E500A2C08E /* Egypt.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED71CC15C2300A2C08E /* Egypt.tiff */; };
-		553780371CC161E500A2C08E /* GreatBritain.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED81CC15C2300A2C08E /* GreatBritain.tiff */; };
-		553780381CC161E500A2C08E /* Greenland.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ED91CC15C2300A2C08E /* Greenland.tiff */; };
-		553780391CC161E500A2C08E /* Iceland.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDB1CC15C2300A2C08E /* Iceland.tiff */; };
-		5537803A1CC161E500A2C08E /* India.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDC1CC15C2300A2C08E /* India.tiff */; };
-		5537803B1CC161E500A2C08E /* Indonesia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDD1CC15C2300A2C08E /* Indonesia.tiff */; };
-		5537803C1CC161E500A2C08E /* Irkutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */; };
-		5537803D1CC161E500A2C08E /* Japan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EDF1CC15C2300A2C08E /* Japan.tiff */; };
-		5537803E1CC161E500A2C08E /* Joker1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE01CC15C2300A2C08E /* Joker1.tiff */; };
-		5537803F1CC161E500A2C08E /* Joker2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE11CC15C2300A2C08E /* Joker2.tiff */; };
-		553780401CC161E500A2C08E /* Kamchatka.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE21CC15C2300A2C08E /* Kamchatka.tiff */; };
-		553780411CC161E500A2C08E /* Madagascar.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE41CC15C2300A2C08E /* Madagascar.tiff */; };
-		553780421CC161E500A2C08E /* MiddleEast.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE81CC15C2300A2C08E /* MiddleEast.tiff */; };
-		553780431CC161E500A2C08E /* Mongolia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EE91CC15C2300A2C08E /* Mongolia.tiff */; };
-		553780441CC161E500A2C08E /* NewGuinea.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */; };
-		553780451CC161E500A2C08E /* NorthAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */; };
-		553780461CC161E500A2C08E /* NorthernEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */; };
-		553780471CC161E500A2C08E /* NorthwestTerritory.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */; };
-		553780481CC161E500A2C08E /* Ontario.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EEE1CC15C2300A2C08E /* Ontario.tiff */; };
-		553780491CC161E500A2C08E /* Peru.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF01CC15C2300A2C08E /* Peru.tiff */; };
-		5537804A1CC161E500A2C08E /* Quebec.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF11CC15C2300A2C08E /* Quebec.tiff */; };
-		5537804B1CC161E500A2C08E /* Scandinavia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF21CC15C2300A2C08E /* Scandinavia.tiff */; };
-		5537804C1CC161E500A2C08E /* Siam.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF31CC15C2300A2C08E /* Siam.tiff */; };
-		5537804D1CC161E500A2C08E /* Siberia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF41CC15C2300A2C08E /* Siberia.tiff */; };
-		5537804E1CC161E500A2C08E /* SouthAfrica.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */; };
-		5537804F1CC161E500A2C08E /* SouthernEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */; };
-		553780501CC161E500A2C08E /* Ukraine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF71CC15C2300A2C08E /* Ukraine.tiff */; };
-		553780511CC161E500A2C08E /* Ural.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF81CC15C2300A2C08E /* Ural.tiff */; };
-		553780521CC161E500A2C08E /* Venezuela.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EF91CC15C2300A2C08E /* Venezuela.tiff */; };
-		553780531CC161E500A2C08E /* WesternAustralia.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */; };
-		553780541CC161E500A2C08E /* WesternEurope.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */; };
-		553780551CC161E500A2C08E /* WesternUS.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFC1CC15C2300A2C08E /* WesternUS.tiff */; };
-		553780561CC161E500A2C08E /* Yakutsk.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */; };
 		553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		553780591CC1624B00A2C08E /* CardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECA1CC15C2300A2C08E /* CardBack.tiff */; };
 		5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
@@ -973,58 +929,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5537804B1CC161E500A2C08E /* Scandinavia.tiff in Resources */,
-				553780461CC161E500A2C08E /* NorthernEurope.tiff in Resources */,
-				553780511CC161E500A2C08E /* Ural.tiff in Resources */,
-				5537803A1CC161E500A2C08E /* India.tiff in Resources */,
-				553780491CC161E500A2C08E /* Peru.tiff in Resources */,
-				5537803D1CC161E500A2C08E /* Japan.tiff in Resources */,
 				5537801F1CC15E6A00A2C08E /* CardData.txt in Resources */,
-				553780421CC161E500A2C08E /* MiddleEast.tiff in Resources */,
-				553780341CC161E500A2C08E /* EasternAustralia.tiff in Resources */,
-				553780531CC161E500A2C08E /* WesternAustralia.tiff in Resources */,
-				553780361CC161E500A2C08E /* Egypt.tiff in Resources */,
-				553780481CC161E500A2C08E /* Ontario.tiff in Resources */,
-				553780411CC161E500A2C08E /* Madagascar.tiff in Resources */,
 				553780591CC1624B00A2C08E /* CardBack.tiff in Resources */,
-				5537802F1CC161E500A2C08E /* Brazil.tiff in Resources */,
 				553780021CC15E1700A2C08E /* Assets.xcassets in Resources */,
-				553780351CC161E500A2C08E /* EasternUS.tiff in Resources */,
 				551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */,
-				553780471CC161E500A2C08E /* NorthwestTerritory.tiff in Resources */,
-				5537802B1CC161E500A2C08E /* Afghanistan.tiff in Resources */,
-				5537802E1CC161E500A2C08E /* Argentina.tiff in Resources */,
-				5537804F1CC161E500A2C08E /* SouthernEurope.tiff in Resources */,
-				553780521CC161E500A2C08E /* Venezuela.tiff in Resources */,
-				5537802D1CC161E500A2C08E /* Alberta.tiff in Resources */,
 				553780201CC15E6A00A2C08E /* ContinentData.txt in Resources */,
-				5537802C1CC161E500A2C08E /* Alaska.tiff in Resources */,
-				5537804E1CC161E500A2C08E /* SouthAfrica.tiff in Resources */,
-				553780331CC161E500A2C08E /* EastAfrica.tiff in Resources */,
 				553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */,
-				553780401CC161E500A2C08E /* Kamchatka.tiff in Resources */,
-				5537803C1CC161E500A2C08E /* Irkutsk.tiff in Resources */,
 				553780211CC15E6A00A2C08E /* CountryData.txt in Resources */,
-				553780561CC161E500A2C08E /* Yakutsk.tiff in Resources */,
-				553780311CC161E500A2C08E /* China.tiff in Resources */,
-				553780551CC161E500A2C08E /* WesternUS.tiff in Resources */,
-				553780391CC161E500A2C08E /* Iceland.tiff in Resources */,
-				553780301CC161E500A2C08E /* CentralAmerica.tiff in Resources */,
-				553780371CC161E500A2C08E /* GreatBritain.tiff in Resources */,
-				553780541CC161E500A2C08E /* WesternEurope.tiff in Resources */,
-				5537804A1CC161E500A2C08E /* Quebec.tiff in Resources */,
-				5537804D1CC161E500A2C08E /* Siberia.tiff in Resources */,
 				553780221CC15E6A00A2C08E /* CountryNeighbors.txt in Resources */,
-				553780381CC161E500A2C08E /* Greenland.tiff in Resources */,
-				553780501CC161E500A2C08E /* Ukraine.tiff in Resources */,
-				553780441CC161E500A2C08E /* NewGuinea.tiff in Resources */,
-				553780431CC161E500A2C08E /* Mongolia.tiff in Resources */,
-				553780321CC161E500A2C08E /* Congo.tiff in Resources */,
-				553780451CC161E500A2C08E /* NorthAfrica.tiff in Resources */,
-				5537803E1CC161E500A2C08E /* Joker1.tiff in Resources */,
-				5537803B1CC161E500A2C08E /* Indonesia.tiff in Resources */,
-				5537804C1CC161E500A2C08E /* Siam.tiff in Resources */,
-				5537803F1CC161E500A2C08E /* Joker2.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
