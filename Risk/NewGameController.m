@@ -203,7 +203,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
             
         case 1: // Human
-            imagePath = [thisBundle pathForResource:@"Human" ofType:@"tiff"];
             image = [NSImage imageNamed:@"Human"];
             aboutPlayerImageView.image = image;
             
@@ -223,8 +222,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             playerBundle = riskPlayerBundles[itemIndex - 2];
             playerBundleInfo = playerBundle.infoDictionary;
             
-            imagePath = [playerBundle pathForResource:playerBundleInfo[@"PlayerIcon"] ofType:nil];
-            image = [NSImage imageNamed:playerBundleInfo[@"PlayerIcon"]];
+            image = [playerBundle imageForResource:playerBundleInfo[@"PlayerIcon"]];
+            if (!image) {
+                image = [NSImage imageNamed:playerBundleInfo[@"PlayerIcon"]];
+            }
             aboutPlayerImageView.image = image;
             
             playerTypeName = playerBundleInfo[@"PlayerTypeName"];

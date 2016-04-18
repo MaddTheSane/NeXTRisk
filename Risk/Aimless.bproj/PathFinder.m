@@ -20,7 +20,7 @@
 //     e-mail:  nygard@telusplanet.net
 //
 
-#import "../Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
@@ -172,8 +172,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 - (void) _buildShortestPathsFromCountry:(Country *)source
 {
     NSSet *allCountries;
-    NSEnumerator *countryEnumerator, *neighborEnumerator;
-    Country *country, *neighbor;
+    Country *country;
     DNode *node;
     SNHeap *countryHeap;
 
@@ -183,13 +182,12 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     allCountries = world.allCountries;
 
     // Build acceptable countries.
-    countryEnumerator = [allCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in allCountries)
     {
         if (isCountryAcceptable (country, context) == YES)
         {
             [acceptableCountries addObject:country];
-            node = [DNode dNode];
+            node = [DNode new];
             nodeDictionary[country.countryName] = node;
         }
     }
@@ -200,16 +198,14 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
 
-    countryEnumerator = [acceptableCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in acceptableCountries)
     {
         [countryHeap insertObject:country];
     }
 
     while ((country = [countryHeap extractObject]))
     {
-        neighborEnumerator = [[country ourNeighborCountries] objectEnumerator];
-        while (neighbor = [neighborEnumerator nextObject])
+        for (Country *neighbor in [country ourNeighborCountries])
         {
             NSInteger tmp;
 

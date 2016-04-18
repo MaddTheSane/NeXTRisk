@@ -124,12 +124,10 @@ static NSImage *_boardBackingImage = nil;
 
 - (void) drawBackground:(NSRect)rect
 {
-    NSPoint aPoint;
-    
     if (boardBackingImage != nil)
     {
         // draw backing
-        aPoint = NSMakePoint (0, 0);
+        //NSPoint aPoint = NSMakePoint (0, 0);
         //[boardBackingImage setSize:[self bounds].size]; // May want to make the image per instance (not per class)
         //[boardBackingImage compositeToPoint:aPoint operation:NSCompositeCopy];
         [boardBackingImage drawAtPoint:rect.origin fromRect:rect operation:NSCompositeCopy fraction:1];
