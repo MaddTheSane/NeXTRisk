@@ -6,10 +6,11 @@
 #import <AppKit/AppKit.h> // Need NSPoint...
 
 @class Country, CountryShape;
+@class RiskPoint;
 
 @interface CountryShapeGenerator : NSObject
 {
-    NSMutableArray *regionArrays;
+    NSMutableArray<NSArray<RiskPoint*>*> *regionArrays;
 
     NSMutableArray *currentRegionPoints;
 }

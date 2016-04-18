@@ -66,19 +66,12 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 
 - (CountryShape *) generateCountryShapeWithArmyCellPoint:(NSPoint)aPoint
 {
-    NSEnumerator *regionEnumerator;
-    NSEnumerator *pointEnumerator;
-    NSArray *region;
-    RiskPoint *point;
-    NSBezierPath *userPath;
+    NSBezierPath *userPath = [[NSBezierPath alloc] init];
     
-    userPath = [[NSBezierPath alloc] init];
-    
-    regionEnumerator = [regionArrays objectEnumerator];
-    while (region = [regionEnumerator nextObject])
+    for (NSArray<RiskPoint*> *region in regionArrays)
     {
-        pointEnumerator = [region objectEnumerator];
-        point = [pointEnumerator nextObject];
+        NSEnumerator<RiskPoint*> *pointEnumerator = [region objectEnumerator];
+        RiskPoint *point = [pointEnumerator nextObject];
         [userPath moveToPoint:point.point];
         while (point = [pointEnumerator nextObject])
         {
@@ -86,10 +79,9 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
         }
     }
     [userPath closePath];
-    //[userPath createPathWithCache:YES];
     
     //return [CountryShape countryShapeWithRegions:regionArrays];
-    return [CountryShape countryShapeWithUserPath:userPath armyCellPoint:aPoint];
+    return [CountryShape countryShapeWithBezierPath:userPath armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------

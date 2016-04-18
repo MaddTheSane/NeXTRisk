@@ -54,22 +54,32 @@ static NSTextFieldCell *_armyCell = nil;
 
 //----------------------------------------------------------------------
 
-+ (instancetype) countryShapeWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
++ (instancetype) countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     return [[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint];
 }
 
++ (instancetype)countryShapeWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
+{
+    return [[CountryShape alloc] initWithBezierPath:aUserPath armyCellPoint:aPoint];
+}
+
 //----------------------------------------------------------------------
 
-- (instancetype) initWithUserPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
+- (instancetype) initWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
     if (self = [super init]) {
-        userPath = aUserPath;
+        bezierPath = aUserPath;
         armyCellPoint = aPoint;
         //shapeBoudns = NSZeroRect;
     }
     
     return self;
+}
+
+- (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint
+{
+    return [self initWithBezierPath:[aUserPath toBezierPath] armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
@@ -81,7 +91,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:userPath forKey:kUserPathKey];
+    [aCoder encodeObject:bezierPath forKey:kUserPathKey];
     [aCoder encodePoint:armyCellPoint forKey:kArmyCellPoint];
     //[aCoder encodeRect:shapeBounds];
 }
@@ -92,12 +102,12 @@ static NSTextFieldCell *_armyCell = nil;
 {
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding) {
-            userPath = [aDecoder decodeObjectForKey:kUserPathKey];
+            bezierPath = [aDecoder decodeObjectForKey:kUserPathKey];
             armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
         } else {
             //For compatibility reasons, we have to jump through some hoops.
             SNUserPath *oldPath = [aDecoder decodeObject];
-            userPath = [oldPath toBezierPath];
+            bezierPath = [oldPath toBezierPath];
             armyCellPoint = [aDecoder decodePoint];
             //shapeBounds = [aDecoder decodeRect];
         }
@@ -127,16 +137,16 @@ static NSTextFieldCell *_armyCell = nil;
     else
         [[NSColor whiteColor] set];
     
-    [userPath stroke];
+    [bezierPath fill];
     
     if (selected == YES)
         [boardSetup.selectedBorderColor set];
     else
         [boardSetup.regularBorderColor set];
-    CGFloat prevWidth = userPath.lineWidth;
-    userPath.lineWidth = boardSetup.borderWidth;
-    [userPath stroke];
-    userPath.lineWidth = prevWidth;
+    CGFloat prevWidth = bezierPath.lineWidth;
+    bezierPath.lineWidth = boardSetup.borderWidth;
+    [bezierPath stroke];
+    bezierPath.lineWidth = prevWidth;
     
     if (aCountry.playerNumber != 0 && troopCount > 0)
     {
@@ -153,14 +163,14 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (BOOL) pointInShape:(NSPoint)aPoint
 {
-    return [userPath containsPoint:aPoint];
+    return [bezierPath containsPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
 
 - (NSPoint) centerPoint
 {
-    NSRect bbox = userPath.bounds;
+    NSRect bbox = bezierPath.bounds;
     
     return NSMakePoint(NSMidX(bbox), NSMidY(bbox));
 }
@@ -169,7 +179,7 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (NSRect) bounds
 {
-    return NSUnionRect (userPath.bounds, NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT));
+    return NSUnionRect (bezierPath.bounds, NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT));
     //return [userPath bounds];
 }
 
@@ -178,7 +188,7 @@ static NSTextFieldCell *_armyCell = nil;
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"<CountryShape: userPath = %@, armyCellPoint = %f,%f>",
-            userPath, armyCellPoint.x, armyCellPoint.y];
+            bezierPath, armyCellPoint.x, armyCellPoint.y];
 }
 
 @end
