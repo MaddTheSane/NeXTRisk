@@ -7,6 +7,12 @@
 
 @class Country;
 
+NS_ASSUME_NONNULL_BEGIN
+
+/// A \c RiskNeighbor represents two neighboring countries in a world.
+/// They are not directly encoded in a stream -- instead, their names
+/// are stored and then new instances are created after looking up
+/// the countries based on their names.
 @interface RiskNeighbor : NSObject
 
 + (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countries:_:) instead");
@@ -19,3 +25,5 @@
 @property (readonly, copy) NSString *description;
 
 @end
+
+NS_ASSUME_NONNULL_END

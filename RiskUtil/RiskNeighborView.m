@@ -38,30 +38,21 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 
 - (void) drawRect:(NSRect)rect
 {
-    NSArray *neighborArray;
-    NSEnumerator *neighborEnumerator;
-    RiskNeighbor *riskNeighbor;
-    NSPoint p1, p2;
-    float xdelta;
-    float xthresh;
-    
     [super drawRect:rect];
     
     //NSLog (@"datasource: %@", datasource);
     
     if (datasource != nil && [datasource respondsToSelector:@selector (riskNeighbors)] == YES)
     {
-        xthresh = [self bounds].size.width / 2;
+        CGFloat xthresh = [self bounds].size.width / 2;
         
-        neighborArray = [datasource riskNeighbors];
-        neighborEnumerator = [neighborArray objectEnumerator];
-        while (riskNeighbor = [neighborEnumerator nextObject])
+        for (RiskNeighbor *riskNeighbor in [datasource riskNeighbors])
         {
             //NSLog (@"neighbor: %@", riskNeighbor);
-            p1 = [[[riskNeighbor country1] countryShape] centerPoint];
-            p2 = [[[riskNeighbor country2] countryShape] centerPoint];
+            NSPoint p1 = [[[riskNeighbor country1] countryShape] centerPoint];
+            NSPoint p2 = [[[riskNeighbor country2] countryShape] centerPoint];
             //NSLog (@"%f,%f -> %f,%f", p1.x, p1.y, p2.x, p2.y);
-            xdelta = p1.x - p2.x;
+            CGFloat xdelta = p1.x - p2.x;
             if (xdelta < -xthresh || xdelta > xthresh)
                 [[NSColor blueColor] set]; // Try to make the Alaska-Kamchatka link stand out
             else

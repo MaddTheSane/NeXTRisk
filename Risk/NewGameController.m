@@ -71,9 +71,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (instancetype)initWithBrain:(Brain *)theBrain
 {
-    NSString *nibFile;
-    BOOL loaded;
-    
     if (self = [super init]) {
         NSArray *tmpArr;
         gameConfiguration = [[GameConfiguration alloc] init];
@@ -83,8 +80,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         
         // -awakeFromNib gets called immediately, so the above stuff must
         // already be set up.
-        nibFile = @"NewGamePanel";
-        loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        NSString *nibFile = @"NewGamePanel";
+        BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
         nibObjs = tmpArr;
         if (loaded == NO)
         {

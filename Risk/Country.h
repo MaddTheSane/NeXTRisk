@@ -23,9 +23,9 @@
 }
 
 - (instancetype)initWithCountryName:(NSString *)aName
-        continentName:(NSString *)aContinentName
-                shape:(CountryShape *)aCountryShape
-            continent:(RiskContinent)aContinent NS_DESIGNATED_INITIALIZER;
+                      continentName:(NSString *)aContinentName
+                              shape:(CountryShape *)aCountryShape
+                          continent:(RiskContinent)aContinent NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 

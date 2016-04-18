@@ -139,18 +139,13 @@ static NSImage *_boardBackingImage = nil;
 - (void) drawRect:(NSRect)rect
 // the meat of the display methods
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
-    NSRect countryBounds;
-    
     [self drawBackground:rect];
     
     if (countryArray != nil)
     {
-        countryEnumerator = [countryArray objectEnumerator];
-        while (country = [countryEnumerator nextObject])
+        for (Country *country in countryArray)
         {
-            countryBounds = country.countryShape.bounds;
+            NSRect countryBounds = country.countryShape.bounds;
             if (NSIsEmptyRect (NSIntersectionRect (countryBounds, rect)) == NO)
                 [country drawInView:self isSelected:country == selectedCountry];
         }

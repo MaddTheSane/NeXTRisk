@@ -125,8 +125,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                             encoding:NSASCIIStringEncoding];
+        fileContents = [[NSString alloc] initWithContentsOfFile:path
+                                                       encoding:NSASCIIStringEncoding
+                                                          error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -164,8 +165,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                             encoding:NSASCIIStringEncoding];
+        fileContents = [[NSString alloc] initWithContentsOfFile:path
+                                                       encoding:NSASCIIStringEncoding
+                                                          error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -207,8 +209,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                             encoding:NSASCIIStringEncoding];
+        fileContents = [[NSString alloc] initWithContentsOfFile:path
+                                                       encoding:NSASCIIStringEncoding
+                                                          error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -254,8 +257,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:path]
-                                             encoding:NSASCIIStringEncoding];
+        fileContents = [[NSString alloc] initWithContentsOfFile:path
+                                                       encoding:NSASCIIStringEncoding
+                                                          error: NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -580,29 +584,20 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - (IBAction) writeNeighborTextFile:(id)sender
 {
-    NSBundle *mainBundle;
-    NSString *path;
-    NSString *neighborString;
-    NSFileHandle *fileHandle;
+    NSString *neighborString = [RiskUtility neighborString:countryNeighbors];
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    panel.nameFieldStringValue = @"CountryNeighbors.txt";
+    panel.allowedFileTypes = @[@"txt"];
     
-    mainBundle = [NSBundle mainBundle];
-    NSAssert (mainBundle != nil, @"main bundle nil");
-    
-    path = [mainBundle pathForResource:@"CountryNeighbors" ofType:@"txt"];
-    NSAssert (path != nil, @"path nil");
-    
-    neighborString = [RiskUtility neighborString:countryNeighbors];
-    
-    fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
-    NSAssert (fileHandle != nil, @"file handle nil");
-    
-    [fileHandle writeData:[neighborString dataUsingEncoding:NSASCIIStringEncoding]];
-    
-    // The NSFileHandle class is so non-functional that it is almost completely devoid of use.
-    // Nevertheless...
-    [fileHandle truncateFileAtOffset:[fileHandle offsetInFile]];
-    
-    [fileHandle closeFile];
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            NSError *err;
+            
+            if (![neighborString writeToURL:[panel URL] atomically:YES encoding:NSUTF8StringEncoding error:&err]) {
+                [[NSAlert alertWithError:err] runModal];
+            }
+        }
+    }];
     
     NSLog (@"text file: %@", neighborString);
 }
@@ -611,7 +606,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 - (NSArray<RiskNeighbor*> *) riskNeighbors
 {
-    return countryNeighbors;
+    return [countryNeighbors copy];
 }
 
 //======================================================================

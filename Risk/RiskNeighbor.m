@@ -7,15 +7,7 @@
 RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 #import "RiskNeighbor.h"
-
 #import "Country.h"
-
-//======================================================================
-// A RiskNeighbor represents two neighboring countries in a world.
-// They are not directly encoded in a stream -- instead, their names
-// are stored and then new instances are created after looking up
-// the countries based on their names.
-//======================================================================
 
 #define RiskNeighbor_VERSION 1
 
