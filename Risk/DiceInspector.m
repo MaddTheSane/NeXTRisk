@@ -40,6 +40,9 @@ static struct image_names class_images[] =
 };
 
 @implementation DiceInspector
+{
+    NSArray *nibObjs;
+}
 
 + (void) initialize
 {
@@ -97,8 +100,10 @@ static struct image_names class_images[] =
     NSString *nibFile;
     
     if (self = [super init]) {
-        nibFile = @"DiceInspector.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        NSArray *tmpArr;
+        nibFile = @"DiceInspector";
+        loaded = [[NSBundle bundleForClass:[self class]] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);

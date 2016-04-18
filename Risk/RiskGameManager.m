@@ -49,6 +49,9 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 #define RiskGameManager_VERSION 1
 
 @implementation RiskGameManager
+{
+    NSArray *nibObjs;
+}
 @synthesize gameConfiguration = configuration;
 @synthesize world;
 @synthesize gameState;
@@ -67,11 +70,8 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (instancetype)init
 {
-    NSString *nibFile;
-    BOOL loaded;
-    int l;
-    
     if (self = [super init]) {
+        NSArray *tmpArr;
         world = nil;
         mapView = nil;
         
@@ -84,8 +84,9 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         
         rng = [SNRandom instance];
         
-        nibFile = @"GameBoard.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        NSString *nibFile = @"GameBoard";
+        BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
@@ -96,7 +97,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         
         activePlayerCount = 0;
         
-        for (l = 0; l < MAX_PLAYERS; l++)
+        for (int l = 0; l < MAX_PLAYERS; l++)
         {
             players[l] = nil;
             playersActive[l] = NO;

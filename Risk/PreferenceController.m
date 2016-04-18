@@ -19,6 +19,9 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 #define PreferenceController_VERSION 1
 
 @implementation PreferenceController
+{
+    NSArray *nibObjs;
+}
 
 + (void) initialize
 {
@@ -36,8 +39,10 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
     NSString *nibFile;
     
     if (self = [super init]) {
-        nibFile = @"PreferencePanel.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        NSArray *tmpBundle;
+        nibFile = @"PreferencePanel";
+        loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpBundle];
+        nibObjs = tmpBundle;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);

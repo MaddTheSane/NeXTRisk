@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.xib */; };
+		551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
 		551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551251D81CC2229A000E7A52 /* InfoPanel.xib */; };
 		551251E21CC22525000E7A52 /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		551251E31CC22525000E7A52 /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -16,15 +18,13 @@
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
 		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		55377F7A1CC15C2400A2C08E /* Brain.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC91CC15C2300A2C08E /* Brain.m */; };
-		55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECA1CC15C2300A2C08E /* CardBack.tiff */; };
 		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.nib */; };
-		55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.nib */; };
-		55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.nib */; };
-		55377FC41CC15C2400A2C08E /* NewGamePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F231CC15C2300A2C08E /* NewGamePanel.nib */; };
-		55377FC61CC15C2400A2C08E /* Risk.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F271CC15C2300A2C08E /* Risk.nib */; };
-		55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2F1CC15C2300A2C08E /* PreferencePanel.nib */; };
-		55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */; };
+		55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.xib */; };
+		55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.xib */; };
+		55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F231CC15C2300A2C08E /* NewGamePanel.xib */; };
+		55377FC61CC15C2400A2C08E /* Risk.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F271CC15C2300A2C08E /* Risk.xib */; };
+		55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2F1CC15C2300A2C08E /* PreferencePanel.xib */; };
+		55377FCD1CC15C2400A2C08E /* WorldInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F351CC15C2300A2C08E /* WorldInfoPanel.xib */; };
 		55377FD61CC15C2400A2C08E /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F431CC15C2300A2C08E /* Human.m */; };
 		55377FD71CC15C2400A2C08E /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
 		55377FD91CC15C2400A2C08E /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F471CC15C2300A2C08E /* LineView.m */; };
@@ -45,7 +45,6 @@
 		553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */; };
 		5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801E1CC15E6A00A2C08E /* RiskUtility.m */; };
 		553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
-		553780591CC1624B00A2C08E /* CardBack.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377ECA1CC15C2300A2C08E /* CardBack.tiff */; };
 		5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		553780601CC162A800A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		553780621CC162C500A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; };
@@ -72,7 +71,7 @@
 		553780BD1CC1970E00A2C08E /* SNRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F651CC15C2400A2C08E /* SNRandom.m */; };
 		553780BE1CC1975800A2C08E /* SNUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F6B1CC15C2400A2C08E /* SNUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780C11CC197EE00A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
-		553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */; };
+		553780C21CC1983100A2C08E /* PlayerConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F2B1CC15C2300A2C08E /* PlayerConsole.xib */; };
 		553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537806B1CC1639C00A2C08E /* Aimless.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5537808E1CC1642900A2C08E /* Chaotic.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		553780D51CC1993E00A2C08E /* Chaos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553780D41CC1993E00A2C08E /* Chaos.swift */; };
@@ -207,6 +206,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		551098101CC563FE00DE6DFE /* RKImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RKImages.xcassets; sourceTree = "<group>"; };
 		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
@@ -223,7 +223,6 @@
 		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
 		55377EC91CC15C2300A2C08E /* Brain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brain.m; sourceTree = "<group>"; };
-		55377ECA1CC15C2300A2C08E /* CardBack.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CardBack.tiff; sourceTree = "<group>"; };
 		55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Afghanistan.tiff; sourceTree = "<group>"; };
 		55377ECD1CC15C2300A2C08E /* Alaska.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alaska.tiff; sourceTree = "<group>"; };
 		55377ECE1CC15C2300A2C08E /* Alberta.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alberta.tiff; sourceTree = "<group>"; };
@@ -422,6 +421,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5510980D1CC5636400DE6DFE /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				55377F171CC15C2300A2C08E /* DiceInspector.xib */,
+				55377F2B1CC15C2300A2C08E /* PlayerConsole.xib */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		5510980E1CC5637200DE6DFE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				553780A81CC1966300A2C08E /* RiskKit.h */,
+				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
+				55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */,
+				55377EC61CC15C2300A2C08E /* BoardSetup.h */,
+				55377EC71CC15C2300A2C08E /* BoardSetup.m */,
+				55377EFE1CC15C2300A2C08E /* CardPanelController.h */,
+				55377EFF1CC15C2300A2C08E /* CardPanelController.m */,
+				55377F001CC15C2300A2C08E /* CardSet.h */,
+				55377F011CC15C2300A2C08E /* CardSet.m */,
+				55377F031CC15C2300A2C08E /* Continent.h */,
+				55377F041CC15C2300A2C08E /* Continent.m */,
+				55377F051CC15C2300A2C08E /* Country.h */,
+				55377F061CC15C2300A2C08E /* Country.m */,
+				55377F0A1CC15C2300A2C08E /* DiceInspector.h */,
+				55377F0B1CC15C2300A2C08E /* DiceInspector.m */,
+				55377F391CC15C2300A2C08E /* GameConfiguration.h */,
+				55377F3A1CC15C2300A2C08E /* GameConfiguration.m */,
+				55377F531CC15C2300A2C08E /* Risk.h */,
+				55377F541CC15C2300A2C08E /* Risk.m */,
+				55377F551CC15C2400A2C08E /* RiskCard.h */,
+				55377F561CC15C2400A2C08E /* RiskCard.m */,
+				55377F571CC15C2400A2C08E /* RiskGameManager.h */,
+				55377F581CC15C2400A2C08E /* RiskGameManager.m */,
+				55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */,
+				55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */,
+				55377F5D1CC15C2400A2C08E /* RiskPlayer.h */,
+				55377F5E1CC15C2400A2C08E /* RiskPlayer.m */,
+				55377F621CC15C2400A2C08E /* RiskWorld.h */,
+				55377F631CC15C2400A2C08E /* RiskWorld.m */,
+				55377F641CC15C2400A2C08E /* SNRandom.h */,
+				55377F651CC15C2400A2C08E /* SNRandom.m */,
+				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
+				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
+				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		5510980F1CC5637B00DE6DFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				551098101CC563FE00DE6DFE /* RKImages.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		551251EC1CC2D0E1000E7A52 /* Additional Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,7 +587,6 @@
 				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
 				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
-				55377ECA1CC15C2300A2C08E /* CardBack.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
 				55377F441CC15C2300A2C08E /* Human.rtf */,
@@ -591,15 +647,13 @@
 		5537809A1CC188A100A2C08E /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				55377F131CC15C2300A2C08E /* CardPanel.nib */,
-				55377F171CC15C2300A2C08E /* DiceInspector.nib */,
-				55377F1B1CC15C2300A2C08E /* GameBoard.nib */,
+				55377F131CC15C2300A2C08E /* CardPanel.xib */,
+				55377F1B1CC15C2300A2C08E /* GameBoard.xib */,
 				551251D81CC2229A000E7A52 /* InfoPanel.xib */,
-				55377F231CC15C2300A2C08E /* NewGamePanel.nib */,
-				55377F271CC15C2300A2C08E /* Risk.nib */,
-				55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */,
-				55377F2F1CC15C2300A2C08E /* PreferencePanel.nib */,
-				55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */,
+				55377F231CC15C2300A2C08E /* NewGamePanel.xib */,
+				55377F271CC15C2300A2C08E /* Risk.xib */,
+				55377F2F1CC15C2300A2C08E /* PreferencePanel.xib */,
+				55377F351CC15C2300A2C08E /* WorldInfoPanel.xib */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
@@ -621,40 +675,9 @@
 		553780A71CC1966300A2C08E /* RiskKit */ = {
 			isa = PBXGroup;
 			children = (
-				553780A81CC1966300A2C08E /* RiskKit.h */,
-				55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */,
-				55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */,
-				55377EC61CC15C2300A2C08E /* BoardSetup.h */,
-				55377EC71CC15C2300A2C08E /* BoardSetup.m */,
-				55377EFE1CC15C2300A2C08E /* CardPanelController.h */,
-				55377EFF1CC15C2300A2C08E /* CardPanelController.m */,
-				55377F001CC15C2300A2C08E /* CardSet.h */,
-				55377F011CC15C2300A2C08E /* CardSet.m */,
-				55377F031CC15C2300A2C08E /* Continent.h */,
-				55377F041CC15C2300A2C08E /* Continent.m */,
-				55377F051CC15C2300A2C08E /* Country.h */,
-				55377F061CC15C2300A2C08E /* Country.m */,
-				55377F0A1CC15C2300A2C08E /* DiceInspector.h */,
-				55377F0B1CC15C2300A2C08E /* DiceInspector.m */,
-				55377F391CC15C2300A2C08E /* GameConfiguration.h */,
-				55377F3A1CC15C2300A2C08E /* GameConfiguration.m */,
-				55377F531CC15C2300A2C08E /* Risk.h */,
-				55377F541CC15C2300A2C08E /* Risk.m */,
-				55377F551CC15C2400A2C08E /* RiskCard.h */,
-				55377F561CC15C2400A2C08E /* RiskCard.m */,
-				55377F571CC15C2400A2C08E /* RiskGameManager.h */,
-				55377F581CC15C2400A2C08E /* RiskGameManager.m */,
-				55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */,
-				55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */,
-				55377F5D1CC15C2400A2C08E /* RiskPlayer.h */,
-				55377F5E1CC15C2400A2C08E /* RiskPlayer.m */,
-				55377F621CC15C2400A2C08E /* RiskWorld.h */,
-				55377F631CC15C2400A2C08E /* RiskWorld.m */,
-				55377F641CC15C2400A2C08E /* SNRandom.h */,
-				55377F651CC15C2400A2C08E /* SNRandom.m */,
-				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
-				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
-				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
+				5510980E1CC5637200DE6DFE /* Classes */,
+				5510980F1CC5637B00DE6DFE /* Resources */,
+				5510980D1CC5636400DE6DFE /* Interfaces */,
 				553780AA1CC1966300A2C08E /* Info.plist */,
 			);
 			path = RiskKit;
@@ -909,17 +932,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */,
-				55377F7B1CC15C2400A2C08E /* CardBack.tiff in Resources */,
 				55377FD71CC15C2400A2C08E /* Human.rtf in Resources */,
-				55377FCD1CC15C2400A2C08E /* WorldInfoPanel.nib in Resources */,
-				55377FBE1CC15C2400A2C08E /* DiceInspector.nib in Resources */,
-				55377FC01CC15C2400A2C08E /* GameBoard.nib in Resources */,
-				55377FC61CC15C2400A2C08E /* Risk.nib in Resources */,
-				55377FC41CC15C2400A2C08E /* NewGamePanel.nib in Resources */,
+				55377FCD1CC15C2400A2C08E /* WorldInfoPanel.xib in Resources */,
+				55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */,
+				55377FC61CC15C2400A2C08E /* Risk.xib in Resources */,
+				55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
 				551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */,
-				55377FCA1CC15C2400A2C08E /* PreferencePanel.nib in Resources */,
-				55377FBC1CC15C2400A2C08E /* CardPanel.nib in Resources */,
+				55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */,
+				55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */,
 				55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */,
 				55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */,
 			);
@@ -930,7 +951,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5537801F1CC15E6A00A2C08E /* CardData.txt in Resources */,
-				553780591CC1624B00A2C08E /* CardBack.tiff in Resources */,
 				553780021CC15E1700A2C08E /* Assets.xcassets in Resources */,
 				551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */,
 				553780201CC15E6A00A2C08E /* ContinentData.txt in Resources */,
@@ -963,7 +983,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */,
-				553780C21CC1983100A2C08E /* PlayerConsole.nib in Resources */,
+				553780C21CC1983100A2C08E /* PlayerConsole.xib in Resources */,
+				5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */,
+				551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */,
 				553780F31CC1A9FB00A2C08E /* Cards.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1126,75 +1148,75 @@
 			name = RiskUtil.xib;
 			sourceTree = "<group>";
 		};
-		55377F131CC15C2300A2C08E /* CardPanel.nib */ = {
+		55377F131CC15C2300A2C08E /* CardPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F141CC15C2300A2C08E /* en */,
 			);
-			name = CardPanel.nib;
+			name = CardPanel.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F171CC15C2300A2C08E /* DiceInspector.nib */ = {
+		55377F171CC15C2300A2C08E /* DiceInspector.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F181CC15C2300A2C08E /* en */,
 			);
-			name = DiceInspector.nib;
-			path = en.lproj;
+			name = DiceInspector.xib;
+			path = ../Risk/en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F1B1CC15C2300A2C08E /* GameBoard.nib */ = {
+		55377F1B1CC15C2300A2C08E /* GameBoard.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F1C1CC15C2300A2C08E /* en */,
 			);
-			name = GameBoard.nib;
+			name = GameBoard.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F231CC15C2300A2C08E /* NewGamePanel.nib */ = {
+		55377F231CC15C2300A2C08E /* NewGamePanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F241CC15C2300A2C08E /* en */,
 			);
-			name = NewGamePanel.nib;
+			name = NewGamePanel.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F271CC15C2300A2C08E /* Risk.nib */ = {
+		55377F271CC15C2300A2C08E /* Risk.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F281CC15C2300A2C08E /* en */,
 			);
-			name = Risk.nib;
+			name = Risk.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F2B1CC15C2300A2C08E /* PlayerConsole.nib */ = {
+		55377F2B1CC15C2300A2C08E /* PlayerConsole.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F2C1CC15C2300A2C08E /* en */,
 			);
-			name = PlayerConsole.nib;
-			path = en.lproj;
+			name = PlayerConsole.xib;
+			path = ../Risk/en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F2F1CC15C2300A2C08E /* PreferencePanel.nib */ = {
+		55377F2F1CC15C2300A2C08E /* PreferencePanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F301CC15C2300A2C08E /* en */,
 			);
-			name = PreferencePanel.nib;
+			name = PreferencePanel.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		55377F351CC15C2300A2C08E /* WorldInfoPanel.nib */ = {
+		55377F351CC15C2300A2C08E /* WorldInfoPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55377F361CC15C2300A2C08E /* en */,
 			);
-			name = WorldInfoPanel.nib;
+			name = WorldInfoPanel.xib;
 			path = en.lproj;
 			sourceTree = "<group>";
 		};

@@ -26,6 +26,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 #define NewGameController_VERSION 1
 
 @implementation NewGameController
+{
+    NSArray *nibObjs;
+}
 
 + (void) initialize
 {
@@ -72,6 +75,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     BOOL loaded;
     
     if (self = [super init]) {
+        NSArray *tmpArr;
         gameConfiguration = [[GameConfiguration alloc] init];
         boardSetup = [BoardSetup instance];
         
@@ -79,8 +83,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         
         // -awakeFromNib gets called immediately, so the above stuff must
         // already be set up.
-        nibFile = @"NewGamePanel.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        nibFile = @"NewGamePanel";
+        loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);

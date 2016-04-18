@@ -9,21 +9,21 @@
 
 @class RiskCard;
 
-NSComparisonResult compareCardSetValues (id object1, id object2, void *context);
+NSComparisonResult compareCardSetValues (id __nonnull object1, id __nonnull object2, void * __nullable context);
 
 @interface CardSet : NSObject
 
-+ (BOOL) isValidCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3;
++ (BOOL) isValidCardSet:(nullable RiskCard *)aCard1 :(nullable RiskCard *)aCard2 :(nullable RiskCard *)aCard3 NS_SWIFT_NAME(isValidCardSet(card1:card2:card3:));
 
-+ (instancetype)cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3 NS_SWIFT_UNAVAILABLE("Use init(cardSet:_:_:) instead");
++ (nullable instancetype)cardSet:(null_unspecified RiskCard *)aCard1 :(null_unspecified RiskCard *)aCard2 :(null_unspecified RiskCard *)aCard3 NS_SWIFT_UNAVAILABLE("Use init(cardSet:_:_:) instead");
 
-- (instancetype)initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3 NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initCardSet:(null_unspecified RiskCard *)aCard1 :(null_unspecified RiskCard *)aCard2 :(null_unspecified RiskCard *)aCard3 NS_DESIGNATED_INITIALIZER;
 
-@property (readonly, strong) RiskCard *card1;
-@property (readonly, strong) RiskCard *card2;
-@property (readonly, strong) RiskCard *card3;
+@property (readonly, strong, nonnull) RiskCard *card1;
+@property (readonly, strong, nonnull) RiskCard *card2;
+@property (readonly, strong, nonnull) RiskCard *card3;
 
-@property (readonly) int wildcardCount;
+@property (readonly) NSInteger wildcardCount;
 - (int) countryCountForPlayerNumber:(Player)number;
 
 @end

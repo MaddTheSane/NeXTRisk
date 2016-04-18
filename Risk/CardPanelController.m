@@ -43,6 +43,9 @@ static struct image_names class_images[] =
 };
 
 @implementation CardPanelController
+{
+    NSArray *nibObjs;
+}
 @synthesize gameManager;
 
 + (void) initialize
@@ -95,12 +98,11 @@ static struct image_names class_images[] =
 
 - (instancetype)init
 {
-    BOOL loaded;
-    NSString *nibFile;
-    
     if (self = [super init]) {
-        nibFile = @"CardPanel.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        NSString *nibFile = @"CardPanel";
+        NSArray *tmpArr;
+        BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);

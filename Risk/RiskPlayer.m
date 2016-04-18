@@ -18,6 +18,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 #define RiskPlayer_VERSION 1
 
 @implementation RiskPlayer
+{
+@private
+    NSArray *nibObjs;
+}
 @synthesize rng;
 @synthesize gameManager;
 @synthesize playerToolMenu;
@@ -320,15 +324,13 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (NSSet *) allOurCardSets
 {
-    NSMutableSet *allCardSets;
+    NSMutableSet *allCardSets = [NSMutableSet set];
     NSInteger i, j, k;
     NSInteger count;
     RiskCard *card1, *card2, *card3;
     CardSet *cardSet;
     
     count = playerCards.count;
-    
-    allCardSets = [NSMutableSet set];
     
     for (i = 0; i < count; i++)
     {
@@ -347,21 +349,15 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         }
     }
     
-    return allCardSets;
+    return [allCardSets copy];
 }
 
 - (CardSet *) bestSet
 {
-    CardSet *bestSet;
-    NSSet *allSets;
-    NSEnumerator *cardSetEnumerator;
-    CardSet *cardSet;
+    CardSet *bestSet = nil;
+    NSSet *allSets = [self allOurCardSets];
     
-    bestSet = nil;
-    allSets = [self allOurCardSets];
-    cardSetEnumerator = [allSets objectEnumerator];
-    
-    while (cardSet = [cardSetEnumerator nextObject])
+    for (CardSet *cardSet in allSets)
     {
         if (compareCardSetValues (cardSet, bestSet, (void *)playerNumber) == NSOrderedAscending)
             bestSet = cardSet;
@@ -411,8 +407,10 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     
     if (consoleWindow == nil)
     {
+        NSArray *tmpArr = nil;
         nibFile = @"PlayerConsole";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        loaded = [[NSBundle bundleForClass:[RiskPlayer class]] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
         

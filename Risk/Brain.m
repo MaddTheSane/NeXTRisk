@@ -18,6 +18,9 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 #import "Version.h"
 
 @implementation Brain
+{
+    NSArray *nibObjs;
+}
 @synthesize gameManager;
 
 + (void) initialize
@@ -121,8 +124,10 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
     
     if (infoPanel == nil)
     {
-        nibFile = @"InfoPanel.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        nibFile = @"InfoPanel";
+        NSArray *tmpArr;
+        loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        nibObjs = tmpArr;
         
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
         

@@ -24,7 +24,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     NSComparisonResult result;
     Player number;
     CardSet *cardSet1, *cardSet2;
-    int wildcardCount1, wildcardCount2;
+    NSInteger wildcardCount1, wildcardCount2;
     int countryCount1, countryCount2;
     
     number = (Player)context;
@@ -95,7 +95,6 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 + (BOOL) isValidCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
-    RiskCardType c1, c2, c3;
     BOOL valid;
     
     if (aCard1 == nil || aCard2 == nil || aCard3 == nil)
@@ -104,9 +103,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     }
     else
     {
-        c1 = aCard1.cardType;
-        c2 = aCard2.cardType;
-        c3 = aCard3.cardType;
+        RiskCardType c1 = aCard1.cardType;
+        RiskCardType c2 = aCard2.cardType;
+        RiskCardType c3 = aCard3.cardType;
         
         if (c1 == Wildcard || c2 == Wildcard || c3 == Wildcard)
         {
@@ -156,11 +155,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-- (int) wildcardCount
+- (NSInteger) wildcardCount
 {
-    int count;
-    
-    count = 0;
+    int count = 0;
     
     if (card1.cardType == Wildcard)
         count++;

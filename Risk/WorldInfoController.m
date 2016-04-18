@@ -95,6 +95,9 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 #define WorldInfoController_VERSION 1
 
 @implementation WorldInfoController
+{
+    NSArray *nibObjs;
+}
 
 + (void) initialize
 {
@@ -123,12 +126,11 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 - (instancetype) init
 {
-    BOOL loaded, okay;
-    NSString *nibFile;
-    
     if (self = [super init]) {
-        nibFile = @"WorldInfoPanel.nib";
-        loaded = [NSBundle loadNibNamed:nibFile owner:self];
+        NSArray *tmpArray;
+        NSString *nibFile = @"WorldInfoPanel";
+        BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArray];
+        nibObjs = tmpArray;
         if (loaded == NO)
         {
             NSLog (@"Could not load %@.", nibFile);
@@ -141,7 +143,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
         continents = nil;
         //world = nil;
         
-        okay = [worldInfoWindow setFrameAutosaveName:worldInfoWindow.title];
+        BOOL okay = [worldInfoWindow setFrameAutosaveName:worldInfoWindow.title];
         if (okay == NO)
             NSLog (@"Could not set frame autosave name of World Info window.");
     }
