@@ -18,8 +18,7 @@
 }
 + (void) initialize
 {
-	if (self == [SNUserPath class])
-	{
+	if (self == [SNUserPath class]) {
 		[self setVersion:SNUserPath_VERSION];
 	}
 }
@@ -29,7 +28,7 @@
 - (instancetype)init
 {
 	if (self = [super init]) {
-	operations = [[NSMutableArray alloc] init];
+		operations = [[NSMutableArray alloc] init];
 	}
 	return self;
 }

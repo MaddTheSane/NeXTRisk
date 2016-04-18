@@ -41,8 +41,7 @@ typedef NS_ENUM(unsigned char, DPSUserPathOp) {
 
 + (void) initialize
 {
-	if (self == [SNUserPathOperation class])
-	{
+	if (self == [SNUserPathOperation class]) {
 		[self setVersion:SNUserPathOperation_VERSION];
 	}
 }
