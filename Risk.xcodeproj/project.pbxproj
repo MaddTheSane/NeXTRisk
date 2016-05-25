@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
+		550B536B1CF6204C004EAAFC /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
+		550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.xib */; };
 		551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
 		551098191CC56F0F00DE6DFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551098181CC56F0F00DE6DFE /* AppDelegate.swift */; };
@@ -217,6 +220,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		550B53641CF62030004EAAFC /* MainRisk.riskworld */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainRisk.riskworld; sourceTree = BUILT_PRODUCTS_DIR; };
+		550B53661CF62030004EAAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		551098101CC563FE00DE6DFE /* RKImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RKImages.xcassets; sourceTree = "<group>"; };
 		551098161CC56F0F00DE6DFE /* Risk World Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Risk World Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		551098181CC56F0F00DE6DFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,50 +244,6 @@
 		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
 		55377EC91CC15C2300A2C08E /* Brain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brain.m; sourceTree = "<group>"; };
-		55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Afghanistan.tiff; sourceTree = "<group>"; };
-		55377ECD1CC15C2300A2C08E /* Alaska.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alaska.tiff; sourceTree = "<group>"; };
-		55377ECE1CC15C2300A2C08E /* Alberta.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alberta.tiff; sourceTree = "<group>"; };
-		55377ECF1CC15C2300A2C08E /* Argentina.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Argentina.tiff; sourceTree = "<group>"; };
-		55377ED01CC15C2300A2C08E /* Brazil.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Brazil.tiff; sourceTree = "<group>"; };
-		55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CentralAmerica.tiff; sourceTree = "<group>"; };
-		55377ED21CC15C2300A2C08E /* China.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = China.tiff; sourceTree = "<group>"; };
-		55377ED31CC15C2300A2C08E /* Congo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Congo.tiff; sourceTree = "<group>"; };
-		55377ED41CC15C2300A2C08E /* EastAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EastAfrica.tiff; sourceTree = "<group>"; };
-		55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EasternAustralia.tiff; sourceTree = "<group>"; };
-		55377ED61CC15C2300A2C08E /* EasternUS.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EasternUS.tiff; sourceTree = "<group>"; };
-		55377ED71CC15C2300A2C08E /* Egypt.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Egypt.tiff; sourceTree = "<group>"; };
-		55377ED81CC15C2300A2C08E /* GreatBritain.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreatBritain.tiff; sourceTree = "<group>"; };
-		55377ED91CC15C2300A2C08E /* Greenland.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Greenland.tiff; sourceTree = "<group>"; };
-		55377EDB1CC15C2300A2C08E /* Iceland.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Iceland.tiff; sourceTree = "<group>"; };
-		55377EDC1CC15C2300A2C08E /* India.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = India.tiff; sourceTree = "<group>"; };
-		55377EDD1CC15C2300A2C08E /* Indonesia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Indonesia.tiff; sourceTree = "<group>"; };
-		55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Irkutsk.tiff; sourceTree = "<group>"; };
-		55377EDF1CC15C2300A2C08E /* Japan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Japan.tiff; sourceTree = "<group>"; };
-		55377EE01CC15C2300A2C08E /* Joker1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Joker1.tiff; sourceTree = "<group>"; };
-		55377EE11CC15C2300A2C08E /* Joker2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Joker2.tiff; sourceTree = "<group>"; };
-		55377EE21CC15C2300A2C08E /* Kamchatka.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Kamchatka.tiff; sourceTree = "<group>"; };
-		55377EE41CC15C2300A2C08E /* Madagascar.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Madagascar.tiff; sourceTree = "<group>"; };
-		55377EE81CC15C2300A2C08E /* MiddleEast.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MiddleEast.tiff; sourceTree = "<group>"; };
-		55377EE91CC15C2300A2C08E /* Mongolia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Mongolia.tiff; sourceTree = "<group>"; };
-		55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NewGuinea.tiff; sourceTree = "<group>"; };
-		55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthAfrica.tiff; sourceTree = "<group>"; };
-		55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthernEurope.tiff; sourceTree = "<group>"; };
-		55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthwestTerritory.tiff; sourceTree = "<group>"; };
-		55377EEE1CC15C2300A2C08E /* Ontario.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ontario.tiff; sourceTree = "<group>"; };
-		55377EF01CC15C2300A2C08E /* Peru.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Peru.tiff; sourceTree = "<group>"; };
-		55377EF11CC15C2300A2C08E /* Quebec.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Quebec.tiff; sourceTree = "<group>"; };
-		55377EF21CC15C2300A2C08E /* Scandinavia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Scandinavia.tiff; sourceTree = "<group>"; };
-		55377EF31CC15C2300A2C08E /* Siam.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Siam.tiff; sourceTree = "<group>"; };
-		55377EF41CC15C2300A2C08E /* Siberia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Siberia.tiff; sourceTree = "<group>"; };
-		55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SouthAfrica.tiff; sourceTree = "<group>"; };
-		55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SouthernEurope.tiff; sourceTree = "<group>"; };
-		55377EF71CC15C2300A2C08E /* Ukraine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ukraine.tiff; sourceTree = "<group>"; };
-		55377EF81CC15C2300A2C08E /* Ural.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ural.tiff; sourceTree = "<group>"; };
-		55377EF91CC15C2300A2C08E /* Venezuela.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Venezuela.tiff; sourceTree = "<group>"; };
-		55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternAustralia.tiff; sourceTree = "<group>"; };
-		55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternEurope.tiff; sourceTree = "<group>"; };
-		55377EFC1CC15C2300A2C08E /* WesternUS.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternUS.tiff; sourceTree = "<group>"; };
-		55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Yakutsk.tiff; sourceTree = "<group>"; };
 		55377EFE1CC15C2300A2C08E /* CardPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardPanelController.h; path = ../Risk/CardPanelController.h; sourceTree = "<group>"; };
 		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardPanelController.m; path = ../Risk/CardPanelController.m; sourceTree = "<group>"; };
 		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardSet.h; path = ../Risk/CardSet.h; sourceTree = "<group>"; };
@@ -388,6 +349,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		550B53611CF62030004EAAFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		551098131CC56F0F00DE6DFE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,6 +413,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		550B53651CF62030004EAAFC /* MainRisk */ = {
+			isa = PBXGroup;
+			children = (
+				5537809B1CC1897500A2C08E /* Cards.xcassets */,
+				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
+				55377F611CC15C2400A2C08E /* RiskWorld.data */,
+				550B53661CF62030004EAAFC /* Info.plist */,
+			);
+			path = MainRisk;
+			sourceTree = "<group>";
+		};
 		5510980D1CC5636400DE6DFE /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +512,7 @@
 				553780A71CC1966300A2C08E /* RiskKit */,
 				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
 				551098171CC56F0F00DE6DFE /* Risk World Maker */,
+				550B53651CF62030004EAAFC /* MainRisk */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -548,6 +528,7 @@
 				553780A61CC1966300A2C08E /* RiskKit.framework */,
 				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
 				551098161CC56F0F00DE6DFE /* Risk World Maker.app */,
+				550B53641CF62030004EAAFC /* MainRisk.riskworld */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -564,72 +545,16 @@
 			path = Risk;
 			sourceTree = "<group>";
 		};
-		55377ECB1CC15C2300A2C08E /* Card Images */ = {
-			isa = PBXGroup;
-			children = (
-				55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */,
-				55377ECD1CC15C2300A2C08E /* Alaska.tiff */,
-				55377ECE1CC15C2300A2C08E /* Alberta.tiff */,
-				55377ECF1CC15C2300A2C08E /* Argentina.tiff */,
-				55377ED01CC15C2300A2C08E /* Brazil.tiff */,
-				55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */,
-				55377ED21CC15C2300A2C08E /* China.tiff */,
-				55377ED31CC15C2300A2C08E /* Congo.tiff */,
-				55377ED41CC15C2300A2C08E /* EastAfrica.tiff */,
-				55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */,
-				55377ED61CC15C2300A2C08E /* EasternUS.tiff */,
-				55377ED71CC15C2300A2C08E /* Egypt.tiff */,
-				55377ED81CC15C2300A2C08E /* GreatBritain.tiff */,
-				55377ED91CC15C2300A2C08E /* Greenland.tiff */,
-				55377EDB1CC15C2300A2C08E /* Iceland.tiff */,
-				55377EDC1CC15C2300A2C08E /* India.tiff */,
-				55377EDD1CC15C2300A2C08E /* Indonesia.tiff */,
-				55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */,
-				55377EDF1CC15C2300A2C08E /* Japan.tiff */,
-				55377EE01CC15C2300A2C08E /* Joker1.tiff */,
-				55377EE11CC15C2300A2C08E /* Joker2.tiff */,
-				55377EE21CC15C2300A2C08E /* Kamchatka.tiff */,
-				55377EE41CC15C2300A2C08E /* Madagascar.tiff */,
-				55377EE81CC15C2300A2C08E /* MiddleEast.tiff */,
-				55377EE91CC15C2300A2C08E /* Mongolia.tiff */,
-				55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */,
-				55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */,
-				55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */,
-				55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */,
-				55377EEE1CC15C2300A2C08E /* Ontario.tiff */,
-				55377EF01CC15C2300A2C08E /* Peru.tiff */,
-				55377EF11CC15C2300A2C08E /* Quebec.tiff */,
-				55377EF21CC15C2300A2C08E /* Scandinavia.tiff */,
-				55377EF31CC15C2300A2C08E /* Siam.tiff */,
-				55377EF41CC15C2300A2C08E /* Siberia.tiff */,
-				55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */,
-				55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */,
-				55377EF71CC15C2300A2C08E /* Ukraine.tiff */,
-				55377EF81CC15C2300A2C08E /* Ural.tiff */,
-				55377EF91CC15C2300A2C08E /* Venezuela.tiff */,
-				55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */,
-				55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */,
-				55377EFC1CC15C2300A2C08E /* WesternUS.tiff */,
-				55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */,
-			);
-			name = "Card Images";
-			path = CardImages.subproj;
-			sourceTree = "<group>";
-		};
 		55377FF21CC15D8500A2C08E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
-				55377ECB1CC15C2300A2C08E /* Card Images */,
-				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
-				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
 				55377F441CC15C2300A2C08E /* Human.rtf */,
 				55377EB71CC15AC900A2C08E /* Info.plist */,
 				55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */,
-				55377F611CC15C2400A2C08E /* RiskWorld.data */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -799,6 +724,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		550B53631CF62030004EAAFC /* MainRisk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 550B53691CF62030004EAAFC /* Build configuration list for PBXNativeTarget "MainRisk" */;
+			buildPhases = (
+				550B53601CF62030004EAAFC /* Sources */,
+				550B53611CF62030004EAAFC /* Frameworks */,
+				550B53621CF62030004EAAFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MainRisk;
+			productName = MainRisk;
+			productReference = 550B53641CF62030004EAAFC /* MainRisk.riskworld */;
+			productType = "com.apple.product-type.bundle";
+		};
 		551098151CC56F0F00DE6DFE /* Risk World Maker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 551098201CC56F1000DE6DFE /* Build configuration list for PBXNativeTarget "Risk World Maker" */;
@@ -942,6 +884,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
+					550B53631CF62030004EAAFC = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					551098151CC56F0F00DE6DFE = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -982,11 +927,22 @@
 				553780A51CC1966300A2C08E /* RiskKit */,
 				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
 				551098151CC56F0F00DE6DFE /* Risk World Maker */,
+				550B53631CF62030004EAAFC /* MainRisk */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		550B53621CF62030004EAAFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */,
+				550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */,
+				550B536B1CF6204C004EAAFC /* BoardBacking.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		551098141CC56F0F00DE6DFE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1071,6 +1027,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		550B53601CF62030004EAAFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		551098121CC56F0F00DE6DFE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1313,6 +1276,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		550B53671CF62030004EAAFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MainRisk/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.MainRisk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskworld;
+			};
+			name = Debug;
+		};
+		550B53681CF62030004EAAFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MainRisk/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.MainRisk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskworld;
+			};
+			name = Release;
+		};
 		551098211CC56F1000DE6DFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1601,6 +1592,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		550B53691CF62030004EAAFC /* Build configuration list for PBXNativeTarget "MainRisk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550B53671CF62030004EAAFC /* Debug */,
+				550B53681CF62030004EAAFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		551098201CC56F1000DE6DFE /* Build configuration list for PBXNativeTarget "Risk World Maker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1608,6 +1607,7 @@
 				551098221CC56F1000DE6DFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */ = {
 			isa = XCConfigurationList;
