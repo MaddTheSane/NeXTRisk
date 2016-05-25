@@ -14,7 +14,7 @@
 
 @implementation SNUserPath
 {
-	NSMutableArray<SNUserPathOperation*> *operations;
+	NSArray<SNUserPathOperation*> *operations;
 }
 + (void) initialize
 {
@@ -28,7 +28,7 @@
 - (instancetype)init
 {
 	if (self = [super init]) {
-		operations = [[NSMutableArray alloc] init];
+		operations = [[NSArray alloc] init];
 	}
 	return self;
 }
