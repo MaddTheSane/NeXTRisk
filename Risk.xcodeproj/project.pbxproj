@@ -1608,6 +1608,7 @@
 				551098221CC56F1000DE6DFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */ = {
 			isa = XCConfigurationList;

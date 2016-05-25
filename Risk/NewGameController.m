@@ -53,7 +53,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     bundleEnumerator = [riskPlayerBundles objectEnumerator];
     while (bundle = [bundleEnumerator nextObject])
     {
-        name = bundle.infoDictionary[@"PlayerTypeName"];
+        name = bundle.infoDictionary[@"RKPlayerTypeName"];
         [playerTypeNames addObject:name];
     }
     
@@ -222,16 +222,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             playerBundle = riskPlayerBundles[itemIndex - 2];
             playerBundleInfo = playerBundle.infoDictionary;
             
-            image = [playerBundle imageForResource:playerBundleInfo[@"PlayerIcon"]];
+            image = [playerBundle imageForResource:playerBundleInfo[@"RKPlayerIcon"]];
             if (!image) {
-                image = [NSImage imageNamed:playerBundleInfo[@"PlayerIcon"]];
+                image = [NSImage imageNamed:playerBundleInfo[@"RKPlayerIcon"]];
             }
             aboutPlayerImageView.image = image;
             
-            playerTypeName = playerBundleInfo[@"PlayerTypeName"];
+            playerTypeName = playerBundleInfo[@"RKPlayerTypeName"];
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
             
-            rtfPath = [playerBundle pathForResource:playerBundleInfo[@"AboutPlayerFile"] ofType:nil];
+            rtfPath = [playerBundle pathForResource:playerBundleInfo[@"RKAboutPlayerFile"] ofType:nil];
             if (rtfPath != nil)
             {
                 [aboutPlayerText readRTFDFromFile:rtfPath];
