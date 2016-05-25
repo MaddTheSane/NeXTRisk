@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Computer Player Reference</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1404.47">
+<link rel="Index" href="index.html">
+<meta name="description" content="Learn how to implement your own computer player strategies in Objective C.">
+<meta name="keywords" content="program, programming, new">
+<meta name="robots" content="index">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 36.0px Times}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Times}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 12.0px Times}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 12.0px Times; min-height: 14.0px}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 18.0px Times}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1">Risk</p>
+<p class="p2">Computer Player Reference</p>
+<p class="p3"><br></p>
+<p class="p4">This section of the Help discusses how to implement your own computer player strategies in Objective C.</p>
+<p class="p5"><br></p>
+<p class="p4">It has undergone some changes since version 0.97.<span class="Apple-converted-space">  </span>This should make it easier to make conformant computer players.<span class="Apple-converted-space">  </span>See the Chaotic player's subproject for a good example of a computer player bundle.<span class="Apple-converted-space"> </span></p>
+<p class="p5"><br></p>
+<p class="p4">All players are subclasses of RiskPlayer (or a subclass of RiskPlayer).<span class="Apple-converted-space">  </span>Each computer player resides in its own directory inside the Risk app wrapper.<span class="Apple-converted-space">  </span>The computer players that come with Risk are no different from your own.<span class="Apple-converted-space">  </span>The directory's name must end in ".riskplayer".<span class="Apple-converted-space">  </span>Inside this directory is at least a Mach-O file and<span class="Apple-converted-space"> </span></p>
+<p class="p5"><br></p>
+<p class="p4">At launch, Risk searches it's app wrapper.<span class="Apple-converted-space">  </span>It dynamically loads all object files it can find that are specified by the NSExecutable key in the Info-nextstep.plist of player bundles.<span class="Apple-converted-space">  </span>Other files such as .nib files can be put in the directory as well if you need them.<span class="Apple-converted-space">  </span>See the Chaotic.riskplayer directory in the Risk distribution for an example of how this works.</p>
+<p class="p5"><br></p>
+<p class="p4">There is no longer a Diagnostic computer player.<span class="Apple-converted-space">  </span>Instead, the RiskPlayer class provides a console window for writing messages, with a switch to force the player to pause until the continue button is pressed (much like the Dice Inspector panel.)<span class="Apple-converted-space">  </span>The console panel for each player may be shown by selecting the Tools -&gt; Player N -&gt; Console... menu item.<span class="Apple-converted-space">  </span>Messages don't appear in the console until the console is shown on screen for the first time.</p>
+<p class="p5"><br></p>
+<p class="p4">Some auxiliary files are used by Risk if they are specified in the Info-nextstep.plist file.<span class="Apple-converted-space">  </span>When someone chooses "About..." from the Setup Panel, an about panel is brought up.<span class="Apple-converted-space">  </span>If an image is specified by the PlayerIcon key in the .plist file, that image is shown in the top left part of the panel.<span class="Apple-converted-space">  </span>If an RTF file is specified by the AboutPlayerFile key in the .plist file, this is loaded into the ScrollView.<span class="Apple-converted-space">  </span>The image file will be scaled to a 48 by 48 icon like an app icon.</p>
+<p class="p5"><br></p>
+<p class="p4">For example, this is the CustomInfo.plist file for the Chaotic player:</p>
+<p class="p5"><br></p>
+<p class="p4">{</p>
+<p class="p4"><span class="Apple-tab-span">	</span>SuperClass = RiskPlayer;</p>
+<p class="p4"><span class="Apple-tab-span">	</span>PlayerTypeName = Chaotic;</p>
+<p class="p4"><span class="Apple-tab-span">	</span>AboutPlayerFile = Chaotic.rtf;</p>
+<p class="p4"><span class="Apple-tab-span">	</span>PlayerIcon = Chaotic.tiff;</p>
+<p class="p4">}</p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p4">The RiskPlayer class implements several utility methods which you will use in your own code, as well as defining the methods that you must implement.<span class="Apple-converted-space">  </span>See the source code for RiskPlayer for a description of each of the methods.</p>
+<p class="p5"><br></p>
+<p class="p6">Supplied Utilities</p>
+<p class="p5"><br></p>
+<p class="p4">The RiskPlayer class has several methods which are not meant to be overridden.<span class="Apple-converted-space">  </span>These methods are utilities for interacting with Risk and finding out certain things about the game status.<span class="Apple-converted-space">  </span>The RiskGameManager has methods that must be called during game play.<span class="Apple-converted-space">  </span>The RiskWorld, Continent and Country classes also have some useful methods.<span class="Apple-converted-space">  </span>RiskCard and CardSet should be the only other classes you need to know about.</p>
+<p class="p3"><br></p>
+<p class="p6">Pitfalls and Gotchas</p>
+<p class="p5"><br></p>
+<p class="p4">The current API does a bit more to restrict cheating or simple errors by computer players, but they can still directly manipulate the assorted objects to their advantage.<span class="Apple-converted-space">  </span>A disadvantage to this is that the checks are simply assertions, which could halt the game if they fail, say for an incomplete computer player.</p>
+<p class="p4">Another consideration is that not returning from any method you implement will cause Risk to hang.</p>
+</body>
+</html>
