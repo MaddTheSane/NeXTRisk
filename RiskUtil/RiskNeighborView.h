@@ -17,8 +17,9 @@
 
 @interface RiskNeighborView : RiskMapView
 {
-    IBOutlet id<RiskNeighborViewDataSource> datasource;
+    IBOutlet __weak id<RiskNeighborViewDataSource> datasource;
 }
+@property (weak) IBOutlet id<RiskNeighborViewDataSource> dataSource;
 
 - (instancetype)initWithFrame:(NSRect)frameRect;
 

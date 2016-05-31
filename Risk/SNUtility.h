@@ -47,9 +47,9 @@
 // Other
 //
 
-#if 0
+#if 1
 #define RCSID(str) \
-    static inline const char *rcsid (void) \
+    __used static inline const char *rcsid (void) \
     { \
         return str " cc:" __DATE__ " " __TIME__; \
     }

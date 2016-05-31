@@ -14,6 +14,7 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 #define RiskNeighborView_VERSION 1
 
 @implementation RiskNeighborView
+@synthesize dataSource = datasource;
 
 + (void) initialize
 {

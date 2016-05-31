@@ -21,8 +21,6 @@
     Country *selectedCountry;
 
     CGFloat currentScaleFactor;
-
-    __strong id<RiskMapViewDelegate> delegate;
 }
 
 + (void) loadClassImages;

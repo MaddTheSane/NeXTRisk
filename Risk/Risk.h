@@ -118,8 +118,8 @@ NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption);
 NSString *NSStringFromFortifyRule (FortifyRule fortifyRule);
 
 NSString *NSStringFromRiskCardType (RiskCardType cardType);
-NSString *NSStringFromGameState (GameState gameState);
-NSString *gameStateInfo (GameState gameState);
+NSString *__nullable NSStringFromGameState (GameState gameState);
+NSString *__nullable gameStateInfo (GameState gameState);
 
 NS_ASSUME_NONNULL_END
 

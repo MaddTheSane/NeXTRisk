@@ -120,7 +120,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) borderWidthAction:(id)sender
 {
-    float newLineWidth;
+    CGFloat newLineWidth;
     
     newLineWidth = [sender floatValue];
     

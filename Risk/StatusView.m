@@ -89,9 +89,9 @@ static NSTextFieldCell *_textCell = nil;
 {
     Player currentPlayer;
     int playerCount;
-    float boxHeight, boxWidth;
+    CGFloat boxHeight, boxWidth;
     NSRect boxRect, textRect;
-    int l, offset;
+    int offset;
     NSRect boundsRect;
     Player number;
     
@@ -121,7 +121,7 @@ static NSTextFieldCell *_textCell = nil;
     textRect.size.height = TEXTHEIGHT;
     offset = 0;
     
-    for (l = 0; l < 6; l++)
+    for (int l = 0; l < 6; l++)
     {
         number = 1 + ((l + currentPlayer - 1) % 6);
         
