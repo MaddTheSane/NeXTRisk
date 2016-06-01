@@ -47,7 +47,7 @@
 // Other
 //
 
-#if 1
+#if 0
 #define RCSID(str) \
     __used static inline const char *rcsid (void) \
     { \

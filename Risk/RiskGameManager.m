@@ -686,11 +686,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     //NSLog (@"active player count: %d", activePlayerCount);
     
     //------------------------------------------------------------
-    if (currentPhaseView != nil)
-    {
-        [currentPhaseView removeFromSuperview];
-        currentPhaseView = nil;
-    }
+    //if (currentPhaseView != nil)
+    //{
+    //    [currentPhaseView removeFromSuperview];
+    //    currentPhaseView = nil;
+    //}
     
     if (activePlayerCount < 2)
     {
@@ -775,7 +775,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     if (newPhaseView != nil)
     {
-        [controlPanel.contentView addSubview:newPhaseView];
+        if (!currentPhaseView) {
+            [controlPanel.contentView addSubview:newPhaseView];
+            [newPhaseView setFrameOrigin:NSMakePoint (281, 8)];
+        } else {
+            [controlPanel.contentView replaceSubview:currentPhaseView with:newPhaseView];
+        }
         [newPhaseView setFrameOrigin:NSMakePoint (281, 8)];
         currentPhaseView = newPhaseView;
         // Show updated panel immediately.

@@ -68,25 +68,21 @@ static struct image_names class_images[] =
 
 + (void) loadClassImages
 {
-    int l;
-    NSBundle *thisBundle;
-    NSString *imagePath;
-    
     if (self == [DiceInspector class])
     {
-        thisBundle = [NSBundle bundleForClass:self];
+        NSBundle *thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");
         
         // load class images
-        for (l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
+        for (int l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
         {
-            imagePath = (__bridge NSString *)(class_images[l].i_name);
+            NSString *imagePath = (__bridge NSString *)(class_images[l].i_name);
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
             
             *(class_images[l].i_image) = [NSImage imageNamed:imagePath];
             if (! *(class_images[l].i_image)) {
-                *(class_images[l].i_image) = [[NSBundle bundleForClass:[self class]] imageForResource:imagePath];
+                *(class_images[l].i_image) = [thisBundle imageForResource:imagePath];
             }
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }
