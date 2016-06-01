@@ -95,7 +95,6 @@
 		553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
 		553780E91CC19DB800A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F701CC15C2400A2C08E /* WorldInfoController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
 		553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780ED1CC1A09400A2C08E /* Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F031CC15C2300A2C08E /* Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780EE1CC1A23E00A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
@@ -110,6 +109,8 @@
 		553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
 		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
+		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +386,8 @@
 		553780FB1CC1B56300A2C08E /* SNUserPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPath.m; sourceTree = "<group>"; };
 		553780FD1CC1B68600A2C08E /* SNUserPathOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserPathOperation.h; sourceTree = "<group>"; };
 		553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPathOperation.m; sourceTree = "<group>"; };
+		556A65EB1CFF5800005BA899 /* Chaotic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Chaotic.html; sourceTree = "<group>"; };
+		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,10 +531,8 @@
 			children = (
 				55377EAB1CC15AC900A2C08E /* Risk */,
 				55377FFA1CC15E1700A2C08E /* RiskUtil */,
-				5537806C1CC1639C00A2C08E /* Aimless */,
-				553780901CC1645000A2C08E /* Chaotic */,
+				556A65EA1CFF5766005BA899 /* AIs */,
 				553780A71CC1966300A2C08E /* RiskKit */,
-				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
 				551098171CC56F0F00DE6DFE /* Risk World Maker */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
@@ -723,8 +724,10 @@
 		553780CF1CC1990A00A2C08E /* ChaoticSwift */ = {
 			isa = PBXGroup;
 			children = (
+				556A65EB1CFF5800005BA899 /* Chaotic.html */,
 				553780D41CC1993E00A2C08E /* Chaos.swift */,
 				553780D01CC1990A00A2C08E /* Info.plist */,
+				556A65F11CFF5B38005BA899 /* InfoPlist.strings */,
 			);
 			path = ChaoticSwift;
 			sourceTree = "<group>";
@@ -766,6 +769,16 @@
 				55377F6E1CC15C2400A2C08E /* StatusView.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		556A65EA1CFF5766005BA899 /* AIs */ = {
+			isa = PBXGroup;
+			children = (
+				5537806C1CC1639C00A2C08E /* Aimless */,
+				553780901CC1645000A2C08E /* Chaotic */,
+				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
+			);
+			name = AIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1064,7 +1077,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */,
-				553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */,
+				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
+				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,6 +1322,14 @@
 			);
 			name = WorldInfoPanel.xib;
 			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		556A65F11CFF5B38005BA899 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				556A65F01CFF5B38005BA899 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

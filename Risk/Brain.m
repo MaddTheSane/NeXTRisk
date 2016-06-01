@@ -239,7 +239,7 @@ RCSID ("$Id: Brain.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 - (NSArray *) riskPlayerBundles
 {
-    return riskPlayerBundles;
+    return [riskPlayerBundles copy];
 }
 
 @end

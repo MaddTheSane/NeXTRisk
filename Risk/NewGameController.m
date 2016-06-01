@@ -42,18 +42,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (void) awakeFromNib
 {
-    NSArray *riskPlayerBundles;
-    NSEnumerator *bundleEnumerator;
-    NSBundle *bundle;
-    NSMutableArray *playerTypeNames;
-    NSString *name;
+    NSMutableArray<NSString *> *playerTypeNames = [[NSMutableArray alloc] init];
     
-    playerTypeNames = [NSMutableArray array];
-    riskPlayerBundles = [brain riskPlayerBundles];
-    bundleEnumerator = [riskPlayerBundles objectEnumerator];
-    while (bundle = [bundleEnumerator nextObject])
+    for (NSBundle *bundle in [brain riskPlayerBundles])
     {
-        name = bundle.infoDictionary[@"RKPlayerTypeName"];
+        NSString *name = bundle.localizedInfoDictionary[@"RKPlayerTypeName"] ?: bundle.infoDictionary[@"RKPlayerTypeName"];
         [playerTypeNames addObject:name];
     }
     
@@ -115,6 +108,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     runningAsPreferences = NO;
     newGamePanel.title = @"New Game";
     acceptButton.title = @"Accept";
+    acceptButton.keyEquivalent = @"";
     cancelButton.title = @"Cancel";
     [newGamePanel makeKeyAndOrderFront:self];
 }
@@ -126,6 +120,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     runningAsPreferences = YES;
     newGamePanel.title = @"New Game Setup";
     acceptButton.title = @"Set";
+    acceptButton.keyEquivalent = @"\r";
     cancelButton.title = @"Revert";
     [self takePreferencesFromCurrent];
     [newGamePanel makeKeyAndOrderFront:self];
@@ -135,22 +130,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (IBAction) aboutAction:(id)sender
 {
-    NSPopUpButton *thePopup;
-    NSInteger tag, itemIndex;
-    NSString *rtfPath, *imagePath;
-    NSBundle *thisBundle, *playerBundle;
-    NSArray *riskPlayerBundles;
+    NSPopUpButton *thePopup = nil;
+    NSInteger tag = [[sender selectedCell] tag];
+    NSString *rtfPath;
+    NSBundle *thisBundle = [NSBundle bundleForClass:[self class]], *playerBundle;
+    NSArray<NSBundle *> *riskPlayerBundles = [brain riskPlayerBundles];
     NSDictionary *playerBundleInfo;
     NSImage *image;
     NSString *playerTypeName;
     
-    thisBundle = [NSBundle bundleForClass:[self class]];
     NSAssert (thisBundle != nil, @"Could not get this bundle.");
-    
-    riskPlayerBundles = [brain riskPlayerBundles];
-    
-    tag = [[sender selectedCell] tag];
-    thePopup = nil;
     
     switch (tag)
     {
@@ -184,12 +173,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     NSAssert (thePopup != nil, @"Bad tag.");
     
-    itemIndex = thePopup.indexOfSelectedItem;
+    NSInteger itemIndex = thePopup.indexOfSelectedItem;
     
     switch (itemIndex)
     {
         case 0: // None
-            [aboutPlayerImageView setImage:nil];
+            aboutPlayerImageView.image = nil;
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Not Playing", tag + 1];
             rtfPath = [thisBundle pathForResource:@"NotPlaying" ofType:@"rtf"];
             if (rtfPath != nil)
@@ -220,7 +209,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             
         default: // Computer player
             playerBundle = riskPlayerBundles[itemIndex - 2];
-            playerBundleInfo = playerBundle.infoDictionary;
+        {
+            NSMutableDictionary *mutPlayerBundInfo = [playerBundle.infoDictionary mutableCopy];
+            [mutPlayerBundInfo addEntriesFromDictionary:playerBundle.localizedInfoDictionary];
+            playerBundleInfo = [mutPlayerBundInfo copy];
+        }
             
             image = [playerBundle imageForResource:playerBundleInfo[@"RKPlayerIcon"]];
             if (!image) {
@@ -234,7 +227,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             rtfPath = [playerBundle pathForResource:playerBundleInfo[@"RKAboutPlayerFile"] ofType:nil];
             if (rtfPath != nil)
             {
-                [aboutPlayerText readRTFDFromFile:rtfPath];
+                NSAttributedString *attrStr = [[NSAttributedString alloc] initWithURL:[NSURL fileURLWithPath:rtfPath] options:@{} documentAttributes:NULL error:NULL];
+                if (attrStr) {
+                    [aboutPlayerText.textStorage setAttributedString:attrStr];
+                } else {
+                    [aboutPlayerText readRTFDFromFile:rtfPath];
+                }
             }
             else
             {

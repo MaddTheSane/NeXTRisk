@@ -25,7 +25,7 @@
 	<key>NSPrincipalClass</key>
 	<string>$(PRODUCT_MODULE_NAME).Chaos</string>
 	<key>RKAboutPlayerFile</key>
-	<string>Chaotic.rtf</string>
+	<string>Chaotic.html</string>
 	<key>RKPlayerIcon</key>
 	<string>Chaotic</string>
 	<key>RKPlayerTypeName</key>
