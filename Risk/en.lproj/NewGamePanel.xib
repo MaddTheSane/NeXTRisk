@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -462,7 +462,7 @@
                                         <constraint firstAttribute="height" constant="46" id="DG1-92-lr5"/>
                                         <constraint firstAttribute="width" constant="14" id="LTV-U5-zYc"/>
                                     </constraints>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="Soldier" id="237"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Soldier" id="237"/>
                                 </imageView>
                             </subviews>
                             <constraints>
@@ -518,7 +518,7 @@
                                         <constraint firstAttribute="width" constant="38" id="5Ga-jT-9SJ"/>
                                         <constraint firstAttribute="height" constant="49" id="KEv-rA-aFV"/>
                                     </constraints>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="LittleCardBack" id="238"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleCardBack" id="238"/>
                                 </imageView>
                             </subviews>
                             <constraints>
@@ -694,11 +694,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="375" height="135"/>
-                                    <size key="maxSize" width="376" height="10000000"/>
+                                    <size key="minSize" width="376" height="135"/>
+                                    <size key="maxSize" width="378" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="375" height="135"/>
-                                    <size key="maxSize" width="376" height="10000000"/>
+                                    <size key="minSize" width="376" height="135"/>
+                                    <size key="maxSize" width="378" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

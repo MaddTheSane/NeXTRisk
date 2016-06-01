@@ -60,15 +60,13 @@ RCSID ("$Id: RiskPoint.m,v 1.2 1997/12/15 07:44:13 nygard Exp $");
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if (self = [super init]) {
-        if (aDecoder.allowsKeyedCoding) {
-            point = [aDecoder decodePointForKey:kRiskPoint];
-        } else {
-            point = [aDecoder decodePoint];
-        }
+    NSPoint bPoint;
+    if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kRiskPoint]) {
+        bPoint = [aDecoder decodePointForKey:kRiskPoint];
+    } else {
+        bPoint = [aDecoder decodePoint];
     }
-    
-    return self;
+    return [self initWithPoint:bPoint];
 }
 
 //----------------------------------------------------------------------

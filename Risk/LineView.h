@@ -10,8 +10,7 @@ IB_DESIGNABLE
 /// changing the border width.
 @interface LineView : NSView
 
-IBInspectable
-@property (nonatomic) CGFloat lineWidth;
+@property (nonatomic) IBInspectable CGFloat lineWidth;
 
 - (void) drawRect:(NSRect)rect;
 

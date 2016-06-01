@@ -88,20 +88,15 @@ static NSTextFieldCell *_textCell = nil;
 - (void) drawRect:(NSRect)rect
 {
     Player currentPlayer;
-    int playerCount;
     CGFloat boxHeight, boxWidth;
     NSRect boxRect, textRect;
-    int offset;
-    NSRect boundsRect;
-    Player number;
     
-    
-    boundsRect = self.bounds;
-    
-    [[NSColor controlColor] set];
+    NSRect boundsRect = self.bounds;
+
+    [[NSColor lightGrayColor] set];
     NSRectFill (boundsRect);
     
-    playerCount = [gameManager activePlayerCount];
+    int playerCount = [gameManager activePlayerCount];
     
     if (playerCount == 0 || [gameManager gameInProgress] == NO)
     {
@@ -119,11 +114,11 @@ static NSTextFieldCell *_textCell = nil;
     textRect.origin.x = (INTERSPACE * 2) + boxWidth;
     textRect.size.width = TEXTWIDTH;
     textRect.size.height = TEXTHEIGHT;
-    offset = 0;
+    int offset = 0;
     
     for (int l = 0; l < 6; l++)
     {
-        number = 1 + ((l + currentPlayer - 1) % 6);
+        Player number = 1 + ((l + currentPlayer - 1) % 6);
         
         if ([gameManager isPlayerActive:number] == YES)
         {
@@ -131,33 +126,30 @@ static NSTextFieldCell *_textCell = nil;
             boxRect.origin.y = ((offset + 1) * INTERSPACE) + (offset * boxHeight);
             NSDrawWhiteBezel (boxRect, boundsRect);
             [[[BoardSetup instance] colorForPlayer:number] set];
-            
-            NSRectFill(NSInsetRect(boxRect, -INSET, -INSET));
+            NSRectFill(NSInsetRect(boxRect, INSET, INSET));
             textRect.origin.y = ((offset + 1) * INTERSPACE) +
             (offset * boxHeight) +
             ((boxHeight - TEXTHEIGHT) / 2);
             
             if (showCardSetCounts == YES)
             {
-                RiskPlayer *player;
-                NSInteger count;
+                RiskPlayer *player = [gameManager playerNumber:number];
+                NSInteger count = player.playerCards.count;
                 
-                player = [gameManager playerNumber:number];
-                count = player.playerCards.count;
-                
-                if ([player canTurnInCardSet] == YES)
+                if ([player canTurnInCardSet] == YES) {
 #ifdef __APPLE_CPP__
                     [_textCell setTextColor:[NSColor darkGrayColor]];
 #else
                 _textCell.textColor = [NSColor whiteColor];
 #endif
-                else
+                } else {
                     _textCell.textColor = [NSColor blackColor];
+                }
                 
                 _textCell.integerValue = count;
                 [_textCell drawWithFrame:textRect inView:self];
             }
-            
+
             offset++;
         }
     }

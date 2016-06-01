@@ -179,43 +179,37 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             
             cards = [tmpCards copy];
         } else {
-            NSMutableDictionary *countryDictionary;
-            NSEnumerator *countryEnumerator;
-            Country *country1, *country2;
-            NSString *name1, *name2;
-            int l, count;
-            NSMutableArray *tmpCountryNeighbors;
+            int count;
             
-            NSMutableArray *tmpCards = [NSMutableArray array];
-            RiskCardType cardType;
+            NSMutableArray *tmpCards = [[NSMutableArray alloc] init];
             
             continents = [aDecoder decodeObject];
             
             [self _buildAllCountries];
             
             // Set up country dictionary keyed on name
-            countryDictionary = [NSMutableDictionary dictionary];
-            countryEnumerator = [allCountries objectEnumerator];
-            while (country1 = [countryEnumerator nextObject])
+            NSMutableDictionary *countryDictionary = [[NSMutableDictionary alloc] init];
+            for (Country *country1 in allCountries)
             {
                 countryDictionary[country1.countryName] = country1;
             }
             
-            tmpCountryNeighbors = [NSMutableArray array];
+            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
-            for (l = 0; l < count; l++)
+            for (int l = 0; l < count; l++)
             {
-                name1 = [aDecoder decodeObject];
-                name2 = [aDecoder decodeObject];
-                country1 = countryDictionary[name1];
-                country2 = countryDictionary[name2];
+                NSString *name1 = [aDecoder decodeObject];
+                NSString *name2 = [aDecoder decodeObject];
+                Country *country1 = countryDictionary[name1];
+                Country *country2 = countryDictionary[name2];
                 [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
             }
-            countryNeighbors = tmpCountryNeighbors;
+            countryNeighbors = [tmpCountryNeighbors copy];
             
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
-            for (l = 0; l < count; l++)
+            for (int l = 0; l < count; l++)
             {
+                RiskCardType cardType;
                 NSString *name1 = [aDecoder decodeObject];
                 Country *country1 = countryDictionary[name1];
                 [aDecoder decodeValueOfObjCType:@encode (RiskCardType) at:&cardType];

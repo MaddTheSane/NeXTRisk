@@ -169,7 +169,7 @@ public class Chaos: RiskPlayer {
 	/// attack the weakest neighbor (bully tactics).
 	func doAttackFromCountry(attacker: Country) -> Bool {
 		let enemies = attacker.enemyNeighborCountries!
-		var weakest: Country!
+		var weakest: Country?
 		var attackResult = AttackResult()
 		attackResult.conqueredCountry = false
 		var weakestTroopCount = Int32(999999)
