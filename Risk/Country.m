@@ -78,7 +78,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {
-        if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kCountryName]) {
+        if (aDecoder.allowsKeyedCoding) {
             name = [[aDecoder decodeObjectForKey:kCountryName] copy];
             countryShape = [aDecoder decodeObjectForKey:kCountryShape];
             continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];

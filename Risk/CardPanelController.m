@@ -84,9 +84,9 @@ static struct image_names class_images[] =
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
             
-            *(class_images[l].i_image) = [NSImage imageNamed:imagePath];
+            *(class_images[l].i_image) = [thisBundle imageForResource:imagePath];
             if (!*(class_images[l].i_image)) {
-                *(class_images[l].i_image) = [thisBundle imageForResource:imagePath];
+                *(class_images[l].i_image) = [NSImage imageNamed:imagePath];
             }
             NSAssert1 (*(class_images[l].i_image) != nil, @"Couldn't load image: '%@'\n", class_images[l].i_name);
         }

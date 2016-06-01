@@ -120,17 +120,13 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected
 {
-    BoardSetup *boardSetup;
-    
-    int troopCount;
-    
-    troopCount = aCountry.troopCount;
+    int troopCount = aCountry.troopCount;
     if (troopCount == 0)
     {
         [aView drawBackground:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)];
     }
     
-    boardSetup = [BoardSetup instance];
+    BoardSetup *boardSetup = [BoardSetup instance];
     
     if (aCountry.playerNumber != 0)
         [[boardSetup colorForPlayer:aCountry.playerNumber] set];

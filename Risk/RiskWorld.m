@@ -138,8 +138,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     if (self = [super init]) {
         allCountries = [[NSMutableSet alloc] init];
         if (aDecoder.allowsKeyedCoding) {
-            NSEnumerator *countryEnumerator;
-            
             NSMutableArray *tmpCards = [NSMutableArray array];
             RiskCardType cardType;
             
@@ -150,8 +148,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             
             // Set up country dictionary keyed on name
             countryDictionary = [[NSMutableDictionary alloc] init];
-            countryEnumerator = [allCountries objectEnumerator];
-            for (Country *country1 in countryEnumerator)
+            for (Country *country1 in allCountries)
             {
                 countryDictionary[country1.countryName] = country1;
             }
