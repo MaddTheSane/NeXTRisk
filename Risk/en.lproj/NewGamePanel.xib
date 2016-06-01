@@ -41,14 +41,14 @@
         <window title="New Game" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="New Game">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="216" y="155" width="630" height="504"/>
+            <rect key="contentRect" x="216" y="155" width="630" height="501"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="6">
-                <rect key="frame" x="0.0" y="0.0" width="630" height="504"/>
+                <rect key="frame" x="0.0" y="0.0" width="630" height="501"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="135">
-                        <rect key="frame" x="511" y="121" width="96" height="32"/>
+                        <rect key="frame" x="511" y="118" width="96" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="84" id="Bjo-bg-eFX"/>
                         </constraints>
@@ -65,7 +65,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="136">
-                        <rect key="frame" x="511" y="88" width="96" height="32"/>
+                        <rect key="frame" x="511" y="85" width="96" height="32"/>
                         <buttonCell key="cell" type="push" title="Accept" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="227">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -76,7 +76,7 @@ Gw
                         </connections>
                     </button>
                     <box title="Players" translatesAutoresizingMaskIntoConstraints="NO" id="167">
-                        <rect key="frame" x="10" y="263" width="611" height="221"/>
+                        <rect key="frame" x="10" y="260" width="611" height="221"/>
                         <view key="contentView" id="bUH-B9-bAq">
                             <rect key="frame" x="2" y="2" width="607" height="204"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,9 +115,6 @@ Gw
                                 </colorWell>
                                 <form verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15">
                                     <rect key="frame" x="40" y="9" width="183" height="191"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" priority="999" constant="183" id="lV2-ix-ki1"/>
-                                    </constraints>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     <size key="cellSize" width="183" height="21"/>
                                     <size key="intercellSpacing" width="1" height="13"/>
@@ -382,7 +379,7 @@ Gw
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Initial Country Distribution" translatesAutoresizingMaskIntoConstraints="NO" id="169">
-                        <rect key="frame" x="12" y="177" width="161" height="75"/>
+                        <rect key="frame" x="12" y="174" width="161" height="75"/>
                         <view key="contentView" id="F9y-fu-9mz">
                             <rect key="frame" x="2" y="2" width="157" height="58"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,7 +421,7 @@ Gw
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Initial Army Placement" translatesAutoresizingMaskIntoConstraints="NO" id="171">
-                        <rect key="frame" x="175" y="177" width="151" height="75"/>
+                        <rect key="frame" x="175" y="174" width="151" height="75"/>
                         <view key="contentView" id="SdO-LG-kpB">
                             <rect key="frame" x="2" y="2" width="147" height="58"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -480,7 +477,7 @@ Gw
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Card Set Redemption" translatesAutoresizingMaskIntoConstraints="NO" id="173">
-                        <rect key="frame" x="328" y="177" width="236" height="75"/>
+                        <rect key="frame" x="328" y="174" width="236" height="75"/>
                         <view key="contentView" id="rfj-FZ-Xbz">
                             <rect key="frame" x="2" y="2" width="232" height="58"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,7 +532,7 @@ Gw
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Fortify Rules" translatesAutoresizingMaskIntoConstraints="NO" id="175">
-                        <rect key="frame" x="11" y="70" width="485" height="97"/>
+                        <rect key="frame" x="11" y="67" width="485" height="97"/>
                         <view key="contentView" id="xnO-Bk-6RK">
                             <rect key="frame" x="2" y="2" width="481" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -585,13 +582,13 @@ Gw
                         <font key="titleFont" size="12" name="Helvetica-Bold"/>
                     </box>
                     <box title="Initial Armies" translatesAutoresizingMaskIntoConstraints="NO" id="177">
-                        <rect key="frame" x="9" y="13" width="611" height="45"/>
+                        <rect key="frame" x="9" y="13" width="611" height="42"/>
                         <view key="contentView" id="dJl-I6-XhZ">
-                            <rect key="frame" x="2" y="2" width="607" height="27"/>
+                            <rect key="frame" x="2" y="2" width="607" height="24"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77">
-                                    <rect key="frame" x="79" y="5" width="210" height="14"/>
+                                    <rect key="frame" x="88" y="5" width="210" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="With the current setup you will receive" id="239">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -599,7 +596,7 @@ Gw
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
-                                    <rect key="frame" x="318" y="5" width="201" height="14"/>
+                                    <rect key="frame" x="309" y="5" width="201" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="armies at the beginning of the game." id="240">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -607,12 +604,14 @@ Gw
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="79">
-                                    <rect key="frame" x="288" y="5" width="31" height="17"/>
+                                    <rect key="frame" x="294" y="5" width="19" height="14"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="27" id="tij-tb-tJo"/>
+                                        <constraint firstAttribute="width" priority="999" constant="15" id="Wzp-nA-swo"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="gm4-pI-iYc"/>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="27" id="tij-tb-tJo"/>
                                     </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" alignment="center" title="--" id="241">
-                                        <font key="font" metaFont="system"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" state="on" alignment="center" title="--" id="241">
+                                        <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -624,8 +623,8 @@ Gw
                                 <constraint firstItem="79" firstAttribute="baseline" secondItem="78" secondAttribute="baseline" id="LXz-cc-zxQ"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="78" secondAttribute="trailing" priority="999" constant="20" symbolic="YES" id="MiW-2Q-uEQ"/>
                                 <constraint firstItem="79" firstAttribute="centerX" secondItem="dJl-I6-XhZ" secondAttribute="centerX" id="cWS-Xv-Zfw"/>
-                                <constraint firstItem="78" firstAttribute="leading" secondItem="79" secondAttribute="trailing" constant="3" id="dI2-Lo-bCb"/>
-                                <constraint firstItem="79" firstAttribute="leading" secondItem="77" secondAttribute="trailing" constant="3" id="n38-vC-F2b"/>
+                                <constraint firstItem="78" firstAttribute="leading" secondItem="79" secondAttribute="trailing" id="dI2-Lo-bCb"/>
+                                <constraint firstItem="79" firstAttribute="leading" secondItem="77" secondAttribute="trailing" id="n38-vC-F2b"/>
                                 <constraint firstItem="79" firstAttribute="centerY" secondItem="dJl-I6-XhZ" secondAttribute="centerY" id="ti6-Re-eNa"/>
                                 <constraint firstItem="77" firstAttribute="firstBaseline" secondItem="78" secondAttribute="firstBaseline" id="wKb-pf-dgO"/>
                                 <constraint firstItem="77" firstAttribute="baseline" secondItem="79" secondAttribute="baseline" id="wOx-TH-L7G"/>
