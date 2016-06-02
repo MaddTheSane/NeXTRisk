@@ -14,6 +14,6 @@
 /// Please migrate over to <code>NSBezierPath</code>s instead!
 @interface SNUserPathOperation : NSObject <NSCoding>
 
-- (void)applyToBezierPath:(NSBezierPath*)bPath;
+- (void)applyToBezierPath:(nonnull NSBezierPath*)bPath;
 
 @end

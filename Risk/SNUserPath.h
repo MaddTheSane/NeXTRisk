@@ -20,6 +20,6 @@
 /// able to support them.
 @interface SNUserPath : NSObject <NSCoding>
 
-- (NSBezierPath*)toBezierPath;
+- (nonnull NSBezierPath*)toBezierPath;
 
 @end
