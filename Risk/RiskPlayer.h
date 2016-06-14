@@ -63,6 +63,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// number.  The controlling game manager is also saved so that the
 /// player can access it during the game.
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *playerName;
 @property (readonly) Player playerNumber;

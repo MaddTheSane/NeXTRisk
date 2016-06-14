@@ -466,7 +466,7 @@ Mike Ferris</string>
                 <rect key="frame" x="0.0" y="0.0" width="442" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="19">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19">
                         <rect key="frame" x="18" y="5" width="41" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="1Nb-sX-nfS"/>
@@ -491,7 +491,7 @@ Mike Ferris</string>
                             <action selector="makeKeyAndOrderFront:" target="9" id="28"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="25">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25">
                         <rect key="frame" x="166" y="5" width="258" height="13"/>
                         <textFieldCell key="cell" alignment="left" title="Copyright 1993, Stultus Enterprises,  All Rights Reserved." id="61">
                             <font key="font" metaFont="miniSystem"/>
@@ -514,7 +514,7 @@ Mike Ferris</string>
                             <rect key="frame" x="0.0" y="0.0" width="95" height="60"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8">
                                     <rect key="frame" x="0.0" y="2" width="93" height="58"/>
                                     <textFieldCell key="cell" alignment="left" title="Risk" id="68">
                                         <font key="font" size="48" name="Times-Roman"/>
@@ -522,7 +522,7 @@ Mike Ferris</string>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="22">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
                                     <rect key="frame" x="2" y="0.0" width="93" height="58"/>
                                     <textFieldCell key="cell" alignment="left" title="Risk" id="69">
                                         <font key="font" size="48" name="Times-Roman"/>
@@ -530,7 +530,7 @@ Mike Ferris</string>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                                     <rect key="frame" x="1" y="1" width="93" height="58"/>
                                     <textFieldCell key="cell" alignment="left" title="Risk" id="70">
                                         <font key="font" size="48" name="Times-Roman"/>
@@ -578,7 +578,7 @@ Mike Ferris</string>
                                     <rect key="frame" x="0.0" y="0.0" width="399" height="182"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="399" height="111"/>
+                                    <size key="minSize" width="400" height="111"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -666,7 +666,7 @@ Mike Ferris</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="399" height="111"/>
+                                    <size key="minSize" width="400" height="111"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                 </textView>
                             </subviews>
@@ -681,7 +681,7 @@ Mike Ferris</string>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="47">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                         <rect key="frame" x="62" y="5" width="65" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="61" id="Eed-JI-Kgv"/>
@@ -712,7 +712,7 @@ Steve Nygard &lt;nygard@telusplanet.net&gt;</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2">
                         <rect key="frame" x="169" y="193" width="105" height="19"/>
                         <textFieldCell key="cell" alignment="center" title="By Mike Ferris" id="58">
                             <font key="font" size="16" name="Times-Italic"/>

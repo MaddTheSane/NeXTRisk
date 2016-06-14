@@ -53,6 +53,7 @@
 }
 
 - (instancetype)initWithBrain:(Brain *)theBrain NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (void) showNewGamePanel;
 - (void) showGameSetupPanel;

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Take card image name from country?
 - (instancetype)initCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, strong, nullable) Country *country;
 @property (readonly) RiskCardType cardType;

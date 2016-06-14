@@ -20,6 +20,7 @@
 - (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(int)bonus NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *continentName;
 @property (readonly, strong) NSSet<Country*> *countries;

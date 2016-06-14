@@ -26,6 +26,7 @@
                       continentName:(NSString *)aContinentName
                               shape:(CountryShape *)aCountryShape
                           continent:(RiskContinent)aContinent NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
