@@ -3,9 +3,11 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
+#import <Foundation/NSGeometry.h>
 
 @class SNUserPath, Country, RiskMapView;
+@class NSBezierPath;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -3,11 +3,12 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
 
 #import "Risk.h"
 
 @class Country;
+@class NSImage;
 
 NS_ASSUME_NONNULL_BEGIN
 

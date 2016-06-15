@@ -3,10 +3,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
-
-@class RiskMapView, Country, RiskGameManager, NewGameController;
-@class PreferenceController;
+#import <Foundation/Foundation.h>
 
 #define DK_DMakeActive @"DMakeActive"
 
@@ -30,29 +27,3 @@
 #define DK_ShowPlayer4Console @"ShowPlayer4Console"
 #define DK_ShowPlayer5Console @"ShowPlayer5Console"
 #define DK_ShowPlayer6Console @"ShowPlayer6Console"
-
-@interface Brain : NSObject <NSApplicationDelegate>
-{
-    IBOutlet NSWindow *infoPanel;
-    IBOutlet NSTextField *versionTextField;
-
-    RiskGameManager *gameManager;
-    NewGameController *newGameController;
-    PreferenceController *preferenceController;
-
-    NSMutableArray<NSBundle*> *riskPlayerBundles;
-}
-
-- (instancetype)init;
-
-- (IBAction) showNewGamePanel:(id)sender;
-- (IBAction) showGameSetupPanel:(id)sender;
-- (IBAction) info:(id)sender;
-- (IBAction) showPreferencePanel:(id)sender;
-
-- (void) loadRiskPlayerBundles;
-@property (readonly, copy) NSArray<NSBundle *> *riskPlayerBundles;
-
-@property (readonly, strong) RiskGameManager *gameManager;
-
-@end

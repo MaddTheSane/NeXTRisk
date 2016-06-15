@@ -3,9 +3,12 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
+#import <Foundation/NSGeometry.h>
 
 #import "Risk.h"
+
+@class NSColor;
 
 void setColorForDefault (NSColor *value, NSString *key);
 NSColor *getColorForDefault (NSString *key);

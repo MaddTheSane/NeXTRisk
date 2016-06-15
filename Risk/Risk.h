@@ -3,7 +3,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <Foundation/Foundation.h>
+#import <Foundation/NSObjCRuntime.h>
 #import "SNUtility.h"
 
 typedef NS_ENUM(int, RiskContinent)

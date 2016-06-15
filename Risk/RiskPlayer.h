@@ -3,7 +3,9 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
+#import <AppKit/NSWindow.h>
+#import <AppKit/NSTextView.h>
 
 #import "Risk.h"
 

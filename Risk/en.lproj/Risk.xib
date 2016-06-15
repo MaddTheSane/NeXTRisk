@@ -434,6 +434,6 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="42" userLabel="Brain" customClass="Brain"/>
+        <customObject id="42" userLabel="Brain" customClass="Brain" customModule="Risk" customModuleProvider="target"/>
     </objects>
 </document>

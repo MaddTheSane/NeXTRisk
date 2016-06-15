@@ -7,7 +7,7 @@
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="Brain">
+        <customObject id="-2" userLabel="File's Owner" customClass="Brain" customModule="Risk" customModuleProvider="target">
             <connections>
                 <outlet property="infoPanel" destination="21" id="46"/>
                 <outlet property="versionTextField" destination="47" id="48"/>

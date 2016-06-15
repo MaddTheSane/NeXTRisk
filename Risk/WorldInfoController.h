@@ -3,10 +3,15 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <AppKit/NSTableView.h>
 
 @class RiskWorld;
+@class NSWindow;
 
+/// The World Info report shows the name of the world, and the name,
+/// number of countries, and bonus value for each continent.
+///
+/// Double click on the column titles to sort by that column.
 @interface WorldInfoController : NSObject <NSTableViewDataSource>
 {
     IBOutlet NSWindow *worldInfoWindow;
