@@ -85,7 +85,7 @@ class Brain: NSObject, NSApplicationDelegate {
         
         for subdirURL1 in URLEnum {
             let subdirURL = subdirURL1 as! NSURL
-            if let pathExt = subdirURL.pathExtension where pathExt.caseInsensitiveCompare("riskplayer") != .OrderedSame {
+            guard let pathExt = subdirURL.pathExtension where pathExt.caseInsensitiveCompare("riskplayer") == .OrderedSame else {
                 continue;
             }
             let str = (subdirURL.lastPathComponent! as NSString).stringByDeletingPathExtension;
