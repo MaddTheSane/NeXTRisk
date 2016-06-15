@@ -9,11 +9,14 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
 #import "CountryShape.h"
 
-#import "RiskPoint.h"
 #import "BoardSetup.h"
 #import "Country.h"
 #import "RiskMapView.h"
-#import "SNUserPath.h"
+#if defined(RISKUTIL_BUILD) && RISKUTIL_BUILD
+#import "RiskUtil-Swift.h"
+#else
+#import "Risk-Swift.h"
+#endif
 
 #include <libc.h>
 

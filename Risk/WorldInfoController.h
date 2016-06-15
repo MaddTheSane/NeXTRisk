@@ -6,6 +6,7 @@
 #import <AppKit/NSTableView.h>
 
 @class RiskWorld;
+@class Continent;
 @class NSWindow;
 
 /// The World Info report shows the name of the world, and the name,
@@ -19,7 +20,7 @@
     IBOutlet NSTableView *continentTable;
 
     //RiskWorld *world;
-    NSArray *continents;
+    NSArray<Continent*> *continents;
 }
 
 - (instancetype)init;

@@ -91,7 +91,7 @@ class Brain: NSObject, NSApplicationDelegate {
             let str = (subdirURL.lastPathComponent! as NSString).stringByDeletingPathExtension;
             
             // refuse to load if the name matches a module already loaded
-            if loadedRiskPlayerNames.contains(str) {
+            if !loadedRiskPlayerNames.contains(str) {
                 // OK, all is well -- go load the little bugger
                 //NSLog (@"Load risk player bundle %@", path);
                 playerBundle = NSBundle(URL: subdirURL)

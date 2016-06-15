@@ -10,7 +10,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 
 #import "Country.h"
 #import "CountryShape.h"
-#import "RiskPoint.h"
+#import "RiskUtil-Swift.h"
 
 @implementation CountryShapeGenerator
 
@@ -49,7 +49,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 {
     NSAssert (currentRegionPoints != nil, @"Not defining a region.");
     
-    [currentRegionPoints addObject:[RiskPoint riskPointWithPoint:newPoint]];
+    [currentRegionPoints addObject:[[RiskPoint alloc] initWithPoint:newPoint]];
 }
 
 //----------------------------------------------------------------------

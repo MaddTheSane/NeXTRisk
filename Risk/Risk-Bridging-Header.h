@@ -12,3 +12,4 @@
 #import <RiskKit/RiskGameManager.h>
 #import "Version.h"
 #import "Brain.h"
+#import "NSCoder+SNUnarchiveHelpers.h"
