@@ -25,10 +25,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <RiskKit/RiskKit.h>
 
-@class Country, RiskWorld, SNHeap;
+@class Country, RiskWorld, SNHeap<ObjectType>;
 @class DNode;
 
 extern NSComparisonResult PFCompareDistances (id country1, id country2, void *context);
@@ -64,10 +63,10 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (void) _buildShortestPathsFromCountry:(Country *)source;
-@property (readonly, strong) SNHeap *_minimumDistanceCountryHeap;
+@property (readonly, strong) SNHeap<Country*> *_minimumDistanceCountryHeap;
 
-- (NSArray *) shortestPathToCountry:(Country *)target;
-- (NSArray *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;
+- (NSArray<Country*> *) shortestPathToCountry:(Country *)target;
+- (NSArray<Country*> *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;
 
 - (Country *) firstStepToCountry:(Country *)target;
 - (Country *) firstStepToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;

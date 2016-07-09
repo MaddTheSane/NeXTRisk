@@ -26,11 +26,11 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 #import "PathFinder.h"
 
-#import "Country.h"
-#import "RiskWorld.h"
+#import <RiskKit/Country.h>
+#import <RiskKit/RiskWorld.h>
 #import "SNHeap.h"
 #import "DNode.h"
-#import "SNUtility.h"
+#import <RiskKit/SNUtility.h>
 
 NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
 {
@@ -226,12 +226,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 - (SNHeap *) _minimumDistanceCountryHeap
 {
     SNHeap *countryHeap;
-    NSEnumerator *countryEnumerator;
     Country *country;
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
-    countryEnumerator = [acceptableCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (country in acceptableCountries)
     {
         [countryHeap insertObject:country];
     }
@@ -247,7 +245,6 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     DNode *node;
     Country *previous;
     NSEnumerator *objectEnumerator;
-    id object;
 
     path1 = [NSMutableArray array];
     path2 = [NSMutableArray array];
@@ -265,7 +262,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     }
 
     objectEnumerator = [path1 reverseObjectEnumerator];
-    while (object = [objectEnumerator nextObject])
+    for (id object in objectEnumerator)
     {
         [path2 addObject:object];
     }
@@ -284,11 +281,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 - (NSArray *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext
 {
-    SNHeap *countryHeap;
+    SNHeap<Country*> *countryHeap;
     Country *country;
-    NSArray *path;
+    NSArray *path = nil;
 
-    path = nil;
     countryHeap = [self _minimumDistanceCountryHeap];
     while ((country = [countryHeap extractObject]))
     {

@@ -27,7 +27,7 @@
 #import <RiskKit/RiskPlayer.h>
 #import <AppKit/AppKit.h>
 
-typedef enum _CountryChoiceType
+typedef NS_ENUM(int, CountryChoiceType)
 {
     ChooseRandomCountry,
     ChooseRandomContinents,
@@ -36,7 +36,7 @@ typedef enum _CountryChoiceType
     ChooseLeastBorderedContinent,
     ChooseMostBorderedContinent,
     ChooseAdjacentToCurrentCountries
-} CountryChoiceType;
+};
 
 @class SNHeap<ObjectType>, Continent;
 

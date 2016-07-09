@@ -114,7 +114,7 @@ RCSID ("$Id: Aimless.m,v 1.4 1997/12/15 21:09:47 nygard Exp $");
 // Heap comparator functions.
 //----------------------------------------------------------------------
 
-NSComparisonResult minimumTroops (id object1, id object2, void *context)
+static NSComparisonResult minimumTroops (id object1, id object2, void *context)
 {
     Country *country1, *country2;
     int troopCount1, troopCount2;
@@ -147,7 +147,8 @@ NSComparisonResult minimumTroops (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-NSComparisonResult maximumVulnerability (id object1, id object2, void *context)
+#if 0
+static NSComparisonResult maximumVulnerability (id object1, id object2, void *context)
 {
     Country *country1, *country2;
     int vulnerability1, vulnerability2;
@@ -177,10 +178,11 @@ NSComparisonResult maximumVulnerability (id object1, id object2, void *context)
     
     return result;
 }
+#endif
 
 //----------------------------------------------------------------------
 
-NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
+static NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
 {
     Country *country1, *country2;
     int troopCount1, troopCount2;
@@ -213,7 +215,7 @@ NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
+static NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
 {
     Country *country1, *country2;
     NSInteger count1, count2;
@@ -246,7 +248,7 @@ NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
+static NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
 {
     NSComparisonResult result;
     Continent *continent1, *continent2;
@@ -276,7 +278,7 @@ NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
+static NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
 {
     NSComparisonResult result;
     Continent *continent1, *continent2;
@@ -306,7 +308,7 @@ NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-NSComparisonResult minimumContinentBorder (id object1, id object2, void *context)
+static NSComparisonResult minimumContinentBorder (id object1, id object2, void *context)
 {
     NSComparisonResult result;
     Continent *continent1, *continent2;
@@ -336,7 +338,7 @@ NSComparisonResult minimumContinentBorder (id object1, id object2, void *context
 
 //----------------------------------------------------------------------
 
-NSComparisonResult maximumContinentBorder (id object1, id object2, void *context)
+static NSComparisonResult maximumContinentBorder (id object1, id object2, void *context)
 {
     NSComparisonResult result;
     Continent *continent1, *continent2;

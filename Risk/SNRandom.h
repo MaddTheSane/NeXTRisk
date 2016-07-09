@@ -5,8 +5,6 @@
 #import <Foundation/Foundation.h>
 
 @interface SNRandom : NSObject
-{
-}
 
 + (SNRandom*)instance;
 

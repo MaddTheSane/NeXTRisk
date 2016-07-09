@@ -73,7 +73,7 @@ public class Chaos: RiskPlayer {
 
 	public override func placeArmies(count: Int32) {
 		//myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-		var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from:self.ourCountries))
+		var ourCountries = Array(countriesWithAllOptions(.WithEnemyNeighbors, from: self.ourCountries))
 		let countryCount = ourCountries.count
 		
 		assert(countryCount > 0, "We have no countries!");

@@ -3,7 +3,8 @@
 // Part of Risk by Mike Ferris
 //
 
-#import "RiskPlayer.h"
+#import <Foundation/Foundation.h>
+#import <RiskKit/RiskPlayer.h>
 
 @interface Chaotic : RiskPlayer
 {

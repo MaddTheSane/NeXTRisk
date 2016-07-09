@@ -8,10 +8,10 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 #import "Chaotic.h"
 
-#import "Country.h"
-#import "RiskGameManager.h"
-#import "RiskWorld.h"
-#import "SNRandom.h"
+#import <RiskKit/Country.h>
+#import <RiskKit/RiskGameManager.h>
+#import <RiskKit/RiskWorld.h>
+#import <RiskKit/SNRandom.h>
 
 //======================================================================
 // The Chaotic player provides a relatively simple but complete

@@ -30,7 +30,7 @@ private let SNUserPathOperation_VERSION = 1
 	/// operands so that is can be stored in an array.
 	///
 	/// Please migrate over to `NSBezierPath`s instead!
-	@objc(SNUserPathOperation) private final class Operation: NSObject {
+	@objc(SNUserPathOperation) private final class Operation: NSObject, NSCoding {
 		let op: DPSUserPathOp
 		
 		let point1: NSPoint
@@ -48,7 +48,7 @@ private let SNUserPathOperation_VERSION = 1
 			}
 		}
 		
-		func encodeWithCoder(aCoder: NSCoder) {
+		@objc func encodeWithCoder(aCoder: NSCoder) {
 			fatalError("We should not be calling this!")
 			/*
 [aCoder encodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
@@ -176,7 +176,6 @@ private let SNUserPathOperation_VERSION = 1
 	//----------------------------------------------------------------------
 	
 	override init() {
-		//return self;
 		super.init()
 	}
 	
@@ -186,6 +185,7 @@ private let SNUserPathOperation_VERSION = 1
 	
 	init?(coder aDecoder: NSCoder) {
 		operations = aDecoder.decodeObject() as? NSArray as? [Operation] ?? []
+		super.init()
 	}
 	
 	func toBezierPath() -> NSBezierPath {
