@@ -103,6 +103,7 @@
 		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		55665FC01D11317F001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		55665FC41D1138E3001980F2 /* SNUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC31D1138E3001980F2 /* SNUserPath.swift */; };
@@ -442,6 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
