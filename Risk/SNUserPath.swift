@@ -48,7 +48,7 @@ private let SNUserPathOperation_VERSION = 1
 			}
 		}
 		
-		@objc func encodeWithCoder(aCoder: NSCoder) {
+		@objc func encode(with aCoder: NSCoder) {
 			fatalError("We should not be calling this!")
 			/*
 [aCoder encodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
@@ -72,41 +72,41 @@ private let SNUserPathOperation_VERSION = 1
 			super.init()
 		}
 		
-		func applyToBezierPath(bPath: NSBezierPath) {
+		func applyToBezierPath(_ bPath: NSBezierPath) {
 			switch (op) {
 			case .dps_arc:
-				bPath.appendBezierPathWithArcWithCenter(point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: true)
+				bPath.appendArc(withCenter: point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: true)
 				
 			case .dps_arcn:
-				bPath.appendBezierPathWithArcWithCenter(point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: false)
+				bPath.appendArc(withCenter: point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: false)
 				
 			case .dps_arct:
-				bPath.appendBezierPathWithArcFromPoint(point1, toPoint: point2, radius: CGFloat(radius))
+				bPath.appendArc(from: point1, to: point2, radius: CGFloat(radius))
 				
 			case .dps_closepath:
-				bPath.closePath()
+				bPath.close()
 				
 			case .dps_curveto:
-				bPath.curveToPoint(point1, controlPoint1: point2, controlPoint2: point3)
+				bPath.curve(to: point1, controlPoint1: point2, controlPoint2: point3)
 				
 			case .dps_lineto:
-				bPath.lineToPoint(point1)
+				bPath.line(to: point1)
 				
 			case .dps_moveto:
-				bPath.moveToPoint(point1)
+				bPath.move(to: point1)
 				
 			case .dps_ucache:
 				//Do nothing
 				break;
 				
 			case .dps_rcurveto:
-				bPath.relativeCurveToPoint(point1, controlPoint1: point2, controlPoint2: point3)
+				bPath.relativeCurve(to: point1, controlPoint1: point2, controlPoint2: point3)
 				
 			case .dps_rlineto:
-				bPath.relativeLineToPoint(point1)
+				bPath.relativeLine(to: point1)
 				
 			case .dps_rmoveto:
-				bPath.relativeMoveToPoint(point1)
+				bPath.relativeMove(to: point1)
 				
 			case .dps_setbbox:
 				//[bPath set]
@@ -179,8 +179,8 @@ private let SNUserPathOperation_VERSION = 1
 		super.init()
 	}
 	
-	func encodeWithCoder(aCoder: NSCoder) {
-		aCoder.encodeObject(operations)
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(operations)
 	}
 	
 	init?(coder aDecoder: NSCoder) {

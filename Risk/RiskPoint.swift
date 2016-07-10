@@ -38,8 +38,8 @@ private let kRiskPoint = "Point"
     
     //----------------------------------------------------------------------
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodePoint(point, forKey: kRiskPoint)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(point, forKey: kRiskPoint)
     }
     
     //----------------------------------------------------------------------
@@ -47,7 +47,7 @@ private let kRiskPoint = "Point"
     convenience init?(coder aDecoder: NSCoder) {
         let bPoint: NSPoint
         if aDecoder.allowsKeyedCoding {
-            bPoint = aDecoder.decodePointForKey(kRiskPoint)
+            bPoint = aDecoder.decodePoint(forKey: kRiskPoint)
         } else {
             bPoint = aDecoder.decodePoint()
         }

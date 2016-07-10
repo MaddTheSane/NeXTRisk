@@ -9,22 +9,12 @@
 import Cocoa
 import RiskKit.RiskGameManager
 
-private var initOnce: dispatch_once_t = 0
+private var initOnce: Int = 0
 
 @NSApplicationMain
 class Brain: NSObject, NSApplicationDelegate {
-    @IBOutlet weak var infoPanel: NSWindow!
-    @IBOutlet weak var versionTextField: NSTextField!
-    let gameManager = RiskGameManager()
-    private(set) var riskPlayerBundles = [NSBundle]()
-    private var nibObjs: NSArray?
-    
-    private var newGameController: NewGameController?
-    private var preferenceController: PreferenceController?
-
-    override class func initialize() {
-        dispatch_once(&initOnce) { 
-            let defaults = NSUserDefaults.standardUserDefaults()
+    private static var __once: () = { 
+            let defaults = UserDefaults.standard()
             var riskDefaults = [String : AnyObject]()
             
             riskDefaults[DK_DMakeActive] = false;
@@ -49,19 +39,30 @@ class Brain: NSObject, NSApplicationDelegate {
             riskDefaults[DK_ShowPlayer5Console] = false;
             riskDefaults[DK_ShowPlayer6Console] = false;
             
-            defaults.registerDefaults(riskDefaults)
-        }
+            defaults.register(riskDefaults)
+        }()
+    @IBOutlet weak var infoPanel: NSWindow!
+    @IBOutlet weak var versionTextField: NSTextField!
+    let gameManager = RiskGameManager()!
+    private(set) var riskPlayerBundles = [Bundle]()
+    private var nibObjs: NSArray?
+    
+    private var newGameController: NewGameController?
+    private var preferenceController: PreferenceController?
+
+    override class func initialize() {
+        _ = Brain.__once
     }
  
-    func applicationDidFinishLaunching(notification: NSNotification) {
-        let defaults = NSUserDefaults.standardUserDefaults()
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        let defaults = UserDefaults.standard()
         
-        let riskWorld = RiskWorld.defaultRiskWorld()
+        let riskWorld = RiskWorld.default()
         gameManager.world = riskWorld
         
         loadRiskPlayerBundles();
         
-        let flag = defaults.boolForKey(DK_DMakeActive)
+        let flag = defaults.bool(forKey: DK_DMakeActive)
         
         if flag == true {
             NSApp.activateIgnoringOtherApps(true)
@@ -69,32 +70,32 @@ class Brain: NSObject, NSApplicationDelegate {
     }
     
     func loadRiskPlayerBundles() {
-        let mainBundle = NSBundle.mainBundle()
+        let mainBundle = Bundle.main()
         var loadedRiskPlayerNames = Set<String>()
         var delayedRiskPlayerPaths = Set<String>()
-        var playerBundle: NSBundle?
+        var playerBundle: Bundle?
         var keepTrying = false
-        var loadedBundles = [String: NSBundle]()
+        var loadedBundles = [String: Bundle]()
         
         let pluginURL = mainBundle.builtInPlugInsURL!
-        let URLEnum = NSFileManager.defaultManager().enumeratorAtURL(pluginURL, includingPropertiesForKeys: nil, options: [.SkipsPackageDescendants, .SkipsHiddenFiles]) { (url, error) -> Bool in
+        let URLEnum = FileManager.default().enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) { (url, error) -> Bool in
             return false
         }!
         
         //NSLog (@"resource paths: %@", resourcePaths);
         
         for subdirURL1 in URLEnum {
-            let subdirURL = subdirURL1 as! NSURL
-            guard let pathExt = subdirURL.pathExtension where pathExt.caseInsensitiveCompare("riskplayer") == .OrderedSame else {
+            let subdirURL = subdirURL1 as! URL
+            guard let pathExt = subdirURL.pathExtension where pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
                 continue;
             }
-            let str = (subdirURL.lastPathComponent! as NSString).stringByDeletingPathExtension;
+            let str = (subdirURL.lastPathComponent! as NSString).deletingPathExtension;
             
             // refuse to load if the name matches a module already loaded
             if !loadedRiskPlayerNames.contains(str) {
                 // OK, all is well -- go load the little bugger
                 //NSLog (@"Load risk player bundle %@", path);
-                playerBundle = NSBundle(URL: subdirURL)
+                playerBundle = Bundle(url: subdirURL)
                 if playerBundle?.principalClass == nil {
                     // Ugh, failed.  Put the class name in tempStorage in case
                     // it can't be loaded because it's a subclass of another
@@ -118,9 +119,9 @@ class Brain: NSObject, NSApplicationDelegate {
 			var tempPlayerNames = Set<String>()
             keepTrying = false;
             for path in delayedRiskPlayerPaths {
-                playerBundle = NSBundle(path:path)
+                playerBundle = Bundle(path:path)
                 if playerBundle?.principalClass != nil {
-                    let str = ((path as NSString).lastPathComponent as NSString).stringByDeletingPathExtension;
+                    let str = ((path as NSString).lastPathComponent as NSString).deletingPathExtension;
                     
                     loadedBundles[str] = playerBundle;
                     //NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
@@ -131,7 +132,7 @@ class Brain: NSObject, NSApplicationDelegate {
                 }
             }
 			
-			delayedRiskPlayerPaths.subtractInPlace(tempPlayerNames)
+			delayedRiskPlayerPaths.subtract(tempPlayerNames)
         } while (keepTrying == true);
         
         // now cpNameStorage contains a list of all the menu strings.
@@ -139,10 +140,10 @@ class Brain: NSObject, NSApplicationDelegate {
         
         //NSLog (@"info: %@", [testBundle infoDictionary]);
 		
-		riskPlayerBundles.appendContentsOf(loadedBundles.values)
+		riskPlayerBundles.append(contentsOf: loadedBundles.values)
     }
  
-    @IBAction func showNewGamePanel(sender: AnyObject?) {
+    @IBAction func showNewGamePanel(_ sender: AnyObject?) {
         if newGameController == nil {
             newGameController = NewGameController(brain:self)
         }
@@ -150,7 +151,7 @@ class Brain: NSObject, NSApplicationDelegate {
         newGameController!.showNewGamePanel()
     }
  
-    @IBAction func showGameSetupPanel(sender: AnyObject?) {
+    @IBAction func showGameSetupPanel(_ sender: AnyObject?) {
         if newGameController == nil {
             newGameController = NewGameController(brain: self)
         }
@@ -158,10 +159,10 @@ class Brain: NSObject, NSApplicationDelegate {
         newGameController!.showGameSetupPanel()
     }
 
-    @IBAction func info(sender: AnyObject?) {
+    @IBAction func info(_ sender: AnyObject?) {
         if infoPanel == nil {
             let nibFile = "InfoPanel";
-            let loaded = NSBundle.mainBundle().loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs)
+            let loaded = Bundle.main().loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs!)
             
             assert(loaded == true, "Could not load \(nibFile).");
             
@@ -171,7 +172,7 @@ class Brain: NSObject, NSApplicationDelegate {
         infoPanel.makeKeyAndOrderFront(self)
     }
 
-    @IBAction func showPreferencePanel(sender: AnyObject?) {
+    @IBAction func showPreferencePanel(_ sender: AnyObject?) {
         if preferenceController == nil {
             preferenceController = PreferenceController();
         }
