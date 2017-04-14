@@ -1,0 +1,39 @@
+RiskPlayers is a bunch of additional computer player modules for
+the famous Risk.app (by Mike Ferris).
+
+While the players are still not strong enough to pose as ferocious
+enemies they do enhance the variety of different types of computer
+animated players.  Still, a slightly experienced player will not
+have too much trouble winning.
+
+The status of the implemented players is experimental, though stable
+enough to not crash too often (alpha tested by Donald A. Yacktman
+<don@misckit.com>, thanks).  Current implementation does not even
+reflect the described strategy, but surprise might add to the fun.
+
+Haudruf: I inherited the basic implementation together with my version
+of Risk.app I think. Sources are included, hope that is ok with the
+original author.  'Haudruf' is kind of german, meaning something like
+'going berserk'. That pretty much describes the implemented strategy.
+
+Coop: in a way is intended to be cooperative, whatever that means.
+This is not following the mathematical definition of cooperative as
+used in game theory.
+
+Block: A refinement of Coop, currently my strongest player.  Together
+with Strat (by Royce Howland  royce@splunge.uucp, kakwa!atlantis!splunge!royce)
+the two opponents make interesting games.
+
+Software comes as is, GPL copyleft should apply where no other
+copyright holds. I have no intention to refine the players or invent
+new strategies but Don convinced me to share the results anyway.  It
+was fun for a couple of days to hack along. If you use these as basis
+for further development I would sure like to know.
+
+Winter 1995, Juergen Sell  js@icem.de
+
+
+[Note that the source code is inside each .cp wrapper.  Since the
+sources are so short, it probably doesn't matter much if you keep
+them around.  If you're really pressed for disk space, you can
+delete the source code and thin the binaries down... -Don Yacktman]

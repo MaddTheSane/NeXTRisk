@@ -1,0 +1,33 @@
+ComputerPlayer = {
+    OUTLETS = {
+	theMover;
+	theGameSetup;
+	rng;
+	theCardManager;
+	theMapView;
+    };
+    SUPERCLASS = Object;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+CPDiagnostic = {
+    ACTIONS = {
+	continueAction:;
+	checkAction:;
+    };
+    OUTLETS = {
+	pauseContinueButton;
+	args2Form;
+	args1Form;
+	continueButton;
+	functionCalledForm;
+	diagnosticPanel;
+	returnValueForm;
+	notesScrollText;
+	myPlayerNumForm;
+    };
+    SUPERCLASS = ComputerPlayer;
+};
