@@ -43,7 +43,7 @@ private let SNUserPathOperation_VERSION = 1
 		let angle2: Float
 		
 		@objc override class func initialize() {
-			if self.dynamicType == UserPath.Operation.self {
+			if type(of: self) == UserPath.Operation.self {
 				setVersion(SNUserPathOperation_VERSION)
 			}
 		}
@@ -168,7 +168,7 @@ private let SNUserPathOperation_VERSION = 1
 	private var operations = [Operation]()
 	
 	override class func initialize() {
-		if self.dynamicType == UserPath.self {
+		if type(of: self) == UserPath.self {
 			setVersion(SNUserPath_VERSION)
 		}
 	}

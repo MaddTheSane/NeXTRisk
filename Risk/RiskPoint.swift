@@ -18,7 +18,7 @@ private let kRiskPoint = "Point"
     //----------------------------------------------------------------------
     
     override class func initialize() {
-        if self.dynamicType == RiskPoint.self {
+        if type(of: self) == RiskPoint.self {
             self.setVersion(RiskPoint_VERSION)
         }
     }

@@ -14,8 +14,8 @@ private var initOnce: Int = 0
 @NSApplicationMain
 class Brain: NSObject, NSApplicationDelegate {
     private static var __once: () = { 
-            let defaults = UserDefaults.standard()
-            var riskDefaults = [String : AnyObject]()
+            let defaults = UserDefaults.standard
+            var riskDefaults = [String : Any]()
             
             riskDefaults[DK_DMakeActive] = false;
             riskDefaults[DK_DefaultPlayer1Type] = "None";
@@ -39,7 +39,7 @@ class Brain: NSObject, NSApplicationDelegate {
             riskDefaults[DK_ShowPlayer5Console] = false;
             riskDefaults[DK_ShowPlayer6Console] = false;
             
-            defaults.register(riskDefaults)
+            defaults.register(defaults: riskDefaults)
         }()
     @IBOutlet weak var infoPanel: NSWindow!
     @IBOutlet weak var versionTextField: NSTextField!
@@ -51,11 +51,15 @@ class Brain: NSObject, NSApplicationDelegate {
     private var preferenceController: PreferenceController?
 
     override class func initialize() {
+		//var i = 0
+		//dispatch_once(&i) {
+		//
+		//}
         _ = Brain.__once
     }
  
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let defaults = UserDefaults.standard()
+        let defaults = UserDefaults.standard
         
         let riskWorld = RiskWorld.default()
         gameManager.world = riskWorld
@@ -65,12 +69,12 @@ class Brain: NSObject, NSApplicationDelegate {
         let flag = defaults.bool(forKey: DK_DMakeActive)
         
         if flag == true {
-            NSApp.activateIgnoringOtherApps(true)
+            NSApp.activate(ignoringOtherApps: true)
         }
     }
     
     private func loadRiskPlayerBundles() {
-        let mainBundle = Bundle.main()
+        let mainBundle = Bundle.main
         var loadedRiskPlayerNames = Set<String>()
         var delayedRiskPlayerPaths = Set<String>()
         var playerBundle: Bundle?
@@ -78,7 +82,7 @@ class Brain: NSObject, NSApplicationDelegate {
         var loadedBundles = [String: Bundle]()
         
         let pluginURL = mainBundle.builtInPlugInsURL!
-        let URLEnum = FileManager.default().enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) { (url, error) -> Bool in
+        let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) { (url, error) -> Bool in
             return false
         }!
         
@@ -86,10 +90,11 @@ class Brain: NSObject, NSApplicationDelegate {
         
         for subdirURL1 in URLEnum {
             let subdirURL = subdirURL1 as! URL
-            guard let pathExt = subdirURL.pathExtension where pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
+			let pathExt = subdirURL.pathExtension
+            guard pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
                 continue;
             }
-            let str = (subdirURL.lastPathComponent! as NSString).deletingPathExtension;
+            let str = (subdirURL.lastPathComponent as NSString).deletingPathExtension;
             
             // refuse to load if the name matches a module already loaded
             if !loadedRiskPlayerNames.contains(str) {
@@ -100,7 +105,7 @@ class Brain: NSObject, NSApplicationDelegate {
                     // Ugh, failed.  Put the class name in tempStorage in case
                     // it can't be loaded because it's a subclass of another
                     // CP who hasn't been loaded yet.
-                    delayedRiskPlayerPaths.insert(subdirURL.path!)
+                    delayedRiskPlayerPaths.insert(subdirURL.path)
                 } else {
                     // it loaded so add it to the list.
                     loadedBundles[str] = playerBundle;
@@ -162,7 +167,7 @@ class Brain: NSObject, NSApplicationDelegate {
     @IBAction func info(_ sender: AnyObject?) {
         if infoPanel == nil {
             let nibFile = "InfoPanel";
-            let loaded = Bundle.main().loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs!)
+            let loaded = Bundle.main.loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs!)
             
             assert(loaded == true, "Could not load \(nibFile).");
             
