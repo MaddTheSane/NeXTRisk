@@ -69,7 +69,7 @@ class Brain: NSObject, NSApplicationDelegate {
         }
     }
     
-    func loadRiskPlayerBundles() {
+    private func loadRiskPlayerBundles() {
         let mainBundle = Bundle.main()
         var loadedRiskPlayerNames = Set<String>()
         var delayedRiskPlayerPaths = Set<String>()
