@@ -19,8 +19,14 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017 C.W. Betts. All rights reserved.</string>
+	<string>Copyright © 1995 Juergen Sell, 2017 C.W. Betts. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>Haudruf</string>
+	<key>RKAboutPlayerFile</key>
+	<string>Haudruf.rtf</string>
+	<key>RKPlayerTypeName</key>
+	<string>Haudruf</string>
+	<key>RKSuperClass</key>
+	<string>RiskPlayer</string>
 </dict>
 </plist>

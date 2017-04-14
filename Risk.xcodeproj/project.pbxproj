@@ -189,6 +189,13 @@
 			remoteGlobalIDString = 553780CD1CC1990A00A2C08E;
 			remoteInfo = ChaoticSwift;
 		};
+		55EF1D3A1EA0A38B007303AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1086,6 +1093,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55EF1D3B1EA0A38B007303AC /* PBXTargetDependency */,
 			);
 			name = Haudruf;
 			productName = Block;
@@ -1434,6 +1442,11 @@
 			isa = PBXTargetDependency;
 			target = 553780CD1CC1990A00A2C08E /* ChaoticSwift */;
 			targetProxy = 553780F61CC1AC7700A2C08E /* PBXContainerItemProxy */;
+		};
+		55EF1D3B1EA0A38B007303AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 55EF1D3A1EA0A38B007303AC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

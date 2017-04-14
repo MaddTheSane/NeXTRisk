@@ -1,103 +1,102 @@
 #import "Haudruf.h"
-#import <appkit/Application.h>
-#import <appkit/Form.h>
-#import <appkit/Button.h>
-#import <appkit/Text.h>
-#import <appkit/ScrollView.h>
-#import <appkit/Panel.h>
-#import <objc/List.h>
-#import <appkit/publicWraps.h>
+#import <appkit/NSApplication.h>
+#import <appkit/NSForm.h>
+#import <appkit/NSButton.h>
+#import <appkit/NSText.h>
+#import <appkit/NSScrollView.h>
+#import <appkit/NSPanel.h>
+//#import <objc/List.h>
+//#import <appkit/publicWraps.h>
 #import <string.h>
 
 #define NIBFILE "Haudruf.cp/Haudruf.nib"
 #define SCHEISSE 10
+#ifndef MIN
 #define MIN(x,y) (x<y)?(x):(y) 
+#endif
 const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 @implementation Haudruf
 
-+ initialize
++ (void)initialize
 {	
-	if (self = [Haudruf class])  
+	if (self == [Haudruf class])
 		[self setVersion:1];
-	return self;
 }
 
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
 	int i;
-	[super initPlayerNum:pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager];
-	[NXApp loadNibSection:NIBFILE owner:self];
-	[myPlayerNumForm setIntValue:myPlayerNum at:0];
-	[haudrufPanel setBecomeKeyOnlyIfNeeded:YES];
-	[haudrufPanel orderFront:self];
-	for (i=0; i<6; i++)
-	 	gotContinent[i] = NO;
-	initialContinent = 1;
+    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
+        [NSBundle loadNibNamed:@"Haudruf.nib" owner:self];
+        for (i=0; i<6; i++)
+            gotContinent[i] = NO;
+        initialContinent = 1;
+    }
+    
 	return self;
 }
 
-- free
+- (void)awakeFromNib
 {
-	[haudrufPanel free];
-	
-	return [super free];
+    [super awakeFromNib];
+    /*
+     [myPlayerNumForm setIntValue:number at:0];
+     [haudrufPanel setBecomeKeyOnlyIfNeeded:YES];
+     [haudrufPanel orderFront:self];
+*/
 }
 
 // *****************subclass responsibilities*********************
 
-- yourChooseCountry
+- (void)chooseCountry
 {
 	// choose a random country
-	id unoccList = [self unoccupiedCountries];
+	NSArray *unoccList = [gameManager unoccupiedCountries];
 	id country;
 	
 	if ([unoccList count]==0)
-		return nil;
-	country = [unoccList objectAt:[rng randMax:[unoccList count]-1]];
+		return;
+	country = [unoccList objectAtIndex:[rng randomNumberWithMaximum:[unoccList count]-1]];
 	[self setNotes:"sent by -yourChooseCountry.  "
 					"yourChooseCountry chose a country at random."];
 	[self occupyCountry:country];
-	[unoccList free];
-	return self;
 }
 
-- yourInitialPlaceArmies:(int)numArmies
+- (void)placeInitialArmies:(int)numArmies
 {	
 	if (![self calcNumCountriesPerContinent])
 	{
-		NXRunAlertPanel("BUG", NULL, NULL,NULL, NULL);
-		return nil;
+		NSRunAlertPanel(@"BUG", @"", NULL,NULL, NULL);
+		return;
 	}
 	round = 0;
-	if(numCountriesPerContinent[initialContinent = AUSTRALIA] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:AUSTRALIA]];
-	else if(numCountriesPerContinent[initialContinent = SOUTH_AMERICA] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:SOUTH_AMERICA]];
-	else if(numCountriesPerContinent[initialContinent = NORTH_AMERICA] >= 4)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:NORTH_AMERICA]];	
-	else if(numCountriesPerContinent[initialContinent = AFRICA] >= 3)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:AFRICA]];	
-	else if(numCountriesPerContinent[initialContinent = SOUTH_AMERICA] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:SOUTH_AMERICA]];	
-	else if(numCountriesPerContinent[initialContinent = AUSTRALIA] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:AUSTRALIA]];	
-	else if(numCountriesPerContinent[initialContinent = NORTH_AMERICA] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:NORTH_AMERICA]];	
-	else if(numCountriesPerContinent[initialContinent = AFRICA] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:AFRICA]];	
-	else if(numCountriesPerContinent[initialContinent = NORTH_AMERICA] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:NORTH_AMERICA]];	
+	if(numCountriesPerContinent[initialContinent = Australia] >= 2)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:Australia]];
+	else if(numCountriesPerContinent[initialContinent = SouthAmerica] >= 2)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:SouthAmerica]];
+	else if(numCountriesPerContinent[initialContinent = NorthAmerica] >= 4)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:NorthAmerica]];
+	else if(numCountriesPerContinent[initialContinent = Africa] >= 3)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:Africa]];
+	else if(numCountriesPerContinent[initialContinent = SouthAmerica] >= 1)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:SouthAmerica]];
+	else if(numCountriesPerContinent[initialContinent = Australia] >= 1)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:Australia]];
+	else if(numCountriesPerContinent[initialContinent = NorthAmerica] >= 2)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:NorthAmerica]];
+	else if(numCountriesPerContinent[initialContinent = Africa] >= 2)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:Africa]];
+	else if(numCountriesPerContinent[initialContinent = NorthAmerica] >= 1)
+		[self placeArmies:numArmies inCountry:[self bestCountryFor:NorthAmerica]];
 	else
 		[self placeArmies:numArmies inCountry:[self bestCountryFor:SCHEISSE]];	
-	return self;
+	//return self;
 }
 
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards
 {
-	id mycountries = [self myCountries];
+	NSSet<Country *> *mycountries = [self ourCountries];
 	id attackCountry = nil;
 	int i, numArmiesLeft;
 	
@@ -106,7 +105,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	numArmiesLeft = numArmies;
 	if ([mycountries count]==0)
 		return nil;
-	[mycountries free];
+	//[mycountries free];
 	numArmiesLeft += [self turnInCards];
 	
 	// Verteidigung vorhandener Kontinente
@@ -135,7 +134,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		attackCountry = [self klotzArmies:numArmiesLeft];		
 	}
 	
-	while (attackCountry = [self findBestVictimFor:attackCountry])
+	while ((attackCountry = [self findBestVictimFor:attackCountry]))
 		;
 	[self fortifyPosition];
 	return self;
@@ -147,8 +146,8 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	// but we do set the notes and pause if we should.
 	[self setNotes:"-youWereAttacked: by: was called."];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:""];
-	[returnValueForm setStringValue:""];
+	[functionCalledForm setStringValue:@""];
+	[returnValueForm setStringValue:@""];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
@@ -161,8 +160,8 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	// but we do set the notes and pause if we should.
 	[self setNotes:"-youLostCountry: to: was called."];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:""];
-	[returnValueForm setStringValue:""];
+	[functionCalledForm setStringValue:@""];
+	[returnValueForm setStringValue:@""];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
@@ -171,18 +170,20 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************country utilities*********************
 
-- (BOOL)occupyCountry:country
+- (BOOL)occupyCountry:(Country *)country
 {
 	BOOL retVal;
 	
+    //[super occu]
+    //[gameManager occ]
 	retVal = [super occupyCountry:country];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(BOOL)occupyCountry:" at:0];
-	[args1Form setTitle:"country" at:0];
+	[functionCalledForm setStringValue:@"(BOOL)occupyCountry:" at:0];
+	[args1Form setTitle:@"country" ofColumn:0];
 	if (country == nil)  {
-		[args1Form setStringValue:"nil" at:0];
+		[args1Form setStringValue:@"nil" :0];
 	}  else  {
-		[args1Form setStringValue:[(Country *)country name] at:0];
+		[args1Form setStringValue:[country countryName] at:0];
 	}
 	if (retVal)  {
 		[returnValueForm setStringValue:"YES" at:0];
@@ -206,7 +207,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	retVal = [super playCards:cardList];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:"(int)playCards:" at:0];
-	[args1Form setTitle:"cardList" at:0];
+	[args1Form setTitle:@"cardList" ofColumn:0];
 	if (cardList == nil)  {
 		[args1Form setStringValue:"nil" at:0];
 	}  else  {
@@ -227,12 +228,13 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 {
 	BOOL retVal;
 	
+    //[super placearmies]
 	retVal = [super placeArmies:numArmies inCountry:country];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(BOOL)placeArmies: inCountry:" at:0];
-	[args1Form setTitle:"numArmies" at:0];
+	[functionCalledForm setStringValue:@"(BOOL)placeArmies: inCountry:" at:0];
+	[args1Form setTitle:@"numArmies" at:0];
 	[args1Form setIntValue:numArmies at:0];
-	[args1Form setTitle:"country" at:1];
+	[args1Form setTitle:@"country" at:1];
 	if (country == nil)  {
 		[args1Form setStringValue:"nil" at:1];
 	}  else  {
@@ -254,9 +256,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 // *****************attack utilities*********************
 
 - (BOOL)attackOnceFrom:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+               victory:(BOOL *)victory fromArmies:(int *)fromArmies
+              toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+                 weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -315,9 +317,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 }
 
 - (BOOL)attackTimes:(int)times from:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+            victory:(BOOL *)victory fromArmies:(int *)fromArmies
+           toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+              weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -378,9 +380,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 }
 
 - (BOOL)attackUntilLeft:(int)untilLeft from:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+                victory:(BOOL *)victory fromArmies:(int *)fromArmies
+               toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+                  weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -441,9 +443,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 }
 
 - (BOOL)attackUntilCantFrom:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+                    victory:(BOOL *)victory fromArmies:(int *)fromArmies
+                   toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+                      weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -503,11 +505,11 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************post-attack & fortify utilities*********************
 
-- (BOOL)moveArmies:(int)numArmies from:fromCountry to:toCountry
+- (void)moveAttackingArmies:(int)count between:(Country *)fromCountry :(Country *)toCountry
 {
 	BOOL retVal;
 	
-	retVal = [super moveArmies:numArmies from:fromCountry to:toCountry];
+	retVal = [super moveAttackingArmies:numArmies between:fromCountry :toCountry];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:"(BOOL)moveArmies: from: to:" at:0];
 	[args1Form setTitle:"numArmies" at:0];
@@ -516,13 +518,13 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	if (fromCountry == nil)  {
 		[args1Form setStringValue:"nil" at:1];
 	}  else  {
-		[args1Form setStringValue:[(Country *)fromCountry name] at:1];
+		[args1Form setStringValue:[fromCountry name] at:1];
 	}
 	[args1Form setTitle:"toCountry" at:1];
 	if (toCountry == nil)  {
 		[args1Form setStringValue:"nil" at:1];
 	}  else  {
-		[args1Form setStringValue:[(Country *)toCountry name] at:1];
+		[args1Form setStringValue:[toCountry name] at:1];
 	}
 	if (retVal)  {
 		[returnValueForm setStringValue:"YES" at:0];
@@ -541,18 +543,19 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 - waitForContinue
 {
-	int retVal;
+	NSInteger retVal;
 	
-	NXBeep();
-	if (![haudrufPanel isVisible])  [haudrufPanel orderFront:self];
+	NSBeep();
+	if (![haudrufPanel isVisible])
+        [haudrufPanel orderFront:self];
 	[pauseContinueButton setEnabled:NO];
-	retVal = [NXApp runModalFor:haudrufPanel];
+	retVal = [NSApp runModalFor:haudrufPanel];
 	return self;
 }
 
 - continueAction:sender
 {
-	[NXApp stopModal];
+	[NSApp stopModal];
 	[pauseContinueButton setEnabled:YES];
 	return self;
 }
@@ -594,14 +597,14 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return self;
 }
 
-- calcNumCountriesPerContinent
+- (BOOL)calcNumCountriesPerContinent
 {
 	int i,j,k, numContCountries, numMyCountries, tmp;
 	id countryList;
 	id mycountries = [self myCountries];
 	
 	if ((numMyCountries=[mycountries count])==0)
-		return nil;
+		return NO;
 	
 	numGotContinents = 0;
 	for (i=0; i<6; i++)
@@ -630,7 +633,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		[countryList free];
 	}
 	[mycountries free];
-	return self;
+	return YES;
 }
 
 - bestCountryFor:(int)continent
