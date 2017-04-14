@@ -113,6 +113,16 @@
 		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
 		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
 		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
+		55EF1D231EA0A29A007303AC /* Haudruf.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF1D201EA0A29A007303AC /* Haudruf.m */; };
+		55EF1D241EA0A29A007303AC /* Haudruf.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D211EA0A29A007303AC /* Haudruf.nib */; };
+		55EF1D251EA0A29A007303AC /* Haudruf.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D221EA0A29A007303AC /* Haudruf.rtf */; };
+		55EF1D331EA0A2C6007303AC /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF1D301EA0A2C6007303AC /* Block.m */; };
+		55EF1D341EA0A2C6007303AC /* Block.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D311EA0A2C6007303AC /* Block.rtf */; };
+		55EF1D351EA0A2C6007303AC /* Block.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D321EA0A2C6007303AC /* Block.tiff */; };
+		55EF1D361EA0A2D0007303AC /* Coop.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EF1D271EA0A2AE007303AC /* Coop.m */; };
+		55EF1D371EA0A2D0007303AC /* Coop.nib in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D281EA0A2AE007303AC /* Coop.nib */; };
+		55EF1D381EA0A2D0007303AC /* Coop.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D291EA0A2AE007303AC /* Coop.rtf */; };
+		55EF1D391EA0A2D0007303AC /* Coop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55EF1D2A1EA0A2AE007303AC /* Coop.tiff */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +399,25 @@
 		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55AC2A521D1089C50021814F /* Risk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Risk-Bridging-Header.h"; sourceTree = "<group>"; };
 		55AC2A531D1089C50021814F /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; usesTabs = 1; };
+		55EF1D051EA0A169007303AC /* Block.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Block.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EF1D071EA0A169007303AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55EF1D121EA0A193007303AC /* Coop.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Coop.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EF1D1A1EA0A195007303AC /* Haudruf.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Haudruf.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EF1D1C1EA0A1EB007303AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55EF1D1E1EA0A216007303AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = RiskPlayers/Haudruf.cp/Info.plist; sourceTree = SOURCE_ROOT; };
+		55EF1D1F1EA0A29A007303AC /* Haudruf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haudruf.h; sourceTree = "<group>"; };
+		55EF1D201EA0A29A007303AC /* Haudruf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Haudruf.m; sourceTree = "<group>"; };
+		55EF1D211EA0A29A007303AC /* Haudruf.nib */ = {isa = PBXFileReference; lastKnownFileType = file; path = Haudruf.nib; sourceTree = "<group>"; };
+		55EF1D221EA0A29A007303AC /* Haudruf.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Haudruf.rtf; sourceTree = "<group>"; };
+		55EF1D261EA0A2AE007303AC /* Coop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coop.h; sourceTree = "<group>"; };
+		55EF1D271EA0A2AE007303AC /* Coop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coop.m; sourceTree = "<group>"; };
+		55EF1D281EA0A2AE007303AC /* Coop.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = Coop.nib; sourceTree = "<group>"; };
+		55EF1D291EA0A2AE007303AC /* Coop.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Coop.rtf; sourceTree = "<group>"; };
+		55EF1D2A1EA0A2AE007303AC /* Coop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Coop.tiff; sourceTree = "<group>"; };
+		55EF1D2F1EA0A2C6007303AC /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		55EF1D301EA0A2C6007303AC /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
+		55EF1D311EA0A2C6007303AC /* Block.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Block.rtf; sourceTree = "<group>"; };
+		55EF1D321EA0A2C6007303AC /* Block.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Block.tiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +473,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D021EA0A169007303AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D0D1EA0A193007303AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D151EA0A195007303AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +601,9 @@
 				553780A61CC1966300A2C08E /* RiskKit.framework */,
 				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
 				551098161CC56F0F00DE6DFE /* Risk World Maker.app */,
+				55EF1D051EA0A169007303AC /* Block.riskplayer */,
+				55EF1D121EA0A193007303AC /* Coop.riskplayer */,
+				55EF1D1A1EA0A195007303AC /* Haudruf.riskplayer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -775,11 +828,54 @@
 		556A65EA1CFF5766005BA899 /* AIs */ = {
 			isa = PBXGroup;
 			children = (
+				55EF1D061EA0A169007303AC /* Block */,
+				55EF1D1B1EA0A1C1007303AC /* Coop */,
+				55EF1D1D1EA0A1F5007303AC /* Haudruf */,
 				5537806C1CC1639C00A2C08E /* Aimless */,
 				553780901CC1645000A2C08E /* Chaotic */,
 				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
 			);
 			name = AIs;
+			sourceTree = "<group>";
+		};
+		55EF1D061EA0A169007303AC /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				55EF1D2F1EA0A2C6007303AC /* Block.h */,
+				55EF1D301EA0A2C6007303AC /* Block.m */,
+				55EF1D311EA0A2C6007303AC /* Block.rtf */,
+				55EF1D321EA0A2C6007303AC /* Block.tiff */,
+				55EF1D071EA0A169007303AC /* Info.plist */,
+			);
+			name = Block;
+			path = RiskPlayers/Block.cp;
+			sourceTree = "<group>";
+		};
+		55EF1D1B1EA0A1C1007303AC /* Coop */ = {
+			isa = PBXGroup;
+			children = (
+				55EF1D261EA0A2AE007303AC /* Coop.h */,
+				55EF1D271EA0A2AE007303AC /* Coop.m */,
+				55EF1D281EA0A2AE007303AC /* Coop.nib */,
+				55EF1D291EA0A2AE007303AC /* Coop.rtf */,
+				55EF1D2A1EA0A2AE007303AC /* Coop.tiff */,
+				55EF1D1C1EA0A1EB007303AC /* Info.plist */,
+			);
+			name = Coop;
+			path = RiskPlayers/Coop.cp;
+			sourceTree = "<group>";
+		};
+		55EF1D1D1EA0A1F5007303AC /* Haudruf */ = {
+			isa = PBXGroup;
+			children = (
+				55EF1D1F1EA0A29A007303AC /* Haudruf.h */,
+				55EF1D201EA0A29A007303AC /* Haudruf.m */,
+				55EF1D211EA0A29A007303AC /* Haudruf.nib */,
+				55EF1D221EA0A29A007303AC /* Haudruf.rtf */,
+				55EF1D1E1EA0A216007303AC /* Info.plist */,
+			);
+			name = Haudruf;
+			path = RiskPlayers/Haudruf.cp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -945,6 +1041,57 @@
 			productReference = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */;
 			productType = "com.apple.product-type.bundle";
 		};
+		55EF1D041EA0A169007303AC /* Block */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55EF1D081EA0A169007303AC /* Build configuration list for PBXNativeTarget "Block" */;
+			buildPhases = (
+				55EF1D011EA0A169007303AC /* Sources */,
+				55EF1D021EA0A169007303AC /* Frameworks */,
+				55EF1D031EA0A169007303AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Block;
+			productName = Block;
+			productReference = 55EF1D051EA0A169007303AC /* Block.riskplayer */;
+			productType = "com.apple.product-type.bundle";
+		};
+		55EF1D0B1EA0A193007303AC /* Coop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55EF1D0F1EA0A193007303AC /* Build configuration list for PBXNativeTarget "Coop" */;
+			buildPhases = (
+				55EF1D0C1EA0A193007303AC /* Sources */,
+				55EF1D0D1EA0A193007303AC /* Frameworks */,
+				55EF1D0E1EA0A193007303AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Coop;
+			productName = Block;
+			productReference = 55EF1D121EA0A193007303AC /* Coop.riskplayer */;
+			productType = "com.apple.product-type.bundle";
+		};
+		55EF1D131EA0A195007303AC /* Haudruf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55EF1D171EA0A195007303AC /* Build configuration list for PBXNativeTarget "Haudruf" */;
+			buildPhases = (
+				55EF1D141EA0A195007303AC /* Sources */,
+				55EF1D151EA0A195007303AC /* Frameworks */,
+				55EF1D161EA0A195007303AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Haudruf;
+			productName = Block;
+			productReference = 55EF1D1A1EA0A195007303AC /* Haudruf.riskplayer */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -976,6 +1123,10 @@
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 0800;
 					};
+					55EF1D041EA0A169007303AC = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */;
@@ -998,6 +1149,9 @@
 				553780A51CC1966300A2C08E /* RiskKit */,
 				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
 				551098151CC56F0F00DE6DFE /* Risk World Maker */,
+				55EF1D041EA0A169007303AC /* Block */,
+				55EF1D0B1EA0A193007303AC /* Coop */,
+				55EF1D131EA0A195007303AC /* Haudruf */,
 			);
 		};
 /* End PBXProject section */
@@ -1082,6 +1236,34 @@
 				553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */,
 				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
 				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D031EA0A169007303AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D351EA0A2C6007303AC /* Block.tiff in Resources */,
+				55EF1D341EA0A2C6007303AC /* Block.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D0E1EA0A193007303AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D371EA0A2D0007303AC /* Coop.nib in Resources */,
+				55EF1D391EA0A2D0007303AC /* Coop.tiff in Resources */,
+				55EF1D381EA0A2D0007303AC /* Coop.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D161EA0A195007303AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D251EA0A29A007303AC /* Haudruf.rtf in Resources */,
+				55EF1D241EA0A29A007303AC /* Haudruf.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,6 +1360,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780D51CC1993E00A2C08E /* Chaos.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D011EA0A169007303AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D331EA0A2C6007303AC /* Block.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D0C1EA0A193007303AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D361EA0A2D0007303AC /* Coop.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EF1D141EA0A195007303AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EF1D231EA0A29A007303AC /* Haudruf.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1646,6 +1852,102 @@
 			};
 			name = Release;
 		};
+		55EF1D091EA0A169007303AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Block.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Block;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Debug;
+		};
+		55EF1D0A1EA0A169007303AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Block.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Block;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Release;
+		};
+		55EF1D101EA0A193007303AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Coop.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Coop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Debug;
+		};
+		55EF1D111EA0A193007303AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Coop.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Coop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Release;
+		};
+		55EF1D181EA0A195007303AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Haudruf.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Haudruf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Debug;
+		};
+		55EF1D191EA0A195007303AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RiskPlayers/Haudruf.cp/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Haudruf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1717,6 +2019,32 @@
 			buildConfigurations = (
 				553780D21CC1990A00A2C08E /* Debug */,
 				553780D31CC1990A00A2C08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55EF1D081EA0A169007303AC /* Build configuration list for PBXNativeTarget "Block" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EF1D091EA0A169007303AC /* Debug */,
+				55EF1D0A1EA0A169007303AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		55EF1D0F1EA0A193007303AC /* Build configuration list for PBXNativeTarget "Coop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EF1D101EA0A193007303AC /* Debug */,
+				55EF1D111EA0A193007303AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55EF1D171EA0A195007303AC /* Build configuration list for PBXNativeTarget "Haudruf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EF1D181EA0A195007303AC /* Debug */,
+				55EF1D191EA0A195007303AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
