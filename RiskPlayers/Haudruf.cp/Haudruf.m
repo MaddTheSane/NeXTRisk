@@ -43,8 +43,8 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
     /*
      [myPlayerNumForm setIntValue:number at:0];
      [haudrufPanel setBecomeKeyOnlyIfNeeded:YES];
-     [haudrufPanel orderFront:self];
 */
+    [haudrufPanel orderFront:self];
 }
 
 // *****************subclass responsibilities*********************
@@ -113,7 +113,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	for (i=0; i<6; i++)
 	{
 	 	if (gotContinent[i])
-			numArmiesLeft -= [self defendContinent:i:numArmiesLeft];
+			numArmiesLeft -= [self defendContinent:i armies:numArmiesLeft];
 	}
 	
 	// Stabilisierung
@@ -140,7 +140,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return self;
 }
 
-- youWereAttacked:country by:(int)player
+- (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
@@ -151,10 +151,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
-	return self;
 }
 
-- youLostCountry:country to:(int)player
+- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
@@ -165,7 +164,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
-	return self;
 }
 
 // *****************country utilities*********************
@@ -541,7 +539,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************special haudruf methods*********************
 
-- waitForContinue
+- (void)waitForContinue
 {
 	NSInteger retVal;
 	
@@ -550,24 +548,21 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
         [haudrufPanel orderFront:self];
 	[pauseContinueButton setEnabled:NO];
 	retVal = [NSApp runModalFor:haudrufPanel];
-	return self;
 }
 
-- continueAction:sender
+- (IBAction)continueAction:sender
 {
 	[NSApp stopModal];
 	[pauseContinueButton setEnabled:YES];
-	return self;
 }
 
-- checkAction:sender
+- (IBAction)checkAction:sender
 {
 	if ([sender state] == 1)  {
 		[continueButton setEnabled:YES];
 	}  else  {
 		[continueButton setEnabled:NO];
 	}
-	return self;
 }
 
 - clearArgForms
@@ -593,7 +588,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 - setNotes:(const char *)noteText
 {
-	[[notesScrollText docView] setText:noteText];
+	[[notesScrollText documentView] setText:noteText];
 	return self;
 }
 
@@ -638,20 +633,18 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 - bestCountryFor:(int)continent
 {
-	id countryList = [self countriesInContinent:continent];
+	id countryList = [gameManager countriesInContinent:continent];
 	id retCountry;
-	int i;
+	NSInteger i;
 	
 	for (i=0; i<[countryList count]; i++)
 	{
 		if ([[countryList objectAt:i] idNum] == countriesInContinent[continent][0])
 		{
-			retCountry = [countryList objectAt:i];
-			[countryList free];
+			retCountry = [countryList objectAtIndex:i];
 			return retCountry;
 		}
 	}
-	[countryList free];
 	return nil;
 }
 
@@ -665,11 +658,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	{
 		if([[contlist objectAt:i] idNum] == [country idNum])
 		{
-			[contlist free];
 			return YES;
 		}
 	}
-	[contlist free];
 	return NO;
 }
 
@@ -685,8 +676,8 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		[cardSet free];
 		if (temp == -1)  
 		{
-			NXRunAlertPanel("Debug", "bestSet returned an invalid cardset", 
-							"OK", NULL, NULL);
+			NSRunAlertPanel(@"Debug", @"bestSet returned an invalid cardset",
+							@"OK", NULL, NULL);
 			cardSet=nil;
 		}  
 		else  
@@ -698,26 +689,26 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return numArmies;
 }
 
-- (int)defendContinent:(int)continent:(int)armiesLeft
+- (int)defendContinent:(int)continent armies:(int)armiesLeft
 {
 //	id maxCountry;
 	fprintf(stderr, "defend:%d with:%d\n", continent, armiesLeft);
 //	return maxCountry;
 //	maxCountry = [self getMaxArmyCountry];
 
-	if (continent == AUSTRALIA)
+	if (continent == Australia)
 	{
 		fprintf(stderr, "defend Australia:%d with:%d\n", continent, armiesLeft);
 		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Indonesia"]];
 		return MIN(armiesLeft,5);
 	}
-	else if (continent == SOUTH_AMERICA)
+	else if (continent == SouthAmerica)
 	{
 		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Brazil"]];
 		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Venezuela"]];
 		return MIN(armiesLeft,5);
 	}
-	else if (continent == NORTH_AMERICA)
+	else if (continent == NorthAmerica)
 	{
 		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Alaska"]];
 		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Greenland"]];
@@ -789,15 +780,12 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	
 	if ([tmp=[self enemyNeighborsTo:maxCountry=[self getMaxArmyCountry]] count])
 	{
-		[tmp free];
 		return self;
 	}
-	[tmp free];
 	tmp = [self neighborsTo:maxCountry];
 //	fprintf(stderr, "armies:%d from:%s to:%s", 
 //		[maxCountry armies], [maxCountry name],[[tmp objectAt:1] name]);
 	[self moveArmies:[maxCountry armies]-1 from:maxCountry to:[tmp objectAt:[rng randMax:[tmp count]-1]]];
-	[tmp free];
 	
 	return self;
 }
@@ -816,7 +804,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	
 	if ([en count]==0)  
 	{
-		[en free];
 		return nil;
 	}  
 	else 

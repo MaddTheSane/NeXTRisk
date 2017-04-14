@@ -1,12 +1,11 @@
 //#import "ComputerPlayer.h"
 
+#import <Cocoa/Cocoa.h>
 #import <RiskKit/RiskKit.h>
-
-@class NSForm;
 
 @interface Haudruf: RiskPlayer
 {
-	IBOutlet id  haudrufPanel;
+	IBOutlet NSWindow  *haudrufPanel;
 	IBOutlet NSForm  *myPlayerNumForm;
 	IBOutlet NSForm  *functionCalledForm;
 	IBOutlet id	args1Form;
@@ -14,7 +13,7 @@
 	IBOutlet id  returnValueForm;
 	IBOutlet id  notesScrollText;
 	//IBOutlet id  continueButton;
-	IBOutlet id	pauseContinueButton;
+	IBOutlet NSButton	*pauseContinueButton;
 	
 	int numCountriesPerContinent[6]; // Anzahl meiner Laender pro Kontinent
 	int	countriesInContinent[6][12]; // IDs meiner Laender in den Kontinenten
@@ -22,7 +21,7 @@
 	int numGotContinents;
 	int round;
 	int turn;
-	int initialContinent;
+	RiskContinent initialContinent;
 }
 
 + (void)initialize;
@@ -34,8 +33,8 @@
 - yourChooseCountry;
 - yourInitialPlaceArmies:(int)numArmies;
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
-- youWereAttacked:(Country *)country by:(int)player;
-- youLostCountry:(Country *)country to:(int)player;
+- (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
+- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
 // *****************country utilities*********************
 
@@ -75,9 +74,9 @@
 
 - (void)moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
 
-- waitForContinue;
-- continueAction:sender;
-- checkAction:sender;
+- (void)waitForContinue;
+- (IBAction)continueAction:sender;
+- (IBAction)checkAction:sender;
 - clearArgForms;
 - setNotes:(const char *)noteText;
 
