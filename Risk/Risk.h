@@ -3,6 +3,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
+#include <CoreFoundation/CFBase.h>
 #import <Foundation/NSObjCRuntime.h>
 #import "SNUtility.h"
 
@@ -17,6 +18,7 @@ typedef NS_ENUM(int, RiskContinent)
     Australia
 };
 
+typedef int RiskArmyCount;
 typedef NSInteger Player;
 
 typedef NS_ENUM(int, RiskCardType)
@@ -103,7 +105,7 @@ typedef struct _AttackResult
     BOOL phaseChanged;
 } AttackResult;
 
-int RiskInitialArmyCountForPlayers (int playerCount);
+RiskArmyCount RiskInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(RiskInitialArmyCount(forPlayers:));
 
 NS_ASSUME_NONNULL_BEGIN
 

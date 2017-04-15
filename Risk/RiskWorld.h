@@ -44,7 +44,7 @@
 /// Calculate the number of bonus armies earned for a player at the
 /// beginning of a turn based on the continents that they completely
 /// occupy.
-- (int) continentBonusArmiesForPlayer:(Player)number;
+- (RiskArmyCount) continentBonusArmiesForPlayer:(Player)number;
 - (NSSet<Country*> *) countriesForPlayer:(Player)number;
 
 @end

@@ -14,8 +14,6 @@ FOUNDATION_EXPORT double RiskKitVersionNumber;
 //! Project version string for RiskKit.
 FOUNDATION_EXPORT const unsigned char RiskKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <RiskKit/PublicHeader.h>
-
 // Utility headers
 #import <RiskKit/SNUtility.h>
 #import <RiskKit/SNRandom.h>

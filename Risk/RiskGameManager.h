@@ -64,10 +64,10 @@ extern NSString *const RGMGameOverNotification;
     Player currentPlayerNumber;
 
     // Place armies phase:
-    int initialArmyCount;
+    RiskArmyCount initialArmyCount;
 
     // Keep track of armies left for current player in this turn.
-    int armiesLeftToPlace;
+    RiskArmyCount armiesLeftToPlace;
     ArmyPlacementValidator *armyPlacementValidator;
 
     BOOL playerHasConqueredCountry;
@@ -77,10 +77,10 @@ extern NSString *const RGMGameOverNotification;
     IBOutlet NSWindow *cardPanelWindow;
     NSMutableArray *cardDeck;
     NSMutableArray *discardDeck;
-    int nextCardSetValue;
+    RiskArmyCount nextCardSetValue;
 
     // For verifying that armies before fortification == armies after fortification
-    int armiesBefore;
+    RiskArmyCount armiesBefore;
 
     DiceInspector *diceInspector;
     WorldInfoController *worldInfoController;
@@ -155,7 +155,7 @@ extern NSString *const RGMGameOverNotification;
 - (IBAction) fortify:(id)sender;
 - (IBAction) endTurn:(id)sender;
 
-- (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination;
+- (void) moveAttackingArmies:(RiskArmyCount)minimum between:(Country *)source :(Country *)destination;
 - (void) fortifyArmiesFrom:(Country *)source;
 - (void) forceCurrentPlayerToTurnInCards;
 
@@ -173,7 +173,7 @@ extern NSString *const RGMGameOverNotification;
 // Place Armies and Move Attacking armies
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(int)count inCountry:(Country *)country;
+- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(RiskArmyCount)count inCountry:(Country *)country;
 
 //======================================================================
 // Attacking
@@ -183,14 +183,14 @@ extern NSString *const RGMGameOverNotification;
                                               toCountry:(Country *)defender
                                moveAllArmiesUponVictory:(BOOL)moveFlag;
 
-- (AttackResult) attackMultipleTimes:(int)count
+- (AttackResult) attackMultipleTimes:(RiskArmyCount)count
                          fromCountry:(Country *)attacker
                            toCountry:(Country *)defender
             moveAllArmiesUponVictory:(BOOL)moveFlag;
 
 - (AttackResult) attackFromCountry:(Country *)attacker
                          toCountry:(Country *)defender
-                 untilArmiesRemain:(int)count
+                 untilArmiesRemain:(RiskArmyCount)count
           moveAllArmiesUponVictory:(BOOL)moveFlag;
 
 - (AttackResult) attackOnceFromCountry:(Country *)attacker
@@ -201,8 +201,8 @@ extern NSString *const RGMGameOverNotification;
 // Game Manager calculations
 //======================================================================
 
-- (int) earnedArmyCountForPlayer:(Player)number;
-- (DiceRoll) rollDiceWithAttackerArmies:(int)attackerArmies defenderArmies:(int)defenderArmies;
+- (RiskArmyCount) earnedArmyCountForPlayer:(Player)number;
+- (DiceRoll) rollDiceWithAttackerArmies:(RiskArmyCount)attackerArmies defenderArmies:(RiskArmyCount)defenderArmies;
 
 //======================================================================
 // General player interaction
@@ -215,7 +215,7 @@ extern NSString *const RGMGameOverNotification;
 
 - (IBAction) attackMethodAction:(id)sender;
 
-- (void) setArmiesLeftToPlace:(int)count;
+- (void) setArmiesLeftToPlace:(RiskArmyCount)count;
 
 //======================================================================
 // Card management
@@ -223,8 +223,8 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) _recycleDiscardedCards;
 - (void) dealCardToPlayerNumber:(Player)number;
-- (int) _valueOfNextCardSet:(int)currentValue;
-- (int) armiesForNextCardSet;
+- (RiskArmyCount) _valueOfNextCardSet:(RiskArmyCount)currentValue;
+- (RiskArmyCount) armiesForNextCardSet;
 - (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number;
 - (void) automaticallyTurnInCardsForPlayerNumber:(Player)number;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
@@ -240,7 +240,7 @@ extern NSString *const RGMGameOverNotification;
 //======================================================================
 
 - (void) updatePhaseBox;
-- (int) totalTroopsForPlayerNumber:(Player)number;
+- (RiskArmyCount) totalTroopsForPlayerNumber:(Player)number;
 
 - (void) defaultsChanged:(NSNotification *)aNotification;
 

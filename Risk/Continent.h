@@ -15,20 +15,20 @@
     int continentBonus;
 }
 
-+ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(int)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");
++ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(RiskArmyCount)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");
 
-- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(int)bonus NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(RiskArmyCount)bonus NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *continentName;
 @property (readonly, strong) NSSet<Country*> *countries;
-@property (readonly) int continentBonus;
+@property (readonly) RiskArmyCount continentBonus;
 
 @property (readonly, copy) NSString *description;
 
-- (int) bonusArmiesForPlayer:(Player)number;
+- (RiskArmyCount) bonusArmiesForPlayer:(Player)number;
 
 @property (readonly, copy) NSSet<Country *> *countriesAlongBorder;
 
