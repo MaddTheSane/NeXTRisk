@@ -16,7 +16,7 @@
 - (void) setLineWidth:(CGFloat)lw
 {
     lineWidth = lw;
-    [self display];
+    [self setNeedsDisplay:YES];
 }
 
 //----------------------------------------------------------------------

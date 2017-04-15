@@ -51,7 +51,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         playerCards = [[NSMutableArray alloc] init];
         gameManager = aManager;
         
-        attackMethod = AttackOnce;
+        attackMethod = AttackMethodOnce;
         attackMethodValue = 1;
         
         consoleWindow = nil;

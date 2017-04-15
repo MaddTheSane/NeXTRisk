@@ -125,10 +125,10 @@ public class Chaos: RiskPlayer {
 		}
 		
 		switch fortifyRule {
-		case .ManyToManyNeighbors, .ManyToManyConnected:
+		case .manyToManyNeighbors, .manyToManyConnected:
 			source = sourceCountries.first!; // All of them will be done in turn.
 			
-		case .OneToOneNeighbor, .OneToManyNeighbors:
+		case .oneToOneNeighbor, .oneToManyNeighbors:
 			let sourceArray = Array(sourceCountries)
 			source = sourceArray[rng.randomNumberModulo(sourceArray.count)]
 		}

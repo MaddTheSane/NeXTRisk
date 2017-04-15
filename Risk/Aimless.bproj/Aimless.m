@@ -462,7 +462,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
     
     redemption = [gameManager gameConfiguration].cardSetRedemption;
     
-    if (redemption == RemainConstant || [self ourCountries].count < 4)
+    if (redemption == CardSetRedemptionRemainConstant || [self ourCountries].count < 4)
     {
         // Constant: Might as well turn in cards immediately. (Unless we want to wait to get bonus armies for our countries.)
         // Too few countries: probably want as many armies as soon as possible.
@@ -1056,10 +1056,10 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
     {
         switch (fortifyRule)
         {
-            case ManyToManyNeighbors:
-            case ManyToManyConnected:
-            case OneToOneNeighbor:
-            case OneToManyNeighbors:
+            case FortifyRuleManyToManyNeighbors:
+            case FortifyRuleManyToManyConnected:
+            case FortifyRuleOneToOneNeighbor:
+            case FortifyRuleOneToManyNeighbors:
             default:
                 //source = [sourceCountries extractObject]; // Do them starting with the most movable troops.
                 source = [primaryCountries extractObject];
@@ -1146,7 +1146,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
         
         destination = nil;
         
-        if (fortifyRule == ManyToManyConnected)
+        if (fortifyRule == FortifyRuleManyToManyConnected)
         {
             potentialTargetCountries = [source ourConnectedCountries];
         }
@@ -1177,12 +1177,12 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
         
         switch (fortifyRule)
         {
-            case OneToManyNeighbors:
-            case ManyToManyNeighbors:
+            case FortifyRuleOneToManyNeighbors:
+            case FortifyRuleManyToManyNeighbors:
                 // No neighbors with enemies: Move armies toward nearest country with enemy neighbors
                 // Neighbors with enemies: move armies to weakest neighbor with enemies
                 
-            case ManyToManyConnected:
+            case FortifyRuleManyToManyConnected:
                 for (l = 0; l < count; l++)
                 {
                     destination = [countryHeap extractObject];
@@ -1191,7 +1191,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
                 }
                 break;
                 
-            case OneToOneNeighbor:
+            case FortifyRuleOneToOneNeighbor:
             default:
                 // Distribute troops evenly between source and destination
                 

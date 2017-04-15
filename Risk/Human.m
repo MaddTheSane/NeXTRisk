@@ -58,7 +58,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     gameState = [gameManager gameState];
     switch (gameState)
     {
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             if (aCountry.playerNumber == playerNumber)
                 [gameManager selectCountry:aCountry];
             
@@ -68,10 +68,10 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
                 NSBeep ();
             break;
             
-        case gs_place_initial_armies:
-        case gs_place_armies:
-        case gs_move_attacking_armies:
-        case gs_place_fortifying_armies:
+        case GameStatePlaceInitialArmies:
+        case GameStatePlaceArmies:
+        case GameStateMoveAttackingArmies:
+        case GameStatePlaceFortifyingArmies:
             if (flags & NSShiftKeyMask)
                 count = 5;
             else if (flags & NSCommandKeyMask)
@@ -100,7 +100,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
             
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             // If the country is ours, set that as the attacking country (if >0 troops),
             // otherwise, attack the target country.
             if (aCountry.playerNumber == playerNumber)
@@ -125,7 +125,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
             }
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             if (aCountry.playerNumber == playerNumber)
             {
                 [gameManager fortifyArmiesFrom:aCountry];
@@ -237,27 +237,27 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     
     switch (attackMethod)
     {
-        case AttackUntilUnableToContinue:
+        case AttackMethodUntilUnableToContinue:
             attackResult = [gameManager attackUntilUnableToContinueFromCountry:attacker
                                                                      toCountry:defender
                                                       moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackMultipleTimes:
+        case AttackMethodMultipleTimes:
             attackResult = [gameManager attackMultipleTimes:attackMethodValue
                                                 fromCountry:attacker
                                                   toCountry:defender
                                    moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackUntilArmiesRemain:
+        case AttackMethodUntilArmiesRemain:
             attackResult = [gameManager attackFromCountry:attacker
                                                 toCountry:defender
                                         untilArmiesRemain:attackMethodValue
                                  moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackOnce:
+        case AttackMethodOnce:
         default:
             attackResult = [gameManager attackOnceFromCountry:attacker
                                                     toCountry:defender
