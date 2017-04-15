@@ -23,23 +23,16 @@
 	return self;
 }
 
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
 {
-	[super initPlayerNum:pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager];
-//	[NXApp loadNibSection:NIBFILE owner:self];
-	[myPlayerNumForm setIntValue:myPlayerNum at:0];
-	[diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
-	[diagnosticPanel orderFront:self];
-	return self;
-}
+    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
+        [NXApp loadNibSection:NIBFILE owner:self];
+        [myPlayerNumForm setIntValue:myPlayerNum at:0];
+        [diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
+        [diagnosticPanel orderFront:self];
 
-- free
-{
-	[diagnosticPanel free];
-	
-	return [super free];
+    }
+    return self;
 }
 
 // *****************subclass responsibilities*********************

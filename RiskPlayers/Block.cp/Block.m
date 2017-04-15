@@ -21,14 +21,14 @@
 #define SLEEP  /*sleep(4)*/
 @implementation Block
 
-+ initialize
++ (void)initialize
 {
 	if (self = [Block class])  {
 		[self setVersion:1];
 	}
-	return self;
 }
 
+#if 0
 - initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
 				cardManager:cardmanager
 {
@@ -36,11 +36,7 @@
 				cardManager:cardmanager];
 	return self;
 }
-
-- free
-{	
-	return [super free];
-}
+#endif
 
 // *****************subclass responsibilities*********************
 // "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "Western United States", "Eastern United States", "Alberta", "Northwest Territory", "Ontario", "Alaska", "Quebec", "Greenland", "Iceland", "Great Britain", "Western Europe", "Southern Europe", "Northern Europe", "Ukraine", "Scandinavia", "South Africa", "Congo", "East Africa", "Egypt", "Madagascar", "Middle East", "India", "Siam", "China", "Afghanistan", "Ural", "Siberia", "Mongolia", "Irkutsk", "Yakutsk", "Kamchatka", "Japan", "Western Australia", "Eastern Australia", "New Guinea", "Indonesia", 

@@ -9,21 +9,18 @@
 
 @interface Coop:Chaotic   //ComputerPlayer
 {
-	id  diagnosticPanel;
-	id  myPlayerNumForm;
-	id  functionCalledForm;
-	id	args1Form;
-	id  args2Form;
-	id  returnValueForm;
-	id  notesScrollText;
-	id  continueButton;
-	id	pauseContinueButton;
+	IBOutlet id  diagnosticPanel;
+	IBOutlet id  myPlayerNumForm;
+	IBOutlet id  functionCalledForm;
+	IBOutlet id	args1Form;
+	IBOutlet id  args2Form;
+	IBOutlet id  returnValueForm;
+	IBOutlet id  notesScrollText;
+	//id  continueButton;
+	IBOutlet id	pauseContinueButton;
 }
 
-+ initialize;
-
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 

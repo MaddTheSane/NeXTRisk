@@ -5,13 +5,8 @@
 #import "Coop.h" //"Chaotic.h" //"ComputerPlayer.h"
 
 @interface Block:Coop    //Chaotic   //ComputerPlayer
-{
-}
 
-+ initialize;
-
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 

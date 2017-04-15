@@ -198,18 +198,18 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************card utilities*********************
 
-- (int)playCards:cardList
+- (int)playCards:(CardSet *)cardList
 {
 	int retVal;
 	
-	retVal = [super playCards:cardList];
+    [gameManager turnInCardSet:cardList forPlayerNumber:self.playerNumber];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:"(int)playCards:" at:0];
 	[args1Form setTitle:@"cardList" ofColumn:0];
 	if (cardList == nil)  {
-		[args1Form setStringValue:"nil" at:0];
+		[args1Form setStringValue:@"nil" at:0];
 	}  else  {
-		[args1Form setStringValue:"list of cards" at:0];
+		[args1Form setStringValue:@"list of cards" at:0];
 	}
 	[returnValueForm setIntValue:retVal at:0];
 	[haudrufPanel orderFront:self];
@@ -222,12 +222,11 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************place army utilities*********************
 
-- (BOOL)placeArmies:(int)numArmies inCountry:country
+- (BOOL)placeArmies:(int)numArmies inCountry:(Country *)country
 {
 	BOOL retVal;
 	
-    //[super placearmies]
-	retVal = [super placeArmies:numArmies inCountry:country];
+    retVal = [gameManager player:self placesArmies:numArmies inCountry:country];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:@"(BOOL)placeArmies: inCountry:" at:0];
 	[args1Form setTitle:@"numArmies" at:0];
@@ -565,7 +564,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 }
 
-- clearArgForms
+- (void)clearArgForms
 {
 	[args1Form setTitle:"arg1:" at:0];
 	[args1Form setTitle:"arg2:" at:1];
@@ -583,13 +582,11 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	[args2Form setStringValue:"" at:1];
 	[args2Form setStringValue:"" at:2];
 	[args2Form setStringValue:"" at:3];
-	return self;
 }
 
-- setNotes:(const char *)noteText
+- (void)setNotes:(const char *)noteText
 {
 	[[notesScrollText documentView] setText:noteText];
-	return self;
 }
 
 - (BOOL)calcNumCountriesPerContinent
@@ -625,13 +622,11 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 			gotContinent[i]= YES;
 			numGotContinents++;
 		}
-		[countryList free];
 	}
-	[mycountries free];
 	return YES;
 }
 
-- bestCountryFor:(int)continent
+- bestCountryFor:(RiskContinent)continent
 {
 	id countryList = [gameManager countriesInContinent:continent];
 	id retCountry;
@@ -648,7 +643,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return nil;
 }
 
-- (BOOL)countryInContinent:country :(int)continent
+- (BOOL)country:country isInContinent:(RiskContinent)continent
 {
 	id contlist = [self countriesInContinent:continent];
 	int i, num;
@@ -666,15 +661,14 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 - (int)turnInCards
 {
-	id cardSet;
+	CardSet *cardSet;
 	int temp, numArmies = 0;
 	
 	cardSet = [self bestSet];
 	while (cardSet != nil)  
 	{
 		temp = [self playCards:cardSet];
-		[cardSet free];
-		if (temp == -1)  
+		if (temp == -1)
 		{
 			NSRunAlertPanel(@"Debug", @"bestSet returned an invalid cardset",
 							@"OK", NULL, NULL);
@@ -753,7 +747,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		{
 			if ([[enemyList objectAt:i] armies] < min)
 			{
-				minEnemy = [enemyList objectAt:i];
+				minEnemy = [enemyList objectAtIndex:i];
 				min = [minEnemy armies];
 			}
 		}	
@@ -761,12 +755,10 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 				fromArmies:&fromArmies toArmies: &toArmies vanquished:&vanquished 
 				weWin:&weWin])
 			[self moveArmies:fromArmies-((round>25)?4:1) from:country to:minEnemy];
-		[enemyList free];
 		if ((round > 20) && (turn<10))
 		{
 			if (enemyList=[self neighborsTo:minEnemy])
 			{
-				[enemyList free];
 				return minEnemy;
 			}
 		}
@@ -774,20 +766,18 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return nil;
 }
 
-- fortifyPosition
+- (void)fortifyPosition
 {
 	id tmp, maxCountry;
 	
 	if ([tmp=[self enemyNeighborsTo:maxCountry=[self getMaxArmyCountry]] count])
 	{
-		return self;
+		return;
 	}
 	tmp = [self neighborsTo:maxCountry];
 //	fprintf(stderr, "armies:%d from:%s to:%s", 
 //		[maxCountry armies], [maxCountry name],[[tmp objectAt:1] name]);
 	[self moveArmies:[maxCountry armies]-1 from:maxCountry to:[tmp objectAt:[rng randMax:[tmp count]-1]]];
-	
-	return self;
 }
 
 - enemyNeighborsTo:country
@@ -830,8 +820,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 			maxCountry = [armieCountries objectAt:i];
 		}
 	}
-	[preventJunk free];
-	[armieCountries free];	
 	return maxCountry;
 }
 
@@ -852,7 +840,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 			maxCountry = [armieCountries objectAt:i];
 		}
 	}
-	[armieCountries free];	
 	return maxCountry;
 }
 
@@ -872,7 +859,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return nil;
 }
 
-- (int) checkInitialContinent:(int) numArmies
+- (int) checkInitialContinent:(RiskContinent) numArmies
 {
 	int i, fromArmies, toArmies;
 //	int i, min=10000, fromArmies, toArmies;
@@ -902,7 +889,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 					[self moveArmies:fromArmies-((round>25)?4:1) from:maxCountry to:minEnemy];
 				}
 			}
-			[enemyList free];
 	}
 		
 	}
