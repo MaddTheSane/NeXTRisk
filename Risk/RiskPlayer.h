@@ -87,6 +87,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 - (void) addCardToHand:(RiskCard *)newCard;
 - (void) removeCardFromHand:(RiskCard *)aCard;
 
+//! For convenient access to a random number generator
 @property (readonly, strong) SNRandom *rng;
 
 /// The player should call this function at the end of certain phases in
