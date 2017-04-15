@@ -17,9 +17,9 @@ public class Chaos: RiskPlayer {
 		super.init(playerName: aName, number: number, gameManager: aManager)
 		
 		let world = gameManager.world
-		let continents = world!.continents!
+		let continents = world!.continents
 		
-		unoccupiedContinents.formIntersection(Set(continents.keys))
+		unoccupiedContinents.formIntersection(continents.keys)
 	}
 
 	//MARK:- Subclass Responsibilities

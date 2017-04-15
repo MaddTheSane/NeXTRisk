@@ -16,6 +16,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 #import "RiskWorld.h"
 #import "Continent.h"
 #import "RiskCard.h"
+#import "RiskUtil-Swift.h"
 
 @implementation RiskUtility
 
@@ -27,6 +28,15 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 //
 // I'm going with Quebec with three.
 //
+
++ (void)initialize
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [SNUserPath setUpVersions];
+        [RiskPoint setUpVersions];
+    });
+}
 
 //----------------------------------------------------------------------
 
@@ -444,31 +454,31 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     if ([str isEqualToString:@"SouthAmerica"] == YES)
     {
-        continent = SouthAmerica;
+        continent = RiskContinentSouthAmerica;
     }
     else if ([str isEqualToString:@"NorthAmerica"] == YES)
     {
-        continent = NorthAmerica;
+        continent = RiskContinentNorthAmerica;
     }
     else if ([str isEqualToString:@"Europe"] == YES)
     {
-        continent = Europe;
+        continent = RiskContinentEurope;
     }
     else if ([str isEqualToString:@"Africa"] == YES)
     {
-        continent = Africa;
+        continent = RiskContinentAfrica;
     }
     else if ([str isEqualToString:@"Asia"] == YES)
     {
-        continent = Asia;
+        continent = RiskContinentAsia;
     }
     else if ([str isEqualToString:@"Australia"] == YES)
     {
-        continent = Australia;
+        continent = RiskContinentAustralia;
     }
     else
     {
-        continent = Unknown;
+        continent = RiskContinentUnknown;
     }
     
     return continent;
@@ -510,24 +520,24 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     if ([str isEqualToString:@"Wildcard"] == YES)
     {
-        cardType = Wildcard;
+        cardType = RiskCardWildcard;
     }
     else if ([str isEqualToString:@"Soldier"] == YES)
     {
-        cardType = Soldier;
+        cardType = RiskCardSoldier;
     }
     else if ([str isEqualToString:@"Cannon"] == YES)
     {
-        cardType = Cannon;
+        cardType = RiskCardCannon;
     }
     else if ([str isEqualToString:@"Cavalry"] == YES)
     {
-        cardType = Cavalry;
+        cardType = RiskCardCavalry;
     }
     else
     {
         NSLog (@"Unknown card type: %@", str);
-        cardType = Soldier;
+        cardType = RiskCardSoldier;
     }
     
     return cardType;

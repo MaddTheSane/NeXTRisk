@@ -12,9 +12,10 @@
 @class RiskCard;
 @class RiskNeighbor;
 
-// This should own the background image for the map view if there will
-// be more than one world.
+NS_ASSUME_NONNULL_BEGIN
 
+/// This should own the background image for the map view if there will
+/// be more than one world.
 @interface RiskWorld : NSObject <NSCoding>
 {
     NSMutableSet<Country*> *allCountries;
@@ -30,14 +31,14 @@
 - (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RiskCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (void) _buildAllCountries;
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
 @property (weak, readonly) NSSet<Country*> *allCountries;
-- (Continent *) continentNamed:(NSString *)continentName;
+- (nullable Continent *) continentNamed:(NSString *)continentName;
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, strong) NSArray<RiskCard*> *cards;
 
@@ -57,3 +58,5 @@ NSSet<Country*> *RWcountriesForPlayerNumber (NSSet<Country*> *source, Player num
 NSSet<Country*> *RWcountriesInContinentNamed (NSSet<Country*> *source, NSString *continentName);
 NSSet<Country*> *RWcountriesWithArmies (NSSet<Country*> *source);
 NSSet<Country*> *RWneighborsOfCountries (NSSet<Country*> *source);
+
+NS_ASSUME_NONNULL_END
