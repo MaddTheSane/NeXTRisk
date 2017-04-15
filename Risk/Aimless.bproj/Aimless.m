@@ -1084,7 +1084,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
     NSSet *potentialTargetCountries;
     NSEnumerator *countryEnumerator;
     Country *country, *destination;
-    SNHeap *countryHeap;
+    SNHeap<Country*> *countryHeap;
     FortifyRule fortifyRule;
     int l;
     BOOL thisCase = NO;
@@ -1274,7 +1274,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
         brokenContinentCount[number]++;
     }
     
-    [self logMessage:@"%@ was captured by player number %d.", capturedCountry.countryName, number];
+    [self logMessage:@"%@ was captured by player number %ld.", capturedCountry.countryName, (long)number];
 }
 
 //======================================================================
@@ -1619,8 +1619,11 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
     maximum = nil;
     
     //remainingCountries = [NSMutableSet setWithSet:[self ourCountries]];
-    remainingCountries = [NSMutableSet setWithSet:[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors
-                                                                           from:[self ourCountries]]];
+    remainingCountries = [NSMutableSet
+                          setWithSet:
+                          [self
+                           countriesWithAllOptions:CountryFlagsWithEnemyNeighbors
+                           from:[self ourCountries]]];
     while ((country = [remainingCountries anyObject]))
     {
         connected = [country ourConnectedCountries];
