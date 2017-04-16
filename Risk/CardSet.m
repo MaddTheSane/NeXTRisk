@@ -107,7 +107,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
         RiskCardType c2 = aCard2.cardType;
         RiskCardType c3 = aCard3.cardType;
         
-        if (c1 == Wildcard || c2 == Wildcard || c3 == Wildcard)
+        if (c1 == RiskCardWildcard || c2 == RiskCardWildcard || c3 == RiskCardWildcard)
         {
             valid = YES;
         }
@@ -159,13 +159,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 {
     int count = 0;
     
-    if (card1.cardType == Wildcard)
+    if (card1.cardType == RiskCardWildcard)
         count++;
     
-    if (card2.cardType == Wildcard)
+    if (card2.cardType == RiskCardWildcard)
         count++;
     
-    if (card3.cardType == Wildcard)
+    if (card3.cardType == RiskCardWildcard)
         count++;
     
     return count;

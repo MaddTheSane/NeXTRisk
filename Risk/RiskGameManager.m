@@ -104,7 +104,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         }
         
         initialArmyCount = 0;
-        gameState = gs_no_game;
+        gameState = GameStateNone;
         currentPlayerNumber = 0;
         
         cardPanelController = nil;
@@ -184,39 +184,39 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     switch (gameState)
     {
-        case gs_no_game:
+        case GameStateNone:
             str = @"No game";
             break;
             
-        case gs_establishing_game:
+        case GameStateEstablishingGame:
             str = @"Establishing game.";
             break;
             
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             str = [NSString stringWithFormat:@"Choose countries -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             str = [NSString stringWithFormat:@"Place initial armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             str = [NSString stringWithFormat:@"Place armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             str = [NSString stringWithFormat:@"Attack -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_move_attacking_armies:
+        case GameStateMoveAttackingArmies:
             str = [NSString stringWithFormat:@"Move attacking armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             str = [NSString stringWithFormat:@"Fortify -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case gs_place_fortifying_armies:
+        case GameStatePlaceFortifyingArmies:
             str = [NSString stringWithFormat:@"Place fortifying armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
@@ -318,7 +318,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) setWorld:(RiskWorld *)newWorld
 {
     // Can't change world while game is in progress.
-    AssertGameState (gs_no_game);
+    AssertGameState (GameStateNone);
     
     world = newWorld;
     
@@ -333,7 +333,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) setGameConfiguration:(GameConfiguration *)newGameConfiguration
 {
     // Can't change the rules of a game in progress.
-    AssertGameState (gs_no_game);
+    AssertGameState (GameStateNone);
     
     configuration = newGameConfiguration;
 }
@@ -393,7 +393,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     //[mapView display]; // This is because drawCountry: doesn't draw the background... and it probably should.
     [mapView.window enableFlushWindow];
     
-    gameState = gs_establishing_game;
+    gameState = GameStateEstablishingGame;
     
     // Set up card and discard decks.
     cardDeck = [world.cards mutableCopy];
@@ -406,7 +406,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(Player)number
 {
     // Can only add players while establishing a new game.
-    AssertGameState (gs_establishing_game);
+    AssertGameState (GameStateEstablishingGame);
     
     NSAssert (players[number] == nil, @"Already have a player in that slot.");
     //NSAssert ([type isKindOfClass:[RiskPlayer class]] == YES, @"Player class must be a subclass of RiskPlayer.");
@@ -425,7 +425,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) beginGame
 {
     // Can't begin a game that hasn't been established
-    AssertGameState (gs_establishing_game);
+    AssertGameState (GameStateEstablishingGame);
     
     // Calculate initial army count
     initialArmyCount = RiskInitialArmyCountForPlayers (activePlayerCount);
@@ -447,7 +447,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     int l;
     
-    gameState = gs_no_game;
+    gameState = GameStateNone;
     
     for (l = 1; l < MAX_PLAYERS; l++)
     {
@@ -477,7 +477,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (BOOL) gameInProgress
 {
-    return gameState != gs_no_game;
+    return gameState != GameStateNone;
 }
 
 //----------------------------------------------------------------------
@@ -546,7 +546,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     FortifyRule fortifyRule;
     int count, tmp;
     
-    NSAssert (gameState != gs_no_game /*&& gameState != gs_establishing_game*/, @"No game in progess.");
+    NSAssert (gameState != GameStateNone /*&& gameState != GameStateEstablishingGame*/, @"No game in progess.");
     
     //[self _logGameState];
     
@@ -557,12 +557,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Determine next phase.
     switch (gameState)
     {
-        case gs_establishing_game:
-            gameState = gs_choose_countries;
-            if (configuration.initialCountryDistribution == RandomlyChosen)
+        case GameStateEstablishingGame:
+            gameState = GameStateChoosingCountries;
+            if (configuration.initialCountryDistribution == InitialCountryDistributionRandomlyChosen)
             {
                 [self randomlyChooseCountriesForActivePlayers];
-                gameState = gs_place_initial_armies;
+                gameState = GameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
             }
             else
@@ -574,7 +574,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             [self nextActivePlayer];
             break;
             
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             if ([self unoccupiedCountries].count > 0)
             {
                 [mapView selectCountry:nil];
@@ -583,7 +583,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             else
             {
                 [self leavingChooseCountriesPhase];
-                gameState = gs_place_initial_armies;
+                gameState = GameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
                 currentPlayerNumber = 0;
                 [self nextActivePlayer];
@@ -591,7 +591,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             [mapView selectCountry:nil];
             if ([self nextActivePlayer] == YES)
             {
@@ -601,7 +601,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             if (initialArmyCount < 1)
             {
                 [self leavingInitialArmyPlacementPhase];
-                gameState = gs_place_armies;
+                gameState = GameStatePlaceArmies;
                 currentPlayerNumber = 0;
                 [self nextActivePlayer];
                 [players[currentPlayerNumber] willBeginTurn];
@@ -609,40 +609,40 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             }
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             if (armiesLeftToPlace > 0)
             {
                 NSLog (@"Player %ld has %d unplaced armies.", (long)currentPlayerNumber, armiesLeftToPlace);
             }
-            gameState = gs_attack;
+            gameState = GameStateAttack;
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             if (playerHasConqueredCountry == YES)
             {
                 // Deal a card to the player.
                 [self dealCardToPlayerNumber:currentPlayerNumber];
             }
-            gameState = gs_fortify;
+            gameState = GameStateFortify;
             armiesBefore = [self totalTroopsForPlayerNumber:currentPlayerNumber];
             //NSLog (@"Attack->Fortify, player %d, armies: %d", currentPlayerNumber, armiesBefore);
             break;
             
-        case gs_move_attacking_armies:
+        case GameStateMoveAttackingArmies:
             // Go back to the attack phase:
             if (players[currentPlayerNumber].playerCards.count > 4)
             {
                 // Force the player to turn in cards.
-                gameState = gs_place_armies;
+                gameState = GameStatePlaceArmies;
                 [self setArmiesLeftToPlace:0];
             }
             else
             {
-                gameState = gs_attack;
+                gameState = GameStateAttack;
             }
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
             //NSLog (@"Fortify->next, Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
             if (armiesBefore != tmp)
@@ -650,15 +650,15 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
             }
             [players[currentPlayerNumber] willEndTurn];
-            gameState = gs_place_armies;
+            gameState = GameStatePlaceArmies;
             [self nextActivePlayer];
             [players[currentPlayerNumber] willBeginTurn];
             [self setArmiesLeftToPlace:[self earnedArmyCountForPlayer:currentPlayerNumber]];
             break;
             
-        case gs_place_fortifying_armies:
+        case GameStatePlaceFortifyingArmies:
             fortifyRule = configuration.fortifyRule;
-            if (fortifyRule == OneToOneNeighbor || fortifyRule == OneToManyNeighbors)
+            if (fortifyRule == FortifyRuleOneToOneNeighbor || fortifyRule == FortifyRuleOneToManyNeighbors)
             {
                 tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
                 //NSLog (@"PlaceFortify->next, Player %d: armies before = %d, armies now = %d",currentPlayerNumber, armiesBefore, tmp);
@@ -667,14 +667,14 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                     NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
                 }
                 [players[currentPlayerNumber] willEndTurn];
-                gameState = gs_place_armies;
+                gameState = GameStatePlaceArmies;
                 [self nextActivePlayer];
                 [players[currentPlayerNumber] willBeginTurn];
                 [self setArmiesLeftToPlace:[self earnedArmyCountForPlayer:currentPlayerNumber]];
             }
             else
             {
-                gameState = gs_fortify;
+                gameState = GameStateFortify;
             }
             break;
             
@@ -711,11 +711,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Update phase controls for this new phase:
     switch (gameState)
     {
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             newPhaseView = (isInteractivePlayer == YES) ? phaseChooseCountries : phaseComputerMove;
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             newPhaseView = (isInteractivePlayer == YES) ? phasePlaceArmies : phaseComputerMove;
             
             // Do this here to avoid a little bit of flicker.
@@ -736,7 +736,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             [mapView selectCountry:nil];
             newPhaseView = (isInteractivePlayer == YES) ? phasePlaceArmies : phaseComputerMove;
             
@@ -750,18 +750,18 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 [turnInCardsButton setEnabled:NO];
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             newPhaseView = (isInteractivePlayer == YES) ? phaseAttack : phaseComputerMove;
             [self takeAttackMethodFromPlayerNumber:currentPlayerNumber];
             attackingFromTextField.stringValue = @"";
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             newPhaseView = (isInteractivePlayer == YES) ? phaseFortify : phaseComputerMove;
             break;
             
-        case gs_move_attacking_armies:
-        case gs_place_fortifying_armies:
+        case GameStateMoveAttackingArmies:
+        case GameStatePlaceFortifyingArmies:
             // These states are entered in a different manner.
         default:
             NSLog (@"Invalid game state.");
@@ -815,15 +815,15 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Initiate next phase
     switch (gameState)
     {
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             [players[currentPlayerNumber] chooseCountry];
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             [players[currentPlayerNumber] placeInitialArmies:armiesLeftToPlace];
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             [self resetMovableArmiesForPlayerNumber:currentPlayerNumber];
             //NSLog (@"current player: %d, count: %d", currentPlayerNumber, [[players[currentPlayerNumber] playerCards] count]);
             if (players[currentPlayerNumber].playerCards.count > 4)
@@ -838,21 +838,21 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             [players[currentPlayerNumber] placeArmies:armiesLeftToPlace];
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             [players[currentPlayerNumber] attackPhase];
             break;
             
-        case gs_move_attacking_armies:
+        case GameStateMoveAttackingArmies:
             //NSLog (@"player #%d", currentPlayerNumber);
             [players[currentPlayerNumber] moveAttackingArmies:armiesLeftToPlace
                                                       between:[armyPlacementValidator sourceCountry]:[armyPlacementValidator destinationCountry]];
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             [players[currentPlayerNumber] fortifyPhase:configuration.fortifyRule];
             break;
             
-        case gs_place_fortifying_armies:
+        case GameStatePlaceFortifyingArmies:
             //NSLog (@"Fortifying %d armies from: %@", armiesLeftToPlace, sourceCountry);
             [players[currentPlayerNumber] placeFortifyingArmies:armiesLeftToPlace
                                                     fromCountry:[armyPlacementValidator sourceCountry]];
@@ -905,7 +905,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (IBAction) fortify:(id)sender
 {
     // Fortify action should only be executed during the attack phase.
-    AssertGameState (gs_attack);
+    AssertGameState (GameStateAttack);
     
     [self endTurn];
 }
@@ -916,10 +916,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (IBAction) endTurn:(id)sender
 {
     // End turn action should only be executed in either the attack or fortify phase.
-    AssertGameState2 (gs_attack, gs_fortify);
+    AssertGameState2 (GameStateAttack, GameStateFortify);
     
     [self endTurn];
-    if (gameState == gs_fortify)
+    if (gameState == GameStateFortify)
         [self endTurn];
 }
 
@@ -931,7 +931,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     NSView *newPhaseView;
     int count;
     
-    AssertGameState (gs_attack);
+    AssertGameState (GameStateAttack);
     
     // Allow the movement of the remaining armies into either source or destination.
     
@@ -941,7 +941,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     //NSLog (@"minimum: %d, armiesLeftToPlace: %d", minimum, count);
     
-    gameState = gs_move_attacking_armies;
+    gameState = GameStateMoveAttackingArmies;
     
     // What if armiesLeftToPlace == 0?
     [armyPlacementValidator placeInEitherCountry:source orCountry:destination forPlayerNumber:currentPlayerNumber];
@@ -988,35 +988,35 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     //NSLog (@"source: %@", source);
     
-    AssertGameState (gs_fortify);
+    AssertGameState (GameStateFortify);
     int count = source.movableTroopCount;
     
     if (count < 1)
         return;
     
-    gameState = gs_place_fortifying_armies;
+    gameState = GameStatePlaceFortifyingArmies;
     
     // Need to base this on current fortify rule
     
     FortifyRule fortifyRule = configuration.fortifyRule;
     switch (fortifyRule)
     {
-        case OneToOneNeighbor:
+        case FortifyRuleOneToOneNeighbor:
             //NSLog (@"1:1");
             [armyPlacementValidator placeInOneNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case OneToManyNeighbors:
+        case FortifyRuleOneToManyNeighbors:
             //NSLog (@"1:N");
             [armyPlacementValidator placeInAnyNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case ManyToManyNeighbors:
+        case FortifyRuleManyToManyNeighbors:
             //NSLog (@"N:M");
             [armyPlacementValidator placeInAnyNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case ManyToManyConnected:
+        case FortifyRuleManyToManyConnected:
             //NSLog (@"N:M*");
             [armyPlacementValidator placeInConnectedCountries:source forPlayerNumber:currentPlayerNumber];
             break;
@@ -1062,11 +1062,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
     
-    AssertGameState (gs_attack);
+    AssertGameState (GameStateAttack);
     
     isInteractivePlayer = players[currentPlayerNumber].interactive;
     
-    gameState = gs_place_armies;
+    gameState = GameStatePlaceArmies;
     [self setArmiesLeftToPlace:0];
     
     [mapView selectCountry:nil];
@@ -1113,7 +1113,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     Player number;
     BOOL valid;
     
-    AssertGameState (gs_choose_countries);
+    AssertGameState (GameStateChoosingCountries);
     
     number = aPlayer.playerNumber;
     NSAssert (currentPlayerNumber == number, @"Not your turn.");
@@ -1157,7 +1157,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     Country *country;
     NSInteger count, index;
     
-    AssertGameState (gs_choose_countries);
+    AssertGameState (GameStateChoosingCountries);
     
     currentPlayerNumber = 0;
     array = [NSMutableArray arrayWithArray:world.allCountries.allObjects];
@@ -1181,19 +1181,19 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     BOOL okay;
     
-    AssertGameState4 (gs_place_armies, gs_place_initial_armies, gs_move_attacking_armies, gs_place_fortifying_armies);
+    AssertGameState4 (GameStatePlaceArmies, GameStatePlaceInitialArmies, GameStateMoveAttackingArmies, GameStatePlaceFortifyingArmies);
     NSAssert2 (count <= armiesLeftToPlace, @"Tried to place too many(%d) armies.  max: %d ", count, armiesLeftToPlace);
     
     okay = [armyPlacementValidator validatePlacement:country];
     if (okay == YES)
     {
         [armyPlacementValidator placeArmies:count inCountry:country];
-        if (gameState == gs_place_fortifying_armies)
+        if (gameState == GameStatePlaceFortifyingArmies)
         {
             [country addUnmovableTroopCount:count];
         }
         armiesLeftToPlace -= count;
-        if (gameState == gs_place_initial_armies)
+        if (gameState == GameStatePlaceInitialArmies)
             initialArmiesLeftTextField.intValue = initialArmiesLeftTextField.intValue - count;
         [self setArmiesLeftToPlace:armiesLeftToPlace];
     }
@@ -1308,7 +1308,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     defendingPlayerNumber = defender.playerNumber;
     
     diceRoll = [self rollDiceWithAttackerArmies:attacker.troopCount defenderArmies:defender.troopCount];
-    // return YES if we won -- enter gs_move_attacking_armies state
+    // return YES if we won -- enter GameStateMoveAttackingArmies state
     
     if (diceInspector != nil && diceInspector.panelOnScreen == YES)
     {
@@ -1523,19 +1523,19 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     switch (attackMethod)
     {
-        case AttackMultipleTimes:
+        case AttackMethodMultipleTimes:
             index = 1;
             break;
             
-        case AttackUntilArmiesRemain:
+        case AttackMethodUntilArmiesRemain:
             index = 2;
             break;
             
-        case AttackUntilUnableToContinue:
+        case AttackMethodUntilUnableToContinue:
             index = 3;
             break;
             
-        case AttackOnce:
+        case AttackMethodOnce:
         default:
             index = 0;
             break;
@@ -1552,7 +1552,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     NSInteger index;
     
-    AttackMethod attackMethods[] = { AttackOnce, AttackMultipleTimes, AttackUntilArmiesRemain, AttackUntilUnableToContinue };
+    AttackMethod attackMethods[] = { AttackMethodOnce, AttackMethodMultipleTimes, AttackMethodUntilArmiesRemain, AttackMethodUntilUnableToContinue };
     
     index = attackMethodPopup.indexOfSelectedItem;
     if (index < 0 || index > 3)
@@ -1648,11 +1648,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     cardSetRedemption = configuration.cardSetRedemption;
     switch (cardSetRedemption)
     {
-        case IncreaseByOne:
+        case CardSetRedemptionIncreaseByOne:
             nextValue = currentValue + 1;
             break;
             
-        case IncreaseByFive:
+        case CardSetRedemptionIncreaseByFive:
             if (currentValue < 12)
                 nextValue = currentValue + 2;
             else if (currentValue == 12)
@@ -1661,7 +1661,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 nextValue = currentValue + 5;
             break;
             
-        case RemainConstant:
+        case CardSetRedemptionRemainConstant:
         default:
             nextValue = 5;
     }
@@ -1688,7 +1688,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     RiskCard *card;
     Country *country;
     
-    AssertGameState (gs_place_armies);
+    AssertGameState (GameStatePlaceArmies);
     
     // Add number of armies to currently available armies for placement.
     // Add bonus armies to those card countries that we control.
@@ -1750,7 +1750,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (IBAction) turnInCards:(id)sender
 {
-    AssertGameState (gs_place_armies);
+    AssertGameState (GameStatePlaceArmies);
     
     [self _loadCardPanel];
     [cardPanelController runCardPanel:YES forPlayer:players[currentPlayerNumber]];

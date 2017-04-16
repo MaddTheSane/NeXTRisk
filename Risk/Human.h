@@ -11,7 +11,7 @@
 /// shared interfaces for a human to play.
 @interface Human : RiskPlayer
 {
-    int placeArmyCount;
+    RiskArmyCount placeArmyCount;
     Country *attackingCountry;
 }
 
@@ -34,23 +34,23 @@
 //----------------------------------------------------------------------
 
 - (void) mustTurnInCards;
-- (void) didTurnInCards:(int)extraArmyCount;
+- (void) didTurnInCards:(RiskArmyCount)extraArmyCount;
 
 //----------------------------------------------------------------------
 // Initial game phases
 //----------------------------------------------------------------------
 
-- (void) placeInitialArmies:(int)count;
+- (void) placeInitialArmies:(RiskArmyCount)count;
 
 //----------------------------------------------------------------------
 // Regular turn phases
 //----------------------------------------------------------------------
 
-- (void) placeArmies:(int)count;
+- (void) placeArmies:(RiskArmyCount)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
+- (void) moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
 - (void) fortifyPhase:(FortifyRule)fortifyRule;
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
+- (void) placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
 
 //======================================================================
 // Inform computer players of important events that happed during other

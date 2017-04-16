@@ -35,7 +35,7 @@
     BOOL canTurnInCards;
     RiskGameManager *gameManager;
     NSArray *playerCards;
-    int currentCardSetValue;
+    RiskArmyCount currentCardSetValue;
     NSMutableArray *cardSets;
 }
 

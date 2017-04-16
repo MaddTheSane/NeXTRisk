@@ -9,8 +9,6 @@
 import Cocoa
 import RiskKit.RiskGameManager
 
-private var initOnce: Int = 0
-
 @NSApplicationMain
 class Brain: NSObject, NSApplicationDelegate {
     private static var __once: () = { 
@@ -50,13 +48,13 @@ class Brain: NSObject, NSApplicationDelegate {
     private var newGameController: NewGameController?
     private var preferenceController: PreferenceController?
 
-    override class func initialize() {
-		//var i = 0
-		//dispatch_once(&i) {
-		//
-		//}
-        _ = Brain.__once
-    }
+	override init() {
+		_ = Brain.__once
+		// hack to get around the initialize() problems:
+		UserPath.setUpVersions()
+		RiskPoint.setUpVersions()
+		super.init()
+	}
  
     func applicationDidFinishLaunching(_ notification: Notification) {
         let defaults = UserDefaults.standard

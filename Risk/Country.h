@@ -18,8 +18,8 @@
 
     // The occupying army:
     Player playerNumber;
-    int troopCount;
-    int unmovableTroopCount;
+    RiskArmyCount troopCount;
+    RiskArmyCount unmovableTroopCount;
 }
 
 - (instancetype)initWithCountryName:(NSString *)aName
@@ -50,17 +50,17 @@
 //----------------------------------------------------------------------
 
 @property (nonatomic) Player playerNumber;
-@property (nonatomic) int troopCount;
-@property (readonly) int movableTroopCount;
+@property (nonatomic) RiskArmyCount troopCount;
+@property (readonly) RiskArmyCount movableTroopCount;
 
-- (void) addTroops:(int)count;
+- (void) addTroops:(RiskArmyCount)count;
 
 /// We need to keep track of the unmovable troops (the troops that have
 /// already been fortified), otherwise under the "fortify many to many
 /// neighbors" rule, you could march the armies up to the front one
 /// country at a time.
-@property (readonly) int unmovableTroopCount;
-- (void) addUnmovableTroopCount:(int)count;
+@property (readonly) RiskArmyCount unmovableTroopCount;
+- (void) addUnmovableTroopCount:(RiskArmyCount)count;
 - (void) resetUnmovableTroops;
 
 - (void) update;
@@ -74,8 +74,8 @@
 @property (readonly, copy) NSSet<Country *> *ourConnectedCountries;
 @property (readonly, copy) NSSet<Country *> *enemyNeighborCountries;
 
-@property (readonly) int enemyNeighborTroopCount;
-@property (readonly) int ourNeighborTroopCount;
+@property (readonly) RiskArmyCount enemyNeighborTroopCount;
+@property (readonly) RiskArmyCount ourNeighborTroopCount;
 
 //======================================================================
 // Useful, somewhat optimized methods:

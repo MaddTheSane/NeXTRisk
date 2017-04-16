@@ -508,11 +508,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialCountryDistribution)
     {
-        case RandomlyChosen:
+        case InitialCountryDistributionRandomlyChosen:
             index = 1;
             break;
             
-        case PlayerChosen:
+        case InitialCountryDistributionPlayerChosen:
         default:
             index = 0;
             break;
@@ -522,15 +522,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialArmyPlacement)
     {
-        case PlaceByThrees:
+        case InitialArmyPlaceByThrees:
             index = 1;
             break;
             
-        case PlaceByFives:
+        case InitialArmyPlaceByFives:
             index = 2;
             break;
             
-        case PlaceByOnes:
+        case InitialArmyPlaceByOnes:
         default:
             index = 0;
             break;
@@ -540,15 +540,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.cardSetRedemption)
     {
-        case IncreaseByOne:
+        case CardSetRedemptionIncreaseByOne:
             index = 1;
             break;
             
-        case IncreaseByFive:
+        case CardSetRedemptionIncreaseByFive:
             index = 2;
             break;
             
-        case RemainConstant:
+        case CardSetRedemptionRemainConstant:
         default:
             index = 0;
             break;
@@ -558,19 +558,19 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.fortifyRule)
     {
-        case OneToManyNeighbors:
+        case FortifyRuleOneToManyNeighbors:
             index = 1;
             break;
             
-        case ManyToManyNeighbors:
+        case FortifyRuleManyToManyNeighbors:
             index = 2;
             break;
             
-        case ManyToManyConnected:
+        case FortifyRuleManyToManyConnected:
             index = 3;
             break;
             
-        case OneToOneNeighbor:
+        case FortifyRuleOneToOneNeighbor:
         default:
             index = 0;
             break;
@@ -588,10 +588,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     GameConfiguration *thisConfiguration;
     NSInteger index;
-    InitialCountryDistribution distribution[2] = { PlayerChosen, RandomlyChosen };
-    InitialArmyPlacement placement[3] = { PlaceByOnes, PlaceByThrees, PlaceByFives };
-    CardSetRedemption redemption[3] = { RemainConstant, IncreaseByOne, IncreaseByFive };
-    FortifyRule rule[4] = { OneToOneNeighbor, OneToManyNeighbors, ManyToManyNeighbors, ManyToManyConnected };
+    InitialCountryDistribution distribution[2] = { InitialCountryDistributionPlayerChosen, InitialCountryDistributionRandomlyChosen };
+    InitialArmyPlacement placement[3] = { InitialArmyPlaceByOnes, InitialArmyPlaceByThrees, InitialArmyPlaceByFives };
+    CardSetRedemption redemption[3] = { CardSetRedemptionRemainConstant, CardSetRedemptionIncreaseByOne, CardSetRedemptionIncreaseByFive };
+    FortifyRule rule[4] = { FortifyRuleOneToOneNeighbor, FortifyRuleOneToManyNeighbors, FortifyRuleManyToManyNeighbors, FortifyRuleManyToManyConnected };
     
     thisConfiguration = [GameConfiguration defaultConfiguration];
     

@@ -41,6 +41,7 @@ extern NSString *const RiskBoardSetupShowCardSetCountsChangedNotification;
 }
 
 + (BoardSetup*)instance;
+@property (class, readonly, strong) BoardSetup *instance;
 
 - (instancetype)init;
 

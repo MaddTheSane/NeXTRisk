@@ -6,8 +6,7 @@
 //  Copyright © 2016 C.W. Betts. All rights reserved.
 //
 
-import Foundation
-import AppKit
+import Cocoa
 
 private let SNUserPath_VERSION = 1
 private let SNUserPathOperation_VERSION = 1
@@ -25,6 +24,16 @@ private let SNUserPathOperation_VERSION = 1
 ///
 /// Superceded by `NSBezierPath`!
 @objc(SNUserPath) final class UserPath: NSObject, NSCoding {
+	private static var doSomethingOnce: () -> Void = {
+		UserPath.setVersion(SNUserPath_VERSION)
+		Operation.setVersion(SNUserPathOperation_VERSION)
+		
+		return {}
+	}()
+	
+	class func setUpVersions() {
+		_=UserPath.doSomethingOnce
+	}
 	
 	/// An `SNUserPathOperation` represents an user path operator and its
 	/// operands so that is can be stored in an array.
@@ -37,28 +46,13 @@ private let SNUserPathOperation_VERSION = 1
 		let point2: NSPoint
 		let point3: NSPoint
 		
-		//These aren't CGFloat to make decodeValue not mangle the double
+		//These aren't CGFloat to make sure decodeValue does not mangle the double
 		let radius: Float
 		let angle1: Float
 		let angle2: Float
 		
-		@objc override class func initialize() {
-			if type(of: self) == UserPath.Operation.self {
-				setVersion(SNUserPathOperation_VERSION)
-			}
-		}
-		
 		@objc func encode(with aCoder: NSCoder) {
 			fatalError("We should not be calling this!")
-			/*
-[aCoder encodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
-[aCoder encodePoint:point1];
-[aCoder encodePoint:point2];
-[aCoder encodePoint:point3];
-[aCoder encodeValueOfObjCType:@encode (float) at:&radius];
-[aCoder encodeValueOfObjCType:@encode (float) at:&angle1];
-[aCoder encodeValueOfObjCType:@encode (float) at:&angle2];
-*/
 		}
 
 		@objc init?(coder aDecoder: NSCoder) {
@@ -73,7 +67,7 @@ private let SNUserPathOperation_VERSION = 1
 		}
 		
 		func applyToBezierPath(_ bPath: NSBezierPath) {
-			switch (op) {
+			switch op {
 			case .dps_arc:
 				bPath.appendArc(withCenter: point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: true)
 				
@@ -166,12 +160,6 @@ private let SNUserPathOperation_VERSION = 1
 	}
 	
 	private var operations = [Operation]()
-	
-	override class func initialize() {
-		if type(of: self) == UserPath.self {
-			setVersion(SNUserPath_VERSION)
-		}
-	}
 	
 	//----------------------------------------------------------------------
 	

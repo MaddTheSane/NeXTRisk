@@ -17,9 +17,9 @@ public class Chaos: RiskPlayer {
 		super.init(playerName: aName, number: number, gameManager: aManager)
 		
 		let world = gameManager.world
-		let continents = world!.continents!
+		let continents = world!.continents
 		
-		unoccupiedContinents.formIntersection(Set(continents.keys))
+		unoccupiedContinents.formIntersection(continents.keys)
 	}
 
 	//MARK:- Subclass Responsibilities
@@ -125,10 +125,10 @@ public class Chaos: RiskPlayer {
 		}
 		
 		switch fortifyRule {
-		case .ManyToManyNeighbors, .ManyToManyConnected:
+		case .manyToManyNeighbors, .manyToManyConnected:
 			source = sourceCountries.first!; // All of them will be done in turn.
 			
-		case .OneToOneNeighbor, .OneToManyNeighbors:
+		case .oneToOneNeighbor, .oneToManyNeighbors:
 			let sourceArray = Array(sourceCountries)
 			source = sourceArray[rng.randomNumberModulo(sourceArray.count)]
 		}

@@ -174,7 +174,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     NSSet *allCountries;
     Country *country;
     DNode *node;
-    SNHeap *countryHeap;
+    SNHeap<Country*> *countryHeap;
 
     [nodeDictionary removeAllObjects];
     [acceptableCountries removeAllObjects];
@@ -225,7 +225,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 - (SNHeap *) _minimumDistanceCountryHeap
 {
-    SNHeap *countryHeap;
+    SNHeap<Country*> *countryHeap;
     Country *country;
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];

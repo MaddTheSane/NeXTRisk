@@ -24,7 +24,7 @@
 @property CardSetRedemption cardSetRedemption;
 @property FortifyRule fortifyRule;
 
-@property (readonly) int armyPlacementCount;
+@property (readonly) RiskArmyCount armyPlacementCount;
 
 - (void) writeDefaults;
 

@@ -130,10 +130,10 @@ typedef NS_ENUM(int, CountryChoiceType)
 @property (readonly, copy) NSSet<Country *> *enemyCountriesAlongPerimeter;
 
 - (void) analyzePerimeter;
-- (Country *) bestCountryToMinimizePerimeter:(NSSet *)potentialCountries;
-- (Country *) minimizePerimeter:(int)current ofCountries:(NSSet *)potentialCountries;
+- (Country *) bestCountryToMinimizePerimeter:(NSSet<Country *> *)potentialCountries;
+- (Country *) minimizePerimeter:(int)current ofCountries:(NSSet<Country *> *)potentialCountries;
 
-- (Country *) bestCountryToControlContinents:(NSSet *)potentialCountries;
+- (Country *) bestCountryToControlContinents:(NSSet<Country *> *)potentialCountries;
 
 - (void) _logCurrentWrathValues;
 
