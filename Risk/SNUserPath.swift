@@ -53,15 +53,6 @@ private let SNUserPathOperation_VERSION = 1
 		
 		@objc func encode(with aCoder: NSCoder) {
 			fatalError("We should not be calling this!")
-			/*
-[aCoder encodeValueOfObjCType:@encode (DPSUserPathOp) at:&operator];
-[aCoder encodePoint:point1];
-[aCoder encodePoint:point2];
-[aCoder encodePoint:point3];
-[aCoder encodeValueOfObjCType:@encode (float) at:&radius];
-[aCoder encodeValueOfObjCType:@encode (float) at:&angle1];
-[aCoder encodeValueOfObjCType:@encode (float) at:&angle2];
-*/
 		}
 
 		@objc init?(coder aDecoder: NSCoder) {
