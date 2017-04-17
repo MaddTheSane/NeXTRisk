@@ -48,6 +48,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 //----------------------------------------------------------------------
 
 @implementation SNHeap
+@synthesize count = current_size;
 
 //----------------------------------------------------------------------
 
@@ -229,13 +230,6 @@ static inline NSInteger SNParentIndex (NSInteger n)
     {
         [self extractObject];
     }
-}
-
-//----------------------------------------------------------------------
-
-- (NSInteger) count
-{
-    return current_size;
 }
 
 //----------------------------------------------------------------------

@@ -154,14 +154,14 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
    distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
 {
     if (self = [super init]) {
-    acceptableCountries = [[NSMutableSet alloc] init];
-    nodeDictionary = [[NSMutableDictionary alloc] init];
-    isCountryAcceptable = anIsCountryAcceptableFunction;
-    context = aContext;
-    distanceFunction = aDistanceFunction;
-    world = aWorld;
-
-    [self _buildShortestPathsFromCountry:source];
+        acceptableCountries = [[NSMutableSet alloc] init];
+        nodeDictionary = [[NSMutableDictionary alloc] init];
+        isCountryAcceptable = anIsCountryAcceptableFunction;
+        context = aContext;
+        distanceFunction = aDistanceFunction;
+        world = aWorld;
+        
+        [self _buildShortestPathsFromCountry:source];
     }
 
     return self;

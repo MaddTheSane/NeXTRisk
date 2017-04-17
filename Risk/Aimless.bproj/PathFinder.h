@@ -30,14 +30,18 @@
 @class Country, RiskWorld, SNHeap<ObjectType>;
 @class DNode;
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef int(*PFDistance)(Country *country1, Country *country2);
+typedef BOOL(*PFAcceptableCountry)(Country *country, void *__nullable context);
+
 extern NSComparisonResult PFCompareDistances (id country1, id country2, void *context);
 extern int PFConstantDistance (Country *country1, Country *country2);
 extern BOOL PFCountryForPlayer (Country *country, void *context);
 extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context);
 
-// Uses Dijkstra's single-source shortest path algorithm.  This means that the
-// distance function must return a positive result.
-
+//! Uses Dijkstra's single-source shortest path algorithm.  This means that the
+//! distance function must return a positive result.
 @interface PathFinder : NSObject
 {
     NSMutableSet<Country*> *acceptableCountries;
@@ -51,24 +55,26 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
 
 + (instancetype)shortestPathInRiskWorld:(RiskWorld *)aWorld
               fromCountry:(Country *)source
-             forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
+             forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
                   context:(void *)aContext
-         distanceFunction:(int (*)(Country *, Country *))aDistanceFunction;
+         distanceFunction:(PFDistance)aDistanceFunction;
 
 - (instancetype)initWithRiskWorld:(RiskWorld *)aWorld
         fromCountry:(Country *)source
-       forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
+       forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
             context:(void *)aContext
-   distanceFunction:(int (*)(Country *, Country *))aDistanceFunction NS_DESIGNATED_INITIALIZER;
+   distanceFunction:(PFDistance)aDistanceFunction NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (void) _buildShortestPathsFromCountry:(Country *)source;
 @property (readonly, strong) SNHeap<Country*> *_minimumDistanceCountryHeap;
 
 - (NSArray<Country*> *) shortestPathToCountry:(Country *)target;
-- (NSArray<Country*> *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;
+- (nullable NSArray<Country*> *) shortestPathToAcceptableCountry:(PFAcceptableCountry)isCountryAcceptableTarget context:(nullable void *)aContext;
 
-- (Country *) firstStepToCountry:(Country *)target;
-- (Country *) firstStepToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext;
+- (nullable Country *) firstStepToCountry:(Country *)target;
+- (nullable Country *) firstStepToAcceptableCountry:(PFAcceptableCountry)isCountryAcceptableTarget context:(void *)aContext;
 
 @end
+
+NS_ASSUME_NONNULL_END
