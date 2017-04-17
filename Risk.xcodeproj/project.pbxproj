@@ -887,6 +887,7 @@
 			name = Block;
 			path = RiskPlayers/Block.cp;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55EF1D1B1EA0A1C1007303AC /* Coop */ = {
 			isa = PBXGroup;
@@ -901,6 +902,7 @@
 			name = Coop;
 			path = RiskPlayers/Coop.cp;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55EF1D1D1EA0A1F5007303AC /* Haudruf */ = {
 			isa = PBXGroup;
@@ -914,6 +916,7 @@
 			name = Haudruf;
 			path = RiskPlayers/Haudruf.cp;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 /* End PBXGroup section */
 
@@ -2075,6 +2078,7 @@
 				55EF1D0A1EA0A169007303AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55EF1D0F1EA0A193007303AC /* Build configuration list for PBXNativeTarget "Coop" */ = {
 			isa = XCConfigurationList;

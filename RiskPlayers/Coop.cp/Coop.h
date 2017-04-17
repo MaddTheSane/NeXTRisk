@@ -6,44 +6,47 @@
 // providing pertinent info about what's going on in the player.
 
 #import "Chaotic.h" //"ComputerPlayer.h"
+#import <Cocoa/Cocoa.h>
+@class Continent;
 
 @interface Coop:Chaotic   //ComputerPlayer
 {
-	IBOutlet id  diagnosticPanel;
-	IBOutlet id  myPlayerNumForm;
-	IBOutlet id  functionCalledForm;
-	IBOutlet id	args1Form;
-	IBOutlet id  args2Form;
-	IBOutlet id  returnValueForm;
-	IBOutlet id  notesScrollText;
-	//id  continueButton;
-	IBOutlet id	pauseContinueButton;
+	IBOutlet NSWindow		*diagnosticPanel;
+	IBOutlet NSForm			*myPlayerNumForm;
+	IBOutlet NSForm			*functionCalledForm;
+	IBOutlet NSForm			*args1Form;
+	IBOutlet NSForm			*args2Form;
+	IBOutlet NSForm			*returnValueForm;
+	IBOutlet NSScrollView	*notesScrollText;
+	IBOutlet NSButton		*pauseContinueButton;
 }
 
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 
-- yourChooseCountry;
-- yourInitialPlaceArmies:(int)numArmies;
+- (void)chooseCountry;
+- (void)placeInitialArmies:(int)count;
+- (void)placeArmies:(int)count;
+
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
-- youWereAttacked:country by:(int)player;
-- youLostCountry:country to:(int)player;
+- (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
+- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
 // *****************country utilities*********************
 
 - (BOOL)occupyCountry:country;
-- findAdjacentEnemyCountryMostInferiorTo: country;
-- findAdjacentEnemyCountryMostSuperiorTo: country;
+- (Country*)findAdjacentEnemyCountryMostInferiorTo: country;
+- (Country*)findAdjacentEnemyCountryMostSuperiorTo: country;
     /* return id of adjacent country, which belongs to enemy and has most inf/superior
        number of armies compared to number of armieas of country.
        If no adjacent enemy countries exist, return country itself
        */
-- findMyCountryWithMostSuperiorEnemy;
+- (Country*)findMyCountryWithMostSuperiorEnemy;
     /* return id of my country which has most superior enemy of all my countries.
        else return nil
        */
-- findMyCountryWithMostInferiorEnemy;
+- (Country*)findMyCountryWithMostInferiorEnemy;
     /* return id of my country which has most inferior enemy of all my countries.
        else return nil
        */
@@ -78,10 +81,13 @@
 
 - (BOOL)moveArmies:(int)numArmies from:fromCountry to:toCountry;
 
-- waitForContinue;
-- continueAction:sender;
-- checkAction:sender;
-- clearArgForms;
-- setNotes:(const char *)noteText;
+- (void)waitForContinue;
+- (IBAction)continueAction:sender;
+- (IBAction)checkAction:sender;
+- (void)clearArgForms;
+- (void)setNotes:(NSString *)noteText;
+
+// *** Helper functions ***
+- (NSArray<Continent*>*)enemyNeighborsToCountry:(Country*)country;
 
 @end

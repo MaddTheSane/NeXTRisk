@@ -2,14 +2,8 @@
 // Part of Risk by Mike Ferris
 
 #import "Coop.h"
-#import <appkit/Application.h>
-#import <appkit/Form.h>
-#import <appkit/Button.h>
-#import <appkit/Text.h>
-#import <appkit/ScrollView.h>
-#import <appkit/Panel.h>
-#import <objc/List.h>
-#import <appkit/publicWraps.h>
+#import <AppKit/AppKit.h>
+#import <RiskKit/RiskKit.h>
 
 #define NIBFILE "Coop.cp/Coop.nib"
 
@@ -17,118 +11,117 @@
 
 + initialize
 {
-	if (self = [Coop class])  {
+	if (self == [Coop class])  {
 		[self setVersion:1];
 	}
 	return self;
 }
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)myPlayerNum gameManager:(RiskGameManager *)aManager
 {
-    if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
-        [NXApp loadNibSection:NIBFILE owner:self];
-        [myPlayerNumForm setIntValue:myPlayerNum at:0];
-        [diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
+    if (self = [super initWithPlayerName:aName number:myPlayerNum gameManager:aManager]) {
+		[NSBundle loadNibNamed:@"Coop" owner:self];
+		[(NSFormCell*)[myPlayerNumForm cellAtIndex:0] setIntegerValue:myPlayerNum];
+        //[diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
         [diagnosticPanel orderFront:self];
-
     }
+	
     return self;
 }
 
 // *****************subclass responsibilities*********************
 // "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "Western United States", "Eastern United States", "Alberta", "Northwest Territory", "Ontario", "Alaska", "Quebec", "Greenland", "Iceland", "Great Britain", "Western Europe", "Southern Europe", "Northern Europe", "Ukraine", "Scandinavia", "South Africa", "Congo", "East Africa", "Egypt", "Madagascar", "Middle East", "India", "Siam", "China", "Afghanistan", "Ural", "Siberia", "Mongolia", "Irkutsk", "Yakutsk", "Kamchatka", "Japan", "Western Australia", "Eastern Australia", "New Guinea", "Indonesia", 
 
-- yourChooseCountry
+- (void)chooseCountry;
 {
     int i,j;
-	id unoccList = [self unoccupiedCountries];
-	id country;
+	NSArray<Country *> *unoccList = [gameManager unoccupiedCountries];
+	Country *country;
 	id takeCountry= nil;
 // if one of the following is available, take it.
-	char *preferedCountries[]= { "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Greenland", "Iceland", "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt", 
+	const char *const preferedCountries[]= { "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Greenland", "Iceland", "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt",
 "" };
 	
 	if ([unoccList count]==0)  {
-		return nil;
+		return;
 	}
 // try preferred countries first
 
 	for (j=0; *preferedCountries[j] != '\0' && takeCountry==nil; j++) {
-	    for (i=0; i< [unoccList count] && takeCountry==nil; ++i) {
-		country= [unoccList objectAt:i];
-		// fprintf( stderr, "\"%s\", ", [country name] );
-		if (strcmp(preferedCountries[j], [country name]) == 0) {
-		    [self setNotes: [country name] ];
-		    takeCountry= country;
+		for (i=0; i< [unoccList count] && takeCountry==nil; ++i) {
+			country= [unoccList objectAtIndex:i];
+			// fprintf( stderr, "\"%s\", ", [country name] );
+			if (strcmp(preferedCountries[j], [country countryName].UTF8String) == 0) {
+				[self setNotes: [country countryName] ];
+				takeCountry= country;
+			}
 		}
-	    }
 	}
 
 // else inherited chaotic behaviour
 
 	if (takeCountry==nil) {
-	    [super yourChooseCountry];
-	}
-	else {
-	    
-	    [self setNotes:"sent by -yourChooseCountry.  "
+	    [super chooseCountry];
+	} else {
+	    [self setNotes:@"sent by -yourChooseCountry.  "
 		  "yourChooseCountry chose a country at random."];
 	    [self occupyCountry:takeCountry];
 	}
-	
-	[unoccList free];
-	return self;
 }
 
-- yourInitialPlaceArmies:(int)numArmies
+- (void)placeInitialArmies:(int)numArmies
 {
-	id mycountries = [self myCountries];
-	id country;
-	char *preferedCountries[]= { "Indonesia", "New Guinea", "Greenland", "Iceland", "Brazil", "Central America", "North Africa", "" };	
-	int i,j;
-	id inCountry= nil;
+	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
+	char *preferedCountries[]= { "Indonesia", "New Guinea", "Greenland", "Iceland", "Brazil", "Central America", "North Africa", "" };
+	int j;
+	Country *inCountry= nil;
 
-	if ([mycountries count]==0)
-		return nil;
+	if ([mycountries count]==0) {
+		[self turnDone];
+		return;
+	}
 	for (j=0; *preferedCountries[j] != '\0' && inCountry == nil; ++j) {
-	    for (i=0; i<[mycountries count] && inCountry == nil; ++i) {
-		country= [mycountries objectAt: i];
-		//if (strcmp(preferedCountries[j], [country name]) == 0) fprintf(stderr, " %s bekannt mit %d armies.\n", [country name], [country armies] );
-		if ( (strcmp(preferedCountries[j], [country name]) == 0) && ([country armies] <= 1) ) {
-		    [self setNotes: [country name] ];
-		    inCountry= country;
-		    //fprintf( stderr, "ok, taken");
-		    break;
+		for (Country *country in mycountries) {
+			if (inCountry != nil) {
+				break;
+			}
+			//if (strcmp(preferedCountries[j], [country name]) == 0) fprintf(stderr, " %s bekannt mit %d armies.\n", [country name], [country armies] );
+			if ( (strcmp(preferedCountries[j], [country countryName].UTF8String) == 0) && ([country troopCount] <= 1) ) {
+				[self setNotes: [country countryName] ];
+				inCountry = country;
+				//fprintf( stderr, "ok, taken");
+				break;
+			}
 		}
-	    }
-	} 
-	if (inCountry==nil) 
+	}
+	if (inCountry==nil) {
 	    inCountry= [self findMyCountryWithMostInferiorEnemy];
-	    
+	}
+	
 	if (inCountry==nil) {
 	    // fprintf( stderr, "yourInitialPlaceArmies calls super\n" );
-	    [super yourInitialPlaceArmies: numArmies];	    
+	    [super placeInitialArmies: numArmies];
 	}
 	else {
 	    [self placeArmies:numArmies inCountry:inCountry];
 	}
-	[mycountries free];
-	return self;
+	[self turnDone];
 }
 
-- yourTurnWithArmies:(int)numArmies andCards:(int)numCards
+- (void) placeArmies:(int)numArmies
 {
-	id mycountries = [self myCountries];
+	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
 	id inCountry= nil;
 	//int i, acount;
 	//id attackers;
 	BOOL win=NO;
 	
 	if ([mycountries count]==0)  {
-		return nil;
+		[self turnDone];
+		return;
 	}
 
-// turn in cards
+	// turn in cards
 
 	numArmies += [self turnInCards];
 	// fprintf( stderr, "new %d armies, %d countries\n", numArmies, [mycountries count] );
@@ -161,42 +154,43 @@
 	if (!win)  {
 		[self fortifyPosition];
 	}
-	
-	//[attackers free];
-	[mycountries free];
-	return self;
+	[self turnDone];
 }
 
-- youWereAttacked:country by:(int)player
+- (void) attackPhase
+{
+	[self turnDone];
+}
+
+- (void)playerNumber:(Player)player attackedCountry:(Country *)country
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
-	[self setNotes:"-youWereAttacked: by: was called."];
+	[self setNotes:@"-youWereAttacked: by: was called."];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:""];
-	[returnValueForm setStringValue:""];
+	[functionCalledForm setStringValue:@""];
+	[returnValueForm setStringValue:@""];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
-	return self;
 }
 
-- youLostCountry:country to:(int)player
+- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
-	[self setNotes:"-youLostCountry: to: was called."];
+	[self setNotes:@"-youLostCountry: to: was called."];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:""];
-	[returnValueForm setStringValue:""];
+	[functionCalledForm setStringValue:@""];
+	[returnValueForm setStringValue:@""];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
 	}
-	return self;
 }
 
 // *****************country utilities*********************
 
+#if 0
 - (BOOL)occupyCountry:country
 {
 	BOOL retVal;
@@ -222,93 +216,94 @@
 	
 	return retVal;
 }
+#endif
 
-
-- findAdjacentEnemyCountryMostSuperiorTo: country
+- (NSArray<Continent*>*)enemyNeighborsToCountry:(Country*)country
 {
-    int i;
-    int diff, maxDiff= -9999;
-    id enemiesList= [self enemyNeighborsTo: country];
-    id adj;
-    id supCountry= country;
-
-    for (i= 0; i< [enemiesList count]; ++i) {
-	adj= [enemiesList objectAt: i];
-	if ( (diff= ([adj armies] - [country armies]) ) > maxDiff ) {
-	    maxDiff= diff;
-	    supCountry= adj;
+	NSMutableArray *initialCountryHeap = [[NSMutableArray alloc] init];
+	for (Country* neighbor in country.neighborCountries) {
+		if (neighbor.playerNumber != playerNumber) {
+			[initialCountryHeap addObject:country];
+		}
 	}
-    }
-    [enemiesList free];
-    // fprintf( stderr, "Most superior enemy to %s is %s\n", [country name], [supCountry name]);
-    return supCountry;
+	return [initialCountryHeap copy];
 }
 
-- findAdjacentEnemyCountryMostInferiorTo: country
+- (Country *)findAdjacentEnemyCountryMostSuperiorTo:(Country *) country
+{
+	int i;
+	int diff, maxDiff= -9999;
+	id enemiesList= [self enemyNeighborsToCountry: country];
+	Country *adj;
+	Country *supCountry = country;
+	
+	for (i= 0; i< [enemiesList count]; ++i) {
+		adj= [enemiesList objectAtIndex: i];
+		if ( (diff= ([adj troopCount] - [country movableTroopCount]) ) > maxDiff ) {
+			maxDiff= diff;
+			supCountry= adj;
+		}
+	}
+	// fprintf( stderr, "Most superior enemy to %s is %s\n", [country name], [supCountry name]);
+	return supCountry;
+}
+
+- (Country *)findAdjacentEnemyCountryMostInferiorTo:(Country *) country
 {
     int i;
     int diff, maxDiff= +9999;
-    id enemiesList= [self enemyNeighborsTo: country];
-    id adj;
-    id supCountry= country;
+    id enemiesList= [self enemyNeighborsToCountry: country];
+    Country *adj;
+    Country *supCountry= country;
 
     for (i= 0; i< [enemiesList count]; ++i) {
-	adj= [enemiesList objectAt: i];
-	if ( (diff= ([adj armies] - [country armies]) ) < maxDiff ) {
+	adj= [enemiesList objectAtIndex: i];
+	if ( (diff= ([adj movableTroopCount] - [country troopCount]) ) < maxDiff ) {
 	    maxDiff= diff;
 	    supCountry= adj;
 	}
     }
-    [enemiesList free];
     // fprintf( stderr, "Most inferior enemy to %s is %s\n", [country name], [supCountry name]);
     return supCountry;
 }
 
-- findMyCountryWithMostSuperiorEnemy
+- (Country *)findMyCountryWithMostSuperiorEnemy
 {
-	id mycountries = [self myCountries];
-	id country;
-	id inCountry= nil;
-	int i;
+	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
+	Country *inCountry= nil;
 	int maxDiffInArmiesForInCountry= -9999;
 	//int armiesFromCards;
 	int armiesDiff;
 	id adjacentEnemyCountryMostSuperior;
 
-	for (i= 0; i<[mycountries count]; ++i) {
-	    country= [mycountries objectAt: i];
+	for (Country *country in mycountries) {
 	    adjacentEnemyCountryMostSuperior= [self findAdjacentEnemyCountryMostSuperiorTo: country ];
-	    if (adjacentEnemyCountryMostSuperior!= country && (armiesDiff= [adjacentEnemyCountryMostSuperior armies] - [country armies]) > maxDiffInArmiesForInCountry) {
+	    if (adjacentEnemyCountryMostSuperior != country && (armiesDiff= [adjacentEnemyCountryMostSuperior troopCount] - [country movableTroopCount]) > maxDiffInArmiesForInCountry) {
 		// fprintf( stderr, "worse enemy to %s found: %s\n", [country name], [adjacentEnemyCountryMostSuperior name]);
 		maxDiffInArmiesForInCountry= armiesDiff;
 		inCountry= country;
 	    }
 	}
-	[mycountries free];
 	return inCountry;
 }
 
-- findMyCountryWithMostInferiorEnemy
+- (Country *)findMyCountryWithMostInferiorEnemy
 {
-	id mycountries = [self myCountries];
-	id country;
+	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
 	id inCountry= nil;
-	int i;
 	int diffInArmiesForInCountry= 9999;
 	//int armiesFromCards;
 	int armiesDiff;
 	id adjacentEnemyCountry;
 
-	for (i= 0; i<[mycountries count]; ++i) {
-	    country= [mycountries objectAt: i];
+	for (Country *country in mycountries) {
 	    adjacentEnemyCountry= [self findAdjacentEnemyCountryMostInferiorTo: country ];
-	    if ( adjacentEnemyCountry != country && (armiesDiff= [adjacentEnemyCountry armies] - [country armies]) < diffInArmiesForInCountry) {
+	    if ( adjacentEnemyCountry != country && (armiesDiff= [adjacentEnemyCountry troopCount] - [country movableTroopCount]) < diffInArmiesForInCountry) {
 		// fprintf( stderr, "easier enemy to %s found: %s\n", [country name], [adjacentEnemyCountry name]);
 		diffInArmiesForInCountry= armiesDiff;
 		inCountry= country;
 	    }
 	}
-	[mycountries free];
 	return inCountry;
 }
 
@@ -378,7 +373,7 @@
 
 	while ( (inCountry= [self findMyCountryWithMostSuperiorEnemy] ) != nil) {
 	    //fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
-	    if ([inCountry armies]  <= untilLeft)
+	    if ([inCountry movableTroopCount]  <= untilLeft)
 		break;
 	    //fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
     
@@ -394,30 +389,31 @@
 - (BOOL)attackFromLeastThreatenedCountryUntilLeft: (int)untilLeft
 // repeatedly attack from country with relatively weakest enemy
 {
-    id inCountry;
-    BOOL win= NO;
-    
+	id inCountry;
+	BOOL win= NO;
+	
 	while ( (inCountry= [self findMyCountryWithMostInferiorEnemy] ) != nil) {
-	    //fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
-	    if ([inCountry armies] <= untilLeft)
-		break;
-	    //fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
-    
-	    win = [self doAttackFrom: inCountry];
-	    // if we won the game, clean up and get out.
-	    if (win)  {
-		break;
-	    }
+		//fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
+		if ([inCountry movableTroopCount] <= untilLeft)
+			break;
+		//fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
+		
+		[gameManager attackFromCountry:inCountry toCountry:<#(Country *)#> untilArmiesRemain:<#(RiskArmyCount)#> moveAllArmiesUponVictory:<#(BOOL)#>]
+		win = [self doAttackFrom: inCountry];
+		// if we won the game, clean up and get out.
+		if (win)  {
+			break;
+		}
 	}
 	return win;
 }
 
-    
 
-- (BOOL)attackOnceFrom:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+
+- (BOOL)attackOnceFrom:fromCountry to:toCountry
+			   victory:(BOOL *)victory fromArmies:(int *)fromArmies
+			  toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+				 weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -476,9 +472,9 @@
 }
 
 - (BOOL)attackTimes:(int)times from:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+			victory:(BOOL *)victory fromArmies:(int *)fromArmies
+		   toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+			  weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -539,9 +535,9 @@
 }
 
 - (BOOL)attackUntilLeft:(int)untilLeft from:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+				victory:(BOOL *)victory fromArmies:(int *)fromArmies
+			   toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+				  weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -602,9 +598,9 @@
 }
 
 - (BOOL)attackUntilCantFrom:fromCountry to:toCountry 
-					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
-					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
-					weWin:(BOOL *)wewin
+					victory:(BOOL *)victory fromArmies:(int *)fromArmies
+				   toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
+					  weWin:(BOOL *)wewin
 {
 	BOOL retVal;
 	
@@ -700,59 +696,55 @@
 
 // *****************special diagnostic methods*******************special**
 
-- waitForContinue
+- (void)waitForContinue
 {
 	int retVal;
 	
-	NXBeep();
-	if (![diagnosticPanel isVisible])  [diagnosticPanel orderFront:self];
+	NSBeep();
+	if (![diagnosticPanel isVisible])
+		[diagnosticPanel orderFront:self];
 	[pauseContinueButton setEnabled:NO];
-	retVal = [NXApp runModalFor:diagnosticPanel];
-	return self;
+	retVal = [NSApp runModalForWindow:diagnosticPanel];
 }
 
-- continueAction:sender
+- (IBAction)continueAction:sender
 {
-	[NXApp stopModal];
+	[NSApp stopModal];
 	[pauseContinueButton setEnabled:YES];
-	return self;
 }
 
-- checkAction:sender
+- (IBAction)checkAction:sender
 {
 	if ([sender state] == 1)  {
 		[continueButton setEnabled:YES];
 	}  else  {
 		[continueButton setEnabled:NO];
 	}
-	return self;
 }
 
-- clearArgForms
+- (void)clearArgForms
 {
-	[args1Form setTitle:"arg1:" at:0];
-	[args1Form setTitle:"arg2:" at:1];
-	[args1Form setTitle:"arg3:" at:2];
-	[args1Form setTitle:"arg4:" at:3];
-	[args2Form setTitle:"arg5:" at:0];
-	[args2Form setTitle:"arg6:" at:1];
-	[args2Form setTitle:"arg7:" at:2];
-	[args2Form setTitle:"arg8:" at:3];
-	[args1Form setStringValue:"" at:0];
-	[args1Form setStringValue:"" at:1];
-	[args1Form setStringValue:"" at:2];
-	[args1Form setStringValue:"" at:3];
-	[args2Form setStringValue:"" at:0];
-	[args2Form setStringValue:"" at:1];
-	[args2Form setStringValue:"" at:2];
-	[args2Form setStringValue:"" at:3];
-	return self;
+	[(NSFormCell*)[args1Form cellAtIndex:0] setTitle:@"arg1:"];
+	[(NSFormCell*)[args1Form cellAtIndex:1] setTitle:@"arg2:"];
+	[(NSFormCell*)[args1Form cellAtIndex:2] setTitle:@"arg3:"];
+	[(NSFormCell*)[args1Form cellAtIndex:3] setTitle:@"arg4:"];
+	[(NSFormCell*)[args2Form cellAtIndex:0] setTitle:@"arg5:"];
+	[(NSFormCell*)[args2Form cellAtIndex:1] setTitle:@"arg6:"];
+	[(NSFormCell*)[args2Form cellAtIndex:2] setTitle:@"arg7:"];
+	[(NSFormCell*)[args2Form cellAtIndex:3] setTitle:@"arg8:"];
+	[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@""];
+	[(NSFormCell*)[args1Form cellAtIndex:1] setStringValue:@""];
+	[(NSFormCell*)[args1Form cellAtIndex:2] setStringValue:@""];
+	[(NSFormCell*)[args1Form cellAtIndex:3] setStringValue:@""];
+	[(NSFormCell*)[args2Form cellAtIndex:0] setStringValue:@""];
+	[(NSFormCell*)[args2Form cellAtIndex:1] setStringValue:@""];
+	[(NSFormCell*)[args2Form cellAtIndex:2] setStringValue:@""];
+	[(NSFormCell*)[args2Form cellAtIndex:3] setStringValue:@""];
 }
 
-- setNotes:(const char *)noteText
+- (void)setNotes:(NSString *)noteText
 {
-	[[notesScrollText docView] setText:noteText];
-	return self;
+	[[[notesScrollText documentView] textStorage] setAttributedString: [[NSAttributedString alloc] initWithString:noteText]];
 }
 
 @end

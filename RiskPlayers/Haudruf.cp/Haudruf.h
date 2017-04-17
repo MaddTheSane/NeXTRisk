@@ -5,15 +5,15 @@
 
 @interface Haudruf: RiskPlayer
 {
-	IBOutlet NSWindow  *haudrufPanel;
-	IBOutlet NSForm  *myPlayerNumForm;
-	IBOutlet NSForm  *functionCalledForm;
-	IBOutlet id	args1Form;
-	IBOutlet id  args2Form;
-	IBOutlet id  returnValueForm;
-	IBOutlet NSScrollView * notesScrollText;
+	IBOutlet NSWindow		*haudrufPanel;
+	IBOutlet NSForm			*myPlayerNumForm;
+	IBOutlet NSForm			*functionCalledForm;
+	IBOutlet NSForm			*args1Form;
+	IBOutlet NSForm			*args2Form;
+	IBOutlet NSForm			*returnValueForm;
+	IBOutlet NSScrollView	*notesScrollText;
 	//IBOutlet id  continueButton;
-	IBOutlet NSButton	*pauseContinueButton;
+	IBOutlet NSButton		*pauseContinueButton;
 	
 	int numCountriesPerContinent[6]; // Anzahl meiner Laender pro Kontinent
 	int	countriesInContinent[6][12]; // IDs meiner Laender in den Kontinenten
@@ -31,8 +31,8 @@
 // *****************subclass responsibilities*********************
 
 - (void)chooseCountry;
-- (void)placeInitialArmies:(int)numArmies;
-- yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
+- (void)placeInitialArmies:(RiskArmyCount)numArmies;
+- yourTurnWithArmies:(RiskArmyCount)numArmies andCards:(int)numCards;
 - (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 - (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
@@ -42,13 +42,13 @@
 
 // *****************card utilities*********************
 
-- (int)playCards:(CardSet *)cardList;
+- (RiskArmyCount)playCards:(CardSet *)cardList;
 
 // *****************place army utilities*********************
 
-- (void)placeFortifyingArmies:(int)count fromCountry:(Country *)source;
+- (void)placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
 
-- (BOOL)placeArmies:(int)numArmies inCountry:(Country *)country;
+- (BOOL)placeArmies:(RiskArmyCount)numArmies inCountry:(Country *)country;
 
 // *****************attack utilities*********************
 
@@ -72,24 +72,24 @@
 
 // *****************post-attack & fortify utilities*********************
 
-- (void)moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
+- (void)moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
 
 - (void)waitForContinue;
 - (IBAction)continueAction:(id)sender;
 - (IBAction)checkAction:(id)sender;
 - (void)clearArgForms;
-- (void)setNotes:(const char *)noteText;
+- (void)setNotes:(NSString *)noteText;
 
 - (BOOL)calcNumCountriesPerContinent;
 - (BOOL)country:(Country *)country isInContinent:(RiskContinent)continent;
 - (Country*)bestCountryFor:(RiskContinent)continent;
 - (void)fortifyPosition;
 - findBestVictimFor:(Country*)country;
-- klotzArmies:(int)armiesLeft;
-- (int)conquerContinents:(int)armiesLeft;
-- (int)stabilizeContinents:(int)armiesLeft;
-- (int)defendContinent:(int)continent armies:(int)armiesLeft;
-- (int)turnInCards;
+- klotzArmies:(RiskArmyCount)armiesLeft;
+- (int)conquerContinents:(RiskArmyCount)armiesLeft;
+- (int)stabilizeContinents:(RiskArmyCount)armiesLeft;
+- (RiskArmyCount)defendContinent:(RiskContinent)continent armies:(RiskArmyCount)armiesLeft;
+- (RiskArmyCount)turnInCards;
 - (NSArray<Country*>*)enemyNeighborsTo:(Country*)country;
 - (Country *)getMaxArmyCountry;
 - (Country *)getCountryNamed:(NSString*)name;
