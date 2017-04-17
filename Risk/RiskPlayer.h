@@ -263,7 +263,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// between the source and destination countries.  This is the result of
 /// a successful attack.  The minimum number of armies have already been
 /// moved into the destination country.  When done, it should call
-/// <code>self -turnDone<code>.
+/// <code>self -turnDone</code>.
 - (void) moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
 /// Notifies the player that they may fortify armies under the given
 /// <code>fortifyRule</code>.  The player may call \c -turnDone to skip fortification,

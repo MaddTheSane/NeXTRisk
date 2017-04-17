@@ -1093,12 +1093,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) resetMovableArmiesForPlayerNumber:(Player)number
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
+    NSSet *countries;
     
-    countryEnumerator = [[world countriesForPlayer:number] objectEnumerator];
+    countries = [world countriesForPlayer:number];
     
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in countries)
     {
         [country resetUnmovableTroops];
     }
@@ -1135,12 +1134,9 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (NSArray *) unoccupiedCountries
 {
     NSMutableArray *array;
-    NSEnumerator *countryEnumerator;
-    Country *country;
     
     array = [NSMutableArray array];
-    countryEnumerator = [world.allCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in world.allCountries)
     {
         if (country.playerNumber == 0)
             [array addObject:country];
