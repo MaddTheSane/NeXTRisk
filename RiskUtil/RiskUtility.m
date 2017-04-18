@@ -122,7 +122,6 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
-    NSString *name;
     int value;
     
     mainBundle = [NSBundle mainBundle];
@@ -143,7 +142,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     @try {
         while ([scanner scanString:@"Continent" intoString:NULL] == YES) {
-            name = [scanner scanQuotedString];
+            NSString *name = [scanner scanQuotedString];
             [scanner scanInt:&value];
             [dict setObject:@(value) forKey:name];
         }

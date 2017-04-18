@@ -41,7 +41,7 @@ class Brain: NSObject, NSApplicationDelegate {
         }()
     @IBOutlet weak var infoPanel: NSWindow!
     @IBOutlet weak var versionTextField: NSTextField!
-    let gameManager = RiskGameManager()!
+    let gameManager = RiskGameManager()
     private(set) var riskPlayerBundles = [Bundle]()
     private var nibObjs: NSArray?
     

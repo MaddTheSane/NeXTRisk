@@ -904,7 +904,7 @@ static NSComparisonResult maximumContinentBorder (id object1, id object2, void *
     {
         NSEnumerator *countryEnumerator;
         
-        best = nil;
+        best = bestTarget.neighborCountries.anyObject;
         bestTroops = 0;
         
         // Place 'em in one of our neighboring countries (the one with the most armies.)... nyi

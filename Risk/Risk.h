@@ -75,7 +75,7 @@ typedef NS_ENUM(int, FortifyRule)
     FortifyRuleManyToManyConnected
 };
 
-typedef struct _DiceRoll
+typedef struct DiceRoll
 {
     int attackerDieCount;
     int attackerDice[3];
@@ -100,7 +100,7 @@ typedef NS_ENUM(int, ArmyPlacementType)
     ArmyPlacementAnyConnectedCountry
 };
 
-typedef struct _AttackResult
+typedef struct AttackResult
 {
     BOOL conqueredCountry;
     BOOL phaseChanged;

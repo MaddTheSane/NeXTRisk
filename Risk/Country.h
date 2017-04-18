@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class CountryShape, RiskMapView;
 
 @interface Country : NSObject <NSCoding>
@@ -92,3 +94,5 @@
 @end
 
 extern NSString *const CountryUpdatedNotification;
+
+NS_ASSUME_NONNULL_END

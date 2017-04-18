@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class Country;
 @interface Continent : NSObject <NSCoding>
 {
@@ -33,3 +35,5 @@
 @property (readonly, copy) NSSet<Country *> *countriesAlongBorder;
 
 @end
+
+NS_ASSUME_NONNULL_END

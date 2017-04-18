@@ -169,7 +169,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // Console
 //======================================================================
 
-- (IBAction) showConsolePanel:(id)sender;
+- (IBAction) showConsolePanel:(nullable id)sender;
 /// Appends a formatted string to the console window, if it is visible.
 /// Subclasses can use this to show debugging information.
 - (void) logMessage:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
@@ -178,8 +178,8 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 - (void) logMessage:(NSString *)format format:(va_list)vaList;
 
 - (void) waitForContinue;
-- (IBAction) continueAction:(id)sender;
-- (IBAction) pauseCheckAction:(id)sender;
+- (IBAction) continueAction:(nullable id)sender;
+- (IBAction) pauseCheckAction:(nullable id)sender;
 
 //======================================================================
 // Subclass Responsibilities
