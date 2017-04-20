@@ -66,7 +66,7 @@ typedef NS_ENUM(int, CountryChoiceType)
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
 - (void) setPlayerToolMenu:(NSMenu *)theMenu;
-- (IBAction) testMessage:(nullable id)sender;
+- (IBAction) testMessage:(id)sender;
 
 //======================================================================
 // Subclass Responsibilities

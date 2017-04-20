@@ -110,19 +110,19 @@ RiskArmyCount RiskInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(Ris
 
 NS_ASSUME_NONNULL_BEGIN
 
-InitialCountryDistribution initialCountryDistributionFromString (NSString *str);
-InitialArmyPlacement initialArmyPlacementFromString (NSString *str);
-CardSetRedemption cardSetRedemptionFromString (NSString *str);
-FortifyRule fortifyRuleFromString (NSString *str);
+InitialCountryDistribution initialCountryDistributionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+InitialArmyPlacement initialArmyPlacementFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+CardSetRedemption cardSetRedemptionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+FortifyRule fortifyRuleFromString (NSString *str) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromInitialCountryDistribution (InitialCountryDistribution countryDistribution);
-NSString *NSStringFromInitialArmyPlacement (InitialArmyPlacement armyPlacement);
-NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption);
-NSString *NSStringFromFortifyRule (FortifyRule fortifyRule);
+NSString *NSStringFromInitialCountryDistribution (InitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromInitialArmyPlacement (InitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromFortifyRule (FortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromRiskCardType (RiskCardType cardType);
-NSString *__nullable NSStringFromGameState (GameState gameState);
-NSString *__nullable gameStateInfo (GameState gameState);
+NSString *NSStringFromRiskCardType (RiskCardType cardType) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromGameState (GameState gameState) NS_REFINED_FOR_SWIFT;
+NSString *gameStateInfo (GameState gameState) NS_REFINED_FOR_SWIFT;
 
 NS_ASSUME_NONNULL_END
 

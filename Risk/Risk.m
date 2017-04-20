@@ -241,7 +241,7 @@ NSString *NSStringFromGameState (GameState gameState)
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     
@@ -295,7 +295,7 @@ NSString *gameStateInfo (GameState gameState)
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     
