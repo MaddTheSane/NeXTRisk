@@ -44,18 +44,15 @@
 		553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */; };
 		553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */; };
 		5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801E1CC15E6A00A2C08E /* RiskUtility.m */; };
-		553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		553780601CC162A800A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		5537807B1CC1640600A2C08E /* Aimless.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780721CC1640600A2C08E /* Aimless.m */; };
 		5537807C1CC1640600A2C08E /* Aimless.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780731CC1640600A2C08E /* Aimless.rtf */; };
-		5537807D1CC1640600A2C08E /* Aimless.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780741CC1640600A2C08E /* Aimless.tiff */; };
 		5537807E1CC1640600A2C08E /* DNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780761CC1640600A2C08E /* DNode.m */; };
 		5537807F1CC1640600A2C08E /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780781CC1640600A2C08E /* PathFinder.m */; };
 		553780801CC1640600A2C08E /* SNHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537807A1CC1640600A2C08E /* SNHeap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		553780951CC1655300A2C08E /* Chaotic.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780921CC1655300A2C08E /* Chaotic.m */; };
 		553780961CC1655300A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
-		553780971CC1655300A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780A91CC1966300A2C08E /* RiskKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 553780A81CC1966300A2C08E /* RiskKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780AD1CC1966300A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		553780AE1CC1966300A2C08E /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -90,7 +87,6 @@
 		553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
 		553780E91CC19DB800A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F701CC15C2400A2C08E /* WorldInfoController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780ED1CC1A09400A2C08E /* Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F031CC15C2300A2C08E /* Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780EE1CC1A23E00A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F621CC15C2400A2C08E /* RiskWorld.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -118,6 +114,13 @@
 		55665FCA1D114791001980F2 /* NSCoder+SNUnarchiveHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */; };
 		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
 		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
+		55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */; };
+		55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
+		55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
+		55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */; };
+		55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */; };
+		55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
+		55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
 		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
 		55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */; };
 /* End PBXBuildFile section */
@@ -244,7 +247,6 @@
 		55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArmyPlacementValidator.m; path = ../Risk/ArmyPlacementValidator.m; sourceTree = "<group>"; };
 		55377EC31CC15C2300A2C08E /* ArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyView.h; sourceTree = "<group>"; };
 		55377EC41CC15C2300A2C08E /* ArmyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyView.m; sourceTree = "<group>"; };
-		55377EC51CC15C2300A2C08E /* BoardBacking.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BoardBacking.tiff; sourceTree = "<group>"; };
 		55377EC61CC15C2300A2C08E /* BoardSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSetup.h; path = ../Risk/BoardSetup.h; sourceTree = "<group>"; };
 		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
@@ -367,7 +369,6 @@
 		553780711CC1640600A2C08E /* Aimless.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aimless.h; sourceTree = "<group>"; };
 		553780721CC1640600A2C08E /* Aimless.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aimless.m; sourceTree = "<group>"; };
 		553780731CC1640600A2C08E /* Aimless.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Aimless.rtf; sourceTree = "<group>"; };
-		553780741CC1640600A2C08E /* Aimless.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Aimless.tiff; sourceTree = "<group>"; };
 		553780751CC1640600A2C08E /* DNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNode.h; sourceTree = "<group>"; };
 		553780761CC1640600A2C08E /* DNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNode.m; sourceTree = "<group>"; };
 		553780771CC1640600A2C08E /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinder.h; sourceTree = "<group>"; };
@@ -379,7 +380,6 @@
 		553780911CC1655300A2C08E /* Chaotic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chaotic.h; sourceTree = "<group>"; };
 		553780921CC1655300A2C08E /* Chaotic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chaotic.m; sourceTree = "<group>"; };
 		553780931CC1655300A2C08E /* Chaotic.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Chaotic.rtf; sourceTree = "<group>"; };
-		553780941CC1655300A2C08E /* Chaotic.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Chaotic.tiff; sourceTree = "<group>"; };
 		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cards.xcassets; sourceTree = "<group>"; };
 		553780A61CC1966300A2C08E /* RiskKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RiskKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780A81CC1966300A2C08E /* RiskKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskKit.h; sourceTree = "<group>"; };
@@ -398,6 +398,11 @@
 		55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+SNUnarchiveHelpers.m"; sourceTree = "<group>"; };
 		556A65EB1CFF5800005BA899 /* Chaotic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Chaotic.html; sourceTree = "<group>"; };
 		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		55A9C8EA1EAC0FB700D9E7C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8ED1EAC0FBE00D9E7C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
 		55AC2A521D1089C50021814F /* Risk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Risk-Bridging-Header.h"; sourceTree = "<group>"; };
 		55AC2A531D1089C50021814F /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; usesTabs = 1; };
 		55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAdditions.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -644,10 +649,10 @@
 			isa = PBXGroup;
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
+				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
 				55377ECB1CC15C2300A2C08E /* Card Images */,
 				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
-				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
 				55377F441CC15C2300A2C08E /* Human.rtf */,
@@ -686,8 +691,9 @@
 				553780791CC1640600A2C08E /* SNHeap.h */,
 				5537807A1CC1640600A2C08E /* SNHeap.m */,
 				553780731CC1640600A2C08E /* Aimless.rtf */,
-				553780741CC1640600A2C08E /* Aimless.tiff */,
 				5537806D1CC1639C00A2C08E /* Info.plist */,
+				55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */,
+				55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */,
 			);
 			name = Aimless;
 			path = Risk/Aimless.bproj;
@@ -699,8 +705,9 @@
 				553780911CC1655300A2C08E /* Chaotic.h */,
 				553780921CC1655300A2C08E /* Chaotic.m */,
 				553780931CC1655300A2C08E /* Chaotic.rtf */,
-				553780941CC1655300A2C08E /* Chaotic.tiff */,
 				5537808F1CC1642900A2C08E /* Info.plist */,
+				55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */,
+				55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */,
 			);
 			name = Chaotic;
 			path = Risk/Chaotic.bproj;
@@ -1055,6 +1062,7 @@
 				55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */,
 				55377FC61CC15C2400A2C08E /* Risk.xib in Resources */,
 				55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */,
+				55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
 				551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */,
@@ -1071,8 +1079,8 @@
 				553780021CC15E1700A2C08E /* Assets.xcassets in Resources */,
 				551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */,
 				553780201CC15E6A00A2C08E /* ContinentData.txt in Resources */,
-				553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */,
 				553780211CC15E6A00A2C08E /* CountryData.txt in Resources */,
+				55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */,
 				553780221CC15E6A00A2C08E /* CountryNeighbors.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1082,7 +1090,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5537807C1CC1640600A2C08E /* Aimless.rtf in Resources */,
-				5537807D1CC1640600A2C08E /* Aimless.tiff in Resources */,
+				55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */,
+				55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,7 +1099,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780971CC1655300A2C08E /* Chaotic.tiff in Resources */,
+				55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
+				55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */,
 				553780961CC1655300A2C08E /* Chaotic.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1111,8 +1121,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */,
 				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
+				55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
 				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1369,6 +1379,22 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A9C8EA1EAC0FB700D9E7C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A9C8ED1EAC0FBE00D9E7C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1558,6 +1584,7 @@
 		5537806F1CC1639C00A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1571,6 +1598,7 @@
 		553780701CC1639C00A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1584,6 +1612,7 @@
 		5537808C1CC1642900A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1597,6 +1626,7 @@
 		5537808D1CC1642900A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1611,6 +1641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1635,6 +1666,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1658,6 +1690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1675,6 +1708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
