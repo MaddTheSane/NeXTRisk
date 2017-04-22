@@ -35,25 +35,21 @@ static NSTextFieldCell *_armyCell = nil;
 
 + (void) initialize
 {
-    if (self == [CountryShape class])
-    {
-        [self setVersion:CountryShape_VERSION];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [CountryShape setVersion:CountryShape_VERSION];
+        _armyCell = [[NSTextFieldCell alloc] init];
         
-        if (_armyCell == nil)
-        {
-            _armyCell = [[NSTextFieldCell alloc] init];
-            
-            _armyCell.backgroundColor = [NSColor whiteColor];
-            [_armyCell setBezeled:NO];
-            _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
-            _armyCell.alignment = NSCenterTextAlignment;
-            [_armyCell setEditable:NO];
-            [_armyCell setSelectable:NO];
-            [_armyCell setBordered:YES];
-            _armyCell.textColor = [NSColor blackColor];
-            [_armyCell setDrawsBackground:YES];
-        }
-    }
+        _armyCell.backgroundColor = [NSColor whiteColor];
+        [_armyCell setBezeled:NO];
+        _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
+        _armyCell.alignment = NSCenterTextAlignment;
+        [_armyCell setEditable:NO];
+        [_armyCell setSelectable:NO];
+        [_armyCell setBordered:YES];
+        _armyCell.textColor = [NSColor blackColor];
+        [_armyCell setDrawsBackground:YES];
+    });
 }
 
 //----------------------------------------------------------------------
