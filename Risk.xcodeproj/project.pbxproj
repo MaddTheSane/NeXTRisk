@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
-		550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.xib */; };
 		551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
 		551098191CC56F0F00DE6DFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551098181CC56F0F00DE6DFE /* AppDelegate.swift */; };
@@ -98,7 +97,6 @@
 		553780F31CC1A9FB00A2C08E /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
 		553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
-		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		554843B81EA1FE0900EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
@@ -121,10 +119,9 @@
 		55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
 		55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */; };
 		55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */; };
-		55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
-		55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
 		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
 		55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */; };
+		55F9CBF81EAC451E00914A1A /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,7 +296,6 @@
 		55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskNeighbor.m; path = ../Risk/RiskNeighbor.m; sourceTree = "<group>"; };
 		55377F5D1CC15C2400A2C08E /* RiskPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskPlayer.h; path = ../Risk/RiskPlayer.h; sourceTree = "<group>"; };
 		55377F5E1CC15C2400A2C08E /* RiskPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskPlayer.m; path = ../Risk/RiskPlayer.m; sourceTree = "<group>"; };
-		55377F611CC15C2400A2C08E /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
 		55377F621CC15C2400A2C08E /* RiskWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskWorld.h; path = ../Risk/RiskWorld.h; sourceTree = "<group>"; };
 		55377F631CC15C2400A2C08E /* RiskWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskWorld.m; path = ../Risk/RiskWorld.m; sourceTree = "<group>"; };
 		55377F641CC15C2400A2C08E /* SNRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRandom.h; path = ../Risk/SNRandom.h; sourceTree = "<group>"; };
@@ -444,8 +440,8 @@
 		550B53651CF62030004EAAFC /* MainRisk */ = {
 			isa = PBXGroup;
 			children = (
+				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
 				5537809B1CC1897500A2C08E /* Cards.xcassets */,
-				55377F611CC15C2400A2C08E /* RiskWorld.data */,
 				550B53661CF62030004EAAFC /* Info.plist */,
 			);
 			path = MainRisk;
@@ -576,7 +572,6 @@
 			isa = PBXGroup;
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
-				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
@@ -992,7 +987,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */,
+				55F9CBF81EAC451E00914A1A /* Map.xcassets in Resources */,
 				550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1016,7 +1011,6 @@
 				55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */,
 				55377FC61CC15C2400A2C08E /* Risk.xib in Resources */,
 				55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */,
-				55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
 				551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */,
@@ -1034,7 +1028,6 @@
 				551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */,
 				553780201CC15E6A00A2C08E /* ContinentData.txt in Resources */,
 				553780211CC15E6A00A2C08E /* CountryData.txt in Resources */,
-				55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */,
 				553780221CC15E6A00A2C08E /* CountryNeighbors.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,7 +1056,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */,
 				553780C21CC1983100A2C08E /* PlayerConsole.xib in Resources */,
 				5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */,
 				551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */,
