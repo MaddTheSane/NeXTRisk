@@ -250,50 +250,6 @@
 		55377EC61CC15C2300A2C08E /* BoardSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSetup.h; path = ../Risk/BoardSetup.h; sourceTree = "<group>"; };
 		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
-		55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Afghanistan.tiff; sourceTree = "<group>"; };
-		55377ECD1CC15C2300A2C08E /* Alaska.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alaska.tiff; sourceTree = "<group>"; };
-		55377ECE1CC15C2300A2C08E /* Alberta.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alberta.tiff; sourceTree = "<group>"; };
-		55377ECF1CC15C2300A2C08E /* Argentina.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Argentina.tiff; sourceTree = "<group>"; };
-		55377ED01CC15C2300A2C08E /* Brazil.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Brazil.tiff; sourceTree = "<group>"; };
-		55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CentralAmerica.tiff; sourceTree = "<group>"; };
-		55377ED21CC15C2300A2C08E /* China.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = China.tiff; sourceTree = "<group>"; };
-		55377ED31CC15C2300A2C08E /* Congo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Congo.tiff; sourceTree = "<group>"; };
-		55377ED41CC15C2300A2C08E /* EastAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EastAfrica.tiff; sourceTree = "<group>"; };
-		55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EasternAustralia.tiff; sourceTree = "<group>"; };
-		55377ED61CC15C2300A2C08E /* EasternUS.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = EasternUS.tiff; sourceTree = "<group>"; };
-		55377ED71CC15C2300A2C08E /* Egypt.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Egypt.tiff; sourceTree = "<group>"; };
-		55377ED81CC15C2300A2C08E /* GreatBritain.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreatBritain.tiff; sourceTree = "<group>"; };
-		55377ED91CC15C2300A2C08E /* Greenland.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Greenland.tiff; sourceTree = "<group>"; };
-		55377EDB1CC15C2300A2C08E /* Iceland.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Iceland.tiff; sourceTree = "<group>"; };
-		55377EDC1CC15C2300A2C08E /* India.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = India.tiff; sourceTree = "<group>"; };
-		55377EDD1CC15C2300A2C08E /* Indonesia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Indonesia.tiff; sourceTree = "<group>"; };
-		55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Irkutsk.tiff; sourceTree = "<group>"; };
-		55377EDF1CC15C2300A2C08E /* Japan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Japan.tiff; sourceTree = "<group>"; };
-		55377EE01CC15C2300A2C08E /* Joker1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Joker1.tiff; sourceTree = "<group>"; };
-		55377EE11CC15C2300A2C08E /* Joker2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Joker2.tiff; sourceTree = "<group>"; };
-		55377EE21CC15C2300A2C08E /* Kamchatka.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Kamchatka.tiff; sourceTree = "<group>"; };
-		55377EE41CC15C2300A2C08E /* Madagascar.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Madagascar.tiff; sourceTree = "<group>"; };
-		55377EE81CC15C2300A2C08E /* MiddleEast.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = MiddleEast.tiff; sourceTree = "<group>"; };
-		55377EE91CC15C2300A2C08E /* Mongolia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Mongolia.tiff; sourceTree = "<group>"; };
-		55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NewGuinea.tiff; sourceTree = "<group>"; };
-		55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthAfrica.tiff; sourceTree = "<group>"; };
-		55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthernEurope.tiff; sourceTree = "<group>"; };
-		55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NorthwestTerritory.tiff; sourceTree = "<group>"; };
-		55377EEE1CC15C2300A2C08E /* Ontario.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ontario.tiff; sourceTree = "<group>"; };
-		55377EF01CC15C2300A2C08E /* Peru.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Peru.tiff; sourceTree = "<group>"; };
-		55377EF11CC15C2300A2C08E /* Quebec.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Quebec.tiff; sourceTree = "<group>"; };
-		55377EF21CC15C2300A2C08E /* Scandinavia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Scandinavia.tiff; sourceTree = "<group>"; };
-		55377EF31CC15C2300A2C08E /* Siam.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Siam.tiff; sourceTree = "<group>"; };
-		55377EF41CC15C2300A2C08E /* Siberia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Siberia.tiff; sourceTree = "<group>"; };
-		55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SouthAfrica.tiff; sourceTree = "<group>"; };
-		55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SouthernEurope.tiff; sourceTree = "<group>"; };
-		55377EF71CC15C2300A2C08E /* Ukraine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ukraine.tiff; sourceTree = "<group>"; };
-		55377EF81CC15C2300A2C08E /* Ural.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Ural.tiff; sourceTree = "<group>"; };
-		55377EF91CC15C2300A2C08E /* Venezuela.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Venezuela.tiff; sourceTree = "<group>"; };
-		55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternAustralia.tiff; sourceTree = "<group>"; };
-		55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternEurope.tiff; sourceTree = "<group>"; };
-		55377EFC1CC15C2300A2C08E /* WesternUS.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = WesternUS.tiff; sourceTree = "<group>"; };
-		55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Yakutsk.tiff; sourceTree = "<group>"; };
 		55377EFE1CC15C2300A2C08E /* CardPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardPanelController.h; path = ../Risk/CardPanelController.h; sourceTree = "<group>"; };
 		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardPanelController.m; path = ../Risk/CardPanelController.m; sourceTree = "<group>"; };
 		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardSet.h; path = ../Risk/CardSet.h; sourceTree = "<group>"; };
@@ -593,64 +549,11 @@
 			path = Risk;
 			sourceTree = "<group>";
 		};
-		55377ECB1CC15C2300A2C08E /* Card Images */ = {
-			isa = PBXGroup;
-			children = (
-				55377ECC1CC15C2300A2C08E /* Afghanistan.tiff */,
-				55377ECD1CC15C2300A2C08E /* Alaska.tiff */,
-				55377ECE1CC15C2300A2C08E /* Alberta.tiff */,
-				55377ECF1CC15C2300A2C08E /* Argentina.tiff */,
-				55377ED01CC15C2300A2C08E /* Brazil.tiff */,
-				55377ED11CC15C2300A2C08E /* CentralAmerica.tiff */,
-				55377ED21CC15C2300A2C08E /* China.tiff */,
-				55377ED31CC15C2300A2C08E /* Congo.tiff */,
-				55377ED41CC15C2300A2C08E /* EastAfrica.tiff */,
-				55377ED51CC15C2300A2C08E /* EasternAustralia.tiff */,
-				55377ED61CC15C2300A2C08E /* EasternUS.tiff */,
-				55377ED71CC15C2300A2C08E /* Egypt.tiff */,
-				55377ED81CC15C2300A2C08E /* GreatBritain.tiff */,
-				55377ED91CC15C2300A2C08E /* Greenland.tiff */,
-				55377EDB1CC15C2300A2C08E /* Iceland.tiff */,
-				55377EDC1CC15C2300A2C08E /* India.tiff */,
-				55377EDD1CC15C2300A2C08E /* Indonesia.tiff */,
-				55377EDE1CC15C2300A2C08E /* Irkutsk.tiff */,
-				55377EDF1CC15C2300A2C08E /* Japan.tiff */,
-				55377EE01CC15C2300A2C08E /* Joker1.tiff */,
-				55377EE11CC15C2300A2C08E /* Joker2.tiff */,
-				55377EE21CC15C2300A2C08E /* Kamchatka.tiff */,
-				55377EE41CC15C2300A2C08E /* Madagascar.tiff */,
-				55377EE81CC15C2300A2C08E /* MiddleEast.tiff */,
-				55377EE91CC15C2300A2C08E /* Mongolia.tiff */,
-				55377EEA1CC15C2300A2C08E /* NewGuinea.tiff */,
-				55377EEB1CC15C2300A2C08E /* NorthAfrica.tiff */,
-				55377EEC1CC15C2300A2C08E /* NorthernEurope.tiff */,
-				55377EED1CC15C2300A2C08E /* NorthwestTerritory.tiff */,
-				55377EEE1CC15C2300A2C08E /* Ontario.tiff */,
-				55377EF01CC15C2300A2C08E /* Peru.tiff */,
-				55377EF11CC15C2300A2C08E /* Quebec.tiff */,
-				55377EF21CC15C2300A2C08E /* Scandinavia.tiff */,
-				55377EF31CC15C2300A2C08E /* Siam.tiff */,
-				55377EF41CC15C2300A2C08E /* Siberia.tiff */,
-				55377EF51CC15C2300A2C08E /* SouthAfrica.tiff */,
-				55377EF61CC15C2300A2C08E /* SouthernEurope.tiff */,
-				55377EF71CC15C2300A2C08E /* Ukraine.tiff */,
-				55377EF81CC15C2300A2C08E /* Ural.tiff */,
-				55377EF91CC15C2300A2C08E /* Venezuela.tiff */,
-				55377EFA1CC15C2300A2C08E /* WesternAustralia.tiff */,
-				55377EFB1CC15C2300A2C08E /* WesternEurope.tiff */,
-				55377EFC1CC15C2300A2C08E /* WesternUS.tiff */,
-				55377EFD1CC15C2300A2C08E /* Yakutsk.tiff */,
-			);
-			name = "Card Images";
-			path = CardImages.subproj;
-			sourceTree = "<group>";
-		};
 		55377FF21CC15D8500A2C08E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
 				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
-				55377ECB1CC15C2300A2C08E /* Card Images */,
 				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
