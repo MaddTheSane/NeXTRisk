@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initUsingFunction:(NSComparisonResult (*)(ObjectType, ObjectType, void *__nullable))comparator context:(nullable void *)aContext NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (void) insertObject:(ObjectType)anObject;
-- (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator;
+- (void) insertObjectsFromEnumerator:(NSEnumerator<ObjectType> *)objectEnumerator;
 - (nullable ObjectType)extractObject;
 @property (readonly, strong, nullable) ObjectType firstObject;
 
