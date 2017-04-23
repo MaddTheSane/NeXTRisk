@@ -25,16 +25,16 @@ InitialCountryDistribution initialCountryDistributionFromString (NSString *str)
     
     if ([str isEqualToString:DV_PlayerChosen] == YES)
     {
-        dist = PlayerChosen;
+        dist = InitialCountryDistributionPlayerChosen;
     }
     else if ([str isEqualToString:DV_RandomlyChosen] == YES)
     {
-        dist = RandomlyChosen;
+        dist = InitialCountryDistributionRandomlyChosen;
     }
     else
     {
         NSLog (@"Invalid InitialContryDistribution: %@", str);
-        dist = PlayerChosen;
+        dist = InitialCountryDistributionPlayerChosen;
     }
     
     return dist;
@@ -48,20 +48,20 @@ InitialArmyPlacement initialArmyPlacementFromString (NSString *str)
     
     if ([str isEqualToString:DV_PlaceByOnes] == YES)
     {
-        placement = PlaceByOnes;
+        placement = InitialArmyPlaceByOnes;
     }
     else if ([str isEqualToString:DV_PlaceByThrees] == YES)
     {
-        placement = PlaceByThrees;
+        placement = InitialArmyPlaceByThrees;
     }
     else if ([str isEqualToString:DV_PlaceByFives] == YES)
     {
-        placement = PlaceByFives;
+        placement = InitialArmyPlaceByFives;
     }
     else
     {
         NSLog (@"Invalid InitialArmyPlacement: %@", str);
-        placement = PlaceByThrees;
+        placement = InitialArmyPlaceByThrees;
     }
     
     return placement;
@@ -75,20 +75,20 @@ CardSetRedemption cardSetRedemptionFromString (NSString *str)
     
     if ([str isEqualToString:DV_RemainConstant] == YES)
     {
-        redemption = RemainConstant;
+        redemption = CardSetRedemptionRemainConstant;
     }
     else if ([str isEqualToString:DV_IncreaseByOne] == YES)
     {
-        redemption = IncreaseByOne;
+        redemption = CardSetRedemptionIncreaseByOne;
     }
     else if ([str isEqualToString:DV_IncreaseByFive] == YES)
     {
-        redemption = IncreaseByFive;
+        redemption = CardSetRedemptionIncreaseByFive;
     }
     else
     {
         NSLog (@"Invalid CardSetRedemption: %@", str);
-        redemption = RemainConstant;
+        redemption = CardSetRedemptionRemainConstant;
     }
     
     return redemption;
@@ -102,24 +102,24 @@ FortifyRule fortifyRuleFromString (NSString *str)
     
     if ([str isEqualToString:DV_OneToOneNeighbor] == YES)
     {
-        fortifyRule = OneToOneNeighbor;
+        fortifyRule = FortifyRuleOneToOneNeighbor;
     }
     else if ([str isEqualToString:DV_OneToManyNeighbors] == YES)
     {
-        fortifyRule = OneToManyNeighbors;
+        fortifyRule = FortifyRuleOneToManyNeighbors;
     }
     else if ([str isEqualToString:DV_ManyToManyNeighbors] == YES)
     {
-        fortifyRule = ManyToManyNeighbors;
+        fortifyRule = FortifyRuleManyToManyNeighbors;
     }
     else if ([str isEqualToString:DV_ManyToManyConnected] == YES)
     {
-        fortifyRule = ManyToManyConnected;
+        fortifyRule = FortifyRuleManyToManyConnected;
     }
     else
     {
         NSLog (@"Invalid FortifyRule: %@", str);
-        fortifyRule = OneToOneNeighbor;
+        fortifyRule = FortifyRuleOneToOneNeighbor;
     }
     
     return fortifyRule;
@@ -171,19 +171,19 @@ NSString *NSStringFromRiskCardType (RiskCardType cardType)
     
     switch (cardType)
     {
-        case Wildcard:
+        case RiskCardWildcard:
             str = @"Wildcard";
             break;
             
-        case Soldier:
+        case RiskCardSoldier:
             str = @"Soldier";
             break;
             
-        case Cannon:
+        case RiskCardCannon:
             str = @"Cannon";
             break;
             
-        case Cavalry:
+        case RiskCardCavalry:
             str = @"Cavalry";
             break;
             
@@ -203,45 +203,45 @@ NSString *NSStringFromGameState (GameState gameState)
     
     switch (gameState)
     {
-        case gs_no_game:
+        case GameStateNone:
             str = @"No game";
             break;
             
-        case gs_establishing_game:
+        case GameStateEstablishingGame:
             str = @"Establishing Game";
             break;
             
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             str = @"Choose Countries";
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             str = @"Place Initial Armies";
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             str = @"Place Armies";
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             str = @"Attack";
             break;
             
-        case gs_move_attacking_armies:
+        case GameStateMoveAttackingArmies:
             str = @"Move Attacking Armies";
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             str = @"Fortify Position";
             break;
             
-        case gs_place_fortifying_armies:
+        case GameStatePlaceFortifyingArmies:
             str = @"Place Fortifying Armies";
             break;
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     
@@ -256,46 +256,46 @@ NSString *gameStateInfo (GameState gameState)
     
     switch (gameState)
     {
-        case gs_no_game:
+        case GameStateNone:
             str = @"No game...";
             break;
             
-        case gs_establishing_game:
+        case GameStateEstablishingGame:
             str = @"Establishing game...";
             break;
             
-        case gs_choose_countries:
+        case GameStateChoosingCountries:
             str = @"Before play begins, take turns choosing the countries on the board.";
             break;
             
-        case gs_place_initial_armies:
+        case GameStatePlaceInitialArmies:
             str = @"The game begins by players taking turns placing their initial armies a few at a time.";
             break;
             
-        case gs_place_armies:
+        case GameStatePlaceArmies:
             str = @"Begin your turn by placing new armies and possibly turning in cards.";
             break;
             
-        case gs_attack:
+        case GameStateAttack:
             str = @"Attack opponent's countries which border on your own countries.";
             break;
             
-        case gs_move_attacking_armies:
+        case GameStateMoveAttackingArmies:
             str = @"You have conquered a country.  Now place the available armies in either the attacking or the conquered countries.";
             break;
             
-        case gs_fortify:
+        case GameStateFortify:
             str = @"Fortify your position at the end of your move by shifting armies.";
             break;
             
-        case gs_place_fortifying_armies:
+        case GameStatePlaceFortifyingArmies:
             // Should be based on current rule.
             str = @"Fortify the armies into the source country or any neighboring countries you control.";
             break;
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     

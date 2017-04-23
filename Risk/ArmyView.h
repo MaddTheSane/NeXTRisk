@@ -11,7 +11,7 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect;
 
-@property (nonatomic) int armyCount;
+@property (nonatomic) RiskArmyCount armyCount;
 
 - (void) drawRect:(NSRect)rect;
 

@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Risk
+
+  Created by C.W. Betts on 4/22/17.
+  Copyright © 2017 C.W. Betts. All rights reserved.
+*/
+
+"RKPlayerTypeName" = "Aimless";
+"CFBundleName" = "Aimless";

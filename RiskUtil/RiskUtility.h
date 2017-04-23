@@ -22,7 +22,7 @@
 
     IBOutlet NSTableView *neighborTableView;
 
-    NSDictionary *continents;
+    NSDictionary<NSString*,Continent*> *continents;
     NSMutableArray<RiskNeighbor*> *countryNeighbors;
     NSArray<RiskCard*> *cards;
 }

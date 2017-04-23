@@ -7,6 +7,8 @@
 //RCSID ("$Id: LineView.m,v 1.2 1997/12/15 07:43:55 nygard Exp $");
 
 #import "LineView.h"
+#import <AppKit/NSColor.h>
+#import <AppKit/NSBezierPath.h>
 
 @implementation LineView
 @synthesize lineWidth;
@@ -14,7 +16,7 @@
 - (void) setLineWidth:(CGFloat)lw
 {
     lineWidth = lw;
-    [self display];
+    [self setNeedsDisplay:YES];
 }
 
 //----------------------------------------------------------------------

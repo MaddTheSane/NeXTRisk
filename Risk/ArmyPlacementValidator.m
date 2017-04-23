@@ -41,7 +41,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
         sourceCountry = nil;
         destinationCountry = nil;
         
-        armyPlacementType = PlaceInAnyCountry;
+        armyPlacementType = ArmyPlacementAnyCountry;
         playerNumber = 0;
         primaryCountries = nil;
         secondaryCountries = nil;
@@ -74,7 +74,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = PlaceInAnyCountry;
+    armyPlacementType = ArmyPlacementAnyCountry;
     
     primaryCountries = [[world countriesForPlayer:playerNumber] mutableCopy];
 }
@@ -87,7 +87,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = PlaceInTwoCountries;
+    armyPlacementType = ArmyPlacementTwoCountries;
     sourceCountry = source;
     destinationCountry = other;
     
@@ -103,7 +103,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = PlaceInOneNeighborCountry;
+    armyPlacementType = ArmyPlacementOneNeighborCountry;
     sourceCountry = source;
     
     primaryCountries = [NSMutableSet setWithObject:source];
@@ -119,7 +119,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = PlaceInAnyNeighborCountry;
+    armyPlacementType = ArmyPlacementAnyNeighborCountry;
     sourceCountry = source;
     
     primaryCountries = [[source ourNeighborCountries] mutableCopy];
@@ -135,7 +135,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = PlaceInAnyConnectedCountry;
+    armyPlacementType = ArmyPlacementAnyConnectedCountry;
     sourceCountry = source;
     
     primaryCountries = [[source ourConnectedCountries] mutableCopy];
@@ -174,7 +174,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
         
         [target addTroops:count];
         
-        if (armyPlacementType == PlaceInOneNeighborCountry && [secondaryCountries member:target] != nil)
+        if (armyPlacementType == ArmyPlacementOneNeighborCountry && [secondaryCountries member:target] != nil)
         {
             [primaryCountries addObject:target];
             [secondaryCountries removeAllObjects];

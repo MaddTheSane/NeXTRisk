@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class Country;
 
 @interface DiceInspector : NSObject
@@ -48,7 +50,9 @@
                       withDice:(DiceRoll)dice;
 
 - (void) waitForContinue;
-- (IBAction) continueAction:(id)sender;
-- (IBAction) pauseCheckAction:(id)sender;
+- (IBAction) continueAction:(nullable id)sender;
+- (IBAction) pauseCheckAction:(nullable id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END

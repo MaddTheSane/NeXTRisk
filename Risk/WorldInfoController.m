@@ -19,7 +19,7 @@ RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 // Double click on the column titles to sort by that column.
 //======================================================================
 
-NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
+static NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
     NSComparisonResult result;
@@ -32,6 +32,7 @@ NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
     return result;
 }
 
+#if 0
 //----------------------------------------------------------------------
 
 NSInteger WIOrderContinentsByCountryCount (id object1, id object2, void *context)
@@ -91,6 +92,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     return result;
 }
+#endif
 
 #define WorldInfoController_VERSION 1
 
@@ -204,7 +206,32 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByCountryCount context:NULL];
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            Continent *continent1, *continent2;
+            NSComparisonResult result;
+            NSInteger count1, count2;
+            
+            continent1 = (Continent *)obj1;
+            continent2 = (Continent *)obj2;
+            
+            count1 = continent1.countries.count;
+            count2 = continent2.countries.count;
+            
+            if (count1 < count2)
+            {
+                result = NSOrderedAscending;
+            }
+            else if (count1 == count2)
+            {
+                result = NSOrderedSame;
+            }
+            else
+            {
+                result = NSOrderedDescending;
+            }
+            
+            return result;
+        }];
         continents = newOrder;
         [continentTable reloadData];
     }
@@ -218,7 +245,32 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByBonusValue context:NULL];
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            Continent *continent1, *continent2;
+            NSComparisonResult result;
+            int count1, count2;
+            
+            continent1 = (Continent *)obj1;
+            continent2 = (Continent *)obj2;
+            
+            count1 = continent1.continentBonus;
+            count2 = continent2.continentBonus;
+            
+            if (count1 < count2)
+            {
+                result = NSOrderedAscending;
+            }
+            else if (count1 == count2)
+            {
+                result = NSOrderedSame;
+            }
+            else
+            {
+                result = NSOrderedDescending;
+            }
+            
+            return result;
+        }];
         continents = newOrder;
         [continentTable reloadData];
     }

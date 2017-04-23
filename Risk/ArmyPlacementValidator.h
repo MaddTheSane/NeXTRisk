@@ -23,6 +23,7 @@
 }
 
 - (instancetype)initWithRiskWorld:(RiskWorld *)aWorld NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (void) _reset;
 
@@ -41,6 +42,6 @@
 - (void) placeInConnectedCountries:(Country *)source forPlayerNumber:(Player)number;
 
 - (BOOL) validatePlacement:(Country *)target;
-- (BOOL) placeArmies:(int)count inCountry:(Country *)target;
+- (BOOL) placeArmies:(RiskArmyCount)count inCountry:(Country *)target;
 
 @end

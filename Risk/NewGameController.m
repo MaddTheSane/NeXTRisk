@@ -13,6 +13,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 #import "Human.h"
 #import "GameConfiguration.h"
 #import "BoardSetup.h"
+#import "Risk-Swift.h"
 
 //======================================================================
 // The NewGameController loads the panel, adds loaded computer players
@@ -42,18 +43,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (void) awakeFromNib
 {
-    NSArray *riskPlayerBundles;
-    NSEnumerator *bundleEnumerator;
-    NSBundle *bundle;
-    NSMutableArray *playerTypeNames;
-    NSString *name;
+    NSMutableArray<NSString *> *playerTypeNames = [[NSMutableArray alloc] init];
     
-    playerTypeNames = [NSMutableArray array];
-    riskPlayerBundles = [brain riskPlayerBundles];
-    bundleEnumerator = [riskPlayerBundles objectEnumerator];
-    while (bundle = [bundleEnumerator nextObject])
+    for (NSBundle *bundle in [brain riskPlayerBundles])
     {
-        name = bundle.infoDictionary[@"PlayerTypeName"];
+        NSString *name = bundle.localizedInfoDictionary[@"RKPlayerTypeName"] ?: bundle.infoDictionary[@"RKPlayerTypeName"];
         [playerTypeNames addObject:name];
     }
     
@@ -115,6 +109,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     runningAsPreferences = NO;
     newGamePanel.title = @"New Game";
     acceptButton.title = @"Accept";
+    acceptButton.keyEquivalent = @"";
     cancelButton.title = @"Cancel";
     [newGamePanel makeKeyAndOrderFront:self];
 }
@@ -126,6 +121,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     runningAsPreferences = YES;
     newGamePanel.title = @"New Game Setup";
     acceptButton.title = @"Set";
+    acceptButton.keyEquivalent = @"\r";
     cancelButton.title = @"Revert";
     [self takePreferencesFromCurrent];
     [newGamePanel makeKeyAndOrderFront:self];
@@ -135,22 +131,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (IBAction) aboutAction:(id)sender
 {
-    NSPopUpButton *thePopup;
-    NSInteger tag, itemIndex;
-    NSString *rtfPath, *imagePath;
-    NSBundle *thisBundle, *playerBundle;
-    NSArray *riskPlayerBundles;
+    NSPopUpButton *thePopup = nil;
+    NSInteger tag = [[sender selectedCell] tag];
+    NSString *rtfPath;
+    NSBundle *thisBundle = [NSBundle bundleForClass:[self class]], *playerBundle;
+    NSArray<NSBundle *> *riskPlayerBundles = [brain riskPlayerBundles];
     NSDictionary *playerBundleInfo;
     NSImage *image;
     NSString *playerTypeName;
     
-    thisBundle = [NSBundle bundleForClass:[self class]];
     NSAssert (thisBundle != nil, @"Could not get this bundle.");
-    
-    riskPlayerBundles = [brain riskPlayerBundles];
-    
-    tag = [[sender selectedCell] tag];
-    thePopup = nil;
     
     switch (tag)
     {
@@ -184,12 +174,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     NSAssert (thePopup != nil, @"Bad tag.");
     
-    itemIndex = thePopup.indexOfSelectedItem;
+    NSInteger itemIndex = thePopup.indexOfSelectedItem;
     
     switch (itemIndex)
     {
         case 0: // None
-            [aboutPlayerImageView setImage:nil];
+            aboutPlayerImageView.image = nil;
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Not Playing", tag + 1];
             rtfPath = [thisBundle pathForResource:@"NotPlaying" ofType:@"rtf"];
             if (rtfPath != nil)
@@ -220,21 +210,30 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             
         default: // Computer player
             playerBundle = riskPlayerBundles[itemIndex - 2];
-            playerBundleInfo = playerBundle.infoDictionary;
+        {
+            NSMutableDictionary *mutPlayerBundInfo = [playerBundle.infoDictionary mutableCopy];
+            [mutPlayerBundInfo addEntriesFromDictionary:playerBundle.localizedInfoDictionary];
+            playerBundleInfo = [mutPlayerBundInfo copy];
+        }
             
-            image = [playerBundle imageForResource:playerBundleInfo[@"PlayerIcon"]];
+            image = [playerBundle imageForResource:playerBundleInfo[@"RKPlayerIcon"]];
             if (!image) {
-                image = [NSImage imageNamed:playerBundleInfo[@"PlayerIcon"]];
+                image = [NSImage imageNamed:playerBundleInfo[@"RKPlayerIcon"]];
             }
             aboutPlayerImageView.image = image;
             
-            playerTypeName = playerBundleInfo[@"PlayerTypeName"];
+            playerTypeName = playerBundleInfo[@"RKPlayerTypeName"];
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
             
-            rtfPath = [playerBundle pathForResource:playerBundleInfo[@"AboutPlayerFile"] ofType:nil];
+            rtfPath = [playerBundle pathForResource:playerBundleInfo[@"RKAboutPlayerFile"] ofType:nil];
             if (rtfPath != nil)
             {
-                [aboutPlayerText readRTFDFromFile:rtfPath];
+                NSAttributedString *attrStr = [[NSAttributedString alloc] initWithURL:[NSURL fileURLWithPath:rtfPath] options:@{} documentAttributes:NULL error:NULL];
+                if (attrStr) {
+                    [aboutPlayerText.textStorage setAttributedString:attrStr];
+                } else {
+                    [aboutPlayerText readRTFDFromFile:rtfPath];
+                }
             }
             else
             {
@@ -509,11 +508,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialCountryDistribution)
     {
-        case RandomlyChosen:
+        case InitialCountryDistributionRandomlyChosen:
             index = 1;
             break;
             
-        case PlayerChosen:
+        case InitialCountryDistributionPlayerChosen:
         default:
             index = 0;
             break;
@@ -523,15 +522,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialArmyPlacement)
     {
-        case PlaceByThrees:
+        case InitialArmyPlaceByThrees:
             index = 1;
             break;
             
-        case PlaceByFives:
+        case InitialArmyPlaceByFives:
             index = 2;
             break;
             
-        case PlaceByOnes:
+        case InitialArmyPlaceByOnes:
         default:
             index = 0;
             break;
@@ -541,15 +540,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.cardSetRedemption)
     {
-        case IncreaseByOne:
+        case CardSetRedemptionIncreaseByOne:
             index = 1;
             break;
             
-        case IncreaseByFive:
+        case CardSetRedemptionIncreaseByFive:
             index = 2;
             break;
             
-        case RemainConstant:
+        case CardSetRedemptionRemainConstant:
         default:
             index = 0;
             break;
@@ -559,19 +558,19 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.fortifyRule)
     {
-        case OneToManyNeighbors:
+        case FortifyRuleOneToManyNeighbors:
             index = 1;
             break;
             
-        case ManyToManyNeighbors:
+        case FortifyRuleManyToManyNeighbors:
             index = 2;
             break;
             
-        case ManyToManyConnected:
+        case FortifyRuleManyToManyConnected:
             index = 3;
             break;
             
-        case OneToOneNeighbor:
+        case FortifyRuleOneToOneNeighbor:
         default:
             index = 0;
             break;
@@ -589,10 +588,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     GameConfiguration *thisConfiguration;
     NSInteger index;
-    InitialCountryDistribution distribution[2] = { PlayerChosen, RandomlyChosen };
-    InitialArmyPlacement placement[3] = { PlaceByOnes, PlaceByThrees, PlaceByFives };
-    CardSetRedemption redemption[3] = { RemainConstant, IncreaseByOne, IncreaseByFive };
-    FortifyRule rule[4] = { OneToOneNeighbor, OneToManyNeighbors, ManyToManyNeighbors, ManyToManyConnected };
+    InitialCountryDistribution distribution[2] = { InitialCountryDistributionPlayerChosen, InitialCountryDistributionRandomlyChosen };
+    InitialArmyPlacement placement[3] = { InitialArmyPlaceByOnes, InitialArmyPlaceByThrees, InitialArmyPlaceByFives };
+    CardSetRedemption redemption[3] = { CardSetRedemptionRemainConstant, CardSetRedemptionIncreaseByOne, CardSetRedemptionIncreaseByFive };
+    FortifyRule rule[4] = { FortifyRuleOneToOneNeighbor, FortifyRuleOneToManyNeighbors, FortifyRuleManyToManyNeighbors, FortifyRuleManyToManyConnected };
     
     thisConfiguration = [GameConfiguration defaultConfiguration];
     

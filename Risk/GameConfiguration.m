@@ -75,15 +75,15 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     
     switch (initialArmyPlacement)
     {
-        case PlaceByOnes:
+        case InitialArmyPlaceByOnes:
             count = 1;
             break;
             
-        case PlaceByThrees:
+        case InitialArmyPlaceByThrees:
             count = 3;
             break;
             
-        case PlaceByFives:
+        case InitialArmyPlaceByFives:
             count = 5;
             break;
             

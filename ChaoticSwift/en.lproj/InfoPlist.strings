@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Risk
+
+  Created by C.W. Betts on 6/1/16.
+  Copyright © 2016 C.W. Betts. All rights reserved.
+*/
+
+"RKPlayerTypeName" = "ChaoticSwift";
+"CFBundleName" = "ChaoticSwift";

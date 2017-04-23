@@ -2,17 +2,21 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
+#import <AppKit/AppKit.h>
 #import "Risk.h"
 
 RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
 #import "CountryShape.h"
 
-#import "RiskPoint.h"
 #import "BoardSetup.h"
 #import "Country.h"
 #import "RiskMapView.h"
-#import "SNUserPath.h"
+#if defined(RISKUTIL_BUILD) && RISKUTIL_BUILD
+#import "RiskUtil-Swift.h"
+#else
+#import "Risk-Swift.h"
+#endif
 
 #include <libc.h>
 
@@ -31,25 +35,21 @@ static NSTextFieldCell *_armyCell = nil;
 
 + (void) initialize
 {
-    if (self == [CountryShape class])
-    {
-        [self setVersion:CountryShape_VERSION];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [CountryShape setVersion:CountryShape_VERSION];
+        _armyCell = [[NSTextFieldCell alloc] init];
         
-        if (_armyCell == nil)
-        {
-            _armyCell = [[NSTextFieldCell alloc] init];
-            
-            _armyCell.backgroundColor = [NSColor whiteColor];
-            [_armyCell setBezeled:NO];
-            _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
-            _armyCell.alignment = NSCenterTextAlignment;
-            [_armyCell setEditable:NO];
-            [_armyCell setSelectable:NO];
-            [_armyCell setBordered:YES];
-            _armyCell.textColor = [NSColor blackColor];
-            [_armyCell setDrawsBackground:YES];
-        }
-    }
+        _armyCell.backgroundColor = [NSColor whiteColor];
+        [_armyCell setBezeled:NO];
+        _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
+        _armyCell.alignment = NSCenterTextAlignment;
+        [_armyCell setEditable:NO];
+        [_armyCell setSelectable:NO];
+        [_armyCell setBordered:YES];
+        _armyCell.textColor = [NSColor blackColor];
+        [_armyCell setDrawsBackground:YES];
+    });
 }
 
 //----------------------------------------------------------------------
@@ -120,17 +120,13 @@ static NSTextFieldCell *_armyCell = nil;
 
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected
 {
-    BoardSetup *boardSetup;
-    
-    int troopCount;
-    
-    troopCount = aCountry.troopCount;
+    int troopCount = aCountry.troopCount;
     if (troopCount == 0)
     {
         [aView drawBackground:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)];
     }
     
-    boardSetup = [BoardSetup instance];
+    BoardSetup *boardSetup = [BoardSetup instance];
     
     if (aCountry.playerNumber != 0)
         [[boardSetup colorForPlayer:aCountry.playerNumber] set];

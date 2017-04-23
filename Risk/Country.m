@@ -107,7 +107,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (NSSet *) neighborCountries
 {
-    return neighborCountries;
+    return [neighborCountries copy];
 }
 
 //----------------------------------------------------------------------

@@ -3,7 +3,9 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
+#import <AppKit/NSWindow.h>
+#import <AppKit/NSTextView.h>
 
 #import "Risk.h"
 
@@ -63,6 +65,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// number.  The controlling game manager is also saved so that the
 /// player can access it during the game.
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *playerName;
 @property (readonly) Player playerNumber;
@@ -84,6 +87,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 - (void) addCardToHand:(RiskCard *)newCard;
 - (void) removeCardFromHand:(RiskCard *)aCard;
 
+//! For convenient access to a random number generator
 @property (readonly, strong) SNRandom *rng;
 
 /// The player should call this function at the end of certain phases in
@@ -165,17 +169,17 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // Console
 //======================================================================
 
-- (IBAction) showConsolePanel:(id)sender;
+- (IBAction) showConsolePanel:(nullable id)sender;
 /// Appends a formatted string to the console window, if it is visible.
 /// Subclasses can use this to show debugging information.
-- (void) logMessage:(NSString *)format, ...;
+- (void) logMessage:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 /// Appends a formatted string to the console window, if it is visible.
 /// Subclasses can use this to show debugging information.
 - (void) logMessage:(NSString *)format format:(va_list)vaList;
 
 - (void) waitForContinue;
-- (IBAction) continueAction:(id)sender;
-- (IBAction) pauseCheckAction:(id)sender;
+- (IBAction) continueAction:(nullable id)sender;
+- (IBAction) pauseCheckAction:(nullable id)sender;
 
 //======================================================================
 // Subclass Responsibilities
@@ -208,7 +212,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// the Human player to allow it to update the number of armies left to
 /// place, since it turns in cards after receiving the \c -placeArmies:
 /// message.
-- (void) didTurnInCards:(int)extraArmyCount;
+- (void) didTurnInCards:(RiskArmyCount)extraArmyCount;
 
 //----------------------------------------------------------------------
 // Initial game phases
@@ -230,7 +234,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// The player should place \c count armies among any of their countries
 /// by calling <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then
 /// call <code>self -turnDone</code>.
-- (void) placeInitialArmies:(int)count;
+- (void) placeInitialArmies:(RiskArmyCount)count;
 /// Notifies the player that all of the players have finished placing
 /// their initial armies.
 - (void) willEndPlacingInitialArmies;
@@ -251,7 +255,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// of their countries by calling
 /// <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then call
 /// <code>self -turnDone</code>.
-- (void) placeArmies:(int)count;
+- (void) placeArmies:(RiskArmyCount)count;
 /// Notifies the player that they may attack other players.  When done,
 /// it should call <code>self -turnDone</code>.
 - (void) attackPhase;
@@ -259,8 +263,8 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// between the source and destination countries.  This is the result of
 /// a successful attack.  The minimum number of armies have already been
 /// moved into the destination country.  When done, it should call
-/// <code>self -turnDone<code>.
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
+/// <code>self -turnDone</code>.
+- (void) moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
 /// Notifies the player that they may fortify armies under the given
 /// <code>fortifyRule</code>.  The player may call \c -turnDone to skip fortification,
 /// or call <code>RiskGameManager -fortifyArmiesFrom:</code> to specify the source
@@ -275,7 +279,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then call
 /// <code>self -turnDone</code>.  The current fortify rule will determine the valid
 /// destination countries.  Armies that are not placed will be lost.
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
+- (void) placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
 
 /// Notifies the player that their turn has ended.
 - (void) willEndTurn;

@@ -9,6 +9,8 @@
 
 #define MAX_PLAYERS 7
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString *const RGMGameOverNotification;
 
 @class RiskWorld, RiskPlayer, GameConfiguration, Country, RiskMapView, StatusView, ArmyView, CardPanelController;
@@ -64,10 +66,10 @@ extern NSString *const RGMGameOverNotification;
     Player currentPlayerNumber;
 
     // Place armies phase:
-    int initialArmyCount;
+    RiskArmyCount initialArmyCount;
 
     // Keep track of armies left for current player in this turn.
-    int armiesLeftToPlace;
+    RiskArmyCount armiesLeftToPlace;
     ArmyPlacementValidator *armyPlacementValidator;
 
     BOOL playerHasConqueredCountry;
@@ -77,10 +79,10 @@ extern NSString *const RGMGameOverNotification;
     IBOutlet NSWindow *cardPanelWindow;
     NSMutableArray *cardDeck;
     NSMutableArray *discardDeck;
-    int nextCardSetValue;
+    RiskArmyCount nextCardSetValue;
 
     // For verifying that armies before fortification == armies after fortification
-    int armiesBefore;
+    RiskArmyCount armiesBefore;
 
     DiceInspector *diceInspector;
     WorldInfoController *worldInfoController;
@@ -92,9 +94,9 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) _logGameState;
 
-- (IBAction) showControlPanel:(id)sender;
-- (IBAction) showDiceInspector:(id)sender;
-- (IBAction) showWorldInfoPanel:(id)sender;
+- (IBAction) showControlPanel:(nullable id)sender;
+- (IBAction) showDiceInspector:(nullable id)sender;
+- (IBAction) showWorldInfoPanel:(nullable id)sender;
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
@@ -125,7 +127,7 @@ extern NSString *const RGMGameOverNotification;
 // Player menu support
 //======================================================================
 
-- (IBAction) showPlayerConsole:(id)sender;
+- (IBAction) showPlayerConsole:(nullable id)sender;
 
 //======================================================================
 // Establish Game
@@ -149,13 +151,13 @@ extern NSString *const RGMGameOverNotification;
 - (void) leavingInitialArmyPlacementPhase;
 
 - (void) endTurn;
-- (IBAction) executeCurrentPhase:(id)sender;
+- (IBAction) executeCurrentPhase:(nullable id)sender;
 - (BOOL) nextActivePlayer;
 
-- (IBAction) fortify:(id)sender;
-- (IBAction) endTurn:(id)sender;
+- (IBAction) fortify:(nullable id)sender;
+- (IBAction) endTurn:(nullable id)sender;
 
-- (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination;
+- (void) moveAttackingArmies:(RiskArmyCount)minimum between:(Country *)source :(Country *)destination;
 - (void) fortifyArmiesFrom:(Country *)source;
 - (void) forceCurrentPlayerToTurnInCards;
 
@@ -173,7 +175,7 @@ extern NSString *const RGMGameOverNotification;
 // Place Armies and Move Attacking armies
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(int)count inCountry:(Country *)country;
+- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(RiskArmyCount)count inCountry:(Country *)country;
 
 //======================================================================
 // Attacking
@@ -183,14 +185,14 @@ extern NSString *const RGMGameOverNotification;
                                               toCountry:(Country *)defender
                                moveAllArmiesUponVictory:(BOOL)moveFlag;
 
-- (AttackResult) attackMultipleTimes:(int)count
+- (AttackResult) attackMultipleTimes:(RiskArmyCount)count
                          fromCountry:(Country *)attacker
                            toCountry:(Country *)defender
             moveAllArmiesUponVictory:(BOOL)moveFlag;
 
 - (AttackResult) attackFromCountry:(Country *)attacker
                          toCountry:(Country *)defender
-                 untilArmiesRemain:(int)count
+                 untilArmiesRemain:(RiskArmyCount)count
           moveAllArmiesUponVictory:(BOOL)moveFlag;
 
 - (AttackResult) attackOnceFromCountry:(Country *)attacker
@@ -201,8 +203,8 @@ extern NSString *const RGMGameOverNotification;
 // Game Manager calculations
 //======================================================================
 
-- (int) earnedArmyCountForPlayer:(Player)number;
-- (DiceRoll) rollDiceWithAttackerArmies:(int)attackerArmies defenderArmies:(int)defenderArmies;
+- (RiskArmyCount) earnedArmyCountForPlayer:(Player)number;
+- (DiceRoll) rollDiceWithAttackerArmies:(RiskArmyCount)attackerArmies defenderArmies:(RiskArmyCount)defenderArmies;
 
 //======================================================================
 // General player interaction
@@ -215,7 +217,7 @@ extern NSString *const RGMGameOverNotification;
 
 - (IBAction) attackMethodAction:(id)sender;
 
-- (void) setArmiesLeftToPlace:(int)count;
+- (void) setArmiesLeftToPlace:(RiskArmyCount)count;
 
 //======================================================================
 // Card management
@@ -223,15 +225,15 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) _recycleDiscardedCards;
 - (void) dealCardToPlayerNumber:(Player)number;
-- (int) _valueOfNextCardSet:(int)currentValue;
-- (int) armiesForNextCardSet;
+- (RiskArmyCount) _valueOfNextCardSet:(RiskArmyCount)currentValue;
+- (RiskArmyCount) armiesForNextCardSet;
 - (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number;
 - (void) automaticallyTurnInCardsForPlayerNumber:(Player)number;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
 
 // For the currently active (interactive) player
-- (IBAction) reviewCards:(id)sender;
-- (IBAction) turnInCards:(id)sender;
+- (IBAction) reviewCards:(nullable id)sender;
+- (IBAction) turnInCards:(nullable id)sender;
 
 - (void) _loadCardPanel;
 
@@ -240,7 +242,7 @@ extern NSString *const RGMGameOverNotification;
 //======================================================================
 
 - (void) updatePhaseBox;
-- (int) totalTroopsForPlayerNumber:(Player)number;
+- (RiskArmyCount) totalTroopsForPlayerNumber:(Player)number;
 
 - (void) defaultsChanged:(NSNotification *)aNotification;
 
@@ -254,3 +256,5 @@ extern NSString *const RGMGameOverNotification;
 - (void) deactivatePlayerNumber:(Player)number;
 
 @end
+
+NS_ASSUME_NONNULL_END

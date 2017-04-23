@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface GameConfiguration : NSObject
 {
     InitialCountryDistribution initialCountryDistribution;
@@ -24,8 +26,10 @@
 @property CardSetRedemption cardSetRedemption;
 @property FortifyRule fortifyRule;
 
-@property (readonly) int armyPlacementCount;
+@property (readonly) RiskArmyCount armyPlacementCount;
 
 - (void) writeDefaults;
 
 @end
+
+NS_ASSUME_NONNULL_END

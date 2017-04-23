@@ -27,7 +27,7 @@
 #import <RiskKit/RiskPlayer.h>
 #import <AppKit/AppKit.h>
 
-typedef enum _CountryChoiceType
+typedef NS_ENUM(int, CountryChoiceType)
 {
     ChooseRandomCountry,
     ChooseRandomContinents,
@@ -36,7 +36,7 @@ typedef enum _CountryChoiceType
     ChooseLeastBorderedContinent,
     ChooseMostBorderedContinent,
     ChooseAdjacentToCurrentCountries
-} CountryChoiceType;
+};
 
 @class SNHeap<ObjectType>, Continent;
 
@@ -130,10 +130,10 @@ typedef enum _CountryChoiceType
 @property (readonly, copy) NSSet<Country *> *enemyCountriesAlongPerimeter;
 
 - (void) analyzePerimeter;
-- (Country *) bestCountryToMinimizePerimeter:(NSSet *)potentialCountries;
-- (Country *) minimizePerimeter:(int)current ofCountries:(NSSet *)potentialCountries;
+- (Country *) bestCountryToMinimizePerimeter:(NSSet<Country *> *)potentialCountries;
+- (Country *) minimizePerimeter:(int)current ofCountries:(NSSet<Country *> *)potentialCountries;
 
-- (Country *) bestCountryToControlContinents:(NSSet *)potentialCountries;
+- (Country *) bestCountryToControlContinents:(NSSet<Country *> *)potentialCountries;
 
 - (void) _logCurrentWrathValues;
 

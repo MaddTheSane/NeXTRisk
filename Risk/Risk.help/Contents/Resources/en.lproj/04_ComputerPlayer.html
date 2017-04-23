@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Computer Player Help</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1404.47">
+<link rel="Index" href="index.html">
+<meta name="description" content="Describes the computer players which come with Risk.">
+<meta name="keywords" content="features, new">
+<meta name="robots" content="index">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 36.0px Times}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Times}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 12.0px Times}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 12.0px Times; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">Risk</p>
+<p class="p2">Computer Player Help</p>
+<p class="p3"><br></p>
+<p class="p4"><i>This section has not been updated since verion 0.97.</i></p>
+<p class="p4">This section of the Help describes the computer players which come with Risk.</p>
+<p class="p5"><br></p>
+<p class="p4">The only players in this version of Risk are Diagnostic and Chaotic.<span class="Apple-converted-space">  </span>Source code is included for both</p>
+<p class="p5"><br></p>
+<p class="p4"><img src="../GlobalArt/DiagnosticPanel_1.png" alt="DiagnosticPanel_1.tiff"></p>
+<p class="p4"><b><i>Diagnostic</i></b> is a very stupid player, but it implements a status panel which let's one monitor the computer player's operation on a very high level.<span class="Apple-converted-space">  </span>(The panel shows which ComputerPlayer utility was called last, with what arguments, and with what result.)<span class="Apple-converted-space">  </span>The panel is shown below.<span class="Apple-converted-space">  </span>The strategy of Diagnostic is to do the bare minimum.<span class="Apple-converted-space">  </span>He chooses countries, and places armies, but will never attack.<span class="Apple-converted-space">  </span>This player is meant to show how to incorporate .nib files into a computer player and to be subclassed by people developing new strategies.</p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p4"><span class="Apple-converted-space"> </span><i>This is what the panel looks like after Diagnostic has placed some armies</i></p>
+<p class="p5"><br></p>
+<p class="p4"><b><i>Chaotic</i></b> is my first attempt at a full featured player.<span class="Apple-converted-space">  </span>As the name suggests, it is very random.<span class="Apple-converted-space">  </span>It will try (at the beginning of the game) to get a country in each continent.<span class="Apple-converted-space">  </span>Once it succeeds (or fails) to do this, it picks random countries.<span class="Apple-converted-space">  </span>When placing armies it places them in random countries, but chooses only from its countries with at least one enemy neighbor.<span class="Apple-converted-space">  </span>When attacking, it attacks at most one enemy country from each country that it can attack from, how long it attacks from a particular country is somewhat random.<span class="Apple-converted-space">  </span>When fortifying it tries to move armies from countries without enemy neighbors to countries with enemy neighbors.<span class="Apple-converted-space">  </span>It turns in its best set of cards whenever it can.</p>
+</body>
+</html>

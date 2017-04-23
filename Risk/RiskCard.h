@@ -3,11 +3,12 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
 
 #import "Risk.h"
 
 @class Country;
+@class NSImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Take card image name from country?
 - (instancetype)initCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, strong, nullable) Country *country;
 @property (readonly) RiskCardType cardType;

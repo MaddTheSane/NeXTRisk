@@ -7,6 +7,8 @@
 
 #import "Risk.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class RiskCard, RiskPlayer, RiskGameManager;
 
 @interface CardPanelController : NSObject
@@ -35,7 +37,7 @@
     BOOL canTurnInCards;
     RiskGameManager *gameManager;
     NSArray *playerCards;
-    int currentCardSetValue;
+    RiskArmyCount currentCardSetValue;
     NSMutableArray *cardSets;
 }
 
@@ -45,11 +47,11 @@
 
 - (instancetype)init;
 
-- (IBAction) handAction:(id)sender;
-- (IBAction) setAction:(id)sender;
-- (IBAction) doneAction:(id)sender;
-- (IBAction) stopAction:(id)sender;
-- (IBAction) turnInSetAction:(id)sender;
+- (IBAction) handAction:(nullable id)sender;
+- (IBAction) setAction:(nullable id)sender;
+- (IBAction) doneAction:(nullable id)sender;
+- (IBAction) stopAction:(nullable id)sender;
+- (IBAction) turnInSetAction:(nullable id)sender;
 
 - (void) enableButtons;
 
@@ -59,3 +61,5 @@
 - (void) runCardPanel:(BOOL)canTurnInCardsFlag forPlayer:(RiskPlayer *)player;
 
 @end
+
+NS_ASSUME_NONNULL_END

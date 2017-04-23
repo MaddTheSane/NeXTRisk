@@ -3,9 +3,13 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Foundation/NSObject.h>
+#import <Foundation/NSGeometry.h>
 
 @class SNUserPath, Country, RiskMapView;
+@class NSBezierPath;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// A CountryShape knows how to draw a country -- it's actual shape and
 /// where to place the army textfield.
@@ -22,8 +26,9 @@
 
 - (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint;
 - (instancetype)initWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_DESIGNATED_INITIALIZER;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected;
 - (BOOL) pointInShape:(NSPoint)aPoint;
@@ -32,3 +37,5 @@
 @property (readonly) NSRect bounds;
 
 @end
+
+NS_ASSUME_NONNULL_END

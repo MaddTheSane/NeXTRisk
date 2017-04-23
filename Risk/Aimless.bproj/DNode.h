@@ -26,6 +26,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 // Good enough for now.
 #define D_INFINITY 1000000
 
@@ -46,11 +48,13 @@
 
 - (instancetype)init;
 
-@property (readonly, assign) id previous;
+@property (readonly, assign, nullable) id previous;
 
 @property NSInteger distance;
-- (void) setDistance:(NSInteger)newDistance withPrevious:(id)newPrevious;
+- (void) setDistance:(NSInteger)newDistance withPrevious:(nullable id)newPrevious;
 
 - (void) relaxFrom:(id)source distance:(NSInteger)x;
 
 @end
+
+NS_ASSUME_NONNULL_END

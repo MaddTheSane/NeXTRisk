@@ -3,10 +3,18 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <AppKit/NSTableView.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class RiskWorld;
+@class Continent;
+@class NSWindow;
 
+/// The World Info report shows the name of the world, and the name,
+/// number of countries, and bonus value for each continent.
+///
+/// Double click on the column titles to sort by that column.
 @interface WorldInfoController : NSObject <NSTableViewDataSource>
 {
     IBOutlet NSWindow *worldInfoWindow;
@@ -14,7 +22,7 @@
     IBOutlet NSTableView *continentTable;
 
     //RiskWorld *world;
-    NSArray *continents;
+    NSArray<Continent*> *continents;
 }
 
 - (instancetype)init;
@@ -28,6 +36,8 @@
 - (void) orderByCountryCount;
 - (void) orderByBonusValue;
 
-- (IBAction) reorder:(id)sender;
+- (IBAction) reorder:(nullable id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
-		550B536B1CF6204C004EAAFC /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		5510980C1CC5629500DE6DFE /* DiceInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F171CC15C2300A2C08E /* DiceInspector.xib */; };
 		551098111CC563FE00DE6DFE /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
@@ -23,8 +22,6 @@
 		551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 551251EA1CC27D55000E7A52 /* RiskUtil_main.m */; };
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
-		55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
-		55377F7A1CC15C2400A2C08E /* Brain.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC91CC15C2300A2C08E /* Brain.m */; };
 		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.xib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.xib */; };
@@ -38,9 +35,7 @@
 		55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4C1CC15C2300A2C08E /* NewGameController.m */; };
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
-		55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F521CC15C2300A2C08E /* Risk_main.m */; };
 		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
 		553780021CC15E1700A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553780011CC15E1700A2C08E /* Assets.xcassets */; };
@@ -51,19 +46,15 @@
 		553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */; };
 		553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801C1CC15E6A00A2C08E /* RiskNeighborView.m */; };
 		5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537801E1CC15E6A00A2C08E /* RiskUtility.m */; };
-		553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55377EC51CC15C2300A2C08E /* BoardBacking.tiff */; };
 		5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		553780601CC162A800A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
-		553780621CC162C500A2C08E /* RiskPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F601CC15C2400A2C08E /* RiskPoint.m */; };
 		5537807B1CC1640600A2C08E /* Aimless.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780721CC1640600A2C08E /* Aimless.m */; };
 		5537807C1CC1640600A2C08E /* Aimless.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780731CC1640600A2C08E /* Aimless.rtf */; };
-		5537807D1CC1640600A2C08E /* Aimless.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780741CC1640600A2C08E /* Aimless.tiff */; };
 		5537807E1CC1640600A2C08E /* DNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780761CC1640600A2C08E /* DNode.m */; };
 		5537807F1CC1640600A2C08E /* PathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780781CC1640600A2C08E /* PathFinder.m */; };
 		553780801CC1640600A2C08E /* SNHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 5537807A1CC1640600A2C08E /* SNHeap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		553780951CC1655300A2C08E /* Chaotic.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780921CC1655300A2C08E /* Chaotic.m */; };
 		553780961CC1655300A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
-		553780971CC1655300A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780A91CC1966300A2C08E /* RiskKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 553780A81CC1966300A2C08E /* RiskKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780AD1CC1966300A2C08E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		553780AE1CC1966300A2C08E /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -98,8 +89,6 @@
 		553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F3A1CC15C2300A2C08E /* GameConfiguration.m */; };
 		553780E91CC19DB800A2C08E /* WorldInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F711CC15C2400A2C08E /* WorldInfoController.m */; };
 		553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F701CC15C2400A2C08E /* WorldInfoController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 553780931CC1655300A2C08E /* Chaotic.rtf */; };
-		553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 553780941CC1655300A2C08E /* Chaotic.tiff */; };
 		553780ED1CC1A09400A2C08E /* Continent.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F031CC15C2300A2C08E /* Continent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780EE1CC1A23E00A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F621CC15C2400A2C08E /* RiskWorld.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,9 +99,32 @@
 		553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
-		553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FB1CC1B56300A2C08E /* SNUserPath.m */; };
-		553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
+		554843B81EA1FE0900EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
+		554843BF1EA1FE2E00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
+		554843C01EA1FE2F00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
+		554843C11EA1FE3500EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
+		554843C21EA1FE3500EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
+		554843C31EA1FE3600EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
+		554843C41EA1FE3A00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
+		55665FC01D11317F001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
+		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
+		55665FC41D1138E3001980F2 /* SNUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC31D1138E3001980F2 /* SNUserPath.swift */; };
+		55665FC81D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */; };
+		55665FC91D114780001980F2 /* SNUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC31D1138E3001980F2 /* SNUserPath.swift */; };
+		55665FCA1D114791001980F2 /* NSCoder+SNUnarchiveHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */; };
+		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
+		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
+		55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */; };
+		55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
+		55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
+		55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */; };
+		55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */; };
+		55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
+		55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
+		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
+		55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,11 +251,9 @@
 		55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArmyPlacementValidator.m; path = ../Risk/ArmyPlacementValidator.m; sourceTree = "<group>"; };
 		55377EC31CC15C2300A2C08E /* ArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyView.h; sourceTree = "<group>"; };
 		55377EC41CC15C2300A2C08E /* ArmyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyView.m; sourceTree = "<group>"; };
-		55377EC51CC15C2300A2C08E /* BoardBacking.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BoardBacking.tiff; sourceTree = "<group>"; };
 		55377EC61CC15C2300A2C08E /* BoardSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSetup.h; path = ../Risk/BoardSetup.h; sourceTree = "<group>"; };
 		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
-		55377EC91CC15C2300A2C08E /* Brain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Brain.m; sourceTree = "<group>"; };
 		55377EFE1CC15C2300A2C08E /* CardPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardPanelController.h; path = ../Risk/CardPanelController.h; sourceTree = "<group>"; };
 		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardPanelController.m; path = ../Risk/CardPanelController.m; sourceTree = "<group>"; };
 		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardSet.h; path = ../Risk/CardSet.h; sourceTree = "<group>"; };
@@ -277,7 +287,6 @@
 		55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = NotPlaying.rtf; sourceTree = "<group>"; };
 		55377F501CC15C2300A2C08E /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		55377F511CC15C2300A2C08E /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
-		55377F521CC15C2300A2C08E /* Risk_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk_main.m; sourceTree = "<group>"; };
 		55377F531CC15C2300A2C08E /* Risk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Risk.h; path = ../Risk/Risk.h; sourceTree = "<group>"; };
 		55377F541CC15C2300A2C08E /* Risk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Risk.m; path = ../Risk/Risk.m; sourceTree = "<group>"; };
 		55377F551CC15C2400A2C08E /* RiskCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskCard.h; path = ../Risk/RiskCard.h; sourceTree = "<group>"; };
@@ -290,8 +299,6 @@
 		55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskNeighbor.m; path = ../Risk/RiskNeighbor.m; sourceTree = "<group>"; };
 		55377F5D1CC15C2400A2C08E /* RiskPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskPlayer.h; path = ../Risk/RiskPlayer.h; sourceTree = "<group>"; };
 		55377F5E1CC15C2400A2C08E /* RiskPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskPlayer.m; path = ../Risk/RiskPlayer.m; sourceTree = "<group>"; };
-		55377F5F1CC15C2400A2C08E /* RiskPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskPoint.h; sourceTree = "<group>"; };
-		55377F601CC15C2400A2C08E /* RiskPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskPoint.m; sourceTree = "<group>"; };
 		55377F611CC15C2400A2C08E /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
 		55377F621CC15C2400A2C08E /* RiskWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskWorld.h; path = ../Risk/RiskWorld.h; sourceTree = "<group>"; };
 		55377F631CC15C2400A2C08E /* RiskWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskWorld.m; path = ../Risk/RiskWorld.m; sourceTree = "<group>"; };
@@ -322,7 +329,6 @@
 		553780711CC1640600A2C08E /* Aimless.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aimless.h; sourceTree = "<group>"; };
 		553780721CC1640600A2C08E /* Aimless.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aimless.m; sourceTree = "<group>"; };
 		553780731CC1640600A2C08E /* Aimless.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Aimless.rtf; sourceTree = "<group>"; };
-		553780741CC1640600A2C08E /* Aimless.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Aimless.tiff; sourceTree = "<group>"; };
 		553780751CC1640600A2C08E /* DNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNode.h; sourceTree = "<group>"; };
 		553780761CC1640600A2C08E /* DNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNode.m; sourceTree = "<group>"; };
 		553780771CC1640600A2C08E /* PathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinder.h; sourceTree = "<group>"; };
@@ -334,7 +340,6 @@
 		553780911CC1655300A2C08E /* Chaotic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chaotic.h; sourceTree = "<group>"; };
 		553780921CC1655300A2C08E /* Chaotic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chaotic.m; sourceTree = "<group>"; };
 		553780931CC1655300A2C08E /* Chaotic.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Chaotic.rtf; sourceTree = "<group>"; };
-		553780941CC1655300A2C08E /* Chaotic.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Chaotic.tiff; sourceTree = "<group>"; };
 		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cards.xcassets; sourceTree = "<group>"; };
 		553780A61CC1966300A2C08E /* RiskKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RiskKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780A81CC1966300A2C08E /* RiskKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskKit.h; sourceTree = "<group>"; };
@@ -342,10 +347,25 @@
 		553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaoticSwift.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780D01CC1990A00A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		553780D41CC1993E00A2C08E /* Chaos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chaos.swift; sourceTree = "<group>"; usesTabs = 1; };
-		553780FA1CC1B56300A2C08E /* SNUserPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserPath.h; sourceTree = "<group>"; };
-		553780FB1CC1B56300A2C08E /* SNUserPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPath.m; sourceTree = "<group>"; };
-		553780FD1CC1B68600A2C08E /* SNUserPathOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUserPathOperation.h; sourceTree = "<group>"; };
-		553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNUserPathOperation.m; sourceTree = "<group>"; };
+		554843B71EA1FE0900EC5D3E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		554843BA1EA1FE1400EC5D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		554843BD1EA1FE1A00EC5D3E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; };
+		55665FC21D1136EF001980F2 /* RiskUtil-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RiskUtil-Bridging-Header.h"; sourceTree = "<group>"; };
+		55665FC31D1138E3001980F2 /* SNUserPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNUserPath.swift; sourceTree = "<group>"; };
+		55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+SNUnarchiveHelpers.h"; sourceTree = "<group>"; };
+		55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+SNUnarchiveHelpers.m"; sourceTree = "<group>"; };
+		556A65EB1CFF5800005BA899 /* Chaotic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Chaotic.html; sourceTree = "<group>"; };
+		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		55A9C8EA1EAC0FB700D9E7C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8ED1EAC0FBE00D9E7C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
+		55AC2A521D1089C50021814F /* Risk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Risk-Bridging-Header.h"; sourceTree = "<group>"; };
+		55AC2A531D1089C50021814F /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; usesTabs = 1; };
+		55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAdditions.swift; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554843C41EA1FE3A00EC5D3E /* Cocoa.framework in Frameworks */,
 				551098251CC56F2400DE6DFE /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +389,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554843B81EA1FE0900EC5D3E /* Cocoa.framework in Frameworks */,
 				553780AD1CC1966300A2C08E /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554843BF1EA1FE2E00EC5D3E /* Cocoa.framework in Frameworks */,
 				551251E21CC22525000E7A52 /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780B71CC1969700A2C08E /* RiskKit.framework in Frameworks */,
+				554843C11EA1FE3500EC5D3E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553780C11CC197EE00A2C08E /* RiskKit.framework in Frameworks */,
+				554843C21EA1FE3500EC5D3E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +425,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554843C01EA1FE2F00EC5D3E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +433,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */,
+				554843C31EA1FE3600EC5D3E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				5537809B1CC1897500A2C08E /* Cards.xcassets */,
-				55377EC51CC15C2300A2C08E /* BoardBacking.tiff */,
 				55377F611CC15C2400A2C08E /* RiskWorld.data */,
 				550B53661CF62030004EAAFC /* Info.plist */,
 			);
@@ -470,6 +497,7 @@
 				55377F6B1CC15C2400A2C08E /* SNUtility.h */,
 				55377F701CC15C2400A2C08E /* WorldInfoController.h */,
 				55377F711CC15C2400A2C08E /* WorldInfoController.m */,
+				55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -496,8 +524,8 @@
 		551251EC1CC2D0E1000E7A52 /* Additional Sources */ = {
 			isa = PBXGroup;
 			children = (
+				55AC2A521D1089C50021814F /* Risk-Bridging-Header.h */,
 				55377F6F1CC15C2400A2C08E /* Version.h */,
-				55377F521CC15C2300A2C08E /* Risk_main.m */,
 			);
 			name = "Additional Sources";
 			sourceTree = "<group>";
@@ -507,12 +535,11 @@
 			children = (
 				55377EAB1CC15AC900A2C08E /* Risk */,
 				55377FFA1CC15E1700A2C08E /* RiskUtil */,
-				5537806C1CC1639C00A2C08E /* Aimless */,
-				553780901CC1645000A2C08E /* Chaotic */,
+				556A65EA1CFF5766005BA899 /* AIs */,
 				553780A71CC1966300A2C08E /* RiskKit */,
-				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
 				551098171CC56F0F00DE6DFE /* Risk World Maker */,
 				550B53651CF62030004EAAFC /* MainRisk */,
+				554843B61EA1FE0800EC5D3E /* Frameworks */,
 				55377EAA1CC15AC900A2C08E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -549,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
+				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
@@ -562,6 +590,7 @@
 		55377FFA1CC15E1700A2C08E /* RiskUtil */ = {
 			isa = PBXGroup;
 			children = (
+				55665FC21D1136EF001980F2 /* RiskUtil-Bridging-Header.h */,
 				5537800E1CC15E6A00A2C08E /* CountryShapeGenerator.h */,
 				5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */,
 				5537801B1CC15E6A00A2C08E /* RiskNeighborView.h */,
@@ -586,8 +615,9 @@
 				553780791CC1640600A2C08E /* SNHeap.h */,
 				5537807A1CC1640600A2C08E /* SNHeap.m */,
 				553780731CC1640600A2C08E /* Aimless.rtf */,
-				553780741CC1640600A2C08E /* Aimless.tiff */,
 				5537806D1CC1639C00A2C08E /* Info.plist */,
+				55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */,
+				55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */,
 			);
 			name = Aimless;
 			path = Risk/Aimless.bproj;
@@ -599,8 +629,9 @@
 				553780911CC1655300A2C08E /* Chaotic.h */,
 				553780921CC1655300A2C08E /* Chaotic.m */,
 				553780931CC1655300A2C08E /* Chaotic.rtf */,
-				553780941CC1655300A2C08E /* Chaotic.tiff */,
 				5537808F1CC1642900A2C08E /* Info.plist */,
+				55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */,
+				55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */,
 			);
 			name = Chaotic;
 			path = Risk/Chaotic.bproj;
@@ -648,8 +679,10 @@
 		553780CF1CC1990A00A2C08E /* ChaoticSwift */ = {
 			isa = PBXGroup;
 			children = (
+				556A65EB1CFF5800005BA899 /* Chaotic.html */,
 				553780D41CC1993E00A2C08E /* Chaos.swift */,
 				553780D01CC1990A00A2C08E /* Info.plist */,
+				556A65F11CFF5B38005BA899 /* InfoPlist.strings */,
 			);
 			path = ChaoticSwift;
 			sourceTree = "<group>";
@@ -657,10 +690,9 @@
 		553780F91CC1B53D00A2C08E /* Migration purposes */ = {
 			isa = PBXGroup;
 			children = (
-				553780FA1CC1B56300A2C08E /* SNUserPath.h */,
-				553780FB1CC1B56300A2C08E /* SNUserPath.m */,
-				553780FD1CC1B68600A2C08E /* SNUserPathOperation.h */,
-				553780FE1CC1B68600A2C08E /* SNUserPathOperation.m */,
+				55665FC31D1138E3001980F2 /* SNUserPath.swift */,
+				55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */,
+				55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */,
 			);
 			name = "Migration purposes";
 			sourceTree = "<group>";
@@ -671,8 +703,8 @@
 			children = (
 				55377EC31CC15C2300A2C08E /* ArmyView.h */,
 				55377EC41CC15C2300A2C08E /* ArmyView.m */,
+				55AC2A531D1089C50021814F /* Brain.swift */,
 				55377EC81CC15C2300A2C08E /* Brain.h */,
-				55377EC91CC15C2300A2C08E /* Brain.m */,
 				55377F071CC15C2300A2C08E /* CountryShape.h */,
 				55377F081CC15C2300A2C08E /* CountryShape.m */,
 				55377F421CC15C2300A2C08E /* Human.h */,
@@ -685,12 +717,32 @@
 				55377F511CC15C2300A2C08E /* PreferenceController.m */,
 				55377F591CC15C2400A2C08E /* RiskMapView.h */,
 				55377F5A1CC15C2400A2C08E /* RiskMapView.m */,
-				55377F5F1CC15C2400A2C08E /* RiskPoint.h */,
-				55377F601CC15C2400A2C08E /* RiskPoint.m */,
+				55665FBF1D11317F001980F2 /* RiskPoint.swift */,
 				55377F6D1CC15C2400A2C08E /* StatusView.h */,
 				55377F6E1CC15C2400A2C08E /* StatusView.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		554843B61EA1FE0800EC5D3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				554843BD1EA1FE1A00EC5D3E /* AppKit.framework */,
+				554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */,
+				554843BA1EA1FE1400EC5D3E /* Foundation.framework */,
+				554843B71EA1FE0900EC5D3E /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		556A65EA1CFF5766005BA899 /* AIs */ = {
+			isa = PBXGroup;
+			children = (
+				5537806C1CC1639C00A2C08E /* Aimless */,
+				553780901CC1645000A2C08E /* Chaotic */,
+				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
+			);
+			name = AIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -881,7 +933,7 @@
 			attributes = {
 				CLASSPREFIX = SN;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "C.W. Betts";
 				TargetAttributes = {
 					550B53631CF62030004EAAFC = {
@@ -892,6 +944,7 @@
 					};
 					55377EA81CC15AC900A2C08E = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					55377FF81CC15E1700A2C08E = {
 						CreatedOnToolsVersion = 7.3;
@@ -901,9 +954,11 @@
 					};
 					553780A51CC1966300A2C08E = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0830;
 					};
 					553780CD1CC1990A00A2C08E = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -939,7 +994,6 @@
 			files = (
 				550B536C1CF6205E004EAAFC /* RiskWorld.data in Resources */,
 				550B536A1CF62044004EAAFC /* Cards.xcassets in Resources */,
-				550B536B1CF6204C004EAAFC /* BoardBacking.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,12 +1016,12 @@
 				55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */,
 				55377FC61CC15C2400A2C08E /* Risk.xib in Resources */,
 				55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */,
+				55A9C8F01EAC110C00D9E7C7 /* Map.xcassets in Resources */,
 				55377FF41CC15DD700A2C08E /* Help in Resources */,
 				551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */,
 				55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */,
 				55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */,
-				55377F781CC15C2400A2C08E /* BoardBacking.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,8 +1033,8 @@
 				553780021CC15E1700A2C08E /* Assets.xcassets in Resources */,
 				551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */,
 				553780201CC15E6A00A2C08E /* ContinentData.txt in Resources */,
-				553780571CC161F800A2C08E /* BoardBacking.tiff in Resources */,
 				553780211CC15E6A00A2C08E /* CountryData.txt in Resources */,
+				55A9C8F11EAC111C00D9E7C7 /* Map.xcassets in Resources */,
 				553780221CC15E6A00A2C08E /* CountryNeighbors.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -990,7 +1044,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5537807C1CC1640600A2C08E /* Aimless.rtf in Resources */,
-				5537807D1CC1640600A2C08E /* Aimless.tiff in Resources */,
+				55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */,
+				55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,7 +1053,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780971CC1655300A2C08E /* Chaotic.tiff in Resources */,
+				55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
+				55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */,
 				553780961CC1655300A2C08E /* Chaotic.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1019,8 +1075,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780EC1CC19F6900A2C08E /* Chaotic.tiff in Resources */,
-				553780EB1CC19F6900A2C08E /* Chaotic.rtf in Resources */,
+				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
+				55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
+				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,19 +1103,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55665FC41D1138E3001980F2 /* SNUserPath.swift in Sources */,
 				55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */,
-				55377F7A1CC15C2400A2C08E /* Brain.m in Sources */,
-				55377FE81CC15C2400A2C08E /* RiskPoint.m in Sources */,
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
-				553780FC1CC1B56300A2C08E /* SNUserPath.m in Sources */,
+				55665FC81D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m in Sources */,
+				55AC2A541D1089C50021814F /* Brain.swift in Sources */,
+				55665FC01D11317F001980F2 /* RiskPoint.swift in Sources */,
 				55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */,
 				55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */,
 				55377F771CC15C2400A2C08E /* ArmyView.m in Sources */,
 				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
-				55377FE11CC15C2400A2C08E /* Risk_main.m in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,
-				553780FF1CC1B68600A2C08E /* SNUserPathOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,12 +1122,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553780621CC162C500A2C08E /* RiskPoint.m in Sources */,
+				55665FC91D114780001980F2 /* SNUserPath.swift in Sources */,
 				553780231CC15E6A00A2C08E /* CountryShapeGenerator.m in Sources */,
 				5537802A1CC15E6A00A2C08E /* RiskUtility.m in Sources */,
 				553780291CC15E6A00A2C08E /* RiskNeighborView.m in Sources */,
 				551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */,
 				5537805C1CC1626D00A2C08E /* CountryShape.m in Sources */,
+				55665FCA1D114791001980F2 /* NSCoder+SNUnarchiveHelpers.m in Sources */,
+				55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */,
 				553780601CC162A800A2C08E /* RiskMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1115,6 +1173,7 @@
 				553780F21CC1A90100A2C08E /* RiskCard.m in Sources */,
 				553780D71CC199FD00A2C08E /* Country.m in Sources */,
 				553780E31CC19D3C00A2C08E /* CardPanelController.m in Sources */,
+				55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,6 +1332,30 @@
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
+		556A65F11CFF5B38005BA899 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				556A65F01CFF5B38005BA899 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A9C8EA1EAC0FB700D9E7C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55A9C8ED1EAC0FBE00D9E7C7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1314,7 +1397,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1335,6 +1417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1343,10 +1426,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1372,6 +1458,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1379,6 +1467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1387,10 +1476,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1409,62 +1501,81 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		55377EBB1CC15AC900A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Risk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		55377EBC1CC15AC900A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Risk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		553780081CC15E1700A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					RISKUTIL_BUILD,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = RiskUtil/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		553780091CC15E1700A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					RISKUTIL_BUILD,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = RiskUtil/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		5537806F1CC1639C00A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1478,6 +1589,7 @@
 		553780701CC1639C00A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1491,6 +1603,7 @@
 		5537808C1CC1642900A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1504,6 +1617,7 @@
 		5537808D1CC1642900A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Chaotic.bproj/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1517,6 +1631,8 @@
 		553780B01CC1966300A2C08E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1530,6 +1646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1538,6 +1655,8 @@
 		553780B11CC1966300A2C08E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -1560,6 +1679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1568,7 +1688,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = riskplayer;
 			};
 			name = Debug;
@@ -1577,6 +1696,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1599,6 +1719,7 @@
 				550B53681CF62030004EAAFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		551098201CC56F1000DE6DFE /* Build configuration list for PBXNativeTarget "Risk World Maker" */ = {
 			isa = XCConfigurationList;

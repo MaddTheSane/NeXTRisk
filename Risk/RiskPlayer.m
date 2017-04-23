@@ -51,7 +51,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         playerCards = [[NSMutableArray alloc] init];
         gameManager = aManager;
         
-        attackMethod = AttackOnce;
+        attackMethod = AttackMethodOnce;
         attackMethodValue = 1;
         
         consoleWindow = nil;
@@ -124,7 +124,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [gameManager.world countriesForPlayer:playerNumber];
 }
 
-- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
+- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source
 {
     NSMutableSet *resultingSet = [NSMutableSet set];
     for (Country *country in source)
@@ -155,27 +155,19 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         [resultingSet addObject:country];
     }
     
-    return resultingSet;
+    return [resultingSet copy];
 }
 
-- (NSSet *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet *)source
+- (NSSet<Country*> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source
 {
-    NSEnumerator *countryEnumerator;
-    NSMutableSet *resultingSet;
-    Country *country;
+    NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
-    Player number;
-    int troopCount, movableTroopCount;
-    BOOL hasEnemyNeighbors;
-    
-    resultingSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
-        number = country.playerNumber;
-        troopCount = country.troopCount;
-        movableTroopCount = country.movableTroopCount;
-        hasEnemyNeighbors = country.hasEnemyNeighbors;
+        Player number = country.playerNumber;
+        RiskArmyCount troopCount = country.troopCount;
+        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
@@ -196,28 +188,19 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         }
     }
     
-    return resultingSet;
+    return [resultingSet copy];
 }
 
-- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet *)source
+- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
-    BOOL flag;
+    BOOL flag = NO;
     
-    Player number;
-    int troopCount, movableTroopCount;
-    BOOL hasEnemyNeighbors;
-    
-    flag = NO;
-    
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
-        number = country.playerNumber;
-        troopCount = country.troopCount;
-        movableTroopCount = country.movableTroopCount;
-        hasEnemyNeighbors = country.hasEnemyNeighbors;
+        Player number = country.playerNumber;
+        RiskArmyCount troopCount = country.troopCount;
+        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number != 0)
             || ((options & CountryFlagsPlayerOne) && number != 1)
@@ -244,24 +227,15 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return flag;
 }
 
-- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet *)source
+- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country*> *)source
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
-    BOOL flag;
-    
-    Player number;
-    int troopCount, movableTroopCount;
-    BOOL hasEnemyNeighbors;
-    
-    flag = NO;
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    BOOL flag = NO;
+    for (Country *country in source)
     {
-        number = country.playerNumber;
-        troopCount = country.troopCount;
-        movableTroopCount = country.movableTroopCount;
-        hasEnemyNeighbors = country.hasEnemyNeighbors;
+        Player number = country.playerNumber;
+        RiskArmyCount troopCount = country.troopCount;
+        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number == 0)
             || ((options & CountryFlagsPlayerOne) && number == 1)
@@ -286,43 +260,35 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return flag;
 }
 
-- (NSSet *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet *)source
+- (NSSet *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country*> *)source
 {
-    NSEnumerator *countryEnumerator;
-    NSMutableSet *resultingSet;
-    Country *country;
+    NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
-    resultingSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (Country *country in source)
     {
         if ([country.continentName isEqualToString:continentName] == YES)
             [resultingSet addObject:country];
     }
     
-    return resultingSet;
+    return [resultingSet copy];
 }
 
-- (NSSet *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet *)source
+- (NSSet *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country*> *)source
 {
-    NSEnumerator *countryEnumerator;
-    NSMutableSet *resultingSet;
-    Country *country;
-    
-    resultingSet = [NSMutableSet set];
-    countryEnumerator = [source objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
+
+    for (Country *country in source)
     {
         if ([country.continentName isEqualToString:continentName] == NO)
             [resultingSet addObject:country];
     }
     
-    return resultingSet;
+    return [resultingSet copy];
 }
 
 #pragma mark - Card set methods
 
-- (NSSet *) allOurCardSets
+- (NSSet<CardSet*> *) allOurCardSets
 {
     NSMutableSet *allCardSets = [NSMutableSet set];
     
@@ -332,7 +298,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         {
             for (RiskCard *card3 in playerCards)
             {
-                CardSet *cardSet = [CardSet cardSet:card1:card2:card3];
+                CardSet *cardSet = [[CardSet alloc] initCardSet:card1:card2:card3];
                 if (cardSet != nil)
                     [allCardSets addObject:cardSet];
             }
@@ -358,21 +324,17 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (BOOL) canTurnInCardSet
 {
-    NSInteger i, j, k;
-    NSInteger count;
+    NSInteger count = playerCards.count;
     RiskCard *card1, *card2, *card3;
-    BOOL hasValidSet;
+    BOOL hasValidSet = NO;
     
-    hasValidSet = NO;
-    count = playerCards.count;
-    
-    for (i = 0; hasValidSet == NO && i < count; i++)
+    for (NSInteger i = 0; hasValidSet == NO && i < count; i++)
     {
         card1 = playerCards[i];
-        for (j = i + 1; hasValidSet == NO && j < count; j++)
+        for (NSInteger j = i + 1; hasValidSet == NO && j < count; j++)
         {
             card2 = playerCards[j];
-            for (k = j + 1; k < count; k++)
+            for (NSInteger k = j + 1; k < count; k++)
             {
                 card3 = playerCards[k];
                 
@@ -392,14 +354,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (IBAction) showConsolePanel:(id)sender
 {
-    NSString *nibFile;
-    BOOL loaded;
-    
     if (consoleWindow == nil)
     {
         NSArray *tmpArr = nil;
-        nibFile = @"PlayerConsole";
-        loaded = [[NSBundle bundleForClass:[RiskPlayer class]] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
+        NSString *nibFile = @"PlayerConsole";
+        BOOL loaded = [[NSBundle bundleForClass:[RiskPlayer class]] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
         nibObjs = tmpArr;
         
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
@@ -436,7 +395,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         [consoleMessageText replaceCharactersInRange:selected withString:str];
         [consoleMessageText scrollRangeToVisible:selected];
         
-        if (pauseForContinueButton.state == 1)
+        if (pauseForContinueButton.state == NSOnState)
             [self waitForContinue];
     }
 }
