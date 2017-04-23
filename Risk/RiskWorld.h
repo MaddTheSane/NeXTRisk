@@ -14,6 +14,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const RKWorldName;
+
 /// This should own the background image for the map view if there will
 /// be more than one world.
 @interface RiskWorld : NSObject <NSCoding>
@@ -26,12 +28,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (RiskWorld*)defaultRiskWorld;
 
++ (nullable RiskWorld*)riskWorldFromBundle:(NSBundle*)riskBundle;
+
 + (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
 - (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RiskCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+
+@property (copy) NSImage *boardBackingImage;
+@property (readonly, strong) NSBundle *bundle;
 
 - (void) _buildAllCountries;
 - (void) _connectCountries;

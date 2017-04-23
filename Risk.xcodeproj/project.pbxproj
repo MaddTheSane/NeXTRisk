@@ -120,6 +120,7 @@
 		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
 		55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */; };
 		55F9CBF81EAC451E00914A1A /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
+		55F9CBF91EAC4B9A00914A1A /* MainRisk.riskworld in Resources */ = {isa = PBXBuildFile; fileRef = 550B53641CF62030004EAAFC /* MainRisk.riskworld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 553780CD1CC1990A00A2C08E;
 			remoteInfo = ChaoticSwift;
+		};
+		55F9CBFA1EAC4BA500914A1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 550B53631CF62030004EAAFC;
+			remoteInfo = MainRisk;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -815,6 +823,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55F9CBFB1EAC4BA500914A1A /* PBXTargetDependency */,
 				553780F71CC1AC7700A2C08E /* PBXTargetDependency */,
 				553780C41CC1984F00A2C08E /* PBXTargetDependency */,
 				553780C61CC1984F00A2C08E /* PBXTargetDependency */,
@@ -1000,6 +1009,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F9CBF91EAC4B9A00914A1A /* MainRisk.riskworld in Resources */,
 				55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */,
 				55377FD71CC15C2400A2C08E /* Human.rtf in Resources */,
 				55377FCD1CC15C2400A2C08E /* WorldInfoPanel.xib in Resources */,
@@ -1218,6 +1228,11 @@
 			isa = PBXTargetDependency;
 			target = 553780CD1CC1990A00A2C08E /* ChaoticSwift */;
 			targetProxy = 553780F61CC1AC7700A2C08E /* PBXContainerItemProxy */;
+		};
+		55F9CBFB1EAC4BA500914A1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 550B53631CF62030004EAAFC /* MainRisk */;
+			targetProxy = 55F9CBFA1EAC4BA500914A1A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

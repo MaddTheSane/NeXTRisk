@@ -193,7 +193,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
             
         case 1: // Human
-            image = [NSImage imageNamed:@"Human"];
+            image = [NSImage imageNamed:NSImageNameUser];
             aboutPlayerImageView.image = image;
             
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Human Player", tag + 1];

@@ -27,6 +27,8 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect;
 
+@property (copy) NSImage *boardBackingImage;
+
 - (void) drawBackground:(NSRect)rect;
 - (void) drawRect:(NSRect)rect;
 - (void) drawCountry:(Country *)aCountry;

@@ -13,6 +13,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #import "Continent.h"
 #import "RiskCard.h"
 
+NSString *const RKWorldName = @"RKWorldName";
+
 //======================================================================
 // A RiskWorld has a name, continents with countries, and neighboring
 // country data.
@@ -24,6 +26,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 #define RISKWORLD_DATAFILE @"RiskWorld"
 #define RiskWorld_VERSION 1
+
+NSBundle *currentBundle;
 
 @implementation RiskWorld
 @synthesize continents;
@@ -43,16 +47,43 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 {
     // Load default countries/shapes...
     
-    NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
-    NSAssert (thisBundle != nil, @"Could not get this bundle.");
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSAssert (mainBundle != nil, @"Could not get this bundle.");
     
-    NSString *path = [thisBundle pathForResource:RISKWORLD_DATAFILE ofType:@"data"];
-    NSAssert (path != nil, @"Could not get path to data file.");
+    NSURL *mainWorldURL = [mainBundle URLForResource:@"MainRisk" withExtension:@"riskworld"];
+    NSAssert (mainWorldURL != nil, @"Could not find main world bundle.");
+
+    NSBundle *mainWorldBundle = [NSBundle bundleWithURL:mainWorldURL];
+    NSAssert (mainWorldBundle != nil, @"Could not get main world bundle.");
     
-    RiskWorld *riskWorld = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    return [self riskWorldFromBundle:mainWorldBundle];
+}
+
++ (nullable RiskWorld*)riskWorldFromBundle:(NSBundle*)riskBundle
+{
+    NSDataAsset *datAsset = [[NSDataAsset alloc] initWithName:RISKWORLD_DATAFILE bundle:riskBundle];
+    NSData *worldData;
+    if (datAsset) {
+        worldData = datAsset.data;
+    } else {
+        NSString *path = [riskBundle pathForResource:RISKWORLD_DATAFILE ofType:@"data"];
+        if (!path) {
+            return nil;
+        }
+        worldData = [[NSData alloc] initWithContentsOfFile:path];
+        if (!worldData) {
+            return nil;
+        }
+    }
+    currentBundle = riskBundle;
+    
+    RiskWorld *riskWorld = [NSKeyedUnarchiver unarchiveObjectWithData:worldData];
     if (!riskWorld)
-        riskWorld = [NSUnarchiver unarchiveObjectWithFile:path];
+        riskWorld = [NSUnarchiver unarchiveObjectWithData:worldData];
     //NSLog (@"default risk world: %@", riskWorld);
+    
+    riskWorld.boardBackingImage = [riskBundle imageForResource:@"BoardBacking"];
+    riskWorld->_bundle = riskBundle;
     
     return riskWorld;
 }
@@ -226,9 +257,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (void) _buildAllCountries
 {
+    NSEnumerator<Continent*> *continentEnumerator;
+    
     [allCountries removeAllObjects];
     
-    for (Continent *continent in continents)
+    continentEnumerator = [continents objectEnumerator];
+    for (Continent *continent in continentEnumerator)
     {
         [allCountries unionSet:continent.countries];
     }

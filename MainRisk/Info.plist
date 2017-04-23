@@ -24,5 +24,7 @@
 	<string>Copyright © 2016 C.W. Betts. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>RKWorldName</key>
+	<string>Risk</string>
 </dict>
 </plist>

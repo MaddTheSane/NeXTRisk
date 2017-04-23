@@ -25,6 +25,7 @@ static NSImage *_boardBackingImage = nil;
 @implementation RiskMapView
 @synthesize delegate;
 @synthesize scaleFactor = currentScaleFactor;
+@synthesize boardBackingImage;
 
 + (void) initialize
 // set our version
@@ -51,10 +52,16 @@ static NSImage *_boardBackingImage = nil;
 
 + (void) loadClassImages
 {
-    NSBundle *thisBundle = [NSBundle bundleForClass:self];
-    NSAssert (thisBundle != nil, @"Could not get bundle.");
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSAssert (mainBundle != nil, @"Could not get this bundle.");
     
-    _boardBackingImage = [thisBundle imageForResource:BOARDBACKING];
+    NSURL *mainWorldURL = [mainBundle URLForResource:@"MainRisk" withExtension:@"riskworld"];
+    NSAssert (mainWorldURL != nil, @"Could not find main world bundle.");
+    
+    NSBundle *mainWorldBundle = [NSBundle bundleWithURL:mainWorldURL];
+    NSAssert (mainWorldBundle != nil, @"Could not get main world bundle.");
+    
+    _boardBackingImage = [mainWorldBundle imageForResource:BOARDBACKING];
     NSAssert1 (_boardBackingImage != nil, @"Could not load image: '%@'", BOARDBACKING);
 }
 

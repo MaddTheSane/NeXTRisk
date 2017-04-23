@@ -10,6 +10,8 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 #import "Country.h"
 
+extern NSBundle *currentBundle;
+
 //======================================================================
 // A RiskCard represents the country, type, image, and image name of
 // a card in the game.  If multiple RiskWorlds are allowed, then
@@ -43,14 +45,17 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 - (instancetype) initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName
 {
-    NSBundle *thisBundle;
-    
+    return [self initWithCardType:aCardType withCountry:aCountry imageNamed:anImageName bundle:currentBundle ?: [NSBundle bundleForClass:[self class]]];
+}
+
+- (instancetype)initWithCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName bundle:(NSBundle*)thisBundle
+{
     if (self = [super init]) {
         country = aCountry; // Country can be nil.
         cardType = aCardType;
         imageName = [anImageName copy];
         
-        thisBundle = [NSBundle bundleForClass:[self class]];
+        //thisBundle = [NSBundle bundleForClass:[self class]];
         NSAssert (thisBundle != nil, @"Could not get this bundle.");
         if (imageName.pathExtension) {
             imageName = imageName.stringByDeletingPathExtension;
@@ -60,6 +65,16 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
         if (!image) {
             image = [NSImage imageNamed:imageName];
         }
+        
+        if (!image && ![imageName hasPrefix:@"Cards/"]) {
+            imageName = [@"Cards/" stringByAppendingPathComponent:imageName];
+        }
+        
+        image = [thisBundle imageForResource:imageName];
+        if (!image) {
+            image = [NSImage imageNamed:imageName];
+        }
+
         NSAssert1 (image != nil, @"Couldn't load image: '%@'", imageName);
     }
     
