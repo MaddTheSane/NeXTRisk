@@ -226,12 +226,9 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (void) _buildAllCountries
 {
-    NSEnumerator<Continent*> *continentEnumerator;
-    
     [allCountries removeAllObjects];
     
-    continentEnumerator = [continents objectEnumerator];
-    for (Continent *continent in continentEnumerator)
+    for (Continent *continent in continents)
     {
         [allCountries unionSet:continent.countries];
     }
@@ -241,17 +238,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (void) _connectCountries
 {
-    NSEnumerator *neighborEnumerator;
-    RiskNeighbor *neighbor;
-    Country *country1, *country2;
-    
     if (countryNeighbors != nil)
     {
-        neighborEnumerator = [countryNeighbors objectEnumerator];
-        while (neighbor = [neighborEnumerator nextObject])
+        for (RiskNeighbor *neighbor in countryNeighbors)
         {
-            country1 = neighbor.country1;
-            country2 = neighbor.country2;
+            Country *country1 = neighbor.country1;
+            Country *country2 = neighbor.country2;
             [country1 setAdjacentToCountry:country2];
             [country2 setAdjacentToCountry:country1];
         }
@@ -263,13 +255,9 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 // Remove adjacency dependencies.
 - (void) _disconnectCountries
 {
-    NSEnumerator *countryEnumerator;
-    Country *country;
-    
     if (allCountries != nil)
     {
-        countryEnumerator = [allCountries objectEnumerator];
-        while (country = [countryEnumerator nextObject])
+        for (Country *country in allCountries)
         {
             [country resetAdjacentCountries];
         }
@@ -280,7 +268,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (NSSet *) allCountries
 {
-    return allCountries;
+    return [allCountries copy];
 }
 
 //----------------------------------------------------------------------
