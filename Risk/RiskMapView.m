@@ -51,16 +51,10 @@ static NSImage *_boardBackingImage = nil;
 
 + (void) loadClassImages
 {
-    NSBundle *thisBundle;
-    NSString *imagePath;
-    
-    thisBundle = [NSBundle bundleForClass:self];
+    NSBundle *thisBundle = [NSBundle bundleForClass:self];
     NSAssert (thisBundle != nil, @"Could not get bundle.");
     
-    imagePath = [thisBundle pathForImageResource:BOARDBACKING];
-    NSAssert1 (imagePath != nil, @"Could not find image: '%@'", BOARDBACKING);
-    
-    _boardBackingImage = [[NSImage alloc] initByReferencingFile:imagePath];
+    _boardBackingImage = [thisBundle imageForResource:BOARDBACKING];
     NSAssert1 (_boardBackingImage != nil, @"Could not load image: '%@'", BOARDBACKING);
 }
 

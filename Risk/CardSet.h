@@ -25,6 +25,6 @@ NSComparisonResult compareCardSetValues (id __nullable object1, id __nullable ob
 @property (readonly, strong, nonnull) RiskCard *card3;
 
 @property (readonly) NSInteger wildcardCount;
-- (int) countryCountForPlayerNumber:(Player)number;
+- (NSInteger) countryCountForPlayerNumber:(Player)number;
 
 @end

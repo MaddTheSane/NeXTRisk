@@ -116,7 +116,7 @@ static SNRandom *_instance = nil;
 
 //----------------------------------------------------------------------
 
-#define RANGE_FOR_PERCENT 1000000000
+#define RANGE_FOR_PERCENT 1000000000.0
 - (double) randomPercent
 {
     return (double)[self randomNumberWithMaximum:RANGE_FOR_PERCENT] / RANGE_FOR_PERCENT * 100;

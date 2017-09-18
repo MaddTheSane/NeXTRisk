@@ -31,7 +31,7 @@ private let SNUserPathOperation_VERSION = 1
 		return {}
 	}()
 	
-	class func setUpVersions() {
+	@objc class func setUpVersions() {
 		_=UserPath.doSomethingOnce
 	}
 	
@@ -112,7 +112,7 @@ private let SNUserPathOperation_VERSION = 1
 		}
 		
 		override var description: String {
-			var str = ""
+			var str = "<SNUserPathOperation: UNKNOWN>"
 			
 			switch (op) {
 			case .dps_arc:
@@ -172,11 +172,14 @@ private let SNUserPathOperation_VERSION = 1
 	}
 	
 	init?(coder aDecoder: NSCoder) {
-		operations = aDecoder.decodeObject() as? NSArray as? [Operation] ?? []
+		guard let tmpOps = aDecoder.decodeObject() as? NSArray as? [Operation] else {
+			return nil
+		}
+		operations = tmpOps
 		super.init()
 	}
 	
-	func toBezierPath() -> NSBezierPath {
+	@objc func toBezierPath() -> NSBezierPath {
 		let path = NSBezierPath()
 		for op in operations {
 			op.applyToBezierPath(path)

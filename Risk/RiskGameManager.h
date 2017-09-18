@@ -9,6 +9,8 @@
 
 #define MAX_PLAYERS 7
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString *const RGMGameOverNotification;
 
 @class RiskWorld, RiskPlayer, GameConfiguration, Country, RiskMapView, StatusView, ArmyView, CardPanelController;
@@ -92,9 +94,9 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) _logGameState;
 
-- (IBAction) showControlPanel:(id)sender;
-- (IBAction) showDiceInspector:(id)sender;
-- (IBAction) showWorldInfoPanel:(id)sender;
+- (IBAction) showControlPanel:(nullable id)sender;
+- (IBAction) showDiceInspector:(nullable id)sender;
+- (IBAction) showWorldInfoPanel:(nullable id)sender;
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
@@ -125,7 +127,7 @@ extern NSString *const RGMGameOverNotification;
 // Player menu support
 //======================================================================
 
-- (IBAction) showPlayerConsole:(id)sender;
+- (IBAction) showPlayerConsole:(nullable id)sender;
 
 //======================================================================
 // Establish Game
@@ -149,11 +151,11 @@ extern NSString *const RGMGameOverNotification;
 - (void) leavingInitialArmyPlacementPhase;
 
 - (void) endTurn;
-- (IBAction) executeCurrentPhase:(id)sender;
+- (IBAction) executeCurrentPhase:(nullable id)sender;
 - (BOOL) nextActivePlayer;
 
-- (IBAction) fortify:(id)sender;
-- (IBAction) endTurn:(id)sender;
+- (IBAction) fortify:(nullable id)sender;
+- (IBAction) endTurn:(nullable id)sender;
 
 - (void) moveAttackingArmies:(RiskArmyCount)minimum between:(Country *)source :(Country *)destination;
 - (void) fortifyArmiesFrom:(Country *)source;
@@ -230,8 +232,8 @@ extern NSString *const RGMGameOverNotification;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
 
 // For the currently active (interactive) player
-- (IBAction) reviewCards:(id)sender;
-- (IBAction) turnInCards:(id)sender;
+- (IBAction) reviewCards:(nullable id)sender;
+- (IBAction) turnInCards:(nullable id)sender;
 
 - (void) _loadCardPanel;
 
@@ -254,3 +256,5 @@ extern NSString *const RGMGameOverNotification;
 - (void) deactivatePlayerNumber:(Player)number;
 
 @end
+
+NS_ASSUME_NONNULL_END

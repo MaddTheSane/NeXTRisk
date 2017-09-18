@@ -14,6 +14,9 @@ int RiskInitialArmyCountForPlayers (int playerCount)
     
     NSCAssert (playerCount >= 2 && playerCount < 7, @"Player count out of range.");
 
+    if (playerCount < 2 || playerCount > 6) {
+        return 0;
+    }
     return armyCountForTotalPlayers[playerCount];
 }
 
@@ -241,7 +244,7 @@ NSString *NSStringFromGameState (GameState gameState)
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     
@@ -295,7 +298,7 @@ NSString *gameStateInfo (GameState gameState)
             
         default:
             NSLog (@"Unknown game state: %d", gameState);
-            str = nil;
+            str = [NSString stringWithFormat:@"<Unknown>, %d", gameState];
             break;
     }
     

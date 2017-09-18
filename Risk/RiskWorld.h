@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSArray<RiskCard*> *cards;
 }
 
-+ (RiskWorld*)defaultRiskWorld;
++ (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
 + (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
-@property (weak, readonly) NSSet<Country*> *allCountries;
+@property (copy, readonly) NSSet<Country*> *allCountries;
 - (nullable Continent *) continentNamed:(NSString *)continentName;
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, strong) NSArray<RiskCard*> *cards;

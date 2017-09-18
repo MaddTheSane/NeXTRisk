@@ -26,6 +26,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SNHeap<__covariant ObjectType> : NSObject
 {
     NSComparisonResult (*comparator_function)(ObjectType, ObjectType, void *);
@@ -41,14 +43,14 @@
 
 // Public
 
-+ (instancetype)heapUsingFunction:(NSComparisonResult (*)(ObjectType, ObjectType, void *))comparator context:(void *)aContext;
++ (instancetype)heapUsingFunction:(NSComparisonResult (*)(ObjectType, ObjectType, void *__nullable))comparator context:(nullable void *)aContext;
 
-- (instancetype)initUsingFunction:(NSComparisonResult (*)(ObjectType, ObjectType, void *))comparator context:(void *)aContext NS_DESIGNATED_INITIALIZER;
+- (instancetype)initUsingFunction:(NSComparisonResult (*)(ObjectType, ObjectType, void *__nullable))comparator context:(nullable void *)aContext NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (void) insertObject:(ObjectType)anObject;
-- (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator;
-- (ObjectType)extractObject;
-@property (readonly, strong) ObjectType firstObject;
+- (void) insertObjectsFromEnumerator:(NSEnumerator<ObjectType> *)objectEnumerator;
+- (nullable ObjectType)extractObject;
+@property (readonly, strong, nullable) ObjectType firstObject;
 
 - (void) removeAllObjects;
 
@@ -58,3 +60,6 @@
 - (void) removeObject:(ObjectType)anObject;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

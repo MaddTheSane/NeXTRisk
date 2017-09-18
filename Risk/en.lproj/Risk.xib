@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -18,6 +18,7 @@
                     <menu key="submenu" title="Risk" id="27">
                         <items>
                             <menuItem title="About NeXTRisk" id="25">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="info:" target="-1" id="86"/>
                                 </connections>
@@ -82,7 +83,8 @@
                             <menuItem title="Save All" id="61"/>
                             <menuItem title="Revert to Saved" id="55"/>
                             <menuItem isSeparatorItem="YES" id="D5R-Gg-J7e"/>
-                            <menuItem title="Change Setup..." id="163">
+                            <menuItem title="Change Setup…" id="163">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showGameSetupPanel:" target="42" id="164"/>
                                 </connections>
@@ -312,17 +314,20 @@
                 <menuItem title="Tools" id="87">
                     <menu key="submenu" title="Tools" id="89">
                         <items>
-                            <menuItem title="Control Panel..." id="88">
+                            <menuItem title="Control Panel…" id="88">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showControlPanel:" target="-1" id="158"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Dice Inspector..." id="92">
+                            <menuItem title="Dice Inspector…" id="92">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showDiceInspector:" target="-1" id="93"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="World Info..." id="155">
+                            <menuItem title="World Info…" id="155">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showWorldInfoPanel:" target="-1" id="157"/>
                                 </connections>
@@ -331,7 +336,8 @@
                             <menuItem title="Player 1" tag="1" id="95">
                                 <menu key="submenu" title="Player 1" id="98">
                                     <items>
-                                        <menuItem title="Console..." tag="1" id="143">
+                                        <menuItem title="Console…" tag="1" id="143">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="149"/>
                                             </connections>
@@ -342,7 +348,8 @@
                             <menuItem title="Player 2" tag="2" id="115">
                                 <menu key="submenu" title="Player 2" id="117">
                                     <items>
-                                        <menuItem title="Console..." tag="2" id="118">
+                                        <menuItem title="Console…" tag="2" id="118">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="150"/>
                                             </connections>
@@ -353,7 +360,8 @@
                             <menuItem title="Player 3" tag="3" id="119">
                                 <menu key="submenu" title="Player 3" id="121">
                                     <items>
-                                        <menuItem title="Console..." tag="3" id="122">
+                                        <menuItem title="Console…" tag="3" id="122">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="151"/>
                                             </connections>
@@ -364,7 +372,8 @@
                             <menuItem title="Player 4" tag="4" id="123">
                                 <menu key="submenu" title="Player 4" id="125">
                                     <items>
-                                        <menuItem title="Console..." tag="4" id="126">
+                                        <menuItem title="Console…" tag="4" id="126">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="152"/>
                                             </connections>
@@ -375,7 +384,8 @@
                             <menuItem title="Player 5" tag="5" id="135">
                                 <menu key="submenu" title="Player 5" id="138">
                                     <items>
-                                        <menuItem title="Console..." tag="5" id="136">
+                                        <menuItem title="Console…" tag="5" id="136">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="153"/>
                                             </connections>
@@ -386,7 +396,8 @@
                             <menuItem title="Player 6" tag="6" id="139">
                                 <menu key="submenu" title="Player 6" id="140">
                                     <items>
-                                        <menuItem title="Console..." tag="6" id="142">
+                                        <menuItem title="Console…" tag="6" id="142">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="showPlayerConsole:" target="-1" id="154"/>
                                             </connections>
@@ -424,7 +435,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="sbL-m0-OMt">
                         <items>
-                            <menuItem title="Application Help" keyEquivalent="?" id="olc-Jx-uaD">
+                            <menuItem title="Risk Help" keyEquivalent="?" id="olc-Jx-uaD">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="5V2-OC-Oat"/>
                                 </connections>

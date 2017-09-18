@@ -25,7 +25,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     Player number;
     CardSet *cardSet1, *cardSet2;
     NSInteger wildcardCount1, wildcardCount2;
-    int countryCount1, countryCount2;
+    NSInteger countryCount1, countryCount2;
     
     number = (Player)context;
     cardSet1 = object1;
@@ -173,9 +173,9 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-- (int) countryCountForPlayerNumber:(Player)number
+- (NSInteger) countryCountForPlayerNumber:(Player)number
 {
-    int count;
+    NSInteger count;
     
     count = 0;
     

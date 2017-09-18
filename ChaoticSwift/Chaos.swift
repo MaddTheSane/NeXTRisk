@@ -17,7 +17,7 @@ public class Chaos: RiskPlayer {
 		super.init(playerName: aName, number: number, gameManager: aManager)
 		
 		let world = gameManager.world
-		let continents = world!.continents
+		let continents = world.continents
 		
 		unoccupiedContinents.formIntersection(continents.keys)
 	}
@@ -43,7 +43,7 @@ public class Chaos: RiskPlayer {
 		// 2. Randomly choose one of these, updating its continent flag
 		// 3. Otherwise, randomly pick country
 		
-		let unoccupiedCountries = gameManager.unoccupiedCountries!
+		let unoccupiedCountries = gameManager.unoccupiedCountries
 		assert(unoccupiedCountries.count > 0, "No unoccupied countries.")
 		var array = [Country]()
 		let country: Country
@@ -141,7 +141,7 @@ public class Chaos: RiskPlayer {
 	public override func placeFortifyingArmies(_ count: Int32, from source: Country) {
 		var destination: Country?
 		
-		let ourNeighborCountries = source.ourNeighborCountries!
+		let ourNeighborCountries = source.ourNeighborCountries
 		
 		for country in ourNeighborCountries {
 			if country.hasEnemyNeighbors {
@@ -168,7 +168,7 @@ public class Chaos: RiskPlayer {
 
 	/// attack the weakest neighbor (bully tactics).
 	func doAttackFromCountry(_ attacker: Country) -> Bool {
-		let enemies = attacker.enemyNeighborCountries!
+		let enemies = attacker.enemyNeighborCountries
 		var weakest: Country?
 		var attackResult = AttackResult()
 		attackResult.conqueredCountry = false

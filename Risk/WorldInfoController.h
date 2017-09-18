@@ -5,6 +5,8 @@
 
 #import <AppKit/NSTableView.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class RiskWorld;
 @class Continent;
 @class NSWindow;
@@ -34,6 +36,8 @@
 - (void) orderByCountryCount;
 - (void) orderByBonusValue;
 
-- (IBAction) reorder:(id)sender;
+- (IBAction) reorder:(nullable id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -216,11 +216,9 @@ static struct image_names class_images[] =
 
 - (void) waitForContinue
 {
-    NSInteger retVal;
-    
-    NSBeep ();
+    NSBeep();
     [dicePanel orderFront:self];
-    retVal = [NSApp runModalForWindow:dicePanel];
+    [NSApp runModalForWindow:dicePanel];
 }
 
 //----------------------------------------------------------------------
