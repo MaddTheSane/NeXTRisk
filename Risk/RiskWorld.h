@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (RiskWorld*)defaultRiskWorld;
+@property (class, readonly, copy) RiskWorld *defaultRiskWorld;
 
 + (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 

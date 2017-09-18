@@ -59,7 +59,7 @@ class Brain: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let defaults = UserDefaults.standard
         
-        let riskWorld = RiskWorld.default()
+        let riskWorld = RiskWorld.default
         gameManager.world = riskWorld
         
         loadRiskPlayerBundles();
