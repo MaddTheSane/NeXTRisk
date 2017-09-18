@@ -26,7 +26,7 @@
 				cardManager:cardmanager
 {
 	[super initPlayerNum:pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager];
+			 cardManager:cardmanager];
 	return self;
 }
 #endif
@@ -34,34 +34,30 @@
 // *****************subclass responsibilities*********************
 // "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "Western United States", "Eastern United States", "Alberta", "Northwest Territory", "Ontario", "Alaska", "Quebec", "Greenland", "Iceland", "Great Britain", "Western Europe", "Southern Europe", "Northern Europe", "Ukraine", "Scandinavia", "South Africa", "Congo", "East Africa", "Egypt", "Madagascar", "Middle East", "India", "Siam", "China", "Afghanistan", "Ural", "Siberia", "Mongolia", "Irkutsk", "Yakutsk", "Kamchatka", "Japan", "Western Australia", "Eastern Australia", "New Guinea", "Indonesia", 
 
-- yourChooseCountry
+- (void)chooseCountry
 {
 	id unoccList = [self unoccupiedCountries];
 	id takeCountry= nil;
-       	id preferedCountries= [self preferedCountriesEmpty: YES];
+	id preferedCountries= [self preferedCountriesEmpty: YES];
 	
 	if ([unoccList count]==0)  {
-		return nil;
+		return;
 	}
-        // try preferred countries first, select one free country randomly
-
+	// try preferred countries first, select one free country randomly
+	
 	if ( [preferedCountries count] > 0) {
-	    takeCountry= [preferedCountries objectAt: [rng randMax: [preferedCountries count] - 1] ];
+		takeCountry= [preferedCountries objectAt: [rng randMax: [preferedCountries count] - 1] ];
 	}
 	// fprintf( stderr, "choose: prefList: %d, random chosen %s\n", [preferedCountries count],[takeCountry name] );
 	
-        // else inherited chaotic behaviour
-
+	// else inherited chaotic behaviour
+	
 	if (takeCountry==nil) {
-	    [super yourChooseCountry];
+		[super chooseCountry];
 	}
 	else {
-	    [self occupyCountry:takeCountry];
+		[self occupyCountry:takeCountry];
 	}
-	
-	[preferedCountries free];
-	[unoccList free];
-	return self;
 }
 
 - (void)placeInitialArmies:(int)numArmies
@@ -76,9 +72,9 @@
 	//fprintf(stderr, "initial: %d\n", numArmies);
 	
 	if ([mycountries count]==0)
-		return nil;
+		return;
 	
-	// if one of our pref Countries is available choose one randomly, with less than numArmies 
+	// if one of our pref Countries is available choose one randomly, with less than numArmies
 	// but only if we do not already have anz enemy neighbors advantage
 	anz= MAX(numArmies, 5);
 	
@@ -86,7 +82,7 @@
 		for (try=0; try< 10 && inCountry==nil; ++try) {
 			if ([preferedCountries count] > 0) {
 				inCountry= [self randomFromList: preferedCountries maxArmies:numArmies-1];
-				if (tries > 5 && inCountry && 
+				if (tries > 5 && inCountry &&
 					[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
 					inCountry= nil;
 			}
@@ -102,7 +98,7 @@
 			//fprintf( stderr, "initial place: I am %d, inCountry=%s belongs to %d , has strongest enemyNeighbor %s belongs to %d, my strongest neighbor %s belongs to %d\n", myPlayerNum, [inCountry name], [inCountry player], [en name], [en player], [my name], [my player]);
 			if ([my player]==myPlayerNum)
 				inCountry= my;
-			if (tries > 5 && inCountry && 
+			if (tries > 5 && inCountry &&
 				[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
 				inCountry= nil;
 		}
@@ -134,51 +130,51 @@
 	if ([mycountries count]==0)  {
 		return nil;
 	}
-
-// turn in cards
-
+	
+	// turn in cards
+	
 	numArmies += [self turnInCards];
 	//fprintf(stderr, " +cards > %d \n", numArmies);
 	// fprintf( stderr, "new %d armies, %d countries\n", numArmies, [mycountries count] );
 	
-// find own country with largest plus of own armies compared to all its neighbours
-// repeatedly for all armies to be set
-
+	// find own country with largest plus of own armies compared to all its neighbours
+	// repeatedly for all armies to be set
+	
 	try= 20;
 	anz= MAX(numArmies, 4);
 	while (numArmies > 0 && try-- > 0) {
-	    
-	    inCountry= [self myStrongestNeighborTo:[self mostSuperiorEnemyTo:[self findMyCountryWithMostSuperiorEnemy]]];
-	    if ([inCountry player] != myPlayerNum) {
-		fprintf( stderr, "*** this should not happen\n");
-		inCountry= [self findMyCountryWithMostSuperiorEnemy];
-	    }
-	    if (try > 5 && inCountry && 
-		[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
-		inCountry= nil;
-    
-	    if (inCountry == nil) {
-		fprintf( stderr, "turn, no country to set in\n" );
-		// we don't know what to do, so we behave chaotic like super
-	    }
-	    else {
-		numArmies-= (chunk= MIN(anz/2, numArmies));
-		[self placeArmies:chunk inCountry:inCountry];
-	    }
+		
+		inCountry= [self myStrongestNeighborTo:[self mostSuperiorEnemyTo:[self findMyCountryWithMostSuperiorEnemy]]];
+		if ([inCountry player] != myPlayerNum) {
+			fprintf( stderr, "*** this should not happen\n");
+			inCountry= [self findMyCountryWithMostSuperiorEnemy];
+		}
+		if (try > 5 && inCountry &&
+			[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
+			inCountry= nil;
+		
+		if (inCountry == nil) {
+			fprintf( stderr, "turn, no country to set in\n" );
+			// we don't know what to do, so we behave chaotic like super
+		}
+		else {
+			numArmies-= (chunk= MIN(anz/2, numArmies));
+			[self placeArmies:chunk inCountry:inCountry];
+		}
 	}
 	[self placeArmies:numArmies];
-
 	
-// now start attacking. 
+	
+	// now start attacking.
 	
 	for (try=3; try>=0 && !win; --try)
-	    win= [self attackFromMostThreatenedCountryUntilLeft: try+2];
+		win= [self attackFromMostThreatenedCountryUntilLeft: try+2];
 	if (! win)
-	    for (try=3; try>=0 && !win; --try)
-		win= [self attackFromLeastThreatenedCountryUntilLeft: try+1];
-
-// only fortify if we haven't won the game 
-
+		for (try=3; try>=0 && !win; --try)
+			win= [self attackFromLeastThreatenedCountryUntilLeft: try+1];
+	
+	// only fortify if we haven't won the game
+	
 	// fprintf( stderr, "now fortify\n" );
 	if (!win)  {
 		[self fortifyPosition];
@@ -214,11 +210,11 @@
 	
 	for (i=0; i<cnt; i++)
 	{
-	    c= [countryList objectAt:i];
-	    
+		c= [countryList objectAt:i];
+		
 		if (!strcmp(name, [c name]))
 		{
-                        // fprintf(stderr, "Got:%s Wanted:%s\n",[[countryList objectAt:i] name], name); 
+			// fprintf(stderr, "Got:%s Wanted:%s\n",[[countryList objectAt:i] name], name);
 			[countryList free];
 			return c;
 		}
@@ -230,75 +226,75 @@
 
 - preferedCountriesEmpty: (BOOL)yes
 {
-    // return List of following countries, which are 
-    // Yes: also empty
-    // No:  belong to myself
-	char *preferedCountries[]= { "Greenland", "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Argentina", "Peru", "Venezuela", "Brazil", "Iceland",  "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt", 
-"" };
+	// return List of following countries, which are
+	// Yes: also empty
+	// No:  belong to myself
+	char *preferedCountries[]= { "Greenland", "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Argentina", "Peru", "Venezuela", "Brazil", "Iceland",  "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt",
+		"" };
 	id list= [[List alloc] initCount: 20];
 	int j;
 	id c;
 	
-		
+	
 	for (j=0; *preferedCountries[j] != '\0'; j++) {
-	    c= [self getCountryNamed: preferedCountries[j]];
-	    // fprintf( stderr, "c=%s, wanted %s\n", [c name], preferedCountries[j] );
-	    if ( c!= nil && ((yes && [c armies] < 1) || (!yes && [c player]==myPlayerNum)) )
-		[list addObject: c];
+		c= [self getCountryNamed: preferedCountries[j]];
+		// fprintf( stderr, "c=%s, wanted %s\n", [c name], preferedCountries[j] );
+		if ( c!= nil && ((yes && [c armies] < 1) || (!yes && [c player]==myPlayerNum)) )
+			[list addObject: c];
 	}
 	return list;
 }
 
 - randomFromList:list maxArmies:(int)anz
 {
-    int i;
-    id r=nil;
-    
-    id l= [[List alloc] init];
-    
-    for (i= 0; i< [list count]; ++i)
-	if ([[list objectAt:i] armies] <= anz) [l addObject:[list objectAt:i]];
-    if ([l count] > 0)
-	r= [l objectAt:[rng randMax:[l count]-1] ];
-    [l free];
-    return r;
+	int i;
+	id r=nil;
+	
+	id l= [[List alloc] init];
+	
+	for (i= 0; i< [list count]; ++i)
+		if ([[list objectAt:i] armies] <= anz) [l addObject:[list objectAt:i]];
+	if ([l count] > 0)
+		r= [l objectAt:[rng randMax:[l count]-1] ];
+	[l free];
+	return r;
 }
 
 - mostSuperiorEnemyTo:country
 {
-    id ret= nil;
-    int i;
-    id list= [self enemyNeighborsTo:country];
-    int d= -999;
-    id en;
-    
-    for (i= 0; i< [list count]; ++i) {
-	en= [list objectAt:i];
-	if (i==0 || [en armies] > d) {
-	    d= [en armies];
-	    ret= en;
+	id ret= nil;
+	int i;
+	id list= [self enemyNeighborsTo:country];
+	int d= -999;
+	id en;
+	
+	for (i= 0; i< [list count]; ++i) {
+		en= [list objectAt:i];
+		if (i==0 || [en armies] > d) {
+			d= [en armies];
+			ret= en;
+		}
 	}
-    }
-    [list free];
-    return ret;
+	[list free];
+	return ret;
 }
 
 - myStrongestNeighborTo:en
 {
-    id ret= nil;
-    int i;
-    id l= [self neighborsTo:en];
-    int d= -999;
-    id n;
-    for (i=0; i<[l count]; ++i) {
-	n= [l objectAt:i];
-	if ( (ret==nil || [n armies]>d) && [n player]==myPlayerNum ) {
-	    d= [n armies];
-	    ret= n;
+	id ret= nil;
+	int i;
+	id l= [self neighborsTo:en];
+	int d= -999;
+	id n;
+	for (i=0; i<[l count]; ++i) {
+		n= [l objectAt:i];
+		if ( (ret==nil || [n armies]>d) && [n player]==myPlayerNum ) {
+			d= [n armies];
+			ret= n;
+		}
 	}
-    }
-    [l free];
-    return ret;
+	[l free];
+	return ret;
 }
 
 - (BOOL)doAttackFrom:fromc
@@ -318,8 +314,8 @@
 	
 	// figure out which neighbor to attack
 	if (en == nil)  {
-	    SLEEP;
-	    return NO;
+		SLEEP;
+		return NO;
 	}
 	// attack the weakest neighbor (bully tactics)
 	toc = [en objectAt:0];
@@ -337,17 +333,17 @@
 	minArmies = [rng randMin:1 max:[fromc armies]/3+1]; //js bully
 	
 	if (minArmies >= [fromc armies])  {
-	    SLEEP;
-	    return NO;
+		SLEEP;
+		return NO;
 	}
-		
+	
 	// now attack
-	if ([self attackUntilLeft:minArmies from:fromc to:toc victory:&vict 
-					fromArmies:&fa toArmies:&ta vanquished:&vanq weWin:&win]) {
+	if ([self attackUntilLeft:minArmies from:fromc to:toc victory:&vict
+				   fromArmies:&fa toArmies:&ta vanquished:&vanq weWin:&win]) {
 		// if we didn't conquer the country, there is nothing more to do
 		if (!vict)  {
-		    SLEEP;
-		    return NO;
+			SLEEP;
+			return NO;
 		}
 		// if we've won, there is no need to continue
 		if (win)  {
@@ -359,8 +355,8 @@
 			// move half of them into toc.
 			
 			// for diagnostic
-//			[self setNotes:"sent by -(BOOL)doAttackFrom:.  doAttackFrom "
-//						"advanced attacking forces."];
+			//			[self setNotes:"sent by -(BOOL)doAttackFrom:.  doAttackFrom "
+			//						"advanced attacking forces."];
 			
 			// move half
 			[self moveArmies:7*fa/8 from:fromc to:toc]; //js fu man chu
@@ -382,23 +378,23 @@
 			}
 		}
 		// we didn't win if we got here
-	    SLEEP;
+		SLEEP;
 		return NO;
 	}  else  {
-	    // the attack failed... we didn't win
-	    SLEEP;
-	    return NO;
+		// the attack failed... we didn't win
+		SLEEP;
+		return NO;
 	}
 }
 
 - (int)sumEnemyNeighborsTo:c
 {
-    int s,i;
-    id l= [self enemyNeighborsTo:c];
-    for (s=0, i= 0; i<[l count]; ++i)
-	s+= [[l objectAt:i] armies];
-    [l free];
-    return s;
+	int s,i;
+	id l= [self enemyNeighborsTo:c];
+	for (s=0, i= 0; i<[l count]; ++i)
+		s+= [[l objectAt:i] armies];
+	[l free];
+	return s;
 }
 
 @end

@@ -10,8 +10,8 @@
 
 // *****************subclass responsibilities*********************
 
-- yourChooseCountry;
-- placeInitialArmies:(int)numArmies;
+- (void)chooseCountry;
+- (void)placeInitialArmies:(RiskArmyCount)count;
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
 - (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 - (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;

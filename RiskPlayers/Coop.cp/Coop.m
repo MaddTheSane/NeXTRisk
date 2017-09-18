@@ -9,24 +9,23 @@
 
 @implementation Coop
 
-+ initialize
++ (void)initialize
 {
 	if (self == [Coop class])  {
 		[self setVersion:1];
 	}
-	return self;
 }
 
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)myPlayerNum gameManager:(RiskGameManager *)aManager
 {
-    if (self = [super initWithPlayerName:aName number:myPlayerNum gameManager:aManager]) {
+	if (self = [super initWithPlayerName:aName number:myPlayerNum gameManager:aManager]) {
 		[NSBundle loadNibNamed:@"Coop" owner:self];
 		[(NSFormCell*)[myPlayerNumForm cellAtIndex:0] setIntegerValue:myPlayerNum];
-        //[diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
-        [diagnosticPanel orderFront:self];
-    }
+		//[diagnosticPanel setBecomeKeyOnlyIfNeeded:YES];
+		[diagnosticPanel orderFront:self];
+	}
 	
-    return self;
+	return self;
 }
 
 // *****************subclass responsibilities*********************
@@ -34,19 +33,19 @@
 
 - (void)chooseCountry;
 {
-    int i,j;
+	int i,j;
 	NSArray<Country *> *unoccList = [gameManager unoccupiedCountries];
 	Country *country;
 	id takeCountry= nil;
-// if one of the following is available, take it.
+	// if one of the following is available, take it.
 	const char *const preferedCountries[]= { "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Greenland", "Iceland", "Argentina", "Peru", "Venezuela", "Brazil", "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt",
-"" };
+		"" };
 	
 	if ([unoccList count]==0)  {
 		return;
 	}
-// try preferred countries first
-
+	// try preferred countries first
+	
 	for (j=0; *preferedCountries[j] != '\0' && takeCountry==nil; j++) {
 		for (i=0; i< [unoccList count] && takeCountry==nil; ++i) {
 			country= [unoccList objectAtIndex:i];
@@ -57,15 +56,15 @@
 			}
 		}
 	}
-
-// else inherited chaotic behaviour
-
+	
+	// else inherited chaotic behaviour
+	
 	if (takeCountry==nil) {
-	    [super chooseCountry];
+		[super chooseCountry];
 	} else {
-	    [self setNotes:@"sent by -yourChooseCountry.  "
-		  "yourChooseCountry chose a country at random."];
-	    [self occupyCountry:takeCountry];
+		[self setNotes:@"sent by -yourChooseCountry.  "
+		 "yourChooseCountry chose a country at random."];
+		[self occupyCountry:takeCountry];
 	}
 }
 
@@ -75,7 +74,7 @@
 	char *preferedCountries[]= { "Indonesia", "New Guinea", "Greenland", "Iceland", "Brazil", "Central America", "North Africa", "" };
 	int j;
 	Country *inCountry= nil;
-
+	
 	if ([mycountries count]==0) {
 		[self turnDone];
 		return;
@@ -95,15 +94,15 @@
 		}
 	}
 	if (inCountry==nil) {
-	    inCountry= [self findMyCountryWithMostInferiorEnemy];
+		inCountry= [self findMyCountryWithMostInferiorEnemy];
 	}
 	
 	if (inCountry==nil) {
-	    // fprintf( stderr, "yourInitialPlaceArmies calls super\n" );
-	    [super placeInitialArmies: numArmies];
+		// fprintf( stderr, "yourInitialPlaceArmies calls super\n" );
+		[super placeInitialArmies: numArmies];
 	}
 	else {
-	    [self placeArmies:numArmies inCountry:inCountry];
+		[self placeArmies:numArmies inCountry:inCountry];
 	}
 	[self turnDone];
 }
@@ -120,19 +119,19 @@
 		[self turnDone];
 		return;
 	}
-
+	
 	// turn in cards
-
+	
 	[gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
 	numArmies += [self turnInCards];
 	// fprintf( stderr, "new %d armies, %d countries\n", numArmies, [mycountries count] );
 	
-// find own country with largest plus of own armies compared to all its neighbours
-// repeatedly for all armies to be set
-
-	    
+	// find own country with largest plus of own armies compared to all its neighbours
+	// repeatedly for all armies to be set
+	
+	
 	inCountry= [self findMyCountryWithMostInferiorEnemy];
-
+	
 	if (inCountry == nil) {
 		// we don't know what to do, so we behave chaotic like super
 		[super placeArmies:numArmies];
@@ -142,15 +141,15 @@
 		[self setNotes: [inCountry countryName] ];
 	}
 	
-// now start attacking. 
+	// now start attacking.
 	
-//	win= [self attackFromMostThreatenedCountry];
+	//	win= [self attackFromMostThreatenedCountry];
 	win= [self attackFromLeastThreatenedCountryUntilLeft: 1];
-//	fprintf( stderr, "doAttack %s\n", [inCountry name] );
-//	win= [self doAttackFrom: inCountry];
+	//	fprintf( stderr, "doAttack %s\n", [inCountry name] );
+	//	win= [self doAttackFrom: inCountry];
 	
-// only fortify if we haven't won the game
-
+	// only fortify if we haven't won the game
+	
 	// fprintf( stderr, "now fortify\n" );
 	if (!win)  {
 		[gameManager fortifyArmiesFrom:inCountry];
@@ -219,9 +218,9 @@
 }
 #endif
 
-- (NSArray<Continent*>*)enemyNeighborsToCountry:(Country*)country
+- (NSArray<Country*>*)enemyNeighborsToCountry:(Country*)country
 {
-	NSMutableArray *initialCountryHeap = [[NSMutableArray alloc] init];
+	NSMutableArray<Country*> *initialCountryHeap = [[NSMutableArray alloc] init];
 	for (Country* neighbor in country.neighborCountries) {
 		if (neighbor.playerNumber != playerNumber) {
 			[initialCountryHeap addObject:country];
@@ -251,21 +250,21 @@
 
 - (Country *)findAdjacentEnemyCountryMostInferiorTo:(Country *) country
 {
-    int i;
-    int diff, maxDiff= +9999;
-    id enemiesList= [self enemyNeighborsToCountry: country];
-    Country *adj;
-    Country *supCountry= country;
-
-    for (i= 0; i< [enemiesList count]; ++i) {
-	adj= [enemiesList objectAtIndex: i];
-	if ( (diff= ([adj movableTroopCount] - [country troopCount]) ) < maxDiff ) {
-	    maxDiff= diff;
-	    supCountry= adj;
+	int i;
+	int diff, maxDiff= +9999;
+	NSArray *enemiesList= [self enemyNeighborsToCountry: country];
+	Country *adj;
+	Country *supCountry= country;
+	
+	for (i= 0; i< [enemiesList count]; ++i) {
+		adj= [enemiesList objectAtIndex: i];
+		if ( (diff= ([adj movableTroopCount] - [country troopCount]) ) < maxDiff ) {
+			maxDiff= diff;
+			supCountry= adj;
+		}
 	}
-    }
-    // fprintf( stderr, "Most inferior enemy to %s is %s\n", [country name], [supCountry name]);
-    return supCountry;
+	// fprintf( stderr, "Most inferior enemy to %s is %s\n", [country name], [supCountry name]);
+	return supCountry;
 }
 
 - (Country *)findMyCountryWithMostSuperiorEnemy
@@ -276,14 +275,14 @@
 	//int armiesFromCards;
 	int armiesDiff;
 	id adjacentEnemyCountryMostSuperior;
-
+	
 	for (Country *country in mycountries) {
-	    adjacentEnemyCountryMostSuperior= [self findAdjacentEnemyCountryMostSuperiorTo: country ];
-	    if (adjacentEnemyCountryMostSuperior != country && (armiesDiff= [adjacentEnemyCountryMostSuperior troopCount] - [country movableTroopCount]) > maxDiffInArmiesForInCountry) {
-		// fprintf( stderr, "worse enemy to %s found: %s\n", [country name], [adjacentEnemyCountryMostSuperior name]);
-		maxDiffInArmiesForInCountry= armiesDiff;
-		inCountry= country;
-	    }
+		adjacentEnemyCountryMostSuperior= [self findAdjacentEnemyCountryMostSuperiorTo: country ];
+		if (adjacentEnemyCountryMostSuperior != country && (armiesDiff= [adjacentEnemyCountryMostSuperior troopCount] - [country movableTroopCount]) > maxDiffInArmiesForInCountry) {
+			// fprintf( stderr, "worse enemy to %s found: %s\n", [country name], [adjacentEnemyCountryMostSuperior name]);
+			maxDiffInArmiesForInCountry= armiesDiff;
+			inCountry= country;
+		}
 	}
 	return inCountry;
 }
@@ -373,7 +372,7 @@
 	
 	// repeatedly attack from country with largest enemy
 	// (but do not neccessarily attack largest enemy)
-
+	
 	while ( (inCountry= [self findMyCountryWithMostSuperiorEnemy] ) != nil) {
 		//fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
 		if ([inCountry movableTroopCount]  <= untilLeft)
@@ -422,13 +421,13 @@
 {
 	BOOL retVal;
 	
-	retVal = [super attackOnceFrom:fromCountry to:toCountry 
-					victory:victory fromArmies:fromArmies 
-					toArmies:toArmies vanquished:vanquished
-					weWin:wewin];
+	retVal = [super attackOnceFrom:fromCountry to:toCountry
+						   victory:victory fromArmies:fromArmies
+						  toArmies:toArmies vanquished:vanquished
+							 weWin:wewin];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(BOOL)attackOnceFrom: to: victory: " 
-					"fromArmies: toArmies: vanquished: weWin:" at:0];
+	[functionCalledForm setStringValue:"(BOOL)attackOnceFrom: to: victory: "
+	 "fromArmies: toArmies: vanquished: weWin:" at:0];
 	[args1Form setTitle:"fromCountry" at:0];
 	if (fromCountry == nil)  {
 		[args1Form setStringValue:"nil" at:0];
@@ -483,13 +482,13 @@
 {
 	BOOL retVal;
 	
-	retVal = [super attackTimes:times from:fromCountry to:toCountry 
-					victory:victory fromArmies:fromArmies 
-					toArmies:toArmies vanquished:vanquished
-					weWin:wewin];
+	retVal = [super attackTimes:times from:fromCountry to:toCountry
+						victory:victory fromArmies:fromArmies
+					   toArmies:toArmies vanquished:vanquished
+						  weWin:wewin];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(BOOL)attackTimes: from: to: victory: " 
-					"fromArmies: toArmies: vanquished: weWin:" at:0];
+	[functionCalledForm setStringValue:"(BOOL)attackTimes: from: to: victory: "
+	 "fromArmies: toArmies: vanquished: weWin:" at:0];
 	[args1Form setTitle:"times" at:0];
 	[args1Form setIntValue:times at:0];
 	[args1Form setTitle:"fromCountry" at:1];
@@ -546,13 +545,13 @@
 {
 	BOOL retVal;
 	
-	retVal = [super attackUntilLeft:untilLeft from:fromCountry to:toCountry 
-					victory:victory fromArmies:fromArmies 
-					toArmies:toArmies vanquished:vanquished
-					weWin:wewin];
+	retVal = [super attackUntilLeft:untilLeft from:fromCountry to:toCountry
+							victory:victory fromArmies:fromArmies
+						   toArmies:toArmies vanquished:vanquished
+							  weWin:wewin];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:"(BOOL)attackUntilLeft: from: to: "
-					"victory: fromArmies: toArmies: vanquished: weWin:" at:0];
+	 "victory: fromArmies: toArmies: vanquished: weWin:" at:0];
 	[args1Form setTitle:"untilLeft" at:0];
 	[args1Form setIntValue:untilLeft at:0];
 	[args1Form setTitle:"fromCountry" at:1];
@@ -609,13 +608,13 @@
 {
 	BOOL retVal;
 	
-	retVal = [super attackUntilCantFrom:fromCountry to:toCountry 
-					victory:victory fromArmies:fromArmies 
-					toArmies:toArmies vanquished:vanquished
-					weWin:wewin];
+	retVal = [super attackUntilCantFrom:fromCountry to:toCountry
+								victory:victory fromArmies:fromArmies
+							   toArmies:toArmies vanquished:vanquished
+								  weWin:wewin];
 	[self clearArgForms];
 	[functionCalledForm setStringValue:"(BOOL)attackUntilCantFrom: to: "
-					"victory: fromArmies: toArmies: vanquished: weWin:" at:0];
+	 "victory: fromArmies: toArmies: vanquished: weWin:" at:0];
 	[args1Form setTitle:"fromCountry" at:0];
 	if (fromCountry == nil)  {
 		[args1Form setStringValue:"nil" at:0];

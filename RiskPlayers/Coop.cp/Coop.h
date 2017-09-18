@@ -92,6 +92,6 @@
 - (void)setNotes:(NSString *)noteText;
 
 // *** Helper functions ***
-- (NSArray<Continent*>*)enemyNeighborsToCountry:(Country*)country;
+- (NSArray<Country*>*)enemyNeighborsToCountry:(Country*)country;
 
 @end
