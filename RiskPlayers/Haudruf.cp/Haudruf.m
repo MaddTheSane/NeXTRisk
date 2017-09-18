@@ -46,7 +46,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 {
 	// choose a random country
 	NSArray *unoccList = [gameManager unoccupiedCountries];
-	id country;
+	Country *country;
 	
 	if ([unoccList count]==0)
 		return;
@@ -62,6 +62,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	if (![self calcNumCountriesPerContinent])
 	{
 		NSRunAlertPanel(@"BUG", @"", NULL,NULL, NULL);
+		[self turnDone];
 		return;
 	}
 	round = 0;
@@ -134,6 +135,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	[self fortifyPosition];
 	return self;
 }
+#endif
 
 - (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 {
@@ -161,6 +163,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 }
 
+#if 0
 // *****************country utilities*********************
 
 - (BOOL)occupyCountry:(Country *)country
@@ -190,30 +193,16 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	
 	return retVal;
 }
+#endif
 
 // *****************card utilities*********************
 
-- (int)playCards:(CardSet *)cardList
+- (void)mustTurnInCards
 {
-	int retVal;
-	
-	[gameManager turnInCardSet:cardList forPlayerNumber:self.playerNumber];
-	[self clearArgForms];
-	[(NSFormCell*)[functionCalledForm cellAtIndex:0] setStringValue:@"(int)playCards:"];
-	[(NSFormCell*)[args1Form cellAtIndex:0] setTitle:@"cardList"];
-	if (cardList == nil)  {
-		[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@"nil"];
-	}  else  {
-		[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@"list of cards"];
-	}
-	[haudrufPanel orderFront:self];
-	if ([pauseContinueButton state] == 1)  {
-		[self waitForContinue];
-	}
-	
-	return retVal;
+	[gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
 }
 
+#if 0
 // *****************place army utilities*********************
 
 - (BOOL)placeArmies:(int)numArmies inCountry:(Country *)country
@@ -550,6 +539,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		[continueButton setEnabled:NO];
 	}
 }
+#endif
 
 - (void)clearArgForms
 {
@@ -578,29 +568,29 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 - (BOOL)calcNumCountriesPerContinent
 {
-	NSInteger i,j,k, numContCountries, numMyCountries, tmp;
-	NSArray *countryList;
+	NSInteger numContCountries, numMyCountries, tmp;
+	NSSet<Country*> *countryList;
 	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
 	
 	if ((numMyCountries=[mycountries count])==0)
 		return NO;
 	
 	numGotContinents = 0;
-	for (i=0; i<6; i++)
+	for (int i=0; i<6; i++)
 		numCountriesPerContinent[i] = 0;
 	
-	for (i=0; i<6; i++)
+	for (RiskContinent i=0; i<6; i++)
 	{
 		countryList = [self countriesInContinent:i];
 		numContCountries = [countryList count];
-		for (j=0; j<numMyCountries; j++)
+		for (Country* country in mycountries)
 		{
-			for (k=0; k<numContCountries; k++)
+			for (Country* country2 in countryList)
 			{
-				if ([[mycountries objectAtIndex:j] idNum] == [[countryList objectAtIndex:k] idNum])
+				if ([[country countryName] isEqualToString: [country2 countryName]])
 				{
 					tmp = numCountriesPerContinent[i]++;
-					countriesInContinent[i][tmp] = [[countryList objectAtIndex:k] idNum];
+					countriesInContinent[i][tmp] = [country2 countryName];
 				}
 			}
 		}
@@ -612,19 +602,63 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 	return YES;
 }
-#endif
+
+- (NSSet<Country*>*)countriesInContinent:(RiskContinent)continent
+{
+	NSString *continentName = [Haudruf stringFromContinent:continent];
+	NSSet *countryList;
+	if (continentName) {
+		countryList = gameManager.world.continents[continentName].countries;
+	} else {
+		countryList = gameManager.world.continents.allValues.firstObject.countries;
+	}
+	return countryList;
+}
+
++ (NSString*) stringFromContinent:(RiskContinent)cont
+{
+	switch (cont) {
+		case RiskContinentAfrica:
+			return @"Africa";
+			break;
+			
+		case RiskContinentAsia:
+			return @"Asia";
+			break;
+			
+		case RiskContinentAustralia:
+			return @"Australia";
+			break;
+			
+		case RiskContinentEurope:
+			return @"Europe";
+			break;
+			
+		case RiskContinentNorthAmerica:
+			return @"NorthAmerica";
+			break;
+			
+		case RiskContinentSouthAmerica:
+			return @"SouthAmerica";
+			break;
+			
+		default:
+			break;
+	}
+	
+	return nil;
+}
 
 - (Country*)bestCountryFor:(RiskContinent)continent
 {
-	id countryList = gameManager.world.continents ;
+	NSSet *countryList = [self countriesInContinent:continent];
 	Country *retCountry;
-	NSInteger i;
 	
-	for (i=0; i<[countryList count]; i++)
+	for (Country * newCont in countryList)
 	{
-		if ([[[countryList objectAtIndex:i] countryName] isEqualToString: countriesInContinent[continent][0]])
+		if ([[newCont countryName] isEqualToString: countriesInContinent[continent][0]])
 		{
-			retCountry = [countryList objectAtIndex:i];
+			retCountry = newCont;
 			return retCountry;
 		}
 	}
@@ -646,30 +680,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 		}
 	}
 	return NO;
-}
-
-- (int)turnInCards
-{
-	CardSet *cardSet;
-	int temp, numArmies = 0;
-	
-	cardSet = [self bestSet];
-	while (cardSet != nil)
-	{
-		temp = [self playCards:cardSet];
-		if (temp == -1)
-		{
-			NSRunAlertPanel(@"Debug", @"bestSet returned an invalid cardset",
-							@"OK", NULL, NULL);
-			cardSet=nil;
-		}
-		else
-		{
-			numArmies += temp;
-			cardSet = [self bestSet];
-		}
-	}
-	return numArmies;
 }
 
 - (int)defendContinent:(RiskContinent)continent armies:(RiskArmyCount)armiesLeft

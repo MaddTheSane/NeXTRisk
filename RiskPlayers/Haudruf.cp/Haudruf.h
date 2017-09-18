@@ -36,11 +36,13 @@
 
 // *****************country utilities*********************
 
++ (NSString*) stringFromContinent:(RiskContinent)cont;
+- (NSSet<Country*>*)countriesInContinent:(RiskContinent)cont;
 - (BOOL)occupyCountry:(Country *)country;
 
 // *****************card utilities*********************
 
-- (RiskArmyCount)playCards:(CardSet *)cardList;
+- (void)playCards:(CardSet *)cardList;
 
 // *****************place army utilities*********************
 
