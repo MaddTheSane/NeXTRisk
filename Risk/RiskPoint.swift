@@ -13,7 +13,7 @@ private let kRiskPoint = "Point"
 
 /// A RiskPoint can be encoded on a stream and stored in arrays.
 @objc(RiskPoint) final class RiskPoint: NSObject, NSSecureCoding {
-    let point: NSPoint
+    @objc let point: NSPoint
     private static var doSomethingOnce: () -> Void = {
         RiskPoint.setVersion(RiskPoint_VERSION)
         
@@ -22,13 +22,13 @@ private let kRiskPoint = "Point"
     
     //----------------------------------------------------------------------
 
-    class func setUpVersions() {
+    @objc class func setUpVersions() {
         _=RiskPoint.doSomethingOnce
     }
 
     //----------------------------------------------------------------------
     
-    init(point: NSPoint) {
+    @objc init(point: NSPoint) {
         self.point = point
         super.init()
     }

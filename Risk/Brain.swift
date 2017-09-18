@@ -41,8 +41,8 @@ class Brain: NSObject, NSApplicationDelegate {
         }()
     @IBOutlet weak var infoPanel: NSWindow!
     @IBOutlet weak var versionTextField: NSTextField!
-    let gameManager = RiskGameManager()
-    private(set) var riskPlayerBundles = [Bundle]()
+    @objc let gameManager = RiskGameManager()
+    @objc private(set) var riskPlayerBundles = [Bundle]()
     private var nibObjs: NSArray?
     
     private var newGameController: NewGameController?
@@ -165,7 +165,7 @@ class Brain: NSObject, NSApplicationDelegate {
     @IBAction func info(_ sender: AnyObject?) {
         if infoPanel == nil {
             let nibFile = "InfoPanel";
-            let loaded = Bundle.main.loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs!)
+            let loaded = Bundle.main.loadNibNamed(NSNib.Name(rawValue: nibFile), owner: self, topLevelObjects: &nibObjs)
             
             assert(loaded == true, "Could not load \(nibFile).");
             

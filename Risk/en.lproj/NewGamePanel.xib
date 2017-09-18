@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NewGameController">
@@ -42,7 +43,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="216" y="155" width="630" height="501"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="6">
                 <rect key="frame" x="0.0" y="0.0" width="630" height="501"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -375,8 +376,6 @@ Gw
                                 <constraint firstItem="7" firstAttribute="leading" secondItem="28" secondAttribute="leading" id="z6x-lX-5rk"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Initial Country Distribution" translatesAutoresizingMaskIntoConstraints="NO" id="169">
                         <rect key="frame" x="12" y="174" width="161" height="75"/>
@@ -417,8 +416,6 @@ Gw
                                 <constraint firstAttribute="bottom" secondItem="161" secondAttribute="bottom" constant="13" id="t7d-Mf-k03"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Initial Army Placement" translatesAutoresizingMaskIntoConstraints="NO" id="171">
                         <rect key="frame" x="175" y="174" width="151" height="75"/>
@@ -473,8 +470,6 @@ Gw
                                 <constraint firstItem="61" firstAttribute="leading" secondItem="182" secondAttribute="trailing" constant="17" id="nhx-n9-LZR"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Card Set Redemption" translatesAutoresizingMaskIntoConstraints="NO" id="173">
                         <rect key="frame" x="328" y="174" width="236" height="75"/>
@@ -528,8 +523,6 @@ Gw
                                 <constraint firstItem="180" firstAttribute="leading" secondItem="rfj-FZ-Xbz" secondAttribute="leading" constant="20" symbolic="YES" id="zWD-p5-P2F"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box title="Fortify Rules" translatesAutoresizingMaskIntoConstraints="NO" id="175">
                         <rect key="frame" x="11" y="67" width="485" height="97"/>
@@ -577,8 +570,6 @@ Gw
                                 <constraint firstItem="67" firstAttribute="top" secondItem="xnO-Bk-6RK" secondAttribute="top" constant="5" id="wO0-vl-3co"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" size="12" name="Helvetica-Bold"/>
                     </box>
                     <box title="Initial Armies" translatesAutoresizingMaskIntoConstraints="NO" id="177">
@@ -588,7 +579,7 @@ Gw
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77">
-                                    <rect key="frame" x="88" y="5" width="210" height="14"/>
+                                    <rect key="frame" x="81" y="5" width="210" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="With the current setup you will receive" id="239">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -596,7 +587,7 @@ Gw
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
-                                    <rect key="frame" x="309" y="5" width="201" height="14"/>
+                                    <rect key="frame" x="317" y="5" width="201" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="armies at the beginning of the game." id="240">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -604,13 +595,11 @@ Gw
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="79">
-                                    <rect key="frame" x="294" y="5" width="19" height="14"/>
+                                    <rect key="frame" x="287" y="5" width="34" height="14"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" priority="999" constant="15" id="Wzp-nA-swo"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="8" id="gm4-pI-iYc"/>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="27" id="tij-tb-tJo"/>
+                                        <constraint firstAttribute="width" constant="30" id="Wzp-nA-swo"/>
                                     </constraints>
-                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" state="on" alignment="center" title="--" id="241">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" alignment="center" title="--" id="241">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -621,7 +610,7 @@ Gw
                                 <constraint firstAttribute="bottom" secondItem="79" secondAttribute="bottom" constant="5" id="DBe-yT-eeZ"/>
                                 <constraint firstItem="77" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dJl-I6-XhZ" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="Kwk-OK-hdH"/>
                                 <constraint firstItem="79" firstAttribute="baseline" secondItem="78" secondAttribute="baseline" id="LXz-cc-zxQ"/>
-                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="78" secondAttribute="trailing" priority="999" constant="20" symbolic="YES" id="MiW-2Q-uEQ"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="78" secondAttribute="trailing" constant="20" symbolic="YES" id="MiW-2Q-uEQ"/>
                                 <constraint firstItem="79" firstAttribute="centerX" secondItem="dJl-I6-XhZ" secondAttribute="centerX" id="cWS-Xv-Zfw"/>
                                 <constraint firstItem="78" firstAttribute="leading" secondItem="79" secondAttribute="trailing" id="dI2-Lo-bCb"/>
                                 <constraint firstItem="79" firstAttribute="leading" secondItem="77" secondAttribute="trailing" id="n38-vC-F2b"/>
@@ -630,8 +619,6 @@ Gw
                                 <constraint firstItem="77" firstAttribute="baseline" secondItem="79" secondAttribute="baseline" id="wOx-TH-L7G"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" size="12" name="Helvetica-Bold"/>
                     </box>
                 </subviews>
@@ -671,7 +658,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="262" y="148" width="418" height="284"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="111">
                 <rect key="frame" x="0.0" y="0.0" width="418" height="284"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -690,15 +677,13 @@ Gw
                             <rect key="frame" x="1" y="1" width="376" height="135"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="115">
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="115">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="376" height="135"/>
+                                    <size key="minSize" width="375" height="135"/>
                                     <size key="maxSize" width="378" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="376" height="135"/>
-                                    <size key="maxSize" width="378" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -744,6 +729,7 @@ Gw
                     <constraint firstItem="113" firstAttribute="top" secondItem="111" secondAttribute="top" constant="20" symbolic="YES" id="gAG-PU-N5Q"/>
                     <constraint firstItem="112" firstAttribute="leading" secondItem="113" secondAttribute="trailing" constant="8" symbolic="YES" id="gGs-Az-stL"/>
                     <constraint firstItem="114" firstAttribute="leading" secondItem="111" secondAttribute="leading" constant="20" symbolic="YES" id="hF0-ps-Een"/>
+                    <constraint firstItem="116" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="111" secondAttribute="leading" constant="20" symbolic="YES" id="jDK-Ng-9Hr"/>
                     <constraint firstItem="116" firstAttribute="top" secondItem="114" secondAttribute="bottom" constant="20" symbolic="YES" id="lKX-Xl-1ww"/>
                     <constraint firstItem="114" firstAttribute="top" secondItem="113" secondAttribute="bottom" constant="8" symbolic="YES" id="tBw-Y9-6yK"/>
                 </constraints>

@@ -31,7 +31,7 @@ private let SNUserPathOperation_VERSION = 1
 		return {}
 	}()
 	
-	class func setUpVersions() {
+	@objc class func setUpVersions() {
 		_=UserPath.doSomethingOnce
 	}
 	
@@ -179,7 +179,7 @@ private let SNUserPathOperation_VERSION = 1
 		super.init()
 	}
 	
-	func toBezierPath() -> NSBezierPath {
+	@objc func toBezierPath() -> NSBezierPath {
 		let path = NSBezierPath()
 		for op in operations {
 			op.applyToBezierPath(path)
