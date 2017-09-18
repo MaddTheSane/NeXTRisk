@@ -1,12 +1,5 @@
 #import "Haudruf.h"
-#import <appkit/NSApplication.h>
-#import <appkit/NSForm.h>
-#import <appkit/NSButton.h>
-#import <appkit/NSText.h>
-#import <appkit/NSScrollView.h>
-#import <appkit/NSPanel.h>
-//#import <objc/List.h>
-//#import <appkit/publicWraps.h>
+#import <AppKit/AppKit.h>
 #import <string.h>
 
 #define NIBFILE "Haudruf.cp/Haudruf.nib"
@@ -60,7 +53,8 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	country = [unoccList objectAtIndex:[rng randomNumberWithMaximum:[unoccList count]-1]];
 	[self setNotes:@"sent by -yourChooseCountry.  "
 	 "yourChooseCountry chose a country at random."];
-	[self occupyCountry:country];
+	[gameManager player:self choseCountry:country];
+	[self turnDone];
 }
 
 - (void)placeInitialArmies:(int)numArmies
@@ -72,28 +66,29 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 	round = 0;
 	if(numCountriesPerContinent[initialContinent = RiskContinentAustralia] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAustralia]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAustralia]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentSouthAmerica] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentSouthAmerica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentSouthAmerica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentNorthAmerica] >= 4)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentAfrica] >= 3)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAfrica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAfrica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentSouthAmerica] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentSouthAmerica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentSouthAmerica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentAustralia] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAustralia]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAustralia]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentNorthAmerica] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentAfrica] >= 2)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAfrica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentAfrica]];
 	else if(numCountriesPerContinent[initialContinent = RiskContinentNorthAmerica] >= 1)
-		[self placeArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
+		[gameManager player:self placesArmies:numArmies inCountry:[self bestCountryFor:RiskContinentNorthAmerica]];
 	else
 		[self placeArmies:numArmies inCountry:[self bestCountryFor:SCHEISSE]];
-	//return self;
+	[self turnDone];
 }
 
+#if 0
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards
 {
 	NSSet<Country *> *mycountries = [self ourCountries];
@@ -211,7 +206,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}  else  {
 		[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@"list of cards"];
 	}
-	[(NSFormCell*)[returnValueForm cellAtIndex:0] setIntValue:retVal];
 	[haudrufPanel orderFront:self];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
@@ -252,8 +246,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 
 // *****************attack utilities*********************
 
-#if 0
-- (BOOL)attackOnceFrom:fromCountry to:toCountry 
+- (BOOL)attackOnceFrom:fromCountry to:toCountry
 			   victory:(BOOL *)victory fromArmies:(int *)fromArmies
 			  toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
 				 weWin:(BOOL *)wewin
@@ -500,7 +493,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	
 	return retVal;
 }
-#endif
 
 // *****************post-attack & fortify utilities*********************
 
@@ -588,7 +580,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 {
 	NSInteger i,j,k, numContCountries, numMyCountries, tmp;
 	NSArray *countryList;
-	NSArray *mycountries = [self myCountries];
+	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
 	
 	if ((numMyCountries=[mycountries count])==0)
 		return NO;
@@ -620,16 +612,17 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 	return YES;
 }
+#endif
 
-- bestCountryFor:(RiskContinent)continent
+- (Country*)bestCountryFor:(RiskContinent)continent
 {
-	id countryList = [gameManager countriesInContinent:continent];
+	id countryList = gameManager.world.continents ;
 	Country *retCountry;
 	NSInteger i;
 	
 	for (i=0; i<[countryList count]; i++)
 	{
-		if ([[countryList objectAtIndex:i] idNum] == countriesInContinent[continent][0])
+		if ([[[countryList objectAtIndex:i] countryName] isEqualToString: countriesInContinent[continent][0]])
 		{
 			retCountry = [countryList objectAtIndex:i];
 			return retCountry;
@@ -638,6 +631,7 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	return nil;
 }
 
+#if 0
 - (BOOL)country:(Country *)country isInContinent:(RiskContinent)continent
 {
 	id contlist = [gameManager.world countriesInContinent:continent];
@@ -699,9 +693,9 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 	else if (continent == RiskContinentNorthAmerica)
 	{
-		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Alaska"]];
-		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Greenland"]];
-		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:"Central America"]];
+		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:@"Alaska"]];
+		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:@"Greenland"]];
+		[self placeArmies:MIN(armiesLeft,5) inCountry:[self getCountryNamed:@"Central America"]];
 		return MIN(armiesLeft,5);
 	}
 	return 0;
@@ -773,27 +767,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	//	fprintf(stderr, "armies:%d from:%s to:%s",
 	//		[maxCountry armies], [maxCountry name],[[tmp objectAt:1] name]);
 	[self moveArmies:[maxCountry armies]-1 from:maxCountry to:[tmp objectAt:[rng randMax:[tmp count]-1]]];
-}
-
-- (NSArray<Country *>*)enemyNeighborsTo:(Country *)country
-{
-	//[gameManager ]
-	NSMutableArray<Country *> *en = [self neighborsTo:country];
-	int i;
-	
-	//	NXRunAlertPanel("44", NULL, NULL,NULL, NULL);
-	for (i=[en count]-1;i>=0;i--)
-	{
-		if ([[en objectAtIndex:i] playerNumber] == playerNumber)
-			[en removeObjectAtIndex:i];
-	}
-	
-	if ([en count]==0)
-	{
-		return nil;
-	}
-	else
-		return en;
 }
 
 - (Country *)getMaxArmyWithEnemyCountry
@@ -890,5 +863,6 @@ const int countriesPerContinent[6] = {9, 4, 7, 6, 12, 4};
 	}
 	return 0; // added by Don Yacktman to supress warnings...
 }
+#endif
 
 @end

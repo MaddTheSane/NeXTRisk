@@ -16,15 +16,13 @@
 	IBOutlet NSButton		*pauseContinueButton;
 	
 	int numCountriesPerContinent[6]; // Anzahl meiner Laender pro Kontinent
-	int	countriesInContinent[6][12]; // IDs meiner Laender in den Kontinenten
+	NSString	*countriesInContinent[6][12]; // IDs meiner Laender in den Kontinenten
 	BOOL gotContinent[6];
 	int numGotContinents;
 	int round;
 	int turn;
 	RiskContinent initialContinent;
 }
-
-+ (void)initialize;
 
 - (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
 
