@@ -24,8 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSArray<RiskCard*> *cards;
 }
 
-+ (RiskWorld*)defaultRiskWorld;
-@property (class, readonly, copy) RiskWorld *defaultRiskWorld;
++ (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
 + (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 

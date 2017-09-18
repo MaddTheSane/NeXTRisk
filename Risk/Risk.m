@@ -14,6 +14,9 @@ int RiskInitialArmyCountForPlayers (int playerCount)
     
     NSCAssert (playerCount >= 2 && playerCount < 7, @"Player count out of range.");
 
+    if (playerCount < 2 || playerCount > 6) {
+        return 0;
+    }
     return armyCountForTotalPlayers[playerCount];
 }
 

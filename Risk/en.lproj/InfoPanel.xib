@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Brain" customModule="Risk" customModuleProvider="target">
@@ -19,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="470" y="504" width="328" height="184"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="7">
                 <rect key="frame" x="0.0" y="0.0" width="328" height="184"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -30,11 +31,11 @@
                             <rect key="frame" x="1" y="1" width="328" height="184"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="37">
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="37">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="184"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="328" height="184"/>
+                                    <size key="minSize" width="327" height="184"/>
                                     <size key="maxSize" width="333" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -83,8 +84,6 @@ http://www.codefab.com/users/mferris/</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="328" height="184"/>
-                                    <size key="maxSize" width="333" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +110,7 @@ http://www.codefab.com/users/mferris/</string>
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="105" y="452" width="425" height="235"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="3">
                 <rect key="frame" x="0.0" y="0.0" width="425" height="235"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -122,11 +121,11 @@ http://www.codefab.com/users/mferris/</string>
                             <rect key="frame" x="1" y="1" width="425" height="235"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="41">
-                                    <rect key="frame" x="0.0" y="30" width="424" height="408"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="41">
+                                    <rect key="frame" x="0.0" y="11" width="424" height="408"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="425" height="235"/>
+                                    <size key="minSize" width="424" height="235"/>
                                     <size key="maxSize" width="431" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -432,8 +431,6 @@ Mike Ferris</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="425" height="235"/>
-                                    <size key="maxSize" width="431" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,16 +458,15 @@ Mike Ferris</string>
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="265" y="459" width="442" height="260"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="4">
                 <rect key="frame" x="0.0" y="0.0" width="442" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19">
-                        <rect key="frame" x="18" y="5" width="41" height="13"/>
+                        <rect key="frame" x="18" y="5" width="37" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="1Nb-sX-nfS"/>
-                            <constraint firstAttribute="width" constant="37" id="3iM-oC-q3g"/>
                         </constraints>
                         <textFieldCell key="cell" alignment="left" title="Version" id="60">
                             <font key="font" metaFont="miniSystem"/>
@@ -499,16 +495,13 @@ Mike Ferris</string>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="12">
                         <rect key="frame" x="0.0" y="24" width="442" height="6"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="4fn-yq-3PZ"/>
                         </constraints>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
-                    <box title="Title" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="11">
+                    <box borderType="none" title="Title" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="11">
                         <rect key="frame" x="174" y="200" width="95" height="60"/>
                         <view key="contentView" id="qoQ-L8-Udq">
                             <rect key="frame" x="0.0" y="0.0" width="95" height="60"/>
@@ -554,8 +547,6 @@ Mike Ferris</string>
                                 <constraint firstAttribute="bottom" secondItem="8" secondAttribute="bottom" constant="2" id="wfr-BN-bbr"/>
                             </constraints>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" size="12" name="Helvetica"/>
                     </box>
                     <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="26">
@@ -574,11 +565,11 @@ Mike Ferris</string>
                             <rect key="frame" x="1" y="1" width="400" height="111"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" baseWritingDirection="leftToRight" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="45">
-                                    <rect key="frame" x="0.0" y="0.0" width="399" height="182"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="45">
+                                    <rect key="frame" x="0.0" y="-29" width="399" height="182"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="400" height="111"/>
+                                    <size key="minSize" width="399" height="111"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -666,8 +657,6 @@ Mike Ferris</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="400" height="111"/>
-                                    <size key="maxSize" width="402" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -682,7 +671,7 @@ Mike Ferris</string>
                         </scroller>
                     </scrollView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
-                        <rect key="frame" x="62" y="5" width="65" height="13"/>
+                        <rect key="frame" x="58" y="5" width="65" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="61" id="Eed-JI-Kgv"/>
                         </constraints>

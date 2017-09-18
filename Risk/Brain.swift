@@ -59,7 +59,7 @@ class Brain: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let defaults = UserDefaults.standard
         
-        let riskWorld = RiskWorld.default
+		let riskWorld = RiskWorld(default:())
         gameManager.world = riskWorld
         
         loadRiskPlayerBundles();
@@ -79,11 +79,19 @@ class Brain: NSObject, NSApplicationDelegate {
         var keepTrying = false
         var loadedBundles = [String: Bundle]()
         
-        let pluginURL = mainBundle.builtInPlugInsURL!
-        let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) { (url, error) -> Bool in
+        guard let pluginURL = mainBundle.builtInPlugInsURL,
+			let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles], errorHandler: ({ (url, error) -> Bool in
             return false
-        }!
-        
+		})) else {
+			let alert = NSAlert()
+			alert.messageText = "Plug-ins not found!"
+			alert.informativeText = "A.I. plug-ins were not found. Only local human players are allowed!"
+			alert.alertStyle = .critical
+			alert.runModal()
+			
+			return
+		}
+		
         //NSLog (@"resource paths: %@", resourcePaths);
         
         for subdirURL1 in URLEnum {
@@ -92,7 +100,7 @@ class Brain: NSObject, NSApplicationDelegate {
             guard pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
                 continue;
             }
-            let str = (subdirURL.lastPathComponent as NSString).deletingPathExtension;
+            let str = (subdirURL.lastPathComponent as NSString).deletingPathExtension
             
             // refuse to load if the name matches a module already loaded
             if !loadedRiskPlayerNames.contains(str) {
@@ -124,9 +132,9 @@ class Brain: NSObject, NSApplicationDelegate {
             for path in delayedRiskPlayerPaths {
                 playerBundle = Bundle(path:path)
                 if playerBundle?.principalClass != nil {
-                    let str = ((path as NSString).lastPathComponent as NSString).deletingPathExtension;
+                    let str = ((path as NSString).lastPathComponent as NSString).deletingPathExtension
                     
-                    loadedBundles[str] = playerBundle;
+                    loadedBundles[str] = playerBundle
                     //NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
                     //NSLog (@"(delayed) priciple class is %@", [playerBundle principalClass]);
                     keepTrying = true;
@@ -136,7 +144,7 @@ class Brain: NSObject, NSApplicationDelegate {
             }
 			
 			delayedRiskPlayerPaths.subtract(tempPlayerNames)
-        } while (keepTrying == true);
+        } while keepTrying == true
         
         // now cpNameStorage contains a list of all the menu strings.
         // we must add them to the menus in the panel.
@@ -167,7 +175,7 @@ class Brain: NSObject, NSApplicationDelegate {
             let nibFile = "InfoPanel";
             let loaded = Bundle.main.loadNibNamed(NSNib.Name(rawValue: nibFile), owner: self, topLevelObjects: &nibObjs)
             
-            assert(loaded == true, "Could not load \(nibFile).");
+            assert(loaded == true, "Could not load \(nibFile).")
             
             versionTextField.stringValue = RISK_VERSION_C
         }
@@ -177,7 +185,7 @@ class Brain: NSObject, NSApplicationDelegate {
 
     @IBAction func showPreferencePanel(_ sender: AnyObject?) {
         if preferenceController == nil {
-            preferenceController = PreferenceController();
+            preferenceController = PreferenceController()
         }
         
         preferenceController!.showPanel()
