@@ -111,7 +111,7 @@
 - (void) placeArmies:(int)numArmies
 {
 	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
-	id inCountry= nil;
+	Country *inCountry= nil;
 	//int i, acount;
 	//id attackers;
 	BOOL win=NO;
@@ -123,6 +123,7 @@
 
 	// turn in cards
 
+	[gameManager automaticallyTurnInCardsForPlayerNumber:playerNumber];
 	numArmies += [self turnInCards];
 	// fprintf( stderr, "new %d armies, %d countries\n", numArmies, [mycountries count] );
 	
@@ -138,7 +139,7 @@
 	}
 	else {
 		[self placeArmies:numArmies inCountry:inCountry];
-		[self setNotes: [inCountry name] ];
+		[self setNotes: [inCountry countryName] ];
 	}
 	
 // now start attacking. 
@@ -152,7 +153,7 @@
 
 	// fprintf( stderr, "now fortify\n" );
 	if (!win)  {
-		[self fortifyPosition];
+		[gameManager fortifyArmiesFrom:inCountry];
 	}
 	[self turnDone];
 }
@@ -290,19 +291,19 @@
 - (Country *)findMyCountryWithMostInferiorEnemy
 {
 	NSSet<Country*> *mycountries = [gameManager.world countriesForPlayer:playerNumber];
-	id inCountry= nil;
+	Country *inCountry= nil;
 	int diffInArmiesForInCountry= 9999;
 	//int armiesFromCards;
 	int armiesDiff;
-	id adjacentEnemyCountry;
-
+	Country *adjacentEnemyCountry;
+	
 	for (Country *country in mycountries) {
-	    adjacentEnemyCountry= [self findAdjacentEnemyCountryMostInferiorTo: country ];
-	    if ( adjacentEnemyCountry != country && (armiesDiff= [adjacentEnemyCountry troopCount] - [country movableTroopCount]) < diffInArmiesForInCountry) {
-		// fprintf( stderr, "easier enemy to %s found: %s\n", [country name], [adjacentEnemyCountry name]);
-		diffInArmiesForInCountry= armiesDiff;
-		inCountry= country;
-	    }
+		adjacentEnemyCountry= [self findAdjacentEnemyCountryMostInferiorTo: country ];
+		if (adjacentEnemyCountry != country && (armiesDiff= [adjacentEnemyCountry troopCount] - [country movableTroopCount]) < diffInArmiesForInCountry) {
+			// fprintf( stderr, "easier enemy to %s found: %s\n", [country name], [adjacentEnemyCountry name]);
+			diffInArmiesForInCountry= armiesDiff;
+			inCountry= country;
+		}
 	}
 	return inCountry;
 }
@@ -315,14 +316,15 @@
 	
 	retVal = [super playCards:cardList];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(int)playCards:" at:0];
-	[args1Form setTitle:"cardList" at:0];
+	//[functionCalledForm setv]
+	[(NSFormCell*)[functionCalledForm cellAtIndex:0] setStringValue:@"(int)playCards:"];
+	[(NSFormCell*)[args1Form cellAtIndex:0] setTitle:@"cardList"];
 	if (cardList == nil)  {
-		[args1Form setStringValue:"nil" at:0];
+		[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@"nil"];
 	}  else  {
-		[args1Form setStringValue:"list of cards" at:0];
+		[(NSFormCell*)[args1Form cellAtIndex:0] setStringValue:@"list of cards"];
 	}
-	[returnValueForm setIntValue:retVal at:0];
+	[(NSFormCell*)[returnValueForm cellAtIndex:0] setIntegerValue:retVal];
 	[diagnosticPanel orderFront:self];
 	if ([pauseContinueButton state] == 1)  {
 		[self waitForContinue];
@@ -333,25 +335,25 @@
 
 // *****************place army utilities*********************
 
-- (BOOL)placeArmies:(int)numArmies inCountry:country
+- (BOOL)placeArmies:(int)numArmies inCountry:(Country*)country
 {
 	BOOL retVal;
 	
 	retVal = [super placeArmies:numArmies inCountry:country];
 	[self clearArgForms];
-	[functionCalledForm setStringValue:"(BOOL)placeArmies: inCountry:" at:0];
-	[args1Form setTitle:"numArmies" at:0];
-	[args1Form setIntValue:numArmies at:0];
-	[args1Form setTitle:"country" at:1];
+	[(NSFormCell*)[functionCalledForm cellAtIndex:0] setStringValue:@"(BOOL)placeArmies: inCountry:"];
+	[(NSFormCell*)[args1Form cellAtIndex:0] setTitle:@"numArmies"];
+	[(NSFormCell*)[args1Form cellAtIndex:0] setIntegerValue:numArmies];
+	[(NSFormCell*)[args1Form cellAtIndex:1] setTitle:@"country"];
 	if (country == nil)  {
-		[args1Form setStringValue:"nil" at:1];
+		[(NSFormCell*)[args1Form cellAtIndex:1] setStringValue:@"nil"];
 	}  else  {
-		[args1Form setStringValue:[country name] at:1];
+		[(NSFormCell*)[args1Form cellAtIndex:1] setStringValue:country.countryName];
 	}
 	if (retVal)  {
-		[returnValueForm setStringValue:"YES" at:0];
+		[(NSFormCell*)[returnValueForm cellAtIndex:0] setStringValue:@"YES"];
 	}  else  {
-		[returnValueForm setStringValue:"NO" at:0];
+		[(NSFormCell*)[returnValueForm cellAtIndex:0] setStringValue:@"NO"];
 	}
 	[diagnosticPanel orderFront:self];
 	if ([pauseContinueButton state] == 1)  {
@@ -365,23 +367,25 @@
 
 - (BOOL)attackFromMostThreatenedCountryUntilLeft: (int)untilLeft
 {
-    id inCountry;
-    BOOL win= NO;
-    
-// repeatedly attack from country with largest enemy
-// (but do not neccessarily attack largest enemy)
+	id inCountry;
+	BOOL win= NO;
+	AttackResult result;
+	
+	// repeatedly attack from country with largest enemy
+	// (but do not neccessarily attack largest enemy)
 
 	while ( (inCountry= [self findMyCountryWithMostSuperiorEnemy] ) != nil) {
-	    //fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
-	    if ([inCountry movableTroopCount]  <= untilLeft)
-		break;
-	    //fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
-    
-	    win = [self doAttackFrom: inCountry];
-	    // if we won the game, clean up and get out.
-	    if (win)  {
-		break;
-	    }
+		//fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
+		if ([inCountry movableTroopCount]  <= untilLeft)
+			break;
+		//fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
+		
+		result = [gameManager attackFromCountry:inCountry toCountry:nil untilArmiesRemain:untilLeft moveAllArmiesUponVictory:YES];
+		win = result.conqueredCountry;
+		// if we won the game, clean up and get out.
+		if (win)  {
+			break;
+		}
 	}
 	return win;
 }
@@ -391,6 +395,7 @@
 {
 	id inCountry;
 	BOOL win= NO;
+	AttackResult result;
 	
 	while ( (inCountry= [self findMyCountryWithMostInferiorEnemy] ) != nil) {
 		//fprintf( stderr, "possibly attacking from %s with %d armies\n", [inCountry name], [inCountry armies] );
@@ -398,8 +403,8 @@
 			break;
 		//fprintf( stderr, "yes, attack from %s with %d armies\n", [inCountry name], [inCountry armies] );
 		
-		[gameManager attackFromCountry:inCountry toCountry:<#(Country *)#> untilArmiesRemain:<#(RiskArmyCount)#> moveAllArmiesUponVictory:<#(BOOL)#>]
-		win = [self doAttackFrom: inCountry];
+		result = [gameManager attackFromCountry:inCountry toCountry:nil untilArmiesRemain:untilLeft moveAllArmiesUponVictory:YES];
+		win = result.conqueredCountry;
 		// if we won the game, clean up and get out.
 		if (win)  {
 			break;

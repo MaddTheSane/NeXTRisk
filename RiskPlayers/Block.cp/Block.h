@@ -11,10 +11,10 @@
 // *****************subclass responsibilities*********************
 
 - yourChooseCountry;
-- yourInitialPlaceArmies:(int)numArmies;
+- placeInitialArmies:(int)numArmies;
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
-- youWereAttacked:country by:(int)player;
-- youLostCountry:country to:(int)player;
+- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
+- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
 - getCountryNamed:(char*)name;
 - preferedCountriesEmpty: (BOOL)yes;

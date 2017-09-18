@@ -26,39 +26,43 @@
 // *****************subclass responsibilities*********************
 
 - (void)chooseCountry;
-- (void)placeInitialArmies:(int)count;
-- (void)placeArmies:(int)count;
+- (void)placeInitialArmies:(RiskArmyCount)count;
+- (void)placeArmies:(RiskArmyCount)count;
 
-- yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
+- yourTurnWithArmies:(RiskArmyCount)numArmies andCards:(int)numCards;
 - (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 - (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 
 // *****************country utilities*********************
 
-- (BOOL)occupyCountry:country;
+- (BOOL)occupyCountry:(Country*)country;
+/*! return id of adjacent country, which belongs to enemy and has most inferior
+ * number of armies compared to number of armieas of country.
+ * If no adjacent enemy countries exist, return country itself
+ */
 - (Country*)findAdjacentEnemyCountryMostInferiorTo: country;
+/*! return id of adjacent country, which belongs to enemy and has most superior
+ * number of armies compared to number of armieas of country.
+ * If no adjacent enemy countries exist, return country itself
+ */
 - (Country*)findAdjacentEnemyCountryMostSuperiorTo: country;
-    /* return id of adjacent country, which belongs to enemy and has most inf/superior
-       number of armies compared to number of armieas of country.
-       If no adjacent enemy countries exist, return country itself
-       */
+/*! return id of my country which has most superior enemy of all my countries.
+ * else return nil
+ */
 - (Country*)findMyCountryWithMostSuperiorEnemy;
-    /* return id of my country which has most superior enemy of all my countries.
-       else return nil
-       */
+/*! return id of my country which has most inferior enemy of all my countries.
+ * else return nil
+ */
 - (Country*)findMyCountryWithMostInferiorEnemy;
-    /* return id of my country which has most inferior enemy of all my countries.
-       else return nil
-       */
 
 // *****************attack utilities*********************
 
+//! repeatedly attack from country with relatively weakest enemy
 - (BOOL)attackFromLeastThreatenedCountryUntilLeft: (int)untilLeft;
-// repeatedly attack from country with relatively weakest enemy
 
+//! repeatedly attack from country with largest enemy
+//! (but do not neccessarily attack largest enemy)
 - (BOOL)attackFromMostThreatenedCountryUntilLeft: (int)untilLeft;
-// repeatedly attack from country with largest enemy
-// (but do not neccessarily attack largest enemy)
 
 - (BOOL)attackOnceFrom:fromCountry to:toCountry 
 					victory:(BOOL *)victory fromArmies:(int *)fromArmies 

@@ -2,14 +2,7 @@
 // Part of Risk by Mike Ferris
 
 #import "Block.h"
-#import <appkit/Application.h>
-#import <appkit/Form.h>
-#import <appkit/Button.h>
-#import <appkit/Text.h>
-#import <appkit/ScrollView.h>
-#import <appkit/Panel.h>
-#import <objc/List.h>
-#import <appkit/publicWraps.h>
+#import <AppKit/AppKit.h>
 
 #include <libc.h>
 #include <stdlib.h>
@@ -23,7 +16,7 @@
 
 + (void)initialize
 {
-	if (self = [Block class])  {
+	if (self == [Block class])  {
 		[self setVersion:1];
 	}
 }
@@ -71,67 +64,62 @@
 	return self;
 }
 
-- yourInitialPlaceArmies:(int)numArmies
+- (void)placeInitialArmies:(int)numArmies
 {
 	id mycountries = [self myCountries];
-	id inCountry= nil;
+	Country *inCountry= nil;
 	id preferedCountries= [self preferedCountriesEmpty: NO];
-//	id l= nil;
+	//	id l= nil;
 	int try,tries= 20;
 	int chunk, anz;
 	
 	//fprintf(stderr, "initial: %d\n", numArmies);
-
+	
 	if ([mycountries count]==0)
 		return nil;
-
-        // if one of our pref Countries is available choose one randomly, with less than numArmies 
-        // but only if we do not already have anz enemy neighbors advantage
+	
+	// if one of our pref Countries is available choose one randomly, with less than numArmies 
+	// but only if we do not already have anz enemy neighbors advantage
 	anz= MAX(numArmies, 5);
 	
 	while (numArmies > 0 && tries-- > 0) {
-	    for (try=0; try< 10 && inCountry==nil; ++try) {
-		if ([preferedCountries count] > 0) {
-		    inCountry= [self randomFromList: preferedCountries maxArmies:numArmies-1];
-		if (tries > 5 && inCountry && 
-		    [inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
-		    inCountry= nil;
+		for (try=0; try< 10 && inCountry==nil; ++try) {
+			if ([preferedCountries count] > 0) {
+				inCountry= [self randomFromList: preferedCountries maxArmies:numArmies-1];
+				if (tries > 5 && inCountry && 
+					[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
+					inCountry= nil;
+			}
 		}
-	    }
-	
-	    if (inCountry==nil) {
-		inCountry= [self findMyCountryWithMostSuperiorEnemy];
-	    }
-	    if (inCountry!=nil) {
-		id en,my;
-		en= [self mostSuperiorEnemyTo:inCountry];
-		my= [self myStrongestNeighborTo:en];
-		//fprintf( stderr, "initial place: I am %d, inCountry=%s belongs to %d , has strongest enemyNeighbor %s belongs to %d, my strongest neighbor %s belongs to %d\n", myPlayerNum, [inCountry name], [inCountry player], [en name], [en player], [my name], [my player]);
-		if ([my player]==myPlayerNum)
-		    inCountry= my;
-		if (tries > 5 && inCountry && 
-		    [inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
-		    inCountry= nil;
-	    }
-
-	    
-	    if (inCountry==nil) {
-		fprintf( stderr, "no good country for initial placement in tries=%d\n", tries );
-	    }
-	    else {
-		numArmies-= (chunk= MIN(anz/2, numArmies));
-		[self placeArmies:chunk inCountry:inCountry];
-	    }
+		
+		if (inCountry==nil) {
+			inCountry= [self findMyCountryWithMostSuperiorEnemy];
+		}
+		if (inCountry!=nil) {
+			id en,my;
+			en= [self mostSuperiorEnemyTo:inCountry];
+			my= [self myStrongestNeighborTo:en];
+			//fprintf( stderr, "initial place: I am %d, inCountry=%s belongs to %d , has strongest enemyNeighbor %s belongs to %d, my strongest neighbor %s belongs to %d\n", myPlayerNum, [inCountry name], [inCountry player], [en name], [en player], [my name], [my player]);
+			if ([my player]==myPlayerNum)
+				inCountry= my;
+			if (tries > 5 && inCountry && 
+				[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
+				inCountry= nil;
+		}
+		
+		
+		if (inCountry==nil) {
+			fprintf( stderr, "no good country for initial placement in tries=%d\n", tries );
+		}
+		else {
+			numArmies-= (chunk= MIN(anz/2, numArmies));
+			[self placeArmies:chunk inCountry:inCountry];
+		}
 	}
 	if (numArmies > 0) {
-	    fprintf( stderr, "finally no good country for initial placement\n");
-	    [super yourInitialPlaceArmies: numArmies];	    
+		fprintf( stderr, "finally no good country for initial placement\n");
+		[super placeInitialArmies: numArmies];
 	}
-	
-
-	[mycountries free];
-	[preferedCountries free];
-	return self;
 }
 
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards
@@ -204,20 +192,16 @@
 	return self;
 }
 
-- youWereAttacked:country by:(int)player
+- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
-
-	return self;
 }
 
-- youLostCountry:country to:(int)player
+- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
-
-	return self;
 }
 
 - getCountryNamed:(char*)name
