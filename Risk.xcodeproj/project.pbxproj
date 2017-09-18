@@ -232,7 +232,7 @@
 /* Begin PBXFileReference section */
 		551098101CC563FE00DE6DFE /* RKImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RKImages.xcassets; sourceTree = "<group>"; };
 		551098161CC56F0F00DE6DFE /* Risk World Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Risk World Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		551098181CC56F0F00DE6DFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		551098181CC56F0F00DE6DFE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5510981A1CC56F0F00DE6DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5510981D1CC56F1000DE6DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5510981F1CC56F1000DE6DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 		554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		554843BA1EA1FE1400EC5D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		554843BD1EA1FE1A00EC5D3E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; };
+		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; usesTabs = 1; };
 		55665FC21D1136EF001980F2 /* RiskUtil-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RiskUtil-Bridging-Header.h"; sourceTree = "<group>"; };
 		55665FC31D1138E3001980F2 /* SNUserPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNUserPath.swift; sourceTree = "<group>"; };
 		55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+SNUnarchiveHelpers.h"; sourceTree = "<group>"; };
@@ -499,6 +499,7 @@
 			);
 			path = "Risk World Maker";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		551251EC1CC2D0E1000E7A52 /* Additional Sources */ = {
 			isa = PBXGroup;
@@ -1443,7 +1444,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Debug;
 		};
@@ -1457,7 +1457,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Release;
 		};
@@ -1475,7 +1474,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Debug;
 		};
@@ -1493,7 +1491,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Release;
 		};
