@@ -64,7 +64,7 @@ public class Chaos: RiskPlayer {
 	}
 
 
-	/// place all armies in random countries with -placeArmies:.
+	/// place all armies in random countries with `-placeArmies:`.
 	public override func placeInitialArmies(_ count: Int32) {
 		placeArmies(count)
 	}
@@ -94,7 +94,7 @@ public class Chaos: RiskPlayer {
 		var mustEndTurn = false
 		
 		for country in attackingCountries {
-			mustEndTurn = doAttackFromCountry(country)
+			mustEndTurn = doAttack(from: country)
 			if mustEndTurn {
 				break
 			}
@@ -167,7 +167,7 @@ public class Chaos: RiskPlayer {
 	//MARK: - Custom methods
 
 	/// attack the weakest neighbor (bully tactics).
-	func doAttackFromCountry(_ attacker: Country) -> Bool {
+	func doAttack(from attacker: Country) -> Bool {
 		let enemies = attacker.enemyNeighborCountries
 		var weakest: Country?
 		var attackResult = AttackResult()
@@ -183,7 +183,7 @@ public class Chaos: RiskPlayer {
 		}
 		
 		if let weakest = weakest {
-			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: Int32(rng.randomNumberBetween(1, Int(attacker.troopCount))), moveAllArmiesUponVictory: false)
+			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: rng.randomNumberBetween(1, attacker.troopCount), moveAllArmiesUponVictory: false)
 			
 			//NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
 		}
