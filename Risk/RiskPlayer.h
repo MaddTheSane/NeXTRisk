@@ -144,10 +144,10 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 
 /// Returns a set of countries from the source set that are also in the
 /// named continent.
-- (NSSet<Country *> *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source;
+- (NSSet<Country *> *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source NS_SWIFT_NAME(chooseCountries(inContinent:from:));
 /// Returns a set of countries from the source set, ensuring that none
 /// are in the named continent.
-- (NSSet<Country *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source;
+- (NSSet<Country *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source NS_SWIFT_NAME(removeCountries(inContinent:from:));
 
 //======================================================================
 // Card set methods

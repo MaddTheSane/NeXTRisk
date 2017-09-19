@@ -63,3 +63,13 @@ extension GameState: CustomStringConvertible, CustomDebugStringConvertible {
 		return __NSStringFromGameState(self)
 	}
 }
+
+extension RiskPlayer {
+	/// Appends a formatted string to the console window, if it is visible.
+	/// Subclasses can use this to show debugging information.
+	open func logMessage(_ format: String, args: CVarArg...) {
+		withVaList(args) { (vaList) -> Void in
+			logMessage(format, format: vaList)
+		}
+	}
+}

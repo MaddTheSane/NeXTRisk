@@ -172,8 +172,9 @@ private let SNUserPathOperation_VERSION = 1
 	}
 	
 	init?(coder aDecoder: NSCoder) {
-		guard let tmpOps = aDecoder.decodeObject() as? NSArray as? [Operation] else {
-			return nil
+		guard let tmpOps2 = aDecoder.decodeObject(),
+			let tmpOps = tmpOps2 as? [Operation] else {
+				return nil
 		}
 		operations = tmpOps
 		super.init()

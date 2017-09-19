@@ -178,8 +178,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         } else {
             int count;
             
-            NSMutableArray *tmpCards = [[NSMutableArray alloc] init];
-            
             continents = [aDecoder decodeObject];
             
             [self _buildAllCountries];
@@ -191,8 +189,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                 countryDictionary[country1.countryName] = country1;
             }
             
-            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
+            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] initWithCapacity:count];
             for (int l = 0; l < count; l++)
             {
                 NSString *name1 = [aDecoder decodeObject];
@@ -204,6 +202,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             countryNeighbors = [tmpCountryNeighbors copy];
             
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
+            NSMutableArray *tmpCards = [[NSMutableArray alloc] initWithCapacity:count];
             for (int l = 0; l < count; l++)
             {
                 RiskCardType cardType;
