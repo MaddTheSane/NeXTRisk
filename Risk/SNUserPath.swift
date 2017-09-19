@@ -24,15 +24,13 @@ private let SNUserPathOperation_VERSION = 1
 ///
 /// Superceded by `NSBezierPath`!
 @objc(SNUserPath) final class UserPath: NSObject, NSCoding {
-	private static var doSomethingOnce: () -> Void = {
+	private static var __doSomethingOnce: () = {
 		UserPath.setVersion(SNUserPath_VERSION)
 		Operation.setVersion(SNUserPathOperation_VERSION)
-		
-		return {}
 	}()
 	
 	@objc class func setUpVersions() {
-		_=UserPath.doSomethingOnce
+		_=UserPath.__doSomethingOnce
 	}
 	
 	/// An `SNUserPathOperation` represents an user path operator and its
