@@ -91,36 +91,21 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 #define kContinentsKey @"Continents"
 #define kCountryNeighborsArrayKey @"CountryNeighbors2"
-#define kCountryNeighborsArrayOldKey @"CountryNeighbors"
-#define kCardsArrayKey @"Cards"
+#define kCardsArrayKey @"Cards2"
 
 #define kCardCountryName @"CountryName"
 #define kCardCardType @"CardType"
 #define kCardImageName @"ImageName"
 
+
+#define kCountryNeighborsArrayOldKey @"CountryNeighbors"
+#define kCardsArrayOldKey @"Cards"
+
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    RiskCard *card;
-    
     [aCoder encodeObject:continents forKey:kContinentsKey];
     [aCoder encodeObject:countryNeighbors forKey:kCountryNeighborsArrayKey];
-    
-    NSMutableArray<NSDictionary<NSString*,id>*> *tmpCards = [NSMutableArray arrayWithCapacity:cards.count];
-    for (card in cards) {
-        NSDictionary *cardDict = @{
-                                   kCardCardType: @(card.cardType),
-                                   kCardImageName: card.imageName
-                                   };
-        
-        if (card.country.countryName) {
-            NSMutableDictionary *mdict = [NSMutableDictionary dictionaryWithDictionary:cardDict];
-            mdict[kCardCountryName] = card.country.countryName;
-            cardDict = mdict;
-        }
-        
-        [tmpCards addObject:cardDict];
-    }
-    [aCoder encodeObject:tmpCards forKey:kCardsArrayKey];
+    [aCoder encodeObject:cards forKey:kCardsArrayKey];
 }
 
 //----------------------------------------------------------------------
@@ -131,7 +116,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         allCountries = [[NSMutableSet alloc] init];
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kContinentsKey]) {
             NSMutableArray *tmpCards = [NSMutableArray array];
-            RiskCardType cardType;
             
             NSMutableDictionary *countryDictionary;
             continents = [[aDecoder decodeObjectForKey:kContinentsKey] copy];
@@ -146,7 +130,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             }
             
             if ([aDecoder containsValueForKey:kCountryNeighborsArrayKey]) {
-                countryNeighbors = [[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey] copy];
+                countryNeighbors = [NSArray arrayWithArray:[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey]];
             } else {
             NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
             
@@ -160,17 +144,21 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             }
             countryNeighbors = [tmpCountryNeighbors copy];
             }
-            NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayKey];
             
-            for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
-                NSString *name1 = tmpCard[kCardCountryName];
-                Country *country1 = countryDictionary[name1];
-                cardType = [tmpCard[kCardCardType] intValue];
-                NSString *imageName = tmpCard[kCardImageName];
-                [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+            if ([aDecoder containsValueForKey:kCardsArrayKey]) {
+                cards = [[aDecoder decodeObjectForKey:kCardsArrayKey] copy];
+            } else {
+                NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayOldKey];
+                for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
+                    NSString *name1 = tmpCard[kCardCountryName];
+                    Country *country1 = countryDictionary[name1];
+                    RiskCardType cardType = [tmpCard[kCardCardType] intValue];
+                    NSString *imageName = tmpCard[kCardImageName];
+                    [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+                }
+                
+                cards = [tmpCards copy];
             }
-            
-            cards = [tmpCards copy];
         } else {
             int count;
             

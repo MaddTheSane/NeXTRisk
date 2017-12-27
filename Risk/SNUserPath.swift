@@ -50,7 +50,7 @@ private let SNUserPathOperation_VERSION = 1
 		let angle2: Float
 		
 		@objc func encode(with aCoder: NSCoder) {
-			fatalError("We should not be calling this!")
+			fatalError("We should not be calling \(#function)!")
 		}
 
 		@objc init?(coder aDecoder: NSCoder) {
