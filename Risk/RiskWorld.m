@@ -90,7 +90,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 //----------------------------------------------------------------------
 
 #define kContinentsKey @"Continents"
-#define kCountryNeighborsArrayKey @"CountryNeighbors"
+#define kCountryNeighborsArrayKey @"CountryNeighbors2"
+#define kCountryNeighborsArrayOldKey @"CountryNeighbors"
 #define kCardsArrayKey @"Cards"
 
 #define kCardCountryName @"CountryName"
@@ -99,19 +100,10 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    RiskNeighbor *riskNeighbor;
     RiskCard *card;
     
     [aCoder encodeObject:continents forKey:kContinentsKey];
-    
-    NSMutableArray *tmpNeighbors = [NSMutableArray arrayWithCapacity:countryNeighbors.count];
-    @autoreleasepool {
-        for (riskNeighbor in countryNeighbors)
-        {
-            [tmpNeighbors addObject:@[riskNeighbor.country1.countryName, riskNeighbor.country2.countryName]];
-        }
-        [aCoder encodeObject:tmpNeighbors forKey:kCountryNeighborsArrayKey];
-    }
+    [aCoder encodeObject:countryNeighbors forKey:kCountryNeighborsArrayKey];
     
     NSMutableArray<NSDictionary<NSString*,id>*> *tmpCards = [NSMutableArray arrayWithCapacity:cards.count];
     for (card in cards) {
@@ -137,7 +129,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 {
     if (self = [super init]) {
         allCountries = [[NSMutableSet alloc] init];
-        if (aDecoder.allowsKeyedCoding) {
+        if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kContinentsKey]) {
             NSMutableArray *tmpCards = [NSMutableArray array];
             RiskCardType cardType;
             
@@ -153,7 +145,10 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                 countryDictionary[country1.countryName] = country1;
             }
             
-            NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayKey];
+            if ([aDecoder containsValueForKey:kCountryNeighborsArrayKey]) {
+                countryNeighbors = [[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey] copy];
+            } else {
+            NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
             
             NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
             for (NSArray<NSString*> *conCat in tmptmp) {
@@ -164,6 +159,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                 [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
             }
             countryNeighbors = [tmpCountryNeighbors copy];
+            }
             NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayKey];
             
             for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
