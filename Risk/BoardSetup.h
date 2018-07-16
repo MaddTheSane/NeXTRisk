@@ -5,6 +5,7 @@
 
 #import <Foundation/NSObject.h>
 #import <Foundation/NSGeometry.h>
+#import <Foundation/NSNotification.h>
 
 #import "Risk.h"
 
