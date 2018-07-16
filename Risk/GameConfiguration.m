@@ -8,12 +8,6 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 #import "GameConfiguration.h"
 
-//======================================================================
-// A GameConfiguration denotes the rules under which a game will be
-// played.  Newly created instances take their initial values from the
-// defaults database.
-//======================================================================
-
 #define GameConfiguration_VERSION 1
 
 @implementation GameConfiguration

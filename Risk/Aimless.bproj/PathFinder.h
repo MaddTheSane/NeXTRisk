@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef int(*PFDistance)(Country *country1, Country *country2);
 typedef BOOL(*PFAcceptableCountry)(Country *country, void *__nullable context);
 
-extern NSComparisonResult PFCompareDistances (id country1, id country2, void *context);
+extern NSComparisonResult PFCompareDistances (Country *country1, Country *country2, void *context);
 extern int PFConstantDistance (Country *country1, Country *country2);
 extern BOOL PFCountryForPlayer (Country *country, void *context);
 extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context);
@@ -54,16 +54,16 @@ extern BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context
 }
 
 + (instancetype)shortestPathInRiskWorld:(RiskWorld *)aWorld
-              fromCountry:(Country *)source
-             forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
-                  context:(void *)aContext
-         distanceFunction:(PFDistance)aDistanceFunction;
+                            fromCountry:(Country *)source
+                           forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
+                                context:(void *)aContext
+                       distanceFunction:(PFDistance)aDistanceFunction;
 
 - (instancetype)initWithRiskWorld:(RiskWorld *)aWorld
-        fromCountry:(Country *)source
-       forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
-            context:(void *)aContext
-   distanceFunction:(PFDistance)aDistanceFunction NS_DESIGNATED_INITIALIZER;
+                      fromCountry:(Country *)source
+                     forCountries:(PFAcceptableCountry)anIsCountryAcceptableFunction
+                          context:(void *)aContext
+                 distanceFunction:(PFDistance)aDistanceFunction NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (void) _buildShortestPathsFromCountry:(Country *)source;

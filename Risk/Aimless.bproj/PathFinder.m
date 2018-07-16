@@ -32,7 +32,7 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 #import "DNode.h"
 #import <RiskKit/SNUtility.h>
 
-NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
+NSComparisonResult PFCompareDistances (Country *country1, Country *country2, void *context)
 {
     NSDictionary<NSString*,DNode*> *nodeDictionary;
     NSString *name1, *name2;
@@ -40,8 +40,8 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
     NSComparisonResult result;
     
     nodeDictionary = (__bridge NSDictionary *)context;
-    name1 = ((Country *)country1).countryName;
-    name2 = ((Country *)country2).countryName;
+    name1 = country1.countryName;
+    name2 = country2.countryName;
     
     distance1 = nodeDictionary[name1].distance;
     distance2 = nodeDictionary[name2].distance;
@@ -53,8 +53,8 @@ NSComparisonResult PFCompareDistances (id country1, id country2, void *context)
         int troopCount1, troopCount2;
         
         // Choose country with fewest troops.
-        troopCount1 = ((Country *)country1).troopCount;
-        troopCount2 = ((Country *)country2).troopCount;
+        troopCount1 = country1.troopCount;
+        troopCount2 = country2.troopCount;
         
         if (troopCount1 < troopCount2)
         {

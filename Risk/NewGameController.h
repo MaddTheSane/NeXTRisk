@@ -7,6 +7,12 @@
 
 @class Brain, GameConfiguration, BoardSetup;
 
+//! The \c NewGameController loads the panel, adds loaded computer players
+//! to the appropriate popup buttons, updates the controls to reflect
+//! the default values, and creates a new game based on the current
+//! values.
+//!
+//! This also doubles as a preference panel for all of the options.
 @interface NewGameController : NSObject
 {
     IBOutlet NSWindow *newGamePanel;

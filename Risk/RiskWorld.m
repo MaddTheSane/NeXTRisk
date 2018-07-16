@@ -13,15 +13,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #import "Continent.h"
 #import "RiskCard.h"
 
-//======================================================================
-// A RiskWorld has a name, continents with countries, and neighboring
-// country data.
-//
-// If multiple RiskWorlds are allowed, each world could be a bundle
-// that has the images for each card, as well as the encoded data for
-// the world and the RiskMapView background image.
-//======================================================================
-
 #define RISKWORLD_DATAFILE @"RiskWorld"
 #define RiskWorld_VERSION 1
 

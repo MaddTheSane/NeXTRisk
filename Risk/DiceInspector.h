@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class Country;
 
+//! The \c DiceInspector shows the dice as they are rolled, and optionally
+//! pauses between rolls so that you can see what is going happening.
 @interface DiceInspector : NSObject
 {
     IBOutlet NSPanel *dicePanel;

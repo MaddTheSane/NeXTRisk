@@ -15,15 +15,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 #import "BoardSetup.h"
 #import "Risk-Swift.h"
 
-//======================================================================
-// The NewGameController loads the panel, adds loaded computer players
-// to the appropriate popup buttons, updates the controls to reflect
-// the default values, and creates a new game based on the current
-// values.
-//
-// This also doubles as a preference panel for all of the options.
-//======================================================================
-
 #define NewGameController_VERSION 1
 
 @implementation NewGameController

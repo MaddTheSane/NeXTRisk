@@ -11,6 +11,9 @@
 
 NSComparisonResult compareCardSetValues (id __nullable object1, id __nullable object2, void * __nullable context);
 
+//! A \c CardSet represents a *valid* set of three cards.  There is one
+//! class method to verify a set of cards.  The initializer will return
+//! \c nil if the cards are not a valid set.
 @interface CardSet : NSObject
 
 + (BOOL) isValidCardSet:(nullable RiskCard *)aCard1 :(nullable RiskCard *)aCard2 :(nullable RiskCard *)aCard3 NS_SWIFT_NAME(isValidCardSet(card1:card2:card3:));

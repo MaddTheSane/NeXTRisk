@@ -11,12 +11,6 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 #import "RiskWorld.h"
 #import "Country.h"
 
-//======================================================================
-// The ArmyPlacementValidator controls the placement of armies during
-// the game -- for initial army placement, normal army placement, after
-// a successful attack and during the fortification phase.
-//======================================================================
-
 #define ArmyPlacementValidator_VERSION 1
 
 @implementation ArmyPlacementValidator

@@ -26,10 +26,12 @@ NSData *defaultsDataForColor (NSColor *color);
 #define DK_SelectedBorderColor @"SelectedBorderColor"
 #define DK_ShowCardSetCounts   @"ShowCardSetCounts"
 
-extern NSString *const RiskBoardSetupChangedNotification;
-extern NSString *const RiskBoardSetupPlayerColorsChangedNotification;
-extern NSString *const RiskBoardSetupShowCardSetCountsChangedNotification;
+extern NSNotificationName const RiskBoardSetupChangedNotification;
+extern NSNotificationName const RiskBoardSetupPlayerColorsChangedNotification;
+extern NSNotificationName const RiskBoardSetupShowCardSetCountsChangedNotification;
 
+//! The \c BoardSetup defines what the main board and the status view will
+//! look like.
 @interface BoardSetup : NSObject
 {
     CGFloat borderWidth;

@@ -13,12 +13,6 @@ RCSID ("$Id: StatusView.m,v 1.4 1997/12/15 07:44:22 nygard Exp $");
 #import "SNUtility.h"
 #import "RiskPlayer.h"
 
-//======================================================================
-// The StatusView shows the color of each player (in the order of play)
-// and, optionally, the number of cards in their hand.  This number is
-// highlighted if the player has a valid card set.
-//======================================================================
-
 #define StatusView_VERSION 1
 
 static NSTextFieldCell *_textCell = nil;

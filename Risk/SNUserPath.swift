@@ -22,7 +22,7 @@ private let SNUserPathOperation_VERSION = 1
 /// provide better looking maps, but RiskUtil.app would need to be
 /// able to support them.
 ///
-/// Superceded by `NSBezierPath`!
+/// Superceded *completely* by `NSBezierPath`! Use that instead!
 @objc(SNUserPath) final class UserPath: NSObject, NSCoding {
 	private static var __doSomethingOnce: () = {
 		UserPath.setVersion(SNUserPath_VERSION)

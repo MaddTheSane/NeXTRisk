@@ -7,6 +7,8 @@
 
 @class LineView;
 
+//! The \c PreferenceController provides a simple panel for changing some
+//! of the default appearence values.
 @interface PreferenceController : NSObject
 {
     IBOutlet NSWindow *preferencePanel;

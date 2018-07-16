@@ -9,6 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//! A \c GameConfiguration denotes the rules under which a game will be
+//! played.  Newly created instances take their initial values from the
+//! defaults database.
 @interface GameConfiguration : NSObject
 {
     InitialCountryDistribution initialCountryDistribution;

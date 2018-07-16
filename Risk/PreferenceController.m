@@ -11,11 +11,6 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 #import "BoardSetup.h"
 #import "LineView.h"
 
-//======================================================================
-// The PreferenceController provides a simple panel for changing some
-// of the default appearence values.
-//======================================================================
-
 #define PreferenceController_VERSION 1
 
 @implementation PreferenceController

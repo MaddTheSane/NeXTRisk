@@ -10,12 +10,6 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 #import "Country.h"
 
-//======================================================================
-// A RiskCard represents the country, type, image, and image name of
-// a card in the game.  If multiple RiskWorlds are allowed, then
-// different cards will be required for each world.
-//======================================================================
-
 #define RiskCard_VERSION 1
 
 @implementation RiskCard

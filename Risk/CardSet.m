@@ -11,12 +11,6 @@ RCSID ("$Id: CardSet.m,v 1.2 1997/12/15 07:43:42 nygard Exp $");
 #import "Country.h"
 #import "RiskCard.h"
 
-//======================================================================
-// A CardSet represents a *valid* set of three cards.  There is one
-// class method to verify a set of cards.  The initializer will return
-// nil if the cards are not a valid set.
-//======================================================================
-
 // Put nils at end of list.  Minimize use of wildcards.
 
 NSComparisonResult compareCardSetValues (id object1, id object2, void *context)

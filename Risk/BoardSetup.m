@@ -10,11 +10,6 @@ RCSID ("$Id: BoardSetup.m,v 1.3 1997/12/15 07:43:37 nygard Exp $");
 
 #import <Cocoa/Cocoa.h>
 
-//======================================================================
-// The BoardSetup defines what the main board and the status view will
-// look like.
-//======================================================================
-
 static BoardSetup *_instance = nil;
 
 // Notifications are sent when the preferences are changed, so that

@@ -14,17 +14,6 @@ RCSID ("$Id: CardPanelController.m,v 1.3 1997/12/15 07:43:41 nygard Exp $");
 #import "RiskGameManager.h"
 #import "CardSet.h"
 
-//======================================================================
-// The CardPanelController provides interactive Risk players with an
-// interface for reviewing their hand and choosing card sets to turn
-// in.  It will force the player to turn in cards when they are able to
-// and have more than four cards in their hand.
-//
-// The cards are not turned in until all sets have been chosen.  The
-// RiskPlayer is notified about the number of extra armies for each
-// set turned in.
-//======================================================================
-
 #define CardPanelController_VERSION 1
 
 static NSImage *_cardBackImage = nil;

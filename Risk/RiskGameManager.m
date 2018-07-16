@@ -24,13 +24,6 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 #import "StatusView.h"
 #import "WorldInfoController.h"
 
-//======================================================================
-// The RiskGameManager controls most of the game play.  It notifies
-// the players of the various phases of game play, and does some
-// checking of messages to try to limit invalid actions by players (or
-// some cheating.)
-//======================================================================
-
 DEFINE_NSSTRING (RGMGameOverNotification);
 
 #define AGSReason(state1) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1)]

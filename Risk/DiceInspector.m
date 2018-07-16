@@ -9,11 +9,6 @@ RCSID ("$Id: DiceInspector.m,v 1.2 1997/12/15 07:43:50 nygard Exp $");
 #import "DiceInspector.h"
 #import "Country.h"
 
-//======================================================================
-// The DiceInspector shows the dice as they are rolled, and optionally
-// pauses between rolls so that you can see what is going happening.
-//======================================================================
-
 #define DiceInspector_VERSION 1
 
 static NSImage *_die1Image;

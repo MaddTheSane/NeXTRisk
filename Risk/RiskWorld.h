@@ -14,8 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// This should own the background image for the map view if there will
-/// be more than one world.
+//! A \c RiskWorld has a name, continents with countries, and neighboring
+//! country data.
+//!
+//! If multiple RiskWorlds are allowed, each world could be a bundle
+//! that has the images for each card, as well as the encoded data for
+//! the world and the RiskMapView background image.
+//!
+//! This should own the background image for the map view if there will
+//! be more than one world.
 @interface RiskWorld : NSObject <NSCoding>
 {
     NSMutableSet<Country*> *allCountries;

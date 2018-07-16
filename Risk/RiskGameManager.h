@@ -11,11 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const RGMGameOverNotification;
+extern NSNotificationName const RGMGameOverNotification;
 
 @class RiskWorld, RiskPlayer, GameConfiguration, Country, RiskMapView, StatusView, ArmyView, CardPanelController;
 @class RiskCard, ArmyPlacementValidator, CardSet, DiceInspector, WorldInfoController, SNRandom;
 
+//! The \c RiskGameManager controls most of the game play.  It notifies
+//! the players of the various phases of game play, and does some
+//! checking of messages to try to limit invalid actions by players (or
+//! some cheating.)
 @interface RiskGameManager : NSObject
 {
     RiskWorld *world;
@@ -61,11 +65,11 @@ extern NSString *const RGMGameOverNotification;
     RiskPlayer *players[MAX_PLAYERS];
     BOOL playersActive[MAX_PLAYERS];
 
-    // Game state
+    //! Game state
     GameState gameState;
     Player currentPlayerNumber;
 
-    // Place armies phase:
+    //! Place armies phase:
     RiskArmyCount initialArmyCount;
 
     // Keep track of armies left for current player in this turn.
@@ -81,7 +85,7 @@ extern NSString *const RGMGameOverNotification;
     NSMutableArray *discardDeck;
     RiskArmyCount nextCardSetValue;
 
-    // For verifying that armies before fortification == armies after fortification
+    //! For verifying that armies before fortification == armies after fortification
     RiskArmyCount armiesBefore;
 
     DiceInspector *diceInspector;
@@ -152,6 +156,9 @@ extern NSString *const RGMGameOverNotification;
 
 - (void) endTurn;
 - (IBAction) executeCurrentPhase:(nullable id)sender;
+
+//! Advance to next active player (regardless of current phase)
+//! Returns whether it wrapped.
 - (BOOL) nextActivePlayer;
 
 - (IBAction) fortify:(nullable id)sender;
