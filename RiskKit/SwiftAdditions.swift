@@ -75,19 +75,11 @@ extension RiskPlayer {
 }
 
 extension SNRandom {
-	open func randomNumberBetween(_ minimum: Int, _ maximum: Int) -> Int {
-		return __randomNumberBetween(minimum, maximum)
-	}
-
 	open func randomNumberBetween(_ minimum: Int32, _ maximum: Int32) -> Int32 {
-		return Int32(__randomNumberBetween(Int(minimum), Int(maximum)))
+		return Int32(randomNumberBetween(Int(minimum), Int(maximum)))
 	}
 	
-	open func randomNumber(withMaximum maximum: Int) -> Int {
-		return __randomNumber(withMaximum: maximum)
-	}
-
 	open func randomNumber(withMaximum maximum: Int32) -> Int32 {
-		return Int32(__randomNumber(withMaximum: Int(maximum)))
+		return Int32(randomNumber(withMaximum: Int(maximum)))
 	}
 }

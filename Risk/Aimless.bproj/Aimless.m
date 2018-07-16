@@ -180,18 +180,15 @@ static NSComparisonResult maximumVulnerability (id object1, id object2, void *co
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult maximumMovableTroops (id object1, id object2, void *context)
+static NSComparisonResult maximumMovableTroops (Country *object1, Country *object2, void *context)
 {
     NSComparisonResult result;
     
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
     
-    Country *country1 = (Country *) object1;
-    Country *country2 = (Country *) object2;
-    
-    RiskArmyCount troopCount1 = country1.movableTroopCount;
-    RiskArmyCount troopCount2 = country2.movableTroopCount;
+    RiskArmyCount troopCount1 = object1.movableTroopCount;
+    RiskArmyCount troopCount2 = object2.movableTroopCount;
     
     if (troopCount1 > troopCount2)
     {
@@ -211,18 +208,15 @@ static NSComparisonResult maximumMovableTroops (id object1, id object2, void *co
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *context)
+static NSComparisonResult leastEnemyNeighbors (Country *object1, Country *object2, void *context)
 {
     NSComparisonResult result;
     
     NSCParameterAssert (object1 != nil);
     NSCParameterAssert (object2 != nil);
     
-    Country *country1 = (Country *) object1;
-    Country *country2 = (Country *) object2;
-    
-    NSInteger count1 = [country1 enemyNeighborCountries].count;
-    NSInteger count2 = [country2 enemyNeighborCountries].count;
+    NSInteger count1 = [object1 enemyNeighborCountries].count;
+    NSInteger count2 = [object2 enemyNeighborCountries].count;
     
     if (count1 > count2)
     {
@@ -242,15 +236,12 @@ static NSComparisonResult leastEnemyNeighbors (id object1, id object2, void *con
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult minimumContinentSize (id object1, id object2, void *context)
+static NSComparisonResult minimumContinentSize (Continent *object1, Continent *object2, void *context)
 {
     NSComparisonResult result;
     
-    Continent *continent1 = (Continent *) object1;
-    Continent *continent2 = (Continent *) object2;
-    
-    NSInteger size1 = continent1.countries.count;
-    NSInteger size2 = continent2.countries.count;
+    NSInteger size1 = object1.countries.count;
+    NSInteger size2 = object2.countries.count;
     
     if (size1 < size2)
     {
@@ -270,17 +261,13 @@ static NSComparisonResult minimumContinentSize (id object1, id object2, void *co
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult maximumContinentSize (id object1, id object2, void *context)
+static NSComparisonResult maximumContinentSize (Continent *object1, Continent *object2, void *context)
 {
     NSComparisonResult result;
-    Continent *continent1, *continent2;
     NSInteger size1, size2;
     
-    continent1 = (Continent *) object1;
-    continent2 = (Continent *) object2;
-    
-    size1 = continent1.countries.count;
-    size2 = continent2.countries.count;
+    size1 = object1.countries.count;
+    size2 = object2.countries.count;
     
     if (size1 > size2)
     {
@@ -300,17 +287,13 @@ static NSComparisonResult maximumContinentSize (id object1, id object2, void *co
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult minimumContinentBorder (id object1, id object2, void *context)
+static NSComparisonResult minimumContinentBorder (Continent *object1, Continent *object2, void *context)
 {
     NSComparisonResult result;
-    Continent *continent1, *continent2;
     NSInteger size1, size2;
     
-    continent1 = (Continent *) object1;
-    continent2 = (Continent *) object2;
-    
-    size1 = [continent1 countriesAlongBorder].count;
-    size2 = [continent2 countriesAlongBorder].count;
+    size1 = [object1 countriesAlongBorder].count;
+    size2 = [object2 countriesAlongBorder].count;
     
     if (size1 < size2)
     {
@@ -330,15 +313,12 @@ static NSComparisonResult minimumContinentBorder (id object1, id object2, void *
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult maximumContinentBorder (id object1, id object2, void *context)
+static NSComparisonResult maximumContinentBorder (Continent *object1, Continent *object2, void *context)
 {
     NSComparisonResult result;
     
-    Continent *continent1 = (Continent *) object1;
-    Continent *continent2 = (Continent *) object2;
-    
-    NSInteger size1 = [continent1 countriesAlongBorder].count;
-    NSInteger size2 = [continent2 countriesAlongBorder].count;
+    NSInteger size1 = [object1 countriesAlongBorder].count;
+    NSInteger size2 = [object2 countriesAlongBorder].count;
     
     if (size1 > size2)
     {
