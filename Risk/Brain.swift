@@ -100,7 +100,7 @@ class Brain: NSObject, NSApplicationDelegate {
 			guard pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
 				continue;
 			}
-			let str = (subdirURL.lastPathComponent as NSString).deletingPathExtension
+			let str = subdirURL.deletingPathExtension().lastPathComponent
 			
 			// refuse to load if the name matches a module already loaded
 			if !loadedRiskPlayerNames.contains(str) {

@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) _disconnectCountries;
 
 @property (copy, readonly) NSSet<Country*> *allCountries;
-- (nullable Continent *) continentNamed:(NSString *)continentName;
+- (nullable Continent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, strong) NSArray<RiskCard*> *cards;
 
