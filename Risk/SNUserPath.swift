@@ -149,8 +149,8 @@ private let SNUserPathOperation_VERSION = 1
 			case .dps_ucache:
 				str = "<SNUserPathOperation: ucache>";
 				
-				//default:
-				//	str = "<SNUserPathOperation: UNKNOWN>";
+			default:
+				str = "<SNUserPathOperation: UNKNOWN>";
 			}
 			
 			return str;

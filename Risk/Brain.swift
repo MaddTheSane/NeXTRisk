@@ -74,15 +74,13 @@ class Brain: NSObject, NSApplicationDelegate {
 	private func loadRiskPlayerBundles() {
 		let mainBundle = Bundle.main
 		var loadedRiskPlayerNames = Set<String>()
-		var delayedRiskPlayerPaths = Set<String>()
+		var delayedRiskPlayerPaths = Set<URL>()
 		var playerBundle: Bundle?
 		var keepTrying = false
 		var loadedBundles = [String: Bundle]()
 		
 		guard let pluginURL = mainBundle.builtInPlugInsURL,
-			let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles], errorHandler: ({ (url, error) -> Bool in
-				return false
-			})) else {
+			let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) else {
 				let alert = NSAlert()
 				alert.messageText = "Plug-ins not found!"
 				alert.informativeText = "A.I. plug-ins were not found. Only local human players are allowed!"
@@ -98,7 +96,7 @@ class Brain: NSObject, NSApplicationDelegate {
 			let subdirURL = subdirURL1 as! URL
 			let pathExt = subdirURL.pathExtension
 			guard pathExt.caseInsensitiveCompare("riskplayer") == .orderedSame else {
-				continue;
+				continue
 			}
 			let str = subdirURL.deletingPathExtension().lastPathComponent
 			
@@ -111,7 +109,7 @@ class Brain: NSObject, NSApplicationDelegate {
 					// Ugh, failed.  Put the class name in tempStorage in case
 					// it can't be loaded because it's a subclass of another
 					// CP who hasn't been loaded yet.
-					delayedRiskPlayerPaths.insert(subdirURL.path)
+					delayedRiskPlayerPaths.insert(subdirURL)
 				} else {
 					// it loaded so add it to the list.
 					loadedBundles[str] = playerBundle;
@@ -127,12 +125,12 @@ class Brain: NSObject, NSApplicationDelegate {
 		// the loop
 		
 		repeat {
-			var tempPlayerNames = Set<String>()
+			var tempPlayerNames = Set<URL>()
 			keepTrying = false;
 			for path in delayedRiskPlayerPaths {
-				playerBundle = Bundle(path:path)
+				playerBundle = Bundle(url: path)
 				if playerBundle?.principalClass != nil {
-					let str = ((path as NSString).lastPathComponent as NSString).deletingPathExtension
+					let str = path.deletingPathExtension().lastPathComponent
 					
 					loadedBundles[str] = playerBundle
 					//NSLog (@"str: %@, playerBundle: %@", str, playerBundle);
@@ -156,7 +154,7 @@ class Brain: NSObject, NSApplicationDelegate {
 
 	@IBAction func showNewGamePanel(_ sender: AnyObject?) {
 		if newGameController == nil {
-			newGameController = NewGameController(brain:self)
+			newGameController = NewGameController(brain: self)
 		}
 		
 		newGameController!.showNewGamePanel()
@@ -173,7 +171,7 @@ class Brain: NSObject, NSApplicationDelegate {
 	@IBAction func info(_ sender: AnyObject?) {
 		if infoPanel == nil {
 			let nibFile = "InfoPanel";
-			let loaded = Bundle.main.loadNibNamed(NSNib.Name(rawValue: nibFile), owner: self, topLevelObjects: &nibObjs)
+			let loaded = Bundle.main.loadNibNamed(nibFile, owner: self, topLevelObjects: &nibObjs)
 			
 			assert(loaded == true, "Could not load \(nibFile).")
 			

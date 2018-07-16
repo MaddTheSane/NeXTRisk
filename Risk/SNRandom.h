@@ -6,9 +6,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//! The SNRandom class provides a simple interface for random number
+//! generation.  Different algorithms may be implemented by subclassing
+//! and providing a method of seeding, and of generating a long random
+//! number.
 @interface SNRandom : NSObject
 
-+ (SNRandom*)instance;
 @property (class, readonly, strong) SNRandom *instance;
 
 + (void) seedGenerator:(int)seed;
