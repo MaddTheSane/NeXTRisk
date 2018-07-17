@@ -28,7 +28,4 @@ typedef NS_ENUM(unsigned char, DPSUserPathOp) {
 - (float)decodeFloatWithoutKey;
 - (DPSUserPathOp)decodeUserPathOpWithoutKey;
 
-- (void)encodeUserPathOp:(DPSUserPathOp)pathOp;
-- (void)encodeFloat:(float)aFloat;
-
 @end

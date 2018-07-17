@@ -24,15 +24,4 @@
 	return toRet;
 }
 
-
-- (void)encodeUserPathOp:(DPSUserPathOp)pathOp
-{
-	[self encodeValueOfObjCType:@encode (DPSUserPathOp) at:&pathOp];
-}
-
-- (void)encodeFloat:(float)aFloat
-{
-	[self encodeValueOfObjCType:@encode (float) at:&aFloat];
-}
-
 @end
