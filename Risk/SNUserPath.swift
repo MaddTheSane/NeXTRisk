@@ -104,13 +104,13 @@ private let SNUserPathOperation_VERSION = 1
 				//[bPath set]
 				break;
 				
-			//default:
-			//	NSLog("Unknown op: %i", op.rawValue);
+			default:
+				NSLog("Unknown op: %i", op.rawValue);
 			}
 		}
 		
 		override var description: String {
-			var str = "<SNUserPathOperation: UNKNOWN>"
+			let str: String
 			
 			switch (op) {
 			case .dps_arc:

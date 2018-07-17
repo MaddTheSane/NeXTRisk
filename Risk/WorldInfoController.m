@@ -12,13 +12,6 @@ RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 #import "Continent.h"
 #import "Country.h"
 
-//======================================================================
-// The World Info report shows the name of the world, and the name,
-// number of countries, and bonus value for each continent.
-//
-// Double click on the column titles to sort by that column.
-//======================================================================
-
 static NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
 {
     Continent *continent1, *continent2;
@@ -130,7 +123,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     if (self = [super init]) {
         NSArray *tmpArray;
-        NSString *nibFile = @"WorldInfoPanel";
+        NSNibName nibFile = @"WorldInfoPanel";
         BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArray];
         nibObjs = tmpArray;
         if (loaded == NO)
@@ -206,16 +199,12 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            Continent *continent1, *continent2;
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(Continent *_Nonnull obj1, Continent *_Nonnull obj2) {
             NSComparisonResult result;
             NSInteger count1, count2;
             
-            continent1 = (Continent *)obj1;
-            continent2 = (Continent *)obj2;
-            
-            count1 = continent1.countries.count;
-            count2 = continent2.countries.count;
+            count1 = obj1.countries.count;
+            count2 = obj2.countries.count;
             
             if (count1 < count2)
             {
@@ -245,16 +234,12 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            Continent *continent1, *continent2;
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(Continent * _Nonnull obj1, Continent * _Nonnull obj2) {
             NSComparisonResult result;
             int count1, count2;
             
-            continent1 = (Continent *)obj1;
-            continent2 = (Continent *)obj2;
-            
-            count1 = continent1.continentBonus;
-            count2 = continent2.continentBonus;
+            count1 = obj1.continentBonus;
+            count2 = obj2.continentBonus;
             
             if (count1 < count2)
             {

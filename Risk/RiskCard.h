@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 //! different cards will be required for each world.
 @interface RiskCard : NSObject <NSCoding>
 
-+ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSString *)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:with:imageNamed:) instead");
++ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSImageName)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:with:imageNamed:) instead");
 
 // Take card image name from country?
 - (instancetype)initCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSImageName)anImageName NS_DESIGNATED_INITIALIZER;
