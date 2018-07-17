@@ -20,7 +20,7 @@
 		551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 551251EA1CC27D55000E7A52 /* RiskUtil_main.m */; };
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
-		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		55377FB31CC15C2400A2C08E /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.xib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.xib */; };
 		55377FC41CC15C2400A2C08E /* NewGamePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F231CC15C2300A2C08E /* NewGamePanel.xib */; };
@@ -33,7 +33,7 @@
 		55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4C1CC15C2300A2C08E /* NewGameController.m */; };
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
-		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		55377FE51CC15C2400A2C08E /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		55377FF01CC15C2400A2C08E /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F6E1CC15C2400A2C08E /* StatusView.m */; };
 		55377FF41CC15DD700A2C08E /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 55377FF31CC15DD700A2C08E /* Help */; };
 		553780021CC15E1700A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553780011CC15E1700A2C08E /* Assets.xcassets */; };

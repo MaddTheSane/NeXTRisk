@@ -43,7 +43,6 @@ extern NSNotificationName const RiskBoardSetupShowCardSetCountsChangedNotificati
     NSColor *playerColors[7];
 }
 
-+ (BoardSetup*)instance;
 @property (class, readonly, strong) BoardSetup *instance;
 
 - (instancetype)init;

@@ -109,7 +109,7 @@ NSData *defaultsDataForColor (NSColor *color)
         color = [NSColor redColor];
         boardDefaults[DK_DefaultPlayer6Color] = defaultsDataForColor (color);
         
-        boardDefaults[DK_BorderWidth] = @1;
+        boardDefaults[DK_BorderWidth] = @1.0;
         
         color = [NSColor blackColor];
         boardDefaults[DK_RegularBorderColor] = defaultsDataForColor (color);
@@ -228,7 +228,7 @@ NSData *defaultsDataForColor (NSColor *color)
     
     defaults = [NSUserDefaults standardUserDefaults];
     
-    borderWidth = [defaults floatForKey:DK_BorderWidth];
+    borderWidth = [defaults doubleForKey:DK_BorderWidth];
     
     regularBorderColor = getColorForDefault (DK_RegularBorderColor);
     
