@@ -121,19 +121,19 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             }
             
             if ([aDecoder containsValueForKey:kCountryNeighborsArrayKey]) {
-                countryNeighbors = [NSArray arrayWithArray:[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey]];
+                countryNeighbors = [[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey] copy];
             } else {
-            NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
-            
-            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
-            for (NSArray<NSString*> *conCat in tmptmp) {
-                NSString *name1 = conCat[0];
-                NSString *name2 = conCat[1];
-                Country *country1 = countryDictionary[name1];
-                Country *country2 = countryDictionary[name2];
-                [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
-            }
-            countryNeighbors = [tmpCountryNeighbors copy];
+                NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
+                
+                NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
+                for (NSArray<NSString*> *conCat in tmptmp) {
+                    NSString *name1 = conCat[0];
+                    NSString *name2 = conCat[1];
+                    Country *country1 = countryDictionary[name1];
+                    Country *country2 = countryDictionary[name2];
+                    [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
+                }
+                countryNeighbors = [tmpCountryNeighbors copy];
             }
             
             if ([aDecoder containsValueForKey:kCardsArrayKey]) {
