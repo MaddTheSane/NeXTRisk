@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="RiskPlayer">
@@ -19,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="410" y="142" width="652" height="264"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="6">
                 <rect key="frame" x="0.0" y="0.0" width="652" height="264"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -45,37 +46,35 @@
                         </connections>
                     </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7">
-                        <rect key="frame" x="-1" y="50" width="654" height="215"/>
-                        <clipView key="contentView" id="gSq-1k-wEX">
-                            <rect key="frame" x="1" y="1" width="652" height="213"/>
+                        <rect key="frame" x="-1" y="61" width="654" height="204"/>
+                        <clipView key="contentView" drawsBackground="NO" id="gSq-1k-wEX">
+                            <rect key="frame" x="1" y="1" width="637" height="202"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8">
-                                    <rect key="frame" x="0.0" y="0.0" width="651" height="213"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8">
+                                    <rect key="frame" x="0.0" y="0.0" width="636" height="202"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="652" height="213"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="637" height="202"/>
                                     <size key="maxSize" width="669" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="652" height="213"/>
-                                    <size key="maxSize" width="669" height="10000000"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="27">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="28">
-                            <rect key="frame" x="637" y="1" width="16" height="213"/>
+                            <rect key="frame" x="638" y="1" width="15" height="202"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7" firstAttribute="top" secondItem="6" secondAttribute="top" constant="-1" id="1m0-RL-VMU"/>
-                    <constraint firstItem="9" firstAttribute="top" secondItem="7" secondAttribute="bottom" constant="9" id="6sy-74-c6q"/>
+                    <constraint firstItem="9" firstAttribute="top" secondItem="7" secondAttribute="bottom" constant="20" symbolic="YES" id="6sy-74-c6q"/>
                     <constraint firstAttribute="bottom" secondItem="9" secondAttribute="bottom" constant="20" symbolic="YES" id="HfH-II-6p2"/>
                     <constraint firstAttribute="bottom" secondItem="12" secondAttribute="bottom" constant="20" symbolic="YES" id="TyZ-cD-PUN"/>
                     <constraint firstAttribute="trailing" secondItem="9" secondAttribute="trailing" constant="20" symbolic="YES" id="XGu-Wd-eva"/>

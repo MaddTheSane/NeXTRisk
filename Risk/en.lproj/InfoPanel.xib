@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,26 +14,27 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="About the Author" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="AboutMike" customClass="NSPanel">
+        <window title="About the Author" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="AboutMike" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="470" y="504" width="328" height="184"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="7">
                 <rect key="frame" x="0.0" y="0.0" width="328" height="184"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36">
                         <rect key="frame" x="-1" y="-1" width="330" height="186"/>
-                        <clipView key="contentView" id="mbZ-zN-8lM">
-                            <rect key="frame" x="1" y="1" width="328" height="184"/>
+                        <clipView key="contentView" drawsBackground="NO" id="mbZ-zN-8lM">
+                            <rect key="frame" x="1" y="1" width="313" height="184"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="37">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="184"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="312" height="184"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="327" height="184"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="313" height="184"/>
                                     <size key="maxSize" width="333" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -45,6 +44,7 @@
 Mike Ferris &lt;mike@lorax.com&gt;
 http://www.codefab.com/users/mferris/</string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -86,14 +86,13 @@ http://www.codefab.com/users/mferris/</string>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="71">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="72">
-                            <rect key="frame" x="313" y="1" width="16" height="184"/>
+                            <rect key="frame" x="314" y="1" width="15" height="184"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -106,26 +105,27 @@ http://www.codefab.com/users/mferris/</string>
                 </constraints>
             </view>
         </window>
-        <window title="About Risk" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="9" userLabel="AboutRisk" customClass="NSPanel">
+        <window title="About Risk" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="9" userLabel="AboutRisk" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="105" y="452" width="425" height="235"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="3">
                 <rect key="frame" x="0.0" y="0.0" width="425" height="235"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40">
                         <rect key="frame" x="-1" y="-1" width="427" height="237"/>
-                        <clipView key="contentView" id="Uoi-5E-Rel">
-                            <rect key="frame" x="1" y="1" width="425" height="235"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="Uoi-5E-Rel">
+                            <rect key="frame" x="1" y="1" width="410" height="235"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="41">
-                                    <rect key="frame" x="0.0" y="11" width="424" height="408"/>
+                                    <rect key="frame" x="0.0" y="-8" width="409" height="422"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="424" height="235"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="409" height="235"/>
                                     <size key="maxSize" width="431" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -135,6 +135,7 @@ I am grateful to the following people for ideas and code:
 
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -174,6 +175,7 @@ I am grateful to the following people for ideas and code:
                                         </fragment>
                                         <fragment content="*">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -213,6 +215,7 @@ I am grateful to the following people for ideas and code:
                                         </fragment>
                                         <fragment content=" ">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Symbol"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -260,6 +263,7 @@ I am grateful to the following people for ideas and code:
 	Copyright 1991, 1992 Contemporary Design Studios. All rights reserved.
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -302,6 +306,7 @@ I am grateful to the following people for ideas and code:
 Cg
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -345,6 +350,7 @@ Cg
 	Folder while Risk.app is selected in the Workspace).
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -392,6 +398,7 @@ Cg
 
 Mike Ferris</string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -433,14 +440,13 @@ Mike Ferris</string>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="73">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="74">
-                            <rect key="frame" x="410" y="1" width="16" height="235"/>
+                            <rect key="frame" x="411" y="1" width="15" height="235"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -458,7 +464,7 @@ Mike Ferris</string>
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="265" y="459" width="442" height="260"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="4">
                 <rect key="frame" x="0.0" y="0.0" width="442" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -561,21 +567,23 @@ Mike Ferris</string>
                     </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44">
                         <rect key="frame" x="20" y="72" width="402" height="113"/>
-                        <clipView key="contentView" id="wI7-eK-daq">
-                            <rect key="frame" x="1" y="1" width="400" height="111"/>
+                        <clipView key="contentView" drawsBackground="NO" id="wI7-eK-daq">
+                            <rect key="frame" x="1" y="1" width="385" height="111"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" baseWritingDirection="leftToRight" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="45">
-                                    <rect key="frame" x="0.0" y="-29" width="399" height="182"/>
+                                    <rect key="frame" x="0.0" y="-30" width="384" height="196"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="399" height="111"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="384" height="111"/>
                                     <size key="maxSize" width="402" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
                                             <string key="content">Risk is NO LONGER shareware
 </string>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -618,6 +626,7 @@ Mike Ferris</string>
      Source code is available in a separate distribution for those who are interested.
      This version contains the much rejoiced over support for computer players.  Only one is included in this version, but it is possible and encouraged for you to write your own.  See the help files for details.</mutableString>
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Times-Roman"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                     <tabStops>
@@ -659,21 +668,20 @@ Mike Ferris</string>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="75">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="76">
-                            <rect key="frame" x="385" y="1" width="16" height="111"/>
+                            <rect key="frame" x="386" y="1" width="15" height="111"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                         <rect key="frame" x="58" y="5" width="65" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="61" id="Eed-JI-Kgv"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="Eed-JI-Kgv"/>
                         </constraints>
                         <textFieldCell key="cell" alignment="left" title="0.00" id="63">
                             <font key="font" metaFont="miniSystem"/>
