@@ -7,7 +7,7 @@
 
 #import "Risk.h"
 
-@class Continent;
+@class RKContinent;
 @class RKCountry;
 @class RKCard;
 @class RiskNeighbor;
@@ -27,15 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSMutableSet<RKCountry*> *allCountries;
     NSArray<RiskNeighbor*> *countryNeighbors;
-    NSDictionary<NSString*,Continent *> *continents;
+    NSDictionary<NSString*,RKContinent *> *continents;
     NSArray<RKCard*> *cards;
 }
 
 + (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
-+ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
++ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
-- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -45,8 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) _disconnectCountries;
 
 @property (copy, readonly) NSSet<RKCountry*> *allCountries;
-- (nullable Continent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
-@property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
+- (nullable RKContinent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
+@property (readonly, strong) NSDictionary<NSString*,RKContinent *> *continents;
 @property (readonly, strong) NSArray<RKCard*> *cards;
 
 /// Calculate the number of bonus armies earned for a player at the

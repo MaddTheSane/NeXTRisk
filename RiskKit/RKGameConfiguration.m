@@ -6,11 +6,11 @@
 
 RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
-#import "GameConfiguration.h"
+#import "RKGameConfiguration.h"
 
 #define GameConfiguration_VERSION 1
 
-@implementation GameConfiguration
+@implementation RKGameConfiguration 
 @synthesize initialCountryDistribution;
 @synthesize initialArmyPlacement;
 @synthesize cardSetRedemption;
@@ -18,7 +18,7 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [GameConfiguration class])
+    if (self == [RKGameConfiguration class])
     {
         [self setVersion:GameConfiguration_VERSION];
     }
@@ -38,9 +38,9 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (GameConfiguration*) defaultConfiguration
++ (RKGameConfiguration*) defaultConfiguration
 {
-    return [[GameConfiguration alloc] init];
+    return [[RKGameConfiguration alloc] init];
 }
 
 //----------------------------------------------------------------------

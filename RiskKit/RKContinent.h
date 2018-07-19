@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class RKCountry;
-@interface Continent : NSObject <NSCoding>
+@interface RKContinent : NSObject <NSCoding>
 {
     NSString *continentName;
     NSSet<RKCountry*> *countries;

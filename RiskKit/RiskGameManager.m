@@ -8,21 +8,21 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 
 #import "RiskGameManager.h"
 
-#import "ArmyPlacementValidator.h"
+#import "RKArmyPlacementValidator.h"
 #import "ArmyView.h"
-#import "BoardSetup.h"
-#import "CardPanelController.h"
+#import "RKBoardSetup.h"
+#import "RKCardPanelController.h"
 #import "RKCardSet.h"
 #import "RKCountry.h"
-#import "DiceInspector.h"
-#import "GameConfiguration.h"
+#import "RKDiceInspector.h"
+#import "RKGameConfiguration.h"
 #import "RKCard.h"
 #import "RiskMapView.h"
 #import "RiskPlayer.h"
 #import "RiskWorld.h"
 #import "SNRandom.h"
 #import "StatusView.h"
-#import "WorldInfoController.h"
+#import "RKWorldInfoController.h"
 
 DEFINE_NSSTRING (RGMGameOverNotification);
 
@@ -86,7 +86,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             return nil;
         }
         
-        configuration = [[GameConfiguration alloc] init];;
+        configuration = [[RKGameConfiguration alloc] init];;
         
         activePlayerCount = 0;
         
@@ -116,7 +116,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
-                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                     name:RKBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
     
@@ -234,7 +234,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     if (diceInspector == nil)
     {
-        diceInspector = [[DiceInspector alloc] init];
+        diceInspector = [[RKDiceInspector alloc] init];
     }
     
     [diceInspector showPanel];
@@ -246,7 +246,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     if (worldInfoController == nil)
     {
-        worldInfoController = [[WorldInfoController alloc] init];
+        worldInfoController = [[RKWorldInfoController alloc] init];
         [worldInfoController setWorld:world];
     }
     
@@ -318,12 +318,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     mapView.countryArray = world.allCountries.allObjects;
     
     SNRelease (armyPlacementValidator);
-    armyPlacementValidator = [[ArmyPlacementValidator alloc] initWithRiskWorld:world];
+    armyPlacementValidator = [[RKArmyPlacementValidator alloc] initWithRiskWorld:world];
 }
 
 //----------------------------------------------------------------------
 
-- (void) setGameConfiguration:(GameConfiguration *)newGameConfiguration
+- (void) setGameConfiguration:(RKGameConfiguration *)newGameConfiguration
 {
     // Can't change the rules of a game in progress.
     AssertGameState (RKGameStateNone);
@@ -762,7 +762,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     // Now set up player stuff in "Turn Phase" box:
     nameTextField.stringValue = players[currentPlayerNumber].playerName;
-    playerColorWell.color = [[BoardSetup instance] colorForPlayer:currentPlayerNumber];
+    playerColorWell.color = [[RKBoardSetup instance] colorForPlayer:currentPlayerNumber];
     
     [self updatePhaseBox];
     
@@ -1795,7 +1795,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     if (cardPanelController == nil)
     {
-        cardPanelController = [[CardPanelController alloc] init];
+        cardPanelController = [[RKCardPanelController alloc] init];
         [cardPanelController setGameManager:self];
     }
 }
@@ -1839,7 +1839,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) defaultsChanged:(NSNotification *)aNotification
 {
     if (currentPlayerNumber > 0)
-        playerColorWell.color = [[BoardSetup instance] colorForPlayer:currentPlayerNumber];
+        playerColorWell.color = [[RKBoardSetup instance] colorForPlayer:currentPlayerNumber];
 }
 
 //======================================================================

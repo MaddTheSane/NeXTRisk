@@ -9,7 +9,7 @@ RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
 #import "CountryShape.h"
 
-#import "BoardSetup.h"
+#import <RiskKit/RKBoardSetup.h>
 #import <RiskKit/RKCountry.h>
 #import "RiskMapView.h"
 #if defined(RISKUTIL_BUILD) && RISKUTIL_BUILD
@@ -126,7 +126,7 @@ static NSTextFieldCell *_armyCell = nil;
         [aView drawBackground:NSMakeRect (armyCellPoint.x, armyCellPoint.y, ARMYCELL_WIDTH, ARMYCELL_HEIGHT)];
     }
     
-    BoardSetup *boardSetup = [BoardSetup instance];
+    RKBoardSetup *boardSetup = [RKBoardSetup instance];
     
     if (aCountry.playerNumber != 0)
         [[boardSetup colorForPlayer:aCountry.playerNumber] set];

@@ -6,20 +6,20 @@
 
 RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
-#import "ArmyPlacementValidator.h"
+#import "RKArmyPlacementValidator.h"
 
 #import "RiskWorld.h"
 #import "RKCountry.h"
 
 #define ArmyPlacementValidator_VERSION 1
 
-@implementation ArmyPlacementValidator
+@implementation RKArmyPlacementValidator
 @synthesize sourceCountry;
 @synthesize destinationCountry;
 
 + (void) initialize
 {
-    if (self == [ArmyPlacementValidator class])
+    if (self == [RKArmyPlacementValidator class])
     {
         [self setVersion:ArmyPlacementValidator_VERSION];
     }

@@ -8,21 +8,21 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class RiskWorld;
-@class Continent;
+@class RKContinent;
 @class NSWindow;
 
 /// The World Info report shows the name of the world, and the name,
 /// number of countries, and bonus value for each continent.
 ///
 /// Double click on the column titles to sort by that column.
-@interface WorldInfoController : NSObject <NSTableViewDataSource>
+@interface RKWorldInfoController : NSObject <NSTableViewDataSource>
 {
     IBOutlet NSWindow *worldInfoWindow;
 
     IBOutlet NSTableView *continentTable;
 
     //RiskWorld *world;
-    NSArray<Continent*> *continents;
+    NSArray<RKContinent*> *continents;
 }
 
 - (instancetype)init;

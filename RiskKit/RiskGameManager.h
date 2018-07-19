@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSNotificationName const RGMGameOverNotification;
 
-@class RiskWorld, RiskPlayer, GameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, CardPanelController;
-@class RKCard, ArmyPlacementValidator, RKCardSet, DiceInspector, WorldInfoController, SNRandom;
+@class RiskWorld, RiskPlayer, RKGameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, RKCardPanelController;
+@class RKCard, RKArmyPlacementValidator, RKCardSet, RKDiceInspector, RKWorldInfoController, SNRandom;
 
 //! The \c RiskGameManager controls most of the game play.  It notifies
 //! the players of the various phases of game play, and does some
@@ -23,7 +23,7 @@ extern NSNotificationName const RGMGameOverNotification;
 @interface RiskGameManager : NSObject
 {
     RiskWorld *world;
-    GameConfiguration *configuration;
+    RKGameConfiguration *configuration;
 
     IBOutlet RiskMapView *mapView;
     IBOutlet NSTextField *countryNameTextField;
@@ -74,12 +74,12 @@ extern NSNotificationName const RGMGameOverNotification;
 
     // Keep track of armies left for current player in this turn.
     RKArmyCount armiesLeftToPlace;
-    ArmyPlacementValidator *armyPlacementValidator;
+    RKArmyPlacementValidator *armyPlacementValidator;
 
     BOOL playerHasConqueredCountry;
 
     // Card management
-    IBOutlet CardPanelController *cardPanelController;
+    IBOutlet RKCardPanelController *cardPanelController;
     IBOutlet NSWindow *cardPanelWindow;
     NSMutableArray *cardDeck;
     NSMutableArray *discardDeck;
@@ -88,8 +88,8 @@ extern NSNotificationName const RGMGameOverNotification;
     //! For verifying that armies before fortification == armies after fortification
     RKArmyCount armiesBefore;
 
-    DiceInspector *diceInspector;
-    WorldInfoController *worldInfoController;
+    RKDiceInspector *diceInspector;
+    RKWorldInfoController *worldInfoController;
 
     SNRandom *rng;
 }
@@ -113,7 +113,7 @@ extern NSNotificationName const RGMGameOverNotification;
 
 @property (nonatomic, strong) RiskWorld *world;
 
-@property (nonatomic, strong) GameConfiguration *gameConfiguration;
+@property (nonatomic, strong) RKGameConfiguration *gameConfiguration;
 
 @property (readonly) RKGameState gameState;
 

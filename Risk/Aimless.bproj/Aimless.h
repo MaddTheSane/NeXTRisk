@@ -38,7 +38,7 @@ typedef NS_ENUM(int, CountryChoiceType)
     ChooseAdjacentToCurrentCountries
 };
 
-@class SNHeap<ObjectType>, Continent;
+@class SNHeap<ObjectType>, RKContinent;
 
 @interface Aimless : RiskPlayer
 {
@@ -55,7 +55,7 @@ typedef NS_ENUM(int, CountryChoiceType)
     CountryChoiceType primaryChoice;
 
     // For smallest/largest/leastBordered/mostBordered continent
-    SNHeap<Continent*> *continentChoiceHeap;
+    SNHeap<RKContinent*> *continentChoiceHeap;
     // For random continents:
     NSMutableArray *continentChoiceArray;
 
@@ -123,7 +123,7 @@ typedef NS_ENUM(int, CountryChoiceType)
 
 - (NSSet<RKCountry*> *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
 
-@property (readonly, strong) Continent *continentWeAreClosestToControlling;
+@property (readonly, strong) RKContinent *continentWeAreClosestToControlling;
 
 @property (readonly) int perimeterCountryCount;
 - (int) perimeterCountryCountExcludingCountry:(RKCountry *)excludedCountry;

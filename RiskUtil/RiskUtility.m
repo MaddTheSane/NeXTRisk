@@ -14,7 +14,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 #import "RiskMapView.h"
 #import "RiskNeighbor.h"
 #import "RiskWorld.h"
-#import "Continent.h"
+#import <RiskKit/RKContinent.h>
 #import <RiskKit/RKCard.h>
 #import "RiskUtil-Swift.h"
 
@@ -303,7 +303,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries
++ (NSDictionary<NSString*,RKContinent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries
 {
     NSMutableDictionary *theContinents;
     NSMutableDictionary<NSString*,NSMutableSet*> *setDict;
@@ -336,9 +336,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     for (NSString *name in continentBonuses)
     {
-        [theContinents setObject:[Continent continentWithName:name
-                                                    countries:[setDict objectForKey:name]
-                                                   bonusValue:[[continentBonuses objectForKey:name] intValue]]
+        [theContinents setObject:[RKContinent continentWithName:name
+                                                      countries:[setDict objectForKey:name]
+                                                     bonusValue:[[continentBonuses objectForKey:name] intValue]]
                           forKey:name];
     }
     

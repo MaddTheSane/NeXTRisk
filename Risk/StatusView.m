@@ -8,7 +8,7 @@ RCSID ("$Id: StatusView.m,v 1.4 1997/12/15 07:44:22 nygard Exp $");
 
 #import "StatusView.h"
 
-#import "BoardSetup.h"
+#import <RiskKit/RKBoardSetup.h>
 #import "RiskGameManager.h"
 #import "SNUtility.h"
 #import "RiskPlayer.h"
@@ -42,16 +42,16 @@ static NSTextFieldCell *_textCell = nil;
 - (instancetype) initWithFrame:(NSRect)frameRect
 {
     if (self = [super initWithFrame:frameRect]) {
-        showCardSetCounts = [BoardSetup instance].showCardSetCounts;
+        showCardSetCounts = [RKBoardSetup instance].showCardSetCounts;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
-                                                     name:RiskBoardSetupShowCardSetCountsChangedNotification
+                                                     name:RKBoardSetupShowCardSetCountsChangedNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (defaultsChanged:)
-                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                     name:RKBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
     
@@ -119,7 +119,7 @@ static NSTextFieldCell *_textCell = nil;
             // draw his entry
             boxRect.origin.y = ((offset + 1) * INTERSPACE) + (offset * boxHeight);
             NSDrawWhiteBezel (boxRect, boundsRect);
-            [[[BoardSetup instance] colorForPlayer:number] set];
+            [[[RKBoardSetup instance] colorForPlayer:number] set];
             NSRectFill(NSInsetRect(boxRect, INSET, INSET));
             textRect.origin.y = ((offset + 1) * INTERSPACE) +
             (offset * boxHeight) +
@@ -149,7 +149,7 @@ static NSTextFieldCell *_textCell = nil;
 
 - (void) defaultsChanged:(NSNotification *)aNotification
 {
-    showCardSetCounts = [BoardSetup instance].showCardSetCounts;
+    showCardSetCounts = [RKBoardSetup instance].showCardSetCounts;
     [self setNeedsDisplay:YES];
 }
 

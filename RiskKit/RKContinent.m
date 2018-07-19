@@ -6,20 +6,20 @@
 
 RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
-#import "Continent.h"
+#import "RKContinent.h"
 
 #import "RKCountry.h"
 
 #define Continent_VERSION 1
 
-@implementation Continent
+@implementation RKContinent
 @synthesize continentName;
 @synthesize continentBonus;
 @synthesize countries = countries;
 
 + (void) initialize
 {
-    if (self == [Continent class])
+    if (self == [RKContinent class])
     {
         [self setVersion:Continent_VERSION];
     }
@@ -29,7 +29,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 + (instancetype) continentWithName:(NSString *)aContinentName countries:(NSSet *)someCountries bonusValue:(int)bonus
 {
-    return [[Continent alloc] initWithName:aContinentName countries:someCountries bonusValue:bonus];
+    return [[self alloc] initWithName:aContinentName countries:someCountries bonusValue:bonus];
 }
 
 //----------------------------------------------------------------------

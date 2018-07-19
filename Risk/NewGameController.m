@@ -11,8 +11,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 #import "Brain.h"
 #import "RiskGameManager.h"
 #import "Human.h"
-#import "GameConfiguration.h"
-#import "BoardSetup.h"
+#import <RiskKit/RKGameConfiguration.h>
+#import <RiskKit/RKBoardSetup.h>
 #import "Risk-Swift.h"
 
 #define NewGameController_VERSION 1
@@ -58,8 +58,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     if (self = [super init]) {
         NSArray *tmpArr;
-        gameConfiguration = [[GameConfiguration alloc] init];
-        boardSetup = [BoardSetup instance];
+        gameConfiguration = [[RKGameConfiguration alloc] init];
+        boardSetup = [RKBoardSetup instance];
         
         brain = theBrain;
         
@@ -79,7 +79,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                     name:RKBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
     
@@ -325,7 +325,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     RiskPlayer *player;
     Class playerClass;
     NSString *name;
-    GameConfiguration *thisConfiguration;
+    RKGameConfiguration *thisConfiguration;
     BOOL showPlayerConsole;
     
     gameManager = brain.gameManager;
@@ -441,7 +441,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) revertToDefaults
 {
     NSUserDefaults *defaults;
-    GameConfiguration *oldConfiguration;
+    RKGameConfiguration *oldConfiguration;
     NSString *tmp;
     int index;
     
@@ -495,7 +495,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     //----------------------------------------
     // Now the game configuration rules.
-    oldConfiguration = [GameConfiguration defaultConfiguration];
+    oldConfiguration = [RKGameConfiguration defaultConfiguration];
     
     switch (oldConfiguration.initialCountryDistribution)
     {
@@ -575,16 +575,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (GameConfiguration *) thisConfiguration
+- (RKGameConfiguration *) thisConfiguration
 {
-    GameConfiguration *thisConfiguration;
+    RKGameConfiguration *thisConfiguration;
     NSInteger index;
     RKInitialCountryDistribution distribution[2] = { RKInitialCountryDistributionPlayerChosen, RKInitialCountryDistributionRandomlyChosen };
     RKInitialArmyPlacement placement[3] = { RKInitialArmyPlaceByOnes, RKInitialArmyPlaceByThrees, RKInitialArmyPlaceByFives };
     RKCardSetRedemption redemption[3] = { RKCardSetRedemptionRemainConstant, RKCardSetRedemptionIncreaseByOne, RKCardSetRedemptionIncreaseByFive };
     RKFortifyRule rule[4] = { RKFortifyRuleOneToOneNeighbor, RKFortifyRuleOneToManyNeighbors, RKFortifyRuleManyToManyNeighbors, RKFortifyRuleManyToManyConnected };
     
-    thisConfiguration = [GameConfiguration defaultConfiguration];
+    thisConfiguration = [RKGameConfiguration defaultConfiguration];
     
     index = initialCountryDistributionMatrix.selectedRow;
     if (index < 0 || index > 1)

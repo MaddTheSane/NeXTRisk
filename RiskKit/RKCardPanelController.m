@@ -6,7 +6,7 @@
 
 RCSID ("$Id: CardPanelController.m,v 1.3 1997/12/15 07:43:41 nygard Exp $");
 
-#import "CardPanelController.h"
+#import "RKCardPanelController.h"
 
 #import "RKCard.h"
 #import "RiskPlayer.h"
@@ -31,7 +31,7 @@ static struct image_names class_images[] =
     { CFSTR("LittleStar"),  &_littleStarImage },
 };
 
-@implementation CardPanelController
+@implementation RKCardPanelController
 {
     NSArray *nibObjs;
 }
@@ -39,7 +39,7 @@ static struct image_names class_images[] =
 
 + (void) initialize
 {
-    if (self == [CardPanelController class])
+    if (self == [RKCardPanelController class])
     {
         [self setVersion:CardPanelController_VERSION];
         
@@ -61,7 +61,7 @@ static struct image_names class_images[] =
 
 + (void) loadClassImages
 {
-    if (self == [CardPanelController class])
+    if (self == [RKCardPanelController class])
     {
         NSBundle *thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");

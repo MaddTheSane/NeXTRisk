@@ -9,7 +9,7 @@
 #import "RiskMapView.h"
 
 @class RKCountry, RiskNeighbor, RiskWorld, RKCard;
-@class Continent;
+@class RKContinent;
 
 @interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource, RiskMapViewDelegate>
 {
@@ -22,7 +22,7 @@
 
     IBOutlet NSTableView *neighborTableView;
 
-    NSDictionary<NSString*,Continent*> *continents;
+    NSDictionary<NSString*,RKContinent*> *continents;
     NSMutableArray<RiskNeighbor*> *countryNeighbors;
     NSArray<RKCard*> *cards;
 }
@@ -39,7 +39,7 @@
 
 + (NSString *) neighborString:(NSArray<RiskNeighbor*> *)neighborArray;
 
-+ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries;
++ (NSDictionary<NSString*,RKContinent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries;
 
 - (instancetype)init;
 

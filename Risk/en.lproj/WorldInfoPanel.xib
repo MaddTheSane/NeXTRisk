@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="WorldInfoController">
+        <customObject id="-2" userLabel="File's Owner" customClass="RKWorldInfoController">
             <connections>
                 <outlet property="continentTable" destination="8" id="15"/>
                 <outlet property="worldInfoWindow" destination="5" id="14"/>
@@ -27,7 +26,7 @@
                         <rect key="frame" x="-1" y="-1" width="376" height="189"/>
                         <clipView key="contentView" id="rX9-Lw-uzg">
                             <rect key="frame" x="1" y="0.0" width="374" height="188"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="25" id="8">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="165"/>

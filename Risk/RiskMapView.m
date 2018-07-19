@@ -8,7 +8,7 @@ RCSID ("$Id: RiskMapView.m,v 1.4 1997/12/18 21:03:47 nygard Exp $");
 
 #import "RiskMapView.h"
 
-#import "BoardSetup.h"
+#import <RiskKit/RKBoardSetup.h>
 #import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 
@@ -87,12 +87,12 @@ static NSImage *_boardBackingImage = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupChangedNotification
+                                                     name:RKBoardSetupChangedNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                     name:RKBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
     

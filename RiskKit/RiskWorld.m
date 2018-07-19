@@ -10,7 +10,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 #import "RKCountry.h"
 #import "RiskNeighbor.h"
-#import "Continent.h"
+#import "RKContinent.h"
 #import "RKCard.h"
 #import "RKWorldDecoder.h"
 
@@ -50,6 +50,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     if (!riskWorld) {
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
         [unarchive decodeClassName:@"Country" asClassName:@"RKCountry"];
+        [unarchive decodeClassName:@"Continent" asClassName:@"RKContinent"];
         [unarchive decodeClassName:@"RiskCard" asClassName:@"RKCard"];
         riskWorld = [unarchive decodeObject];
     }
@@ -212,7 +213,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 {
     [allCountries removeAllObjects];
     
-    for (Continent *continent in [continents allValues])
+    for (RKContinent *continent in [continents allValues])
     {
         [allCountries unionSet:continent.countries];
     }
@@ -257,7 +258,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (Continent *) continentNamed:(NSString *)continentName
+- (RKContinent *) continentNamed:(NSString *)continentName
 {
     return continents[continentName];
 }
@@ -274,7 +275,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     int bonus = 0;
     
     continentEnumerator = [continents objectEnumerator];
-    for (Continent *continent in continentEnumerator)
+    for (RKContinent *continent in continentEnumerator)
     {
         bonus += [continent bonusArmiesForPlayer:number];
     }

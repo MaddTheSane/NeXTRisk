@@ -42,7 +42,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 - (instancetype) initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 {
     RiskWorld *world;
-    NSDictionary<NSString*,Continent *> *continents;
+    NSDictionary<NSString*,RKContinent *> *continents;
     
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]) {
         // Contains the names of continents.

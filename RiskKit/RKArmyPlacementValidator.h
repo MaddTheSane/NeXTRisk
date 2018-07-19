@@ -9,10 +9,10 @@
 
 @class RiskWorld, RKCountry;
 
-//! The \c ArmyPlacementValidator controls the placement of armies during
+//! The \c RKArmyPlacementValidator controls the placement of armies during
 //! the game -- for initial army placement, normal army placement, after
 //! a successful attack and during the fortification phase.
-@interface ArmyPlacementValidator : NSObject
+@interface RKArmyPlacementValidator : NSObject
 {
     RiskWorld *world;
 

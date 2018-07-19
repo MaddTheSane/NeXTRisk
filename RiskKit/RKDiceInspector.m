@@ -6,7 +6,7 @@
 
 RCSID ("$Id: DiceInspector.m,v 1.2 1997/12/15 07:43:50 nygard Exp $");
 
-#import "DiceInspector.h"
+#import "RKDiceInspector.h"
 #import "RKCountry.h"
 
 #define DiceInspector_VERSION 1
@@ -34,14 +34,14 @@ static struct image_names class_images[] =
     { CFSTR("Die6"),    &_die6Image },
 };
 
-@implementation DiceInspector
+@implementation RKDiceInspector
 {
     NSArray *nibObjs;
 }
 
 + (void) initialize
 {
-    if (self == [DiceInspector class])
+    if (self == [RKDiceInspector class])
     {
         [self setVersion:DiceInspector_VERSION];
         
@@ -63,7 +63,7 @@ static struct image_names class_images[] =
 
 + (void) loadClassImages
 {
-    if (self == [DiceInspector class])
+    if (self == [RKDiceInspector class])
     {
         NSBundle *thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");

@@ -11,9 +11,9 @@
 
 @class NSColor;
 
-void setColorForDefault (NSColor *value, NSString *key);
-NSColor *getColorForDefault (NSString *key);
-NSData *defaultsDataForColor (NSColor *color);
+void RKSetColorForDefault (NSColor *value, NSString *key);
+NSColor *RKGetColorForDefault (NSString *key);
+NSData *RKDefaultsDataForColor (NSColor *color);
 
 #define DK_DefaultPlayer1Color @"DefaultPlayer1Color"
 #define DK_DefaultPlayer2Color @"DefaultPlayer2Color"
@@ -27,13 +27,13 @@ NSData *defaultsDataForColor (NSColor *color);
 #define DK_SelectedBorderColor @"SelectedBorderColor"
 #define DK_ShowCardSetCounts   @"ShowCardSetCounts"
 
-extern NSNotificationName const RiskBoardSetupChangedNotification;
-extern NSNotificationName const RiskBoardSetupPlayerColorsChangedNotification;
-extern NSNotificationName const RiskBoardSetupShowCardSetCountsChangedNotification;
+extern NSNotificationName const RKBoardSetupChangedNotification;
+extern NSNotificationName const RKBoardSetupPlayerColorsChangedNotification;
+extern NSNotificationName const RKBoardSetupShowCardSetCountsChangedNotification;
 
-//! The \c BoardSetup defines what the main board and the status view will
+//! The \c RKBoardSetup defines what the main board and the status view will
 //! look like.
-@interface BoardSetup : NSObject
+@interface RKBoardSetup : NSObject
 {
     CGFloat borderWidth;
     NSColor *regularBorderColor;
@@ -43,7 +43,7 @@ extern NSNotificationName const RiskBoardSetupShowCardSetCountsChangedNotificati
     NSColor *playerColors[7];
 }
 
-@property (class, readonly, strong) BoardSetup *instance;
+@property (class, readonly, strong) RKBoardSetup *instance;
 
 - (instancetype)init;
 

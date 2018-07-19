@@ -6,19 +6,19 @@
 
 RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 
-#import "WorldInfoController.h"
+#import "RKWorldInfoController.h"
 
 #import "RiskWorld.h"
-#import "Continent.h"
+#import "RKContinent.h"
 #import "RKCountry.h"
 
-static NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
+static NSComparisonResult WIOrderContinentsByName (id object1, id object2, void *context)
 {
-    Continent *continent1, *continent2;
+    RKContinent *continent1, *continent2;
     NSComparisonResult result;
     
-    continent1 = (Continent *)object1;
-    continent2 = (Continent *)object2;
+    continent1 = (RKContinent *)object1;
+    continent2 = (RKContinent *)object2;
     
     result = [continent1.continentName compare:continent2.continentName];
     
@@ -89,14 +89,14 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 #define WorldInfoController_VERSION 1
 
-@implementation WorldInfoController
+@implementation RKWorldInfoController
 {
     NSArray *nibObjs;
 }
 
 + (void) initialize
 {
-    if (self == [WorldInfoController class])
+    if (self == [RKWorldInfoController class])
     {
         [self setVersion:WorldInfoController_VERSION];
     }
@@ -199,7 +199,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(Continent *_Nonnull obj1, Continent *_Nonnull obj2) {
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent *_Nonnull obj1, RKContinent *_Nonnull obj2) {
             NSComparisonResult result;
             NSInteger count1, count2;
             
@@ -234,7 +234,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     if (continents != nil)
     {
-        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(Continent * _Nonnull obj1, Continent * _Nonnull obj2) {
+        newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent * _Nonnull obj1, RKContinent * _Nonnull obj2) {
             NSComparisonResult result;
             int count1, count2;
             
@@ -302,7 +302,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     NSString *identifier;
-    Continent *target;
+    RKContinent *target;
     id value;
     
     //NSParameterAssert (rowIndex >= 0 && rowIndex < [mes count]);

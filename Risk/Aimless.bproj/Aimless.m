@@ -28,10 +28,10 @@ RCSID ("$Id: Aimless.m,v 1.4 1997/12/15 21:09:47 nygard Exp $");
 
 #import <RiskKit/RKCountry.h>
 #import "RiskGameManager.h"
-#import "RiskWorld.h"
-#import "SNRandom.h"
-#import "Continent.h"
-#import "GameConfiguration.h"
+#import <RiskKit/RiskWorld.h>
+#import <RiskKit/SNRandom.h>
+#import <RiskKit/RKContinent.h>
+#import <RiskKit/RKGameConfiguration.h>
 #import "SNHeap.h"
 #import "DNode.h"
 #import "PathFinder.h"
@@ -236,7 +236,7 @@ static NSComparisonResult leastEnemyNeighbors (RKCountry *object1, RKCountry *ob
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult minimumContinentSize (Continent *object1, Continent *object2, void *context)
+static NSComparisonResult minimumContinentSize (RKContinent *object1, RKContinent *object2, void *context)
 {
     NSComparisonResult result;
     
@@ -261,7 +261,7 @@ static NSComparisonResult minimumContinentSize (Continent *object1, Continent *o
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult maximumContinentSize (Continent *object1, Continent *object2, void *context)
+static NSComparisonResult maximumContinentSize (RKContinent *object1, RKContinent *object2, void *context)
 {
     NSComparisonResult result;
     NSInteger size1, size2;
@@ -287,7 +287,7 @@ static NSComparisonResult maximumContinentSize (Continent *object1, Continent *o
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult minimumContinentBorder (Continent *object1, Continent *object2, void *context)
+static NSComparisonResult minimumContinentBorder (RKContinent *object1, RKContinent *object2, void *context)
 {
     NSComparisonResult result;
     NSInteger size1, size2;
@@ -313,7 +313,7 @@ static NSComparisonResult minimumContinentBorder (Continent *object1, Continent 
 
 //----------------------------------------------------------------------
 
-static NSComparisonResult maximumContinentBorder (Continent *object1, Continent *object2, void *context)
+static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContinent *object2, void *context)
 {
     NSComparisonResult result;
     
@@ -476,7 +476,7 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
 
 - (void) chooseCountry
 {
-    Continent *continent;
+    RKContinent *continent;
     
     SNRandom *anRng = self.rng;
     RiskWorld *world = gameManager.world;
@@ -685,7 +685,7 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
 - (void) willBeginPlacingInitialArmies
 {
     NSEnumerator *countryEnumerator;
-    Continent *best;
+    RKContinent *best;
     RKCountry *country;
     
     best = [self continentWeAreClosestToControlling];
@@ -1197,7 +1197,7 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
     lostCountryCount[number]++;
     
     // And then check if we had the rest of the continent.
-    Continent *continent = [gameManager.world continentNamed:capturedCountry.continentName];
+    RKContinent *continent = [gameManager.world continentNamed:capturedCountry.continentName];
     for (RKCountry *country in continent.countries)
     {
         if (country != capturedCountry && country.playerNumber != playerNumber)
@@ -1315,18 +1315,18 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
 // 5. choose continent with lowest value (total - ours) // Secondary may be number of perimeter countries for continent...
 // We need to be sure that we *do* have countries in that continent!
 
-- (Continent *) continentWeAreClosestToControlling
+- (RKContinent *) continentWeAreClosestToControlling
 {
     RiskWorld *world;
     //NSSet *continents, *countries;
-    Continent *best;
+    RKContinent *best;
     NSInteger total, ours, minimum;
     
     minimum = 1000000;
     best = nil;
     
     world = gameManager.world;
-    for (Continent *continent in world.continents.allValues)
+    for (RKContinent *continent in world.continents.allValues)
     {
         total = continent.countries.count;
         ours = 0;
@@ -1444,7 +1444,7 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
     NSMutableDictionary *continentValues = [[NSMutableDictionary alloc] init];
     
     RiskWorld *world = gameManager.world;
-    for (Continent *continent in world.continents.allValues)
+    for (RKContinent *continent in world.continents.allValues)
     {
         NSInteger total = continent.countries.count;
         NSInteger ours = 0;
@@ -1464,7 +1464,7 @@ static NSComparisonResult maximumContinentBorder (Continent *object1, Continent 
     
     for (RKCountry *country in potentialCountries)
     {
-        Continent *continent = [world continentNamed:country.continentName];
+        RKContinent *continent = [world continentNamed:country.continentName];
         NSInteger current = [continentValues[continent.continentName] intValue];
         if (current < minimum)
         {

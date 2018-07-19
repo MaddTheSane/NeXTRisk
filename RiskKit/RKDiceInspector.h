@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //! The \c DiceInspector shows the dice as they are rolled, and optionally
 //! pauses between rolls so that you can see what is going happening.
-@interface DiceInspector : NSObject
+@interface RKDiceInspector : NSObject
 {
     IBOutlet NSPanel *dicePanel;
 
