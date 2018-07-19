@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Country;
+@class RKCountry;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,14 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// the countries based on their names.
 @interface RiskNeighbor : NSObject <NSCoding>
 
-+ (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countriesFirst:second:) instead");
++ (instancetype)riskNeighborWithCountries:(RKCountry *)firstCountry :(RKCountry *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countriesFirst:second:) instead");
 
-- (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:)) NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCountries:(RKCountry *)firstCountry :(RKCountry *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:)) NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-@property (readonly, strong) Country *country1;
-@property (readonly, strong) Country *country2;
+@property (readonly, strong) RKCountry *country1;
+@property (readonly, strong) RKCountry *country2;
 
 @property (readonly, copy) NSString *description;
 

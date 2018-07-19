@@ -8,7 +8,7 @@
 
 #import "Risk.h"
 
-@class Country;
+@class RKCountry;
 @class NSImage;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,14 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 //! different cards will be required for each world.
 @interface RiskCard : NSObject <NSCoding>
 
-+ (instancetype)riskCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSImageName)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:with:imageNamed:) instead");
++ (instancetype)riskCardType:(RKCardType)aCardType withCountry:(nullable RKCountry *)aCountry imageNamed:(NSImageName)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:with:imageNamed:) instead");
 
 // Take card image name from country?
-- (instancetype)initCardType:(RiskCardType)aCardType withCountry:(nullable Country *)aCountry imageNamed:(NSImageName)anImageName NS_DESIGNATED_INITIALIZER;
+- (instancetype)initCardType:(RKCardType)aCardType withCountry:(nullable RKCountry *)aCountry imageNamed:(NSImageName)anImageName NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
-@property (readonly, strong, nullable) Country *country;
-@property (readonly) RiskCardType cardType;
+@property (readonly, strong, nullable) RKCountry *country;
+@property (readonly) RKCardType cardType;
 @property (readonly, copy) NSString *imageName;
 @property (readonly, strong) NSImage *image;
 

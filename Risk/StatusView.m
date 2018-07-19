@@ -81,7 +81,7 @@ static NSTextFieldCell *_textCell = nil;
 
 - (void) drawRect:(NSRect)rect
 {
-    Player currentPlayer;
+    RKPlayer currentPlayer;
     CGFloat boxHeight, boxWidth;
     NSRect boxRect, textRect;
     
@@ -112,7 +112,7 @@ static NSTextFieldCell *_textCell = nil;
     
     for (int l = 0; l < 6; l++)
     {
-        Player number = 1 + ((l + currentPlayer - 1) % 6);
+        RKPlayer number = 1 + ((l + currentPlayer - 1) % 6);
         
         if ([gameManager isPlayerActive:number] == YES)
         {

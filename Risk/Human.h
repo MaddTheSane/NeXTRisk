@@ -11,11 +11,11 @@
 /// shared interfaces for a human to play.
 @interface Human : RiskPlayer
 {
-    RiskArmyCount placeArmyCount;
-    Country *attackingCountry;
+    RKArmyCount placeArmyCount;
+    RKCountry *attackingCountry;
 }
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 //======================================================================
 // Subclass Responsibilities
@@ -27,43 +27,43 @@
 // User input
 //----------------------------------------------------------------------
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 
 //----------------------------------------------------------------------
 // Card management
 //----------------------------------------------------------------------
 
 - (void) mustTurnInCards;
-- (void) didTurnInCards:(RiskArmyCount)extraArmyCount;
+- (void) didTurnInCards:(RKArmyCount)extraArmyCount;
 
 //----------------------------------------------------------------------
 // Initial game phases
 //----------------------------------------------------------------------
 
-- (void) placeInitialArmies:(RiskArmyCount)count;
+- (void) placeInitialArmies:(RKArmyCount)count;
 
 //----------------------------------------------------------------------
 // Regular turn phases
 //----------------------------------------------------------------------
 
-- (void) placeArmies:(RiskArmyCount)count;
+- (void) placeArmies:(RKArmyCount)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
-- (void) fortifyPhase:(FortifyRule)fortifyRule;
-- (void) placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
+- (void) moveAttackingArmies:(RKArmyCount)count between:(RKCountry *)source :(RKCountry *)destination;
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule;
+- (void) placeFortifyingArmies:(RKArmyCount)count fromCountry:(RKCountry *)source;
 
 //======================================================================
 // Inform computer players of important events that happed during other
 // players turns.
 //======================================================================
 
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
 //======================================================================
 // Custom methods
 //======================================================================
 
-- (AttackResult) attackFromCountry:(Country *)attacker toCountry:(Country *)defender moveAllArmiesUponVictory:(BOOL)moveFlag;
-- (void) setAttackingCountry:(Country *)attacker;
+- (RKAttackResult) attackFromCountry:(RKCountry *)attacker toCountry:(RKCountry *)defender moveAllArmiesUponVictory:(BOOL)moveFlag;
+- (void) setAttackingCountry:(RKCountry *)attacker;
 
 @end

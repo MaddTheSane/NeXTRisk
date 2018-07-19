@@ -6,7 +6,7 @@
 #import <Foundation/NSObject.h>
 #import <Foundation/NSGeometry.h>
 
-@class SNUserPath, Country, RiskMapView;
+@class SNUserPath, RKCountry, RiskMapView;
 @class NSBezierPath;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-- (void) drawWithCountry:(Country *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected;
+- (void) drawWithCountry:(RKCountry *)aCountry inView:(RiskMapView *)aView isSelected:(BOOL)selected;
 - (BOOL) pointInShape:(NSPoint)aPoint;
 
 @property (readonly) NSPoint centerPoint;

@@ -10,7 +10,7 @@ RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 
 #import "RiskWorld.h"
 #import "Continent.h"
-#import "Country.h"
+#import "RKCountry.h"
 
 static NSInteger WIOrderContinentsByName (id object1, id object2, void *context)
 {

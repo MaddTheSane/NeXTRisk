@@ -28,7 +28,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 	CountryFlagsWithoutEnemyNeighbors = 1 << 13,
 };
 
-@class RiskGameManager, Country, RiskCard, CardSet;
+@class RiskGameManager, RKCountry, RiskCard, RKCardSet;
 @class SNRandom;
 
 /// The RiskPlayer is the base class for all players, both human and
@@ -38,13 +38,13 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 @interface RiskPlayer : NSObject <NSWindowDelegate> {
 @protected
     NSString *playerName;
-    Player playerNumber;
+    RKPlayer playerNumber;
     NSMutableArray<RiskCard*> *playerCards;
     
     RiskGameManager *gameManager;
     
     // Default attack method (and optional value)
-    AttackMethod attackMethod;
+    RKAttackMethod attackMethod;
     int attackMethodValue;
     
     __weak NSMenu *playerToolMenu;
@@ -64,11 +64,11 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// Initializes a newly allocated \c RiskPlayer with the given name and
 /// number.  The controlling game manager is also saved so that the
 /// player can access it during the game.
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *playerName;
-@property (readonly) Player playerNumber;
+@property (readonly) RKPlayer playerNumber;
 @property (readonly, copy) NSArray<RiskCard*> * playerCards;
 
 /// The Player N menu under the Tool menu for this player.  This
@@ -78,7 +78,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 
 /// The default attack method.  This is used mostly by the Human
 /// player.
-@property AttackMethod attackMethod;
+@property RKAttackMethod attackMethod;
 
 /// The value associated with the default attack method.  This is
 /// used mostly by the Human player.
@@ -104,8 +104,8 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 ///
 - (void) turnDone;
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
-- (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
+- (void) mouseUp:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 
 - (void) windowWillClose:(NSNotification *)aNotification;
 
@@ -113,7 +113,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // General methods for players
 //======================================================================
 
-@property (readonly, copy) NSSet<Country *> *ourCountries;
+@property (readonly, copy) NSSet<RKCountry *> *ourCountries;
 
 // - ours AND has enemy neighbors AND has armies
 // - ours OR enemies
@@ -124,11 +124,11 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 ///
 /// Note that not all combinations make sense.  For example, no country
 /// can be occupied by both player three and player four.
-- (NSSet<Country *> *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (NSSet<RKCountry *> *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
 /// Returns a set of countries from the source set that satisfy any of
 /// the given options.  The options are the bitwise OR of the \c CountryFlags
 /// constants that are defined in RiskPlayer.h.
-- (NSSet<Country *> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (NSSet<RKCountry *> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
 
 /// Returns \c YES if any of the countries from the source set satisfies
 /// all of the given options.  The options are the bitwise OR of the
@@ -136,32 +136,32 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 ///
 /// Note that not all combinations make sense.  For example, no country
 /// can be occupied by both player three and player four.
-- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
 /// Returns \c YES if any of the countries from the source set satisfies
 /// any of the given options.  The options are the bitwise OR of the
 /// \c CountryFlags constants that are defined in RiskPlayer.h.
-- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source;
+- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
 
 /// Returns a set of countries from the source set that are also in the
 /// named continent.
-- (NSSet<Country *> *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source NS_SWIFT_NAME(chooseCountries(inContinent:from:));
+- (NSSet<RKCountry *> *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<RKCountry *> *)source NS_SWIFT_NAME(chooseCountries(inContinent:from:));
 /// Returns a set of countries from the source set, ensuring that none
 /// are in the named continent.
-- (NSSet<Country *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country *> *)source NS_SWIFT_NAME(removeCountries(inContinent:from:));
+- (NSSet<RKCountry *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<RKCountry *> *)source NS_SWIFT_NAME(removeCountries(inContinent:from:));
 
 //======================================================================
 // Card set methods
 //======================================================================
 
 /// Returns a set of all the valid card sets from this player's hand.
-@property (readonly, copy) NSSet<CardSet *> *allOurCardSets;
+@property (readonly, copy) NSSet<RKCardSet *> *allOurCardSets;
 /// Returns the best set to turn in.  To determine which of all possible
 /// sets is best, this method looks for the set:
 ///     1) with the least jokers in it, and
 ///     2) with the most countries that this player occupies
 /// It does not take into account things like the proximity of the
 /// countries to the action or anything amorphous like that.
-@property (readonly, strong, nullable) CardSet *bestSet;
+@property (readonly, strong, nullable) RKCardSet *bestSet;
 /// Returns \c YES if this player has at least one valid card set.
 @property (readonly) BOOL canTurnInCardSet;
 
@@ -212,7 +212,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// the Human player to allow it to update the number of armies left to
 /// place, since it turns in cards after receiving the \c -placeArmies:
 /// message.
-- (void) didTurnInCards:(RiskArmyCount)extraArmyCount;
+- (void) didTurnInCards:(RKArmyCount)extraArmyCount;
 
 //----------------------------------------------------------------------
 // Initial game phases
@@ -234,7 +234,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// The player should place \c count armies among any of their countries
 /// by calling <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then
 /// call <code>self -turnDone</code>.
-- (void) placeInitialArmies:(RiskArmyCount)count;
+- (void) placeInitialArmies:(RKArmyCount)count;
 /// Notifies the player that all of the players have finished placing
 /// their initial armies.
 - (void) willEndPlacingInitialArmies;
@@ -255,7 +255,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// of their countries by calling
 /// <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then call
 /// <code>self -turnDone</code>.
-- (void) placeArmies:(RiskArmyCount)count;
+- (void) placeArmies:(RKArmyCount)count;
 /// Notifies the player that they may attack other players.  When done,
 /// it should call <code>self -turnDone</code>.
 - (void) attackPhase;
@@ -264,7 +264,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// a successful attack.  The minimum number of armies have already been
 /// moved into the destination country.  When done, it should call
 /// <code>self -turnDone</code>.
-- (void) moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
+- (void) moveAttackingArmies:(RKArmyCount)count between:(RKCountry *)source :(RKCountry *)destination;
 /// Notifies the player that they may fortify armies under the given
 /// <code>fortifyRule</code>.  The player may call \c -turnDone to skip fortification,
 /// or call <code>RiskGameManager -fortifyArmiesFrom:</code> to specify the source
@@ -273,13 +273,13 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// proceed to the next phase.
 ///
 /// Call either \c -turnDone or \c -fortifyArmiesFrom:
-- (void) fortifyPhase:(FortifyRule)fortifyRule;
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule;
 /// Notifies the player that they should place \c count fortifying armies
 /// from the source country by calling
 /// <code>RiskGameManager -player:placesArmies:inCountry:</code>, and then call
 /// <code>self -turnDone</code>.  The current fortify rule will determine the valid
 /// destination countries.  Armies that are not placed will be lost.
-- (void) placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
+- (void) placeFortifyingArmies:(RKArmyCount)count fromCountry:(RKCountry *)source;
 
 /// Notifies the player that their turn has ended.
 - (void) willEndTurn;
@@ -293,12 +293,12 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// players countries, attackedCountry.  An advanced computer player
 /// could use this information, for example, to bias future attacks
 /// against the most antagonistic player.
-- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
+- (void) playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
 /// Notifies this player that player \c number captured one of this
 /// players cuntries, capturedCountry.  An advanced computer player
 /// could use this information, for example, to bias future attacks
 /// against the most antagonistic player.
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
 @end
 

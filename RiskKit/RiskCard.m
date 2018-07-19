@@ -8,7 +8,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 #import "RiskCard.h"
 
-#import "Country.h"
+#import "RKCountry.h"
 
 #define RiskCard_VERSION 1
 
@@ -28,14 +28,14 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (instancetype) riskCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName
++ (instancetype) riskCardType:(RKCardType)aCardType withCountry:(RKCountry *)aCountry imageNamed:(NSString *)anImageName
 {
     return [[RiskCard alloc] initCardType:aCardType withCountry:aCountry imageNamed:anImageName];
 }
 
 //----------------------------------------------------------------------
 
-- (instancetype) initCardType:(RiskCardType)aCardType withCountry:(Country *)aCountry imageNamed:(NSString *)anImageName
+- (instancetype) initCardType:(RKCardType)aCardType withCountry:(RKCountry *)aCountry imageNamed:(NSString *)anImageName
 {
     NSBundle *thisBundle;
     
@@ -82,9 +82,9 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     NSAssert(aDecoder.allowsKeyedCoding, @"Expected a decoder class that was keyed coding, got %@", [aDecoder className]);
-    Country *tmpCountry = [aDecoder decodeObjectForKey:RKCountryKey];
+    RKCountry *tmpCountry = [aDecoder decodeObjectForKey:RKCountryKey];
     NSString *imgNam = [aDecoder decodeObjectForKey:RKImageNameKey];
-    RiskCardType ct = [aDecoder decodeIntForKey:RKCardTypeKey];
+    RKCardType ct = [aDecoder decodeIntForKey:RKCardTypeKey];
     
     return [self initCardType:ct withCountry:tmpCountry imageNamed:imgNam];
 }

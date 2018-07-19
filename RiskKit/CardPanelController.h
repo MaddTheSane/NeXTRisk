@@ -40,12 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
     RiskCard *currentSet[3];
     int currentIndices[3];
     int setMatrixCount;
-    Player currentPlayerNumber;
+    RKPlayer currentPlayerNumber;
 
     BOOL canTurnInCards;
     RiskGameManager *gameManager;
     NSArray *playerCards;
-    RiskArmyCount currentCardSetValue;
+    RKArmyCount currentCardSetValue;
     NSMutableArray *cardSets;
 }
 

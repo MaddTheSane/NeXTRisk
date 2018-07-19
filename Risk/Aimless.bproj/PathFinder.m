@@ -26,13 +26,13 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 #import "PathFinder.h"
 
-#import <RiskKit/Country.h>
+#import <RiskKit/RKCountry.h>
 #import <RiskKit/RiskWorld.h>
 #import "SNHeap.h"
 #import "DNode.h"
 #import <RiskKit/SNUtility.h>
 
-NSComparisonResult PFCompareDistances (Country *country1, Country *country2, void *context)
+NSComparisonResult PFCompareDistances (RKCountry *country1, RKCountry *country2, void *context)
 {
     NSDictionary<NSString*,DNode*> *nodeDictionary;
     NSString *name1, *name2;
@@ -93,19 +93,19 @@ NSComparisonResult PFCompareDistances (Country *country1, Country *country2, voi
 
 //----------------------------------------------------------------------
 
-int PFConstantDistance (Country *country1, Country *country2)
+int PFConstantDistance (RKCountry *country1, RKCountry *country2)
 {
     return 1;
 }
 
 //----------------------------------------------------------------------
 
-BOOL PFCountryForPlayer (Country *country, void *context)
+BOOL PFCountryForPlayer (RKCountry *country, void *context)
 {
     BOOL flag;
-    Player number;
+    RKPlayer number;
     
-    number = (Player)context;
+    number = (RKPlayer)context;
     flag = country.playerNumber == number;
     
     return flag;
@@ -113,12 +113,12 @@ BOOL PFCountryForPlayer (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
+BOOL PFCountryForPlayerHasEnemyNeighbors (RKCountry *country, void *context)
 {
     BOOL flag;
-    Player number;
+    RKPlayer number;
     
-    number = (Player)context;
+    number = (RKPlayer)context;
     if (country.playerNumber == number && [country enemyNeighborCountries].count > 0)
         flag = YES;
     else
@@ -133,10 +133,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 
 + shortestPathInRiskWorld:(RiskWorld *)aWorld
-              fromCountry:(Country *)source
-             forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
+              fromCountry:(RKCountry *)source
+             forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
                   context:(void *)aContext
-         distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
+         distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
 {
     return [[PathFinder alloc] initWithRiskWorld:aWorld
                                 fromCountry:source
@@ -148,10 +148,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 //----------------------------------------------------------------------
 
 - (instancetype) initWithRiskWorld:(RiskWorld *)aWorld
-        fromCountry:(Country *)source
-       forCountries:(BOOL (*)(Country *, void *))anIsCountryAcceptableFunction
+        fromCountry:(RKCountry *)source
+       forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
             context:(void *)aContext
-   distanceFunction:(int (*)(Country *, Country *))aDistanceFunction
+   distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
 {
     if (self = [super init]) {
         acceptableCountries = [[NSMutableSet alloc] init];
@@ -169,12 +169,12 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (void) _buildShortestPathsFromCountry:(Country *)source
+- (void) _buildShortestPathsFromCountry:(RKCountry *)source
 {
     NSSet *allCountries;
-    Country *country;
+    RKCountry *country;
     DNode *node;
-    SNHeap<Country*> *countryHeap;
+    SNHeap<RKCountry*> *countryHeap;
 
     [nodeDictionary removeAllObjects];
     [acceptableCountries removeAllObjects];
@@ -182,7 +182,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
     allCountries = world.allCountries;
 
     // Build acceptable countries.
-    for (Country *country in allCountries)
+    for (RKCountry *country in allCountries)
     {
         if (isCountryAcceptable (country, context) == YES)
         {
@@ -198,14 +198,14 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
 
-    for (Country *country in acceptableCountries)
+    for (RKCountry *country in acceptableCountries)
     {
         [countryHeap insertObject:country];
     }
 
     while ((country = [countryHeap extractObject]))
     {
-        for (Country *neighbor in [country ourNeighborCountries])
+        for (RKCountry *neighbor in [country ourNeighborCountries])
         {
             NSInteger tmp;
 
@@ -225,8 +225,8 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 - (SNHeap *) _minimumDistanceCountryHeap
 {
-    SNHeap<Country*> *countryHeap;
-    Country *country;
+    SNHeap<RKCountry*> *countryHeap;
+    RKCountry *country;
 
     countryHeap = [SNHeap heapUsingFunction:PFCompareDistances context:(__bridge void *)(nodeDictionary)];
     for (country in acceptableCountries)
@@ -239,11 +239,11 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (NSArray *) shortestPathToCountry:(Country *)target
+- (NSArray *) shortestPathToCountry:(RKCountry *)target
 {
     NSMutableArray *path1, *path2;
     DNode *node;
-    Country *previous;
+    RKCountry *previous;
     NSEnumerator *objectEnumerator;
 
     path1 = [NSMutableArray array];
@@ -279,10 +279,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (NSArray *) shortestPathToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext
+- (NSArray *) shortestPathToAcceptableCountry:(BOOL (*)(RKCountry *, void *))isCountryAcceptableTarget context:(void *)aContext
 {
-    SNHeap<Country*> *countryHeap;
-    Country *country;
+    SNHeap<RKCountry*> *countryHeap;
+    RKCountry *country;
     NSArray *path = nil;
 
     countryHeap = [self _minimumDistanceCountryHeap];
@@ -300,10 +300,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (Country *) firstStepToCountry:(Country *)target
+- (RKCountry *) firstStepToCountry:(RKCountry *)target
 {
     NSArray *path;
-    Country *first;
+    RKCountry *first;
 
     path = [self shortestPathToCountry:target];
 
@@ -317,10 +317,10 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (Country *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (Country *) firstStepToAcceptableCountry:(BOOL (*)(Country *, void *))isCountryAcceptableTarget context:(void *)aContext
+- (RKCountry *) firstStepToAcceptableCountry:(BOOL (*)(RKCountry *, void *))isCountryAcceptableTarget context:(void *)aContext
 {
     NSArray *path;
-    Country *first;
+    RKCountry *first;
 
     path = [self shortestPathToAcceptableCountry:isCountryAcceptableTarget context:aContext];
 

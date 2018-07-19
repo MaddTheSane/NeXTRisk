@@ -8,7 +8,7 @@
 #import "Risk.h"
 
 @class Continent;
-@class Country;
+@class RKCountry;
 @class RiskCard;
 @class RiskNeighbor;
 
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 //! be more than one world.
 @interface RiskWorld : NSObject <NSCoding>
 {
-    NSMutableSet<Country*> *allCountries;
+    NSMutableSet<RKCountry*> *allCountries;
     NSArray<RiskNeighbor*> *countryNeighbors;
     NSDictionary<NSString*,Continent *> *continents;
     NSArray<RiskCard*> *cards;
@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) _connectCountries;
 - (void) _disconnectCountries;
 
-@property (copy, readonly) NSSet<Country*> *allCountries;
+@property (copy, readonly) NSSet<RKCountry*> *allCountries;
 - (nullable Continent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, strong) NSArray<RiskCard*> *cards;
@@ -52,8 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Calculate the number of bonus armies earned for a player at the
 /// beginning of a turn based on the continents that they completely
 /// occupy.
-- (RiskArmyCount) continentBonusArmiesForPlayer:(Player)number;
-- (NSSet<Country*> *) countriesForPlayer:(Player)number;
+- (RKArmyCount) continentBonusArmiesForPlayer:(RKPlayer)number;
+- (NSSet<RKCountry*> *) countriesForPlayer:(RKPlayer)number;
 
 @end
 
@@ -61,9 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Some utility functions.
 //======================================================================
 
-NSSet<Country*> *RWcountriesForPlayerNumber (NSSet<Country*> *source, Player number);
-NSSet<Country*> *RWcountriesInContinentNamed (NSSet<Country*> *source, NSString *continentName);
-NSSet<Country*> *RWcountriesWithArmies (NSSet<Country*> *source);
-NSSet<Country*> *RWneighborsOfCountries (NSSet<Country*> *source);
+NSSet<RKCountry*> *RWcountriesForPlayerNumber (NSSet<RKCountry*> *source, RKPlayer number);
+NSSet<RKCountry*> *RWcountriesInContinentNamed (NSSet<RKCountry*> *source, NSString *continentName);
+NSSet<RKCountry*> *RWcountriesWithArmies (NSSet<RKCountry*> *source);
+NSSet<RKCountry*> *RWneighborsOfCountries (NSSet<RKCountry*> *source);
 
 NS_ASSUME_NONNULL_END

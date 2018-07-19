@@ -14,22 +14,22 @@ NS_ASSUME_NONNULL_BEGIN
 //! defaults database.
 @interface GameConfiguration : NSObject
 {
-    InitialCountryDistribution initialCountryDistribution;
-    InitialArmyPlacement initialArmyPlacement;
-    CardSetRedemption cardSetRedemption;
-    FortifyRule fortifyRule;
+    RKInitialCountryDistribution initialCountryDistribution;
+    RKInitialArmyPlacement initialArmyPlacement;
+    RKCardSetRedemption cardSetRedemption;
+    RKFortifyRule fortifyRule;
 }
 
 + (instancetype)defaultConfiguration NS_SWIFT_UNAVAILABLE("Use init() instead");
 
 - (instancetype)init;
 
-@property InitialCountryDistribution initialCountryDistribution;
-@property InitialArmyPlacement initialArmyPlacement;
-@property CardSetRedemption cardSetRedemption;
-@property FortifyRule fortifyRule;
+@property RKInitialCountryDistribution initialCountryDistribution;
+@property RKInitialArmyPlacement initialArmyPlacement;
+@property RKCardSetRedemption cardSetRedemption;
+@property RKFortifyRule fortifyRule;
 
-@property (readonly) RiskArmyCount armyPlacementCount;
+@property (readonly) RKArmyCount armyPlacementCount;
 
 - (void) writeDefaults;
 

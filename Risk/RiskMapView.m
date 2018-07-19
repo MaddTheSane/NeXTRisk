@@ -9,7 +9,7 @@ RCSID ("$Id: RiskMapView.m,v 1.4 1997/12/18 21:03:47 nygard Exp $");
 #import "RiskMapView.h"
 
 #import "BoardSetup.h"
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 
 #if !__has_feature(objc_arc)
@@ -82,7 +82,7 @@ static NSImage *_boardBackingImage = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (countryUpdated:)
-                                                     name:CountryUpdatedNotification
+                                                     name:RKCountryUpdatedNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -135,7 +135,7 @@ static NSImage *_boardBackingImage = nil;
     
     if (countryArray != nil)
     {
-        for (Country *country in countryArray)
+        for (RKCountry *country in countryArray)
         {
             NSRect countryBounds = country.countryShape.bounds;
             if (NSIsEmptyRect (NSIntersectionRect (countryBounds, rect)) == NO)
@@ -150,7 +150,7 @@ static NSImage *_boardBackingImage = nil;
 
 //----------------------------------------------------------------------
 
-- (void) drawCountry:(Country *)aCountry
+- (void) drawCountry:(RKCountry *)aCountry
 {
     // Get the union of country bounding box and the army cell,
     // and draw that.
@@ -177,7 +177,7 @@ static NSImage *_boardBackingImage = nil;
 - (void) mouseDown:(NSEvent *)theEvent
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL hit;
     
     hit = NO;
@@ -200,7 +200,7 @@ static NSImage *_boardBackingImage = nil;
 - (void) mouseUp:(NSEvent *)theEvent
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL hit;
     
     hit = NO;
@@ -275,7 +275,7 @@ static NSImage *_boardBackingImage = nil;
 
 - (void) countryUpdated:(NSNotification *)aNotification
 {
-    Country *country;
+    RKCountry *country;
     
     // Make sure country in array...
     
@@ -285,9 +285,9 @@ static NSImage *_boardBackingImage = nil;
 
 //----------------------------------------------------------------------
 
-- (void) selectCountry:(Country *)aCountry
+- (void) selectCountry:(RKCountry *)aCountry
 {
-    Country *tmp;
+    RKCountry *tmp;
     
     //NSLog (@"old: %@, new: %@", selectedCountry, aCountry);
     

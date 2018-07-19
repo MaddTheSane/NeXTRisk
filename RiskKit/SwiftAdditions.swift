@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension InitialCountryDistribution: CustomStringConvertible {
+extension RKInitialCountryDistribution: CustomStringConvertible {
     public init(string: String) {
-        self = __initialCountryDistributionFromString(string)
+        self = __RKInitialCountryDistributionFromString(string)
     }
     
 	public var description: String {
@@ -18,9 +18,9 @@ extension InitialCountryDistribution: CustomStringConvertible {
 	}
 }
 
-extension InitialArmyPlacement: CustomStringConvertible {
+extension RKInitialArmyPlacement: CustomStringConvertible {
 	public init(string: String) {
-		self = __initialArmyPlacementFromString(string)
+		self = __RKInitialArmyPlacementFromString(string)
 	}
 	
 	public var description: String {
@@ -28,9 +28,9 @@ extension InitialArmyPlacement: CustomStringConvertible {
 	}
 }
 
-extension CardSetRedemption: CustomStringConvertible {
+extension RKCardSetRedemption: CustomStringConvertible {
 	public init(string: String) {
-		self = __cardSetRedemptionFromString(string)
+		self = __RKCardSetRedemptionFromString(string)
 	}
 	
 	public var description: String {
@@ -38,9 +38,9 @@ extension CardSetRedemption: CustomStringConvertible {
 	}
 }
 
-extension FortifyRule: CustomStringConvertible {
+extension RKFortifyRule: CustomStringConvertible {
 	public init(string: String) {
-		self = __fortifyRuleFromString(string)
+		self = __RKFortifyRuleFromString(string)
 	}
 	
 	public var description: String {
@@ -48,15 +48,15 @@ extension FortifyRule: CustomStringConvertible {
 	}
 }
 
-extension RiskCardType: CustomStringConvertible {
+extension RKCardType: CustomStringConvertible {
 	public var description: String {
 		return __NSStringFromRiskCardType(self)
 	}
 }
 
-extension GameState: CustomStringConvertible, CustomDebugStringConvertible {
+extension RKGameState: CustomStringConvertible, CustomDebugStringConvertible {
 	public var description: String {
-		return __gameStateInfo(self)
+		return __RKGameStateInfo(self)
 	}
 	
 	public var debugDescription: String {

@@ -12,8 +12,8 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 #import "ArmyView.h"
 #import "BoardSetup.h"
 #import "CardPanelController.h"
-#import "CardSet.h"
-#import "Country.h"
+#import "RKCardSet.h"
+#import "RKCountry.h"
 #import "DiceInspector.h"
 #import "GameConfiguration.h"
 #import "RiskCard.h"
@@ -97,7 +97,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         }
         
         initialArmyCount = 0;
-        gameState = GameStateNone;
+        gameState = RKGameStateNone;
         currentPlayerNumber = 0;
         
         cardPanelController = nil;
@@ -177,39 +177,39 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     switch (gameState)
     {
-        case GameStateNone:
+        case RKGameStateNone:
             str = @"No game";
             break;
             
-        case GameStateEstablishingGame:
+        case RKGameStateEstablishingGame:
             str = @"Establishing game.";
             break;
             
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             str = [NSString stringWithFormat:@"Choose countries -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             str = [NSString stringWithFormat:@"Place initial armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             str = [NSString stringWithFormat:@"Place armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             str = [NSString stringWithFormat:@"Attack -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStateMoveAttackingArmies:
+        case RKGameStateMoveAttackingArmies:
             str = [NSString stringWithFormat:@"Move attacking armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             str = [NSString stringWithFormat:@"Fortify -- player %ld.", (long)currentPlayerNumber];
             break;
             
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             str = [NSString stringWithFormat:@"Place fortifying armies -- player %ld.", (long)currentPlayerNumber];
             break;
             
@@ -287,7 +287,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Set the country name in the map view.  Forward event to current player.
 // This is the delegate method of RiskMapView.
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
     countryNameTextField.stringValue = aCountry.countryName;
     
@@ -311,7 +311,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) setWorld:(RiskWorld *)newWorld
 {
     // Can't change world while game is in progress.
-    AssertGameState (GameStateNone);
+    AssertGameState (RKGameStateNone);
     
     world = newWorld;
     
@@ -326,7 +326,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) setGameConfiguration:(GameConfiguration *)newGameConfiguration
 {
     // Can't change the rules of a game in progress.
-    AssertGameState (GameStateNone);
+    AssertGameState (RKGameStateNone);
     
     configuration = newGameConfiguration;
 }
@@ -335,7 +335,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // For status view.
 //======================================================================
 
-- (BOOL) isPlayerActive:(Player)number
+- (BOOL) isPlayerActive:(RKPlayer)number
 {
     NSAssert (number > 0 && number < MAX_PLAYERS, @"Player number out of range.");
     
@@ -344,7 +344,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (RiskPlayer *) playerNumber:(Player)number
+- (RiskPlayer *) playerNumber:(RKPlayer)number
 {
     NSAssert (number > 0 && number < MAX_PLAYERS, @"Player number out of range.");
     
@@ -373,7 +373,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) startNewGame
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     
     NSAssert ([self gameInProgress] == NO, @"Game already in progress.");
     
@@ -386,7 +386,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     //[mapView display]; // This is because drawCountry: doesn't draw the background... and it probably should.
     [mapView.window enableFlushWindow];
     
-    gameState = GameStateEstablishingGame;
+    gameState = RKGameStateEstablishingGame;
     
     // Set up card and discard decks.
     cardDeck = [world.cards mutableCopy];
@@ -396,10 +396,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(Player)number
+- (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(RKPlayer)number
 {
     // Can only add players while establishing a new game.
-    AssertGameState (GameStateEstablishingGame);
+    AssertGameState (RKGameStateEstablishingGame);
     
     NSAssert (players[number] == nil, @"Already have a player in that slot.");
     //NSAssert ([type isKindOfClass:[RiskPlayer class]] == YES, @"Player class must be a subclass of RiskPlayer.");
@@ -418,10 +418,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) beginGame
 {
     // Can't begin a game that hasn't been established
-    AssertGameState (GameStateEstablishingGame);
+    AssertGameState (RKGameStateEstablishingGame);
     
     // Calculate initial army count
-    initialArmyCount = RiskInitialArmyCountForPlayers (activePlayerCount);
+    initialArmyCount = RKInitialArmyCountForPlayers (activePlayerCount);
     
     [self tryToStart];
 }
@@ -440,7 +440,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     int l;
     
-    gameState = GameStateNone;
+    gameState = RKGameStateNone;
     
     for (l = 1; l < MAX_PLAYERS; l++)
     {
@@ -470,7 +470,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (BOOL) gameInProgress
 {
-    return gameState != GameStateNone;
+    return gameState != RKGameStateNone;
 }
 
 //----------------------------------------------------------------------
@@ -536,10 +536,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
-    FortifyRule fortifyRule;
+    RKFortifyRule fortifyRule;
     int count, tmp;
     
-    NSAssert (gameState != GameStateNone /*&& gameState != GameStateEstablishingGame*/, @"No game in progess.");
+    NSAssert (gameState != RKGameStateNone /*&& gameState != RKGameStateEstablishingGame*/, @"No game in progess.");
     
     //[self _logGameState];
     
@@ -550,12 +550,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Determine next phase.
     switch (gameState)
     {
-        case GameStateEstablishingGame:
-            gameState = GameStateChoosingCountries;
-            if (configuration.initialCountryDistribution == InitialCountryDistributionRandomlyChosen)
+        case RKGameStateEstablishingGame:
+            gameState = RKGameStateChoosingCountries;
+            if (configuration.initialCountryDistribution == RKInitialCountryDistributionRandomlyChosen)
             {
                 [self randomlyChooseCountriesForActivePlayers];
-                gameState = GameStatePlaceInitialArmies;
+                gameState = RKGameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
             }
             else
@@ -567,7 +567,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             [self nextActivePlayer];
             break;
             
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             if ([self unoccupiedCountries].count > 0)
             {
                 [mapView selectCountry:nil];
@@ -576,7 +576,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             else
             {
                 [self leavingChooseCountriesPhase];
-                gameState = GameStatePlaceInitialArmies;
+                gameState = RKGameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
                 currentPlayerNumber = 0;
                 [self nextActivePlayer];
@@ -584,7 +584,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             [mapView selectCountry:nil];
             if ([self nextActivePlayer] == YES)
             {
@@ -594,7 +594,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             if (initialArmyCount < 1)
             {
                 [self leavingInitialArmyPlacementPhase];
-                gameState = GameStatePlaceArmies;
+                gameState = RKGameStatePlaceArmies;
                 currentPlayerNumber = 0;
                 [self nextActivePlayer];
                 [players[currentPlayerNumber] willBeginTurn];
@@ -602,40 +602,40 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             }
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             if (armiesLeftToPlace > 0)
             {
                 NSLog (@"Player %ld has %d unplaced armies.", (long)currentPlayerNumber, armiesLeftToPlace);
             }
-            gameState = GameStateAttack;
+            gameState = RKGameStateAttack;
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             if (playerHasConqueredCountry == YES)
             {
                 // Deal a card to the player.
                 [self dealCardToPlayerNumber:currentPlayerNumber];
             }
-            gameState = GameStateFortify;
+            gameState = RKGameStateFortify;
             armiesBefore = [self totalTroopsForPlayerNumber:currentPlayerNumber];
             //NSLog (@"Attack->Fortify, player %d, armies: %d", currentPlayerNumber, armiesBefore);
             break;
             
-        case GameStateMoveAttackingArmies:
+        case RKGameStateMoveAttackingArmies:
             // Go back to the attack phase:
             if (players[currentPlayerNumber].playerCards.count > 4)
             {
                 // Force the player to turn in cards.
-                gameState = GameStatePlaceArmies;
+                gameState = RKGameStatePlaceArmies;
                 [self setArmiesLeftToPlace:0];
             }
             else
             {
-                gameState = GameStateAttack;
+                gameState = RKGameStateAttack;
             }
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
             //NSLog (@"Fortify->next, Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
             if (armiesBefore != tmp)
@@ -643,15 +643,15 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
             }
             [players[currentPlayerNumber] willEndTurn];
-            gameState = GameStatePlaceArmies;
+            gameState = RKGameStatePlaceArmies;
             [self nextActivePlayer];
             [players[currentPlayerNumber] willBeginTurn];
             [self setArmiesLeftToPlace:[self earnedArmyCountForPlayer:currentPlayerNumber]];
             break;
             
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             fortifyRule = configuration.fortifyRule;
-            if (fortifyRule == FortifyRuleOneToOneNeighbor || fortifyRule == FortifyRuleOneToManyNeighbors)
+            if (fortifyRule == RKFortifyRuleOneToOneNeighbor || fortifyRule == RKFortifyRuleOneToManyNeighbors)
             {
                 tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
                 //NSLog (@"PlaceFortify->next, Player %d: armies before = %d, armies now = %d",currentPlayerNumber, armiesBefore, tmp);
@@ -660,14 +660,14 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                     NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
                 }
                 [players[currentPlayerNumber] willEndTurn];
-                gameState = GameStatePlaceArmies;
+                gameState = RKGameStatePlaceArmies;
                 [self nextActivePlayer];
                 [players[currentPlayerNumber] willBeginTurn];
                 [self setArmiesLeftToPlace:[self earnedArmyCountForPlayer:currentPlayerNumber]];
             }
             else
             {
-                gameState = GameStateFortify;
+                gameState = RKGameStateFortify;
             }
             break;
             
@@ -704,11 +704,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Update phase controls for this new phase:
     switch (gameState)
     {
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             newPhaseView = (isInteractivePlayer == YES) ? phaseChooseCountries : phaseComputerMove;
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             newPhaseView = (isInteractivePlayer == YES) ? phasePlaceArmies : phaseComputerMove;
             
             // Do this here to avoid a little bit of flicker.
@@ -729,7 +729,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             [mapView selectCountry:nil];
             newPhaseView = (isInteractivePlayer == YES) ? phasePlaceArmies : phaseComputerMove;
             
@@ -743,18 +743,18 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 [turnInCardsButton setEnabled:NO];
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             newPhaseView = (isInteractivePlayer == YES) ? phaseAttack : phaseComputerMove;
             [self takeAttackMethodFromPlayerNumber:currentPlayerNumber];
             attackingFromTextField.stringValue = @"";
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             newPhaseView = (isInteractivePlayer == YES) ? phaseFortify : phaseComputerMove;
             break;
             
-        case GameStateMoveAttackingArmies:
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStateMoveAttackingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             // These states are entered in a different manner.
         default:
             NSLog (@"Invalid game state.");
@@ -808,15 +808,15 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     // Initiate next phase
     switch (gameState)
     {
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             [players[currentPlayerNumber] chooseCountry];
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             [players[currentPlayerNumber] placeInitialArmies:armiesLeftToPlace];
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             [self resetMovableArmiesForPlayerNumber:currentPlayerNumber];
             //NSLog (@"current player: %d, count: %d", currentPlayerNumber, [[players[currentPlayerNumber] playerCards] count]);
             if (players[currentPlayerNumber].playerCards.count > 4)
@@ -831,21 +831,21 @@ DEFINE_NSSTRING (RGMGameOverNotification);
             [players[currentPlayerNumber] placeArmies:armiesLeftToPlace];
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             [players[currentPlayerNumber] attackPhase];
             break;
             
-        case GameStateMoveAttackingArmies:
+        case RKGameStateMoveAttackingArmies:
             //NSLog (@"player #%d", currentPlayerNumber);
             [players[currentPlayerNumber] moveAttackingArmies:armiesLeftToPlace
                                                       between:[armyPlacementValidator sourceCountry]:[armyPlacementValidator destinationCountry]];
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             [players[currentPlayerNumber] fortifyPhase:configuration.fortifyRule];
             break;
             
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             //NSLog (@"Fortifying %d armies from: %@", armiesLeftToPlace, sourceCountry);
             [players[currentPlayerNumber] placeFortifyingArmies:armiesLeftToPlace
                                                     fromCountry:[armyPlacementValidator sourceCountry]];
@@ -898,7 +898,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (IBAction) fortify:(id)sender
 {
     // Fortify action should only be executed during the attack phase.
-    AssertGameState (GameStateAttack);
+    AssertGameState (RKGameStateAttack);
     
     [self endTurn];
 }
@@ -909,22 +909,22 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (IBAction) endTurn:(id)sender
 {
     // End turn action should only be executed in either the attack or fortify phase.
-    AssertGameState2 (GameStateAttack, GameStateFortify);
+    AssertGameState2 (RKGameStateAttack, RKGameStateFortify);
     
     [self endTurn];
-    if (gameState == GameStateFortify)
+    if (gameState == RKGameStateFortify)
         [self endTurn];
 }
 
 //----------------------------------------------------------------------
 
-- (void) moveAttackingArmies:(int)minimum between:(Country *)source :(Country *)destination
+- (void) moveAttackingArmies:(int)minimum between:(RKCountry *)source :(RKCountry *)destination
 {
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
     int count;
     
-    AssertGameState (GameStateAttack);
+    AssertGameState (RKGameStateAttack);
     
     // Allow the movement of the remaining armies into either source or destination.
     
@@ -934,7 +934,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     //NSLog (@"minimum: %d, armiesLeftToPlace: %d", minimum, count);
     
-    gameState = GameStateMoveAttackingArmies;
+    gameState = RKGameStateMoveAttackingArmies;
     
     // What if armiesLeftToPlace == 0?
     [armyPlacementValidator placeInEitherCountry:source orCountry:destination forPlayerNumber:currentPlayerNumber];
@@ -974,42 +974,42 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) fortifyArmiesFrom:(Country *)source
+- (void) fortifyArmiesFrom:(RKCountry *)source
 {
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
     
     //NSLog (@"source: %@", source);
     
-    AssertGameState (GameStateFortify);
+    AssertGameState (RKGameStateFortify);
     int count = source.movableTroopCount;
     
     if (count < 1)
         return;
     
-    gameState = GameStatePlaceFortifyingArmies;
+    gameState = RKGameStatePlaceFortifyingArmies;
     
     // Need to base this on current fortify rule
     
-    FortifyRule fortifyRule = configuration.fortifyRule;
+    RKFortifyRule fortifyRule = configuration.fortifyRule;
     switch (fortifyRule)
     {
-        case FortifyRuleOneToOneNeighbor:
+        case RKFortifyRuleOneToOneNeighbor:
             //NSLog (@"1:1");
             [armyPlacementValidator placeInOneNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case FortifyRuleOneToManyNeighbors:
+        case RKFortifyRuleOneToManyNeighbors:
             //NSLog (@"1:N");
             [armyPlacementValidator placeInAnyNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case FortifyRuleManyToManyNeighbors:
+        case RKFortifyRuleManyToManyNeighbors:
             //NSLog (@"N:M");
             [armyPlacementValidator placeInAnyNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
             break;
             
-        case FortifyRuleManyToManyConnected:
+        case RKFortifyRuleManyToManyConnected:
             //NSLog (@"N:M*");
             [armyPlacementValidator placeInConnectedCountries:source forPlayerNumber:currentPlayerNumber];
             break;
@@ -1055,11 +1055,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     BOOL isInteractivePlayer;
     NSView *newPhaseView;
     
-    AssertGameState (GameStateAttack);
+    AssertGameState (RKGameStateAttack);
     
     isInteractivePlayer = players[currentPlayerNumber].interactive;
     
-    gameState = GameStatePlaceArmies;
+    gameState = RKGameStatePlaceArmies;
     [self setArmiesLeftToPlace:0];
     
     [mapView selectCountry:nil];
@@ -1084,13 +1084,13 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) resetMovableArmiesForPlayerNumber:(Player)number
+- (void) resetMovableArmiesForPlayerNumber:(RKPlayer)number
 {
     NSSet *countries;
     
     countries = [world countriesForPlayer:number];
     
-    for (Country *country in countries)
+    for (RKCountry *country in countries)
     {
         [country resetUnmovableTroops];
     }
@@ -1100,12 +1100,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Choose countries
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(Country *)country
+- (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(RKCountry *)country
 {
-    Player number;
+    RKPlayer number;
     BOOL valid;
     
-    AssertGameState (GameStateChoosingCountries);
+    AssertGameState (RKGameStateChoosingCountries);
     
     number = aPlayer.playerNumber;
     NSAssert (currentPlayerNumber == number, @"Not your turn.");
@@ -1129,7 +1129,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     NSMutableArray *array;
     
     array = [NSMutableArray array];
-    for (Country *country in world.allCountries)
+    for (RKCountry *country in world.allCountries)
     {
         if (country.playerNumber == 0)
             [array addObject:country];
@@ -1143,10 +1143,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 - (void) randomlyChooseCountriesForActivePlayers
 {
     NSMutableArray *array;
-    Country *country;
+    RKCountry *country;
     NSInteger count, index;
     
-    AssertGameState (GameStateChoosingCountries);
+    AssertGameState (RKGameStateChoosingCountries);
     
     currentPlayerNumber = 0;
     array = [NSMutableArray arrayWithArray:world.allCountries.allObjects];
@@ -1166,23 +1166,23 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Place Armies
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(int)count inCountry:(Country *)country
+- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(int)count inCountry:(RKCountry *)country
 {
     BOOL okay;
     
-    AssertGameState4 (GameStatePlaceArmies, GameStatePlaceInitialArmies, GameStateMoveAttackingArmies, GameStatePlaceFortifyingArmies);
+    AssertGameState4 (RKGameStatePlaceArmies, RKGameStatePlaceInitialArmies, RKGameStateMoveAttackingArmies, RKGameStatePlaceFortifyingArmies);
     NSAssert2 (count <= armiesLeftToPlace, @"Tried to place too many(%d) armies.  max: %d ", count, armiesLeftToPlace);
     
     okay = [armyPlacementValidator validatePlacement:country];
     if (okay == YES)
     {
         [armyPlacementValidator placeArmies:count inCountry:country];
-        if (gameState == GameStatePlaceFortifyingArmies)
+        if (gameState == RKGameStatePlaceFortifyingArmies)
         {
             [country addUnmovableTroopCount:count];
         }
         armiesLeftToPlace -= count;
-        if (gameState == GameStatePlaceInitialArmies)
+        if (gameState == RKGameStatePlaceInitialArmies)
             initialArmiesLeftTextField.intValue = initialArmiesLeftTextField.intValue - count;
         [self setArmiesLeftToPlace:armiesLeftToPlace];
     }
@@ -1196,11 +1196,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Attacking
 //======================================================================
 
-- (AttackResult) attackUntilUnableToContinueFromCountry:(Country *)attacker
-                                              toCountry:(Country *)defender
-                               moveAllArmiesUponVictory:(BOOL)moveFlag
+- (RKAttackResult) attackUntilUnableToContinueFromCountry:(RKCountry *)attacker
+                                                toCountry:(RKCountry *)defender
+                                 moveAllArmiesUponVictory:(BOOL)moveFlag
 {
-    AttackResult attackResult;
+    RKAttackResult attackResult;
     
     attackResult.conqueredCountry = NO;
     
@@ -1214,12 +1214,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (AttackResult) attackMultipleTimes:(int)count
-                         fromCountry:(Country *)attacker
-                           toCountry:(Country *)defender
-            moveAllArmiesUponVictory:(BOOL)moveFlag
+- (RKAttackResult) attackMultipleTimes:(int)count
+                           fromCountry:(RKCountry *)attacker
+                             toCountry:(RKCountry *)defender
+              moveAllArmiesUponVictory:(BOOL)moveFlag
 {
-    AttackResult attackResult;
+    RKAttackResult attackResult;
     
     attackResult.conqueredCountry = NO;
     
@@ -1233,12 +1233,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (AttackResult) attackFromCountry:(Country *)attacker
-                         toCountry:(Country *)defender
-                 untilArmiesRemain:(int)count
-          moveAllArmiesUponVictory:(BOOL)moveFlag
+- (RKAttackResult) attackFromCountry:(RKCountry *)attacker
+                           toCountry:(RKCountry *)defender
+                   untilArmiesRemain:(int)count
+            moveAllArmiesUponVictory:(BOOL)moveFlag
 {
-    AttackResult attackResult;
+    RKAttackResult attackResult;
     
     attackResult.conqueredCountry = NO;
     
@@ -1273,17 +1273,17 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 //      it has lost a country so that it can retaliate later.
 //----------------------------------------------------------------------
 
-- (AttackResult) attackOnceFromCountry:(Country *)attacker
-                             toCountry:(Country *)defender
-              moveAllArmiesUponVictory:(BOOL)moveFlag
+- (RKAttackResult) attackOnceFromCountry:(RKCountry *)attacker
+                               toCountry:(RKCountry *)defender
+                moveAllArmiesUponVictory:(BOOL)moveFlag
 {
-    AttackResult attackResult;
-    DiceRoll diceRoll;
+    RKAttackResult attackResult;
+    RKDiceRoll diceRoll;
     int compareCount;
     int l;
     int attackerLosses, defenderLosses;
-    Player attackingPlayerNumber, defendingPlayerNumber;
-    GameState initialGameState;
+    RKPlayer attackingPlayerNumber, defendingPlayerNumber;
+    RKGameState initialGameState;
     BOOL isGameOver;
     
     NSAssert ([defender isAdjacentToCountry:attacker] == YES, @"The countries are not neighbors.");
@@ -1387,7 +1387,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // Game Manager calculations
 //======================================================================
 
-- (int) earnedArmyCountForPlayer:(Player)number
+- (int) earnedArmyCountForPlayer:(RKPlayer)number
 {
     NSInteger count;
     
@@ -1408,9 +1408,9 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // proper number of dice to use, and returns sorted results.
 //----------------------------------------------------------------------
 
-- (DiceRoll) rollDiceWithAttackerArmies:(int)attackerArmies defenderArmies:(int)defenderArmies
+- (RKDiceRoll) rollDiceWithAttackerArmies:(int)attackerArmies defenderArmies:(int)defenderArmies
 {
-    DiceRoll diceRoll;
+    RKDiceRoll diceRoll;
     int l;
     int temp1, temp2, temp3;
     
@@ -1494,16 +1494,16 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // General player interaction
 //======================================================================
 
-- (void) selectCountry:(Country *)aCountry
+- (void) selectCountry:(RKCountry *)aCountry
 {
     [mapView selectCountry:aCountry];
 }
 
 //----------------------------------------------------------------------
 
-- (void) takeAttackMethodFromPlayerNumber:(Player)number
+- (void) takeAttackMethodFromPlayerNumber:(RKPlayer)number
 {
-    AttackMethod attackMethod;
+    RKAttackMethod attackMethod;
     int attackMethodValue;
     int index;
     
@@ -1512,19 +1512,19 @@ DEFINE_NSSTRING (RGMGameOverNotification);
     
     switch (attackMethod)
     {
-        case AttackMethodMultipleTimes:
+        case RKAttackMethodMultipleTimes:
             index = 1;
             break;
             
-        case AttackMethodUntilArmiesRemain:
+        case RKAttackMethodUntilArmiesRemain:
             index = 2;
             break;
             
-        case AttackMethodUntilUnableToContinue:
+        case RKAttackMethodUntilUnableToContinue:
             index = 3;
             break;
             
-        case AttackMethodOnce:
+        case RKAttackMethodOnce:
         default:
             index = 0;
             break;
@@ -1537,11 +1537,11 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) setAttackMethodForPlayerNumber:(Player)number
+- (void) setAttackMethodForPlayerNumber:(RKPlayer)number
 {
     NSInteger index;
     
-    AttackMethod attackMethods[] = { AttackMethodOnce, AttackMethodMultipleTimes, AttackMethodUntilArmiesRemain, AttackMethodUntilUnableToContinue };
+    RKAttackMethod attackMethods[] = { RKAttackMethodOnce, RKAttackMethodMultipleTimes, RKAttackMethodUntilArmiesRemain, RKAttackMethodUntilUnableToContinue };
     
     index = attackMethodPopup.indexOfSelectedItem;
     if (index < 0 || index > 3)
@@ -1603,7 +1603,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // game multiple times will result in different ordering of the cards.
 //----------------------------------------------------------------------
 
-- (void) dealCardToPlayerNumber:(Player)number
+- (void) dealCardToPlayerNumber:(RKPlayer)number
 {
     RiskCard *card;
     NSInteger index, count;
@@ -1631,17 +1631,17 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (int) _valueOfNextCardSet:(int)currentValue
 {
-    CardSetRedemption cardSetRedemption;
+    RKCardSetRedemption cardSetRedemption;
     int nextValue;
     
     cardSetRedemption = configuration.cardSetRedemption;
     switch (cardSetRedemption)
     {
-        case CardSetRedemptionIncreaseByOne:
+        case RKCardSetRedemptionIncreaseByOne:
             nextValue = currentValue + 1;
             break;
             
-        case CardSetRedemptionIncreaseByFive:
+        case RKCardSetRedemptionIncreaseByFive:
             if (currentValue < 12)
                 nextValue = currentValue + 2;
             else if (currentValue == 12)
@@ -1650,7 +1650,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
                 nextValue = currentValue + 5;
             break;
             
-        case CardSetRedemptionRemainConstant:
+        case RKCardSetRedemptionRemainConstant:
         default:
             nextValue = 5;
     }
@@ -1672,12 +1672,12 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 //      and then there is the forced turning in of card sets, followed by placeArmies:
 //----------------------------------------------------------------------
 
-- (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number
+- (void) turnInCardSet:(RKCardSet *)cardSet forPlayerNumber:(RKPlayer)number
 {
     RiskCard *card;
-    Country *country;
+    RKCountry *country;
     
-    AssertGameState (GameStatePlaceArmies);
+    AssertGameState (RKGameStatePlaceArmies);
     
     // Add number of armies to currently available armies for placement.
     // Add bonus armies to those card countries that we control.
@@ -1739,7 +1739,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (IBAction) turnInCards:(id)sender
 {
-    AssertGameState (GameStatePlaceArmies);
+    AssertGameState (RKGameStatePlaceArmies);
     
     [self _loadCardPanel];
     [cardPanelController runCardPanel:YES forPlayer:players[currentPlayerNumber]];
@@ -1756,9 +1756,9 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) automaticallyTurnInCardsForPlayerNumber:(Player)number
+- (void) automaticallyTurnInCardsForPlayerNumber:(RKPlayer)number
 {
-    CardSet *cardSet;
+    RKCardSet *cardSet;
     
     while (players[number].playerCards.count > 4)
     {
@@ -1806,7 +1806,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     if (players[currentPlayerNumber].interactive == YES)
     {
-        infoTextField.stringValue = gameStateInfo (gameState);
+        infoTextField.stringValue = RKGameStateInfo (gameState);
         phaseTextField.stringValue = NSStringFromGameState (gameState);
     }
     else
@@ -1818,10 +1818,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (int) totalTroopsForPlayerNumber:(Player)number
+- (int) totalTroopsForPlayerNumber:(RKPlayer)number
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     int total;
     
     total = 0;
@@ -1846,10 +1846,10 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // End of game stuff:
 //======================================================================
 
-- (BOOL) checkForEndOfPlayerNumber:(Player)number
+- (BOOL) checkForEndOfPlayerNumber:(RKPlayer)number
 {
     BOOL isGameOver;
-    Player winner;
+    RKPlayer winner;
     
     isGameOver = NO;
     
@@ -1886,7 +1886,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) playerHasLost:(Player)number
+- (void) playerHasLost:(RKPlayer)number
 {
     [players[number] youLostGame];
     [self deactivatePlayerNumber:number];
@@ -1894,7 +1894,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 //----------------------------------------------------------------------
 
-- (void) playerHasWon:(Player)number
+- (void) playerHasWon:(RKPlayer)number
 {
     [players[number] youWonGame];
     [self deactivatePlayerNumber:number];
@@ -1905,7 +1905,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 // 2. Free items of the player's submenu (if any), and disable the player menu.
 //----------------------------------------------------------------------
 
-- (void) deactivatePlayerNumber:(Player)number
+- (void) deactivatePlayerNumber:(RKPlayer)number
 {
     NSMenu *playerMenu;
     NSArray *itemArray;

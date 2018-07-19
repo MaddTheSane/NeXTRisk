@@ -7,7 +7,7 @@
 RCSID ("$Id: DiceInspector.m,v 1.2 1997/12/15 07:43:50 nygard Exp $");
 
 #import "DiceInspector.h"
-#import "Country.h"
+#import "RKCountry.h"
 
 #define DiceInspector_VERSION 1
 
@@ -174,9 +174,9 @@ static struct image_names class_images[] =
 
 //----------------------------------------------------------------------
 
-- (void) showAttackFromCountry:(Country *)attacker
-                     toCountry:(Country *)defender
-                      withDice:(DiceRoll)dice
+- (void) showAttackFromCountry:(RKCountry *)attacker
+                     toCountry:(RKCountry *)defender
+                      withDice:(RKDiceRoll)dice
 {
     int tmp;
     

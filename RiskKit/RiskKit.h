@@ -20,8 +20,8 @@ FOUNDATION_EXPORT const unsigned char RiskKitVersionString[];
 
 #import <RiskKit/Risk.h>
 #import <RiskKit/RiskPlayer.h>
-#import <RiskKit/CardSet.h>
-#import <RiskKit/Country.h>
+#import <RiskKit/RKCardSet.h>
+#import <RiskKit/RKCountry.h>
 #import <RiskKit/RiskGameManager.h>
 #import <RiskKit/ArmyPlacementValidator.h>
 #import <RiskKit/BoardSetup.h>

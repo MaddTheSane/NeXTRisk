@@ -6,9 +6,9 @@
 
 RCSID ("$Id: CardSet.m,v 1.2 1997/12/15 07:43:42 nygard Exp $");
 
-#import "CardSet.h"
+#import "RKCardSet.h"
 
-#import "Country.h"
+#import "RKCountry.h"
 #import "RiskCard.h"
 
 // Put nils at end of list.  Minimize use of wildcards.
@@ -16,12 +16,12 @@ RCSID ("$Id: CardSet.m,v 1.2 1997/12/15 07:43:42 nygard Exp $");
 NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 {
     NSComparisonResult result;
-    Player number;
-    CardSet *cardSet1, *cardSet2;
+    RKPlayer number;
+    RKCardSet *cardSet1, *cardSet2;
     NSInteger wildcardCount1, wildcardCount2;
     NSInteger countryCount1, countryCount2;
     
-    number = (Player)context;
+    number = (RKPlayer)context;
     cardSet1 = object1;
     cardSet2 = object2;
     
@@ -69,14 +69,14 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 #define CardSet_VERSION 1
 
-@implementation CardSet
+@implementation RKCardSet
 @synthesize card1;
 @synthesize card2;
 @synthesize card3;
 
 + (void) initialize
 {
-    if (self == [CardSet class])
+    if (self == [RKCardSet class])
     {
         [self setVersion:CardSet_VERSION];
     }
@@ -97,11 +97,11 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
     }
     else
     {
-        RiskCardType c1 = aCard1.cardType;
-        RiskCardType c2 = aCard2.cardType;
-        RiskCardType c3 = aCard3.cardType;
+        RKCardType c1 = aCard1.cardType;
+        RKCardType c2 = aCard2.cardType;
+        RKCardType c3 = aCard3.cardType;
         
-        if (c1 == RiskCardWildcard || c2 == RiskCardWildcard || c3 == RiskCardWildcard)
+        if (c1 == RKCardWildcard || c2 == RKCardWildcard || c3 == RKCardWildcard)
         {
             valid = YES;
         }
@@ -126,7 +126,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 + (instancetype) cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
-    return [[CardSet alloc] initCardSet:aCard1:aCard2:aCard3];
+    return [[RKCardSet alloc] initCardSet:aCard1:aCard2:aCard3];
 }
 
 //----------------------------------------------------------------------
@@ -134,7 +134,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 - (instancetype) initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
 {
     if (self = [super init]) {
-        if ([CardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)
+        if ([RKCardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)
         {
             return nil;
         }
@@ -153,13 +153,13 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 {
     int count = 0;
     
-    if (card1.cardType == RiskCardWildcard)
+    if (card1.cardType == RKCardWildcard)
         count++;
     
-    if (card2.cardType == RiskCardWildcard)
+    if (card2.cardType == RKCardWildcard)
         count++;
     
-    if (card3.cardType == RiskCardWildcard)
+    if (card3.cardType == RKCardWildcard)
         count++;
     
     return count;
@@ -167,7 +167,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-- (NSInteger) countryCountForPlayerNumber:(Player)number
+- (NSInteger) countryCountForPlayerNumber:(RKPlayer)number
 {
     NSInteger count;
     

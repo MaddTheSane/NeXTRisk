@@ -8,7 +8,7 @@ RCSID ("$Id: Risk.m,v 1.1.1.1 1997/12/09 07:18:55 nygard Exp $");
 
 #import <AppKit/AppKit.h>
 
-int RiskInitialArmyCountForPlayers (int playerCount)
+int RKInitialArmyCountForPlayers (int playerCount)
 {
     int armyCountForTotalPlayers[7] = {0, 0, 60, 35, 30, 25, 20};
     
@@ -22,22 +22,22 @@ int RiskInitialArmyCountForPlayers (int playerCount)
 
 //----------------------------------------------------------------------
 
-InitialCountryDistribution initialCountryDistributionFromString (NSString *str)
+RKInitialCountryDistribution RKInitialCountryDistributionFromString (NSString *str)
 {
-    InitialCountryDistribution dist;
+    RKInitialCountryDistribution dist;
     
     if ([str isEqualToString:DV_PlayerChosen] == YES)
     {
-        dist = InitialCountryDistributionPlayerChosen;
+        dist = RKInitialCountryDistributionPlayerChosen;
     }
     else if ([str isEqualToString:DV_RandomlyChosen] == YES)
     {
-        dist = InitialCountryDistributionRandomlyChosen;
+        dist = RKInitialCountryDistributionRandomlyChosen;
     }
     else
     {
         NSLog (@"Invalid InitialContryDistribution: %@", str);
-        dist = InitialCountryDistributionPlayerChosen;
+        dist = RKInitialCountryDistributionPlayerChosen;
     }
     
     return dist;
@@ -45,26 +45,26 @@ InitialCountryDistribution initialCountryDistributionFromString (NSString *str)
 
 //----------------------------------------------------------------------
 
-InitialArmyPlacement initialArmyPlacementFromString (NSString *str)
+RKInitialArmyPlacement RKInitialArmyPlacementFromString (NSString *str)
 {
-    InitialArmyPlacement placement;
+    RKInitialArmyPlacement placement;
     
     if ([str isEqualToString:DV_PlaceByOnes] == YES)
     {
-        placement = InitialArmyPlaceByOnes;
+        placement = RKInitialArmyPlaceByOnes;
     }
     else if ([str isEqualToString:DV_PlaceByThrees] == YES)
     {
-        placement = InitialArmyPlaceByThrees;
+        placement = RKInitialArmyPlaceByThrees;
     }
     else if ([str isEqualToString:DV_PlaceByFives] == YES)
     {
-        placement = InitialArmyPlaceByFives;
+        placement = RKInitialArmyPlaceByFives;
     }
     else
     {
         NSLog (@"Invalid InitialArmyPlacement: %@", str);
-        placement = InitialArmyPlaceByThrees;
+        placement = RKInitialArmyPlaceByThrees;
     }
     
     return placement;
@@ -72,26 +72,26 @@ InitialArmyPlacement initialArmyPlacementFromString (NSString *str)
 
 //----------------------------------------------------------------------
 
-CardSetRedemption cardSetRedemptionFromString (NSString *str)
+RKCardSetRedemption RKCardSetRedemptionFromString (NSString *str)
 {
-    CardSetRedemption redemption;
+    RKCardSetRedemption redemption;
     
     if ([str isEqualToString:DV_RemainConstant] == YES)
     {
-        redemption = CardSetRedemptionRemainConstant;
+        redemption = RKCardSetRedemptionRemainConstant;
     }
     else if ([str isEqualToString:DV_IncreaseByOne] == YES)
     {
-        redemption = CardSetRedemptionIncreaseByOne;
+        redemption = RKCardSetRedemptionIncreaseByOne;
     }
     else if ([str isEqualToString:DV_IncreaseByFive] == YES)
     {
-        redemption = CardSetRedemptionIncreaseByFive;
+        redemption = RKCardSetRedemptionIncreaseByFive;
     }
     else
     {
         NSLog (@"Invalid CardSetRedemption: %@", str);
-        redemption = CardSetRedemptionRemainConstant;
+        redemption = RKCardSetRedemptionRemainConstant;
     }
     
     return redemption;
@@ -99,30 +99,30 @@ CardSetRedemption cardSetRedemptionFromString (NSString *str)
 
 //----------------------------------------------------------------------
 
-FortifyRule fortifyRuleFromString (NSString *str)
+RKFortifyRule RKFortifyRuleFromString (NSString *str)
 {
-    FortifyRule fortifyRule;
+    RKFortifyRule fortifyRule;
     
     if ([str isEqualToString:DV_OneToOneNeighbor] == YES)
     {
-        fortifyRule = FortifyRuleOneToOneNeighbor;
+        fortifyRule = RKFortifyRuleOneToOneNeighbor;
     }
     else if ([str isEqualToString:DV_OneToManyNeighbors] == YES)
     {
-        fortifyRule = FortifyRuleOneToManyNeighbors;
+        fortifyRule = RKFortifyRuleOneToManyNeighbors;
     }
     else if ([str isEqualToString:DV_ManyToManyNeighbors] == YES)
     {
-        fortifyRule = FortifyRuleManyToManyNeighbors;
+        fortifyRule = RKFortifyRuleManyToManyNeighbors;
     }
     else if ([str isEqualToString:DV_ManyToManyConnected] == YES)
     {
-        fortifyRule = FortifyRuleManyToManyConnected;
+        fortifyRule = RKFortifyRuleManyToManyConnected;
     }
     else
     {
         NSLog (@"Invalid FortifyRule: %@", str);
-        fortifyRule = FortifyRuleOneToOneNeighbor;
+        fortifyRule = RKFortifyRuleOneToOneNeighbor;
     }
     
     return fortifyRule;
@@ -130,7 +130,7 @@ FortifyRule fortifyRuleFromString (NSString *str)
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromInitialCountryDistribution (InitialCountryDistribution countryDistribution)
+NSString *NSStringFromInitialCountryDistribution (RKInitialCountryDistribution countryDistribution)
 {
     NSString *strings[] = { DV_PlayerChosen, DV_RandomlyChosen };
     
@@ -139,7 +139,7 @@ NSString *NSStringFromInitialCountryDistribution (InitialCountryDistribution cou
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromInitialArmyPlacement (InitialArmyPlacement armyPlacement)
+NSString *NSStringFromInitialArmyPlacement (RKInitialArmyPlacement armyPlacement)
 {
     NSString *strings[] = { DV_PlaceByOnes, DV_PlaceByThrees, DV_PlaceByFives };
     
@@ -148,7 +148,7 @@ NSString *NSStringFromInitialArmyPlacement (InitialArmyPlacement armyPlacement)
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption)
+NSString *NSStringFromCardSetRedemption (RKCardSetRedemption cardSetRedemption)
 {
     NSString *strings[] = { DV_RemainConstant, DV_IncreaseByOne, DV_IncreaseByFive };
     
@@ -157,7 +157,7 @@ NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption)
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromFortifyRule (FortifyRule fortifyRule)
+NSString *NSStringFromFortifyRule (RKFortifyRule fortifyRule)
 {
     NSString *strings[] = { DV_OneToOneNeighbor, DV_OneToManyNeighbors, DV_ManyToManyNeighbors, DV_ManyToManyConnected };
     
@@ -166,7 +166,7 @@ NSString *NSStringFromFortifyRule (FortifyRule fortifyRule)
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromRiskCardType (RiskCardType cardType)
+NSString *NSStringFromRiskCardType (RKCardType cardType)
 {
     NSString *str;
     
@@ -174,19 +174,19 @@ NSString *NSStringFromRiskCardType (RiskCardType cardType)
     
     switch (cardType)
     {
-        case RiskCardWildcard:
+        case RKCardWildcard:
             str = @"Wildcard";
             break;
             
-        case RiskCardSoldier:
+        case RKCardSoldier:
             str = @"Soldier";
             break;
             
-        case RiskCardCannon:
+        case RKCardCannon:
             str = @"Cannon";
             break;
             
-        case RiskCardCavalry:
+        case RKCardCavalry:
             str = @"Cavalry";
             break;
             
@@ -200,45 +200,45 @@ NSString *NSStringFromRiskCardType (RiskCardType cardType)
 
 //----------------------------------------------------------------------
 
-NSString *NSStringFromGameState (GameState gameState)
+NSString *NSStringFromGameState (RKGameState gameState)
 {
     NSString *str;
     
     switch (gameState)
     {
-        case GameStateNone:
+        case RKGameStateNone:
             str = @"No game";
             break;
             
-        case GameStateEstablishingGame:
+        case RKGameStateEstablishingGame:
             str = @"Establishing Game";
             break;
             
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             str = @"Choose Countries";
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             str = @"Place Initial Armies";
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             str = @"Place Armies";
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             str = @"Attack";
             break;
             
-        case GameStateMoveAttackingArmies:
+        case RKGameStateMoveAttackingArmies:
             str = @"Move Attacking Armies";
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             str = @"Fortify Position";
             break;
             
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             str = @"Place Fortifying Armies";
             break;
             
@@ -253,45 +253,45 @@ NSString *NSStringFromGameState (GameState gameState)
 
 //----------------------------------------------------------------------
 
-NSString *gameStateInfo (GameState gameState)
+NSString *RKGameStateInfo (RKGameState gameState)
 {
     NSString *str;
     
     switch (gameState)
     {
-        case GameStateNone:
+        case RKGameStateNone:
             str = @"No game...";
             break;
             
-        case GameStateEstablishingGame:
+        case RKGameStateEstablishingGame:
             str = @"Establishing game...";
             break;
             
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             str = @"Before play begins, take turns choosing the countries on the board.";
             break;
             
-        case GameStatePlaceInitialArmies:
+        case RKGameStatePlaceInitialArmies:
             str = @"The game begins by players taking turns placing their initial armies a few at a time.";
             break;
             
-        case GameStatePlaceArmies:
+        case RKGameStatePlaceArmies:
             str = @"Begin your turn by placing new armies and possibly turning in cards.";
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             str = @"Attack opponent's countries which border on your own countries.";
             break;
             
-        case GameStateMoveAttackingArmies:
+        case RKGameStateMoveAttackingArmies:
             str = @"You have conquered a country.  Now place the available armies in either the attacking or the conquered countries.";
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             str = @"Fortify your position at the end of your move by shifting armies.";
             break;
             
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             // Should be based on current rule.
             str = @"Fortify the armies into the source country or any neighboring countries you control.";
             break;

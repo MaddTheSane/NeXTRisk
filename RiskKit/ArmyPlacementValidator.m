@@ -9,7 +9,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 #import "ArmyPlacementValidator.h"
 
 #import "RiskWorld.h"
-#import "Country.h"
+#import "RKCountry.h"
 
 #define ArmyPlacementValidator_VERSION 1
 
@@ -35,7 +35,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
         sourceCountry = nil;
         destinationCountry = nil;
         
-        armyPlacementType = ArmyPlacementAnyCountry;
+        armyPlacementType = RKArmyPlacementAnyCountry;
         playerNumber = 0;
         primaryCountries = nil;
         secondaryCountries = nil;
@@ -64,11 +64,11 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 // Armies may be placed in any country of the given player.
 //----------------------------------------------------------------------
 
-- (void) placeInAnyCountryForPlayerNumber:(Player)number
+- (void) placeInAnyCountryForPlayerNumber:(RKPlayer)number
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = ArmyPlacementAnyCountry;
+    armyPlacementType = RKArmyPlacementAnyCountry;
     
     primaryCountries = [[world countriesForPlayer:playerNumber] mutableCopy];
 }
@@ -77,11 +77,11 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 // Armies may be placed in either of the two specified countries.
 //----------------------------------------------------------------------
 
-- (void) placeInEitherCountry:(Country *)source orCountry:(Country *)other forPlayerNumber:(Player)number
+- (void) placeInEitherCountry:(RKCountry *)source orCountry:(RKCountry *)other forPlayerNumber:(RKPlayer)number
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = ArmyPlacementTwoCountries;
+    armyPlacementType = RKArmyPlacementTwoCountries;
     sourceCountry = source;
     destinationCountry = other;
     
@@ -93,11 +93,11 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 // of it's neighbors controlled by the same player.
 //----------------------------------------------------------------------
 
-- (void) placeInOneNeighborOfCountry:(Country *)source forPlayerNumber:(Player)number
+- (void) placeInOneNeighborOfCountry:(RKCountry *)source forPlayerNumber:(RKPlayer)number
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = ArmyPlacementOneNeighborCountry;
+    armyPlacementType = RKArmyPlacementOneNeighborCountry;
     sourceCountry = source;
     
     primaryCountries = [NSMutableSet setWithObject:source];
@@ -109,11 +109,11 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 // neighboring countries that are controlled by the same player.
 //----------------------------------------------------------------------
 
-- (void) placeInAnyNeighborOfCountry:(Country *)source forPlayerNumber:(Player)number
+- (void) placeInAnyNeighborOfCountry:(RKCountry *)source forPlayerNumber:(RKPlayer)number
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = ArmyPlacementAnyNeighborCountry;
+    armyPlacementType = RKArmyPlacementAnyNeighborCountry;
     sourceCountry = source;
     
     primaryCountries = [[source ourNeighborCountries] mutableCopy];
@@ -125,11 +125,11 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 // that is connected to it by countries controlled by the same player.
 //----------------------------------------------------------------------
 
-- (void) placeInConnectedCountries:(Country *)source forPlayerNumber:(Player)number
+- (void) placeInConnectedCountries:(RKCountry *)source forPlayerNumber:(RKPlayer)number
 {
     [self _reset];
     playerNumber = number;
-    armyPlacementType = ArmyPlacementAnyConnectedCountry;
+    armyPlacementType = RKArmyPlacementAnyConnectedCountry;
     sourceCountry = source;
     
     primaryCountries = [[source ourConnectedCountries] mutableCopy];
@@ -137,7 +137,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (BOOL) validatePlacement:(Country *)target
+- (BOOL) validatePlacement:(RKCountry *)target
 {
     BOOL valid;
     
@@ -157,7 +157,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (BOOL) placeArmies:(int)count inCountry:(Country *)target
+- (BOOL) placeArmies:(int)count inCountry:(RKCountry *)target
 {
     BOOL valid = [self validatePlacement:target];
     
@@ -168,7 +168,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
         
         [target addTroops:count];
         
-        if (armyPlacementType == ArmyPlacementOneNeighborCountry && [secondaryCountries member:target] != nil)
+        if (armyPlacementType == RKArmyPlacementOneNeighborCountry && [secondaryCountries member:target] != nil)
         {
             [primaryCountries addObject:target];
             [secondaryCountries removeAllObjects];

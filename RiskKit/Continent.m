@@ -8,7 +8,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 #import "Continent.h"
 
-#import "Country.h"
+#import "RKCountry.h"
 
 #define Continent_VERSION 1
 
@@ -87,12 +87,12 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (int) bonusArmiesForPlayer:(Player)number
+- (int) bonusArmiesForPlayer:(RKPlayer)number
 {
     int bonus;
     
     BOOL flag = YES;
-    for (Country *country in countries)
+    for (RKCountry *country in countries)
     {
         if (country.playerNumber != number)
         {
@@ -112,7 +112,7 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
-    for (Country *country in countries)
+    for (RKCountry *country in countries)
     {
         if ([country bordersAnotherContinent] == YES)
             [resultingSet addObject:country];

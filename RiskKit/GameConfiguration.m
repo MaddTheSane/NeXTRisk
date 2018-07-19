@@ -52,10 +52,10 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     if (self = [super init]) {
         defaults = [NSUserDefaults standardUserDefaults];
         
-        initialCountryDistribution = initialCountryDistributionFromString ([defaults stringForKey:DK_InitialCountryDistribution]);
-        initialArmyPlacement = initialArmyPlacementFromString ([defaults stringForKey:DK_InitialArmyPlacement]);
-        cardSetRedemption = cardSetRedemptionFromString ([defaults stringForKey:DK_CardSetRedemption]);
-        fortifyRule = fortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
+        initialCountryDistribution = RKInitialCountryDistributionFromString ([defaults stringForKey:DK_InitialCountryDistribution]);
+        initialArmyPlacement = RKInitialArmyPlacementFromString ([defaults stringForKey:DK_InitialArmyPlacement]);
+        cardSetRedemption = RKCardSetRedemptionFromString ([defaults stringForKey:DK_CardSetRedemption]);
+        fortifyRule = RKFortifyRuleFromString ([defaults stringForKey:DK_FortifyRule]);
     }
     
     return self;
@@ -69,15 +69,15 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
     
     switch (initialArmyPlacement)
     {
-        case InitialArmyPlaceByOnes:
+        case RKInitialArmyPlaceByOnes:
             count = 1;
             break;
             
-        case InitialArmyPlaceByThrees:
+        case RKInitialArmyPlaceByThrees:
             count = 3;
             break;
             
-        case InitialArmyPlaceByFives:
+        case RKInitialArmyPlaceByFives:
             count = 5;
             break;
             

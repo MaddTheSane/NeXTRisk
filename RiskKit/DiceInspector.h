@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class Country;
+@class RKCountry;
 
 //! The \c DiceInspector shows the dice as they are rolled, and optionally
 //! pauses between rolls so that you can see what is going happening.
@@ -47,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) setDieImage:(NSImageView *)aView fromInt:(int)value;
 
-- (void) showAttackFromCountry:(Country *)attacker
-                     toCountry:(Country *)defender
-                      withDice:(DiceRoll)dice;
+- (void) showAttackFromCountry:(RKCountry *)attacker
+                     toCountry:(RKCountry *)defender
+                      withDice:(RKDiceRoll)dice;
 
 - (void) waitForContinue;
 - (IBAction) continueAction:(nullable id)sender;

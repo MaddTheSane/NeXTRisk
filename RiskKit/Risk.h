@@ -19,110 +19,110 @@ typedef NS_ENUM(int, RiskContinent)
     RiskContinentAustralia
 };
 
-typedef int RiskArmyCount;
-typedef NSInteger Player;
+typedef int RKArmyCount;
+typedef NSInteger RKPlayer;
 
-typedef NS_ENUM(int, RiskCardType)
+typedef NS_ENUM(int, RKCardType)
 {
-    RiskCardWildcard,
-    RiskCardSoldier,
-    RiskCardCannon,
-    RiskCardCavalry
+    RKCardWildcard,
+    RKCardSoldier,
+    RKCardCannon,
+    RKCardCavalry
 };
 
-typedef NS_ENUM(int, GameState)
+typedef NS_ENUM(int, RKGameState)
 {
-    GameStateNone,
-    GameStateEstablishingGame,
-    GameStateChoosingCountries,
-    GameStatePlaceInitialArmies,
-    GameStatePlaceArmies,
-    GameStateAttack,
-    GameStateMoveAttackingArmies,
-    GameStateFortify,
-    GameStatePlaceFortifyingArmies
+    RKGameStateNone,
+    RKGameStateEstablishingGame,
+    RKGameStateChoosingCountries,
+    RKGameStatePlaceInitialArmies,
+    RKGameStatePlaceArmies,
+    RKGameStateAttack,
+    RKGameStateMoveAttackingArmies,
+    RKGameStateFortify,
+    RKGameStatePlaceFortifyingArmies
 };
 
 //======================================================================
 // Game configuration
 //======================================================================
 
-typedef NS_ENUM(int, InitialCountryDistribution)
+typedef NS_ENUM(int, RKInitialCountryDistribution)
 {
-    InitialCountryDistributionPlayerChosen,
-    InitialCountryDistributionRandomlyChosen
+    RKInitialCountryDistributionPlayerChosen,
+    RKInitialCountryDistributionRandomlyChosen
 };
 
-typedef NS_ENUM(int, InitialArmyPlacement)
+typedef NS_ENUM(int, RKInitialArmyPlacement)
 {
-    InitialArmyPlaceByOnes,
-    InitialArmyPlaceByThrees,
-    InitialArmyPlaceByFives
+    RKInitialArmyPlaceByOnes,
+    RKInitialArmyPlaceByThrees,
+    RKInitialArmyPlaceByFives
 };
 
-typedef NS_ENUM(int, CardSetRedemption)
+typedef NS_ENUM(int, RKCardSetRedemption)
 {
-    CardSetRedemptionRemainConstant,
-    CardSetRedemptionIncreaseByOne,
-    CardSetRedemptionIncreaseByFive
+    RKCardSetRedemptionRemainConstant,
+    RKCardSetRedemptionIncreaseByOne,
+    RKCardSetRedemptionIncreaseByFive
 };
 
-typedef NS_ENUM(int, FortifyRule)
+typedef NS_ENUM(int, RKFortifyRule)
 {
-    FortifyRuleOneToOneNeighbor,
-    FortifyRuleOneToManyNeighbors,
-    FortifyRuleManyToManyNeighbors,
-    FortifyRuleManyToManyConnected
+    RKFortifyRuleOneToOneNeighbor,
+    RKFortifyRuleOneToManyNeighbors,
+    RKFortifyRuleManyToManyNeighbors,
+    RKFortifyRuleManyToManyConnected
 };
 
-typedef struct DiceRoll
+typedef struct RKDiceRoll
 {
     int attackerDieCount;
     int attackerDice[3];
     int defenderDieCount;
     int defenderDice[2];
-} DiceRoll;
+} RKDiceRoll;
 
-typedef NS_ENUM(int, AttackMethod)
+typedef NS_ENUM(int, RKAttackMethod)
 {
-    AttackMethodOnce,
-    AttackMethodMultipleTimes,
-    AttackMethodUntilArmiesRemain,
-    AttackMethodUntilUnableToContinue
+    RKAttackMethodOnce,
+    RKAttackMethodMultipleTimes,
+    RKAttackMethodUntilArmiesRemain,
+    RKAttackMethodUntilUnableToContinue
 };
 
-typedef NS_ENUM(int, ArmyPlacementType)
+typedef NS_ENUM(int, RKArmyPlacementType)
 {
-    ArmyPlacementAnyCountry,
-    ArmyPlacementTwoCountries,
-    ArmyPlacementOneNeighborCountry,
-    ArmyPlacementAnyNeighborCountry,
-    ArmyPlacementAnyConnectedCountry
+    RKArmyPlacementAnyCountry,
+    RKArmyPlacementTwoCountries,
+    RKArmyPlacementOneNeighborCountry,
+    RKArmyPlacementAnyNeighborCountry,
+    RKArmyPlacementAnyConnectedCountry
 };
 
-typedef struct AttackResult
+typedef struct RKAttackResult
 {
     BOOL conqueredCountry;
     BOOL phaseChanged;
-} AttackResult;
+} RKAttackResult;
 
-RiskArmyCount RiskInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(initialArmyCount(forPlayers:));
+RKArmyCount RKInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(initialArmyCount(forPlayers:));
 
 NS_ASSUME_NONNULL_BEGIN
 
-InitialCountryDistribution initialCountryDistributionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-InitialArmyPlacement initialArmyPlacementFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-CardSetRedemption cardSetRedemptionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-FortifyRule fortifyRuleFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+RKInitialCountryDistribution RKInitialCountryDistributionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+RKInitialArmyPlacement RKInitialArmyPlacementFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+RKCardSetRedemption RKCardSetRedemptionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+RKFortifyRule RKFortifyRuleFromString (NSString *str) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromInitialCountryDistribution (InitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromInitialArmyPlacement (InitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromCardSetRedemption (CardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromFortifyRule (FortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromInitialCountryDistribution (RKInitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromInitialArmyPlacement (RKInitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromCardSetRedemption (RKCardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromFortifyRule (RKFortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromRiskCardType (RiskCardType cardType) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromGameState (GameState gameState) NS_REFINED_FOR_SWIFT;
-NSString *gameStateInfo (GameState gameState) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromRiskCardType (RKCardType cardType) NS_REFINED_FOR_SWIFT;
+NSString *NSStringFromGameState (RKGameState gameState) NS_REFINED_FOR_SWIFT;
+NSString *RKGameStateInfo (RKGameState gameState) NS_REFINED_FOR_SWIFT;
 
 NS_ASSUME_NONNULL_END
 
@@ -148,52 +148,54 @@ NS_ASSUME_NONNULL_END
 #define DV_ManyToManyNeighbors  @"ManyToManyNeighbors"
 #define DV_ManyToManyConnected  @"ManyToManyConnected"
 
-static const RiskCardType Wildcard API_DEPRECATED_WITH_REPLACEMENT("RiskCardWildcard", macosx(10.0, 10.9)) = RiskCardWildcard;
-static const RiskCardType Soldier API_DEPRECATED_WITH_REPLACEMENT("RiskCardSoldier", macosx(10.0, 10.9)) = RiskCardSoldier;
-static const RiskCardType Cannon API_DEPRECATED_WITH_REPLACEMENT("RiskCardCannon", macosx(10.0, 10.9)) = RiskCardCannon;
-static const RiskCardType Cavalry API_DEPRECATED_WITH_REPLACEMENT("RiskCardCavalry", macosx(10.0, 10.9)) = RiskCardCavalry;
+#if defined(RK_INCLUDE_DEPRECATED) && RK_INCLUDE_DEPRECATED
+static const RKCardType Wildcard API_DEPRECATED_WITH_REPLACEMENT("RKCardWildcard", macosx(10.0, 10.9)) = RKCardWildcard;
+static const RKCardType Soldier API_DEPRECATED_WITH_REPLACEMENT("RKCardSoldier", macosx(10.0, 10.9)) = RKCardSoldier;
+static const RKCardType Cannon API_DEPRECATED_WITH_REPLACEMENT("RKCardCannon", macosx(10.0, 10.9)) = RKCardCannon;
+static const RKCardType Cavalry API_DEPRECATED_WITH_REPLACEMENT("RKCardCavalry", macosx(10.0, 10.9)) = RKCardCavalry;
 
-static const RiskContinent Unknown API_DEPRECATED_WITH_REPLACEMENT("RiskContinentUnknown", macosx(10.0, 10.9)) = RiskContinentUnknown;
-static const RiskContinent SouthAmerica API_DEPRECATED_WITH_REPLACEMENT("RiskContinentSouthAmerica", macosx(10.0, 10.9)) = RiskContinentSouthAmerica;
-static const RiskContinent NorthAmerica API_DEPRECATED_WITH_REPLACEMENT("RiskContinentNorthAmerica", macosx(10.0, 10.9)) = RiskContinentNorthAmerica;
-static const RiskContinent Europe API_DEPRECATED_WITH_REPLACEMENT("RiskContinentEurope", macosx(10.0, 10.9)) = RiskContinentEurope;
-static const RiskContinent Africa API_DEPRECATED_WITH_REPLACEMENT("RiskContinentAfrica", macosx(10.0, 10.9)) = RiskContinentAfrica;
-static const RiskContinent Asia API_DEPRECATED_WITH_REPLACEMENT("RiskContinentAsia", macosx(10.0, 10.9)) = RiskContinentAsia;
-static const RiskContinent Australia API_DEPRECATED_WITH_REPLACEMENT("RiskContinentAustralia", macosx(10.0, 10.9)) = RiskContinentAustralia;
+static const RiskContinent Unknown API_DEPRECATED_WITH_REPLACEMENT("RKContinentUnknown", macosx(10.0, 10.9)) = RiskContinentUnknown;
+static const RiskContinent SouthAmerica API_DEPRECATED_WITH_REPLACEMENT("RKContinentSouthAmerica", macosx(10.0, 10.9)) = RiskContinentSouthAmerica;
+static const RiskContinent NorthAmerica API_DEPRECATED_WITH_REPLACEMENT("RKContinentNorthAmerica", macosx(10.0, 10.9)) = RiskContinentNorthAmerica;
+static const RiskContinent Europe API_DEPRECATED_WITH_REPLACEMENT("RKContinentEurope", macosx(10.0, 10.9)) = RiskContinentEurope;
+static const RiskContinent Africa API_DEPRECATED_WITH_REPLACEMENT("RKContinentAfrica", macosx(10.0, 10.9)) = RiskContinentAfrica;
+static const RiskContinent Asia API_DEPRECATED_WITH_REPLACEMENT("RKContinentAsia", macosx(10.0, 10.9)) = RiskContinentAsia;
+static const RiskContinent Australia API_DEPRECATED_WITH_REPLACEMENT("RKContinentAustralia", macosx(10.0, 10.9)) = RiskContinentAustralia;
 
-static const FortifyRule OneToOneNeighbor API_DEPRECATED_WITH_REPLACEMENT("FortifyRuleOneToOneNeighbor", macosx(10.0, 10.9)) = FortifyRuleOneToOneNeighbor;
-static const FortifyRule OneToManyNeighbors API_DEPRECATED_WITH_REPLACEMENT("FortifyRuleOneToManyNeighbors", macosx(10.0, 10.9)) = FortifyRuleOneToManyNeighbors;
-static const FortifyRule ManyToManyNeighbors API_DEPRECATED_WITH_REPLACEMENT("FortifyRuleManyToManyNeighbors", macosx(10.0, 10.9)) = FortifyRuleManyToManyNeighbors;
-static const FortifyRule ManyToManyConnected API_DEPRECATED_WITH_REPLACEMENT("FortifyRuleManyToManyConnected", macosx(10.0, 10.9)) = FortifyRuleManyToManyConnected;
+static const RKFortifyRule OneToOneNeighbor API_DEPRECATED_WITH_REPLACEMENT("RKFortifyRuleOneToOneNeighbor", macosx(10.0, 10.9)) = RKFortifyRuleOneToOneNeighbor;
+static const RKFortifyRule OneToManyNeighbors API_DEPRECATED_WITH_REPLACEMENT("RKFortifyRuleOneToManyNeighbors", macosx(10.0, 10.9)) = RKFortifyRuleOneToManyNeighbors;
+static const RKFortifyRule ManyToManyNeighbors API_DEPRECATED_WITH_REPLACEMENT("RKFortifyRuleManyToManyNeighbors", macosx(10.0, 10.9)) = RKFortifyRuleManyToManyNeighbors;
+static const RKFortifyRule ManyToManyConnected API_DEPRECATED_WITH_REPLACEMENT("RKFortifyRuleManyToManyConnected", macosx(10.0, 10.9)) = RKFortifyRuleManyToManyConnected;
 
-static const AttackMethod AttackOnce API_DEPRECATED_WITH_REPLACEMENT("AttackMethodOnce", macosx(10.0, 10.9)) = AttackMethodOnce;
-static const AttackMethod AttackMultipleTimes API_DEPRECATED_WITH_REPLACEMENT("AttackMethodMultipleTimes", macosx(10.0, 10.9)) = AttackMethodMultipleTimes;
-static const AttackMethod AttackUntilArmiesRemain API_DEPRECATED_WITH_REPLACEMENT("AttackMethodUntilArmiesRemain", macosx(10.0, 10.9)) = AttackMethodUntilArmiesRemain;
-static const AttackMethod AttackUntilUnableToContinue API_DEPRECATED_WITH_REPLACEMENT("AttackMethodUntilUnableToContinue", macosx(10.0, 10.9)) = AttackMethodUntilUnableToContinue;
+static const RKAttackMethod AttackOnce API_DEPRECATED_WITH_REPLACEMENT("RKAttackMethodOnce", macosx(10.0, 10.9)) = RKAttackMethodOnce;
+static const RKAttackMethod AttackMultipleTimes API_DEPRECATED_WITH_REPLACEMENT("RKAttackMethodMultipleTimes", macosx(10.0, 10.9)) = RKAttackMethodMultipleTimes;
+static const RKAttackMethod AttackUntilArmiesRemain API_DEPRECATED_WITH_REPLACEMENT("RKAttackMethodUntilArmiesRemain", macosx(10.0, 10.9)) = RKAttackMethodUntilArmiesRemain;
+static const RKAttackMethod AttackUntilUnableToContinue API_DEPRECATED_WITH_REPLACEMENT("RKAttackMethodUntilUnableToContinue", macosx(10.0, 10.9)) = RKAttackMethodUntilUnableToContinue;
 
-static const ArmyPlacementType PlaceInAnyCountry API_DEPRECATED_WITH_REPLACEMENT("ArmyPlacementAnyCountry", macosx(10.0, 10.9)) = ArmyPlacementAnyCountry;
-static const ArmyPlacementType PlaceInTwoCountries API_DEPRECATED_WITH_REPLACEMENT("ArmyPlacementTwoCountries", macosx(10.0, 10.9)) = ArmyPlacementTwoCountries;
-static const ArmyPlacementType PlaceInOneNeighborCountry API_DEPRECATED_WITH_REPLACEMENT("ArmyPlacementOneNeighborCountry", macosx(10.0, 10.9)) = ArmyPlacementOneNeighborCountry;
-static const ArmyPlacementType PlaceInAnyNeighborCountry API_DEPRECATED_WITH_REPLACEMENT("ArmyPlacementAnyNeighborCountry", macosx(10.0, 10.9)) = ArmyPlacementAnyNeighborCountry;
-static const ArmyPlacementType PlaceInAnyConnectedCountry API_DEPRECATED_WITH_REPLACEMENT("ArmyPlacementAnyConnectedCountry", macosx(10.0, 10.9)) = ArmyPlacementAnyConnectedCountry;
+static const RKArmyPlacementType PlaceInAnyCountry API_DEPRECATED_WITH_REPLACEMENT("RKArmyPlacementAnyCountry", macosx(10.0, 10.9)) = RKArmyPlacementAnyCountry;
+static const RKArmyPlacementType PlaceInTwoCountries API_DEPRECATED_WITH_REPLACEMENT("RKArmyPlacementTwoCountries", macosx(10.0, 10.9)) = RKArmyPlacementTwoCountries;
+static const RKArmyPlacementType PlaceInOneNeighborCountry API_DEPRECATED_WITH_REPLACEMENT("RKArmyPlacementOneNeighborCountry", macosx(10.0, 10.9)) = RKArmyPlacementOneNeighborCountry;
+static const RKArmyPlacementType PlaceInAnyNeighborCountry API_DEPRECATED_WITH_REPLACEMENT("RKArmyPlacementAnyNeighborCountry", macosx(10.0, 10.9)) = RKArmyPlacementAnyNeighborCountry;
+static const RKArmyPlacementType PlaceInAnyConnectedCountry API_DEPRECATED_WITH_REPLACEMENT("RKArmyPlacementAnyConnectedCountry", macosx(10.0, 10.9)) = RKArmyPlacementAnyConnectedCountry;
 
-static const InitialCountryDistribution PlayerChosen API_DEPRECATED_WITH_REPLACEMENT("InitialCountryDistributionPlayerChosen", macosx(10.0, 10.9)) = InitialCountryDistributionPlayerChosen;
-static const InitialCountryDistribution RandomlyChosen API_DEPRECATED_WITH_REPLACEMENT("InitialCountryDistributionRandomlyChosen", macosx(10.0, 10.9)) = InitialCountryDistributionRandomlyChosen;
+static const RKInitialCountryDistribution PlayerChosen API_DEPRECATED_WITH_REPLACEMENT("RKInitialCountryDistributionPlayerChosen", macosx(10.0, 10.9)) = RKInitialCountryDistributionPlayerChosen;
+static const RKInitialCountryDistribution RandomlyChosen API_DEPRECATED_WITH_REPLACEMENT("RKInitialCountryDistributionRandomlyChosen", macosx(10.0, 10.9)) = RKInitialCountryDistributionRandomlyChosen;
 
-static const CardSetRedemption RemainConstant API_DEPRECATED_WITH_REPLACEMENT("CardSetRedemptionRemainConstant", macosx(10.0, 10.9)) = CardSetRedemptionRemainConstant;
-static const CardSetRedemption IncreaseByOne API_DEPRECATED_WITH_REPLACEMENT("CardSetRedemptionIncreaseByOne", macosx(10.0, 10.9)) = CardSetRedemptionIncreaseByOne;
-static const CardSetRedemption IncreaseByFive API_DEPRECATED_WITH_REPLACEMENT("CardSetRedemptionIncreaseByFive", macosx(10.0, 10.9)) = CardSetRedemptionIncreaseByFive;
+static const RKCardSetRedemption RemainConstant API_DEPRECATED_WITH_REPLACEMENT("RKCardSetRedemptionRemainConstant", macosx(10.0, 10.9)) = RKCardSetRedemptionRemainConstant;
+static const RKCardSetRedemption IncreaseByOne API_DEPRECATED_WITH_REPLACEMENT("RKCardSetRedemptionIncreaseByOne", macosx(10.0, 10.9)) = RKCardSetRedemptionIncreaseByOne;
+static const RKCardSetRedemption IncreaseByFive API_DEPRECATED_WITH_REPLACEMENT("RKCardSetRedemptionIncreaseByFive", macosx(10.0, 10.9)) = RKCardSetRedemptionIncreaseByFive;
 
-static const InitialArmyPlacement PlaceByOnes API_DEPRECATED_WITH_REPLACEMENT("InitialArmyPlaceByOnes", macosx(10.0, 10.9)) = InitialArmyPlaceByOnes;
-static const InitialArmyPlacement PlaceByThrees API_DEPRECATED_WITH_REPLACEMENT("InitialArmyPlaceByThrees", macosx(10.0, 10.9)) = InitialArmyPlaceByThrees;
-static const InitialArmyPlacement PlaceByFives API_DEPRECATED_WITH_REPLACEMENT("InitialArmyPlaceByFives", macosx(10.0, 10.9)) = InitialArmyPlaceByFives;
+static const RKInitialArmyPlacement PlaceByOnes API_DEPRECATED_WITH_REPLACEMENT("RKInitialArmyPlaceByOnes", macosx(10.0, 10.9)) = RKInitialArmyPlaceByOnes;
+static const RKInitialArmyPlacement PlaceByThrees API_DEPRECATED_WITH_REPLACEMENT("RKInitialArmyPlaceByThrees", macosx(10.0, 10.9)) = RKInitialArmyPlaceByThrees;
+static const RKInitialArmyPlacement PlaceByFives API_DEPRECATED_WITH_REPLACEMENT("RKInitialArmyPlaceByFives", macosx(10.0, 10.9)) = RKInitialArmyPlaceByFives;
 
-static const GameState gs_no_game API_DEPRECATED_WITH_REPLACEMENT("GameStateNone", macosx(10.0, 10.9)) = GameStateNone;
-static const GameState gs_establishing_game API_DEPRECATED_WITH_REPLACEMENT("GameStateEstablishingGame", macosx(10.0, 10.9)) = GameStateEstablishingGame;
-static const GameState gs_choose_countries API_DEPRECATED_WITH_REPLACEMENT("GameStateChoosingCountries", macosx(10.0, 10.9)) = GameStateChoosingCountries;
-static const GameState gs_place_initial_armies API_DEPRECATED_WITH_REPLACEMENT("GameStatePlaceInitialArmies", macosx(10.0, 10.9)) = GameStatePlaceInitialArmies;
-static const GameState gs_place_armies API_DEPRECATED_WITH_REPLACEMENT("GameStatePlaceArmies", macosx(10.0, 10.9)) = GameStatePlaceArmies;
-static const GameState gs_attack API_DEPRECATED_WITH_REPLACEMENT("GameStateAttack", macosx(10.0, 10.9)) = GameStateAttack;
-static const GameState gs_move_attacking_armies API_DEPRECATED_WITH_REPLACEMENT("GameStateMoveAttackingArmies", macosx(10.0, 10.9)) = GameStateMoveAttackingArmies;
-static const GameState gs_fortify API_DEPRECATED_WITH_REPLACEMENT("GameStateFortify", macosx(10.0, 10.9)) = GameStateFortify;
-static const GameState gs_place_fortifying_armies API_DEPRECATED_WITH_REPLACEMENT("GameStatePlaceFortifyingArmies", macosx(10.0, 10.9)) = GameStatePlaceFortifyingArmies;
+static const RKGameState gs_no_game API_DEPRECATED_WITH_REPLACEMENT("RKGameStateNone", macosx(10.0, 10.9)) = RKGameStateNone;
+static const RKGameState gs_establishing_game API_DEPRECATED_WITH_REPLACEMENT("RKGameStateEstablishingGame", macosx(10.0, 10.9)) = RKGameStateEstablishingGame;
+static const RKGameState gs_choose_countries API_DEPRECATED_WITH_REPLACEMENT("RKGameStateChoosingCountries", macosx(10.0, 10.9)) = RKGameStateChoosingCountries;
+static const RKGameState gs_place_initial_armies API_DEPRECATED_WITH_REPLACEMENT("RKGameStatePlaceInitialArmies", macosx(10.0, 10.9)) = RKGameStatePlaceInitialArmies;
+static const RKGameState gs_place_armies API_DEPRECATED_WITH_REPLACEMENT("RKGameStatePlaceArmies", macosx(10.0, 10.9)) = RKGameStatePlaceArmies;
+static const RKGameState gs_attack API_DEPRECATED_WITH_REPLACEMENT("RKGameStateAttack", macosx(10.0, 10.9)) = RKGameStateAttack;
+static const RKGameState gs_move_attacking_armies API_DEPRECATED_WITH_REPLACEMENT("RKGameStateMoveAttackingArmies", macosx(10.0, 10.9)) = RKGameStateMoveAttackingArmies;
+static const RKGameState gs_fortify API_DEPRECATED_WITH_REPLACEMENT("RKGameStateFortify", macosx(10.0, 10.9)) = RKGameStateFortify;
+static const RKGameState gs_place_fortifying_armies API_DEPRECATED_WITH_REPLACEMENT("RKGameStatePlaceFortifyingArmies", macosx(10.0, 10.9)) = RKGameStatePlaceFortifyingArmies;
+#endif

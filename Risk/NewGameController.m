@@ -269,7 +269,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     if (playerCount > 1)
     {
-        initialArmyCountTextfield.intValue = RiskInitialArmyCountForPlayers (playerCount);
+        initialArmyCountTextfield.intValue = RKInitialArmyCountForPlayers (playerCount);
     }
     else
     {
@@ -499,11 +499,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialCountryDistribution)
     {
-        case InitialCountryDistributionRandomlyChosen:
+        case RKInitialCountryDistributionRandomlyChosen:
             index = 1;
             break;
             
-        case InitialCountryDistributionPlayerChosen:
+        case RKInitialCountryDistributionPlayerChosen:
         default:
             index = 0;
             break;
@@ -513,15 +513,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialArmyPlacement)
     {
-        case InitialArmyPlaceByThrees:
+        case RKInitialArmyPlaceByThrees:
             index = 1;
             break;
             
-        case InitialArmyPlaceByFives:
+        case RKInitialArmyPlaceByFives:
             index = 2;
             break;
             
-        case InitialArmyPlaceByOnes:
+        case RKInitialArmyPlaceByOnes:
         default:
             index = 0;
             break;
@@ -531,15 +531,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.cardSetRedemption)
     {
-        case CardSetRedemptionIncreaseByOne:
+        case RKCardSetRedemptionIncreaseByOne:
             index = 1;
             break;
             
-        case CardSetRedemptionIncreaseByFive:
+        case RKCardSetRedemptionIncreaseByFive:
             index = 2;
             break;
             
-        case CardSetRedemptionRemainConstant:
+        case RKCardSetRedemptionRemainConstant:
         default:
             index = 0;
             break;
@@ -549,19 +549,19 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.fortifyRule)
     {
-        case FortifyRuleOneToManyNeighbors:
+        case RKFortifyRuleOneToManyNeighbors:
             index = 1;
             break;
             
-        case FortifyRuleManyToManyNeighbors:
+        case RKFortifyRuleManyToManyNeighbors:
             index = 2;
             break;
             
-        case FortifyRuleManyToManyConnected:
+        case RKFortifyRuleManyToManyConnected:
             index = 3;
             break;
             
-        case FortifyRuleOneToOneNeighbor:
+        case RKFortifyRuleOneToOneNeighbor:
         default:
             index = 0;
             break;
@@ -579,10 +579,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     GameConfiguration *thisConfiguration;
     NSInteger index;
-    InitialCountryDistribution distribution[2] = { InitialCountryDistributionPlayerChosen, InitialCountryDistributionRandomlyChosen };
-    InitialArmyPlacement placement[3] = { InitialArmyPlaceByOnes, InitialArmyPlaceByThrees, InitialArmyPlaceByFives };
-    CardSetRedemption redemption[3] = { CardSetRedemptionRemainConstant, CardSetRedemptionIncreaseByOne, CardSetRedemptionIncreaseByFive };
-    FortifyRule rule[4] = { FortifyRuleOneToOneNeighbor, FortifyRuleOneToManyNeighbors, FortifyRuleManyToManyNeighbors, FortifyRuleManyToManyConnected };
+    RKInitialCountryDistribution distribution[2] = { RKInitialCountryDistributionPlayerChosen, RKInitialCountryDistributionRandomlyChosen };
+    RKInitialArmyPlacement placement[3] = { RKInitialArmyPlaceByOnes, RKInitialArmyPlaceByThrees, RKInitialArmyPlaceByFives };
+    RKCardSetRedemption redemption[3] = { RKCardSetRedemptionRemainConstant, RKCardSetRedemptionIncreaseByOne, RKCardSetRedemptionIncreaseByFive };
+    RKFortifyRule rule[4] = { RKFortifyRuleOneToOneNeighbor, RKFortifyRuleOneToManyNeighbors, RKFortifyRuleManyToManyNeighbors, RKFortifyRuleManyToManyConnected };
     
     thisConfiguration = [GameConfiguration defaultConfiguration];
     

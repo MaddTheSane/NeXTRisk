@@ -8,7 +8,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 #import "Chaotic.h"
 
-#import <RiskKit/Country.h>
+#import <RiskKit/RKCountry.h>
 #import <RiskKit/RiskGameManager.h>
 #import <RiskKit/RiskWorld.h>
 #import <RiskKit/SNRandom.h>
@@ -39,7 +39,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype) initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 {
     RiskWorld *world;
     NSDictionary<NSString*,Continent *> *continents;
@@ -88,7 +88,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSMutableArray *array;
     NSArray *unoccupiedCountries;
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     
     // 1. Make a list of unoccupied countries in continents that we don't have a presence.
     // 2. Randomly choose one of these, updating its continent flag
@@ -138,7 +138,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSInteger countryCount;
     BOOL okay;
     NSInteger l;
-    Country *country;
+    RKCountry *country;
     
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
     ourCountries = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]].allObjects;
@@ -163,7 +163,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 {
     NSEnumerator *countryEnumerator;
     BOOL mustEndTurn;
-    Country *country;
+    RKCountry *country;
     
     if (attackingCountries == nil)
     {
@@ -188,7 +188,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 //----------------------------------------------------------------------
 
 // Move forward half of the remaining armies.
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination
 {
     int tmp;
     
@@ -203,10 +203,10 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) fortifyPhase:(FortifyRule)fortifyRule
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule
 {
     NSSet *sourceCountries;
-    Country *source = nil;
+    RKCountry *source = nil;
     NSInteger count;
     NSArray *sourceArray;
     
@@ -221,13 +221,13 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     {
         switch (fortifyRule)
         {
-            case FortifyRuleManyToManyNeighbors:
-            case FortifyRuleManyToManyConnected:
+            case RKFortifyRuleManyToManyNeighbors:
+            case RKFortifyRuleManyToManyConnected:
                 source = [sourceCountries anyObject]; // All of them will be done in turn.
                 break;
                 
-            case FortifyRuleOneToOneNeighbor:
-            case FortifyRuleOneToManyNeighbors:
+            case RKFortifyRuleOneToOneNeighbor:
+            case RKFortifyRuleOneToManyNeighbors:
             default:
                 sourceArray = sourceCountries.allObjects;
                 source = sourceArray[[self.rng randomNumberModulo:count]];
@@ -243,11 +243,11 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 // Try to find a friendly neighbor who has unfriendly neighbors
 // Otherwise, pick random country.
 
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source
+- (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source
 {
     NSSet *ourNeighborCountries;
     NSEnumerator *countryEnumerator;
-    Country *country, *destination;
+    RKCountry *country, *destination;
     NSInteger neighborCount;
     
     destination = nil;
@@ -287,18 +287,18 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 //======================================================================
 
 // attack the weakest neighbor (bully tactics).
-- (BOOL) doAttackFromCountry:(Country *)attacker
+- (BOOL) doAttackFromCountry:(RKCountry *)attacker
 {
-    NSSet<Country*> *enemies;
-    Country *weakest;
+    NSSet<RKCountry*> *enemies;
+    RKCountry *weakest;
     int weakestTroopCount;
-    AttackResult attackResult;
+    RKAttackResult attackResult;
     
     attackResult.conqueredCountry = NO;
     weakest = nil;
     weakestTroopCount = 999999;
     enemies = [attacker enemyNeighborCountries];
-    for (Country *country in enemies)
+    for (RKCountry *country in enemies)
     {
         int troopCount = country.troopCount;
         if (troopCount < weakestTroopCount)

@@ -10,9 +10,9 @@ RCSID ("$Id: CardPanelController.m,v 1.3 1997/12/15 07:43:41 nygard Exp $");
 
 #import "RiskCard.h"
 #import "RiskPlayer.h"
-#import "Country.h"
+#import "RKCountry.h"
 #import "RiskGameManager.h"
-#import "CardSet.h"
+#import "RKCardSet.h"
 
 #define CardPanelController_VERSION 1
 
@@ -139,7 +139,7 @@ static struct image_names class_images[] =
             lastCard = playerCards[index];
             
             // check to see if this one will make a third
-            if ([CardSet isValidCardSet:currentSet[0]:currentSet[1]:lastCard] == NO)
+            if ([RKCardSet isValidCardSet:currentSet[0]:currentSet[1]:lastCard] == NO)
             {
                 NSBeep();
                 return;
@@ -217,7 +217,7 @@ static struct image_names class_images[] =
 - (IBAction) doneAction:(id)sender
 {
     NSEnumerator *cardSetEnumerator;
-    CardSet *cardSet;
+    RKCardSet *cardSet;
     
     // Go through list of sets, and instruct the game manager to turn
     // in those card sets on behalf of the player.
@@ -249,12 +249,12 @@ static struct image_names class_images[] =
 
 - (IBAction) turnInSetAction:(id)sender
 {
-    CardSet *cardSet;
+    RKCardSet *cardSet;
     int l;
     
     if (setMatrixCount == 3)
     {
-        cardSet = [CardSet cardSet:currentSet[0]:currentSet[1]:currentSet[2]];
+        cardSet = [RKCardSet cardSet:currentSet[0]:currentSet[1]:currentSet[2]];
         NSAssert (cardSet != nil, @"Invalid card set.");
         
         for (l = 0; l < 3; l++)

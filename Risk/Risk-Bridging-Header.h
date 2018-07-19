@@ -4,7 +4,7 @@
 
 #import <RiskKit/Risk.h>
 #import "RiskMapView.h"
-#import <RiskKit/Country.h>
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 #import "NewGameController.h"
 #import "PreferenceController.h"

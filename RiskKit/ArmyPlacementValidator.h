@@ -7,7 +7,7 @@
 
 #import "Risk.h"
 
-@class RiskWorld, Country;
+@class RiskWorld, RKCountry;
 
 //! The \c ArmyPlacementValidator controls the placement of armies during
 //! the game -- for initial army placement, normal army placement, after
@@ -16,13 +16,13 @@
 {
     RiskWorld *world;
 
-    Country *sourceCountry;
-    Country *destinationCountry;
+    RKCountry *sourceCountry;
+    RKCountry *destinationCountry;
 
-    ArmyPlacementType armyPlacementType;
-    Player playerNumber;
-    NSMutableSet<Country*> *primaryCountries;
-    NSMutableSet<Country*> *secondaryCountries;
+    RKArmyPlacementType armyPlacementType;
+    RKPlayer playerNumber;
+    NSMutableSet<RKCountry*> *primaryCountries;
+    NSMutableSet<RKCountry*> *secondaryCountries;
 }
 
 - (instancetype)initWithRiskWorld:(RiskWorld *)aWorld NS_DESIGNATED_INITIALIZER;
@@ -30,21 +30,21 @@
 
 - (void) _reset;
 
-@property (readonly, strong) Country *sourceCountry;
-@property (readonly, strong) Country *destinationCountry;
+@property (readonly, strong) RKCountry *sourceCountry;
+@property (readonly, strong) RKCountry *destinationCountry;
 
 //----------------------------------------------------------------------
 // All of these methods deal only with the given player's countries.
 // They include the source country.
 //----------------------------------------------------------------------
 
-- (void) placeInAnyCountryForPlayerNumber:(Player)number;
-- (void) placeInEitherCountry:(Country *)source orCountry:(Country *)other forPlayerNumber:(Player)number;
-- (void) placeInOneNeighborOfCountry:(Country *)source forPlayerNumber:(Player)number;
-- (void) placeInAnyNeighborOfCountry:(Country *)source forPlayerNumber:(Player)number;
-- (void) placeInConnectedCountries:(Country *)source forPlayerNumber:(Player)number;
+- (void) placeInAnyCountryForPlayerNumber:(RKPlayer)number;
+- (void) placeInEitherCountry:(RKCountry *)source orCountry:(RKCountry *)other forPlayerNumber:(RKPlayer)number;
+- (void) placeInOneNeighborOfCountry:(RKCountry *)source forPlayerNumber:(RKPlayer)number;
+- (void) placeInAnyNeighborOfCountry:(RKCountry *)source forPlayerNumber:(RKPlayer)number;
+- (void) placeInConnectedCountries:(RKCountry *)source forPlayerNumber:(RKPlayer)number;
 
-- (BOOL) validatePlacement:(Country *)target;
-- (BOOL) placeArmies:(RiskArmyCount)count inCountry:(Country *)target;
+- (BOOL) validatePlacement:(RKCountry *)target;
+- (BOOL) placeArmies:(RKArmyCount)count inCountry:(RKCountry *)target;
 
 @end

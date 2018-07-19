@@ -60,7 +60,7 @@ extern NSNotificationName const RiskBoardSetupShowCardSetCountsChangedNotificati
 @property (nonatomic, strong) NSColor *selectedBorderColor;
 @property (nonatomic) BOOL showCardSetCounts;
 
-- (NSColor *) colorForPlayer:(Player)playerNumber;
-- (void) setColor:(NSColor *)aColor forPlayer:(Player)playerNumber;
+- (NSColor *) colorForPlayer:(RKPlayer)playerNumber;
+- (void) setColor:(NSColor *)aColor forPlayer:(RKPlayer)playerNumber;
 
 @end

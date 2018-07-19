@@ -48,8 +48,8 @@ typedef NS_ENUM(int, CountryChoiceType)
     int lostCountryCount[7];
     int brokenContinentCount[7];
 
-    SNHeap<Country*> *initialCountryHeap;
-    SNHeap<Country*> *attackingCountryHeap;
+    SNHeap<RKCountry*> *initialCountryHeap;
+    SNHeap<RKCountry*> *attackingCountryHeap;
 
     // Choosing initial countries:
     CountryChoiceType primaryChoice;
@@ -63,7 +63,7 @@ typedef NS_ENUM(int, CountryChoiceType)
     // howToPlace;
 }
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 - (void) setPlayerToolMenu:(NSMenu *)theMenu;
 - (IBAction) testMessage:(id)sender;
@@ -101,9 +101,9 @@ typedef NS_ENUM(int, CountryChoiceType)
 
 - (void) placeArmies:(int)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
-- (void) fortifyPhase:(FortifyRule)fortifyRule;
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
+- (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination;
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule;
+- (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source;
 
 - (void) willEndTurn;
 
@@ -112,32 +112,32 @@ typedef NS_ENUM(int, CountryChoiceType)
 // players turns.
 //======================================================================
 
-- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void) playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
 //======================================================================
 // Custom methods
 //======================================================================
 
-- (BOOL) doAttackFromCountry:(Country *)attacker;
+- (BOOL) doAttackFromCountry:(RKCountry *)attacker;
 
-- (NSSet<Country*> *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
+- (NSSet<RKCountry*> *) unoccupiedCountriesInContinentNamed:(NSString *)continentName;
 
 @property (readonly, strong) Continent *continentWeAreClosestToControlling;
 
 @property (readonly) int perimeterCountryCount;
-- (int) perimeterCountryCountExcludingCountry:(Country *)excludedCountry;
-@property (readonly, copy) NSSet<Country *> *enemyCountriesAlongPerimeter;
+- (int) perimeterCountryCountExcludingCountry:(RKCountry *)excludedCountry;
+@property (readonly, copy) NSSet<RKCountry *> *enemyCountriesAlongPerimeter;
 
 - (void) analyzePerimeter;
-- (Country *) bestCountryToMinimizePerimeter:(NSSet<Country *> *)potentialCountries;
-- (Country *) minimizePerimeter:(int)current ofCountries:(NSSet<Country *> *)potentialCountries;
+- (RKCountry *) bestCountryToMinimizePerimeter:(NSSet<RKCountry *> *)potentialCountries;
+- (RKCountry *) minimizePerimeter:(int)current ofCountries:(NSSet<RKCountry *> *)potentialCountries;
 
-- (Country *) bestCountryToControlContinents:(NSSet<Country *> *)potentialCountries;
+- (RKCountry *) bestCountryToControlContinents:(NSSet<RKCountry *> *)potentialCountries;
 
 - (void) _logCurrentWrathValues;
 
-@property (readonly, copy) NSSet<Country *> *mostConnectedCountries;
+@property (readonly, copy) NSSet<RKCountry *> *mostConnectedCountries;
 
 #if 0
 //======================================================================

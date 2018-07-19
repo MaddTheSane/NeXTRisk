@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSNotificationName const RGMGameOverNotification;
 
-@class RiskWorld, RiskPlayer, GameConfiguration, Country, RiskMapView, StatusView, ArmyView, CardPanelController;
-@class RiskCard, ArmyPlacementValidator, CardSet, DiceInspector, WorldInfoController, SNRandom;
+@class RiskWorld, RiskPlayer, GameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, CardPanelController;
+@class RiskCard, ArmyPlacementValidator, RKCardSet, DiceInspector, WorldInfoController, SNRandom;
 
 //! The \c RiskGameManager controls most of the game play.  It notifies
 //! the players of the various phases of game play, and does some
@@ -66,14 +66,14 @@ extern NSNotificationName const RGMGameOverNotification;
     BOOL playersActive[MAX_PLAYERS];
 
     //! Game state
-    GameState gameState;
-    Player currentPlayerNumber;
+    RKGameState gameState;
+    RKPlayer currentPlayerNumber;
 
     //! Place armies phase:
-    RiskArmyCount initialArmyCount;
+    RKArmyCount initialArmyCount;
 
     // Keep track of armies left for current player in this turn.
-    RiskArmyCount armiesLeftToPlace;
+    RKArmyCount armiesLeftToPlace;
     ArmyPlacementValidator *armyPlacementValidator;
 
     BOOL playerHasConqueredCountry;
@@ -83,10 +83,10 @@ extern NSNotificationName const RGMGameOverNotification;
     IBOutlet NSWindow *cardPanelWindow;
     NSMutableArray *cardDeck;
     NSMutableArray *discardDeck;
-    RiskArmyCount nextCardSetValue;
+    RKArmyCount nextCardSetValue;
 
     //! For verifying that armies before fortification == armies after fortification
-    RiskArmyCount armiesBefore;
+    RKArmyCount armiesBefore;
 
     DiceInspector *diceInspector;
     WorldInfoController *worldInfoController;
@@ -105,7 +105,7 @@ extern NSNotificationName const RGMGameOverNotification;
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
 // Delegate of RiskMapView.
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 
 //======================================================================
 // General access to world data
@@ -115,17 +115,17 @@ extern NSNotificationName const RGMGameOverNotification;
 
 @property (nonatomic, strong) GameConfiguration *gameConfiguration;
 
-@property (readonly) GameState gameState;
+@property (readonly) RKGameState gameState;
 
 //======================================================================
 // For status view.
 //======================================================================
 
-- (BOOL) isPlayerActive:(Player)number;
-@property (readonly) Player currentPlayerNumber;
+- (BOOL) isPlayerActive:(RKPlayer)number;
+@property (readonly) RKPlayer currentPlayerNumber;
 @property (readonly) int activePlayerCount;
 
-- (RiskPlayer *) playerNumber:(Player)number;
+- (RiskPlayer *) playerNumber:(RKPlayer)number;
 
 //======================================================================
 // Player menu support
@@ -138,7 +138,7 @@ extern NSNotificationName const RGMGameOverNotification;
 //======================================================================
 
 - (void) startNewGame;
-- (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(Player)number;
+- (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(RKPlayer)number;
 - (void) beginGame;
 - (void) tryToStart;
 - (void) stopGame;
@@ -164,78 +164,78 @@ extern NSNotificationName const RGMGameOverNotification;
 - (IBAction) fortify:(nullable id)sender;
 - (IBAction) endTurn:(nullable id)sender;
 
-- (void) moveAttackingArmies:(RiskArmyCount)minimum between:(Country *)source :(Country *)destination;
-- (void) fortifyArmiesFrom:(Country *)source;
+- (void) moveAttackingArmies:(RKArmyCount)minimum between:(RKCountry *)source :(RKCountry *)destination;
+- (void) fortifyArmiesFrom:(RKCountry *)source;
 - (void) forceCurrentPlayerToTurnInCards;
 
-- (void) resetMovableArmiesForPlayerNumber:(Player)number;
+- (void) resetMovableArmiesForPlayerNumber:(RKPlayer)number;
 
 //======================================================================
 // Choose countries
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(Country *)country;
-@property (readonly, copy) NSArray<Country *> *unoccupiedCountries; // Better in RiskWorld?
+- (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(RKCountry *)country;
+@property (readonly, copy) NSArray<RKCountry *> *unoccupiedCountries; // Better in RiskWorld?
 - (void) randomlyChooseCountriesForActivePlayers;
 
 //======================================================================
 // Place Armies and Move Attacking armies
 //======================================================================
 
-- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(RiskArmyCount)count inCountry:(Country *)country;
+- (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(RKArmyCount)count inCountry:(RKCountry *)country;
 
 //======================================================================
 // Attacking
 //======================================================================
 
-- (AttackResult) attackUntilUnableToContinueFromCountry:(Country *)attacker
-                                              toCountry:(Country *)defender
-                               moveAllArmiesUponVictory:(BOOL)moveFlag;
+- (RKAttackResult) attackUntilUnableToContinueFromCountry:(RKCountry *)attacker
+                                                toCountry:(RKCountry *)defender
+                                 moveAllArmiesUponVictory:(BOOL)moveFlag;
 
-- (AttackResult) attackMultipleTimes:(RiskArmyCount)count
-                         fromCountry:(Country *)attacker
-                           toCountry:(Country *)defender
+- (RKAttackResult) attackMultipleTimes:(RKArmyCount)count
+                           fromCountry:(RKCountry *)attacker
+                             toCountry:(RKCountry *)defender
+              moveAllArmiesUponVictory:(BOOL)moveFlag;
+
+- (RKAttackResult) attackFromCountry:(RKCountry *)attacker
+                           toCountry:(RKCountry *)defender
+                   untilArmiesRemain:(RKArmyCount)count
             moveAllArmiesUponVictory:(BOOL)moveFlag;
 
-- (AttackResult) attackFromCountry:(Country *)attacker
-                         toCountry:(Country *)defender
-                 untilArmiesRemain:(RiskArmyCount)count
-          moveAllArmiesUponVictory:(BOOL)moveFlag;
-
-- (AttackResult) attackOnceFromCountry:(Country *)attacker
-                             toCountry:(Country *)defender
-              moveAllArmiesUponVictory:(BOOL)moveFlag;
+- (RKAttackResult) attackOnceFromCountry:(RKCountry *)attacker
+                               toCountry:(RKCountry *)defender
+                moveAllArmiesUponVictory:(BOOL)moveFlag;
 
 //======================================================================
 // Game Manager calculations
 //======================================================================
 
-- (RiskArmyCount) earnedArmyCountForPlayer:(Player)number;
-- (DiceRoll) rollDiceWithAttackerArmies:(RiskArmyCount)attackerArmies defenderArmies:(RiskArmyCount)defenderArmies;
+- (RKArmyCount) earnedArmyCountForPlayer:(RKPlayer)number;
+- (RKDiceRoll) rollDiceWithAttackerArmies:(RKArmyCount)attackerArmies defenderArmies:(RKArmyCount)defenderArmies;
 
 //======================================================================
 // General player interaction
 //======================================================================
 
-- (void) selectCountry:(Country *)aCountry;
-- (void) takeAttackMethodFromPlayerNumber:(Player)number;
-- (void) setAttackMethodForPlayerNumber:(Player)number;
+- (void) selectCountry:(RKCountry *)aCountry;
+- (void) takeAttackMethodFromPlayerNumber:(RKPlayer)number;
+- (void) setAttackMethodForPlayerNumber:(RKPlayer)number;
 - (void) setAttackingFromCountryName:(NSString *)string;
 
 - (IBAction) attackMethodAction:(id)sender;
 
-- (void) setArmiesLeftToPlace:(RiskArmyCount)count;
+- (void) setArmiesLeftToPlace:(RKArmyCount)count;
 
 //======================================================================
 // Card management
 //======================================================================
 
 - (void) _recycleDiscardedCards;
-- (void) dealCardToPlayerNumber:(Player)number;
-- (RiskArmyCount) _valueOfNextCardSet:(RiskArmyCount)currentValue;
-- (RiskArmyCount) armiesForNextCardSet;
-- (void) turnInCardSet:(CardSet *)cardSet forPlayerNumber:(Player)number;
-- (void) automaticallyTurnInCardsForPlayerNumber:(Player)number;
+- (void) dealCardToPlayerNumber:(RKPlayer)number;
+- (RKArmyCount) _valueOfNextCardSet:(RKArmyCount)currentValue;
+- (RKArmyCount) armiesForNextCardSet;
+- (void) turnInCardSet:(RKCardSet *)cardSet forPlayerNumber:(RKPlayer)number;
+- (void) automaticallyTurnInCardsForPlayerNumber:(RKPlayer)number;
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination;
 
 // For the currently active (interactive) player
@@ -249,7 +249,7 @@ extern NSNotificationName const RGMGameOverNotification;
 //======================================================================
 
 - (void) updatePhaseBox;
-- (RiskArmyCount) totalTroopsForPlayerNumber:(Player)number;
+- (RKArmyCount) totalTroopsForPlayerNumber:(RKPlayer)number;
 
 - (void) defaultsChanged:(NSNotification *)aNotification;
 
@@ -257,10 +257,10 @@ extern NSNotificationName const RGMGameOverNotification;
 // End of game stuff:
 //======================================================================
 
-- (BOOL) checkForEndOfPlayerNumber:(Player)number;
-- (void) playerHasLost:(Player)number;
-- (void) playerHasWon:(Player)number;
-- (void) deactivatePlayerNumber:(Player)number;
+- (BOOL) checkForEndOfPlayerNumber:(RKPlayer)number;
+- (void) playerHasLost:(RKPlayer)number;
+- (void) playerHasWon:(RKPlayer)number;
+- (void) deactivatePlayerNumber:(RKPlayer)number;
 
 @end
 

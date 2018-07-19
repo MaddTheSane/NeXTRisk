@@ -9,7 +9,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 #import "Human.h"
 
 #import "RiskGameManager.h"
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 
 #define Human_VERSION 1
 
@@ -25,7 +25,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super initWithPlayerName:aName number:number gameManager:aManager]){
         placeArmyCount = 0;
@@ -48,9 +48,9 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 // User input
 //----------------------------------------------------------------------
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
-    GameState gameState;
+    RKGameState gameState;
     int count;
     unsigned int flags;
     
@@ -58,7 +58,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
     gameState = [gameManager gameState];
     switch (gameState)
     {
-        case GameStateChoosingCountries:
+        case RKGameStateChoosingCountries:
             if (aCountry.playerNumber == playerNumber)
                 [gameManager selectCountry:aCountry];
             
@@ -68,10 +68,10 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
                 NSBeep ();
             break;
             
-        case GameStatePlaceInitialArmies:
-        case GameStatePlaceArmies:
-        case GameStateMoveAttackingArmies:
-        case GameStatePlaceFortifyingArmies:
+        case RKGameStatePlaceInitialArmies:
+        case RKGameStatePlaceArmies:
+        case RKGameStateMoveAttackingArmies:
+        case RKGameStatePlaceFortifyingArmies:
             if (flags & NSShiftKeyMask)
                 count = 5;
             else if (flags & NSCommandKeyMask)
@@ -100,7 +100,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
             
             break;
             
-        case GameStateAttack:
+        case RKGameStateAttack:
             // If the country is ours, set that as the attacking country (if >0 troops),
             // otherwise, attack the target country.
             if (aCountry.playerNumber == playerNumber)
@@ -109,7 +109,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
             }
             else
             {
-                AttackResult attackResult;
+                RKAttackResult attackResult;
                 BOOL moveFlag;
                 
                 NSAssert (attackingCountry != nil, @"attacking country not set.");
@@ -125,7 +125,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
             }
             break;
             
-        case GameStateFortify:
+        case RKGameStateFortify:
             if (aCountry.playerNumber == playerNumber)
             {
                 [gameManager fortifyArmiesFrom:aCountry];
@@ -190,7 +190,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination
 {
     placeArmyCount = count;
     if (placeArmyCount == 0)
@@ -199,13 +199,13 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) fortifyPhase:(FortifyRule)fortifyRule
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule
 {
 }
 
 //----------------------------------------------------------------------
 
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source
+- (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source
 {
     placeArmyCount = count;
 }
@@ -215,7 +215,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 // players turns.
 //======================================================================
 
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry
 {
     if (capturedCountry == attackingCountry)
     {
@@ -231,33 +231,33 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 // Attack between countries based on the current attack method.
 //----------------------------------------------------------------------
 
-- (AttackResult) attackFromCountry:(Country *)attacker toCountry:(Country *)defender moveAllArmiesUponVictory:(BOOL)moveFlag
+- (RKAttackResult) attackFromCountry:(RKCountry *)attacker toCountry:(RKCountry *)defender moveAllArmiesUponVictory:(BOOL)moveFlag
 {
-    AttackResult attackResult;
+    RKAttackResult attackResult;
     
     switch (attackMethod)
     {
-        case AttackMethodUntilUnableToContinue:
+        case RKAttackMethodUntilUnableToContinue:
             attackResult = [gameManager attackUntilUnableToContinueFromCountry:attacker
                                                                      toCountry:defender
                                                       moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackMethodMultipleTimes:
+        case RKAttackMethodMultipleTimes:
             attackResult = [gameManager attackMultipleTimes:attackMethodValue
                                                 fromCountry:attacker
                                                   toCountry:defender
                                    moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackMethodUntilArmiesRemain:
+        case RKAttackMethodUntilArmiesRemain:
             attackResult = [gameManager attackFromCountry:attacker
                                                 toCountry:defender
                                         untilArmiesRemain:attackMethodValue
                                  moveAllArmiesUponVictory:moveFlag];
             break;
             
-        case AttackMethodOnce:
+        case RKAttackMethodOnce:
         default:
             attackResult = [gameManager attackOnceFromCountry:attacker
                                                     toCountry:defender
@@ -272,7 +272,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) setAttackingCountry:(Country *)attacker
+- (void) setAttackingCountry:(RKCountry *)attacker
 {
     SNRelease (attackingCountry);
     if (attacker != nil)

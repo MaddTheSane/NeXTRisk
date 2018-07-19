@@ -47,7 +47,7 @@
 + (RiskNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,Country*> *)countries;
 + (RiskContinent) continentFromString:(NSString *)str;
 + (RiskCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,Country*> *)countries;
-+ (RiskCardType) riskCardTypeFromString:(NSString *)str;
++ (RKCardType) riskCardTypeFromString:(NSString *)str;
 
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
 - (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;

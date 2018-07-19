@@ -292,7 +292,7 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- (NSColor *) colorForPlayer:(Player)playerNumber
+- (NSColor *) colorForPlayer:(RKPlayer)playerNumber
 {
     NSAssert (playerNumber > 0 && playerNumber < 7, @"Player number out of range.");
     
@@ -301,7 +301,7 @@ NSData *defaultsDataForColor (NSColor *color)
 
 //----------------------------------------------------------------------
 
-- (void) setColor:(NSColor *)aColor forPlayer:(Player)playerNumber
+- (void) setColor:(NSColor *)aColor forPlayer:(RKPlayer)playerNumber
 {
     NSAssert (playerNumber > 0 && playerNumber < 7, @"Player number out of range.");
     

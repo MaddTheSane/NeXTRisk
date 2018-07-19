@@ -9,30 +9,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class Country;
+@class RKCountry;
 @interface Continent : NSObject <NSCoding>
 {
     NSString *continentName;
-    NSSet<Country*> *countries;
+    NSSet<RKCountry*> *countries;
     int continentBonus;
 }
 
-+ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(RiskArmyCount)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");
++ (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<RKCountry*> *)someCountries bonusValue:(RKArmyCount)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");
 
-- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<Country*> *)someCountries bonusValue:(RiskArmyCount)bonus NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithName:(NSString *)aContinentName countries:(NSSet<RKCountry*> *)someCountries bonusValue:(RKArmyCount)bonus NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, copy) NSString *continentName;
-@property (readonly, strong) NSSet<Country*> *countries;
-@property (readonly) RiskArmyCount continentBonus;
+@property (readonly, strong) NSSet<RKCountry*> *countries;
+@property (readonly) RKArmyCount continentBonus;
 
 @property (readonly, copy) NSString *description;
 
-- (RiskArmyCount) bonusArmiesForPlayer:(Player)number;
+- (RKArmyCount) bonusArmiesForPlayer:(RKPlayer)number;
 
-@property (readonly, copy) NSSet<Country *> *countriesAlongBorder;
+@property (readonly, copy) NSSet<RKCountry *> *countriesAlongBorder;
 
 @end
 

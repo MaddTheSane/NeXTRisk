@@ -6,16 +6,16 @@
 
 RCSID ("$Id: Country.m,v 1.2 1997/12/15 07:43:46 nygard Exp $");
 
-#import "Country.h"
+#import "RKCountry.h"
 
 #import "CountryShape.h"
 #import "RiskMapView.h"
 
 #define Country_VERSION 2
 
-DEFINE_NSSTRING (CountryUpdatedNotification);
+NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
-@implementation Country
+@implementation RKCountry
 @synthesize countryName = name;
 @synthesize countryShape;
 @synthesize continentName;
@@ -25,7 +25,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 + (void) initialize
 {
-    if (self == [Country class])
+    if (self == [RKCountry class])
     {
         [self setVersion:Country_VERSION];
     }
@@ -112,7 +112,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- (void) setAdjacentToCountry:(Country *)aCountry
+- (void) setAdjacentToCountry:(RKCountry *)aCountry
 {
     [neighborCountries addObject:aCountry];
 }
@@ -126,7 +126,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- (BOOL) isAdjacentToCountry:(Country *)aCountry
+- (BOOL) isAdjacentToCountry:(RKCountry *)aCountry
 {
     return [neighborCountries containsObject:aCountry];
 }
@@ -136,7 +136,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (BOOL) bordersAnotherContinent
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL flag;
     
     flag = NO;
@@ -193,7 +193,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- (void) setPlayerNumber:(Player)aPlayerNumber
+- (void) setPlayerNumber:(RKPlayer)aPlayerNumber
 {
     playerNumber = aPlayerNumber;
     
@@ -253,7 +253,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 - (void) update
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:CountryUpdatedNotification
+    [[NSNotificationCenter defaultCenter] postNotificationName:RKCountryUpdatedNotification
                                                         object:self];
 }
 
@@ -264,7 +264,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (NSSet *) connectedCountries
 {
     NSMutableSet *connectedSet, *greySet, *tmpSet;
-    Country *current;
+    RKCountry *current;
     
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
@@ -289,7 +289,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 {
     NSMutableSet *ourNeighborCountries;
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     
     ourNeighborCountries = [NSMutableSet set];
     countryEnumerator = [self.neighborCountries objectEnumerator];
@@ -308,7 +308,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (NSSet *) ourConnectedCountries
 {
     NSMutableSet *connectedSet, *greySet, *tmpSet;
-    Country *current;
+    RKCountry *current;
     
     connectedSet = [NSMutableSet set];
     greySet = [NSMutableSet setWithObject:self];
@@ -333,7 +333,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 {
     NSMutableSet *enemyNeighborCountries;
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     
     enemyNeighborCountries = [NSMutableSet set];
     countryEnumerator = [self.neighborCountries objectEnumerator];
@@ -352,7 +352,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (int) enemyNeighborTroopCount
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     int count;
     
     count = 0;
@@ -370,7 +370,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (int) ourNeighborTroopCount
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     int count;
     
     count = 0;
@@ -390,7 +390,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (BOOL) hasEnemyNeighbors
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL flag;
     
     flag = NO;
@@ -412,7 +412,7 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 - (BOOL) hasFriendlyNeighborsWithEnemyNeighbors
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL flag;
     
     flag = NO;
@@ -445,10 +445,10 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- (BOOL) surroundedByPlayerNumber:(Player)number
+- (BOOL) surroundedByPlayerNumber:(RKPlayer)number
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL flag;
     
     flag = YES;
@@ -467,10 +467,10 @@ DEFINE_NSSTRING (CountryUpdatedNotification);
 
 //----------------------------------------------------------------------
 
-- (BOOL) hasEnemyNeighborsExcludingCountry:(Country *)excludedCountry
+- (BOOL) hasEnemyNeighborsExcludingCountry:(RKCountry *)excludedCountry
 {
     NSEnumerator *countryEnumerator;
-    Country *country;
+    RKCountry *country;
     BOOL flag;
     
     flag = NO;

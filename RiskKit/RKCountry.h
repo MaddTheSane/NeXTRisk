@@ -11,17 +11,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class CountryShape, RiskMapView;
 
-@interface Country : NSObject <NSCoding>
+@interface RKCountry : NSObject <NSCoding>
 {
     NSString *name;
     CountryShape *countryShape;
     NSString *continentName;
-    NSMutableSet<Country*> *neighborCountries;
+    NSMutableSet<RKCountry*> *neighborCountries;
 
     // The occupying army:
-    Player playerNumber;
-    RiskArmyCount troopCount;
-    RiskArmyCount unmovableTroopCount;
+    RKPlayer playerNumber;
+    RKArmyCount troopCount;
+    RKArmyCount unmovableTroopCount;
 }
 
 - (instancetype)initWithCountryName:(NSString *)aName
@@ -35,11 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, copy) NSString *countryName;
 @property (readonly, strong) CountryShape *countryShape;
 @property (readonly, copy) NSString *continentName;
-@property (weak, readonly) NSSet<Country*> *neighborCountries;
+@property (weak, readonly) NSSet<RKCountry*> *neighborCountries;
 
-- (void) setAdjacentToCountry:(Country *)aCountry;
+- (void) setAdjacentToCountry:(RKCountry *)aCountry;
 - (void) resetAdjacentCountries;
-- (BOOL) isAdjacentToCountry:(Country *)aCountry;
+- (BOOL) isAdjacentToCountry:(RKCountry *)aCountry;
 @property (readonly) BOOL bordersAnotherContinent;
 
 - (void) drawInView:(RiskMapView *)aView isSelected:(BOOL)selected;
@@ -51,18 +51,18 @@ NS_ASSUME_NONNULL_BEGIN
 // Army methods
 //----------------------------------------------------------------------
 
-@property (nonatomic) Player playerNumber;
-@property (nonatomic) RiskArmyCount troopCount;
-@property (readonly) RiskArmyCount movableTroopCount;
+@property (nonatomic) RKPlayer playerNumber;
+@property (nonatomic) RKArmyCount troopCount;
+@property (readonly) RKArmyCount movableTroopCount;
 
-- (void) addTroops:(RiskArmyCount)count;
+- (void) addTroops:(RKArmyCount)count;
 
 /// We need to keep track of the unmovable troops (the troops that have
 /// already been fortified), otherwise under the "fortify many to many
 /// neighbors" rule, you could march the armies up to the front one
 /// country at a time.
-@property (readonly) RiskArmyCount unmovableTroopCount;
-- (void) addUnmovableTroopCount:(RiskArmyCount)count;
+@property (readonly) RKArmyCount unmovableTroopCount;
+- (void) addUnmovableTroopCount:(RKArmyCount)count;
 - (void) resetUnmovableTroops;
 
 - (void) update;
@@ -71,13 +71,13 @@ NS_ASSUME_NONNULL_BEGIN
 // Useful methods:
 //======================================================================
 
-@property (readonly, copy) NSSet<Country *> *connectedCountries;
-@property (readonly, copy) NSSet<Country *> *ourNeighborCountries;
-@property (readonly, copy) NSSet<Country *> *ourConnectedCountries;
-@property (readonly, copy) NSSet<Country *> *enemyNeighborCountries;
+@property (readonly, copy) NSSet<RKCountry *> *connectedCountries;
+@property (readonly, copy) NSSet<RKCountry *> *ourNeighborCountries;
+@property (readonly, copy) NSSet<RKCountry *> *ourConnectedCountries;
+@property (readonly, copy) NSSet<RKCountry *> *enemyNeighborCountries;
 
-@property (readonly) RiskArmyCount enemyNeighborTroopCount;
-@property (readonly) RiskArmyCount ourNeighborTroopCount;
+@property (readonly) RKArmyCount enemyNeighborTroopCount;
+@property (readonly) RKArmyCount ourNeighborTroopCount;
 
 //======================================================================
 // Useful, somewhat optimized methods:
@@ -88,11 +88,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) BOOL hasTroops;
 @property (readonly) BOOL hasMobileTroops;
 
-- (BOOL) surroundedByPlayerNumber:(Player)number;
-- (BOOL) hasEnemyNeighborsExcludingCountry:(Country *)excludedCountry;
+- (BOOL) surroundedByPlayerNumber:(RKPlayer)number;
+- (BOOL) hasEnemyNeighborsExcludingCountry:(RKCountry *)excludedCountry;
 
 @end
 
-extern NSString *const CountryUpdatedNotification;
+extern NSNotificationName const RKCountryUpdatedNotification;
 
 NS_ASSUME_NONNULL_END

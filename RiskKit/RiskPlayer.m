@@ -9,11 +9,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 #import "RiskPlayer.h"
 
 #import "RiskGameManager.h"
-#import "Country.h"
+#import "RKCountry.h"
 #import "RiskWorld.h"
 #import "SNRandom.h"
 #import "RiskCard.h"
-#import "CardSet.h"
+#import "RKCardSet.h"
 
 #define RiskPlayer_VERSION 1
 
@@ -43,7 +43,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     }
 }
 
-- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager
+- (instancetype) initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 {
     if (self = [super init]) {
         playerName = [aName copy];
@@ -51,7 +51,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         playerCards = [[NSMutableArray alloc] init];
         gameManager = aManager;
         
-        attackMethod = AttackMethodOnce;
+        attackMethod = RKAttackMethodOnce;
         attackMethodValue = 1;
         
         consoleWindow = nil;
@@ -98,11 +98,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     [gameManager endTurn];
 }
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
 }
 
-- (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseUp:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
 }
 
@@ -124,12 +124,12 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [gameManager.world countriesForPlayer:playerNumber];
 }
 
-- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source
+- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     NSMutableSet *resultingSet = [NSMutableSet set];
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
-        Player number = country.playerNumber;
+        RKPlayer number = country.playerNumber;
         int troopCount = country.troopCount;
         int movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
@@ -158,15 +158,15 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [resultingSet copy];
 }
 
-- (NSSet<Country*> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country *> *)source
+- (NSSet<RKCountry*> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
-        Player number = country.playerNumber;
-        RiskArmyCount troopCount = country.troopCount;
-        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        RKPlayer number = country.playerNumber;
+        RKArmyCount troopCount = country.troopCount;
+        RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number == 0)
@@ -191,15 +191,15 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [resultingSet copy];
 }
 
-- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<Country *> *)source
+- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     BOOL flag = NO;
     
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
-        Player number = country.playerNumber;
-        RiskArmyCount troopCount = country.troopCount;
-        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        RKPlayer number = country.playerNumber;
+        RKArmyCount troopCount = country.troopCount;
+        RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number != 0)
@@ -227,14 +227,14 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return flag;
 }
 
-- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<Country*> *)source
+- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry*> *)source
 {
     BOOL flag = NO;
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
-        Player number = country.playerNumber;
-        RiskArmyCount troopCount = country.troopCount;
-        RiskArmyCount movableTroopCount = country.movableTroopCount;
+        RKPlayer number = country.playerNumber;
+        RKArmyCount troopCount = country.troopCount;
+        RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
         if (((options & CountryFlagsPlayerNone) && number == 0)
@@ -260,11 +260,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return flag;
 }
 
-- (NSSet *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country*> *)source
+- (NSSet *) chooseCountriesInContinentNamed:(NSString *)continentName from:(NSSet<RKCountry*> *)source
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
         if ([country.continentName isEqualToString:continentName] == YES)
             [resultingSet addObject:country];
@@ -273,11 +273,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [resultingSet copy];
 }
 
-- (NSSet *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<Country*> *)source
+- (NSSet *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<RKCountry*> *)source
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
 
-    for (Country *country in source)
+    for (RKCountry *country in source)
     {
         if ([country.continentName isEqualToString:continentName] == NO)
             [resultingSet addObject:country];
@@ -288,7 +288,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 #pragma mark - Card set methods
 
-- (NSSet<CardSet*> *) allOurCardSets
+- (NSSet<RKCardSet*> *) allOurCardSets
 {
     NSMutableSet *allCardSets = [NSMutableSet set];
     
@@ -298,7 +298,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         {
             for (RiskCard *card3 in playerCards)
             {
-                CardSet *cardSet = [[CardSet alloc] initCardSet:card1:card2:card3];
+                RKCardSet *cardSet = [[RKCardSet alloc] initCardSet:card1:card2:card3];
                 if (cardSet != nil)
                     [allCardSets addObject:cardSet];
             }
@@ -308,12 +308,12 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [allCardSets copy];
 }
 
-- (CardSet *) bestSet
+- (RKCardSet *) bestSet
 {
-    CardSet *bestSet = nil;
+    RKCardSet *bestSet = nil;
     NSSet *allSets = [self allOurCardSets];
     
-    for (CardSet *cardSet in allSets)
+    for (RKCardSet *cardSet in allSets)
     {
         if (compareCardSetValues (cardSet, bestSet, (void *)playerNumber) == NSOrderedAscending)
             bestSet = cardSet;
@@ -338,7 +338,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
             {
                 card3 = playerCards[k];
                 
-                if ([CardSet isValidCardSet:card1:card2:card3] == YES)
+                if ([RKCardSet isValidCardSet:card1:card2:card3] == YES)
                 {
                     hasValidSet = YES;
                     break;
@@ -455,7 +455,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (void) chooseCountry
 {
     NSArray *unoccupiedCountries;
-    Country *country;
+    RKCountry *country;
     
     unoccupiedCountries = [gameManager unoccupiedCountries];
     country = unoccupiedCountries[[self.rng randomNumberModulo:unoccupiedCountries.count]];
@@ -509,17 +509,17 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     [self turnDone];
 }
 
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination
+- (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination
 {
     [self turnDone];
 }
 
-- (void) fortifyPhase:(FortifyRule)fortifyRule
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule
 {
     [self turnDone];
 }
 
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source
+- (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source
 {
     [self turnDone];
 }
@@ -530,11 +530,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 #pragma mark - Inform computer players of important events that happed during other players turns.
 
-- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry
+- (void) playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry
 {
 }
 
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry
 {
 }
 
