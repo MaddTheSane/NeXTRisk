@@ -8,7 +8,7 @@ RCSID ("$Id: CardPanelController.m,v 1.3 1997/12/15 07:43:41 nygard Exp $");
 
 #import "CardPanelController.h"
 
-#import "RiskCard.h"
+#import "RKCard.h"
 #import "RiskPlayer.h"
 #import "RKCountry.h"
 #import "RiskGameManager.h"
@@ -134,7 +134,7 @@ static struct image_names class_images[] =
         
         if (setMatrixCount == 2)
         {
-            RiskCard *lastCard;
+            RKCard *lastCard;
             
             lastCard = playerCards[index];
             
@@ -300,7 +300,7 @@ static struct image_names class_images[] =
 {
     NSInteger l, cardCount;
     NSRect aFrame, boundsRect;
-    RiskCard *card;
+    RKCard *card;
     NSView *superView;
     
     cardCount = playerCards.count;

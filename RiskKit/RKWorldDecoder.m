@@ -11,6 +11,9 @@
 @implementation RKWorldDecoder
 - (nullable Class)unarchiver:(NSKeyedUnarchiver *)unarchiver cannotDecodeObjectOfClassName:(NSString *)name originalClasses:(NSArray<NSString *> *)classNames
 {
+    if ([name isEqualToString:@"RiskCard"]) {
+        return NSClassFromString(@"RKCard");
+    }
     NSString *newClassName = [@"RK" stringByAppendingString:name];
     return NSClassFromString(newClassName);
     

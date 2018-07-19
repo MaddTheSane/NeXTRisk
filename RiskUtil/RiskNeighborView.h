@@ -5,7 +5,7 @@
 
 #import <AppKit/AppKit.h>
 
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 #import "RiskMapView.h"
 

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSString *continentName;
     NSSet<RKCountry*> *countries;
-    int continentBonus;
+    RKArmyCount continentBonus;
 }
 
 + (instancetype)continentWithName:(NSString *)aContinentName countries:(NSSet<RKCountry*> *)someCountries bonusValue:(RKArmyCount)bonus NS_SWIFT_UNAVAILABLE("Use init(name:countries:bonusValue) instead");

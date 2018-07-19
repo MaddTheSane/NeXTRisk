@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class RiskCard, RiskPlayer, RiskGameManager;
+@class RKCard, RiskPlayer, RiskGameManager;
 
 //! The \c CardPanelController provides interactive Risk players with an
 //! interface for reviewing their hand and choosing card sets to turn
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutlet NSTextField *forceTextField;
 
     // card panel internals
-    RiskCard *currentSet[3];
+    RKCard *currentSet[3];
     int currentIndices[3];
     int setMatrixCount;
     RKPlayer currentPlayerNumber;

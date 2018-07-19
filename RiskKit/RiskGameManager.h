@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSNotificationName const RGMGameOverNotification;
 
 @class RiskWorld, RiskPlayer, GameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, CardPanelController;
-@class RiskCard, ArmyPlacementValidator, RKCardSet, DiceInspector, WorldInfoController, SNRandom;
+@class RKCard, ArmyPlacementValidator, RKCardSet, DiceInspector, WorldInfoController, SNRandom;
 
 //! The \c RiskGameManager controls most of the game play.  It notifies
 //! the players of the various phases of game play, and does some

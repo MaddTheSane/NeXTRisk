@@ -28,7 +28,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 	CountryFlagsWithoutEnemyNeighbors = 1 << 13,
 };
 
-@class RiskGameManager, RKCountry, RiskCard, RKCardSet;
+@class RiskGameManager, RKCountry, RKCard, RKCardSet;
 @class SNRandom;
 
 /// The RiskPlayer is the base class for all players, both human and
@@ -39,7 +39,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 @protected
     NSString *playerName;
     RKPlayer playerNumber;
-    NSMutableArray<RiskCard*> *playerCards;
+    NSMutableArray<RKCard*> *playerCards;
     
     RiskGameManager *gameManager;
     
@@ -69,7 +69,7 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 
 @property (readonly, copy) NSString *playerName;
 @property (readonly) RKPlayer playerNumber;
-@property (readonly, copy) NSArray<RiskCard*> * playerCards;
+@property (readonly, copy) NSArray<RKCard*> * playerCards;
 
 /// The Player N menu under the Tool menu for this player.  This
 /// allows players easy access for adding new menu items.  Each player
@@ -84,8 +84,8 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// used mostly by the Human player.
 @property int attackMethodValue;
 
-- (void) addCardToHand:(RiskCard *)newCard;
-- (void) removeCardFromHand:(RiskCard *)aCard;
+- (void) addCardToHand:(RKCard *)newCard;
+- (void) removeCardFromHand:(RKCard *)aCard;
 
 //! For convenient access to a random number generator
 @property (readonly, strong) SNRandom *rng;

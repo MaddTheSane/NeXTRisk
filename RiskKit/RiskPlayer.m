@@ -12,7 +12,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 #import "RKCountry.h"
 #import "RiskWorld.h"
 #import "SNRandom.h"
-#import "RiskCard.h"
+#import "RKCard.h"
 #import "RKCardSet.h"
 
 #define RiskPlayer_VERSION 1
@@ -83,12 +83,12 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return playerCards;
 }
 
-- (void) addCardToHand:(RiskCard *)newCard
+- (void) addCardToHand:(RKCard *)newCard
 {
     [playerCards addObject:newCard];
 }
 
-- (void) removeCardFromHand:(RiskCard *)aCard
+- (void) removeCardFromHand:(RKCard *)aCard
 {
     [playerCards removeObject:aCard];
 }
@@ -292,11 +292,11 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 {
     NSMutableSet *allCardSets = [NSMutableSet set];
     
-    for (RiskCard *card1 in playerCards)
+    for (RKCard *card1 in playerCards)
     {
-        for (RiskCard *card2 in playerCards)
+        for (RKCard *card2 in playerCards)
         {
-            for (RiskCard *card3 in playerCards)
+            for (RKCard *card3 in playerCards)
             {
                 RKCardSet *cardSet = [[RKCardSet alloc] initCardSet:card1:card2:card3];
                 if (cardSet != nil)
@@ -325,7 +325,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 - (BOOL) canTurnInCardSet
 {
     NSInteger count = playerCards.count;
-    RiskCard *card1, *card2, *card3;
+    RKCard *card1, *card2, *card3;
     BOOL hasValidSet = NO;
     
     for (NSInteger i = 0; hasValidSet == NO && i < count; i++)

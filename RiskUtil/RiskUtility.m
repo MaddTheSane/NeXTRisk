@@ -8,14 +8,14 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 #import "RiskUtility.h"
 
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 #import "CountryShapeGenerator.h"
 #import "RiskMapView.h"
 #import "RiskNeighbor.h"
 #import "RiskWorld.h"
 #import "Continent.h"
-#import "RiskCard.h"
+#import <RiskKit/RKCard.h>
 #import "RiskUtil-Swift.h"
 
 @implementation RiskUtility
@@ -162,7 +162,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
-    Country *country;
+    RKCountry *country;
     
     mainBundle = [NSBundle mainBundle];
     NSAssert (mainBundle != nil, @"main bundle nil");
@@ -190,7 +190,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (NSMutableArray *) readCountryNeighborsTextfile:(NSArray<Country*> *)countries
++ (NSMutableArray *) readCountryNeighborsTextfile:(NSArray<RKCountry*> *)countries
 {
     NSMutableArray<RiskNeighbor*> *array;
     NSBundle *mainBundle;
@@ -199,7 +199,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSScanner *scanner;
     RiskNeighbor *riskNeighbor;
     NSMutableDictionary *countryDictionary;
-    Country *country;
+    RKCountry *country;
     
     mainBundle = [NSBundle mainBundle];
     NSAssert (mainBundle != nil, @"main bundle nil");
@@ -234,17 +234,17 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (NSArray<RiskCard*> *) readCardTextfile:(NSArray<Country*> *)countryArray
++ (NSArray<RKCard*> *) readCardTextfile:(NSArray<RKCountry*> *)countryArray
 {
-    NSMutableArray<RiskCard*> *array;
+    NSMutableArray<RKCard*> *array;
     NSBundle *mainBundle;
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
-    RiskCard *riskCard;
+    RKCard *riskCard;
     NSMutableDictionary *countryDictionary;
-    NSEnumerator<Country *> *countryEnumerator;
-    Country *country;
+    NSEnumerator<RKCountry *> *countryEnumerator;
+    RKCountry *country;
     
     DSTART;
     
@@ -303,11 +303,11 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<Country*> *)countries
++ (NSDictionary<NSString*,Continent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries
 {
     NSMutableDictionary *theContinents;
     NSMutableDictionary<NSString*,NSMutableSet*> *setDict;
-    Country *country;
+    RKCountry *country;
     NSMutableSet *tmp;
     
     // 1. Build mutable arrays for continents
@@ -363,9 +363,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (Country *) scanCountry:(NSScanner *)scanner validContinents:(NSSet *)continentNames
++ (RKCountry *) scanCountry:(NSScanner *)scanner validContinents:(NSSet *)continentNames
 {
-    Country *country;
+    RKCountry *country;
     CountryShape *shape;
     NSString *name;
     NSPoint aPoint;
@@ -406,10 +406,10 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
             NSLog (@"Continent %@ not found.", continentName);
         }
         
-        country = [[Country alloc] initWithCountryName:name
-                                         continentName:continentName
-                                                 shape:shape
-                                             continent:continent];
+        country = [[RKCountry alloc] initWithCountryName:name
+                                           continentName:continentName
+                                                   shape:shape
+                                               continent:continent];
         NSLog (@"=== Defined country: '%@'", name);
     } @catch (NSException *localException) {
         NSLog (@"Exception %@: %@", [localException name], [localException reason]);
@@ -424,11 +424,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 {
     NSString *first;
     NSString *second;
-    Country *country1, *country2;
+    RKCountry *country1, *country2;
     
-    RiskNeighbor *riskNeighbor;
-    
-    riskNeighbor = nil;
+    RiskNeighbor *riskNeighbor = nil;
     
     @try {
         [scanner expect:@"Adjacent"];
@@ -485,15 +483,13 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (RiskCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary *)countries
++ (RKCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary *)countries
 {
-    RiskCard *card;
+    RKCard *card = nil;
     NSString *countryName;
     NSString *cardType;
     NSString *imageName;
-    Country *country;
-    
-    card = nil;
+    RKCountry *country;
     
     @try {
         [scanner expect:@"Card"];
@@ -502,8 +498,8 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         imageName = [scanner scanQuotedString];
         
         country = [countries objectForKey:countryName];
-        card = [[RiskCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
-                                  withCountry:country imageNamed:imageName];
+        card = [[RKCard alloc] initCardType:[RiskUtility riskCardTypeFromString:cardType]
+                                withCountry:country imageNamed:imageName];
     } @catch (NSException *localException) {
         NSLog (@"Exception %@: %@", [localException name], [localException reason]);
     }
@@ -519,24 +515,24 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     if ([str isEqualToString:@"Wildcard"] == YES)
     {
-        cardType = RiskCardWildcard;
+        cardType = RKCardWildcard;
     }
     else if ([str isEqualToString:@"Soldier"] == YES)
     {
-        cardType = RiskCardSoldier;
+        cardType = RKCardSoldier;
     }
     else if ([str isEqualToString:@"Cannon"] == YES)
     {
-        cardType = RiskCardCannon;
+        cardType = RKCardCannon;
     }
     else if ([str isEqualToString:@"Cavalry"] == YES)
     {
-        cardType = RiskCardCavalry;
+        cardType = RKCardCavalry;
     }
     else
     {
         NSLog (@"Unknown card type: %@", str);
-        cardType = RiskCardSoldier;
+        cardType = RKCardSoldier;
     }
     
     return cardType;
@@ -544,7 +540,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
     fromCountry = aCountry;
     [fromTextfield setStringValue:[aCountry countryName]];
@@ -552,7 +548,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry
+- (void) mouseUp:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
     NSInteger count;
     

@@ -91,8 +91,8 @@
 		553780EE1CC1A23E00A2C08E /* Continent.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F041CC15C2300A2C08E /* Continent.m */; };
 		553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F621CC15C2400A2C08E /* RiskWorld.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780F01CC1A3F400A2C08E /* RiskWorld.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F631CC15C2400A2C08E /* RiskWorld.m */; };
-		553780F11CC1A90100A2C08E /* RiskCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F551CC15C2400A2C08E /* RiskCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		553780F21CC1A90100A2C08E /* RiskCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RiskCard.m */; };
+		553780F11CC1A90100A2C08E /* RKCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F551CC15C2400A2C08E /* RKCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		553780F21CC1A90100A2C08E /* RKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F561CC15C2400A2C08E /* RKCard.m */; };
 		553780F31CC1A9FB00A2C08E /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
 		553780F41CC1ABB800A2C08E /* RiskNeighbor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		553780F51CC1ABBD00A2C08E /* RiskNeighbor.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */; };
@@ -287,8 +287,8 @@
 		55377F511CC15C2300A2C08E /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
 		55377F531CC15C2300A2C08E /* Risk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk.h; sourceTree = "<group>"; };
 		55377F541CC15C2300A2C08E /* Risk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk.m; sourceTree = "<group>"; };
-		55377F551CC15C2400A2C08E /* RiskCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskCard.h; sourceTree = "<group>"; };
-		55377F561CC15C2400A2C08E /* RiskCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskCard.m; sourceTree = "<group>"; };
+		55377F551CC15C2400A2C08E /* RKCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCard.h; sourceTree = "<group>"; };
+		55377F561CC15C2400A2C08E /* RKCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCard.m; sourceTree = "<group>"; };
 		55377F571CC15C2400A2C08E /* RiskGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskGameManager.h; sourceTree = "<group>"; };
 		55377F581CC15C2400A2C08E /* RiskGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskGameManager.m; sourceTree = "<group>"; };
 		55377F591CC15C2400A2C08E /* RiskMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskMapView.h; sourceTree = "<group>"; };
@@ -465,8 +465,8 @@
 				55377F3A1CC15C2300A2C08E /* GameConfiguration.m */,
 				55377F531CC15C2300A2C08E /* Risk.h */,
 				55377F541CC15C2300A2C08E /* Risk.m */,
-				55377F551CC15C2400A2C08E /* RiskCard.h */,
-				55377F561CC15C2400A2C08E /* RiskCard.m */,
+				55377F551CC15C2400A2C08E /* RKCard.h */,
+				55377F561CC15C2400A2C08E /* RKCard.m */,
 				55377F571CC15C2400A2C08E /* RiskGameManager.h */,
 				55377F581CC15C2400A2C08E /* RiskGameManager.m */,
 				55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */,
@@ -741,7 +741,7 @@
 				553780BC1CC1970E00A2C08E /* SNRandom.h in Headers */,
 				553780EA1CC19DBB00A2C08E /* WorldInfoController.h in Headers */,
 				555C3F82210101DB00DC0019 /* RKWorldDecoder.h in Headers */,
-				553780F11CC1A90100A2C08E /* RiskCard.h in Headers */,
+				553780F11CC1A90100A2C08E /* RKCard.h in Headers */,
 				553780EF1CC1A3F000A2C08E /* RiskWorld.h in Headers */,
 				553780E71CC19D9700A2C08E /* GameConfiguration.h in Headers */,
 				553780E61CC19D6A00A2C08E /* DiceInspector.h in Headers */,
@@ -1122,7 +1122,7 @@
 				553780BD1CC1970E00A2C08E /* SNRandom.m in Sources */,
 				553780DE1CC19BBC00A2C08E /* RiskGameManager.m in Sources */,
 				553780E81CC19D9C00A2C08E /* GameConfiguration.m in Sources */,
-				553780F21CC1A90100A2C08E /* RiskCard.m in Sources */,
+				553780F21CC1A90100A2C08E /* RKCard.m in Sources */,
 				553780D71CC199FD00A2C08E /* RKCountry.m in Sources */,
 				553780E31CC19D3C00A2C08E /* CardPanelController.m in Sources */,
 				55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */,

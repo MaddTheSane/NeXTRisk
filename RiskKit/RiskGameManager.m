@@ -16,7 +16,7 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 #import "RKCountry.h"
 #import "DiceInspector.h"
 #import "GameConfiguration.h"
-#import "RiskCard.h"
+#import "RKCard.h"
 #import "RiskMapView.h"
 #import "RiskPlayer.h"
 #import "RiskWorld.h"
@@ -1605,7 +1605,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) dealCardToPlayerNumber:(RKPlayer)number
 {
-    RiskCard *card;
+    RKCard *card;
     NSInteger index, count;
     
     count = cardDeck.count;
@@ -1674,7 +1674,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 
 - (void) turnInCardSet:(RKCardSet *)cardSet forPlayerNumber:(RKPlayer)number
 {
-    RiskCard *card;
+    RKCard *card;
     RKCountry *country;
     
     AssertGameState (RKGameStatePlaceArmies);
@@ -1773,7 +1773,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
 {
     NSArray *cardArray;
     NSEnumerator *cardEnumerator;
-    RiskCard *card;
+    RKCard *card;
     
     cardArray = [NSArray arrayWithArray:source.playerCards];
     cardEnumerator = [cardArray objectEnumerator];

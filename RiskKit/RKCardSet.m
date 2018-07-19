@@ -9,7 +9,7 @@ RCSID ("$Id: CardSet.m,v 1.2 1997/12/15 07:43:42 nygard Exp $");
 #import "RKCardSet.h"
 
 #import "RKCountry.h"
-#import "RiskCard.h"
+#import "RKCard.h"
 
 // Put nils at end of list.  Minimize use of wildcards.
 
@@ -87,7 +87,7 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 // Valid if they are all the same, or if they are all different, or there
 // is at least one wildcard.
 
-+ (BOOL) isValidCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
++ (BOOL) isValidCardSet:(RKCard *)aCard1 :(RKCard *)aCard2 :(RKCard *)aCard3
 {
     BOOL valid;
     
@@ -124,14 +124,14 @@ NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
 
 //----------------------------------------------------------------------
 
-+ (instancetype) cardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
++ (instancetype) cardSet:(RKCard *)aCard1 :(RKCard *)aCard2 :(RKCard *)aCard3
 {
     return [[RKCardSet alloc] initCardSet:aCard1:aCard2:aCard3];
 }
 
 //----------------------------------------------------------------------
 
-- (instancetype) initCardSet:(RiskCard *)aCard1 :(RiskCard *)aCard2 :(RiskCard *)aCard3
+- (instancetype) initCardSet:(RKCard *)aCard1 :(RKCard *)aCard2 :(RKCard *)aCard3
 {
     if (self = [super init]) {
         if ([RKCardSet isValidCardSet:aCard1:aCard2:aCard3] == NO)

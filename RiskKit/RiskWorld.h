@@ -9,7 +9,7 @@
 
 @class Continent;
 @class RKCountry;
-@class RiskCard;
+@class RKCard;
 @class RiskNeighbor;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,14 +28,14 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableSet<RKCountry*> *allCountries;
     NSArray<RiskNeighbor*> *countryNeighbors;
     NSDictionary<NSString*,Continent *> *continents;
-    NSArray<RiskCard*> *cards;
+    NSArray<RKCard*> *cards;
 }
 
 + (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
-+ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
++ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
-- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RiskCard*> *)theCards NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContinents:(NSDictionary<NSString*,Continent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, readonly) NSSet<RKCountry*> *allCountries;
 - (nullable Continent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
-@property (readonly, strong) NSArray<RiskCard*> *cards;
+@property (readonly, strong) NSArray<RKCard*> *cards;
 
 /// Calculate the number of bonus armies earned for a player at the
 /// beginning of a turn based on the continents that they completely

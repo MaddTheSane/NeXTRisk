@@ -6,13 +6,13 @@
 
 RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
-#import "RiskCard.h"
+#import "RKCard.h"
 
 #import "RKCountry.h"
 
 #define RiskCard_VERSION 1
 
-@implementation RiskCard
+@implementation RKCard
 @synthesize country;
 @synthesize cardType;
 @synthesize image;
@@ -20,7 +20,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RiskCard class])
+    if (self == [RKCard class])
     {
         [self setVersion:RiskCard_VERSION];
     }
@@ -30,21 +30,19 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 + (instancetype) riskCardType:(RKCardType)aCardType withCountry:(RKCountry *)aCountry imageNamed:(NSString *)anImageName
 {
-    return [[RiskCard alloc] initCardType:aCardType withCountry:aCountry imageNamed:anImageName];
+    return [[self alloc] initCardType:aCardType withCountry:aCountry imageNamed:anImageName];
 }
 
 //----------------------------------------------------------------------
 
 - (instancetype) initCardType:(RKCardType)aCardType withCountry:(RKCountry *)aCountry imageNamed:(NSString *)anImageName
 {
-    NSBundle *thisBundle;
-    
     if (self = [super init]) {
         country = aCountry; // Country can be nil.
         cardType = aCardType;
         imageName = [anImageName copy];
         
-        thisBundle = [NSBundle bundleForClass:[self class]];
+        NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
         NSAssert (thisBundle != nil, @"Could not get this bundle.");
         if (imageName.pathExtension) {
             imageName = imageName.stringByDeletingPathExtension;

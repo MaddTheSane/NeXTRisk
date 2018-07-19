@@ -11,7 +11,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #import "RKCountry.h"
 #import "RiskNeighbor.h"
 #import "Continent.h"
-#import "RiskCard.h"
+#import "RKCard.h"
 #import "RKWorldDecoder.h"
 
 #define RISKWORLD_DATAFILE @"RiskWorld"
@@ -50,6 +50,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     if (!riskWorld) {
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
         [unarchive decodeClassName:@"Country" asClassName:@"RKCountry"];
+        [unarchive decodeClassName:@"RiskCard" asClassName:@"RKCard"];
         riskWorld = [unarchive decodeObject];
     }
     //NSLog (@"default risk world: %@", riskWorld);
@@ -154,7 +155,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                     RKCountry *country1 = countryDictionary[name1];
                     RKCardType cardType = [tmpCard[kCardCardType] intValue];
                     NSString *imageName = tmpCard[kCardImageName];
-                    [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+                    [tmpCards addObject:[RKCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
                 }
                 
                 cards = [tmpCards copy];
@@ -194,7 +195,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                 RKCountry *country1 = countryDictionary[name1];
                 [aDecoder decodeValueOfObjCType:@encode (RKCardType) at:&cardType];
                 NSString *imageName = [aDecoder decodeObject];
-                [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+                [tmpCards addObject:[RKCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
             }
             
             cards = [tmpCards copy];
