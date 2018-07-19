@@ -243,26 +243,26 @@
 		55377EB21CC15AC900A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55377EB71CC15AC900A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55377EBF1CC15C2300A2C08E /* AppIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AppIcon.tiff; sourceTree = "<group>"; };
-		55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArmyPlacementValidator.h; path = ../Risk/ArmyPlacementValidator.h; sourceTree = "<group>"; };
-		55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArmyPlacementValidator.m; path = ../Risk/ArmyPlacementValidator.m; sourceTree = "<group>"; };
+		55377EC11CC15C2300A2C08E /* ArmyPlacementValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyPlacementValidator.h; sourceTree = "<group>"; };
+		55377EC21CC15C2300A2C08E /* ArmyPlacementValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyPlacementValidator.m; sourceTree = "<group>"; };
 		55377EC31CC15C2300A2C08E /* ArmyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArmyView.h; sourceTree = "<group>"; };
 		55377EC41CC15C2300A2C08E /* ArmyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArmyView.m; sourceTree = "<group>"; };
-		55377EC61CC15C2300A2C08E /* BoardSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoardSetup.h; path = ../Risk/BoardSetup.h; sourceTree = "<group>"; };
-		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoardSetup.m; path = ../Risk/BoardSetup.m; sourceTree = "<group>"; };
+		55377EC61CC15C2300A2C08E /* BoardSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardSetup.h; sourceTree = "<group>"; };
+		55377EC71CC15C2300A2C08E /* BoardSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardSetup.m; sourceTree = "<group>"; };
 		55377EC81CC15C2300A2C08E /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brain.h; sourceTree = "<group>"; };
-		55377EFE1CC15C2300A2C08E /* CardPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardPanelController.h; path = ../Risk/CardPanelController.h; sourceTree = "<group>"; };
-		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardPanelController.m; path = ../Risk/CardPanelController.m; sourceTree = "<group>"; };
-		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardSet.h; path = ../Risk/CardSet.h; sourceTree = "<group>"; };
-		55377F011CC15C2300A2C08E /* CardSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardSet.m; path = ../Risk/CardSet.m; sourceTree = "<group>"; };
-		55377F031CC15C2300A2C08E /* Continent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Continent.h; path = ../Risk/Continent.h; sourceTree = "<group>"; };
-		55377F041CC15C2300A2C08E /* Continent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Continent.m; path = ../Risk/Continent.m; sourceTree = "<group>"; };
-		55377F051CC15C2300A2C08E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Country.h; path = ../Risk/Country.h; sourceTree = "<group>"; };
-		55377F061CC15C2300A2C08E /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Country.m; path = ../Risk/Country.m; sourceTree = "<group>"; };
+		55377EFE1CC15C2300A2C08E /* CardPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPanelController.h; sourceTree = "<group>"; };
+		55377EFF1CC15C2300A2C08E /* CardPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPanelController.m; sourceTree = "<group>"; };
+		55377F001CC15C2300A2C08E /* CardSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSet.h; sourceTree = "<group>"; };
+		55377F011CC15C2300A2C08E /* CardSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSet.m; sourceTree = "<group>"; };
+		55377F031CC15C2300A2C08E /* Continent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Continent.h; sourceTree = "<group>"; };
+		55377F041CC15C2300A2C08E /* Continent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Continent.m; sourceTree = "<group>"; };
+		55377F051CC15C2300A2C08E /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		55377F061CC15C2300A2C08E /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		55377F071CC15C2300A2C08E /* CountryShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryShape.h; sourceTree = "<group>"; };
 		55377F081CC15C2300A2C08E /* CountryShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryShape.m; sourceTree = "<group>"; };
 		55377F091CC15C2300A2C08E /* CPIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CPIcon.tiff; sourceTree = "<group>"; };
-		55377F0A1CC15C2300A2C08E /* DiceInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiceInspector.h; path = ../Risk/DiceInspector.h; sourceTree = "<group>"; };
-		55377F0B1CC15C2300A2C08E /* DiceInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiceInspector.m; path = ../Risk/DiceInspector.m; sourceTree = "<group>"; };
+		55377F0A1CC15C2300A2C08E /* DiceInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiceInspector.h; sourceTree = "<group>"; };
+		55377F0B1CC15C2300A2C08E /* DiceInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiceInspector.m; sourceTree = "<group>"; };
 		55377F141CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CardPanel.xib; sourceTree = "<group>"; };
 		55377F181CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = DiceInspector.xib; sourceTree = "<group>"; };
 		55377F1C1CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GameBoard.xib; sourceTree = "<group>"; };
@@ -271,8 +271,8 @@
 		55377F2C1CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PlayerConsole.xib; sourceTree = "<group>"; };
 		55377F301CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PreferencePanel.xib; sourceTree = "<group>"; };
 		55377F361CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = WorldInfoPanel.xib; sourceTree = "<group>"; };
-		55377F391CC15C2300A2C08E /* GameConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameConfiguration.h; path = ../Risk/GameConfiguration.h; sourceTree = "<group>"; };
-		55377F3A1CC15C2300A2C08E /* GameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameConfiguration.m; path = ../Risk/GameConfiguration.m; sourceTree = "<group>"; };
+		55377F391CC15C2300A2C08E /* GameConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfiguration.h; sourceTree = "<group>"; };
+		55377F3A1CC15C2300A2C08E /* GameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConfiguration.m; sourceTree = "<group>"; };
 		55377F421CC15C2300A2C08E /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		55377F431CC15C2300A2C08E /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		55377F441CC15C2300A2C08E /* Human.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Human.rtf; sourceTree = "<group>"; };
@@ -283,29 +283,29 @@
 		55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = NotPlaying.rtf; sourceTree = "<group>"; };
 		55377F501CC15C2300A2C08E /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		55377F511CC15C2300A2C08E /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
-		55377F531CC15C2300A2C08E /* Risk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Risk.h; path = ../Risk/Risk.h; sourceTree = "<group>"; };
-		55377F541CC15C2300A2C08E /* Risk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Risk.m; path = ../Risk/Risk.m; sourceTree = "<group>"; };
-		55377F551CC15C2400A2C08E /* RiskCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskCard.h; path = ../Risk/RiskCard.h; sourceTree = "<group>"; };
-		55377F561CC15C2400A2C08E /* RiskCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskCard.m; path = ../Risk/RiskCard.m; sourceTree = "<group>"; };
-		55377F571CC15C2400A2C08E /* RiskGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskGameManager.h; path = ../Risk/RiskGameManager.h; sourceTree = "<group>"; };
-		55377F581CC15C2400A2C08E /* RiskGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskGameManager.m; path = ../Risk/RiskGameManager.m; sourceTree = "<group>"; };
+		55377F531CC15C2300A2C08E /* Risk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Risk.h; sourceTree = "<group>"; };
+		55377F541CC15C2300A2C08E /* Risk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Risk.m; sourceTree = "<group>"; };
+		55377F551CC15C2400A2C08E /* RiskCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskCard.h; sourceTree = "<group>"; };
+		55377F561CC15C2400A2C08E /* RiskCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskCard.m; sourceTree = "<group>"; };
+		55377F571CC15C2400A2C08E /* RiskGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskGameManager.h; sourceTree = "<group>"; };
+		55377F581CC15C2400A2C08E /* RiskGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskGameManager.m; sourceTree = "<group>"; };
 		55377F591CC15C2400A2C08E /* RiskMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskMapView.h; sourceTree = "<group>"; };
 		55377F5A1CC15C2400A2C08E /* RiskMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskMapView.m; sourceTree = "<group>"; };
-		55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskNeighbor.h; path = ../Risk/RiskNeighbor.h; sourceTree = "<group>"; };
-		55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskNeighbor.m; path = ../Risk/RiskNeighbor.m; sourceTree = "<group>"; };
-		55377F5D1CC15C2400A2C08E /* RiskPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskPlayer.h; path = ../Risk/RiskPlayer.h; sourceTree = "<group>"; };
-		55377F5E1CC15C2400A2C08E /* RiskPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskPlayer.m; path = ../Risk/RiskPlayer.m; sourceTree = "<group>"; };
+		55377F5B1CC15C2400A2C08E /* RiskNeighbor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskNeighbor.h; sourceTree = "<group>"; };
+		55377F5C1CC15C2400A2C08E /* RiskNeighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskNeighbor.m; sourceTree = "<group>"; };
+		55377F5D1CC15C2400A2C08E /* RiskPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskPlayer.h; sourceTree = "<group>"; };
+		55377F5E1CC15C2400A2C08E /* RiskPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskPlayer.m; sourceTree = "<group>"; };
 		55377F611CC15C2400A2C08E /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
-		55377F621CC15C2400A2C08E /* RiskWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiskWorld.h; path = ../Risk/RiskWorld.h; sourceTree = "<group>"; };
-		55377F631CC15C2400A2C08E /* RiskWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiskWorld.m; path = ../Risk/RiskWorld.m; sourceTree = "<group>"; };
-		55377F641CC15C2400A2C08E /* SNRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNRandom.h; path = ../Risk/SNRandom.h; sourceTree = "<group>"; };
-		55377F651CC15C2400A2C08E /* SNRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNRandom.m; path = ../Risk/SNRandom.m; sourceTree = "<group>"; };
-		55377F6B1CC15C2400A2C08E /* SNUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNUtility.h; path = ../Risk/SNUtility.h; sourceTree = "<group>"; };
+		55377F621CC15C2400A2C08E /* RiskWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskWorld.h; sourceTree = "<group>"; };
+		55377F631CC15C2400A2C08E /* RiskWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskWorld.m; sourceTree = "<group>"; };
+		55377F641CC15C2400A2C08E /* SNRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRandom.h; sourceTree = "<group>"; };
+		55377F651CC15C2400A2C08E /* SNRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRandom.m; sourceTree = "<group>"; };
+		55377F6B1CC15C2400A2C08E /* SNUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNUtility.h; sourceTree = "<group>"; };
 		55377F6D1CC15C2400A2C08E /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		55377F6E1CC15C2400A2C08E /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		55377F6F1CC15C2400A2C08E /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
-		55377F701CC15C2400A2C08E /* WorldInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorldInfoController.h; path = ../Risk/WorldInfoController.h; sourceTree = "<group>"; };
-		55377F711CC15C2400A2C08E /* WorldInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorldInfoController.m; path = ../Risk/WorldInfoController.m; sourceTree = "<group>"; };
+		55377F701CC15C2400A2C08E /* WorldInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldInfoController.h; sourceTree = "<group>"; };
+		55377F711CC15C2400A2C08E /* WorldInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldInfoController.m; sourceTree = "<group>"; };
 		55377FF31CC15DD700A2C08E /* Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Help; sourceTree = "<group>"; };
 		55377FF91CC15E1700A2C08E /* RiskUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiskUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780011CC15E1700A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 		553780911CC1655300A2C08E /* Chaotic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chaotic.h; sourceTree = "<group>"; };
 		553780921CC1655300A2C08E /* Chaotic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chaotic.m; sourceTree = "<group>"; };
 		553780931CC1655300A2C08E /* Chaotic.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Chaotic.rtf; sourceTree = "<group>"; };
-		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Cards.xcassets; sourceTree = "<group>"; };
+		5537809B1CC1897500A2C08E /* Cards.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Cards.xcassets; path = ../Risk/Cards.xcassets; sourceTree = "<group>"; };
 		553780A61CC1966300A2C08E /* RiskKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RiskKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780A81CC1966300A2C08E /* RiskKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RiskKit.h; sourceTree = "<group>"; };
 		553780AA1CC1966300A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -484,6 +484,7 @@
 		5510980F1CC5637B00DE6DFE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				551098101CC563FE00DE6DFE /* RKImages.xcassets */,
 			);
 			name = Resources;
@@ -555,7 +556,6 @@
 			children = (
 				55377EB21CC15AC900A2C08E /* Assets.xcassets */,
 				55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */,
-				5537809B1CC1897500A2C08E /* Cards.xcassets */,
 				55377EBF1CC15C2300A2C08E /* AppIcon.tiff */,
 				55377F091CC15C2300A2C08E /* CPIcon.tiff */,
 				55377FF31CC15DD700A2C08E /* Help */,
@@ -683,8 +683,8 @@
 			children = (
 				55377EC31CC15C2300A2C08E /* ArmyView.h */,
 				55377EC41CC15C2300A2C08E /* ArmyView.m */,
-				55AC2A531D1089C50021814F /* Brain.swift */,
 				55377EC81CC15C2300A2C08E /* Brain.h */,
+				55AC2A531D1089C50021814F /* Brain.swift */,
 				55377F071CC15C2300A2C08E /* CountryShape.h */,
 				55377F081CC15C2300A2C08E /* CountryShape.m */,
 				55377F421CC15C2300A2C08E /* Human.h */,
