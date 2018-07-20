@@ -9,10 +9,10 @@
 #import "CountryShape.h"
 #import "RiskMapView.h"
 
-@class RiskNeighbor;
+@class RKNeighbor;
 
 @protocol RiskNeighborViewDataSource <NSObject>
-- (NSArray<RiskNeighbor*> *) riskNeighbors;
+- (NSArray<RKNeighbor*> *) riskNeighbors;
 @end
 
 @interface RiskNeighborView : RiskMapView

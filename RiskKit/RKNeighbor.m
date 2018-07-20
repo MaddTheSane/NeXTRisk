@@ -6,18 +6,18 @@
 
 RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
-#import "RiskNeighbor.h"
+#import "RKNeighbor.h"
 #import "RKCountry.h"
 
 #define RiskNeighbor_VERSION 1
 
-@implementation RiskNeighbor
+@implementation RKNeighbor
 @synthesize country1;
 @synthesize country2;
 
 + (void) initialize
 {
-    if (self == [RiskNeighbor class])
+    if (self == [RKNeighbor class])
     {
         [self setVersion:RiskNeighbor_VERSION];
     }
@@ -27,7 +27,7 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 + (instancetype)riskNeighborWithCountries:(RKCountry *)firstCountry :(RKCountry *)secondCountry
 {
-    return [[RiskNeighbor alloc] initWithCountries:firstCountry:secondCountry];
+    return [[RKNeighbor alloc] initWithCountries:firstCountry:secondCountry];
 }
 
 //----------------------------------------------------------------------

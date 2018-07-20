@@ -192,12 +192,12 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 + (NSMutableArray *) readCountryNeighborsTextfile:(NSArray<RKCountry*> *)countries
 {
-    NSMutableArray<RiskNeighbor*> *array;
+    NSMutableArray<RKNeighbor*> *array;
     NSBundle *mainBundle;
     NSString *path;
     NSString *fileContents;
     NSScanner *scanner;
-    RiskNeighbor *riskNeighbor;
+    RKNeighbor *riskNeighbor;
     NSMutableDictionary *countryDictionary;
     RKCountry *country;
     
@@ -291,7 +291,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSMutableString *str;
     
     str = [[NSMutableString alloc] init];
-    for (RiskNeighbor *riskNeighbor in neighbors)
+    for (RKNeighbor *riskNeighbor in neighbors)
     {
         [str appendFormat:@"Adjacent\t\"%@\"\t\"%@\"\n",
          [[riskNeighbor country1] countryName],
@@ -420,13 +420,13 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-+ (RiskNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary *)countries
++ (RKNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary *)countries
 {
     NSString *first;
     NSString *second;
     RKCountry *country1, *country2;
     
-    RiskNeighbor *riskNeighbor = nil;
+    RKNeighbor *riskNeighbor = nil;
     
     @try {
         [scanner expect:@"Adjacent"];
@@ -435,7 +435,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         
         country1 = [countries objectForKey:first];
         country2 = [countries objectForKey:second];
-        riskNeighbor = [RiskNeighbor riskNeighborWithCountries:country1:country2];
+        riskNeighbor = [RKNeighbor riskNeighborWithCountries:country1:country2];
     } @catch (NSException *localException) {
         NSLog (@"Exception %@: %@", [localException name], [localException reason]);
     }
@@ -557,7 +557,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     if (fromCountry != nil && toCountry != nil)
     {
-        [countryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:fromCountry:toCountry]];
+        [countryNeighbors addObject:[RKNeighbor riskNeighborWithCountries:fromCountry:toCountry]];
         [neighborTableView reloadData];
         count = [countryNeighbors count];
         [neighborTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:count - 1] byExtendingSelection:NO];
@@ -609,7 +609,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (NSArray<RiskNeighbor*> *) riskNeighbors
+- (NSArray<RKNeighbor*> *) riskNeighbors
 {
     return [countryNeighbors copy];
 }
@@ -632,7 +632,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     NSString *identifier;
-    RiskNeighbor *target;
+    RKNeighbor *target;
     id value;
     
     NSParameterAssert (rowIndex >= 0 && rowIndex < [countryNeighbors count]);

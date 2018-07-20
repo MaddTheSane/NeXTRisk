@@ -9,7 +9,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 #import "RiskWorld.h"
 
 #import "RKCountry.h"
-#import "RiskNeighbor.h"
+#import "RKNeighbor.h"
 #import "RKContinent.h"
 #import "RKCard.h"
 #import "RKWorldDecoder.h"
@@ -51,7 +51,6 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
         [unarchive decodeClassName:@"Country" asClassName:@"RKCountry"];
         [unarchive decodeClassName:@"Continent" asClassName:@"RKContinent"];
-        [unarchive decodeClassName:@"RiskCard" asClassName:@"RKCard"];
         riskWorld = [unarchive decodeObject];
     }
     //NSLog (@"default risk world: %@", riskWorld);
@@ -142,7 +141,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                     NSString *name2 = conCat[1];
                     RKCountry *country1 = countryDictionary[name1];
                     RKCountry *country2 = countryDictionary[name2];
-                    [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
+                    [tmpCountryNeighbors addObject:[RKNeighbor riskNeighborWithCountries:country1:country2]];
                 }
                 countryNeighbors = [tmpCountryNeighbors copy];
             }
@@ -183,7 +182,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
                 NSString *name2 = [aDecoder decodeObject];
                 RKCountry *country1 = countryDictionary[name1];
                 RKCountry *country2 = countryDictionary[name2];
-                [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
+                [tmpCountryNeighbors addObject:[RKNeighbor riskNeighborWithCountries:country1:country2]];
             }
             countryNeighbors = [tmpCountryNeighbors copy];
             
@@ -225,7 +224,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 {
     if (countryNeighbors != nil)
     {
-        for (RiskNeighbor *neighbor in countryNeighbors)
+        for (RKNeighbor *neighbor in countryNeighbors)
         {
             RKCountry *country1 = neighbor.country1;
             RKCountry *country2 = neighbor.country2;
@@ -287,7 +286,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (NSSet *) countriesForPlayer:(RKPlayer)number
 {
-    return RWcountriesForPlayerNumber (allCountries, number);
+    return RKCountriesForPlayerNumber (allCountries, number);
 }
 
 @end
@@ -296,7 +295,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 // Some utility functions.
 //======================================================================
 
-NSSet<RKCountry*> *RWcountriesForPlayerNumber (NSSet *source, RKPlayer number)
+NSSet<RKCountry*> *RKCountriesForPlayerNumber (NSSet *source, RKPlayer number)
 {
     NSMutableSet<RKCountry*> *newSet;
     
@@ -312,7 +311,7 @@ NSSet<RKCountry*> *RWcountriesForPlayerNumber (NSSet *source, RKPlayer number)
 
 //----------------------------------------------------------------------
 
-NSSet<RKCountry*> *RWcountriesInContinentNamed (NSSet *source, NSString *continentName)
+NSSet<RKCountry*> *RKCountriesInContinentNamed (NSSet *source, NSString *continentName)
 {
     NSMutableSet<RKCountry*> *newSet;
     
@@ -328,7 +327,7 @@ NSSet<RKCountry*> *RWcountriesInContinentNamed (NSSet *source, NSString *contine
 
 //----------------------------------------------------------------------
 
-NSSet<RKCountry*> *RWcountriesWithArmies (NSSet *source)
+NSSet<RKCountry*> *RKCountriesWithArmies (NSSet *source)
 {
     NSMutableSet<RKCountry*> *newSet;
     
@@ -344,7 +343,7 @@ NSSet<RKCountry*> *RWcountriesWithArmies (NSSet *source)
 
 //----------------------------------------------------------------------
 
-NSSet<RKCountry*> *RWneighborsOfCountries (NSSet<RKCountry*> *source)
+NSSet<RKCountry*> *RKNeighborsOfCountries (NSSet<RKCountry*> *source)
 {
     NSMutableSet<RKCountry*> *newSet;
     

@@ -31,5 +31,5 @@ FOUNDATION_EXPORT const unsigned char RiskKitVersionString[];
 #import <RiskKit/RKContinent.h>
 #import <RiskKit/RiskWorld.h>
 #import <RiskKit/RKCard.h>
-#import <RiskKit/RiskNeighbor.h>
+#import <RiskKit/RKNeighbor.h>
 #import <RiskKit/RKWorldInfoController.h>

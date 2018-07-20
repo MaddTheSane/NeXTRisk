@@ -11,21 +11,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_OPTIONS(uint32_t, CountryFlags) {
-	CountryFlagsPlayerNone = 1 << 0,
-	CountryFlagsPlayerOne = 1 << 1,
-	CountryFlagsPlayerTwo = 1 << 2,
-	CountryFlagsPlayerThree = 1 << 3,
-	CountryFlagsPlayerFour = 1 << 4,
-	CountryFlagsPlayerFive = 1 << 5,
-	CountryFlagsPlayerSix = 1 << 6,
-	CountryFlagsThisPlayer = 1 << 7,
-	CountryFlagsWithTroops = 1 << 8,
-	CountryFlagsWithoutTroops = 1 << 9,
-	CountryFlagsWithMovableTroops = 1 << 10,
-	CountryFlagsWithoutMovableTroops = 1 << 11,
-	CountryFlagsWithEnemyNeighbors = 1 << 12,
-	CountryFlagsWithoutEnemyNeighbors = 1 << 13,
+typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
+	RKCountryFlagsPlayerNone = 1 << 0,
+	RKCountryFlagsPlayerOne = 1 << 1,
+	RKCountryFlagsPlayerTwo = 1 << 2,
+	RKCountryFlagsPlayerThree = 1 << 3,
+	RKCountryFlagsPlayerFour = 1 << 4,
+	RKCountryFlagsPlayerFive = 1 << 5,
+	RKCountryFlagsPlayerSix = 1 << 6,
+	RKCountryFlagsThisPlayer = 1 << 7,
+	RKCountryFlagsWithTroops = 1 << 8,
+	RKCountryFlagsWithoutTroops = 1 << 9,
+	RKCountryFlagsWithMovableTroops = 1 << 10,
+	RKCountryFlagsWithoutMovableTroops = 1 << 11,
+	RKCountryFlagsWithEnemyNeighbors = 1 << 12,
+	RKCountryFlagsWithoutEnemyNeighbors = 1 << 13,
 };
 
 @class RiskGameManager, RKCountry, RKCard, RKCardSet;
@@ -94,7 +94,6 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 /// order to continue game play.  This is required, as interactive
 /// players normally aren't finished the current phase when these
 /// functions return.  This is required for the following methods:
-///
 ///     -placeInitialArmies:
 ///     -placeArmies:
 ///     -attackPhase
@@ -119,28 +118,28 @@ typedef NS_OPTIONS(uint32_t, CountryFlags) {
 // - ours OR enemies
 
 /// Returns a set of countries from the source set that satisfy all the
-/// given options.  The options are the bitwise OR of the \c CountryFlags constants
+/// given options.  The options are the bitwise OR of the \c RKCountryFlags constants
 /// that are defined in RiskPlayer.h.
 ///
 /// Note that not all combinations make sense.  For example, no country
 /// can be occupied by both player three and player four.
-- (NSSet<RKCountry *> *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
+- (NSSet<RKCountry *> *) countriesWithAllOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source;
 /// Returns a set of countries from the source set that satisfy any of
-/// the given options.  The options are the bitwise OR of the \c CountryFlags
+/// the given options.  The options are the bitwise OR of the \c RKCountryFlags
 /// constants that are defined in RiskPlayer.h.
-- (NSSet<RKCountry *> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
+- (NSSet<RKCountry *> *) countriesWithAnyOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source;
 
 /// Returns \c YES if any of the countries from the source set satisfies
 /// all of the given options.  The options are the bitwise OR of the
-/// \c CountryFlags constants that are defined in RiskPlayer.h.
+/// \c RKCountryFlags constants that are defined in RiskPlayer.h.
 ///
 /// Note that not all combinations make sense.  For example, no country
 /// can be occupied by both player three and player four.
-- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
+- (BOOL) hasCountriesWithAllOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source;
 /// Returns \c YES if any of the countries from the source set satisfies
 /// any of the given options.  The options are the bitwise OR of the
-/// \c CountryFlags constants that are defined in RiskPlayer.h.
-- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source;
+/// \c RKCountryFlags constants that are defined in RiskPlayer.h.
+- (BOOL) hasCountriesWithAnyOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source;
 
 /// Returns a set of countries from the source set that are also in the
 /// named continent.

@@ -124,7 +124,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [gameManager.world countriesForPlayer:playerNumber];
 }
 
-- (NSSet *) countriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
+- (NSSet *) countriesWithAllOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     NSMutableSet *resultingSet = [NSMutableSet set];
     for (RKCountry *country in source)
@@ -134,20 +134,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         int movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
-        if (((options & CountryFlagsPlayerNone) && number != 0)
-            || ((options & CountryFlagsPlayerOne) && number != 1)
-            || ((options & CountryFlagsPlayerTwo) && number != 2)
-            || ((options & CountryFlagsPlayerThree) && number != 3)
-            || ((options & CountryFlagsPlayerFour) && number != 4)
-            || ((options & CountryFlagsPlayerFive) && number != 5)
-            || ((options & CountryFlagsPlayerSix) && number != 6)
-            || ((options & CountryFlagsThisPlayer) && number != playerNumber)
-            || ((options & CountryFlagsWithTroops) && troopCount < 1)
-            || ((options & CountryFlagsWithoutTroops) && troopCount > 0)
-            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount < 1)
-            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
-            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
-            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
+        if (((options & RKCountryFlagsPlayerNone) && number != 0)
+            || ((options & RKCountryFlagsPlayerOne) && number != 1)
+            || ((options & RKCountryFlagsPlayerTwo) && number != 2)
+            || ((options & RKCountryFlagsPlayerThree) && number != 3)
+            || ((options & RKCountryFlagsPlayerFour) && number != 4)
+            || ((options & RKCountryFlagsPlayerFive) && number != 5)
+            || ((options & RKCountryFlagsPlayerSix) && number != 6)
+            || ((options & RKCountryFlagsThisPlayer) && number != playerNumber)
+            || ((options & RKCountryFlagsWithTroops) && troopCount < 1)
+            || ((options & RKCountryFlagsWithoutTroops) && troopCount > 0)
+            || ((options & RKCountryFlagsWithMovableTroops) && movableTroopCount < 1)
+            || ((options & RKCountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
+            || ((options & RKCountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
+            || ((options & RKCountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
         {
             continue;
         }
@@ -158,7 +158,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [resultingSet copy];
 }
 
-- (NSSet<RKCountry*> *) countriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
+- (NSSet<RKCountry*> *) countriesWithAnyOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     NSMutableSet *resultingSet = [[NSMutableSet alloc] init];
     
@@ -169,20 +169,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
-        if (((options & CountryFlagsPlayerNone) && number == 0)
-            || ((options & CountryFlagsPlayerOne) && number == 1)
-            || ((options & CountryFlagsPlayerTwo) && number == 2)
-            || ((options & CountryFlagsPlayerThree) && number == 3)
-            || ((options & CountryFlagsPlayerFour) && number == 4)
-            || ((options & CountryFlagsPlayerFive) && number == 5)
-            || ((options & CountryFlagsPlayerSix) && number == 6)
-            || ((options & CountryFlagsThisPlayer) && number == playerNumber)
-            || ((options & CountryFlagsWithTroops) && troopCount > 0)
-            || ((options & CountryFlagsWithoutTroops) && troopCount < 1)
-            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount > 0)
-            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
-            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
-            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
+        if (((options & RKCountryFlagsPlayerNone) && number == 0)
+            || ((options & RKCountryFlagsPlayerOne) && number == 1)
+            || ((options & RKCountryFlagsPlayerTwo) && number == 2)
+            || ((options & RKCountryFlagsPlayerThree) && number == 3)
+            || ((options & RKCountryFlagsPlayerFour) && number == 4)
+            || ((options & RKCountryFlagsPlayerFive) && number == 5)
+            || ((options & RKCountryFlagsPlayerSix) && number == 6)
+            || ((options & RKCountryFlagsThisPlayer) && number == playerNumber)
+            || ((options & RKCountryFlagsWithTroops) && troopCount > 0)
+            || ((options & RKCountryFlagsWithoutTroops) && troopCount < 1)
+            || ((options & RKCountryFlagsWithMovableTroops) && movableTroopCount > 0)
+            || ((options & RKCountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
+            || ((options & RKCountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
+            || ((options & RKCountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
         {
             [resultingSet addObject:country];
         }
@@ -191,7 +191,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return [resultingSet copy];
 }
 
-- (BOOL) hasCountriesWithAllOptions:(CountryFlags)options from:(NSSet<RKCountry *> *)source
+- (BOOL) hasCountriesWithAllOptions:(RKCountryFlags)options from:(NSSet<RKCountry *> *)source
 {
     BOOL flag = NO;
     
@@ -202,20 +202,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
-        if (((options & CountryFlagsPlayerNone) && number != 0)
-            || ((options & CountryFlagsPlayerOne) && number != 1)
-            || ((options & CountryFlagsPlayerTwo) && number != 2)
-            || ((options & CountryFlagsPlayerThree) && number != 3)
-            || ((options & CountryFlagsPlayerFour) && number != 4)
-            || ((options & CountryFlagsPlayerFive) && number != 5)
-            || ((options & CountryFlagsPlayerSix) && number != 6)
-            || ((options & CountryFlagsThisPlayer) && number != playerNumber)
-            || ((options & CountryFlagsWithTroops) && troopCount < 1)
-            || ((options & CountryFlagsWithoutTroops) && troopCount > 0)
-            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount < 1)
-            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
-            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
-            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
+        if (((options & RKCountryFlagsPlayerNone) && number != 0)
+            || ((options & RKCountryFlagsPlayerOne) && number != 1)
+            || ((options & RKCountryFlagsPlayerTwo) && number != 2)
+            || ((options & RKCountryFlagsPlayerThree) && number != 3)
+            || ((options & RKCountryFlagsPlayerFour) && number != 4)
+            || ((options & RKCountryFlagsPlayerFive) && number != 5)
+            || ((options & RKCountryFlagsPlayerSix) && number != 6)
+            || ((options & RKCountryFlagsThisPlayer) && number != playerNumber)
+            || ((options & RKCountryFlagsWithTroops) && troopCount < 1)
+            || ((options & RKCountryFlagsWithoutTroops) && troopCount > 0)
+            || ((options & RKCountryFlagsWithMovableTroops) && movableTroopCount < 1)
+            || ((options & RKCountryFlagsWithoutMovableTroops) && movableTroopCount > 0)
+            || ((options & RKCountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == NO)
+            || ((options & RKCountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == YES))
         {
             continue;
         }
@@ -227,7 +227,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     return flag;
 }
 
-- (BOOL) hasCountriesWithAnyOptions:(CountryFlags)options from:(NSSet<RKCountry*> *)source
+- (BOOL) hasCountriesWithAnyOptions:(RKCountryFlags)options from:(NSSet<RKCountry*> *)source
 {
     BOOL flag = NO;
     for (RKCountry *country in source)
@@ -237,20 +237,20 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         RKArmyCount movableTroopCount = country.movableTroopCount;
         BOOL hasEnemyNeighbors = country.hasEnemyNeighbors;
         
-        if (((options & CountryFlagsPlayerNone) && number == 0)
-            || ((options & CountryFlagsPlayerOne) && number == 1)
-            || ((options & CountryFlagsPlayerTwo) && number == 2)
-            || ((options & CountryFlagsPlayerThree) && number == 3)
-            || ((options & CountryFlagsPlayerFour) && number == 4)
-            || ((options & CountryFlagsPlayerFive) && number == 5)
-            || ((options & CountryFlagsPlayerSix) && number == 6)
-            || ((options & CountryFlagsThisPlayer) && number == playerNumber)
-            || ((options & CountryFlagsWithTroops) && troopCount > 0)
-            || ((options & CountryFlagsWithoutTroops) && troopCount < 1)
-            || ((options & CountryFlagsWithMovableTroops) && movableTroopCount > 0)
-            || ((options & CountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
-            || ((options & CountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
-            || ((options & CountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
+        if (((options & RKCountryFlagsPlayerNone) && number == 0)
+            || ((options & RKCountryFlagsPlayerOne) && number == 1)
+            || ((options & RKCountryFlagsPlayerTwo) && number == 2)
+            || ((options & RKCountryFlagsPlayerThree) && number == 3)
+            || ((options & RKCountryFlagsPlayerFour) && number == 4)
+            || ((options & RKCountryFlagsPlayerFive) && number == 5)
+            || ((options & RKCountryFlagsPlayerSix) && number == 6)
+            || ((options & RKCountryFlagsThisPlayer) && number == playerNumber)
+            || ((options & RKCountryFlagsWithTroops) && troopCount > 0)
+            || ((options & RKCountryFlagsWithoutTroops) && troopCount < 1)
+            || ((options & RKCountryFlagsWithMovableTroops) && movableTroopCount > 0)
+            || ((options & RKCountryFlagsWithoutMovableTroops) && movableTroopCount < 1)
+            || ((options & RKCountryFlagsWithEnemyNeighbors) && hasEnemyNeighbors == YES)
+            || ((options & RKCountryFlagsWithoutEnemyNeighbors) && hasEnemyNeighbors == NO))
         {
             flag = YES;
             break;

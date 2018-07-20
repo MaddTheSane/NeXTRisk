@@ -24,7 +24,7 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 #import "StatusView.h"
 #import "RKWorldInfoController.h"
 
-DEFINE_NSSTRING (RGMGameOverNotification);
+NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 #define AGSReason(state1) [NSString stringWithFormat:@"Current game state is (Player %ld, %@).  Expected game state to be %@.", (long)currentPlayerNumber, NSStringFromGameState (gameState), NSStringFromGameState (state1)]
 
@@ -460,7 +460,7 @@ DEFINE_NSSTRING (RGMGameOverNotification);
         currentPhaseView = nil;
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:RGMGameOverNotification
+    [[NSNotificationCenter defaultCenter] postNotificationName:RKGameOverNotification
                                                         object:self];
 }
 

@@ -510,7 +510,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
                 NSSet *source;
                 NSInteger count;
                 
-                source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
+                source = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:continent.countries];
                 count = source.count;
                 if (count > 0)
                 {
@@ -564,7 +564,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
                 NSSet *source;
                 NSInteger count;
                 
-                source = [self countriesWithAllOptions:CountryFlagsPlayerNone from:continent.countries];
+                source = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:continent.countries];
                 count = source.count;
                 if (count > 0)
                 {
@@ -611,7 +611,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
             }
             
             country = nil;
-            NSSet *unoccupied = [self countriesWithAllOptions:CountryFlagsPlayerNone from:source];
+            NSSet *unoccupied = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:source];
             NSInteger count = unoccupied.count;
             if (count > 0)
             {
@@ -782,7 +782,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
 #if 1
     {
     placeCountries = [SNHeap heapUsingFunction:minimumTroops context:NULL];
-    NSEnumerator *enumerator = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
+    NSEnumerator *enumerator = [[self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
     [placeCountries insertObjectsFromEnumerator:enumerator];
     }
 #else
@@ -792,7 +792,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
     
     // Most vulnerable doesn't take advantage of attacking weakest neighbors
     //placeCountries = [SNHeap heapUsingFunction:maximumVulnerability context:NULL];
-    //enumerator = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
+    //enumerator = [[self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
     //[placeCountries insertObjectsFromEnumerator:enumerator];
     
     int special = 0;
@@ -895,7 +895,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
     
     if (attackingCountryHeap == nil)
     {
-        attackers = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
+        attackers = [self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors|RKCountryFlagsWithTroops
                                              from:[self ourCountries]].allObjects;
         
         // I'm not sure this heap function is working.  I think it means that if we take over a new
@@ -1504,7 +1504,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
     
     //remainingCountries = [NSMutableSet setWithSet:[self ourCountries]];
     remainingCountries = [[self
-                          countriesWithAllOptions:CountryFlagsWithEnemyNeighbors
+                          countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors
                           from:[self ourCountries]] mutableCopy];
     while ((country = [remainingCountries anyObject]))
     {

@@ -7,13 +7,19 @@
 //
 
 #import "RKWorldDecoder.h"
+#import "RKNeighbor.h"
+#import "RKCard.h"
 
 @implementation RKWorldDecoder
 - (nullable Class)unarchiver:(NSKeyedUnarchiver *)unarchiver cannotDecodeObjectOfClassName:(NSString *)name originalClasses:(NSArray<NSString *> *)classNames
 {
     if ([name isEqualToString:@"RiskCard"]) {
-        return NSClassFromString(@"RKCard");
+        return [RKCard class];
     }
+    if ([name isEqualToString:@"RiskNeighbor"]) {
+        return [RKNeighbor class];
+    }
+
     NSString *newClassName = [@"RK" stringByAppendingString:name];
     return NSClassFromString(newClassName);
     

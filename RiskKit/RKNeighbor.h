@@ -9,11 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A \c RiskNeighbor represents two neighboring countries in a world.
+/// An \c RKNeighbor represents two neighboring countries in a world.
 /// They are not directly encoded in a stream -- instead, their names
 /// are stored and then new instances are created after looking up
 /// the countries based on their names.
-@interface RiskNeighbor : NSObject <NSCoding>
+@interface RKNeighbor : NSObject <NSCoding>
 
 + (instancetype)riskNeighborWithCountries:(RKCountry *)firstCountry :(RKCountry *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countriesFirst:second:) instead");
 

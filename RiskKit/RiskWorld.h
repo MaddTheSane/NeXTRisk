@@ -10,7 +10,7 @@
 @class RKContinent;
 @class RKCountry;
 @class RKCard;
-@class RiskNeighbor;
+@class RKNeighbor;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,16 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RiskWorld : NSObject <NSCoding>
 {
     NSMutableSet<RKCountry*> *allCountries;
-    NSArray<RiskNeighbor*> *countryNeighbors;
+    NSArray<RKNeighbor*> *countryNeighbors;
     NSDictionary<NSString*,RKContinent *> *continents;
     NSArray<RKCard*> *cards;
 }
 
 + (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
-+ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
++ (instancetype)riskWorldWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RKNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_SWIFT_UNAVAILABLE("Use init(continents:countryNeighbors:cards:) instead");
 
-- (instancetype)initWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RiskNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContinents:(NSDictionary<NSString*,RKContinent *> *)theContinents countryNeighbors:(NSArray<RKNeighbor*> *)neighbors cards:(NSArray<RKCard*> *)theCards NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
@@ -61,9 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Some utility functions.
 //======================================================================
 
-NSSet<RKCountry*> *RWcountriesForPlayerNumber (NSSet<RKCountry*> *source, RKPlayer number);
-NSSet<RKCountry*> *RWcountriesInContinentNamed (NSSet<RKCountry*> *source, NSString *continentName);
-NSSet<RKCountry*> *RWcountriesWithArmies (NSSet<RKCountry*> *source);
-NSSet<RKCountry*> *RWneighborsOfCountries (NSSet<RKCountry*> *source);
+NSSet<RKCountry*> *RKCountriesForPlayerNumber (NSSet<RKCountry*> *source, RKPlayer number);
+NSSet<RKCountry*> *RKCountriesInContinentNamed (NSSet<RKCountry*> *source, NSString *continentName);
+NSSet<RKCountry*> *RKCountriesWithArmies (NSSet<RKCountry*> *source);
+NSSet<RKCountry*> *RKNeighborsOfCountries (NSSet<RKCountry*> *source);
 
 NS_ASSUME_NONNULL_END

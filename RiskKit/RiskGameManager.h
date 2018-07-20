@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSNotificationName const RGMGameOverNotification;
+extern NSNotificationName const RKGameOverNotification;
 
 @class RiskWorld, RiskPlayer, RKGameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, RKCardPanelController;
 @class RKCard, RKArmyPlacementValidator, RKCardSet, RKDiceInspector, RKWorldInfoController, SNRandom;

@@ -141,7 +141,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     RKCountry *country;
     
     //myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-    ourCountries = [self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors from:[self ourCountries]].allObjects;
+    ourCountries = [self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors from:[self ourCountries]].allObjects;
     countryCount = ourCountries.count;
     
     NSAssert (countryCount > 0, @"We have no countries!");
@@ -167,7 +167,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     
     if (attackingCountries == nil)
     {
-        attackingCountries = [[self countriesWithAllOptions:CountryFlagsWithEnemyNeighbors|CountryFlagsWithTroops
+        attackingCountries = [[self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors|RKCountryFlagsWithTroops
                                                        from:[self ourCountries]] mutableCopy];
     }
     
@@ -210,7 +210,7 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
     NSInteger count;
     NSArray *sourceArray;
     
-    sourceCountries = [self countriesWithAllOptions:CountryFlagsWithMovableTroops|CountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
+    sourceCountries = [self countriesWithAllOptions:RKCountryFlagsWithMovableTroops|RKCountryFlagsWithoutEnemyNeighbors from:[self ourCountries]];
     count = sourceCountries.count;
     
     if (count == 0)

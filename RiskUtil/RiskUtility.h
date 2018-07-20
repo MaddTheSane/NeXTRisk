@@ -8,7 +8,7 @@
 #import "Risk.h"
 #import "RiskMapView.h"
 
-@class RKCountry, RiskNeighbor, RiskWorld, RKCard;
+@class RKCountry, RKNeighbor, RiskWorld, RKCard;
 @class RKContinent;
 
 @interface RiskUtility : NSObject <NSApplicationDelegate, NSTableViewDataSource, RiskMapViewDelegate>
@@ -23,7 +23,7 @@
     IBOutlet NSTableView *neighborTableView;
 
     NSDictionary<NSString*,RKContinent*> *continents;
-    NSMutableArray<RiskNeighbor*> *countryNeighbors;
+    NSMutableArray<RKNeighbor*> *countryNeighbors;
     NSArray<RKCard*> *cards;
 }
 @property (weak) IBOutlet NSWindow *window;
@@ -33,18 +33,18 @@
 
 + (NSDictionary<NSString*,NSNumber*> *) readContinentTextfile;
 + (NSArray<RKCountry*> *) readCountryTextfile:(NSSet<NSString*> *)continentNames;
-+ (NSMutableArray<RiskNeighbor*> *) readCountryNeighborsTextfile:(NSArray<RKCountry*> *)countries;
++ (NSMutableArray<RKNeighbor*> *) readCountryNeighborsTextfile:(NSArray<RKCountry*> *)countries;
 
 + (NSArray<RKCard*> *) readCardTextfile:(NSArray<RKCountry *> *)countryArray;
 
-+ (NSString *) neighborString:(NSArray<RiskNeighbor*> *)neighborArray;
++ (NSString *) neighborString:(NSArray<RKNeighbor*> *)neighborArray;
 
 + (NSDictionary<NSString*,RKContinent*> *) buildContinents:(NSDictionary<NSString*,NSNumber*> *)continentBonuses fromCountries:(NSArray<RKCountry*> *)countries;
 
 - (instancetype)init;
 
 + (RKCountry *) scanCountry:(NSScanner *)scanner validContinents:(NSSet<NSString*> *)continentNames;
-+ (RiskNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,RKCountry*> *)countries;
++ (RKNeighbor *) scanRiskNeighbor:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,RKCountry*> *)countries;
 + (RiskContinent) continentFromString:(NSString *)str;
 + (RKCard *) scanRiskCard:(NSScanner *)scanner usingCountries:(NSDictionary<NSString*,RKCountry*> *)countries;
 + (RKCardType) riskCardTypeFromString:(NSString *)str;
@@ -55,6 +55,6 @@
 - (IBAction) removeNeighbor:(id)sender;
 - (IBAction) writeNeighborTextFile:(id)sender;
 
-@property (readonly, copy) NSArray<RiskNeighbor*> *riskNeighbors;
+@property (readonly, copy) NSArray<RKNeighbor*> *riskNeighbors;
 
 @end
