@@ -8,6 +8,7 @@
 
 import Cocoa
 import RiskKit
+import RiskKit.RiskPlayer
 
 public class Chaos: RiskPlayer {
 	private var unoccupiedContinents = Set<String>()
@@ -54,10 +55,10 @@ public class Chaos: RiskPlayer {
 		}
 		
 		if array.count > 0 {
-			country = array[rng.randomNumberModulo(array.count)]
+			country = array.randomElement()!
 			unoccupiedContinents.remove(country.continentName)
 		} else {
-			country = unoccupiedCountries[rng.randomNumberModulo(unoccupiedCountries.count)]
+			country = unoccupiedCountries.randomElement()!
 		}
 		gameManager.player(self, choseCountry: country)
 		turnDone()
@@ -73,13 +74,13 @@ public class Chaos: RiskPlayer {
 
 	public override func placeArmies(_ count: Int32) {
 		//myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
-		var ourCountries = Array(countries(withAllOptions: .withEnemyNeighbors, from: self.ourCountries))
+		let ourCountries = countries(withAllOptions: .withEnemyNeighbors, from: self.ourCountries)
 		let countryCount = ourCountries.count
 		
 		assert(countryCount > 0, "We have no countries!");
 		
 		for _ in 0..<count {
-			let country = ourCountries[rng.randomNumberModulo(countryCount)]
+			let country = ourCountries.randomElement()!
 			
 			let okay = gameManager.player(self, placesArmies: 1, in: country)
 			assert(okay, "Could not place army in country: \(country)");
@@ -129,8 +130,7 @@ public class Chaos: RiskPlayer {
 			source = sourceCountries.first!; // All of them will be done in turn.
 			
 		case .oneToOneNeighbor, .oneToManyNeighbors:
-			let sourceArray = Array(sourceCountries)
-			source = sourceArray[rng.randomNumberModulo(sourceArray.count)]
+			source = sourceCountries.randomElement()!
 		}
 		
 		gameManager.fortifyArmies(from: source)
@@ -152,8 +152,7 @@ public class Chaos: RiskPlayer {
 		
 		if destination == nil {
 			// Pick random country
-			let neighborCount = ourNeighborCountries.count
-			destination = Array(ourNeighborCountries)[rng.randomNumberModulo(neighborCount)]
+			destination = ourNeighborCountries.randomElement()
 		}
 		
 		gameManager.player(self, placesArmies: count, in: destination!)
@@ -183,7 +182,7 @@ public class Chaos: RiskPlayer {
 		}
 		
 		if let weakest = weakest {
-			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: rng.randomNumberBetween(1, attacker.troopCount), moveAllArmiesUponVictory: false)
+			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: RKArmyCount.random(in: 1 ..< attacker.troopCount), moveAllArmiesUponVictory: false)
 			
 			//NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
 		}
