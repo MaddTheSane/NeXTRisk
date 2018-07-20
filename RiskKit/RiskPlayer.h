@@ -174,7 +174,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 - (void) logMessage:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 /// Appends a formatted string to the console window, if it is visible.
 /// Subclasses can use this to show debugging information.
-- (void) logMessage:(NSString *)format format:(va_list)vaList;
+- (void) logMessage:(NSString *)format format:(va_list)vaList NS_FORMAT_FUNCTION(1,0);
 
 - (void) waitForContinue;
 - (IBAction) continueAction:(nullable id)sender;

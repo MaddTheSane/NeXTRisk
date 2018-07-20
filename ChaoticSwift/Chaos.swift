@@ -182,7 +182,7 @@ public class Chaos: RiskPlayer {
 		}
 		
 		if let weakest = weakest {
-			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: RKArmyCount.random(in: 1 ..< attacker.troopCount), moveAllArmiesUponVictory: false)
+			attackResult = gameManager.attack(from: attacker, to: weakest, untilArmiesRemain: RKArmyCount.random(in: 1 ... attacker.troopCount), moveAllArmiesUponVictory: false)
 			
 			//NSLog (@"Won attack from %@ to %@? %@", attacker, weakest, won == YES ? @"Yes" : @"No");
 		}
