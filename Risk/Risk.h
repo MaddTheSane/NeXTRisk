@@ -106,7 +106,7 @@ typedef struct AttackResult
     BOOL phaseChanged;
 } AttackResult;
 
-RiskArmyCount RiskInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(RiskInitialArmyCount(forPlayers:));
+RiskArmyCount RiskInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(initialArmyCount(forPlayers:));
 
 NS_ASSUME_NONNULL_BEGIN
 

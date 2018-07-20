@@ -121,45 +121,22 @@ NSBundle *currentBundle;
 //----------------------------------------------------------------------
 
 #define kContinentsKey @"Continents"
-#define kCountryNeighborsArrayKey @"CountryNeighbors"
-#define kCardsArrayKey @"Cards"
+#define kCountryNeighborsArrayKey @"CountryNeighbors2"
+#define kCardsArrayKey @"Cards2"
 
 #define kCardCountryName @"CountryName"
 #define kCardCardType @"CardType"
 #define kCardImageName @"ImageName"
 
+
+#define kCountryNeighborsArrayOldKey @"CountryNeighbors"
+#define kCardsArrayOldKey @"Cards"
+
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    RiskNeighbor *riskNeighbor;
-    RiskCard *card;
-    
     [aCoder encodeObject:continents forKey:kContinentsKey];
-    
-    NSMutableArray *tmpNeighbors = [NSMutableArray arrayWithCapacity:countryNeighbors.count];
-    @autoreleasepool {
-        for (riskNeighbor in countryNeighbors)
-        {
-            [tmpNeighbors addObject:@[riskNeighbor.country1.countryName, riskNeighbor.country2.countryName]];
-        }
-        [aCoder encodeObject:tmpNeighbors forKey:kCountryNeighborsArrayKey];
-    }
-    
-    NSMutableArray<NSDictionary<NSString*,id>*> *tmpCards = [NSMutableArray arrayWithCapacity:cards.count];
-    for (card in cards) {
-        NSDictionary *cardDict = @{
-                                   kCardCardType: @(card.cardType),
-                                   kCardImageName: card.imageName
-                                   };
-        
-        if (card.country.countryName) {
-            NSMutableDictionary *mdict = [NSMutableDictionary dictionaryWithDictionary:cardDict];
-            mdict[kCardCountryName] = card.country.countryName;
-            cardDict = mdict;
-        }
-        
-        [tmpCards addObject:cardDict];
-    }
-    [aCoder encodeObject:tmpCards forKey:kCardsArrayKey];
+    [aCoder encodeObject:countryNeighbors forKey:kCountryNeighborsArrayKey];
+    [aCoder encodeObject:cards forKey:kCardsArrayKey];
 }
 
 //----------------------------------------------------------------------
@@ -168,9 +145,8 @@ NSBundle *currentBundle;
 {
     if (self = [super init]) {
         allCountries = [[NSMutableSet alloc] init];
-        if (aDecoder.allowsKeyedCoding) {
+        if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kContinentsKey]) {
             NSMutableArray *tmpCards = [NSMutableArray array];
-            RiskCardType cardType;
             
             NSMutableDictionary *countryDictionary;
             continents = [[aDecoder decodeObjectForKey:kContinentsKey] copy];
@@ -184,7 +160,10 @@ NSBundle *currentBundle;
                 countryDictionary[country1.countryName] = country1;
             }
             
-            NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayKey];
+            if ([aDecoder containsValueForKey:kCountryNeighborsArrayKey]) {
+                countryNeighbors = [NSArray arrayWithArray:[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey]];
+            } else {
+            NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
             
             NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
             for (NSArray<NSString*> *conCat in tmptmp) {
@@ -195,21 +174,24 @@ NSBundle *currentBundle;
                 [tmpCountryNeighbors addObject:[RiskNeighbor riskNeighborWithCountries:country1:country2]];
             }
             countryNeighbors = [tmpCountryNeighbors copy];
-            NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayKey];
-            
-            for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
-                NSString *name1 = tmpCard[kCardCountryName];
-                Country *country1 = countryDictionary[name1];
-                cardType = [tmpCard[kCardCardType] intValue];
-                NSString *imageName = tmpCard[kCardImageName];
-                [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
             }
             
-            cards = [tmpCards copy];
+            if ([aDecoder containsValueForKey:kCardsArrayKey]) {
+                cards = [[aDecoder decodeObjectForKey:kCardsArrayKey] copy];
+            } else {
+                NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayOldKey];
+                for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
+                    NSString *name1 = tmpCard[kCardCountryName];
+                    Country *country1 = countryDictionary[name1];
+                    RiskCardType cardType = [tmpCard[kCardCardType] intValue];
+                    NSString *imageName = tmpCard[kCardImageName];
+                    [tmpCards addObject:[RiskCard riskCardType:cardType withCountry:country1 imageNamed:imageName]];
+                }
+                
+                cards = [tmpCards copy];
+            }
         } else {
             int count;
-            
-            NSMutableArray *tmpCards = [[NSMutableArray alloc] init];
             
             continents = [aDecoder decodeObject];
             
@@ -222,8 +204,8 @@ NSBundle *currentBundle;
                 countryDictionary[country1.countryName] = country1;
             }
             
-            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
+            NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] initWithCapacity:count];
             for (int l = 0; l < count; l++)
             {
                 NSString *name1 = [aDecoder decodeObject];
@@ -235,6 +217,7 @@ NSBundle *currentBundle;
             countryNeighbors = [tmpCountryNeighbors copy];
             
             [aDecoder decodeValueOfObjCType:@encode (int) at:&count];
+            NSMutableArray *tmpCards = [[NSMutableArray alloc] initWithCapacity:count];
             for (int l = 0; l < count; l++)
             {
                 RiskCardType cardType;
@@ -257,12 +240,9 @@ NSBundle *currentBundle;
 
 - (void) _buildAllCountries
 {
-    NSEnumerator<Continent*> *continentEnumerator;
-    
     [allCountries removeAllObjects];
     
-    continentEnumerator = [continents objectEnumerator];
-    for (Continent *continent in continentEnumerator)
+    for (Continent *continent in [continents allValues])
     {
         [allCountries unionSet:continent.countries];
     }

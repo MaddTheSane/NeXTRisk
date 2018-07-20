@@ -26,7 +26,7 @@ extern NSString *const RKWorldName;
     NSArray<RiskCard*> *cards;
 }
 
-+ (RiskWorld*)defaultRiskWorld;
++ (RiskWorld*)defaultRiskWorld NS_SWIFT_NAME(init(default:));
 
 + (nullable RiskWorld*)riskWorldFromBundle:(NSBundle*)riskBundle;
 
@@ -45,7 +45,7 @@ extern NSString *const RKWorldName;
 - (void) _disconnectCountries;
 
 @property (copy, readonly) NSSet<Country*> *allCountries;
-- (nullable Continent *) continentNamed:(NSString *)continentName;
+- (nullable Continent *) continentNamed:(NSString *)continentName NS_SWIFT_NAME(continent(named:));
 @property (readonly, strong) NSDictionary<NSString*,Continent *> *continents;
 @property (readonly, strong) NSArray<RiskCard*> *cards;
 

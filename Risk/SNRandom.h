@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Based on above primitive methods.
 - (long) randomNumberModulo:(long)modulus;
-- (long) randomNumberWithMaximum:(long)maximum;
-- (long) randomNumberBetween:(long)minimum :(long)maximum;
+- (long) randomNumberWithMaximum:(long)maximum NS_REFINED_FOR_SWIFT;
+- (long) randomNumberBetween:(long)minimum :(long)maximum NS_REFINED_FOR_SWIFT;
 - (double) randomPercent;
 - (BOOL) randomBoolean;
 

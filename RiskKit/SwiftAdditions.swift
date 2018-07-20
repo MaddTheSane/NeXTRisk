@@ -63,3 +63,31 @@ extension GameState: CustomStringConvertible, CustomDebugStringConvertible {
 		return __NSStringFromGameState(self)
 	}
 }
+
+extension RiskPlayer {
+	/// Appends a formatted string to the console window, if it is visible.
+	/// Subclasses can use this to show debugging information.
+	open func logMessage(_ format: String, _ args: CVarArg...) {
+		withVaList(args) { (vaList) -> Void in
+			logMessage(format, format: vaList)
+		}
+	}
+}
+
+extension SNRandom {
+	open func randomNumberBetween(_ minimum: Int, _ maximum: Int) -> Int {
+		return __randomNumberBetween(minimum, maximum)
+	}
+
+	open func randomNumberBetween(_ minimum: Int32, _ maximum: Int32) -> Int32 {
+		return Int32(__randomNumberBetween(Int(minimum), Int(maximum)))
+	}
+	
+	open func randomNumber(withMaximum maximum: Int) -> Int {
+		return __randomNumber(withMaximum: maximum)
+	}
+
+	open func randomNumber(withMaximum maximum: Int32) -> Int32 {
+		return Int32(__randomNumber(withMaximum: Int(maximum)))
+	}
+}

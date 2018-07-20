@@ -89,4 +89,25 @@ extern NSBundle *currentBundle;
             country.countryName, NSStringFromRiskCardType (cardType), imageName];
 }
 
+#define RKCountryKey @"RKCountry"
+#define RKCardTypeKey @"RKCardType"
+#define RKImageNameKey @"RKImageName"
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeConditionalObject:country forKey:RKCountryKey];
+    [aCoder encodeObject:imageName forKey:RKImageNameKey];
+    [aCoder encodeInt:cardType forKey:RKCardTypeKey];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    NSAssert(aDecoder.allowsKeyedCoding, @"Expected a decoder class that was keyed coding, got %@", [aDecoder className]);
+    Country *tmpCountry = [aDecoder decodeObjectForKey:RKCountryKey];
+    NSString *imgNam = [aDecoder decodeObjectForKey:RKImageNameKey];
+    RiskCardType ct = [aDecoder decodeIntForKey:RKCardTypeKey];
+    
+    return [self initCardType:ct withCountry:tmpCountry imageNamed:imgNam];
+}
+
 @end

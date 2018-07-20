@@ -49,4 +49,23 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
     return [NSString stringWithFormat:@"<RiskNeighbor: country1 = %@, country2 = %@>", country1, country2];
 }
 
+#define RiskNeighbor1 @"firstCountry"
+#define RiskNeighbor2 @"secondCountry"
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeConditionalObject:country1 forKey:RiskNeighbor1];
+    [coder encodeConditionalObject:country2 forKey:RiskNeighbor2];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    NSAssert(aDecoder.allowsKeyedCoding, @"Expected a decoder class that was keyed coding, got %@", [aDecoder className]);
+    if (self = [super init]) {
+        country1 = [aDecoder decodeObjectForKey:RiskNeighbor1];
+        country2 = [aDecoder decodeObjectForKey:RiskNeighbor2];
+    }
+    return self;
+}
+
 @end

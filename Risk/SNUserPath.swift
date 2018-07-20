@@ -24,15 +24,13 @@ private let SNUserPathOperation_VERSION = 1
 ///
 /// Superceded by `NSBezierPath`!
 @objc(SNUserPath) final class UserPath: NSObject, NSCoding {
-	private static var doSomethingOnce: () -> Void = {
+	private static var __doSomethingOnce: () = {
 		UserPath.setVersion(SNUserPath_VERSION)
 		Operation.setVersion(SNUserPathOperation_VERSION)
-		
-		return {}
 	}()
 	
-	class func setUpVersions() {
-		_=UserPath.doSomethingOnce
+	@objc class func setUpVersions() {
+		_=UserPath.__doSomethingOnce
 	}
 	
 	/// An `SNUserPathOperation` represents an user path operator and its
@@ -52,7 +50,7 @@ private let SNUserPathOperation_VERSION = 1
 		let angle2: Float
 		
 		@objc func encode(with aCoder: NSCoder) {
-			fatalError("We should not be calling this!")
+			fatalError("We should not be calling \(#function)!")
 		}
 
 		@objc init?(coder aDecoder: NSCoder) {
@@ -172,14 +170,15 @@ private let SNUserPathOperation_VERSION = 1
 	}
 	
 	init?(coder aDecoder: NSCoder) {
-		guard let tmpOps = aDecoder.decodeObject() as? NSArray as? [Operation] else {
-			return nil
+		guard let tmpOps2 = aDecoder.decodeObject(),
+			let tmpOps = tmpOps2 as? [Operation] else {
+				return nil
 		}
 		operations = tmpOps
 		super.init()
 	}
 	
-	func toBezierPath() -> NSBezierPath {
+	@objc func toBezierPath() -> NSBezierPath {
 		let path = NSBezierPath()
 		for op in operations {
 			op.applyToBezierPath(path)

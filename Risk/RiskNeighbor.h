@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// They are not directly encoded in a stream -- instead, their names
 /// are stored and then new instances are created after looking up
 /// the countries based on their names.
-@interface RiskNeighbor : NSObject
+@interface RiskNeighbor : NSObject <NSCoding>
 
 + (instancetype)riskNeighborWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_UNAVAILABLE("Use init(countriesFirst:second:) instead");
 
 - (instancetype)initWithCountries:(Country *)firstCountry :(Country *)secondCountry NS_SWIFT_NAME(init(countriesFirst:second:)) NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, strong) Country *country1;

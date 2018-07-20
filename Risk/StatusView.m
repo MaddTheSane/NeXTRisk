@@ -137,11 +137,7 @@ static NSTextFieldCell *_textCell = nil;
                 NSInteger count = player.playerCards.count;
                 
                 if ([player canTurnInCardSet] == YES) {
-#ifdef __APPLE_CPP__
-                    [_textCell setTextColor:[NSColor darkGrayColor]];
-#else
-                _textCell.textColor = [NSColor whiteColor];
-#endif
+                    _textCell.textColor = [NSColor whiteColor];
                 } else {
                     _textCell.textColor = [NSColor blackColor];
                 }
