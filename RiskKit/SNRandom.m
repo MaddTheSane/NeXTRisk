@@ -62,7 +62,7 @@ static SNRandom *_instance = nil;
 {
     if (_instance == nil)
     {
-        _instance = [[SNRandom alloc] init];
+        _instance = [[self alloc] init];
     }
     
     return _instance;
