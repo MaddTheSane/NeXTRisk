@@ -80,8 +80,8 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     NSAssert(aDecoder.allowsKeyedCoding, @"Expected a decoder class that was keyed coding, got %@", [aDecoder className]);
-    RKCountry *tmpCountry = [aDecoder decodeObjectForKey:RKCountryKey];
-    NSString *imgNam = [aDecoder decodeObjectForKey:RKImageNameKey];
+    RKCountry *tmpCountry = [aDecoder decodeObjectOfClass:[RKCountry class] forKey:RKCountryKey];
+    NSString *imgNam = [aDecoder decodeObjectOfClass:[NSString class] forKey:RKImageNameKey];
     RKCardType ct = [aDecoder decodeIntForKey:RKCardTypeKey];
     
     return [self initCardType:ct withCountry:tmpCountry imageNamed:imgNam];

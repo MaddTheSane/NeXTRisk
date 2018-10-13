@@ -119,7 +119,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             NSMutableArray *tmpCards = [NSMutableArray array];
             
             NSMutableDictionary *countryDictionary;
-            continents = [[aDecoder decodeObjectForKey:kContinentsKey] copy];
+            continents = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSDictionary class], [NSString class], [RKContinent class], nil] forKey:kContinentsKey] copy];
             
             [self _buildAllCountries];
             
@@ -131,9 +131,9 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             }
             
             if ([aDecoder containsValueForKey:kCountryNeighborsArrayKey]) {
-                countryNeighbors = [[aDecoder decodeObjectForKey:kCountryNeighborsArrayKey] copy];
+                countryNeighbors = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [RKNeighbor class], nil] forKey:kCountryNeighborsArrayKey] copy];
             } else {
-                NSArray *tmptmp = [aDecoder decodeObjectForKey:kCountryNeighborsArrayOldKey];
+                NSArray *tmptmp = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [NSString class], nil] forKey:kCountryNeighborsArrayOldKey];
                 
                 NSMutableArray *tmpCountryNeighbors = [[NSMutableArray alloc] init];
                 for (NSArray<NSString*> *conCat in tmptmp) {
@@ -147,9 +147,9 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
             }
             
             if ([aDecoder containsValueForKey:kCardsArrayKey]) {
-                cards = [[aDecoder decodeObjectForKey:kCardsArrayKey] copy];
+                cards = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [RKCard class], nil]  forKey:kCardsArrayKey] copy];
             } else {
-                NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectForKey:kCardsArrayOldKey];
+                NSArray<NSDictionary<NSString*,id>*> *tmptmpCards = [aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSArray class], [NSDictionary class], [NSString class], [RKCountry class], [NSNumber class], nil]  forKey:kCardsArrayOldKey];
                 for (NSDictionary<NSString*,id> *tmpCard in tmptmpCards) {
                     NSString *name1 = tmpCard[kCardCountryName];
                     RKCountry *country1 = countryDictionary[name1];

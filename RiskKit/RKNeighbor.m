@@ -62,8 +62,8 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 {
     NSAssert(aDecoder.allowsKeyedCoding, @"Expected a decoder class that was keyed coding, got %@", [aDecoder className]);
     if (self = [super init]) {
-        country1 = [aDecoder decodeObjectForKey:RiskNeighbor1];
-        country2 = [aDecoder decodeObjectForKey:RiskNeighbor2];
+        country1 = [aDecoder decodeObjectOfClass:[RKCountry class] forKey:RiskNeighbor1];
+        country2 = [aDecoder decodeObjectOfClass:[RKCountry class] forKey:RiskNeighbor2];
     }
     return self;
 }

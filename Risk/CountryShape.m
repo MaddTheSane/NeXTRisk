@@ -102,7 +102,7 @@ static NSTextFieldCell *_armyCell = nil;
 {
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kUserPathKey]) {
-            bezierPath = [aDecoder decodeObjectForKey:kUserPathKey];
+            bezierPath = [aDecoder decodeObjectOfClass:[NSBezierPath class] forKey:kUserPathKey];
             armyCellPoint = [aDecoder decodePointForKey:kArmyCellPoint];
         } else {
             //For compatibility reasons, we have to jump through some hoops.

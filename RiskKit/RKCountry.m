@@ -79,9 +79,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 {
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kCountryName]) {
-            name = [[aDecoder decodeObjectForKey:kCountryName] copy];
-            countryShape = [aDecoder decodeObjectForKey:kCountryShape];
-            continentName = [[aDecoder decodeObjectForKey:kCountryContinentName] copy];
+            name = [[aDecoder decodeObjectOfClass:[NSString class] forKey:kCountryName] copy];
+            countryShape = [aDecoder decodeObjectOfClass:[CountryShape class] forKey:kCountryShape];
+            continentName = [[aDecoder decodeObjectOfClass:[NSString class] forKey:kCountryContinentName] copy];
             playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
             troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
             unmovableTroopCount = [aDecoder decodeIntForKey:kCountryUnmovableTroopCount];

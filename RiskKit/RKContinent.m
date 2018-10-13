@@ -64,8 +64,8 @@ RCSID ("$Id: Continent.m,v 1.1.1.1 1997/12/09 07:18:53 nygard Exp $");
 {
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kContinentNameKey]) {
-            continentName = [[aDecoder decodeObjectForKey:kContinentNameKey] copy];
-            countries = [[aDecoder decodeObjectForKey:kCountriesKey] copy];
+            continentName = [[aDecoder decodeObjectOfClass:[NSString class] forKey:kContinentNameKey] copy];
+            countries = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSSet class], [RKCountry class], nil] forKey:kCountriesKey] copy];
             continentBonus = [aDecoder decodeIntForKey:kContinentBonusKey];
         } else {
             continentName = [[aDecoder decodeObject] copy];

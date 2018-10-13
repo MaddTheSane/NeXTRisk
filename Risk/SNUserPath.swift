@@ -33,7 +33,7 @@ private let SNUserPathOperation_VERSION = 1
 		_=UserPath.__doSomethingOnce
 	}
 	
-	/// An `SNUserPathOperation` represents an user path operator and its
+	/// An `SNUserPathOperation` represents a user path operator and its
 	/// operands so that is can be stored in an array.
 	///
 	/// Please migrate over to `NSBezierPath`s instead!
