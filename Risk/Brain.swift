@@ -8,6 +8,8 @@
 
 import Cocoa
 import RiskKit.RiskGameManager
+import RiskKit.Swift
+import RiskKit.RiskWorld
 
 @NSApplicationMain
 class Brain: NSObject, NSApplicationDelegate {

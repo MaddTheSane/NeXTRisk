@@ -8,8 +8,6 @@
 #import "CountryShape.h"
 #import "NewGameController.h"
 #import "PreferenceController.h"
-#import <RiskKit/RiskWorld.h>
 #import <RiskKit/RiskGameManager.h>
 #import "Version.h"
 #import "Brain.h"
-#import "NSCoder+SNUnarchiveHelpers.h"

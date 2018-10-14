@@ -23,13 +23,13 @@ private let SNUserPathOperation_VERSION = 1
 /// able to support them.
 ///
 /// Superceded *completely* by `NSBezierPath`! Use that instead!
-@objc(SNUserPath) final class UserPath: NSObject, NSCoding {
+@objc(SNUserPath) public final class UserPath: NSObject, NSCoding {
 	private static var __doSomethingOnce: () = {
 		UserPath.setVersion(SNUserPath_VERSION)
 		Operation.setVersion(SNUserPathOperation_VERSION)
 	}()
 	
-	@objc class func setUpVersions() {
+	@objc public class func setUpVersions() {
 		_=UserPath.__doSomethingOnce
 	}
 	
@@ -165,11 +165,11 @@ private let SNUserPathOperation_VERSION = 1
 		super.init()
 	}
 	
-	func encode(with aCoder: NSCoder) {
+	public func encode(with aCoder: NSCoder) {
 		aCoder.encode(operations)
 	}
 	
-	init?(coder aDecoder: NSCoder) {
+	public init?(coder aDecoder: NSCoder) {
 		guard let tmpOps2 = aDecoder.decodeObject(),
 			let tmpOps = tmpOps2 as? [Operation] else {
 				return nil
@@ -178,7 +178,7 @@ private let SNUserPathOperation_VERSION = 1
 		super.init()
 	}
 	
-	@objc func toBezierPath() -> NSBezierPath {
+	@objc public func toBezierPath() -> NSBezierPath {
 		let path = NSBezierPath()
 		for op in operations {
 			op.applyToBezierPath(path)
@@ -186,7 +186,7 @@ private let SNUserPathOperation_VERSION = 1
 		return path
 	}
 	
-	override var description: String {
+	public override var description: String {
 		return operations.description
 	}
 }
