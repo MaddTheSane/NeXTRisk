@@ -445,6 +445,9 @@
 		5510980E1CC5637200DE6DFE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55377F071CC15C2300A2C08E /* CountryShape.h */,
+				55377F081CC15C2300A2C08E /* CountryShape.m */,
+				553780F91CC1B53D00A2C08E /* Migration purposes */,
 				553780A81CC1966300A2C08E /* RiskKit.h */,
 				55377EC11CC15C2300A2C08E /* RKArmyPlacementValidator.h */,
 				55377EC21CC15C2300A2C08E /* RKArmyPlacementValidator.m */,
@@ -549,7 +552,6 @@
 			children = (
 				551251EC1CC2D0E1000E7A52 /* Additional Sources */,
 				553781031CC21B3F00A2C08E /* Classes */,
-				553780F91CC1B53D00A2C08E /* Migration purposes */,
 				5537809A1CC188A100A2C08E /* Interfaces */,
 				55377FF21CC15D8500A2C08E /* Resources */,
 			);
@@ -690,8 +692,6 @@
 				55377EC41CC15C2300A2C08E /* ArmyView.m */,
 				55377EC81CC15C2300A2C08E /* Brain.h */,
 				55AC2A531D1089C50021814F /* Brain.swift */,
-				55377F071CC15C2300A2C08E /* CountryShape.h */,
-				55377F081CC15C2300A2C08E /* CountryShape.m */,
 				55377F421CC15C2300A2C08E /* Human.h */,
 				55377F431CC15C2300A2C08E /* Human.m */,
 				55377F461CC15C2300A2C08E /* LineView.h */,
