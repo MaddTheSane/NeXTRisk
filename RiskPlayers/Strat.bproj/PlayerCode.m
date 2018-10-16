@@ -17,27 +17,25 @@
 
 @implementation Strat
 
-+ initialize
++ (void)initialize
 // set the version number
 {
-	if (self = [Strat class])  {
+	if (self == [Strat class])  {
 		[self setVersion:1];
 	}
-	return self;
 }
 
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 // initialize my instance vars
 {
-	id countries;
+	NSArray *countries;
 	int i, j, countryNum;
-	id theCountry, otherCountries;
+    RKCountry *theCountry;
+    id otherCountries;
 	int k, exits, forneighbors, contneighbors;
 	
 	// always call the super
-	[super initPlayerNum:pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager];
+	self = [super initWithPlayerName:aName number:number gameManager:aManager];
 	
 	// Loop through each continent, setting up various instance vars.
 	for (i = 0; i < 6; i++)  {
@@ -48,13 +46,12 @@
 		// Also init country conquered array.
 		countries = [self countriesInContinent:i];
 		for (j = 0; j < [countries count]; j++) {
-			countryNum = [[countries objectAt:j] idNum];
+			countryNum = [[countries objectAtIndex:j] idNum];
 			if (countryNum >= MINCOUNTRY && countryNum <= MAXCOUNTRY) {
 				countryContinents[countryNum] = i;
 				turnCountryConquered[countryNum] = 0;
 			}
 		}
-		[countries free];
 	}
 
 	// For each continent, find the number of countries on it that
@@ -63,19 +60,19 @@
 	// border it in total (non-unique; a country on continent B that
 	// borders two countries on continent A counts twice as a neighbor
 	// of continent A).
-	continentFudge[NORTH_AMERICA] = initContinentFudge[NORTH_AMERICA] = 50;
-	continentFudge[SOUTH_AMERICA] = initContinentFudge[SOUTH_AMERICA] = 50;
-	continentFudge[EUROPE] = initContinentFudge[EUROPE] = 25;
-	continentFudge[AFRICA] = initContinentFudge[AFRICA] = 25;
-	continentFudge[ASIA] = initContinentFudge[ASIA] = -50;
-	continentFudge[AUSTRALIA] = initContinentFudge[AUSTRALIA] = 50;
+	continentFudge[RiskContinentNorthAmerica] = initContinentFudge[RiskContinentNorthAmerica] = 50;
+	continentFudge[RiskContinentSouthAmerica] = initContinentFudge[RiskContinentSouthAmerica] = 50;
+	continentFudge[RiskContinentEurope] = initContinentFudge[RiskContinentEurope] = 25;
+	continentFudge[RiskContinentAfrica] = initContinentFudge[RiskContinentAfrica] = 25;
+	continentFudge[RiskContinentAsia] = initContinentFudge[RiskContinentAsia] = -50;
+	continentFudge[RiskContinentAustralia] = initContinentFudge[RiskContinentAustralia] = 50;
 	for (i = 0; i < 6; i++)  {
-		initContinentFudge[i] += [rng randMax:30] - 15;
+		initContinentFudge[i] += [rng randomNumberWithMaximum:30] - 15;
 		continentExits[i] = continentNeighbors[i] = contneighbors = 0;
-		countries = [self countriesInContinent:i];
+		countries = [gameManager countriesInContinent:i];
 		for (j = 0; j < [countries count]; j++) {
 			forneighbors = exits = 0;
-			theCountry = [countries objectAt:j];
+			theCountry = [countries objectAtIndex:j];
 			countryNum = [theCountry idNum];
 			countryNeighbors[countryNum] = 0;
 			otherCountries = [self neighborsTo:theCountry];
@@ -91,10 +88,8 @@
 			countryForeignNeighbors[countryNum] = forneighbors;
 			if (exits)
 				continentExits[i]++;
-			[otherCountries free];
 		}
 		continentNeighbors[i] = contneighbors;
-		[countries free];
 	}
 #if 0
 	continentExits[NORTH_AMERICA] = 3;
@@ -118,13 +113,13 @@
 
 	// Attack all out all the time?
 	banzaiMode = NO;
-	if ([rng randMax:99] >= 85)
+	if ([rng randomNumberWithMaximum:99] >= 85)
 		banzaiMode = YES;
 
 	// Limit our attack to a lesser number of fronts depending on
 	// various conditions?
 	limitMode = NO;
-	if ([rng randMax:99] >= 75)
+	if ([rng randomNumberWithMaximum:99] >= 75)
 		limitMode = YES;
 
 	return self;
@@ -132,12 +127,12 @@
 
 // *****************subclass responsibilities*********************
 
-- yourChooseCountry
+- (void)chooseCountry
 // A chaotic player seeks to wreak havoc (in a very limited way) on the
 // rest of the players.  Toward this end he tries to choose at least one
 // country in each continent.  After that he chooses random countries.
 {
-	id temp, country=nil;
+	RKCountry *temp, *country=nil;
 	int cont=0;
 
 #if 0
@@ -203,20 +198,19 @@
 			numfr = 0;
 			score = 0;
 			for (i = cc - 1; i >= 0; i--) {
-				temp = [countries objectAt:i];
-				if ([temp player] == -1)
+				temp = [countries objectAtIndex:i];
+				if ([temp playerNumber] == -1)
 					score += 5;
 				else {
-					if ([temp player] == myPlayerNum)
+					if ([temp playerNumber] == self.playerNumber)
 						numfr++;
-					[countries removeObjectAt:i];
+					[countries removeObjectAtIndex:i];
 				}
 			}
 			if ([countries count] == 0)	// None unoccupied.
 				score = -1000;
 			else
 				score += (double)numfr / (double)cc * 500;
-			[countries free];
 
 			// Ignore the continent?
 			if (score == -1000)
@@ -239,7 +233,7 @@
 			// If it equals a previous score, maybe pick it.
 			if (score > bestContScore ||
 					(score == bestContScore &&
-					[rng randMax:99] < 50)) {
+					[rng randomNumberWithMaximum:99] < 50)) {
 				bestCont = cont;
 				bestContScore = score;
 			}
@@ -251,12 +245,12 @@
 		// neighbors, semi-randomly choose one of them.
 		countries = [self countriesInContinent:bestCont];
 		for (i = 0; i < [countries count]; i++) {
-			temp = [countries objectAt:i];
-			if ([temp player] == -1 &&
+			temp = [countries objectAtIndex:i];
+			if ([temp playerNumber] == -1 &&
 					(countryNeighbors[[temp idNum]] > bestCountryScore ||
 					(countryNeighbors[[temp idNum]] == bestCountryScore &&
-					[rng randMax:99] < 50))) {
-				country = [countries objectAt:i];
+					[rng randomNumberWithMaximum:99] < 50))) {
+				country = [countries objectAtIndex:i];
 				bestCountryScore = countryNeighbors[[country idNum]];
 			}
 		}
@@ -271,13 +265,11 @@
 //					"yourChooseCountry chose a country at random."];
 	
 	// now occupy the country we've chosen
-	[self occupyCountry:country];
+	[gameManager player:self choseCountry:country];
 	numCountriesLastTurn++;		// We have another country.
-
-	return self;
 }
 
-- yourInitialPlaceArmies:(int)numArmies
+- (void)placeInitialArmies:(RKArmyCount)count
 // Place all armies in countries with placeArmies:.
 {
 	[self placeArmies:numArmies];
@@ -286,7 +278,6 @@
 //	[self setNotes:"yourInitialPlaceArmies: ran.  "
 //					"yourInitialPlaceArmies placed all armies into "
 //					"non land locked countries."];
-	return self;
 }
 
 // Take a country list and return a list sorted by armies.  Does not
@@ -739,7 +730,7 @@
 			// it has enemy neighbors, so keep it in the list, but free en.
 			[en free];
 		}  else  {
-			[l removeObjectAt:i];
+			[l removeObjectAtIndex:i];
 		}
 	}
 	
@@ -769,9 +760,9 @@
 //						"the best possible set of cards."];
 		
 		// play the set.
+        [gameManager turnInCardSet:cardSet forPlayerNumber:self.playerNumber];
 		temp = [self playCards:cardSet];
 		// free the list we asked for
-		[cardSet free];
 		// if playCards returned -1 there was a problem
 		if (temp == -1)  {
 			// should never happen

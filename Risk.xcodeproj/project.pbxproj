@@ -104,6 +104,11 @@
 		554843C21EA1FE3500EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
 		554843C31EA1FE3600EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
 		554843C41EA1FE3A00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
+		554AECF42175B347005F7847 /* Strat.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 554AECE82175B220005F7847 /* Strat.tiff */; };
+		554AECF52175B350005F7847 /* Strat.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 554AECDB2175B220005F7847 /* Strat.rtf */; };
+		554AECF72175B359005F7847 /* country-list in Resources */ = {isa = PBXBuildFile; fileRef = 554AECE62175B220005F7847 /* country-list */; };
+		554AECF82175B369005F7847 /* PlayerCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 554AECDF2175B220005F7847 /* PlayerCode.m */; };
+		554AECFB2175B379005F7847 /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
 		5550D22D2173242C004F2059 /* CountryShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F081CC15C2300A2C08E /* CountryShape.m */; };
 		5550D22E21732433004F2059 /* CountryShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F071CC15C2300A2C08E /* CountryShape.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5550D22F2173243C004F2059 /* SNUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC31D1138E3001980F2 /* SNUserPath.swift */; };
@@ -189,6 +194,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 553780CD1CC1990A00A2C08E;
 			remoteInfo = ChaoticSwift;
+		};
+		554AECF92175B372005F7847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55377EA11CC15AC900A2C08E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 553780A51CC1966300A2C08E;
+			remoteInfo = RiskKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -348,22 +360,16 @@
 		554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		554843BA1EA1FE1400EC5D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		554843BD1EA1FE1A00EC5D3E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		554AECDA2175B220005F7847 /* .dir3_0.wmd */ = {isa = PBXFileReference; lastKnownFileType = text; path = .dir3_0.wmd; sourceTree = "<group>"; };
 		554AECDB2175B220005F7847 /* Strat.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Strat.rtf; sourceTree = "<group>"; };
 		554AECDC2175B220005F7847 /* SortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedList.h; sourceTree = "<group>"; };
-		554AECDD2175B220005F7847 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
-		554AECDE2175B220005F7847 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		554AECDF2175B220005F7847 /* PlayerCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerCode.m; sourceTree = "<group>"; };
-		554AECE02175B220005F7847 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
-		554AECE12175B220005F7847 /* ComputerPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComputerPlayer.h; sourceTree = "<group>"; };
-		554AECE22175B220005F7847 /* Diagnostic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
 		554AECE32175B220005F7847 /* SortedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedList.m; sourceTree = "<group>"; };
 		554AECE42175B220005F7847 /* SortedList.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = SortedList.rtf; sourceTree = "<group>"; };
-		554AECE52175B220005F7847 /* .dir.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = .dir.tiff; sourceTree = "<group>"; };
 		554AECE62175B220005F7847 /* country-list */ = {isa = PBXFileReference; lastKnownFileType = text; path = "country-list"; sourceTree = "<group>"; };
-		554AECE72175B220005F7847 /* Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
 		554AECE82175B220005F7847 /* Strat.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Strat.tiff; sourceTree = "<group>"; };
 		554AECE92175B220005F7847 /* PlayerCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerCode.h; sourceTree = "<group>"; };
+		554AECEE2175B313005F7847 /* Strat.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Strat.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
+		554AECF02175B313005F7847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		555C3F80210101DB00DC0019 /* RKWorldDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKWorldDecoder.h; sourceTree = "<group>"; };
 		555C3F81210101DB00DC0019 /* RKWorldDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKWorldDecoder.m; sourceTree = "<group>"; };
 		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -443,6 +449,14 @@
 			files = (
 				55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */,
 				554843C31EA1FE3600EC5D3E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554AECEB2175B313005F7847 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554AECFB2175B379005F7847 /* RiskKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +573,7 @@
 				553780A61CC1966300A2C08E /* RiskKit.framework */,
 				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
 				551098161CC56F0F00DE6DFE /* Risk World Maker.app */,
+				554AECEE2175B313005F7847 /* Strat.riskplayer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -736,25 +751,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		554AECD92175B220005F7847 /* Strat.bproj */ = {
+		554AECD92175B220005F7847 /* Strat */ = {
 			isa = PBXGroup;
 			children = (
-				554AECDA2175B220005F7847 /* .dir3_0.wmd */,
-				554AECDB2175B220005F7847 /* Strat.rtf */,
-				554AECDC2175B220005F7847 /* SortedList.h */,
-				554AECDD2175B220005F7847 /* Card.h */,
-				554AECDE2175B220005F7847 /* Makefile */,
+				554AECE62175B220005F7847 /* country-list */,
+				554AECE92175B220005F7847 /* PlayerCode.h */,
 				554AECDF2175B220005F7847 /* PlayerCode.m */,
-				554AECE02175B220005F7847 /* Country.h */,
-				554AECE12175B220005F7847 /* ComputerPlayer.h */,
-				554AECE22175B220005F7847 /* Diagnostic.h */,
+				554AECDC2175B220005F7847 /* SortedList.h */,
 				554AECE32175B220005F7847 /* SortedList.m */,
 				554AECE42175B220005F7847 /* SortedList.rtf */,
-				554AECE52175B220005F7847 /* .dir.tiff */,
-				554AECE62175B220005F7847 /* country-list */,
-				554AECE72175B220005F7847 /* Random.h */,
+				554AECDB2175B220005F7847 /* Strat.rtf */,
 				554AECE82175B220005F7847 /* Strat.tiff */,
-				554AECE92175B220005F7847 /* PlayerCode.h */,
+				554AECF02175B313005F7847 /* Info.plist */,
 			);
 			name = Strat;
 			path = RiskPlayers/Strat.bproj;
@@ -763,7 +771,7 @@
 		556A65EA1CFF5766005BA899 /* AIs */ = {
 			isa = PBXGroup;
 			children = (
-				554AECD92175B220005F7847 /* Strat.bproj */,
+				554AECD92175B220005F7847 /* Strat */,
 				5537806C1CC1639C00A2C08E /* Aimless */,
 				553780901CC1645000A2C08E /* Chaotic */,
 				553780CF1CC1990A00A2C08E /* ChaoticSwift */,
@@ -937,6 +945,24 @@
 			productReference = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */;
 			productType = "com.apple.product-type.bundle";
 		};
+		554AECED2175B313005F7847 /* Strat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554AECF12175B313005F7847 /* Build configuration list for PBXNativeTarget "Strat" */;
+			buildPhases = (
+				554AECEA2175B313005F7847 /* Sources */,
+				554AECEB2175B313005F7847 /* Frameworks */,
+				554AECEC2175B313005F7847 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				554AECFA2175B372005F7847 /* PBXTargetDependency */,
+			);
+			name = Strat;
+			productName = Strat;
+			productReference = 554AECEE2175B313005F7847 /* Strat.riskplayer */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -970,6 +996,10 @@
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 1000;
 					};
+					554AECED2175B313005F7847 = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */;
@@ -989,6 +1019,7 @@
 				55377FF81CC15E1700A2C08E /* RiskUtil */,
 				5537806A1CC1639C00A2C08E /* Aimless */,
 				553780811CC1642900A2C08E /* Chaotic */,
+				554AECED2175B313005F7847 /* Strat */,
 				553780A51CC1966300A2C08E /* RiskKit */,
 				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
 				551098151CC56F0F00DE6DFE /* Risk World Maker */,
@@ -1078,6 +1109,16 @@
 				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
 				55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
 				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		554AECEC2175B313005F7847 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554AECF72175B359005F7847 /* country-list in Resources */,
+				554AECF42175B347005F7847 /* Strat.tiff in Resources */,
+				554AECF52175B350005F7847 /* Strat.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,6 +1217,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		554AECEA2175B313005F7847 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554AECF82175B369005F7847 /* PlayerCode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1223,6 +1272,11 @@
 			isa = PBXTargetDependency;
 			target = 553780CD1CC1990A00A2C08E /* ChaoticSwift */;
 			targetProxy = 553780F61CC1AC7700A2C08E /* PBXContainerItemProxy */;
+		};
+		554AECFA2175B372005F7847 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 553780A51CC1966300A2C08E /* RiskKit */;
+			targetProxy = 554AECF92175B372005F7847 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1677,6 +1731,49 @@
 			};
 			name = Release;
 		};
+		554AECF22175B313005F7847 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RiskPlayers/Strat.bproj/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.Strat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Debug;
+		};
+		554AECF32175B313005F7847 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RiskPlayers/Strat.bproj/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.Strat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = riskplayer;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1748,6 +1845,15 @@
 			buildConfigurations = (
 				553780D21CC1990A00A2C08E /* Debug */,
 				553780D31CC1990A00A2C08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		554AECF12175B313005F7847 /* Build configuration list for PBXNativeTarget "Strat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554AECF22175B313005F7847 /* Debug */,
+				554AECF32175B313005F7847 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

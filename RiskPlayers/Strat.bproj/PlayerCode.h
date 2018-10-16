@@ -8,13 +8,13 @@
 // available with the Computer Player object.  It also shows several examples
 // of other neat stuff.  Pay attention to when I free lists!
 
-#import "ComputerPlayer.h"
+#import <RiskKit/RiskKit.h>
 //#import "Diagnostic.h"
 
 #define MINCOUNTRY 0
 #define MAXCOUNTRY 41
 
-@interface Strat:ComputerPlayer
+@interface Strat:RiskPlayer
 //@interface Strat:Diagnostic
 {
 	// I use this new instance variable to try to occupy one country
@@ -73,11 +73,10 @@
 }
 
 // it's a good idea to have this method if only to set the class' version
-+ initialize;
++ (void)initialize;
 
 // I want to initialize my instance variables.
-- initPlayerNum:(int)pnum mover:mover gameSetup:gamesetup mapView:mapview
-				cardManager:cardmanager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 
 // *****************subclass responsibilities*********************
 
