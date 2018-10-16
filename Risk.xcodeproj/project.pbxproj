@@ -348,6 +348,22 @@
 		554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		554843BA1EA1FE1400EC5D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		554843BD1EA1FE1A00EC5D3E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		554AECDA2175B220005F7847 /* .dir3_0.wmd */ = {isa = PBXFileReference; lastKnownFileType = text; path = .dir3_0.wmd; sourceTree = "<group>"; };
+		554AECDB2175B220005F7847 /* Strat.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Strat.rtf; sourceTree = "<group>"; };
+		554AECDC2175B220005F7847 /* SortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedList.h; sourceTree = "<group>"; };
+		554AECDD2175B220005F7847 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		554AECDE2175B220005F7847 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		554AECDF2175B220005F7847 /* PlayerCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerCode.m; sourceTree = "<group>"; };
+		554AECE02175B220005F7847 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		554AECE12175B220005F7847 /* ComputerPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComputerPlayer.h; sourceTree = "<group>"; };
+		554AECE22175B220005F7847 /* Diagnostic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
+		554AECE32175B220005F7847 /* SortedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedList.m; sourceTree = "<group>"; };
+		554AECE42175B220005F7847 /* SortedList.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = SortedList.rtf; sourceTree = "<group>"; };
+		554AECE52175B220005F7847 /* .dir.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = .dir.tiff; sourceTree = "<group>"; };
+		554AECE62175B220005F7847 /* country-list */ = {isa = PBXFileReference; lastKnownFileType = text; path = "country-list"; sourceTree = "<group>"; };
+		554AECE72175B220005F7847 /* Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
+		554AECE82175B220005F7847 /* Strat.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Strat.tiff; sourceTree = "<group>"; };
+		554AECE92175B220005F7847 /* PlayerCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerCode.h; sourceTree = "<group>"; };
 		555C3F80210101DB00DC0019 /* RKWorldDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKWorldDecoder.h; sourceTree = "<group>"; };
 		555C3F81210101DB00DC0019 /* RKWorldDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKWorldDecoder.m; sourceTree = "<group>"; };
 		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -720,9 +736,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		554AECD92175B220005F7847 /* Strat.bproj */ = {
+			isa = PBXGroup;
+			children = (
+				554AECDA2175B220005F7847 /* .dir3_0.wmd */,
+				554AECDB2175B220005F7847 /* Strat.rtf */,
+				554AECDC2175B220005F7847 /* SortedList.h */,
+				554AECDD2175B220005F7847 /* Card.h */,
+				554AECDE2175B220005F7847 /* Makefile */,
+				554AECDF2175B220005F7847 /* PlayerCode.m */,
+				554AECE02175B220005F7847 /* Country.h */,
+				554AECE12175B220005F7847 /* ComputerPlayer.h */,
+				554AECE22175B220005F7847 /* Diagnostic.h */,
+				554AECE32175B220005F7847 /* SortedList.m */,
+				554AECE42175B220005F7847 /* SortedList.rtf */,
+				554AECE52175B220005F7847 /* .dir.tiff */,
+				554AECE62175B220005F7847 /* country-list */,
+				554AECE72175B220005F7847 /* Random.h */,
+				554AECE82175B220005F7847 /* Strat.tiff */,
+				554AECE92175B220005F7847 /* PlayerCode.h */,
+			);
+			name = Strat;
+			path = RiskPlayers/Strat.bproj;
+			sourceTree = "<group>";
+		};
 		556A65EA1CFF5766005BA899 /* AIs */ = {
 			isa = PBXGroup;
 			children = (
+				554AECD92175B220005F7847 /* Strat.bproj */,
 				5537806C1CC1639C00A2C08E /* Aimless */,
 				553780901CC1645000A2C08E /* Chaotic */,
 				553780CF1CC1990A00A2C08E /* ChaoticSwift */,

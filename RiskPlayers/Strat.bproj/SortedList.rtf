@@ -1,0 +1,559 @@
+{\rtf0\ansi{\fonttbl\f0\fnil Times-Roman;\f1\fmodern Courier;\f2\ftech Symbol;}
+\paperw15540
+\paperh12760
+\margl140
+\margr120
+{\colortbl\red0\green0\blue0;}
+\f0\b\i0\ul0\ql\fs36\fi0\li1100\gray0\up0\dn0 SortedList
+\f1\b0\fs24 \
+\
+
+\pard\tx7140\f0\fs28\li2100 INHERITS FROM	List\
+DECLARED IN	SortedList.h\
+\
+CLASS DESCRIPTION\
+\
+
+\pard\tx3120\tx3620\tx4120\li2620 A SortedList is like a List, but its contents are always kept in sorted order.  Objects can be added to the SortedList only through an addObject: method; direct insertion of objects into a specific slot is not allowed, since this would not assure that the list would always remain in the correct order.\
+\
+The SortedList can use a variety of 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 criteria
+\pard\tx3120\tx3620\tx4120\li2620  by which it is to be kept in order.  Several have been predefined, and you can define other, more complex methods for comparing the relative values of objects.  \
+\
+The SortedList is told of an accessor method.  The SortedList will use that accessor method's return value to compare the relative values of objects and keep the data structure sorted.  All objects placed in the list should respond to the accessor method.\
+\
+If the objects placed in the SortedList have only a simple key, such as a single integer, floating point, or double precision numeric value, or an NXAtom string value, and the objects have a defined method for returning the value of the key, no redefinition or subclassing of the objects placed in the SortedList is necessary.  More complex key values that include several several scalar quantities may require that the objects included in the list be subclassed so that a method capable of comparing the relative values of two objects is present.\
+\
+
+\pard\tx960\tx1920\tx2880\tx3840\tx4800\tx5760\tx6720\tx7680\tx8640\tx9600\li2600 For example, assume that we want to store objects in the SortedList by the value of a double precision instance variable in the object, arrivalTime.  The method -(double)
+\b getArrivalTime 
+\b0 returns the value of the instance variable.   We could allocate and initialize a new list to hold the objects in sorted order through the following:\
+\
+
+\f1 objectList = [[SortedList alloc] initCount:2];\
+[objectList setSortOrder:ASCENDING];\
+[objectList setKeyDataType:DOUBLE];\
+[objectList setKeyMethod:@selector(getArrivalTime)];\
+\
+[objectList addObject:foo];\
+\
+
+\f0 All objects added to the SortedList will be kept in ascending order by the value of the double precision variable returned by 
+\b -getArrivalTime
+\b0 .\
+\
+If a more complex key is required to compare the object's relative values the objects should be able to compare themselves.  For example, it might be desirable to sort the objects in the list by a structure with several fields.  If this is the case, the objects placed in the SortedList should define a method that takes a single argument of 
+\i id
+\i0 , incorporates all the necessary logic involved in the 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 comparison
+\pard\tx960\tx1920\tx2880\tx3840\tx4800\tx5760\tx6720\tx7680\tx8640\tx9600\li2600 , and that returns an integer greater than, equal to, or less than zero, if the receiver is greater than, less than, or equal to the argument, respectively.  \
+\
+Suppose we need to sort an object of class Household by address, a complex structure that includes  ZIP code, street name, and house address.  The Household object might implement a method called 
+\b -addressComparedTo:
+\b0\i anotherHousehold
+\i0 .  This would compare the address of the 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 receiving
+\pard\tx960\tx1920\tx2880\tx3840\tx4800\tx5760\tx6720\tx7680\tx8640\tx9600\li2600  object to that of the object passed as the argument, and return an integer greater than zero if the receiving object has an address "greater" than 
+\i anotherHousehold
+\i0 , an integer less than zero if the address is "less" than 
+\i anotherHousehold,
+\i0  or zero if the two are equal.  The SortedList would be used in much the same way as it would be if the 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 comparison
+\pard\tx960\tx1920\tx2880\tx3840\tx4800\tx5760\tx6720\tx7680\tx8640\tx9600\li2600  operator were a simple scalar:\
+\
+
+\f1 objectList = [[SortedList alloc] initCount:2];\
+[objectList setSortOrder:ASCENDING];\
+[objectList setKeyDataType:OTHER];\
+[objectList setKeyMethod:@selector(addressComparedTo:)];\
+\
+[objectList addObject:foo];\
+
+\f0 \
+The only difference is that the objects in the list must be able to compare themselves, while objects sorted by simple scalar types need only specifiy a method to access the instance variable.\
+
+\f1 \
+
+\pard\tx3120\tx3620\tx4120\f0\li2620 \
+
+\pard\tx7140\li2100 INSTANCE VARIABLES\
+\
+
+\pard\tx7140\tx10180\tx10680\i\fi-4540\li7140\fc0  inherited from Object
+\i0 	Class	isa;\
+\
+
+\i Inherited from List
+\i0 	id	*dataPtr;\
+	unsigned int	numElements;\
+	unsigned int	maxElements;\
+	\
+
+\i Declared in SortedList
+\i0 	int	sortOrder;\
+	BOOL	caseSensitive;\
+	SEL	keyMethod;\
+	int	keyDataType;\
+	\
+sortOrder	Ascending or descending sort order.\
+\
+caseSensitive	Whether capitialization matters when comparing strings.\
+\
+keyMethod	The key value accessor method.\
+\
+keyDataType	Type of data returned by the accessor method.\
+\
+
+\pard\tx7140\li2100 METHOD TYPES\
+\
+
+\pard\tx7140\tx10180\tx10680\fi-4540\li7140 Initializing the class	+initialize\
+\
+Initializing a new SortedList object	-initCount:\
+\
+copying and freeing a SortedList	-copy\
+	-copyFromZone\
+	\
+Comparing SortedLists	-(BOOL)isEqual\
+	\
+Manipulating objects	-addObject:\
+	-addObjectIfAbsent:\
+	\
+Sorting criteria	-setSortOrder:\
+	-(int)sortOrder\
+	-setCaseSensitive:\
+	-(BOOL)caseSensitive\
+	-setKeyMethod:\
+	-(SEL)keyMethod\
+	-setKeyDataType:\
+	-(int)keyDataType\
+	\
+Comparing objects	-(int)compare:to:\
+	\
+Sorting a list	-insertionSort;\
+\
+Debugging	-printKeyValues;\
+	\
+Cause run-time error	-insertObject:at:\
+	-replaceObjectAt:with:\
+	-replaceObject:with:\
+	\
+Archiving methods	-read:\
+	-write:\
+
+\pard\tx7140\li2100 \
+CLASS METHODS\
+\
+
+\b initialize\
+
+\pard\fi-1020\li3620 +initialize
+\b0 \
+\
+
+\fi20\li2580 Sets the class version number.  Updated classes with more or different instance variables should change this version number so that the read: method can correctly handle new older data structures.\
+\
+
+\pard\tx7140\li2100 INSTANCE METHODS\
+\
+
+\b addObject:\
+
+\pard\fi-1020\li3620 -addObject:
+\b0\i anObject
+\i0 \
+\
+
+\fi0\li2600 Inserts 
+\i anObject
+\i0  in the SortedList in sorted order.  Returns 
+\b self
+\b0 .  If the object does not respond to the selector 
+\b keyMethod 
+\b0 the object will not be inserted and
+ a run-time error will be reported.\
+
+\fi-1020\li3620 \
+See also:
+\b  -addObjectIfAbsent:
+\b0 \
+	\
+
+\pard\tx7140\b\li2100 addObjectIfAbsent:\
+
+\pard\f2\b0\fi-1020\li3620 - 
+\f0\b addObjectIfAbsent:
+\b0\i anObject\
+
+\i0 \
+
+\pard\tx3120\tx3620\tx4120\li2620 Inserts 
+\i anObject
+\i0  in the SortedList and returns 
+\b self
+\b0 , provided that 
+\i anObject
+\i0  isn't already in the SortedList.  If 
+\i anObject
+\i0  is in the SortedList, it won't be inserted, but 
+\b self
+\b0  is still returned.\
+
+\pard\fi-1020\li3620 	\
+
+\pard\tx7140\b\li2100 caseSensitive
+\b0 \
+
+\pard\fi-1020\li3620 		-(BOOL)
+\b caseSensitive
+\b0 \
+		\
+
+\fi0\li2600 Returns the status of the 
+\i caseSensitive
+\i0  variable.  If this variable is set to YES, 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 comparisons
+\pard\li2600  of NXAtom strings will be case sensitive.  If the value is NO, 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 capitalization
+\pard\li2600  will not be considered when sorting strings.  This variable only affects the SortedList when the data type is ATOM; it will have no effect if NXAtoms are not the key value type. \
+		\
+		see also: 
+\b -setCaseSensitive:\
+		\
+
+\pard\tx7140\li2100 compare:to:\
+
+\pard\fi-1020\li3620 		
+\b0 -(int)
+\b compare:
+\b0\i thisObject
+\b\i0  to:
+\b0\i thatObject
+\b\i0 \
+		\
+
+\b0\fi0\li2600 Compares the key values of  the two objects, and returns an integer greater than zero if 
+\i thisObject
+\i0  is larger than 
+\i thatObject
+\i0  in the sort order.  If the data type is one of the four predefined data types–INT, ATOM, DOUBLE, or FLOAT–the method uses the accessor method saved in keyMethod to query the objects and compare their relative values.  If the key data type is defined to be OTHER, it is assumed that the key accessor method is capable of taking a single argument of 
+\i id
+\i0  and that the objects in the list are capable of comparing their own relative values.  In effect,
+\i  thisObject
+\i0  will be sent the accessor method with an argument of 
+\i thatObject
+\i0 ; the accessor method should return a value greater, less than, or equal to zero, depending on how their (perhaps complex) keys fall in the user-defined sort order.\
+\
+The default sort order is ASCENDING.  If this is set to DESCENDING, the compare:to: method will return a value less than zero if the 
+\i thisObject
+\i0  is larger than 
+\i thatObject
+\i0 .\
+\
+See also: 
+\b setKeyMethod:, setSortOrder:
+\b0 \
+
+\b \
+
+\pard\tx7140\li2100 copy\
+
+\pard\f2\b0\fi-1020\li3620 - 
+\f0\b copy\
+
+\fs16 \
+
+\pard\tx3120\tx3620\tx4120\b0\fs28\li2620 Returns a new List object with the same contents as the receiver.  The objects in the List aren't copied; therefore, both Lists contain pointers to the same set of objects.  Memory for the new List is allocated from the same zone as the receiver.  All the instance variables (sortOrder, keyMethod, etc) are replicated as well.\
+
+\fs16 \
+
+\fs28 See also:  
+\f2 - 
+\f0\b copyFromZone:\
+
+\fs16 \
+
+\pard\tx7140\li2100 \
+
+\fs28 copyFromZone:\
+
+\pard\f2\b0\fi-1020\li3620 - 
+\f0\b copyFromZone:
+\b0 (NXZone *)
+\i zone\
+
+\fs16 \
+
+\pard\tx3120\tx3620\tx4120\i0\fs28\li2620 Returns a new List object, allocated from 
+\i zone
+\i0 , with the same contents as the receiver.  The objects in the List aren't copied; therefore, both Lists contain pointers to the same set of objects.  The instance variables of the new SortedList (sortOrder, keyMethod, etc) are the same as those of the old list.\
+
+\fs16 \
+
+\fs28 See also:  
+\f2 - 
+\f0\b copy\
+\
+
+\pard\tx7140\li2100 initCount:\
+
+\pard\f2\b0\fi-1020\li3620 - 
+\f0\b initCount:
+\b0 (unsigned int)
+\i numSlots\
+
+\fs16 \
+
+\pard\tx3120\tx3620\tx4120\i0\fs28\li2620 Initializes the receiver, a new SortedList object, by allocating enough memory for it to hold 
+\i numSlots
+\i0  objects.  Also initializes SortedList to be ascending, case sensitive, and have an undefined key data type.  Both the key data type and the key method should be initialized by explicit initialization calls.  Returns 
+\b self
+\b0 .\
+
+\fs16 \
+
+\fs28 This method is the designated initializer for the class.  It should be used immediately after memory for the SortedList has been allocated and before any objects have been assigned to it; it shouldn't be used to reinitialize a SortedList that's already in use.  Returns 
+\b self
+\b0 .\
+
+\fs16 \
+
+\fs28 See also:  
+\f2 - 
+\f0\b capacity\
+
+\pard\fi-1020\li3620 \
+
+\pard\tx7140\li2100 insertObject:at:\
+
+\pard\fi-1020\li3620 -insertObject:
+\b0\i anObject
+\b\i0  at:
+\b0 (unsigned int)
+\i index
+\b\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 Not implemented.  Calling this method will cause a run-time error.  Objects cannot be added to a SortedList at an arbitrary 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 position
+\pard\tx3120\tx3620\tx4120\li2620 ; instead use addObject and let the SortedList take care of what 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 position
+\pard\tx3120\tx3620\tx4120\li2620  it winds up in.\
+\
+See also: 
+\b replaceObjectAt:with:, replaceObject:with:
+\b0 \
+
+\pard\b\fi-1020\li3620 \
+
+\pard\tx7140\li2100 insertionSort\
+
+\pard\fi-1020\li3620 -insertionSort\
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 Sorts the contents of the SortedList.  This can be useful if the 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 accessor
+\pard\tx3120\tx3620\tx4120\li2620  method changes during program execution, leaving the contents of the SortedList in a disordered state according to the new key values.  It should not be called for routine object additions; those will be added in the correct position.    This is not an exceptionally speedy implementation of a sort 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 routine
+\pard\tx3120\tx3620\tx4120\li2620  (nor is this entire class optimized for speed).  Returns 
+\b self
+\b0 .\
+\
+
+\pard\tx7140\b\li2100 keyDataType
+\b0 \
+
+\pard\fi-1020\li3620 -(int)
+\b keyDataType
+\pard\tx3120\tx3620\tx4120\b0\li2620 \
+\
+Returns the type of the key's data.  There are four predefined types of data: INT, DOUBLE, FLOAT, and ATOM.  Any method that returns data of this type can be used to provide key values for the sorting criteria.  Complex data types should be defined as OTHER.  If this data type is specified, the objects in the list should be able to compare their relative values through a method that takes a single argument of type 
+\i id
+\i0 .\
+\
+See also: 
+\b setkeyDataType:\
+\
+
+\pard\tx7140\li2100 keyMethod\
+
+\pard\fi-1020\li3620 -
+\b0 (SEL)
+\b keyMethod\
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 Returns the key value 
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fc0 accessor
+\pard\tx3120\tx3620\tx4120\li2620  method.  This is the method that is used to retrieve the values the SortedList is ordered by.\
+\
+See also:
+\b  setkeyMethod:\
+\
+
+\pard\tx7140\li2100 printKeyValues\
+
+\pard\fi-1020\li3620 -printKeyValues\
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 Prints out the index numbers and the key values of the SortedList object.  This is really only useful for debugging, and is a code relic.  But relics are sometimes useful.  Returns 
+\b self
+\b0 .\
+
+\pard\tx7140\b\li2100 \
+read:\
+
+\pard\fi-1020\li3620 -read:
+\b0 (NXTypedStream)
+\i stream\
+\
+
+\pard\tx3120\tx3620\tx4120\i0\li2620 Unarchives the object from an NXTypedStream.\
+\
+See also: 
+\b write:\
+\
+
+\pard\tx7140\li2100 replaceObject:with:\
+
+\pard\fi-1020\li3620 replaceObject:
+\b0\i anObject
+\b\i0  with:
+\b0\i newObject
+\b\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 See the comments for 
+\b insertObject:at:
+\b0  .\
+
+\b \
+
+\pard\tx7140\li2100 replaceObjectAt:with:\
+
+\pard\fi-1020\li3620 replaceObjectAt:
+\b0 (unsigned int)
+\i index
+\b\i0  with:
+\b0\i newObject
+\b\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 See the comments for 
+\b insertObject:at:
+\b0  .\
+\
+
+\pard\tx7140\b\li2100 setCaseSensitive:\
+
+\pard\fi-1020\li3620 setCaseSensitive:
+\b0 (BOOL)
+\i isIt
+\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\li2620 If the keyDataType is ATOM, this sets the sort order to be either case sensitive or not.  It has no  effect on the SortedList if the keyDataType is not ATOM.  Returns 
+\b self.
+\b0 \
+\
+See also: 
+\b caseSensitive
+\b0 \
+
+\pard\fi-1020\li3620 \
+
+\pard\tx7140\b\li2100 setKeyDataType:
+\b0 \
+
+\pard\b\fi-1020\li3620 -setKeyDataType:
+\b0 (int)
+\i theKeyDataType
+\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\li2620 Alerts the SortedList to the type of data returned by the keyMethod.  Predefined types are the constants INT, ATOM, DOUBLE, and FLOAT.  Complex data types can be specified with the constant OTHER.  If this is the case, the objects in the SortedList must be able to respond to a message that takes a single argument of type id, and returns an integer greater than, less than, or equal to zero, depending on the relative values of the object's key data when sorted in ascending order.  Returns 
+\b self
+\b0 .\
+\
+See also: 
+\b keyDataType
+\b0 \
+\
+
+\pard\tx7140\b\li2100 setKeyMethod:\
+
+\pard\fi-1020\li3620 -setKeyMethod:
+\b0 (SEL)
+\i theMethod
+\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\li2620 Sets the accessor method for the sorting key.  The return data type  of the key should also be set with the 
+\b setKeyDataType:
+\b0  method.  The predefined data types are INT, DOUBLE, FLOAT, and ATOM.  Any method that returns a value of these types can be used to order the list.  If more complex keys are used, the objects placed in the list should have a method that takes a single id as an argument, and returns an integer greater than zero, less than zero, or zero if the receiver is greater than the argument; the data type should also be set to OTHER.\
+\
+There may already be objects in the SortedList arranged according to another accessor method; these objects might not respond to the new accessor method.  If there are one or more pre-existing objects in the SortedList that do not respond to the new key method, 
+\b setKeyMethod:
+\b0  will return 
+\b nil
+\b0 .  Otherwise, the list is completely resorted according to the new criteria, and 
+\b self
+\b0  is returned.  Since sorting requires a method to compare objects the 
+\b setKeyDataType:
+\b0  method should be called to set the new data type before this method is used. (The order of the method invocations doesn't matter if the SortedList is empty.)  Returns 
+\b self
+\b0 .\
+\
+See also:
+\b  keyMethod, setKeyDataType: keyDataType\
+\
+
+\pard\tx7140\li2100 setSortOrder:\
+
+\pard\fi-1020\li3620 -setSortOrder:
+\b0 (int)
+\i theSortOrder
+\b\i0 \
+\
+
+\pard\tx3120\tx3620\tx4120\b0\li2620 Sets the sort order, either ASCENDING or DESCENDING.  In an ASCENDING sort, objects with relatively small keys are placed first on the list.  If the sort order changes the entire SortedList is rearranged to reflect the new ordering criterion.  Returns 
+\b self
+\b0 .\
+\
+See also: 
+\b SortOrder
+\pard\b0\fi-1020\li3620 \
+
+\pard\tx7140\b\li2100 \
+write:\
+
+\pard\tx3120\tx3620\tx4120\li2620 write:
+\b0 (NXTypedStream*)
+\i stream
+\b\i0 \
+\
+
+\b0 Archives the object to a typed stream.\
+\
+\
+
+\pard\tx7140\li2100 CONSTANTS AND DEFINED TYPES\
+\
+
+\pard\tx3120\tx6500\tx7940\li2620 ASCENDING 	0	\
+DESCENDING	1\
+\
+INT	0\
+ATOM	1\
+DOUBLE	2\
+FLOAT	3\
+OTHER	4\
+\
+CURRENT_SORTED_LIST_VERSION       1\
+\
+
+\f1\fs24\fc0 typedef	double (*keyValueFunctionDouble)(id, SEL);\
+typedef	int    (*keyValueFunctionInt)(id, SEL);\
+typedef	NXAtom (*keyValueFunctionAtom)(id, SEL);\
+typedef	float  (*keyValueFunctionFloat)(id, SEL);\
+
+}
