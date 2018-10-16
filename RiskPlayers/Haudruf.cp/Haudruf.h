@@ -24,55 +24,55 @@
 	RiskContinent initialContinent;
 }
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 
 - (void)chooseCountry;
-- (void)placeInitialArmies:(RiskArmyCount)numArmies;
-- yourTurnWithArmies:(RiskArmyCount)numArmies andCards:(int)numCards;
-- (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
-- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void)placeInitialArmies:(RKArmyCount)numArmies;
+- yourTurnWithArmies:(RKArmyCount)numArmies andCards:(int)numCards;
+- (void)playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
+- (void)playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
 // *****************country utilities*********************
 
 + (NSString*) stringFromContinent:(RiskContinent)cont;
-- (NSSet<Country*>*)countriesInContinent:(RiskContinent)cont;
-- (BOOL)occupyCountry:(Country *)country;
+- (NSSet<RKCountry*>*)countriesInContinent:(RiskContinent)cont;
+- (BOOL)occupyCountry:(RKCountry *)country;
 
 // *****************card utilities*********************
 
-- (void)playCards:(CardSet *)cardList;
+- (void)playCards:(RKCardSet *)cardList;
 
 // *****************place army utilities*********************
 
-- (void)placeFortifyingArmies:(RiskArmyCount)count fromCountry:(Country *)source;
+- (void)placeFortifyingArmies:(RKArmyCount)count fromCountry:(RKCountry *)source;
 
-- (BOOL)placeArmies:(RiskArmyCount)numArmies inCountry:(Country *)country;
+- (BOOL)placeArmies:(RKArmyCount)numArmies inCountry:(RKCountry *)country;
 
 // *****************attack utilities*********************
 
 
-- (BOOL)attackOnceFrom:(Country *)fromCountry to:(Country *)toCountry
+- (BOOL)attackOnceFrom:(RKCountry *)fromCountry to:(RKCountry *)toCountry
                victory:(BOOL *)victory fromArmies:(int *)fromArmies
               toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
                  weWin:(BOOL *)wewin;
-- (BOOL)attackTimes:(int)times from:(Country *)fromCountry to:(Country *)toCountry
+- (BOOL)attackTimes:(int)times from:(RKCountry *)fromCountry to:(RKCountry *)toCountry
             victory:(BOOL *)victory fromArmies:(int *)fromArmies
            toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
               weWin:(BOOL *)wewin;
-- (BOOL)attackUntilLeft:(int)untilLeft from:(Country *)fromCountry to:(Country *)toCountry
+- (BOOL)attackUntilLeft:(int)untilLeft from:(RKCountry *)fromCountry to:(RKCountry *)toCountry
                 victory:(BOOL *)victory fromArmies:(int *)fromArmies
                toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
                   weWin:(BOOL *)wewin;
-- (BOOL)attackUntilCantFrom:(Country *)fromCountry to:(Country *)toCountry 
+- (BOOL)attackUntilCantFrom:(RKCountry *)fromCountry to:(RKCountry *)toCountry
                     victory:(BOOL *)victory fromArmies:(int *)fromArmies
                    toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
                       weWin:(BOOL *)wewin;
 
 // *****************post-attack & fortify utilities*********************
 
-- (void)moveAttackingArmies:(RiskArmyCount)count between:(Country *)source :(Country *)destination;
+- (void)moveAttackingArmies:(RKArmyCount)count between:(RKCountry *)source :(RKCountry *)destination;
 
 - (void)waitForContinue;
 - (IBAction)continueAction:(id)sender;
@@ -81,19 +81,19 @@
 - (void)setNotes:(NSString *)noteText;
 
 - (BOOL)calcNumCountriesPerContinent;
-- (BOOL)country:(Country *)country isInContinent:(RiskContinent)continent;
-- (Country*)bestCountryFor:(RiskContinent)continent;
+- (BOOL)country:(RKCountry *)country isInContinent:(RiskContinent)continent;
+- (RKCountry*)bestCountryFor:(RiskContinent)continent;
 - (void)fortifyPosition;
-- findBestVictimFor:(Country*)country;
-- klotzArmies:(RiskArmyCount)armiesLeft;
+- findBestVictimFor:(RKCountry*)country;
+- klotzArmies:(RKArmyCount)armiesLeft;
 - (int)conquerContinents:(RiskArmyCount)armiesLeft;
 - (int)stabilizeContinents:(RiskArmyCount)armiesLeft;
-- (RiskArmyCount)defendContinent:(RiskContinent)continent armies:(RiskArmyCount)armiesLeft;
-- (RiskArmyCount)turnInCards;
-- (NSArray<Country*>*)enemyNeighborsTo:(Country*)country;
-- (Country *)getMaxArmyCountry;
-- (Country *)getCountryNamed:(NSString*)name;
-- (Country *)getMaxArmyWithEnemyCountry;
+- (RKArmyCount)defendContinent:(RiskContinent)continent armies:(RKArmyCount)armiesLeft;
+- (RKArmyCount)turnInCards;
+- (NSArray<RKCountry*>*)enemyNeighborsTo:(RKCountry*)country;
+- (RKCountry *)getMaxArmyCountry;
+- (RKCountry *)getCountryNamed:(NSString*)name;
+- (RKCountry *)getMaxArmyWithEnemyCountry;
 - (int) checkInitialContinent:(RiskContinent) numArmies;
 
 @end

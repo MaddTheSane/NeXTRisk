@@ -21,39 +21,39 @@
 	IBOutlet NSButton		*pauseContinueButton;
 }
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 
 - (void)chooseCountry;
-- (void)placeInitialArmies:(RiskArmyCount)count;
-- (void)placeArmies:(RiskArmyCount)count;
+- (void)placeInitialArmies:(RKArmyCount)count;
+- (void)placeArmies:(RKArmyCount)count;
 
-- yourTurnWithArmies:(RiskArmyCount)numArmies andCards:(int)numCards;
-- (void)playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
-- (void)playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- yourTurnWithArmies:(RKArmyCount)numArmies andCards:(int)numCards;
+- (void)playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
+- (void)playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
 // *****************country utilities*********************
 
-- (BOOL)occupyCountry:(Country*)country;
+- (BOOL)occupyCountry:(RKCountry*)country;
 /*! return id of adjacent country, which belongs to enemy and has most inferior
  * number of armies compared to number of armieas of country.
  * If no adjacent enemy countries exist, return country itself
  */
-- (Country*)findAdjacentEnemyCountryMostInferiorTo: country;
+- (RKCountry*)findAdjacentEnemyCountryMostInferiorTo:(RKCountry*) country;
 /*! return id of adjacent country, which belongs to enemy and has most superior
  * number of armies compared to number of armieas of country.
  * If no adjacent enemy countries exist, return country itself
  */
-- (Country*)findAdjacentEnemyCountryMostSuperiorTo: country;
+- (RKCountry*)findAdjacentEnemyCountryMostSuperiorTo:(RKCountry*) country;
 /*! return id of my country which has most superior enemy of all my countries.
  * else return nil
  */
-- (Country*)findMyCountryWithMostSuperiorEnemy;
+- (RKCountry*)findMyCountryWithMostSuperiorEnemy;
 /*! return id of my country which has most inferior enemy of all my countries.
  * else return nil
  */
-- (Country*)findMyCountryWithMostInferiorEnemy;
+- (RKCountry*)findMyCountryWithMostInferiorEnemy;
 
 // *****************attack utilities*********************
 
@@ -64,26 +64,26 @@
 //! (but do not neccessarily attack largest enemy)
 - (BOOL)attackFromMostThreatenedCountryUntilLeft: (int)untilLeft;
 
-- (BOOL)attackOnceFrom:fromCountry to:toCountry 
+- (BOOL)attackOnceFrom:(RKCountry*)fromCountry to:(RKCountry*)toCountry
 					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
 					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
 					weWin:(BOOL *)wewin;
-- (BOOL)attackTimes:(int)times from:fromCountry to:toCountry 
+- (BOOL)attackTimes:(int)times from:(RKCountry*)fromCountry to:(RKCountry*)toCountry
 					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
 					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
 					weWin:(BOOL *)wewin;
-- (BOOL)attackUntilLeft:(int)untilLeft from:fromCountry to:toCountry 
+- (BOOL)attackUntilLeft:(int)untilLeft from:(RKCountry*)fromCountry to:(RKCountry*)toCountry
 					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
 					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
 					weWin:(BOOL *)wewin;
-- (BOOL)attackUntilCantFrom:fromCountry to:toCountry 
+- (BOOL)attackUntilCantFrom:(RKCountry*)fromCountry to:(RKCountry*)toCountry
 					victory:(BOOL *)victory fromArmies:(int *)fromArmies 
 					toArmies:(int *)toArmies vanquished:(BOOL *)vanquished
 					weWin:(BOOL *)wewin;
 
 // *****************post-attack & fortify utilities*********************
 
-- (BOOL)moveArmies:(int)numArmies from:fromCountry to:toCountry;
+- (BOOL)moveArmies:(int)numArmies from:(RKCountry*)fromCountry to:(RKCountry*)toCountry;
 
 - (void)waitForContinue;
 - (IBAction)continueAction:sender;
@@ -92,6 +92,6 @@
 - (void)setNotes:(NSString *)noteText;
 
 // *** Helper functions ***
-- (NSArray<Country*>*)enemyNeighborsToCountry:(Country*)country;
+- (NSArray<RKCountry*>*)enemyNeighborsToCountry:(RKCountry*)country;
 
 @end

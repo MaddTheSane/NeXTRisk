@@ -1870,6 +1870,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Block;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "../../Chaotic.bproj ../Coop.cp";
 				WRAPPER_EXTENSION = riskplayer;
 			};
 			name = Debug;
@@ -1886,6 +1887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Block;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "../../Chaotic.bproj ../Coop.cp";
 				WRAPPER_EXTENSION = riskplayer;
 			};
 			name = Release;
@@ -1902,6 +1904,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Coop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = ../../Chaotic.bproj;
 				WRAPPER_EXTENSION = riskplayer;
 			};
 			name = Debug;
@@ -1918,6 +1921,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Coop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = ../../Chaotic.bproj;
 				WRAPPER_EXTENSION = riskplayer;
 			};
 			name = Release;

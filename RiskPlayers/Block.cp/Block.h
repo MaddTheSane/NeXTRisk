@@ -6,17 +6,17 @@
 
 @interface Block:Coop    //Chaotic   //ComputerPlayer
 
-- (instancetype)initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 
 - (void)chooseCountry;
-- (void)placeInitialArmies:(RiskArmyCount)count;
+- (void)placeInitialArmies:(RKArmyCount)count;
 - yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
-- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void) playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 
-- getCountryNamed:(char*)name;
+- getCountryNamed:(NSString*)name;
 - preferedCountriesEmpty: (BOOL)yes;
 - randomFromList:list maxArmies:(int)anz;
 - mostSuperiorEnemyTo:inCountry;

@@ -3,6 +3,7 @@
 
 #import "Block.h"
 #import <AppKit/AppKit.h>
+#import <RiskKit/RiskKit.h>
 
 #include <libc.h>
 #include <stdlib.h>
@@ -36,7 +37,7 @@
 
 - (void)chooseCountry
 {
-	id unoccList = [self unoccupiedCountries];
+	NSArray *unoccList = [gameManager unoccupiedCountries];
 	id takeCountry= nil;
 	id preferedCountries= [self preferedCountriesEmpty: YES];
 	
@@ -46,7 +47,7 @@
 	// try preferred countries first, select one free country randomly
 	
 	if ( [preferedCountries count] > 0) {
-		takeCountry= [preferedCountries objectAt: [rng randMax: [preferedCountries count] - 1] ];
+		takeCountry= [preferedCountries objectAtIndex: [rng randomNumberWithMaximum: [preferedCountries count] - 1] ];
 	}
 	// fprintf( stderr, "choose: prefList: %d, random chosen %s\n", [preferedCountries count],[takeCountry name] );
 	
@@ -63,7 +64,7 @@
 - (void)placeInitialArmies:(int)numArmies
 {
 	id mycountries = [self myCountries];
-	Country *inCountry= nil;
+	RKCountry *inCountry= nil;
 	id preferedCountries= [self preferedCountriesEmpty: NO];
 	//	id l= nil;
 	int try,tries= 20;
@@ -96,7 +97,7 @@
 			en= [self mostSuperiorEnemyTo:inCountry];
 			my= [self myStrongestNeighborTo:en];
 			//fprintf( stderr, "initial place: I am %d, inCountry=%s belongs to %d , has strongest enemyNeighbor %s belongs to %d, my strongest neighbor %s belongs to %d\n", myPlayerNum, [inCountry name], [inCountry player], [en name], [en player], [my name], [my player]);
-			if ([my player]==myPlayerNum)
+			if ([my playerNumber]==self.playerNumber)
 				inCountry= my;
 			if (tries > 5 && inCountry &&
 				[inCountry armies] - [self sumEnemyNeighborsTo:inCountry] >= anz  )
@@ -145,7 +146,7 @@
 	while (numArmies > 0 && try-- > 0) {
 		
 		inCountry= [self myStrongestNeighborTo:[self mostSuperiorEnemyTo:[self findMyCountryWithMostSuperiorEnemy]]];
-		if ([inCountry player] != myPlayerNum) {
+		if ([inCountry playerNumber] != self.playerNumber) {
 			fprintf( stderr, "*** this should not happen\n");
 			inCountry= [self findMyCountryWithMostSuperiorEnemy];
 		}
@@ -188,38 +189,32 @@
 	return self;
 }
 
-- (void) playerNumber:(Player)number attackedCountry:(Country *)attackedCountry;
+- (void) playerNumber:(RKPlayer)number attackedCountry:(RKCountry *)attackedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
 }
 
-- (void) playerNumber:(Player)number capturedCountry:(Country *)capturedCountry;
+- (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
 {
 	// do nothing.  these methods are for advanced players only.
 	// but we do set the notes and pause if we should.
 }
 
-- getCountryNamed:(char*)name
+- getCountryNamed:(NSString*)name
 {
-	id countryList = [self countryList];
-	int i,cnt = [countryList count];
-	id c;
+	NSArray *countryList = [gameManager countryList];
 	
 	//fprintf( stderr, "getC: %s, listC=%d\n", name, cnt);
 	
-	for (i=0; i<cnt; i++)
+	for (RKCountry *c in countryList)
 	{
-		c= [countryList objectAt:i];
-		
-		if (!strcmp(name, [c name]))
+		if (![name isEqualToString:c.countryName])
 		{
 			// fprintf(stderr, "Got:%s Wanted:%s\n",[[countryList objectAt:i] name], name);
-			[countryList free];
 			return c;
 		}
 	}
-	[countryList free];
 	return nil;
 }
 
@@ -231,15 +226,15 @@
 	// No:  belong to myself
 	char *preferedCountries[]= { "Greenland", "Indonesia", "New Guinea", "Western Australia", "Eastern Australia", "Argentina", "Peru", "Venezuela", "Brazil", "Iceland",  "Central America", "North Africa", "South Africa", "Congo", "East Africa", "Egypt",
 		"" };
-	id list= [[List alloc] initCount: 20];
+	id list= [[NSMutableArray alloc] initWithCapacity: 20];
 	int j;
-	id c;
+	RKCountry *c;
 	
 	
 	for (j=0; *preferedCountries[j] != '\0'; j++) {
 		c= [self getCountryNamed: preferedCountries[j]];
 		// fprintf( stderr, "c=%s, wanted %s\n", [c name], preferedCountries[j] );
-		if ( c!= nil && ((yes && [c armies] < 1) || (!yes && [c player]==myPlayerNum)) )
+		if ( c!= nil && ((yes && [c armies] < 1) || (!yes && [c playerNumber]==self.playerNumber)) )
 			[list addObject: c];
 	}
 	return list;
@@ -250,12 +245,12 @@
 	int i;
 	id r=nil;
 	
-	id l= [[List alloc] init];
+	NSMutableArray *l= [[NSMutableArray alloc] init];
 	
 	for (i= 0; i< [list count]; ++i)
-		if ([[list objectAt:i] armies] <= anz) [l addObject:[list objectAt:i]];
+		if ([[list objectAtIndex:i] armies] <= anz) [l addObject:[list objectAt:i]];
 	if ([l count] > 0)
-		r= [l objectAt:[rng randMax:[l count]-1] ];
+		r= [l objectAtIndex:[rng randMax:[l count]-1] ];
 	[l free];
 	return r;
 }
