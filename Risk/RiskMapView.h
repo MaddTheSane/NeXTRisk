@@ -5,11 +5,11 @@
 
 #import <AppKit/AppKit.h>
 
-@class Country;
+@class RKCountry;
 
 @protocol RiskMapViewDelegate <NSObject>
-- (void) mouseDown:(NSEvent *)theEvent inCountry:(Country *)aCountry;
-- (void) mouseUp:(NSEvent *)theEvent inCountry:(Country *)aCountry;
+- (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
+- (void) mouseUp:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 @end
 
 /// The RiskMapView shows the background image and draws the countries
@@ -17,8 +17,8 @@
 @interface RiskMapView : NSView
 {
     NSImage *boardBackingImage;
-    NSMutableArray *countryArray;
-    Country *selectedCountry;
+    NSMutableArray<RKCountry*> *countryArray;
+    RKCountry *selectedCountry;
 
     CGFloat currentScaleFactor;
 }
@@ -29,12 +29,12 @@
 
 - (void) drawBackground:(NSRect)rect;
 - (void) drawRect:(NSRect)rect;
-- (void) drawCountry:(Country *)aCountry;
+- (void) drawCountry:(RKCountry *)aCountry;
 
 - (void) mouseDown:(NSEvent *)theEvent;
 - (void) mouseUp:(NSEvent *)theEvent;
 
-@property (copy) NSArray<Country*> *countryArray;
+@property (copy) NSArray<RKCountry*> *countryArray;
 
 @property (nonatomic) CGFloat scaleFactor;
 
@@ -42,7 +42,7 @@
 
 - (void) countryUpdated:(NSNotification *)aNotification;
 
-- (void) selectCountry:(Country *)aCountry;
+- (void) selectCountry:(RKCountry *)aCountry;
 
 - (void) boardSetupChanged:(NSNotification *)aNotification;
 

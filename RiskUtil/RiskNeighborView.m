@@ -47,7 +47,7 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
     {
         CGFloat xthresh = [self bounds].size.width / 2;
         
-        for (RiskNeighbor *riskNeighbor in [datasource riskNeighbors])
+        for (RKNeighbor *riskNeighbor in [datasource riskNeighbors])
         {
             //NSLog (@"neighbor: %@", riskNeighbor);
             NSPoint p1 = [[[riskNeighbor country1] countryShape] centerPoint];

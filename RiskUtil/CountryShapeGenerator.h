@@ -5,7 +5,7 @@
 
 #import <AppKit/AppKit.h> // Need NSPoint...
 
-@class Country, CountryShape;
+@class RKCountry, CountryShape;
 @class RiskPoint;
 
 @interface CountryShapeGenerator : NSObject

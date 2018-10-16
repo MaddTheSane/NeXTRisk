@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="CardPanelController">
+        <customObject id="-2" userLabel="File's Owner" customClass="RKCardPanelController">
             <connections>
                 <outlet property="amassedTextField" destination="23" id="69"/>
                 <outlet property="cancelButton" destination="50" id="70"/>
@@ -26,13 +23,13 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Card Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="37" userLabel="CardPanel" customClass="NSPanel">
+        <window title="Card Panel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="37" userLabel="CardPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="132" y="176" width="676" height="608"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="24">
-                <rect key="frame" x="0.0" y="0.0" width="676" height="606"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" misplaced="YES" id="24">
+                <rect key="frame" x="0.0" y="2" width="676" height="606"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box horizontalHuggingPriority="249" borderType="bezel" title="Set to turn in" translatesAutoresizingMaskIntoConstraints="NO" id="32">
@@ -220,7 +217,7 @@
                         </view>
                     </box>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12">
-                        <rect key="frame" x="470" y="155" width="145" height="44"/>
+                        <rect key="frame" x="480" y="155" width="126" height="44"/>
                         <textFieldCell key="cell" alignment="center" title="You must turn in cards" id="128">
                             <font key="font" metaFont="system" size="18"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -230,14 +227,14 @@
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                         <rect key="frame" x="10" y="314" width="656" height="252"/>
                         <clipView key="contentView" autoresizesSubviews="NO" id="351-e1-oAk">
-                            <rect key="frame" x="1" y="1" width="654" height="250"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <rect key="frame" x="1" y="1" width="654" height="235"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view translatesAutoresizingMaskIntoConstraints="NO" id="22">
-                                    <rect key="frame" x="0.0" y="0.0" width="652" height="229"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="652" height="214"/>
                                     <subviews>
                                         <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86">
-                                            <rect key="frame" x="7" y="6" width="645" height="16"/>
+                                            <rect key="frame" x="7" y="-9" width="645" height="16"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             <size key="cellSize" width="125" height="16"/>
                                             <size key="intercellSpacing" width="5" height="4"/>
@@ -261,7 +258,7 @@
                                             </cells>
                                         </matrix>
                                         <matrix verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="111">
-                                            <rect key="frame" x="6" y="27" width="641" height="194"/>
+                                            <rect key="frame" x="6" y="12" width="641" height="194"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             <size key="cellSize" width="125" height="194"/>
                                             <size key="intercellSpacing" width="4" height="4"/>

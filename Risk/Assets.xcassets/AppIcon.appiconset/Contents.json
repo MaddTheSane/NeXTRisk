@@ -17,8 +17,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "AppIcon copy@2x.png",
       "scale" : "2x"
     },
     {

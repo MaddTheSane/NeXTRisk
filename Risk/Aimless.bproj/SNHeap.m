@@ -185,7 +185,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 //----------------------------------------------------------------------
 
 // Return nil if there are no more objects.
-- extractObject
+- (id)extractObject
 {
     id min;
     
@@ -208,7 +208,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-- firstObject
+- (id)firstObject
 {
     id min;
     

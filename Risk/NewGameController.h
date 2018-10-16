@@ -5,8 +5,14 @@
 
 #import <AppKit/AppKit.h>
 
-@class Brain, GameConfiguration, BoardSetup;
+@class Brain, RKGameConfiguration, RKBoardSetup;
 
+//! The \c NewGameController loads the panel, adds loaded computer players
+//! to the appropriate popup buttons, updates the controls to reflect
+//! the default values, and creates a new game based on the current
+//! values.
+//!
+//! This also doubles as a preference panel for all of the options.
 @interface NewGameController : NSObject
 {
     IBOutlet NSWindow *newGamePanel;
@@ -46,8 +52,8 @@
     IBOutlet NSButton *cancelButton;
 
     // Data
-    GameConfiguration *gameConfiguration;
-    BoardSetup *boardSetup;
+    RKGameConfiguration *gameConfiguration;
+    RKBoardSetup *boardSetup;
 
     BOOL runningAsPreferences;
 }
@@ -71,7 +77,7 @@
 - (void) writeDefaults;
 - (void) revertToDefaults;
 
-@property (readonly, strong) GameConfiguration *thisConfiguration;
+@property (readonly, strong) RKGameConfiguration *thisConfiguration;
 
 - (void) takePreferencesFromCurrent;
 

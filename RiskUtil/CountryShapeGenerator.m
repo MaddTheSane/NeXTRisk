@@ -8,7 +8,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 
 #import "CountryShapeGenerator.h"
 
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 #import "RiskUtil-Swift.h"
 

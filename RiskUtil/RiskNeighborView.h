@@ -5,14 +5,14 @@
 
 #import <AppKit/AppKit.h>
 
-#import "Country.h"
+#import <RiskKit/RKCountry.h>
 #import "CountryShape.h"
 #import "RiskMapView.h"
 
-@class RiskNeighbor;
+@class RKNeighbor;
 
 @protocol RiskNeighborViewDataSource <NSObject>
-- (NSArray<RiskNeighbor*> *) riskNeighbors;
+- (NSArray<RKNeighbor*> *) riskNeighbors;
 @end
 
 @interface RiskNeighborView : RiskMapView

@@ -8,13 +8,8 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 #import "PreferenceController.h"
 
-#import "BoardSetup.h"
+#import <RiskKit/RKBoardSetup.h>
 #import "LineView.h"
-
-//======================================================================
-// The PreferenceController provides a simple panel for changing some
-// of the default appearence values.
-//======================================================================
 
 #define PreferenceController_VERSION 1
 
@@ -55,12 +50,12 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupChangedNotification
+                                                     name:RKBoardSetupChangedNotification
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupShowCardSetCountsChangedNotification
+                                                     name:RKBoardSetupShowCardSetCountsChangedNotification
                                                    object:nil];
     }
     
@@ -86,7 +81,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) revertAction:(id)sender
 {
-    [[BoardSetup instance] revertOtherToDefaults];
+    [[RKBoardSetup instance] revertOtherToDefaults];
     [preferencePanel setDocumentEdited:NO];
 }
 
@@ -94,7 +89,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) setAction:(id)sender
 {
-    [[BoardSetup instance] writeAllDefaults];
+    [[RKBoardSetup instance] writeAllDefaults];
     [preferencePanel setDocumentEdited:NO];
 }
 
@@ -102,10 +97,10 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (void) takePreferencesFromBoardSetup
 {
-    BoardSetup *boardSetup;
+    RKBoardSetup *boardSetup;
     float borderWidth;
     
-    boardSetup = [BoardSetup instance];
+    boardSetup = [RKBoardSetup instance];
     
     regularBorderWell.color = boardSetup.regularBorderColor;
     selectedBorderWell.color = boardSetup.selectedBorderColor;
@@ -128,14 +123,14 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
     {
         borderWidthTextField.floatValue = newLineWidth;
         borderWidthLineView.lineWidth = newLineWidth;
-        [BoardSetup instance].borderWidth = newLineWidth;
+        [RKBoardSetup instance].borderWidth = newLineWidth;
         [preferencePanel setDocumentEdited:YES];
     }
     else
     {
         borderWidthSlider.floatValue = newLineWidth;
         borderWidthLineView.lineWidth = newLineWidth;
-        [BoardSetup instance].borderWidth = newLineWidth;
+        [RKBoardSetup instance].borderWidth = newLineWidth;
         [preferencePanel setDocumentEdited:YES];
     }
 }
@@ -146,12 +141,12 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 {
     if (sender == regularBorderWell)
     {
-        [BoardSetup instance].regularBorderColor = regularBorderWell.color;
+        [RKBoardSetup instance].regularBorderColor = regularBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
     }
     else if (sender == selectedBorderWell)
     {
-        [BoardSetup instance].selectedBorderColor = selectedBorderWell.color;
+        [RKBoardSetup instance].selectedBorderColor = selectedBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
     }
 }
@@ -160,7 +155,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) statusCardSetsAction:(id)sender
 {
-    [BoardSetup instance].showCardSetCounts = showCardSetsButton.state;
+    [RKBoardSetup instance].showCardSetCounts = showCardSetsButton.state;
     [preferencePanel setDocumentEdited:YES];
 }
 

@@ -9,6 +9,9 @@
 
 @class RiskGameManager;
 
+//! The \c StatusView shows the color of each player (in the order of play)
+//! and, optionally, the number of cards in their hand.  This number is
+//! highlighted if the player has a valid card set.
 @interface StatusView : NSView
 {
     IBOutlet RiskGameManager *gameManager;

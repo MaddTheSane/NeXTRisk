@@ -11,18 +11,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 #import "Brain.h"
 #import "RiskGameManager.h"
 #import "Human.h"
-#import "GameConfiguration.h"
-#import "BoardSetup.h"
+#import <RiskKit/RKGameConfiguration.h>
+#import <RiskKit/RKBoardSetup.h>
 #import "Risk-Swift.h"
-
-//======================================================================
-// The NewGameController loads the panel, adds loaded computer players
-// to the appropriate popup buttons, updates the controls to reflect
-// the default values, and creates a new game based on the current
-// values.
-//
-// This also doubles as a preference panel for all of the options.
-//======================================================================
 
 #define NewGameController_VERSION 1
 
@@ -67,8 +58,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     if (self = [super init]) {
         NSArray *tmpArr;
-        gameConfiguration = [[GameConfiguration alloc] init];
-        boardSetup = [BoardSetup instance];
+        gameConfiguration = [[RKGameConfiguration alloc] init];
+        boardSetup = [RKBoardSetup instance];
         
         brain = theBrain;
         
@@ -88,7 +79,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
-                                                     name:RiskBoardSetupPlayerColorsChangedNotification
+                                                     name:RKBoardSetupPlayerColorsChangedNotification
                                                    object:nil];
     }
     
@@ -278,7 +269,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     if (playerCount > 1)
     {
-        initialArmyCountTextfield.intValue = RiskInitialArmyCountForPlayers (playerCount);
+        initialArmyCountTextfield.intValue = RKInitialArmyCountForPlayers (playerCount);
     }
     else
     {
@@ -334,7 +325,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     RiskPlayer *player;
     Class playerClass;
     NSString *name;
-    GameConfiguration *thisConfiguration;
+    RKGameConfiguration *thisConfiguration;
     BOOL showPlayerConsole;
     
     gameManager = brain.gameManager;
@@ -450,7 +441,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) revertToDefaults
 {
     NSUserDefaults *defaults;
-    GameConfiguration *oldConfiguration;
+    RKGameConfiguration *oldConfiguration;
     NSString *tmp;
     int index;
     
@@ -504,15 +495,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     //----------------------------------------
     // Now the game configuration rules.
-    oldConfiguration = [GameConfiguration defaultConfiguration];
+    oldConfiguration = [RKGameConfiguration defaultConfiguration];
     
     switch (oldConfiguration.initialCountryDistribution)
     {
-        case InitialCountryDistributionRandomlyChosen:
+        case RKInitialCountryDistributionRandomlyChosen:
             index = 1;
             break;
             
-        case InitialCountryDistributionPlayerChosen:
+        case RKInitialCountryDistributionPlayerChosen:
         default:
             index = 0;
             break;
@@ -522,15 +513,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.initialArmyPlacement)
     {
-        case InitialArmyPlaceByThrees:
+        case RKInitialArmyPlaceByThrees:
             index = 1;
             break;
             
-        case InitialArmyPlaceByFives:
+        case RKInitialArmyPlaceByFives:
             index = 2;
             break;
             
-        case InitialArmyPlaceByOnes:
+        case RKInitialArmyPlaceByOnes:
         default:
             index = 0;
             break;
@@ -540,15 +531,15 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.cardSetRedemption)
     {
-        case CardSetRedemptionIncreaseByOne:
+        case RKCardSetRedemptionIncreaseByOne:
             index = 1;
             break;
             
-        case CardSetRedemptionIncreaseByFive:
+        case RKCardSetRedemptionIncreaseByFive:
             index = 2;
             break;
             
-        case CardSetRedemptionRemainConstant:
+        case RKCardSetRedemptionRemainConstant:
         default:
             index = 0;
             break;
@@ -558,19 +549,19 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     switch (oldConfiguration.fortifyRule)
     {
-        case FortifyRuleOneToManyNeighbors:
+        case RKFortifyRuleOneToManyNeighbors:
             index = 1;
             break;
             
-        case FortifyRuleManyToManyNeighbors:
+        case RKFortifyRuleManyToManyNeighbors:
             index = 2;
             break;
             
-        case FortifyRuleManyToManyConnected:
+        case RKFortifyRuleManyToManyConnected:
             index = 3;
             break;
             
-        case FortifyRuleOneToOneNeighbor:
+        case RKFortifyRuleOneToOneNeighbor:
         default:
             index = 0;
             break;
@@ -584,16 +575,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (GameConfiguration *) thisConfiguration
+- (RKGameConfiguration *) thisConfiguration
 {
-    GameConfiguration *thisConfiguration;
+    RKGameConfiguration *thisConfiguration;
     NSInteger index;
-    InitialCountryDistribution distribution[2] = { InitialCountryDistributionPlayerChosen, InitialCountryDistributionRandomlyChosen };
-    InitialArmyPlacement placement[3] = { InitialArmyPlaceByOnes, InitialArmyPlaceByThrees, InitialArmyPlaceByFives };
-    CardSetRedemption redemption[3] = { CardSetRedemptionRemainConstant, CardSetRedemptionIncreaseByOne, CardSetRedemptionIncreaseByFive };
-    FortifyRule rule[4] = { FortifyRuleOneToOneNeighbor, FortifyRuleOneToManyNeighbors, FortifyRuleManyToManyNeighbors, FortifyRuleManyToManyConnected };
+    RKInitialCountryDistribution distribution[2] = { RKInitialCountryDistributionPlayerChosen, RKInitialCountryDistributionRandomlyChosen };
+    RKInitialArmyPlacement placement[3] = { RKInitialArmyPlaceByOnes, RKInitialArmyPlaceByThrees, RKInitialArmyPlaceByFives };
+    RKCardSetRedemption redemption[3] = { RKCardSetRedemptionRemainConstant, RKCardSetRedemptionIncreaseByOne, RKCardSetRedemptionIncreaseByFive };
+    RKFortifyRule rule[4] = { RKFortifyRuleOneToOneNeighbor, RKFortifyRuleOneToManyNeighbors, RKFortifyRuleManyToManyNeighbors, RKFortifyRuleManyToManyConnected };
     
-    thisConfiguration = [GameConfiguration defaultConfiguration];
+    thisConfiguration = [RKGameConfiguration defaultConfiguration];
     
     index = initialCountryDistributionMatrix.selectedRow;
     if (index < 0 || index > 1)

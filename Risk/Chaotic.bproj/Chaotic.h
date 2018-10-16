@@ -12,7 +12,7 @@
     NSMutableSet *attackingCountries;
 }
 
-- (instancetype) initWithPlayerName:(NSString *)aName number:(Player)number gameManager:(RiskGameManager *)aManager;
+- (instancetype) initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 //======================================================================
 // Subclass Responsibilities
@@ -37,9 +37,9 @@
 
 - (void) placeArmies:(int)count;
 - (void) attackPhase;
-- (void) moveAttackingArmies:(int)count between:(Country *)source :(Country *)destination;
-- (void) fortifyPhase:(FortifyRule)fortifyRule;
-- (void) placeFortifyingArmies:(int)count fromCountry:(Country *)source;
+- (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination;
+- (void) fortifyPhase:(RKFortifyRule)fortifyRule;
+- (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source;
 
 - (void) willEndTurn;
 
@@ -47,6 +47,6 @@
 // Custom methods
 //======================================================================
 
-- (BOOL) doAttackFromCountry:(Country *)attacker;
+- (BOOL) doAttackFromCountry:(RKCountry *)attacker;
 
 @end
