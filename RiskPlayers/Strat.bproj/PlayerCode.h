@@ -76,7 +76,7 @@
 + (void)initialize;
 
 // I want to initialize my instance variables.
-- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
+- (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager;
 
 // *****************subclass responsibilities*********************
 
