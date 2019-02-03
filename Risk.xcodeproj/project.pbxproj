@@ -97,6 +97,7 @@
 		553780F81CC1AFFE00A2C08E /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55402E441D32BA6A00388A7E /* RiskKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; };
+		5542425C2206EB39007739C1 /* Strat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5542425B2206EB38007739C1 /* Strat.png */; };
 		554843B81EA1FE0900EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
 		554843BF1EA1FE2E00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
 		554843C01EA1FE2F00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
@@ -104,7 +105,6 @@
 		554843C21EA1FE3500EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
 		554843C31EA1FE3600EC5D3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843BA1EA1FE1400EC5D3E /* Foundation.framework */; };
 		554843C41EA1FE3A00EC5D3E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554843B71EA1FE0900EC5D3E /* Cocoa.framework */; };
-		554AECF42175B347005F7847 /* Strat.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 554AECE82175B220005F7847 /* Strat.tiff */; };
 		554AECF52175B350005F7847 /* Strat.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 554AECDB2175B220005F7847 /* Strat.rtf */; };
 		554AECF72175B359005F7847 /* country-list in Resources */ = {isa = PBXBuildFile; fileRef = 554AECE62175B220005F7847 /* country-list */; };
 		554AECF82175B369005F7847 /* PlayerCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 554AECDF2175B220005F7847 /* PlayerCode.m */; };
@@ -356,6 +356,7 @@
 		553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChaoticSwift.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		553780D01CC1990A00A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		553780D41CC1993E00A2C08E /* Chaos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chaos.swift; sourceTree = "<group>"; usesTabs = 1; };
+		5542425B2206EB38007739C1 /* Strat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strat.png; sourceTree = "<group>"; };
 		554843B71EA1FE0900EC5D3E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		554843B91EA1FE1400EC5D3E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		554843BA1EA1FE1400EC5D3E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -762,6 +763,7 @@
 				554AECE42175B220005F7847 /* SortedList.rtf */,
 				554AECDB2175B220005F7847 /* Strat.rtf */,
 				554AECE82175B220005F7847 /* Strat.tiff */,
+				5542425B2206EB38007739C1 /* Strat.png */,
 				554AECF02175B313005F7847 /* Info.plist */,
 			);
 			name = Strat;
@@ -1117,7 +1119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554AECF72175B359005F7847 /* country-list in Resources */,
-				554AECF42175B347005F7847 /* Strat.tiff in Resources */,
+				5542425C2206EB39007739C1 /* Strat.png in Resources */,
 				554AECF52175B350005F7847 /* Strat.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

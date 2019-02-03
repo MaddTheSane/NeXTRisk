@@ -21,6 +21,14 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © Royce Howland, 2018 C.W. Betts. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>Strat</string>
+	<key>RKAboutPlayerFile</key>
+	<string>Strat.rtf</string>
+	<key>RKPlayerIcon</key>
+	<string>Strat</string>
+	<key>RKPlayerTypeName</key>
+	<string>Strat</string>
+	<key>RKSuperClass</key>
+	<string>RiskPlayer</string>
 </dict>
 </plist>
