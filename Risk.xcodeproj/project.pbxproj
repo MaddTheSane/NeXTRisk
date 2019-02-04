@@ -379,7 +379,7 @@
 		55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+SNUnarchiveHelpers.h"; sourceTree = "<group>"; };
 		55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+SNUnarchiveHelpers.m"; sourceTree = "<group>"; };
 		556A65EB1CFF5800005BA899 /* Chaotic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Chaotic.html; sourceTree = "<group>"; };
-		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55A9C8EA1EAC0FB700D9E7C7 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
