@@ -16,8 +16,8 @@
  ###########################################################*/
 
 #import "SortedList.h"
-#import "Country.h"
-#import "PlayerCode.h"
+#import <RiskKit/RKCountry.h>
+#import <RiskKit/RiskPlayer.h>
 
 @implementation StratSortedList
 
@@ -33,7 +33,7 @@
   return self;
 }
 
-- initCount:(unsigned int)numSlots forPlayer:thePlayer
+- (instancetype)initWithCount:(NSInteger)cnt forPlayer:(RiskPlayer*)thePlayer
 {
   /*-----------------------------------------------------------
       Initialize the data and internal structures.  This should
@@ -44,18 +44,20 @@
       This is the designated initializer for the class.
     -----------------------------------------------------------*/
     
-    [super initCount:numSlots];
+    if (self = [super initWithCapacity:cnt]) {
 					
     riskPlayer		= thePlayer;
-    sortOrder 		= ASCENDING;
+    sortOrder 		= SSSortOrderAscending;
     caseSensitive 	= YES;
     keySortType		= -1;		//causes error if not set
     					//to something else
       
+    }
     return self;
 }
 
-- setSortOrder:(int)theSortOrder
+@synthesize sortOrder;
+- (void)setSortOrder:(SSSortOrder)theSortOrder
 {
   /*-----------------------------------------------------------
       Just sets the way in which the sortedList is maintained,
@@ -71,48 +73,24 @@
       internally and sends the message to self.  that blows up 
       when the message gets sent to this object.
     -----------------------------------------------------------*/
-    int	i, size;
+    NSInteger	i, size;
     id	tempObj;
     
     if(sortOrder != theSortOrder)
-    	{
-    		sortOrder = theSortOrder;
-		size = [self count];
-		
-		for(i = 0; i < size; i++)
-		  {
-		  	tempObj = [self removeObjectAt:0];
-			[super insertObject:tempObj at:(size - 1)];
-		  }
-	}
-    
-    return self;
+    {
+        sortOrder = theSortOrder;
+        size = [self count];
+        
+        for(i = 0; i < size; i++)
+        {
+            tempObj = [self objectAtIndex:0];
+            [self removeObjectAtIndex:0];
+            [super insertObject:tempObj atIndex:(size - 1)];
+        }
+    }
 }
 
-- (int)sortOrder
-{
-  /*-----------------------------------------------------------
-      Returns the sort order.
-  -----------------------------------------------------------*/
-  
-  return sortOrder;
-}
-
--setCaseSensitive:(BOOL)isIt
-{
-  /*-----------------------------------------------------------
-     Whether or not compares on strings are case sensitive
-  -----------------------------------------------------------*/
-  
-  caseSensitive = isIt;
-  
-  return self;
-}
-
-- (BOOL)caseSensitive
-{
-  return caseSensitive;
-}
+@synthesize caseSensitive;
 
 - setKeySortType:(int)theKeySortType
 {
@@ -128,19 +106,12 @@
     return self;
 }
 
-- (int)keySortType
-{
-  /*-----------------------------------------------------------
-     Returns the type of sort to use on the list
-  -----------------------------------------------------------*/
-  
-  return keySortType;
-}
+@synthesize keySortType;
 
 // Return the number of armies in a country.
-- (int)armiesOfCountry:thisCountry;
+- (int)armiesOfCountry:(RKCountry*)thisCountry;
 {
-	return [thisCountry armies];
+	return [thisCountry troopCount];
 }
 
 // Return the attackability of an enemy country.  It is desirable to attack
@@ -152,7 +123,7 @@
 // other enemies.
 // The higher the score returned by this method, the more desirable the
 // country is as a target of attack.
-- (double)attackabilityOfEnemy:thisCountry;
+- (double)attackabilityOfEnemy:(RKCountry*)thisCountry;
 {
 	BOOL bust = YES;
 	int i, cc, morecc, cont, encont, enpl;
@@ -163,9 +134,9 @@
 	// we want to attack stronger enemies, but if we haven't taken a
 	// country yet this turn, weaker enemies are more attractive targets.
 	if ([riskPlayer takenACountry])
-		score = [thisCountry armies];
+		score = [thisCountry troopCount];
 	else
-		score = -[thisCountry armies];
+		score = -[thisCountry troopCount];
 
 	// Big-time bonus for being near extinction; the nearer, the bigger.
 	// Small per country penalty to make it more attractive to attack
@@ -173,7 +144,6 @@
 	enpl = [thisCountry player];
 	countries = [riskPlayer playersCountries:enpl];
 	cc = [countries count];
-	[countries free];
 	if (cc <= 3)
 		score += 400 * (4 - cc);
 	else
@@ -476,35 +446,35 @@
 	listObject = [self objectAt:i];
 	
 	switch(keySortType) {
-		    case COUNTRYBYARMIES:
+		    case SSSortCountryByArmies:
 			printf("%d: %d, for object %d\n", i, 
 				[self armiesOfCountry:listObject],
 				(int)listObject);
 			break;
-		    case ENEMYBYATTACKABILITY:
+		    case SSSortEnemyAttackAbility:
 			printf("%d: %g, for object %d\n", i, 
 				[self attackabilityOfEnemy:listObject],
 				(int)listObject);
 			break;
-		    case COUNTRYBYREINFORCEPRIO:
+		    case SSSortCountryByReinforcePriority:
 			printf("%d: %g, for object %d\n", i, 
 				[self reinforcePrioOfCountry:listObject],
 				(int)listObject);
 			break;
 #if 0
-		    case COUNTRYBYTACTICALADVANTAGEWEAK:
+		    case SSSortCountryByTacticalAdvantageWeak:
 			printf("%d: %g, for object %d\n", i, 
 				[self advantageWeakOfCountry:listObject],
 				(int)listObject);
 			break;
 #endif
-		    case COUNTRYBYTACTICALADVANTAGESTRONG:
+		    case SSSortCountryByTacticalAdvantageStrong:
 			printf("%d: %g, for object %d\n", i, 
 				[self advantageStrongOfCountry:listObject],
 				(int)listObject);
 			break;
 #if 0
-		    case PLAYERBYCOUNTRIES:
+		    case SSSortPlayerByCountries:
 			printf("%d: %d, for object %d\n", i, 
 				[self countriesOfPlayer:listObject],
 				(int)listObject);
@@ -637,29 +607,29 @@
 	//just use a flag, -1 or 1, and multiply that by the integer result.
 	//that'll flip the comparision results depending on asc or desc.
 	
-   orderFlag = (sortOrder == ASCENDING) ? 1 : -1;
+   orderFlag = (sortOrder == SSSortOrderAscending) ? 1 : -1;
       
    switch(keySortType)
      {
-	case COUNTRYBYARMIES:
+	case SSSortCountryByArmies:
 		compareResults = (double)[self armiesOfCountry:thisObject] -
 			[self armiesOfCountry:thatObject];
 		break;
-	case ENEMYBYATTACKABILITY:
+	case SSSortEnemyAttackAbility:
 		compareResults = [self attackabilityOfEnemy:thisObject] -
 				[self attackabilityOfEnemy:thatObject];
 		break;
-	case COUNTRYBYREINFORCEPRIO:
+	case SSSortCountryByReinforcePriority:
 		compareResults = [self reinforcePrioOfCountry:thisObject] -
 				[self reinforcePrioOfCountry:thatObject];
 		break;
 #if 0
-	case COUNTRYBYTACTICALADVANTAGEWEAK:
+	case SSSortCountryByTacticalAdvantageWeak:
 		compareResults = [self advantageWeakOfCountry:thisObject] -
 			[self advantageWeakOfCountry:thatObject];
 		break;
 #endif
-	case COUNTRYBYTACTICALADVANTAGESTRONG:
+	case SSSortCountryByTacticalAdvantageStrong:
 		compareResults = [self advantageStrongOfCountry:thisObject] -
 			[self advantageStrongOfCountry:thatObject];
 		break;
@@ -729,7 +699,7 @@
   return newList;
 }
   
--copyFromZone:(NXZone*)zone
+-(id)mutableCopyWithZone:(NSZone *)zone
 {
   /*-----------------------------------------------------------
       Ditto above method.
@@ -737,7 +707,7 @@
   
   id	newList;
   
-  newList = [super copyFromZone:zone];
+  newList = [super copyWithZone:zone];
   
   [newList setSortOrder:	[self sortOrder]];
   [newList setCaseSensitive:	[self caseSensitive]];

@@ -120,6 +120,7 @@
 		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
 		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
+		55A236C5220ECF5D00AFB776 /* SortedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 554AECE32175B220005F7847 /* SortedList.m */; };
 		55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */; };
 		55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
 		55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
@@ -1223,6 +1224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A236C5220ECF5D00AFB776 /* SortedList.m in Sources */,
 				554AECF82175B369005F7847 /* PlayerCode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

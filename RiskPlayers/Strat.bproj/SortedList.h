@@ -17,57 +17,57 @@
  ###########################################################*/
 
 
-#import <objc/Object.h>
-#import <objc/List.h>
-#import <appkit/Text.h>
-#import <objc/HashTable.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/NSText.h>
 
-	//Sort order, by rising value or falling value
-	
-#define ASCENDING	0
-#define	DESCENDING	1
+@class RiskPlayer;
+
+/// Sort order, by rising value or falling value
+typedef NS_ENUM(NSInteger, SSSortOrder) {
+    SSSortOrderAscending	= 0,
+	SSSortOrderDescending	= 1
+};
 
 #define	CURRENT_SORTED_LIST_VERSION	1
 
 	//type of calculation to use in ordering objects
 
-#define	COUNTRYBYARMIES				0
-#define ENEMYBYATTACKABILITY			1
-#define	COUNTRYBYTACTICALADVANTAGEWEAK		2
-#define	COUNTRYBYTACTICALADVANTAGESTRONG	3
-#define	PLAYERBYCOUNTRIES			4
-#define	COUNTRYBYREINFORCEPRIO			5
+typedef NS_ENUM(NSInteger, SSSortType) {
+    SSSortCountryByArmies				= 0,
+    SSSortEnemyAttackAbility		    = 1,
+    SSSortCountryByTacticalAdvantageWeak	= 2,
+    SSSortCountryByTacticalAdvantageStrong	= 3,
+    SSSortPlayerByCountries			    = 4,
+    SSSortCountryByReinforcePriority    = 5
+};
 
-@interface StratSortedList:List
+@interface StratSortedList: NSMutableArray <NSMutableCopying>
 {  
-  int	sortOrder;	//ascending or descending
+  SSSortOrder	sortOrder;	//ascending or descending
   BOOL	caseSensitive;	//case sensitive string ordering or not
-  int	keySortType;	//type of sort to do on objects
-  id	riskPlayer;	//the player object on whose behalf we're working
+  SSSortType	keySortType;	//type of sort to do on objects
+  RiskPlayer	*riskPlayer;	//the player object on whose behalf we're working
 }
 
-+ initialize;				//sets class version
++ (void)initialize;				//sets class version
 
-- initCount:(unsigned int)numSlots forPlayer:thePlayer;	//initialization
+- (instancetype)initWithCount:(NSInteger)cnt forPlayer:(RiskPlayer*)thePlayer;	//initialization
 
-- setSortOrder:(int)theSortOrder; 	//the sort order, asc or desc
-- (int)sortOrder;		 	//returns the sort order
+//! the sort order
+@property (nonatomic) SSSortOrder sortOrder;
 
-- setCaseSensitive:(BOOL)isIt;		//whether strings are case senstive
-- (BOOL)caseSensitive;
+//! whether strings are case senstive
+@property BOOL caseSensitive;
 
-- setKeySortType:(int)theKeySortType;	//sets type of key sort
-- (int)keySortType;			//returns type of key sort
+//! type of key sort
+@property (nonatomic) SSSortType keySortType;
 
 - printKeyValues;			//useful for debugging
 
 - addObject:anObject;			//slap a new object into list
 - addObjectIfAbsent:anObject;		//override of List method 
-- (int)compare:thisObject to:thatObject;//compare operator on keys
+- (NSComparisonResult)compare:thisObject to:thatObject;//compare operator on keys
 - (BOOL)isEqual:anObject;		//similar to List op
-
-- copy;					//override of List
-- copyFromZone:(NXZone*)zone;
 
 - insertionSort;
 
@@ -89,7 +89,7 @@
          Archiving methods
 --------------------------------------*/
 
-- write:(NXTypedStream*)stream;
-- read:(NXTypedStream*)stream;
+//- write:(NXTypedStream*)stream;
+//- read:(NXTypedStream*)stream;
 
 @end

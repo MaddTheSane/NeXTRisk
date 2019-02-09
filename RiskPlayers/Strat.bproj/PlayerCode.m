@@ -8,10 +8,7 @@
 
 #import "PlayerCode.h"
 #import "SortedList.h"
-#import <appkit/Application.h>
-#import <objc/List.h>
-#import <appkit/Panel.h>
-#import <appkit/publicWraps.h>
+#import <AppKit/AppKit.h>
 
 #define rearguard()	(2 * ((gameTurn / 4) + 1))
 
@@ -79,7 +76,7 @@
 			for (k = 0; k < [otherCountries count]; k++) {
 				countryNeighbors[countryNum]++;
 				if (countryContinents[countryNum] !=
-						countryContinents[[[otherCountries objectAt:k] idNum]]) {
+						countryContinents[[[otherCountries objectAtIndex:k] idNum]]) {
 					exits = 1;
 					forneighbors++;
 					contneighbors++;
@@ -289,7 +286,7 @@
 
 	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
 	[scountries setSortOrder:DESCENDING];
-	[scountries setKeySortType:COUNTRYBYARMIES];
+	[scountries setKeySortType:SSSortCountryByArmies];
 
 	for (i=0; i<[countries count]; i++)
 		[scountries addObject:[countries objectAt:i]];
@@ -308,7 +305,7 @@
 
 	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
 	[scountries setSortOrder:DESCENDING];
-	[scountries setKeySortType:COUNTRYBYTACTICALADVANTAGESTRONG];
+	[scountries setKeySortType:SSSortCountryByTacticalAdvantageStrong];
 
 	for (i=0; i<[countries count]; i++)
 		[scountries addObject:[countries objectAt:i]];
@@ -328,7 +325,7 @@
 
 	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
 	[scountries setSortOrder:DESCENDING];
-	[scountries setKeySortType:COUNTRYBYREINFORCEPRIO];
+	[scountries setKeySortType:SSSortCountryByReinforcePriority];
 
 	for (i=0; i<[countries count]; i++)
 		[scountries addObject:[countries objectAt:i]];
@@ -348,7 +345,7 @@
 
 	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
 	[scountries setSortOrder:DESCENDING];
-	[scountries setKeySortType:ENEMYBYATTACKABILITY];
+	[scountries setKeySortType:SSSortEnemyAttackAbility];
 
 	for (i=0; i<[countries count]; i++)
 		[scountries addObject:[countries objectAt:i]];
