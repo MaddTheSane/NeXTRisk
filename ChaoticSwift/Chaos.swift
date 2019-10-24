@@ -131,6 +131,9 @@ public class Chaos: RiskPlayer {
 			
 		case .oneToOneNeighbor, .oneToManyNeighbors:
 			source = sourceCountries.randomElement()!
+			
+		@unknown default:
+			fatalError("FortifyRule = \(fortifyRule.rawValue)")
 		}
 		
 		gameManager.fortifyArmies(from: source)

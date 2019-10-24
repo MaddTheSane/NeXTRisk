@@ -52,7 +52,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 {
     RKGameState gameState;
     int count;
-    unsigned int flags;
+    NSEventModifierFlags flags;
     
     flags = theEvent.modifierFlags;
     gameState = [gameManager gameState];
