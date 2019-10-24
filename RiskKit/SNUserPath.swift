@@ -104,7 +104,7 @@ private let SNUserPathOperation_VERSION = 1
 				//[bPath set]
 				break;
 				
-			default:
+			@unknown default:
 				NSLog("Unknown op: %i", op.rawValue);
 			}
 		}
@@ -149,7 +149,7 @@ private let SNUserPathOperation_VERSION = 1
 			case .dps_ucache:
 				str = "<SNUserPathOperation: ucache>";
 				
-			default:
+			@unknown default:
 				str = "<SNUserPathOperation: UNKNOWN>";
 			}
 			
