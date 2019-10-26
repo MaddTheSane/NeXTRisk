@@ -38,12 +38,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
     NSAssert (thisBundle != nil, @"Could not get this bundle.");
     
-    NSString *path = [thisBundle pathForResource:RISKWORLD_DATAFILE ofType:@"data"];
+    NSURL *path = [thisBundle URLForResource:RISKWORLD_DATAFILE withExtension:@"data"];
     NSAssert (path != nil, @"Could not get path to data file.");
     
     RKWorldDecoder *decodeDelegate = [RKWorldDecoder new];
     
-    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSData *data = [NSData dataWithContentsOfURL:path];
     NSKeyedUnarchiver *keyedUnarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     keyedUnarchive.delegate = decodeDelegate;
     RiskWorld *riskWorld = [keyedUnarchive decodeObject];
