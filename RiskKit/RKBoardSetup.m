@@ -28,14 +28,17 @@ void RKSetColorForDefault (NSColor *value, NSString *key)
 
 NSColor *RKGetColorForDefault (NSString *key)
 {
-    NSData *data;
     NSColor *color;
     
-    data = [[NSUserDefaults standardUserDefaults] dataForKey:key];
-    if (data == nil)
+    NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:key];
+    if (data == nil) {
         color = [NSColor blackColor];
-    else
-        color = [NSUnarchiver unarchiveObjectWithData:data];
+    } else {
+        color = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (!color) {
+            color = [NSUnarchiver unarchiveObjectWithData:data];
+        }
+    }
     
     return color;
 }
@@ -44,7 +47,7 @@ NSColor *RKGetColorForDefault (NSString *key)
 
 NSData *RKDefaultsDataForColor (NSColor *color)
 {
-    return [NSArchiver archivedDataWithRootObject:color];
+    return [NSKeyedArchiver archivedDataWithRootObject:color];
 }
 
 //======================================================================
@@ -57,7 +60,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 @synthesize selectedBorderColor;
 @synthesize showCardSetCounts;
 
-+ instance
++ (id)instance
 {
     if (_instance == nil)
     {
@@ -127,15 +130,10 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (instancetype)init
 {
-    int l;
-    
     if (self = [super init]) {
         borderWidth = 0.15;
         regularBorderColor = [NSColor blackColor];
         selectedBorderColor = [NSColor whiteColor];
-        
-        for (l = 0; l < 7; l++)
-            playerColors[l] = nil;
         
         [self revertAllToDefaults];
     }
@@ -158,9 +156,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) writePlayerColorDefaults
 {
-    NSUserDefaults *defaults;
-    
-    defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:RKDefaultsDataForColor (playerColors[1]) forKey:DK_DefaultPlayer1Color];
     [defaults setObject:RKDefaultsDataForColor (playerColors[2]) forKey:DK_DefaultPlayer2Color];
@@ -176,14 +172,12 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) writeOtherDefaults
 {
-    NSUserDefaults *defaults;
-    
-    defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:RKDefaultsDataForColor (regularBorderColor) forKey:DK_RegularBorderColor];
     [defaults setObject:RKDefaultsDataForColor (selectedBorderColor) forKey:DK_SelectedBorderColor];
     
-    [defaults setFloat:borderWidth forKey:DK_BorderWidth];
+    [defaults setDouble:borderWidth forKey:DK_BorderWidth];
     [defaults setBool:showCardSetCounts forKey:DK_ShowCardSetCounts];
     
     [defaults synchronize];
@@ -224,9 +218,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) revertOtherToDefaults
 {
-    NSUserDefaults *defaults;
-    
-    defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     borderWidth = [defaults doubleForKey:DK_BorderWidth];
     
@@ -258,7 +250,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) setRegularBorderColor:(NSColor *)newColor
 {
-    if (newColor == regularBorderColor)
+    if ([newColor isEqual:regularBorderColor])
         return;
     
     regularBorderColor = newColor;
@@ -271,7 +263,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) setSelectedBorderColor:(NSColor *)newColor
 {
-    if (newColor == selectedBorderColor)
+    if ([newColor isEqual:selectedBorderColor])
         return;
     
     selectedBorderColor = newColor;
