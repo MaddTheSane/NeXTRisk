@@ -12,9 +12,11 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 #import "CountryShape.h"
 #import "RiskUtil-Swift.h"
 
+NSExceptionName const ExpectException = @"ExpectException";
+
 @implementation CountryShapeGenerator
 
-+ countryShapeGenerator
++ (id)countryShapeGenerator
 {
     return [[CountryShapeGenerator alloc] init];
 }

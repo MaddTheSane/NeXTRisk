@@ -17,7 +17,7 @@
 
 @interface RiskNeighborView : RiskMapView
 {
-    IBOutlet __weak id<RiskNeighborViewDataSource> datasource;
+    __weak id<RiskNeighborViewDataSource> datasource;
 }
 @property (weak) IBOutlet id<RiskNeighborViewDataSource> dataSource;
 

@@ -2,13 +2,13 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 
 #import "RiskNeighborView.h"
 
-#import "RiskNeighbor.h"
+#import <RiskKit/RKNeighbor.h>
 #import "SNUtility.h"
 
 #define RiskNeighborView_VERSION 1
@@ -26,7 +26,7 @@ RCSID ("$Id: RiskNeighborView.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- initWithFrame:(NSRect)frameRect
+- (id)initWithFrame:(NSRect)frameRect
 {
     if (self = [super initWithFrame:frameRect]) {
         datasource = nil;

@@ -30,7 +30,7 @@
 
 //======================================================================
 
-#define ExpectException @"ExpectException"
+extern NSExceptionName const ExpectException;
 
 @interface NSScanner (RiskUtilExtras)
 

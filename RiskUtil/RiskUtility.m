@@ -2,7 +2,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 
@@ -12,7 +12,8 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 #import "CountryShape.h"
 #import "CountryShapeGenerator.h"
 #import "RiskMapView.h"
-#import "RiskNeighbor.h"
+#import <RiskKit/RKNeighbor.h>
+#import <RiskKit/RiskKit-Swift.h>
 #import "RiskWorld.h"
 #import <RiskKit/RKContinent.h>
 #import <RiskKit/RKCard.h>
@@ -94,8 +95,8 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSSavePanel *panel = [NSSavePanel savePanel];
     panel.nameFieldStringValue = @"RiskWorld.data";
     
-    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-        if (result == NSFileHandlingPanelOKButton) {
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if (result == NSModalResponseOK) {
             NSData *fileData;
             @autoreleasepool {
                 fileData = [NSKeyedArchiver archivedDataWithRootObject:riskWorld];
@@ -107,7 +108,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
             }
             NSError *err = nil;
             if (![fileData writeToURL:[panel URL] options:NSDataWritingAtomic error:&err]) {
-                [[NSAlert alertWithError:err] runModal];
+                [NSApp presentError:err];
             }
         }
     }];
@@ -119,7 +120,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 {
     NSBundle *mainBundle;
     NSMutableDictionary *dict;
-    NSString *path;
+    NSURL *path;
     NSString *fileContents;
     NSScanner *scanner;
     int value;
@@ -129,14 +130,14 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     dict = [NSMutableDictionary dictionary];
     
-    path = [mainBundle pathForResource:@"ContinentData" ofType:@"txt"];
-    NSLog (@"path: %@", path);
+    path = [mainBundle URLForResource:@"ContinentData" withExtension:@"txt"];
+    NSLog (@"path: %@", path.path);
     
-    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithContentsOfFile:path
-                                                       encoding:NSASCIIStringEncoding
-                                                          error:NULL];
+        fileContents = [[NSString alloc] initWithContentsOfURL:path
+                                                      encoding:NSASCIIStringEncoding
+                                                         error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -159,7 +160,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 {
     NSMutableArray *array;
     NSBundle *mainBundle;
-    NSString *path;
+    NSURL *path;
     NSString *fileContents;
     NSScanner *scanner;
     RKCountry *country;
@@ -169,14 +170,14 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     
     array = [NSMutableArray array];
     
-    path = [mainBundle pathForResource:@"CountryData" ofType:@"txt"];
-    NSLog (@"path: %@", path);
+    path = [mainBundle URLForResource:@"CountryData" withExtension:@"txt"];
+    NSLog (@"path: %@", path.path);
     
-    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithContentsOfFile:path
-                                                       encoding:NSASCIIStringEncoding
-                                                          error:NULL];
+        fileContents = [[NSString alloc] initWithContentsOfURL:path
+                                                      encoding:NSASCIIStringEncoding
+                                                         error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -194,7 +195,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 {
     NSMutableArray<RKNeighbor*> *array;
     NSBundle *mainBundle;
-    NSString *path;
+    NSURL *path;
     NSString *fileContents;
     NSScanner *scanner;
     RKNeighbor *riskNeighbor;
@@ -213,14 +214,14 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         [countryDictionary setObject:country forKey:[country countryName]];
     }
     
-    path = [mainBundle pathForResource:@"CountryNeighbors" ofType:@"txt"];
+    path = [mainBundle URLForResource:@"CountryNeighbors" withExtension:@"txt"];
     NSLog (@"path: %@", path);
     
-    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithContentsOfFile:path
-                                                       encoding:NSASCIIStringEncoding
-                                                          error:NULL];
+        fileContents = [[NSString alloc] initWithContentsOfURL:path
+                                                      encoding:NSASCIIStringEncoding
+                                                         error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
@@ -238,7 +239,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 {
     NSMutableArray<RKCard*> *array;
     NSBundle *mainBundle;
-    NSString *path;
+    NSURL *path;
     NSString *fileContents;
     NSScanner *scanner;
     RKCard *riskCard;
@@ -261,14 +262,14 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
         [countryDictionary setObject:country forKey:[country countryName]];
     }
     
-    path = [mainBundle pathForResource:@"CardData" ofType:@"txt"];
-    NSLog (@"path: %@", path);
+    path = [mainBundle URLForResource:@"CardData" withExtension:@"txt"];
+    NSLog (@"path: %@", path.path);
     
-    fileContents = [[NSString alloc] initWithContentsOfFile:path usedEncoding:NULL error:NULL];
+    fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithContentsOfFile:path
-                                                       encoding:NSASCIIStringEncoding
-                                                          error: NULL];
+        fileContents = [[NSString alloc] initWithContentsOfURL:path
+                                                      encoding:NSASCIIStringEncoding
+                                                         error: NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     

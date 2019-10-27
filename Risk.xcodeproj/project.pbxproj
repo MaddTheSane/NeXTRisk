@@ -986,7 +986,7 @@
 					};
 					55377FF81CC15E1700A2C08E = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 					};
 					5537806A1CC1639C00A2C08E = {
 						CreatedOnToolsVersion = 7.3;
@@ -1590,6 +1590,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1608,6 +1609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
