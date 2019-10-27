@@ -64,8 +64,8 @@ typedef NS_ENUM(NSInteger, SSSortType) {
 
 - printKeyValues;			//useful for debugging
 
-- addObject:anObject;			//slap a new object into list
-- addObjectIfAbsent:anObject;		//override of List method 
+- (void)addObject:anObject;			//slap a new object into list
+- (void)addObjectIfAbsent:anObject;		//override of List method 
 - (NSComparisonResult)compare:thisObject to:thatObject;//compare operator on keys
 - (BOOL)isEqual:anObject;		//similar to List op
 

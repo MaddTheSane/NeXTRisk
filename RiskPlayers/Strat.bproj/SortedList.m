@@ -141,7 +141,7 @@
 	// Big-time bonus for being near extinction; the nearer, the bigger.
 	// Small per country penalty to make it more attractive to attack
 	// players with fewer countries.
-	enpl = [thisCountry player];
+	enpl = [thisCountry playerNumber];
 	countries = [riskPlayer playersCountries:enpl];
 	cc = [countries count];
 	if (cc <= 3)
@@ -493,7 +493,7 @@
 }
 
 
-- addObject:anObject
+- (void)addObject:anObject
 {
   /*-----------------------------------------------------------
      Adds an object to the sortedList.  Uses a binary search to
@@ -516,11 +516,10 @@
    
    	//empty list; insert and get out of here
 	
-   if(bottomPtr == -1)	
-     {
-       [super insertObject:anObject at:0];
-       return self;
-     }  
+    if(bottomPtr == -1) {
+        [super insertObject:anObject at:0];
+        return;
+    }
    
    
    	//The real interest.  Do a binary search until the insertion pt
@@ -528,29 +527,27 @@
 	
    compareResult = [self compare:[self objectAt:pivot] to:anObject];
 
-   do
-     {      
-   	if(compareResult > 0)
-      		    bottomPtr 	= pivot - 1;
-		 else
-		    topPtr 	= pivot + 1;
-		    
-   	pivot = (int)((topPtr + bottomPtr)/2);
-	compareResult = [self compare:[self objectAt:pivot] to:anObject];
-     }
-   while ((compareResult != 0) && (topPtr < bottomPtr));
+    do {
+        if(compareResult > 0) {
+            bottomPtr 	= pivot - 1;
+        } else {
+            topPtr 	= pivot + 1;
+        }
+        
+        pivot = (int)((topPtr + bottomPtr)/2);
+        compareResult = [self compare:[self objectAt:pivot] to:anObject];
+    } while ((compareResult != 0) && (topPtr < bottomPtr));
    
    	//Insert the new object
 	
-   if(compareResult >= 0)
-  	[super insertObject:anObject at:pivot];
-     else 
-     	[super insertObject:anObject at:pivot+1];
-
-  return self;
+    if(compareResult >= 0) {
+        [super insertObject:anObject at:pivot];
+    } else {
+        [super insertObject:anObject at:pivot+1];
+    }
 }
 
-- addObjectIfAbsent:anObject
+- (void)addObjectIfAbsent:anObject
 {
   /*-----------------------------------------------------------
      More overrides of List methods.  We need to make sure all additions
@@ -558,11 +555,9 @@
      sorted.
   -----------------------------------------------------------*/
   
- if([self indexOf:anObject] == NX_NOT_IN_LIST)
-     {
-       [self addObject:anObject];
-     }
- return self;
+    if([self indexOfObject:anObject] == NSNotFound) {
+        [self addObject:anObject];
+    }
 }
 
 - (BOOL)isEqual:anObject
