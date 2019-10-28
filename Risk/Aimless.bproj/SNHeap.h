@@ -28,7 +28,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SNHeap<__covariant ObjectType> : NSObject
+@interface SNHeap<__covariant ObjectType> : NSObject <NSFastEnumeration>
 {
     NSComparisonResult (*comparator_function)(ObjectType, ObjectType, void *);
     void *context;
@@ -62,4 +62,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-

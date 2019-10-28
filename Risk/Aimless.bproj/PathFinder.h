@@ -35,7 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 typedef int(*PFDistance)(RKCountry *country1, RKCountry *country2);
 typedef BOOL(*PFAcceptableCountry)(RKCountry *country, void *__nullable context);
 
-extern NSComparisonResult PFCompareDistances (RKCountry *country1, RKCountry *country2, void *context);
 extern int PFConstantDistance (RKCountry *country1, RKCountry *country2);
 extern BOOL PFCountryForPlayer (RKCountry *country, void *context);
 extern BOOL PFCountryForPlayerHasEnemyNeighbors (RKCountry *country, void *context);

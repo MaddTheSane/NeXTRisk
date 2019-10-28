@@ -32,7 +32,7 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 #import "DNode.h"
 #import <RiskKit/SNUtility.h>
 
-NSComparisonResult PFCompareDistances (RKCountry *country1, RKCountry *country2, void *context)
+static NSComparisonResult PFCompareDistances(RKCountry *country1, RKCountry *country2, void *context)
 {
     NSDictionary<NSString*,DNode*> *nodeDictionary;
     NSString *name1, *name2;
@@ -46,47 +46,36 @@ NSComparisonResult PFCompareDistances (RKCountry *country1, RKCountry *country2,
     distance1 = nodeDictionary[name1].distance;
     distance2 = nodeDictionary[name2].distance;
     
-    if (distance1 < distance2)
+    if (distance1 < distance2) {
         result = NSOrderedAscending;
-    else if (distance1 == distance2)
-    {
+    } else if (distance1 == distance2) {
         int troopCount1, troopCount2;
         
         // Choose country with fewest troops.
         troopCount1 = country1.troopCount;
         troopCount2 = country2.troopCount;
         
-        if (troopCount1 < troopCount2)
-        {
+        if (troopCount1 < troopCount2) {
             result = NSOrderedAscending;
             //NSLog (@"<");
-        }
-        else if (troopCount1 == troopCount2)
-        {
+        } else if (troopCount1 == troopCount2) {
             result = NSOrderedSame;
             //NSLog (@"==");
-        }
-        else
-        {
+        } else {
             result = NSOrderedDescending;
             //NSLog (@">");
         }
         
-        if (result == NSOrderedAscending)
-        {
+        if (result == NSOrderedAscending) {
             NSCAssert (troopCount1 < troopCount2, @"troopCount1 >= troopCount2");
-        }
-        else if (result == NSOrderedSame)
-        {
+        } else if (result == NSOrderedSame) {
             NSCAssert (troopCount1 == troopCount2, @"troopCount1 != troopCount2");
-        }
-        else
-        {
+        } else {
             NSCAssert (troopCount1 > troopCount2, @"troopCount1 <= troopCount2");
         }
-    }
-    else
+    } else {
         result = NSOrderedDescending;
+    }
     
     return result;
 }

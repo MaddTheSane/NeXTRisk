@@ -57,7 +57,7 @@ RCSID ("$Id: DNode.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-- (void) relaxFrom:source distance:(NSInteger)x
+- (void) relaxFrom:(id)source distance:(NSInteger)x
 {
     NSInteger aDistance;
     

@@ -279,4 +279,16 @@ static inline NSInteger SNParentIndex (NSInteger n)
     return array.description;
 }
 
+// Code taken from https://www.mikeash.com/pyblog/friday-qa-2010-04-16-implementing-fast-enumeration.html
+- (NSUInteger)countByEnumeratingWithState:(nonnull NSFastEnumerationState *)state objects:(id  _Nullable * _Nonnull)buffer count:(NSUInteger)len {
+    if (state->state == 0) {
+        state->mutationsPtr = (unsigned long *)self;
+        state->itemsPtr = data;
+        state->state = 1;
+        return current_size;
+    } else {
+        return 0;
+    }
+}
+
 @end

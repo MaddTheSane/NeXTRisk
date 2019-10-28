@@ -559,13 +559,10 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
             }
             
             country = nil;
-            while ((continent = [continentChoiceHeap firstObject]))
+            for (continent in continentChoiceHeap)
             {
-                NSSet *source;
-                NSInteger count;
-                
-                source = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:continent.countries];
-                count = source.count;
+                NSSet<RKCountry *> *source = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:continent.countries];
+                NSInteger count = source.count;
                 if (count > 0)
                 {
                     NSString *how;
@@ -782,7 +779,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
 #if 1
     {
     placeCountries = [SNHeap heapUsingFunction:minimumTroops context:NULL];
-    NSEnumerator *enumerator = [[self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
+    NSEnumerator<RKCountry*> *enumerator = [[self countriesWithAllOptions:RKCountryFlagsWithEnemyNeighbors from:[self ourCountries]] objectEnumerator];
     [placeCountries insertObjectsFromEnumerator:enumerator];
     }
 #else
@@ -885,7 +882,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
 
 - (void) attackPhase
 {
-    NSArray *attackers;
+    NSArray<RKCountry*> *attackers;
     //NSEnumerator *countryEnumerator;
     BOOL won;
     RKCountry *country;
