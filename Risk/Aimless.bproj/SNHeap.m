@@ -174,9 +174,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 - (void) insertObjectsFromEnumerator:(NSEnumerator *)objectEnumerator
 {
-    id object;
-    
-    while (object = [objectEnumerator nextObject])
+    for (id object in objectEnumerator)
     {
         [self insertObject:object];
     }
