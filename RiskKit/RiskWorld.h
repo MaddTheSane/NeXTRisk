@@ -57,9 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-//======================================================================
-// Some utility functions.
-//======================================================================
+#pragma mark - Some utility functions.
 
 NSSet<RKCountry*> *RKCountriesForPlayerNumber (NSSet<RKCountry*> *source, RKPlayer number);
 NSSet<RKCountry*> *RKCountriesInContinentNamed (NSSet<RKCountry*> *source, NSString *continentName);

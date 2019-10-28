@@ -67,7 +67,7 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5">
+                                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5">
                                     <rect key="frame" x="56" y="68" width="30" height="16"/>
                                     <textFieldCell key="cell" alignment="left" title="with" id="72">
                                         <font key="font" metaFont="system"/>
@@ -105,9 +105,9 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
                                     <rect key="frame" x="56" y="13" width="30" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="with" id="77">
+                                    <textFieldCell key="cell" alignment="left" title="with" id="77">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -121,15 +121,15 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="15">
+                                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15">
                                     <rect key="frame" x="119" y="13" width="45" height="16"/>
-                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="armies" id="79">
+                                    <textFieldCell key="cell" alignment="left" title="armies" id="79">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="18">
+                                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18">
                                     <rect key="frame" x="119" y="68" width="45" height="16"/>
                                     <textFieldCell key="cell" alignment="left" title="armies" id="74">
                                         <font key="font" metaFont="system"/>
@@ -200,7 +200,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="32">
-                                    <rect key="frame" x="75" y="130" width="27" height="13"/>
+                                    <rect key="frame" x="75" y="130" width="27" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" alignment="left" title="dice" id="89">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -263,7 +263,6 @@
                                 <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" constant="19" id="fXT-ZK-GcL"/>
                                 <constraint firstItem="58" firstAttribute="height" secondItem="57" secondAttribute="height" id="nb3-YV-JW5"/>
                                 <constraint firstItem="32" firstAttribute="leading" secondItem="22" secondAttribute="trailing" constant="4" id="noS-eT-G5h"/>
-                                <constraint firstItem="22" firstAttribute="centerY" secondItem="32" secondAttribute="centerY" id="oim-sw-bqD"/>
                                 <constraint firstItem="56" firstAttribute="bottom" secondItem="57" secondAttribute="bottom" id="p2a-8g-lmP"/>
                                 <constraint firstItem="22" firstAttribute="leading" secondItem="3" secondAttribute="trailing" constant="4" id="pNV-Ui-oIC"/>
                                 <constraint firstItem="3" firstAttribute="baseline" secondItem="22" secondAttribute="baseline" id="q9X-j5-GP3"/>

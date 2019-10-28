@@ -108,9 +108,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 
 - (void) windowWillClose:(NSNotification *)aNotification;
 
-//======================================================================
-// General methods for players
-//======================================================================
+#pragma mark - General methods for players
 
 @property (readonly, copy) NSSet<RKCountry *> *ourCountries;
 
@@ -148,9 +146,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// are in the named continent.
 - (NSSet<RKCountry *> *) removeCountriesInContinentNamed:(NSString *)continentName from:(NSSet<RKCountry *> *)source NS_SWIFT_NAME(removeCountries(inContinent:from:));
 
-//======================================================================
-// Card set methods
-//======================================================================
+#pragma mark - Card set methods
 
 /// Returns a set of all the valid card sets from this player's hand.
 @property (readonly, copy) NSSet<RKCardSet *> *allOurCardSets;
@@ -164,9 +160,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// Returns \c YES if this player has at least one valid card set.
 @property (readonly) BOOL canTurnInCardSet;
 
-//======================================================================
-// Console
-//======================================================================
+#pragma mark - Console
 
 - (IBAction) showConsolePanel:(nullable id)sender;
 /// Appends a formatted string to the console window, if it is visible.
@@ -180,9 +174,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 - (IBAction) continueAction:(nullable id)sender;
 - (IBAction) pauseCheckAction:(nullable id)sender;
 
-//======================================================================
-// Subclass Responsibilities
-//======================================================================
+#pragma mark - Subclass Responsibilities
 
 /// Returns \c YES if this is an interactive player that will use the
 /// shared panels to direct movement.  Human's implementation returns
@@ -190,9 +182,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// the interactive behavior should override this method to return <code>YES</code>.
 @property (readonly, getter=isInteractive) BOOL interactive;
 
-//----------------------------------------------------------------------
-// Card management
-//----------------------------------------------------------------------
+#pragma mark Card management
 
 /// @brief Allows computer players to turn in card before they get \c -placeArmies:
 ///
@@ -213,9 +203,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// message.
 - (void) didTurnInCards:(RKArmyCount)extraArmyCount;
 
-//----------------------------------------------------------------------
-// Initial game phases
-//----------------------------------------------------------------------
+#pragma mark Initial game phases
 
 /// Notifies the player that the players will begin choosing countries.
 /// Currently, this is called before <b>any</b> player has chosen a country.
@@ -243,9 +231,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// Notifies the player that they have won the game.
 - (void) youWonGame;
 
-//----------------------------------------------------------------------
-// Regular turn phases
-//----------------------------------------------------------------------
+#pragma mark Regular turn phases
 
 /// Notifies the player that their turn will begin.
 - (void) willBeginTurn;
@@ -283,10 +269,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// Notifies the player that their turn has ended.
 - (void) willEndTurn;
 
-//======================================================================
-// Inform computer players of important events that happed during other
-// players turns.
-//======================================================================
+#pragma mark Inform computer players of important events that happed during other players turns.
 
 /// Notifies this player that player \c number attacked one of this
 /// players countries, attackedCountry.  An advanced computer player
@@ -298,6 +281,8 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// could use this information, for example, to bias future attacks
 /// against the most antagonistic player.
 - (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry;
+
+#pragma mark -
 
 @end
 

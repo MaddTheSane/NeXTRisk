@@ -107,9 +107,7 @@ extern NSNotificationName const RKGameOverNotification;
 // Delegate of RiskMapView.
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 
-//======================================================================
-// General access to world data
-//======================================================================
+#pragma mark General access to world data
 
 @property (nonatomic, strong) RiskWorld *world;
 
@@ -117,9 +115,7 @@ extern NSNotificationName const RKGameOverNotification;
 
 @property (readonly) RKGameState gameState;
 
-//======================================================================
-// For status view.
-//======================================================================
+#pragma mark For status view.
 
 - (BOOL) isPlayerActive:(RKPlayer)number;
 @property (readonly) RKPlayer currentPlayerNumber;
@@ -127,15 +123,11 @@ extern NSNotificationName const RKGameOverNotification;
 
 - (RiskPlayer *) playerNumber:(RKPlayer)number;
 
-//======================================================================
-// Player menu support
-//======================================================================
+#pragma mark Player menu support
 
 - (IBAction) showPlayerConsole:(nullable id)sender;
 
-//======================================================================
-// Establish Game
-//======================================================================
+#pragma mark Establish Game
 
 - (void) startNewGame;
 - (BOOL) addPlayer:(RiskPlayer *)aPlayer number:(RKPlayer)number;
@@ -143,9 +135,7 @@ extern NSNotificationName const RKGameOverNotification;
 - (void) tryToStart;
 - (void) stopGame;
 
-//======================================================================
-// Game State
-//======================================================================
+#pragma mark Game State
 
 @property (readonly) BOOL gameInProgress;
 
@@ -170,23 +160,17 @@ extern NSNotificationName const RKGameOverNotification;
 
 - (void) resetMovableArmiesForPlayerNumber:(RKPlayer)number;
 
-//======================================================================
-// Choose countries
-//======================================================================
+#pragma mark Choose countries
 
 - (BOOL) player:(RiskPlayer *)aPlayer choseCountry:(RKCountry *)country;
 @property (readonly, copy) NSArray<RKCountry *> *unoccupiedCountries; // Better in RiskWorld?
 - (void) randomlyChooseCountriesForActivePlayers;
 
-//======================================================================
-// Place Armies and Move Attacking armies
-//======================================================================
+#pragma mark Place Armies and Move Attacking armies
 
 - (BOOL) player:(RiskPlayer *)aPlayer placesArmies:(RKArmyCount)count inCountry:(RKCountry *)country;
 
-//======================================================================
-// Attacking
-//======================================================================
+#pragma mark Attacking
 
 - (RKAttackResult) attackUntilUnableToContinueFromCountry:(RKCountry *)attacker
                                                 toCountry:(RKCountry *)defender
@@ -206,16 +190,12 @@ extern NSNotificationName const RKGameOverNotification;
                                toCountry:(RKCountry *)defender
                 moveAllArmiesUponVictory:(BOOL)moveFlag;
 
-//======================================================================
-// Game Manager calculations
-//======================================================================
+#pragma mark Game Manager calculations
 
 - (RKArmyCount) earnedArmyCountForPlayer:(RKPlayer)number;
 - (RKDiceRoll) rollDiceWithAttackerArmies:(RKArmyCount)attackerArmies defenderArmies:(RKArmyCount)defenderArmies;
 
-//======================================================================
-// General player interaction
-//======================================================================
+#pragma mark General player interaction
 
 - (void) selectCountry:(RKCountry *)aCountry;
 - (void) takeAttackMethodFromPlayerNumber:(RKPlayer)number;
@@ -226,9 +206,7 @@ extern NSNotificationName const RKGameOverNotification;
 
 - (void) setArmiesLeftToPlace:(RKArmyCount)count;
 
-//======================================================================
-// Card management
-//======================================================================
+#pragma mark Card management
 
 - (void) _recycleDiscardedCards;
 - (void) dealCardToPlayerNumber:(RKPlayer)number;
@@ -244,18 +222,14 @@ extern NSNotificationName const RKGameOverNotification;
 
 - (void) _loadCardPanel;
 
-//======================================================================
-// Other
-//======================================================================
+#pragma mark Other
 
 - (void) updatePhaseBox;
 - (RKArmyCount) totalTroopsForPlayerNumber:(RKPlayer)number;
 
 - (void) defaultsChanged:(NSNotification *)aNotification;
 
-//======================================================================
-// End of game stuff:
-//======================================================================
+#pragma mark End of game stuff:
 
 - (BOOL) checkForEndOfPlayerNumber:(RKPlayer)number;
 - (void) playerHasLost:(RKPlayer)number;

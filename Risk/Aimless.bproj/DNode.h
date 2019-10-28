@@ -33,11 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Transient for now, so we won't retain previous...
 
-//----------------------------------------------------------------------
-// Keep track of the distance and previous step in the path, so that
-// we can buid the shortest path.
-//----------------------------------------------------------------------
-
+//! Keep track of the distance and previous step in the path, so that
+//! we can buid the shortest path.
 @interface DNode : NSObject
 {
     NSInteger distance;
