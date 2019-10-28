@@ -34,17 +34,12 @@ RCSID ("$Id: PathFinder.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 
 static NSComparisonResult PFCompareDistances(RKCountry *country1, RKCountry *country2, void *context)
 {
-    NSDictionary<NSString*,DNode*> *nodeDictionary;
-    NSString *name1, *name2;
-    NSInteger distance1, distance2;
+    NSDictionary<NSString*,DNode*> *nodeDictionary = (__bridge NSDictionary *)context;
+    NSString *name1 = country1.countryName;
+    NSString *name2 = country2.countryName;
+    NSInteger distance1 = nodeDictionary[name1].distance;
+    NSInteger distance2 = nodeDictionary[name2].distance;
     NSComparisonResult result;
-    
-    nodeDictionary = (__bridge NSDictionary *)context;
-    name1 = country1.countryName;
-    name2 = country2.countryName;
-    
-    distance1 = nodeDictionary[name1].distance;
-    distance2 = nodeDictionary[name2].distance;
     
     if (distance1 < distance2) {
         result = NSOrderedAscending;
@@ -121,11 +116,11 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (RKCountry *country, void *context)
 @implementation PathFinder
 
 
-+ shortestPathInRiskWorld:(RiskWorld *)aWorld
-              fromCountry:(RKCountry *)source
-             forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
-                  context:(void *)aContext
-         distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
++ (id)shortestPathInRiskWorld:(RiskWorld *)aWorld
+                  fromCountry:(RKCountry *)source
+                 forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
+                      context:(void *)aContext
+             distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
 {
     return [[PathFinder alloc] initWithRiskWorld:aWorld
                                 fromCountry:source
@@ -136,11 +131,11 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (RKCountry *country, void *context)
 
 //----------------------------------------------------------------------
 
-- (instancetype) initWithRiskWorld:(RiskWorld *)aWorld
-        fromCountry:(RKCountry *)source
-       forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
-            context:(void *)aContext
-   distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
+- (id)initWithRiskWorld:(RiskWorld *)aWorld
+            fromCountry:(RKCountry *)source
+           forCountries:(BOOL (*)(RKCountry *, void *))anIsCountryAcceptableFunction
+                context:(void *)aContext
+       distanceFunction:(int (*)(RKCountry *, RKCountry *))aDistanceFunction
 {
     if (self = [super init]) {
         acceptableCountries = [[NSMutableSet alloc] init];
@@ -160,7 +155,7 @@ BOOL PFCountryForPlayerHasEnemyNeighbors (RKCountry *country, void *context)
 
 - (void) _buildShortestPathsFromCountry:(RKCountry *)source
 {
-    NSSet *allCountries;
+    NSSet<RKCountry*> *allCountries;
     RKCountry *country;
     DNode *node;
     SNHeap<RKCountry*> *countryHeap;
