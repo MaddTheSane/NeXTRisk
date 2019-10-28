@@ -2,13 +2,13 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 #import "Human.h"
 
-#import "RiskGameManager.h"
+#import <RiskKit/RiskGameManager.h>
 #import <RiskKit/RKCountry.h>
 
 #define Human_VERSION 1

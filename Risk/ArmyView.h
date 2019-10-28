@@ -4,6 +4,7 @@
 //
 
 #import <AppKit/AppKit.h>
+#import <RiskKit/Risk.h>
 
 @interface ArmyView : NSView
 

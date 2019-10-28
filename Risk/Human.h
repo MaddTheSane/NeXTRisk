@@ -5,7 +5,7 @@
 
 #import <AppKit/AppKit.h>
 
-#import "RiskPlayer.h"
+#import <RiskKit/RiskPlayer.h>
 
 /// The Human player is the standard interactive player that uses the
 /// shared interfaces for a human to play.

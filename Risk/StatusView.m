@@ -2,16 +2,16 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: StatusView.m,v 1.4 1997/12/15 07:44:22 nygard Exp $");
 
 #import "StatusView.h"
 
 #import <RiskKit/RKBoardSetup.h>
-#import "RiskGameManager.h"
-#import "SNUtility.h"
-#import "RiskPlayer.h"
+#import <RiskKit/RiskGameManager.h>
+#import <RiskKit/SNUtility.h>
+#import <RiskKit/RiskPlayer.h>
 
 #define StatusView_VERSION 1
 

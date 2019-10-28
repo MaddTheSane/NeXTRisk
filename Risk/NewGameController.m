@@ -2,14 +2,14 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 #import "NewGameController.h"
 
 #import "Brain.h"
-#import "RiskGameManager.h"
+#import <RiskKit/RiskGameManager.h>
 #import "Human.h"
 #import <RiskKit/RKGameConfiguration.h>
 #import <RiskKit/RKBoardSetup.h>
@@ -124,7 +124,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     NSPopUpButton *thePopup = nil;
     NSInteger tag = [[sender selectedCell] tag];
-    NSString *rtfPath;
+    NSURL *rtfPath;
     NSBundle *thisBundle = [NSBundle bundleForClass:[self class]], *playerBundle;
     NSArray<NSBundle *> *riskPlayerBundles = [brain riskPlayerBundles];
     NSDictionary *playerBundleInfo;
@@ -172,10 +172,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         case 0: // None
             aboutPlayerImageView.image = nil;
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Not Playing", tag + 1];
-            rtfPath = [thisBundle pathForResource:@"NotPlaying" ofType:@"rtf"];
+            rtfPath = [thisBundle URLForResource:@"NotPlaying" withExtension:@"rtf"];
             if (rtfPath != nil)
             {
-                [aboutPlayerText readRTFDFromFile:rtfPath];
+                [aboutPlayerText readRTFDFromFile:rtfPath.path];
             }
             else
             {
@@ -188,10 +188,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             aboutPlayerImageView.image = image;
             
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Human Player", tag + 1];
-            rtfPath = [thisBundle pathForResource:@"Human" ofType:@"rtf"];
+            rtfPath = [thisBundle URLForResource:@"Human" withExtension:@"rtf"];
             if (rtfPath != nil)
             {
-                [aboutPlayerText readRTFDFromFile:rtfPath];
+                [aboutPlayerText readRTFDFromFile:rtfPath.path];
             }
             else
             {
@@ -216,14 +216,14 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             playerTypeName = playerBundleInfo[@"RKPlayerTypeName"];
             aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
             
-            rtfPath = [playerBundle pathForResource:playerBundleInfo[@"RKAboutPlayerFile"] ofType:nil];
+            rtfPath = [playerBundle URLForResource:playerBundleInfo[@"RKAboutPlayerFile"] withExtension:nil];
             if (rtfPath != nil)
             {
-                NSAttributedString *attrStr = [[NSAttributedString alloc] initWithURL:[NSURL fileURLWithPath:rtfPath] options:@{} documentAttributes:NULL error:NULL];
+                NSAttributedString *attrStr = [[NSAttributedString alloc] initWithURL:rtfPath options:@{} documentAttributes:NULL error:NULL];
                 if (attrStr) {
                     [aboutPlayerText.textStorage setAttributedString:attrStr];
                 } else {
-                    [aboutPlayerText readRTFDFromFile:rtfPath];
+                    [aboutPlayerText readRTFDFromFile:rtfPath.path];
                 }
             }
             else
