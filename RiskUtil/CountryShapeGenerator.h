@@ -12,7 +12,7 @@
 {
     NSMutableArray<NSArray<RiskPoint*>*> *regionArrays;
 
-    NSMutableArray *currentRegionPoints;
+    NSMutableArray<RiskPoint*> *currentRegionPoints;
 }
 
 + (instancetype)countryShapeGenerator;
