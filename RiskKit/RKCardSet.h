@@ -20,7 +20,7 @@ NSComparisonResult compareCardSetValues (id __nullable object1, id __nullable ob
 
 + (nullable instancetype)cardSet:(null_unspecified RKCard *)aCard1 :(null_unspecified RKCard *)aCard2 :(null_unspecified RKCard *)aCard3 NS_SWIFT_UNAVAILABLE("Use init(cardSet:_:_:) instead");
 
-- (nullable instancetype)initCardSet:(null_unspecified RKCard *)aCard1 :(null_unspecified RKCard *)aCard2 :(null_unspecified RKCard *)aCard3 NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initCardSet:(null_unspecified RKCard *)aCard1 :(null_unspecified RKCard *)aCard2 :(null_unspecified RKCard *)aCard3 NS_SWIFT_NAME(init(_:_:_:)) NS_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 @property (readonly, strong, nonnull) RKCard *card1;
