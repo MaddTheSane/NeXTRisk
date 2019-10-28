@@ -124,17 +124,19 @@ static NSTextFieldCell *_armyCell = nil;
     
     RKBoardSetup *boardSetup = [RKBoardSetup instance];
     
-    if (aCountry.playerNumber != 0)
+    if (aCountry.playerNumber != 0) {
         [[boardSetup colorForPlayer:aCountry.playerNumber] set];
-    else
+    } else {
         [[NSColor whiteColor] set];
+    }
     
     [bezierPath fill];
     
-    if (selected == YES)
+    if (selected == YES) {
         [boardSetup.selectedBorderColor set];
-    else
+    } else {
         [boardSetup.regularBorderColor set];
+    }
     CGFloat prevWidth = bezierPath.lineWidth;
     bezierPath.lineWidth = boardSetup.borderWidth;
     [bezierPath stroke];
