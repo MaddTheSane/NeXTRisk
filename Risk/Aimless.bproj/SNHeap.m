@@ -54,11 +54,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 + (instancetype) heapUsingFunction:(NSComparisonResult (*)(id,id,void *))comparator context:(void *)aContext
 {
-    SNHeap *newHeap;
-    
-    newHeap = [[[SNHeap alloc] initUsingFunction:comparator context:aContext] autorelease];
-    
-    return newHeap;
+    return [[[SNHeap alloc] initUsingFunction:comparator context:aContext] autorelease];
 }
 
 //----------------------------------------------------------------------
