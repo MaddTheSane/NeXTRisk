@@ -197,7 +197,7 @@ extern NSNotificationName const RKGameOverNotification;
 
 #pragma mark General player interaction
 
-- (void) selectCountry:(RKCountry *)aCountry;
+- (void) selectCountry:(nullable RKCountry *)aCountry;
 - (void) takeAttackMethodFromPlayerNumber:(RKPlayer)number;
 - (void) setAttackMethodForPlayerNumber:(RKPlayer)number;
 - (void) setAttackingFromCountryName:(NSString *)string;

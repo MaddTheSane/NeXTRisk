@@ -201,7 +201,7 @@ typedef NS_OPTIONS(uint32_t, RKCountryFlags) {
 /// the Human player to allow it to update the number of armies left to
 /// place, since it turns in cards after receiving the \c -placeArmies:
 /// message.
-- (void) didTurnInCards:(RKArmyCount)extraArmyCount;
+- (void) didTurnInCards:(RKArmyCount)extraArmyCount NS_SWIFT_NAME(didTurnInCards(_:));
 
 #pragma mark Initial game phases
 
