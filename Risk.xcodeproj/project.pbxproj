@@ -18,6 +18,7 @@
 		551251E31CC22525000E7A52 /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551251E91CC225AE000E7A52 /* RiskUtil.xib */; };
 		551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 551251EA1CC27D55000E7A52 /* RiskUtil_main.m */; };
+		5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5516BDC42367B73600A888BD /* HumanPlayer.swift */; };
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		55377F771CC15C2400A2C08E /* ArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* ArmyView.m */; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.xib */; };
@@ -253,6 +254,7 @@
 		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
+		5516BDC42367B73600A888BD /* HumanPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanPlayer.swift; sourceTree = "<group>"; };
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55377EB21CC15AC900A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55377EB71CC15AC900A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 				55377EC41CC15C2300A2C08E /* ArmyView.m */,
 				55377EC81CC15C2300A2C08E /* Brain.h */,
 				55AC2A531D1089C50021814F /* Brain.swift */,
+				5516BDC42367B73600A888BD /* HumanPlayer.swift */,
 				55377F421CC15C2300A2C08E /* Human.h */,
 				55377F431CC15C2300A2C08E /* Human.m */,
 				55377F461CC15C2300A2C08E /* LineView.h */,
@@ -1148,6 +1151,7 @@
 				55377F771CC15C2400A2C08E /* ArmyView.m in Sources */,
 				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
+				5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
