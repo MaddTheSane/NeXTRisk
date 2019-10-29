@@ -14,13 +14,10 @@ RCSID ("$Id: WorldInfoController.m,v 1.1.1.1 1997/12/09 07:18:58 nygard Exp $");
 
 static NSComparisonResult WIOrderContinentsByName (id object1, id object2, void *context)
 {
-    RKContinent *continent1, *continent2;
-    NSComparisonResult result;
+    RKContinent *continent1 = (RKContinent *)object1;
+    RKContinent *continent2 = (RKContinent *)object2;
     
-    continent1 = (RKContinent *)object1;
-    continent2 = (RKContinent *)object2;
-    
-    result = [continent1.continentName compare:continent2.continentName];
+    NSComparisonResult result = [continent1.continentName compare:continent2.continentName];
     
     return result;
 }
@@ -201,10 +198,10 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     {
         newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent *_Nonnull obj1, RKContinent *_Nonnull obj2) {
             NSComparisonResult result;
-            NSInteger count1, count2;
+            //NSInteger count1, count2;
             
-            count1 = obj1.countries.count;
-            count2 = obj2.countries.count;
+            NSInteger count1 = obj1.countries.count;
+            NSInteger count2 = obj2.countries.count;
             
             if (count1 < count2)
             {
@@ -236,10 +233,9 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     {
         newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent * _Nonnull obj1, RKContinent * _Nonnull obj2) {
             NSComparisonResult result;
-            int count1, count2;
             
-            count1 = obj1.continentBonus;
-            count2 = obj2.continentBonus;
+            int count1 = obj1.continentBonus;
+            int count2 = obj2.continentBonus;
             
             if (count1 < count2)
             {
@@ -265,9 +261,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 - (IBAction) reorder:(id)sender
 {
-    NSString *identifier;
-    
-    identifier = continentTable.tableColumns[continentTable.clickedColumn].identifier;
+    NSString *identifier = continentTable.tableColumns[continentTable.clickedColumn].identifier;
     
     if ([identifier isEqualToString:@"ContinentName"])
     {
@@ -301,16 +295,11 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    NSString *identifier;
-    RKContinent *target;
-    id value;
+    NSString *identifier = aTableColumn.identifier;
+    RKContinent *target = continents[rowIndex];
+    id value = nil;
     
     //NSParameterAssert (rowIndex >= 0 && rowIndex < [mes count]);
-    
-    value = nil;
-    
-    target = continents[rowIndex];
-    identifier = aTableColumn.identifier;
     
     if ([identifier isEqualToString:@"ContinentName"])
     {

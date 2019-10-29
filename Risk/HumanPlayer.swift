@@ -54,7 +54,7 @@ open class HumanPlayer : RiskPlayer {
             if placeArmyCount > 0 {
                 if gameManager.player(self, placesArmies: count, in: aCountry) {
                     setAttacking(aCountry)
-                    placeArmyCount -= count;
+                    placeArmyCount -= count
                     if placeArmyCount == 0 {
                         turnDone()
                     }
@@ -126,7 +126,7 @@ open class HumanPlayer : RiskPlayer {
     }
 
     open override func moveAttackingArmies(_ count: RKArmyCount, between source: RKCountry, _ destination: RKCountry) {
-        placeArmyCount = count;
+        placeArmyCount = count
         if placeArmyCount == 0 {
             turnDone()
         }
@@ -151,7 +151,6 @@ open class HumanPlayer : RiskPlayer {
     // MARK: - Custom methods
     
     /// Attack between countries based on the current attack method.
-    @objc(attackFromCountry:toCountry:moveAllArmiesUponVictory:)
     open func attack(from attacker: RKCountry, to defender: RKCountry, moveAllArmiesUponVictory moveFlag: Bool) -> RKAttackResult {
         var attackResult = RKAttackResult()
         switch attackMethod {
@@ -177,7 +176,7 @@ open class HumanPlayer : RiskPlayer {
         return attackResult
     }
 
-    @objc(setAttackingCountry:) open func setAttacking(_ attacker: RKCountry?) {
+    open func setAttacking(_ attacker: RKCountry?) {
         if let attacker = attacker {
             attackingCountry = attacker
             
