@@ -20,7 +20,7 @@
 //     e-mail:  nygard@telusplanet.net
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: SNHeap.m,v 1.1.1.1 1997/12/09 07:19:16 nygard Exp $");
 

@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 @class RiskWorld, RKCountry;
 

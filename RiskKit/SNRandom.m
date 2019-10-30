@@ -1,5 +1,5 @@
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: SNRandom.m,v 1.2 1997/12/15 07:44:17 nygard Exp $");
 

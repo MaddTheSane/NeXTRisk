@@ -2,6 +2,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
+#import <RiskKit/RiskKit.h>
 #import <RiskKit/Risk.h>
 
 RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");

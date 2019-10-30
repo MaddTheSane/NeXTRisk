@@ -2,7 +2,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 

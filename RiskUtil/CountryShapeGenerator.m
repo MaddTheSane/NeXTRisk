@@ -2,7 +2,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $");
 

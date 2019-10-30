@@ -895,10 +895,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55377EBA1CC15AC900A2C08E /* Build configuration list for PBXNativeTarget "Risk" */;
 			buildPhases = (
+				553780B21CC1966300A2C08E /* Embed Frameworks */,
 				55377EA51CC15AC900A2C08E /* Sources */,
 				55377EA61CC15AC900A2C08E /* Frameworks */,
 				55377EA71CC15AC900A2C08E /* Resources */,
-				553780B21CC1966300A2C08E /* Embed Frameworks */,
 				553780C71CC1985800A2C08E /* Copy PlugIns */,
 			);
 			buildRules = (

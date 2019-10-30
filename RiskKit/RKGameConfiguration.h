@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

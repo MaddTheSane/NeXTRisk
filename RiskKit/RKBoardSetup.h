@@ -7,7 +7,7 @@
 #import <Foundation/NSGeometry.h>
 #import <Foundation/NSNotification.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 @class NSColor;
 

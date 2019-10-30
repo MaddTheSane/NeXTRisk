@@ -6,7 +6,7 @@
 //  Copyright © 2016 C.W. Betts. All rights reserved.
 //
 
-#import "NSCoder+SNUnarchiveHelpers.h"
+#import <RiskKit/NSCoder+SNUnarchiveHelpers.h>
 
 @implementation NSCoder (SNUnarchiveHelpers)
 

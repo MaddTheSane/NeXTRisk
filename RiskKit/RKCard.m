@@ -2,11 +2,11 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
-#import "RKCard.h"
+#import <RiskKit/RKCard.h>
 
 #import "RKCountry.h"
 

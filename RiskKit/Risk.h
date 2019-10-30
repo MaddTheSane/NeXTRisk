@@ -6,7 +6,7 @@
 #include <CoreFoundation/CFBase.h>
 #include <CoreFoundation/CFAvailability.h>
 #import <Foundation/NSObjCRuntime.h>
-#import "SNUtility.h"
+#import <RiskKit/SNUtility.h>
 
 typedef NS_ENUM(int, RiskContinent)
 {

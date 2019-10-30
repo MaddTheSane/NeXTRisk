@@ -5,7 +5,7 @@
 
 #import <AppKit/AppKit.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 #define MAX_PLAYERS 7
 

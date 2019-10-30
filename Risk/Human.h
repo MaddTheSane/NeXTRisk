@@ -3,7 +3,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 #import <RiskKit/RiskPlayer.h>
 

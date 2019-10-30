@@ -3,7 +3,7 @@
 //
 
 #import <AppKit/AppKit.h>
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 

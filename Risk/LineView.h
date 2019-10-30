@@ -3,7 +3,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import <AppKit/NSView.h>
+#import <Cocoa/Cocoa.h>
 
 IB_DESIGNABLE
 /// Provide a simple view to show the width of a line, for use when

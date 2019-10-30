@@ -17,6 +17,7 @@ FOUNDATION_EXPORT const unsigned char RiskKitVersionString[];
 // Utility headers
 #import <RiskKit/SNUtility.h>
 #import <RiskKit/SNRandom.h>
+#import <RiskKit/NSCoder+SNUnarchiveHelpers.h>
 
 #import <RiskKit/Risk.h>
 #import <RiskKit/RiskPlayer.h>
@@ -38,4 +39,3 @@ FOUNDATION_EXPORT const unsigned char RiskKitVersionString[];
 #import <RiskKit/ArmyView.h>
 
 
-#import <RiskKit/NSCoder+SNUnarchiveHelpers.h>

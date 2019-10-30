@@ -2,7 +2,7 @@
 // This file is a part of Risk by Mike Ferris.
 //
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 RCSID ("$Id: BoardSetup.m,v 1.3 1997/12/15 07:43:37 nygard Exp $");
 

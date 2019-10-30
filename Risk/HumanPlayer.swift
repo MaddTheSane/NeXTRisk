@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RiskKit
 import RiskKit.RiskPlayer
 
 

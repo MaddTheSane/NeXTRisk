@@ -7,7 +7,7 @@
 #import <AppKit/NSWindow.h>
 #import <AppKit/NSTextView.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

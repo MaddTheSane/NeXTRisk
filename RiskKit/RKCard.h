@@ -6,7 +6,7 @@
 #import <Foundation/NSObject.h>
 #import <AppKit/NSImage.h>
 
-#import "Risk.h"
+#import <RiskKit/Risk.h>
 
 @class RKCountry;
 @class NSImage;
