@@ -30,5 +30,25 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.package</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Risk World Setting</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.github.MaddTheSane.Risk.world</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>rworld</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
