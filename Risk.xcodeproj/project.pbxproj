@@ -329,7 +329,7 @@
 		55377F5C1CC15C2400A2C08E /* RKNeighbor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKNeighbor.m; sourceTree = "<group>"; };
 		55377F5D1CC15C2400A2C08E /* RiskPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskPlayer.h; sourceTree = "<group>"; };
 		55377F5E1CC15C2400A2C08E /* RiskPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskPlayer.m; sourceTree = "<group>"; };
-		55377F611CC15C2400A2C08E /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
+		55377F611CC15C2400A2C08E /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = RiskWorld.data; sourceTree = "<group>"; };
 		55377F621CC15C2400A2C08E /* RiskWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiskWorld.h; sourceTree = "<group>"; };
 		55377F631CC15C2400A2C08E /* RiskWorld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskWorld.m; sourceTree = "<group>"; };
 		55377F641CC15C2400A2C08E /* SNRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRandom.h; sourceTree = "<group>"; };
@@ -1850,7 +1850,6 @@
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1866,7 +1865,6 @@
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

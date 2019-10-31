@@ -41,21 +41,23 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     NSURL *path = [thisBundle URLForResource:RISKWORLD_DATAFILE withExtension:@"data"];
     NSAssert (path != nil, @"Could not get path to data file.");
     
+    RKWorldDecoder *decodeDelegate = [RKWorldDecoder new];
+    
     NSData *data = [NSData dataWithContentsOfURL:path];
-    /*
-     I have no idea...
-     Attempting to this through an instance of NSKeyedUnarchiver causes the values to not be read
-     RKWorldDecoder *decodeDelegate = [RKWorldDecoder new];
-
-    NSKeyedUnarchiver *keyedUnarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    keyedUnarchive.delegate = decodeDelegate;
-    [keyedUnarchive finishDecoding];
-     */
-    RiskWorld *riskWorld = nil;
+    NSKeyedUnarchiver *keyedUnarchive;
     if (@available(macOS 10.13, *)) {
-        riskWorld = [NSKeyedUnarchiver unarchivedObjectOfClass:[RiskWorld class] fromData:data error:NULL];
+        NSError *err;
+        keyedUnarchive = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:&err];
+        if (err) {
+            NSLog(@"%@", err);
+        }
     } else {
-        riskWorld = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        keyedUnarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    }
+    keyedUnarchive.delegate = decodeDelegate;
+    RiskWorld *riskWorld = [keyedUnarchive decodeObjectOfClass:[RiskWorld class] forKey:NSKeyedArchiveRootObjectKey];
+    if (keyedUnarchive.error) {
+        NSLog(@"%@", keyedUnarchive.error);
     }
     if (!riskWorld) {
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
