@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSNotificationName const RKGameOverNotification;
 
-@class RiskWorld, RiskPlayer, RKGameConfiguration, RKCountry, RiskMapView, StatusView, ArmyView, RKCardPanelController;
+@class RiskWorld, RiskPlayer, RKGameConfiguration, RKCountry, RiskMapView, StatusView, RKArmyView, RKCardPanelController;
 @class RKCard, RKArmyPlacementValidator, RKCardSet, RKDiceInspector, RKWorldInfoController, SNRandom;
 
 //! The \c RiskGameManager controls most of the game play.  It notifies
@@ -52,7 +52,7 @@ extern NSNotificationName const RKGameOverNotification;
     IBOutlet NSTextField *initialArmiesLeftTextField;
     IBOutlet NSTextField *armiesLeftToPlaceTextField;
     IBOutlet NSButton *turnInCardsButton;
-    IBOutlet ArmyView *armyView;
+    IBOutlet RKArmyView *armyView;
 
     // Attack phase
     IBOutlet NSPopUpButton *attackMethodPopup;

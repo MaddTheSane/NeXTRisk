@@ -6,7 +6,7 @@
 #import <AppKit/AppKit.h>
 
 #import <RiskKit/RKCountry.h>
-#import "CountryShape.h"
+#import <RiskKit/RKCountryShape.h>
 #import "RiskMapView.h"
 
 @class RKNeighbor;

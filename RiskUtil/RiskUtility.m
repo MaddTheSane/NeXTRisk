@@ -9,7 +9,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 #import "RiskUtility.h"
 
 #import <RiskKit/RKCountry.h>
-#import "CountryShape.h"
+#import <RiskKit/RKCountryShape.h>
 #import "CountryShapeGenerator.h"
 #import "RiskMapView.h"
 #import <RiskKit/RKNeighbor.h>
@@ -367,7 +367,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
 + (RKCountry *) scanCountry:(NSScanner *)scanner validContinents:(NSSet *)continentNames
 {
     RKCountry *country;
-    CountryShape *shape;
+    RKCountryShape *shape;
     NSString *name;
     NSPoint aPoint;
     RiskContinent continent;

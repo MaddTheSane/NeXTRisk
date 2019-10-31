@@ -10,7 +10,7 @@ RCSID ("$Id: RiskMapView.m,v 1.4 1997/12/18 21:03:47 nygard Exp $");
 
 #import <RiskKit/RKBoardSetup.h>
 #import <RiskKit/RKCountry.h>
-#import <RiskKit/CountryShape.h>
+#import <RiskKit/RKCountryShape.h>
 
 #if !__has_feature(objc_arc)
 #error this file needs to be compiled with Automatic Reference Counting (ARC)

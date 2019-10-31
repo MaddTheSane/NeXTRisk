@@ -9,7 +9,7 @@ RCSID ("$Id: CountryShapeGenerator.m,v 1.1.1.1 1997/12/09 07:19:18 nygard Exp $"
 #import "CountryShapeGenerator.h"
 
 #import <RiskKit/RKCountry.h>
-#import "CountryShape.h"
+#import <RiskKit/RKCountryShape.h>
 #import "RiskUtil-Swift.h"
 
 NSExceptionName const ExpectException = @"ExpectException";
@@ -66,7 +66,7 @@ NSExceptionName const ExpectException = @"ExpectException";
 
 //----------------------------------------------------------------------
 
-- (CountryShape *) generateCountryShapeWithArmyCellPoint:(NSPoint)aPoint
+- (RKCountryShape *) generateCountryShapeWithArmyCellPoint:(NSPoint)aPoint
 {
     NSBezierPath *userPath = [[NSBezierPath alloc] init];
     
@@ -83,7 +83,7 @@ NSExceptionName const ExpectException = @"ExpectException";
     [userPath closePath];
     
     //return [CountryShape countryShapeWithRegions:regionArrays];
-    return [CountryShape countryShapeWithBezierPath:userPath armyCellPoint:aPoint];
+    return [RKCountryShape countryShapeWithBezierPath:userPath armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------

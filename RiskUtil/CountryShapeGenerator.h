@@ -5,7 +5,7 @@
 
 #import <AppKit/AppKit.h> // Need NSPoint...
 
-@class RKCountry, CountryShape;
+@class RKCountry, RKCountryShape;
 @class RiskPoint;
 
 @interface CountryShapeGenerator : NSObject
@@ -23,7 +23,7 @@
 - (void) addPoint:(NSPoint)newPoint;
 - (void) closeRegion;
 
-- (CountryShape *) generateCountryShapeWithArmyCellPoint:(NSPoint)aPoint;
+- (RKCountryShape *) generateCountryShapeWithArmyCellPoint:(NSPoint)aPoint;
 - (void) createUserPath;
 
 @end

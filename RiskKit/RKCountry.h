@@ -9,12 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class CountryShape, RiskMapView;
+@class RKCountryShape, RiskMapView;
 
 @interface RKCountry : NSObject <NSCoding>
 {
     NSString *name;
-    CountryShape *countryShape;
+    RKCountryShape *countryShape;
     NSString *continentName;
     NSMutableSet<RKCountry*> *neighborCountries;
 
@@ -26,14 +26,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithCountryName:(NSString *)aName
                       continentName:(NSString *)aContinentName
-                              shape:(CountryShape *)aCountryShape
+                              shape:(RKCountryShape *)aCountryShape
                           continent:(RiskContinent)aContinent NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @property (readonly, copy) NSString *countryName;
-@property (readonly, strong) CountryShape *countryShape;
+@property (readonly, strong) RKCountryShape *countryShape;
 @property (readonly, copy) NSString *continentName;
 @property (weak, readonly) NSSet<RKCountry*> *neighborCountries;
 

@@ -6,7 +6,7 @@
 
 RCSID ("$Id: ArmyView.m,v 1.1.1.1 1997/12/09 07:18:52 nygard Exp $");
 
-#import "ArmyView.h"
+#import "RKArmyView.h"
 
 #define ArmyView_VERSION 1
 
@@ -27,12 +27,12 @@ static struct image_names class_images[] =
     { CFSTR("10Soldiers"), &_tenImage },
 };
 
-@implementation ArmyView
+@implementation RKArmyView
 @synthesize armyCount;
 
 + (void) initialize
 {
-    if (self == [ArmyView class])
+    if (self == [RKArmyView class])
     {
         [self setVersion:ArmyView_VERSION];
         
@@ -57,7 +57,7 @@ static struct image_names class_images[] =
     int l;
     NSBundle *thisBundle;
     
-    if (self == [ArmyView class])
+    if (self == [RKArmyView class])
     {
         thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");

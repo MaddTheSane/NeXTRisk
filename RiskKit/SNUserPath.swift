@@ -64,7 +64,7 @@ private let SNUserPathOperation_VERSION = 1
 			super.init()
 		}
 		
-		func applyToBezierPath(_ bPath: NSBezierPath) {
+		func apply(to bPath: NSBezierPath) {
 			switch op {
 			case .dps_arc:
 				bPath.appendArc(withCenter: point1, radius: CGFloat(radius), startAngle: CGFloat(angle1), endAngle: CGFloat(angle2), clockwise: true)
@@ -181,7 +181,7 @@ private let SNUserPathOperation_VERSION = 1
 	@objc public func toBezierPath() -> NSBezierPath {
 		let path = NSBezierPath()
 		for op in operations {
-			op.applyToBezierPath(path)
+			op.apply(to: path)
 		}
 		return path
 	}

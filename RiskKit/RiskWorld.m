@@ -51,6 +51,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
         [unarchive decodeClassName:@"Country" asClassName:@"RKCountry"];
         [unarchive decodeClassName:@"Continent" asClassName:@"RKContinent"];
+        [unarchive decodeClassName:@"CountryShape" asClassName:@"RKCountryShape"];
         riskWorld = [unarchive decodeObject];
     }
     //NSLog (@"default risk world: %@", riskWorld);

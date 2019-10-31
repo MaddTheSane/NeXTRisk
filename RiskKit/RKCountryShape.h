@@ -1,5 +1,5 @@
 //
-// $Id: CountryShape.h,v 1.2 1997/12/15 07:43:47 nygard Exp $
+// $Id: RKCountryShape.h,v 1.2 1997/12/15 07:43:47 nygard Exp $
 // This file is a part of Risk by Mike Ferris.
 //
 
@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A CountryShape knows how to draw a country -- it's actual shape and
+/// A \c RKCountryShape knows how to draw a country -- it's actual shape and
 /// where to place the army textfield.
-@interface CountryShape : NSObject <NSCoding>
+@interface RKCountryShape : NSObject <NSSecureCoding>
 {
     NSBezierPath *bezierPath;
 

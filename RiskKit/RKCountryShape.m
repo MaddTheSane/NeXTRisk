@@ -7,7 +7,7 @@
 
 RCSID ("$Id: CountryShape.m,v 1.2 1997/12/15 07:43:48 nygard Exp $");
 
-#import "CountryShape.h"
+#import "RKCountryShape.h"
 
 #import <RiskKit/RKBoardSetup.h>
 #import <RiskKit/RKCountry.h>
@@ -27,13 +27,13 @@ static NSTextFieldCell *_armyCell = nil;
 
 #define CountryShape_VERSION 1
 
-@implementation CountryShape
+@implementation RKCountryShape
 
 + (void) initialize
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [CountryShape setVersion:CountryShape_VERSION];
+        [RKCountryShape setVersion:CountryShape_VERSION];
         _armyCell = [[NSTextFieldCell alloc] init];
         
         _armyCell.backgroundColor = [NSColor whiteColor];
@@ -52,12 +52,12 @@ static NSTextFieldCell *_armyCell = nil;
 
 + (instancetype) countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
-    return [[CountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint];
+    return [[RKCountryShape alloc] initWithUserPath:aUserPath armyCellPoint:aPoint];
 }
 
 + (instancetype)countryShapeWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint
 {
-    return [[CountryShape alloc] initWithBezierPath:aUserPath armyCellPoint:aPoint];
+    return [[RKCountryShape alloc] initWithBezierPath:aUserPath armyCellPoint:aPoint];
 }
 
 //----------------------------------------------------------------------
@@ -110,6 +110,13 @@ static NSTextFieldCell *_armyCell = nil;
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 //----------------------------------------------------------------------

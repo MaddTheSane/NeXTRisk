@@ -9,7 +9,7 @@ RCSID ("$Id: RiskGameManager.m,v 1.7 1997/12/18 21:03:46 nygard Exp $");
 #import "RiskGameManager.h"
 
 #import "RKArmyPlacementValidator.h"
-#import "ArmyView.h"
+#import "RKArmyView.h"
 #import "RKBoardSetup.h"
 #import "RKCardPanelController.h"
 #import "RKCardSet.h"

@@ -8,7 +8,7 @@ RCSID ("$Id: Country.m,v 1.2 1997/12/15 07:43:46 nygard Exp $");
 
 #import "RKCountry.h"
 
-#import "CountryShape.h"
+#import "RKCountryShape.h"
 #import "RiskMapView.h"
 
 #define Country_VERSION 2
@@ -35,7 +35,7 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (instancetype) initWithCountryName:(NSString *)aName
                        continentName:(NSString *)aContinentName
-                               shape:(CountryShape *)aCountryShape
+                               shape:(RKCountryShape *)aCountryShape
                            continent:(RiskContinent)aContinent
 {
     if (self = [super init]) {
@@ -80,7 +80,7 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
     if (self = [super init]) {
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kCountryName]) {
             name = [[aDecoder decodeObjectOfClass:[NSString class] forKey:kCountryName] copy];
-            countryShape = [aDecoder decodeObjectOfClass:[CountryShape class] forKey:kCountryShape];
+            countryShape = [aDecoder decodeObjectOfClass:[RKCountryShape class] forKey:kCountryShape];
             continentName = [[aDecoder decodeObjectOfClass:[NSString class] forKey:kCountryContinentName] copy];
             playerNumber = [aDecoder decodeIntegerForKey:kCountryPlayerNumber];
             troopCount = [aDecoder decodeIntForKey:kCountryTroopCount];
