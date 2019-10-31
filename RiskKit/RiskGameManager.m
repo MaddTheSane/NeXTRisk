@@ -299,11 +299,6 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 // General access to world data
 //======================================================================
 
-- (RiskWorld *) world
-{
-    return world;
-}
-
 //----------------------------------------------------------------------
 
 // Set the world to be used for the game.
