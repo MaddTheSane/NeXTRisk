@@ -41,12 +41,22 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     NSURL *path = [thisBundle URLForResource:RISKWORLD_DATAFILE withExtension:@"data"];
     NSAssert (path != nil, @"Could not get path to data file.");
     
-    RKWorldDecoder *decodeDelegate = [RKWorldDecoder new];
-    
     NSData *data = [NSData dataWithContentsOfURL:path];
+    /*
+     I have no idea...
+     Attempting to this through an instance of NSKeyedUnarchiver causes the values to not be read
+     RKWorldDecoder *decodeDelegate = [RKWorldDecoder new];
+
     NSKeyedUnarchiver *keyedUnarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     keyedUnarchive.delegate = decodeDelegate;
-    RiskWorld *riskWorld = [keyedUnarchive decodeObject];
+    [keyedUnarchive finishDecoding];
+     */
+    RiskWorld *riskWorld = nil;
+    if (@available(macOS 10.13, *)) {
+        riskWorld = [NSKeyedUnarchiver unarchivedObjectOfClass:[RiskWorld class] fromData:data error:NULL];
+    } else {
+        riskWorld = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
     if (!riskWorld) {
         NSUnarchiver *unarchive = [[NSUnarchiver alloc] initForReadingWithData:data];
         [unarchive decodeClassName:@"Country" asClassName:@"RKCountry"];
