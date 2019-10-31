@@ -81,8 +81,8 @@ extern NSNotificationName const RKGameOverNotification;
     // Card management
     IBOutlet RKCardPanelController *cardPanelController;
     IBOutlet NSWindow *cardPanelWindow;
-    NSMutableArray *cardDeck;
-    NSMutableArray *discardDeck;
+    NSMutableArray<RKCard*> *cardDeck;
+    NSMutableArray<RKCard*> *discardDeck;
     RKArmyCount nextCardSetValue;
 
     //! For verifying that armies before fortification == armies after fortification

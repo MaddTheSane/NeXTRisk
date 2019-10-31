@@ -297,13 +297,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 NSSet<RKCountry*> *RKCountriesForPlayerNumber (NSSet *source, RKPlayer number)
 {
-    NSMutableSet<RKCountry*> *newSet;
+    NSMutableSet<RKCountry*> *newSet = [NSMutableSet set];
     
-    newSet = [NSMutableSet set];
-    for (RKCountry *country in source)
-    {
-        if (country.playerNumber == number)
+    for (RKCountry *country in source) {
+        if (country.playerNumber == number) {
             [newSet addObject:country];
+        }
     }
     
     return [newSet copy];
@@ -313,13 +312,12 @@ NSSet<RKCountry*> *RKCountriesForPlayerNumber (NSSet *source, RKPlayer number)
 
 NSSet<RKCountry*> *RKCountriesInContinentNamed (NSSet *source, NSString *continentName)
 {
-    NSMutableSet<RKCountry*> *newSet;
+    NSMutableSet<RKCountry*> *newSet = [[NSMutableSet alloc] init];
     
-    newSet = [[NSMutableSet alloc] init];
-    for (RKCountry *country in source)
-    {
-        if ([country.continentName isEqualToString:continentName] == YES)
+    for (RKCountry *country in source) {
+        if ([country.continentName isEqualToString:continentName] == YES) {
             [newSet addObject:country];
+        }
     }
     
     return [newSet copy];
@@ -329,13 +327,12 @@ NSSet<RKCountry*> *RKCountriesInContinentNamed (NSSet *source, NSString *contine
 
 NSSet<RKCountry*> *RKCountriesWithArmies (NSSet *source)
 {
-    NSMutableSet<RKCountry*> *newSet;
+    NSMutableSet<RKCountry*> *newSet = [[NSMutableSet alloc] init];
     
-    newSet = [[NSMutableSet alloc] init];
-    for (RKCountry *country in source)
-    {
-        if (country.troopCount > 0)
+    for (RKCountry *country in source) {
+        if (country.troopCount > 0) {
             [newSet addObject:country];
+        }
     }
     
     return [newSet copy];
@@ -345,11 +342,9 @@ NSSet<RKCountry*> *RKCountriesWithArmies (NSSet *source)
 
 NSSet<RKCountry*> *RKNeighborsOfCountries (NSSet<RKCountry*> *source)
 {
-    NSMutableSet<RKCountry*> *newSet;
+    NSMutableSet<RKCountry*> *newSet = [NSMutableSet set];
     
-    newSet = [NSMutableSet set];
-    for (RKCountry *country in source)
-    {
+    for (RKCountry *country in source) {
         [newSet unionSet:country.neighborCountries];
     }
     
