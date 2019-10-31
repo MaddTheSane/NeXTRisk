@@ -24,13 +24,13 @@
 		5516BDD223696AED00A888BD /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
 		5516BDD323696AF300A888BD /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
-		5516BDD523696BA700A888BD /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 55377F611CC15C2400A2C08E /* RiskWorld.data */; };
 		5516BDD623696E2500A888BD /* Risk - NeXT Classic.rworld in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5516BDD923696EE600A888BD /* RKArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* RKArmyView.m */; };
 		5516BDDA23696EE600A888BD /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		5516BDDB23696EE600A888BD /* RKArmyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377EC31CC15C2300A2C08E /* RKArmyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5516BDDC23696EE600A888BD /* RiskMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377F591CC15C2400A2C08E /* RiskMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5516BDE9236A67D600A888BD /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
+		5516BDEB236AD81F00A888BD /* RiskWorld.data in Resources */ = {isa = PBXBuildFile; fileRef = 5516BDEA236AD81F00A888BD /* RiskWorld.data */; };
 		55377EB31CC15AC900A2C08E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F131CC15C2300A2C08E /* CardPanel.xib */; };
 		55377FC01CC15C2400A2C08E /* GameBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F1B1CC15C2300A2C08E /* GameBoard.xib */; };
@@ -272,6 +272,7 @@
 		5516BDC42367B73600A888BD /* HumanPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanPlayer.swift; sourceTree = "<group>"; };
 		5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Risk - NeXT Classic.rworld"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5516BDCC23696A9600A888BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5516BDEA236AD81F00A888BD /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55377EB21CC15AC900A2C08E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55377EB71CC15AC900A2C08E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -584,6 +585,7 @@
 		5516BDCB23696A9600A888BD /* Risk - NeXT Classic */ = {
 			isa = PBXGroup;
 			children = (
+				5516BDEA236AD81F00A888BD /* RiskWorld.data */,
 				5516BDCC23696A9600A888BD /* Info.plist */,
 			);
 			path = "Risk - NeXT Classic";
@@ -1109,7 +1111,7 @@
 				5516BDD123696AE000A888BD /* Assets.xcassets in Resources */,
 				5516BDD323696AF300A888BD /* NotPlaying.rtf in Resources */,
 				5516BDD023696ABD00A888BD /* Cards.xcassets in Resources */,
-				5516BDD523696BA700A888BD /* RiskWorld.data in Resources */,
+				5516BDEB236AD81F00A888BD /* RiskWorld.data in Resources */,
 				5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */,
 				5516BDD223696AED00A888BD /* Human.rtf in Resources */,
 			);

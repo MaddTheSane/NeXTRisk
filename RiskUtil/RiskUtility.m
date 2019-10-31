@@ -133,11 +133,9 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     path = [mainBundle URLForResource:@"ContinentData" withExtension:@"txt"];
     NSLog (@"path: %@", path.path);
     
-    fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
+    fileContents = [[NSString alloc] initWithContentsOfURL:path encoding:NSASCIIStringEncoding error:NULL];
     if (!fileContents)
-        fileContents = [[NSString alloc] initWithContentsOfURL:path
-                                                      encoding:NSASCIIStringEncoding
-                                                         error:NULL];
+        fileContents = [[NSString alloc] initWithContentsOfURL:path usedEncoding:NULL error:NULL];
     
     scanner = [NSScanner scannerWithString:fileContents];
     
