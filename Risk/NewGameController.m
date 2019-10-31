@@ -18,6 +18,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 #define NewGameController_VERSION 1
 
+@interface NewGameController ()
+- (void)actuallyCreateGame;
+@end
+
 @implementation NewGameController
 {
     NSArray *nibObjs;
@@ -310,15 +314,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 //----------------------------------------------------------------------
 
-// Odd - the "Control" title of the control panel shifts to the right once this method is finished...
-// Or, rather, as soon as the window becomes key.  It looks like this is happening because there is
-// not a miniaturize button.
-
-// On a related note.  Window w/ mini changed to Panel, attr insp shows no mini, but mini still set.
-
-- (void) createNewGame
+- (void)actuallyCreateGame
 {
-    RiskGameManager *gameManager;
+    RiskGameManager *gameManager = [brain gameManager];
     NSInteger ps[7];
     int l, playerCount;
     NSArray *riskPlayerBundles;
@@ -328,19 +326,6 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     NSString *name;
     RKGameConfiguration *thisConfiguration;
     BOOL showPlayerConsole;
-    
-    gameManager = brain.gameManager;
-    
-    if ([gameManager gameInProgress] == YES)
-    {
-        if (NSRunAlertPanel (@"New Game", @"There is already a game starting or in progess.", @"Cancel", @"Start new game", nil) == NSAlertDefaultReturn)
-        {
-            return;
-        }
-        
-        [gameManager stopGame];
-    }
-    
     ps[1] = player1TypePopup.indexOfSelectedItem;
     ps[2] = player2TypePopup.indexOfSelectedItem;
     ps[3] = player3TypePopup.indexOfSelectedItem;
@@ -406,6 +391,40 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     }
     
     [gameManager beginGame];
+
+}
+
+//----------------------------------------------------------------------
+
+// Odd - the "Control" title of the control panel shifts to the right once this method is finished...
+// Or, rather, as soon as the window becomes key.  It looks like this is happening because there is
+// not a miniaturize button.
+
+// On a related note.  Window w/ mini changed to Panel, attr insp shows no mini, but mini still set.
+
+- (void) createNewGame
+{
+    RiskGameManager *gameManager;
+    
+    gameManager = brain.gameManager;
+    
+    if ([gameManager gameInProgress] == YES)
+    {
+        NSAlert *alert = [NSAlert new];
+        alert.messageText = @"New Game";
+        alert.informativeText = @"There is already a game starting or in progess.";
+        [alert addButtonWithTitle:@"Cancel"];
+        [alert addButtonWithTitle:@"Start new game"];
+        [alert beginSheetModalForWindow:newGamePanel completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSAlertSecondButtonReturn) {
+                [gameManager stopGame];
+                [self actuallyCreateGame];
+            }
+            
+        }];
+    } else {
+        [self actuallyCreateGame];
+    }
 }
 
 //----------------------------------------------------------------------

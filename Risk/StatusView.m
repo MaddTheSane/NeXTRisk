@@ -87,8 +87,8 @@ static NSTextFieldCell *_textCell = nil;
     
     NSRect boundsRect = self.bounds;
 
-    [[NSColor lightGrayColor] set];
-    NSRectFill (boundsRect);
+    //[[NSColor lightGrayColor] set];
+    //NSRectFill (boundsRect);
     
     int playerCount = [gameManager activePlayerCount];
     

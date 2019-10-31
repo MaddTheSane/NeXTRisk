@@ -42,8 +42,8 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="216" y="155" width="630" height="501"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="6">
-                <rect key="frame" x="0.0" y="0.0" width="633" height="501"/>
+            <view key="contentView" misplaced="YES" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="630" height="501"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="135">
@@ -568,7 +568,7 @@ Gw
                                 <constraint firstItem="67" firstAttribute="top" secondItem="xnO-Bk-6RK" secondAttribute="top" constant="5" id="wO0-vl-3co"/>
                             </constraints>
                         </view>
-                        <font key="titleFont" metaFont="systemBold" size="11"/>
+                        <font key="titleFont" metaFont="smallSystemBold"/>
                     </box>
                     <box title="Initial Armies" translatesAutoresizingMaskIntoConstraints="NO" id="177">
                         <rect key="frame" x="9" y="13" width="615" height="42"/>
@@ -617,7 +617,7 @@ Gw
                                 <constraint firstItem="77" firstAttribute="baseline" secondItem="79" secondAttribute="baseline" id="wOx-TH-L7G"/>
                             </constraints>
                         </view>
-                        <font key="titleFont" metaFont="systemBold" size="11"/>
+                        <font key="titleFont" metaFont="smallSystemBold"/>
                     </box>
                 </subviews>
                 <constraints>

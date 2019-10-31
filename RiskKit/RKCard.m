@@ -40,7 +40,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
     if (self = [super init]) {
         country = aCountry; // Country can be nil.
         cardType = aCardType;
-        if (anImageName.pathExtension) {
+        if (![anImageName.pathExtension isEqualToString:@""]) {
             imageName = anImageName.stringByDeletingPathExtension;
         } else {
             imageName = [anImageName copy];
