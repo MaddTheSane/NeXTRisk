@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 //!
 //! This should own the background image for the map view if there will
 //! be more than one world.
-@interface RiskWorld : NSObject <NSCoding>
+@interface RiskWorld : NSObject <NSSecureCoding>
 {
     NSMutableSet<RKCountry*> *allCountries;
     NSArray<RKNeighbor*> *countryNeighbors;

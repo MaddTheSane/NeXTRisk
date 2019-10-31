@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RKCountryShape, RiskMapView;
 
-@interface RKCountry : NSObject <NSCoding>
+@interface RKCountry : NSObject <NSSecureCoding>
 {
     NSString *name;
     RKCountryShape *countryShape;

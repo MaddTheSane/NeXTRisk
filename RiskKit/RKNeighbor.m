@@ -49,6 +49,8 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
     return [NSString stringWithFormat:@"<RiskNeighbor: country1 = %@, country2 = %@>", country1, country2];
 }
 
+//----------------------------------------------------------------------
+
 #define RiskNeighbor1 @"firstCountry"
 #define RiskNeighbor2 @"secondCountry"
 
@@ -66,6 +68,11 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
         country2 = [aDecoder decodeObjectOfClass:[RKCountry class] forKey:RiskNeighbor2];
     }
     return self;
+}
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 @end

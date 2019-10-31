@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 //! A \c RiskCard represents the country, type, image, and image name of
 //! a card in the game.  If multiple <code>RiskWorld</code>s are allowed, then
 //! different cards will be required for each world.
-@interface RKCard : NSObject <NSCoding>
+@interface RKCard : NSObject <NSSecureCoding>
 
 + (instancetype)riskCardType:(RKCardType)aCardType withCountry:(nullable RKCountry *)aCountry imageNamed:(NSImageName)anImageName NS_SWIFT_UNAVAILABLE("Use init(cardType:with:imageNamed:) instead");
 

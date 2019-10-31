@@ -209,6 +209,13 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 //----------------------------------------------------------------------
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
+//----------------------------------------------------------------------
+
 - (void) _buildAllCountries
 {
     [allCountries removeAllObjects];

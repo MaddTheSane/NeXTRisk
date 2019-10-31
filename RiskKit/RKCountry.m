@@ -105,6 +105,13 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 //----------------------------------------------------------------------
 
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
+//----------------------------------------------------------------------
+
 - (NSSet *) neighborCountries
 {
     return [neighborCountries copy];

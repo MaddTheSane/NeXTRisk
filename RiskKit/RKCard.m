@@ -40,13 +40,14 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
     if (self = [super init]) {
         country = aCountry; // Country can be nil.
         cardType = aCardType;
-        imageName = [anImageName copy];
+        if (anImageName.pathExtension) {
+            imageName = anImageName.stringByDeletingPathExtension;
+        } else {
+            imageName = [anImageName copy];
+        }
         
         NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
         NSAssert (thisBundle != nil, @"Could not get this bundle.");
-        if (imageName.pathExtension) {
-            imageName = imageName.stringByDeletingPathExtension;
-        }
         
         image = [thisBundle imageForResource:imageName];
         if (!image) {
@@ -85,6 +86,11 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
     RKCardType ct = [aDecoder decodeIntForKey:RKCardTypeKey];
     
     return [self initCardType:ct withCountry:tmpCountry imageNamed:imgNam];
+}
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 @end
