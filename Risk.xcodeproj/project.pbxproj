@@ -38,7 +38,6 @@
 		55377FCD1CC15C2400A2C08E /* WorldInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55377F351CC15C2300A2C08E /* WorldInfoPanel.xib */; };
 		55377FD61CC15C2400A2C08E /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F431CC15C2300A2C08E /* Human.m */; };
 		55377FD71CC15C2400A2C08E /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
-		55377FD91CC15C2400A2C08E /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F471CC15C2300A2C08E /* LineView.m */; };
 		55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F4C1CC15C2300A2C08E /* NewGameController.m */; };
 		55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F511CC15C2300A2C08E /* PreferenceController.m */; };
@@ -122,6 +121,7 @@
 		5550D22F2173243C004F2059 /* SNUserPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC31D1138E3001980F2 /* SNUserPath.swift */; };
 		5550D23021732447004F2059 /* NSCoder+SNUnarchiveHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5550D2312173244D004F2059 /* NSCoder+SNUnarchiveHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */; };
+		555A29A2236D772E00AB2E81 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555A29A1236D772E00AB2E81 /* LineView.swift */; };
 		555C3F82210101DB00DC0019 /* RKWorldDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 555C3F80210101DB00DC0019 /* RKWorldDecoder.h */; };
 		555C3F83210101DB00DC0019 /* RKWorldDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C3F81210101DB00DC0019 /* RKWorldDecoder.m */; };
 		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
@@ -307,8 +307,6 @@
 		55377F421CC15C2300A2C08E /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		55377F431CC15C2300A2C08E /* Human.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		55377F441CC15C2300A2C08E /* Human.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Human.rtf; sourceTree = "<group>"; };
-		55377F461CC15C2300A2C08E /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
-		55377F471CC15C2300A2C08E /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
 		55377F4B1CC15C2300A2C08E /* NewGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameController.h; sourceTree = "<group>"; };
 		55377F4C1CC15C2300A2C08E /* NewGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameController.m; sourceTree = "<group>"; };
 		55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = NotPlaying.rtf; sourceTree = "<group>"; };
@@ -389,6 +387,7 @@
 		554AECE92175B220005F7847 /* PlayerCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerCode.h; sourceTree = "<group>"; };
 		554AECEE2175B313005F7847 /* Strat.riskplayer */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Strat.riskplayer; sourceTree = BUILT_PRODUCTS_DIR; };
 		554AECF02175B313005F7847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		555A29A1236D772E00AB2E81 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		555C3F80210101DB00DC0019 /* RKWorldDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RKWorldDecoder.h; sourceTree = "<group>"; };
 		555C3F81210101DB00DC0019 /* RKWorldDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RKWorldDecoder.m; sourceTree = "<group>"; };
 		55665FBF1D11317F001980F2 /* RiskPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskPoint.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -766,8 +765,7 @@
 				5516BDC42367B73600A888BD /* HumanPlayer.swift */,
 				55377F421CC15C2300A2C08E /* Human.h */,
 				55377F431CC15C2300A2C08E /* Human.m */,
-				55377F461CC15C2300A2C08E /* LineView.h */,
-				55377F471CC15C2300A2C08E /* LineView.m */,
+				555A29A1236D772E00AB2E81 /* LineView.swift */,
 				55377F4B1CC15C2300A2C08E /* NewGameController.h */,
 				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
 				55377F501CC15C2300A2C08E /* PreferenceController.h */,
@@ -1221,7 +1219,7 @@
 				55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */,
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
 				55AC2A541D1089C50021814F /* Brain.swift in Sources */,
-				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
+				555A29A2236D772E00AB2E81 /* LineView.swift in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
 				5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */,
 				55377FD61CC15C2400A2C08E /* Human.m in Sources */,

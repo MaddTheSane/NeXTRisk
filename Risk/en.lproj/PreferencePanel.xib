@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,23 +19,23 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="20" userLabel="prefPanel" customClass="NSPanel">
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="20" userLabel="prefPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="326" y="467" width="342" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="19">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="256"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="258"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box title="Country Borders" translatesAutoresizingMaskIntoConstraints="NO" id="16">
-                        <rect key="frame" x="17" y="112" width="308" height="124"/>
+                        <rect key="frame" x="17" y="113" width="308" height="125"/>
                         <view key="contentView" id="mbm-lp-p3Y">
-                            <rect key="frame" x="2" y="2" width="304" height="107"/>
+                            <rect key="frame" x="3" y="3" width="302" height="107"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="10">
-                                    <rect key="frame" x="93" y="72" width="36" height="22"/>
+                                    <rect key="frame" x="93" y="72" width="36" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="d1p-57-Pbw"/>
                                     </constraints>
@@ -50,22 +49,22 @@
                                     </connections>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7">
-                                    <rect key="frame" x="18" y="75" width="69" height="17"/>
+                                    <rect key="frame" x="18" y="75" width="69" height="16"/>
                                     <textFieldCell key="cell" alignment="left" title="Line Width" id="43">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="9" customClass="LineView">
-                                    <rect key="frame" x="241" y="72" width="43" height="21"/>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="9" customClass="LineView" customModule="Risk" customModuleProvider="target">
+                                    <rect key="frame" x="239" y="72" width="43" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="43" id="OPa-xy-QXe"/>
                                         <constraint firstAttribute="height" constant="21" id="ySd-sg-PRY"/>
                                     </constraints>
                                 </customView>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="17">
-                                    <rect key="frame" x="50" y="8" width="53" height="30"/>
+                                    <rect key="frame" x="51" y="8" width="53" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="53" id="1IA-55-X6I"/>
                                         <constraint firstAttribute="height" constant="30" id="LGn-ex-E7q"/>
@@ -84,7 +83,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="15">
-                                    <rect key="frame" x="197" y="8" width="53" height="30"/>
+                                    <rect key="frame" x="196" y="8" width="53" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="53" id="7SJ-c1-iNb"/>
                                         <constraint firstAttribute="height" constant="30" id="ohP-dW-nlp"/>
@@ -95,7 +94,7 @@
                                     </connections>
                                 </colorWell>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
-                                    <rect key="frame" x="162" y="46" width="124" height="14"/>
+                                    <rect key="frame" x="160" y="46" width="124" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" alignment="center" title="Selected Border Color" id="45">
                                         <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -103,7 +102,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <slider verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5">
-                                    <rect key="frame" x="135" y="74" width="100" height="19"/>
+                                    <rect key="frame" x="135" y="73" width="98" height="19"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" minValue="0.5" maxValue="5" doubleValue="2" tickMarkPosition="below" sliderType="linear" id="41">
                                         <font key="font" size="12" name="Helvetica"/>
                                     </sliderCell>
@@ -160,9 +159,9 @@ DQ
                         </connections>
                     </button>
                     <box title="Status View" translatesAutoresizingMaskIntoConstraints="NO" id="12">
-                        <rect key="frame" x="17" y="57" width="308" height="51"/>
+                        <rect key="frame" x="17" y="57" width="308" height="52"/>
                         <view key="contentView" id="V8R-3m-acC">
-                            <rect key="frame" x="2" y="2" width="304" height="34"/>
+                            <rect key="frame" x="3" y="3" width="302" height="34"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="11">

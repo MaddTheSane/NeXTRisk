@@ -9,7 +9,7 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 #import "PreferenceController.h"
 
 #import <RiskKit/RKBoardSetup.h>
-#import "LineView.h"
+#import "Risk-Swift.h"
 
 #define PreferenceController_VERSION 1
 

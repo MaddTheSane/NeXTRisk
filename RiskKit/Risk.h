@@ -106,23 +106,23 @@ typedef struct RKAttackResult
     BOOL phaseChanged;
 } RKAttackResult;
 
-RKArmyCount RKInitialArmyCountForPlayers (int playerCount) NS_SWIFT_NAME(initialArmyCount(forPlayers:));
+extern RKArmyCount RKInitialArmyCountForPlayers(int playerCount) NS_SWIFT_NAME(initialArmyCount(forPlayers:));
 
 NS_ASSUME_NONNULL_BEGIN
 
-RKInitialCountryDistribution RKInitialCountryDistributionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-RKInitialArmyPlacement RKInitialArmyPlacementFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-RKCardSetRedemption RKCardSetRedemptionFromString (NSString *str) NS_REFINED_FOR_SWIFT;
-RKFortifyRule RKFortifyRuleFromString (NSString *str) NS_REFINED_FOR_SWIFT;
+extern RKInitialCountryDistribution RKInitialCountryDistributionFromString(NSString *str) NS_REFINED_FOR_SWIFT;
+extern RKInitialArmyPlacement RKInitialArmyPlacementFromString(NSString *str) NS_REFINED_FOR_SWIFT;
+extern RKCardSetRedemption RKCardSetRedemptionFromString(NSString *str) NS_REFINED_FOR_SWIFT;
+extern RKFortifyRule RKFortifyRuleFromString(NSString *str) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromInitialCountryDistribution (RKInitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromInitialArmyPlacement (RKInitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromCardSetRedemption (RKCardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromFortifyRule (RKFortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromInitialCountryDistribution(RKInitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromInitialArmyPlacement(RKInitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromCardSetRedemption(RKCardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromFortifyRule(RKFortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
 
-NSString *NSStringFromRiskCardType (RKCardType cardType) NS_REFINED_FOR_SWIFT;
-NSString *NSStringFromGameState (RKGameState gameState) NS_REFINED_FOR_SWIFT;
-NSString *RKGameStateInfo (RKGameState gameState) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromRiskCardType(RKCardType cardType) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromGameState(RKGameState gameState) NS_REFINED_FOR_SWIFT;
+extern NSString *RKGameStateInfo(RKGameState gameState) NS_REFINED_FOR_SWIFT;
 
 NS_ASSUME_NONNULL_END
 
