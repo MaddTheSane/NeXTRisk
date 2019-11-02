@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)defaultConfiguration NS_SWIFT_UNAVAILABLE("Use init() instead");
 
-- (instancetype)init;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 @property RKInitialCountryDistribution initialCountryDistribution;
 @property RKInitialArmyPlacement initialArmyPlacement;
