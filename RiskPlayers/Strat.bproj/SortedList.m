@@ -21,7 +21,7 @@
 
 @implementation StratSortedList
 
-+ initialize
++ (void)initialize
 {
   /*-----------------------------------------------------------
       Sets the class version; useful for unarchiving several
@@ -29,8 +29,6 @@
   -----------------------------------------------------------*/
   
   [StratSortedList setVersion:CURRENT_SORTED_LIST_VERSION];
-  
-  return self;
 }
 
 - (instancetype)initWithCount:(NSInteger)cnt forPlayer:(RiskPlayer*)thePlayer
@@ -92,7 +90,7 @@
 
 @synthesize caseSensitive;
 
-- setKeySortType:(int)theKeySortType
+- (void)setKeySortType:(SSSortType)theKeySortType
 {
   /*-----------------------------------------------------------
       sets the type of sort to use on the list; resort the list
@@ -102,8 +100,6 @@
 
     if ([self count] > 1)
 	[self insertionSort];  	//new sort method, new order too.		
-    
-    return self;
 }
 
 @synthesize keySortType;
@@ -716,19 +712,14 @@
          Methods that return a rutime error if called 
   -----------------------------------------------------------*/
 
-- insertObject:anObject at:(unsigned int)index
+- (void)insertObject:anObject atIndex:(unsigned int)index
 {
   [self error:" objects should not be sent insertObject:at: messages.\n"];
-	
-  return self;	//foo-faw to keep the compiler happy 'bout return types
 }
 
-- replaceObjectAt:(unsigned int)index with:newObject 
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
   [self error:"%s objects should not be sent replaceObjectAt:with: messages.\n"];
-	
-  return self;	//foo-faw to keep the compiler happy 'bout return types
-
 }
 
 - replaceObject:anObject with:newObject
@@ -743,6 +734,7 @@
                     Archiving methods
 -----------------------------------------------------------*/
 
+#if 0
 -write:(NXTypedStream*)stream
 {
   /*-----------------------------------------------------------
@@ -769,6 +761,6 @@
 
   return self;
 }
- 
+#endif
   
 @end

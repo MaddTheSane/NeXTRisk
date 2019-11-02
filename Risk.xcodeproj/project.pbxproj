@@ -380,7 +380,7 @@
 		554AECDB2175B220005F7847 /* Strat.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Strat.rtf; sourceTree = "<group>"; };
 		554AECDC2175B220005F7847 /* SortedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortedList.h; sourceTree = "<group>"; };
 		554AECDF2175B220005F7847 /* PlayerCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerCode.m; sourceTree = "<group>"; };
-		554AECE32175B220005F7847 /* SortedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortedList.m; sourceTree = "<group>"; };
+		554AECE32175B220005F7847 /* SortedList.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = SortedList.m; sourceTree = "<group>"; };
 		554AECE42175B220005F7847 /* SortedList.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = SortedList.rtf; sourceTree = "<group>"; };
 		554AECE62175B220005F7847 /* country-list */ = {isa = PBXFileReference; lastKnownFileType = text; path = "country-list"; sourceTree = "<group>"; };
 		554AECE82175B220005F7847 /* Strat.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Strat.tiff; sourceTree = "<group>"; };

@@ -25,7 +25,7 @@
 - (instancetype)initWithPlayerName:(NSString *)aName number:(RKPlayer)number gameManager:(RiskGameManager *)aManager
 // initialize my instance vars
 {
-	NSArray *countries;
+	NSArray<RKCountry*> *countries;
 	int i, j, countryNum;
     RKCountry *theCountry;
     id otherCountries;
@@ -190,7 +190,7 @@
 			// unoccupied countries, plus a bit for each
 			// unoccupied country.  If there aren't any, the
 			// continent is ignored.
-			countries = [self countriesInContinent:cont];
+			countries = [gameManager countriesInContinent:cont];
 			cc = [countries count];
 			numfr = 0;
 			score = 0;
@@ -269,7 +269,7 @@
 - (void)placeInitialArmies:(RKArmyCount)count
 // Place all armies in countries with placeArmies:.
 {
-	[self placeArmies:numArmies];
+	[self placeArmies:count];
 
 	// for diagnostic
 //	[self setNotes:"yourInitialPlaceArmies: ran.  "
@@ -284,12 +284,12 @@
 	int i;
 	id scountries;
 
-	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
-	[scountries setSortOrder:DESCENDING];
+	scountries = [[StratSortedList alloc] initWithCount:2 forPlayer:self];
+	[scountries setSortOrder:SSSortOrderDescending];
 	[scountries setKeySortType:SSSortCountryByArmies];
 
 	for (i=0; i<[countries count]; i++)
-		[scountries addObject:[countries objectAt:i]];
+		[scountries addObject:[countries objectAtIndex:i]];
 
 //	[scountries printKeyValues];
 
@@ -303,12 +303,12 @@
 	int i;
 	id scountries;
 
-	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
-	[scountries setSortOrder:DESCENDING];
+	scountries = [[StratSortedList alloc] initWithCount:2 forPlayer:self];
+	[scountries setSortOrder:SSSortOrderDescending];
 	[scountries setKeySortType:SSSortCountryByTacticalAdvantageStrong];
 
 	for (i=0; i<[countries count]; i++)
-		[scountries addObject:[countries objectAt:i]];
+		[scountries addObject:[countries objectAtIndex:i]];
 
 //	[scountries printKeyValues];
 
@@ -318,17 +318,17 @@
 // Take a country list and return a list sorted by need for armies, with most
 // needy countries first, least needy countries last.  Does not free the
 // input list.
-- sortCountriesByReinforcePrio:countries
+- (StratSortedList*)sortCountriesByReinforcePrio:countries
 {
 	int i;
 	id scountries;
 
-	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
-	[scountries setSortOrder:DESCENDING];
+	scountries = [[StratSortedList alloc] initWithCount:2 forPlayer:self];
+	[scountries setSortOrder:SSSortOrderDescending];
 	[scountries setKeySortType:SSSortCountryByReinforcePriority];
 
 	for (i=0; i<[countries count]; i++)
-		[scountries addObject:[countries objectAt:i]];
+		[scountries addObject:[countries objectAtIndex:i]];
 
 //	[scountries printKeyValues];
 
@@ -343,8 +343,8 @@
 	int i;
 	id scountries;
 
-	scountries = [[StratSortedList alloc] initCount:2 forPlayer:self];
-	[scountries setSortOrder:DESCENDING];
+	scountries = [[StratSortedList alloc] initWithCount:2 forPlayer:self];
+	[scountries setSortOrder:SSSortOrderDescending];
 	[scountries setKeySortType:SSSortEnemyAttackAbility];
 
 	for (i=0; i<[countries count]; i++)
@@ -659,7 +659,7 @@
 	return armies;
 }
 
-- friendlyNeighborsTo:country
+- (id)friendlyNeighborsTo:(id)country
 // returns a list of all the neighbors to country which are
 // occupied by you.
 {
@@ -1277,7 +1277,7 @@
 	return NO;
 }
 
-- fortifyPosition
+- (void)fortifyPhase:(RKFortifyRule)fortifyRule
 // fortify our position at the end of the turn.
 {
 	id cl=[self myCountriesWithAvailableArmies];
@@ -1331,7 +1331,7 @@
 	return self;
 }
 
-- fortifyArmies:(int)numArmies from:country
+- (void)placeFortifyingArmies:(RKArmyCount)numArmies fromCountry:(RKCountry *)country
 {
 	// get a list of friendly neighbors for the country
 	id fr=[self friendlyNeighborsTo:country];
@@ -1347,13 +1347,13 @@
 	// sanity check
 	if (frc == 0) {
 		[fr free];
-		return self;
+		return;
 	}
 
 	// count up enemy armies around each friendly neighbor
 	for (i = 0; i < frc; i++) {
-		armiesAt[i] = [[fr objectAt:i] armies];
-		enemiesAround[i] = [self enemyArmiesAround:[fr objectAt:i]];
+		armiesAt[i] = [[fr objectAtIndex:i] armies];
+		enemiesAround[i] = [self enemyArmiesAround:[fr objectAtIndex:i]];
 		if (enemiesAround[i] > 0) {
 			if (!numWithEnemies)
 				firstOne = i;

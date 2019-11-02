@@ -80,9 +80,9 @@
 
 // *****************subclass responsibilities*********************
 
-- yourChooseCountry;
-- yourInitialPlaceArmies:(int)numArmies;
-- yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
+//- yourChooseCountry;
+//- yourInitialPlaceArmies:(int)numArmies;
+//- yourTurnWithArmies:(int)numArmies andCards:(int)numCards;
 
 // this player doesn't implement the two optional methods.
 // - youWereAttacked:country by:(int)player;
@@ -116,6 +116,6 @@
 // This method implements fortifying at the end of the turn.  It handles 
 // everything.
 - fortifyPosition;
-- fortifyArmies:(int)numArmies from:country;
+- (void)placeFortifyingArmies:(RKArmyCount)count fromCountry:(RKCountry *)source;
 
 @end
