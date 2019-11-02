@@ -124,7 +124,6 @@
 		5550D2312173244D004F2059 /* NSCoder+SNUnarchiveHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */; };
 		555C3F82210101DB00DC0019 /* RKWorldDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 555C3F80210101DB00DC0019 /* RKWorldDecoder.h */; };
 		555C3F83210101DB00DC0019 /* RKWorldDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C3F81210101DB00DC0019 /* RKWorldDecoder.m */; };
-		55665FC01D11317F001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
 		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
@@ -650,6 +649,7 @@
 		55377FFA1CC15E1700A2C08E /* RiskUtil */ = {
 			isa = PBXGroup;
 			children = (
+				55665FBF1D11317F001980F2 /* RiskPoint.swift */,
 				55665FC21D1136EF001980F2 /* RiskUtil-Bridging-Header.h */,
 				5537800E1CC15E6A00A2C08E /* CountryShapeGenerator.h */,
 				5537800F1CC15E6A00A2C08E /* CountryShapeGenerator.m */,
@@ -772,7 +772,6 @@
 				55377F4C1CC15C2300A2C08E /* NewGameController.m */,
 				55377F501CC15C2300A2C08E /* PreferenceController.h */,
 				55377F511CC15C2300A2C08E /* PreferenceController.m */,
-				55665FBF1D11317F001980F2 /* RiskPoint.swift */,
 				55377F6D1CC15C2400A2C08E /* StatusView.h */,
 				55377F6E1CC15C2400A2C08E /* StatusView.m */,
 			);
@@ -1222,7 +1221,6 @@
 				55377FE01CC15C2400A2C08E /* PreferenceController.m in Sources */,
 				55377FF01CC15C2400A2C08E /* StatusView.m in Sources */,
 				55AC2A541D1089C50021814F /* Brain.swift in Sources */,
-				55665FC01D11317F001980F2 /* RiskPoint.swift in Sources */,
 				55377FD91CC15C2400A2C08E /* LineView.m in Sources */,
 				55377FDD1CC15C2400A2C08E /* NewGameController.m in Sources */,
 				5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */,

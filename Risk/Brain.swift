@@ -54,7 +54,6 @@ class Brain: NSObject, NSApplicationDelegate {
 		_ = Brain.__once
 		// hack to get around the initialize() problems:
 		UserPath.setUpVersions()
-		RiskPoint.setUpVersions()
 		super.init()
 	}
 
