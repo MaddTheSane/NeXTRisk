@@ -21,8 +21,6 @@
 		5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5516BDC42367B73600A888BD /* HumanPlayer.swift */; };
 		5516BDD023696ABD00A888BD /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
 		5516BDD123696AE000A888BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
-		5516BDD223696AED00A888BD /* Human.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F441CC15C2300A2C08E /* Human.rtf */; };
-		5516BDD323696AF300A888BD /* NotPlaying.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55377F4D1CC15C2300A2C08E /* NotPlaying.rtf */; };
 		5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
 		5516BDD623696E2500A888BD /* Risk - NeXT Classic.rworld in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5516BDD923696EE600A888BD /* RKArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* RKArmyView.m */; };
@@ -1109,11 +1107,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5516BDD123696AE000A888BD /* Assets.xcassets in Resources */,
-				5516BDD323696AF300A888BD /* NotPlaying.rtf in Resources */,
 				5516BDD023696ABD00A888BD /* Cards.xcassets in Resources */,
 				5516BDEB236AD81F00A888BD /* RiskWorld.data in Resources */,
 				5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */,
-				5516BDD223696AED00A888BD /* Human.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
