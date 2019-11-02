@@ -80,9 +80,8 @@ typedef NS_ENUM(NSInteger, SSSortType) {
 --------------------------------------*/
  
  
-- (void)insertObject:(id)anObject atIndex:(NSUInteger)index;
-- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject;
-- replaceObject:anObject with:newObject;
+- (void)insertObject:(id)anObject atIndex:(NSUInteger)index UNAVAILABLE_ATTRIBUTE;
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject UNAVAILABLE_ATTRIBUTE;
 
 
 /*--------------------------------------

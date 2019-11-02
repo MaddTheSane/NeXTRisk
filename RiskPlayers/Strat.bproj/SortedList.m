@@ -576,7 +576,7 @@
    return [super isEqual:anObject];
 }
   
-- (int)compare:thisObject to:thatObject
+- (NSComparisonResult)compare:thisObject to:thatObject
 {
   /*-----------------------------------------------------------
      Compares the values of the keys of thisObject and thatObject
