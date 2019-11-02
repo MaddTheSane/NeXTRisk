@@ -532,7 +532,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
         case ChooseMostBorderedContinent:
             if (continentChoiceHeap == nil)
             {
-                NSComparisonResult (*func)(id, id, void *);
+                NSComparisonResult (*func)(RKContinent*, RKContinent*, void *);
                 
                 switch (primaryChoice)
                 {
@@ -559,7 +559,7 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
             }
             
             country = nil;
-            for (continent in continentChoiceHeap)
+            while ((continent = [continentChoiceHeap firstObject]))
             {
                 NSSet<RKCountry *> *source = [self countriesWithAllOptions:RKCountryFlagsPlayerNone from:continent.countries];
                 NSInteger count = source.count;
