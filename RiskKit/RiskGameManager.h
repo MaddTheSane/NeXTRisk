@@ -20,7 +20,7 @@ extern NSNotificationName const RKGameOverNotification;
 //! the players of the various phases of game play, and does some
 //! checking of messages to try to limit invalid actions by players (or
 //! some cheating.)
-@interface RiskGameManager : NSObject
+@interface RiskGameManager : NSObject <NSMenuItemValidation>
 {
     RiskWorld *world;
     RKGameConfiguration *configuration;
@@ -105,6 +105,8 @@ extern NSNotificationName const RKGameOverNotification;
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell;
 
 // Delegate of RiskMapView.
+/// Set the country name in the map view.  Forward event to current player.
+/// This is the delegate method of RiskMapView.
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry;
 
 #pragma mark General access to world data
@@ -121,7 +123,7 @@ extern NSNotificationName const RKGameOverNotification;
 @property (readonly) RKPlayer currentPlayerNumber;
 @property (readonly) int activePlayerCount;
 
-- (RiskPlayer *) playerNumber:(RKPlayer)number;
+- (nullable RiskPlayer *) playerNumber:(RKPlayer)number;
 
 #pragma mark Player menu support
 

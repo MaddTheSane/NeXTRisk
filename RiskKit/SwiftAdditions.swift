@@ -9,57 +9,57 @@
 import Foundation
 
 extension RKInitialCountryDistribution: CustomStringConvertible {
-    public init(string: String) {
+    @inlinable public init(string: String) {
         self = __RKInitialCountryDistributionFromString(string)
     }
     
-	public var description: String {
+	@inlinable public var description: String {
 		return __NSStringFromInitialCountryDistribution(self)
 	}
 }
 
 extension RKInitialArmyPlacement: CustomStringConvertible {
-	public init(string: String) {
+	@inlinable public init(string: String) {
 		self = __RKInitialArmyPlacementFromString(string)
 	}
 	
-	public var description: String {
+	@inlinable public var description: String {
 		return __NSStringFromInitialArmyPlacement(self)
 	}
 }
 
 extension RKCardSetRedemption: CustomStringConvertible {
-	public init(string: String) {
+	@inlinable public init(string: String) {
 		self = __RKCardSetRedemptionFromString(string)
 	}
 	
-	public var description: String {
+	@inlinable public var description: String {
 		return __NSStringFromCardSetRedemption(self)
 	}
 }
 
 extension RKFortifyRule: CustomStringConvertible {
-	public init(string: String) {
+	@inlinable public init(string: String) {
 		self = __RKFortifyRuleFromString(string)
 	}
 	
-	public var description: String {
+	@inlinable public var description: String {
 		return __NSStringFromFortifyRule(self)
 	}
 }
 
 extension RKCardType: CustomStringConvertible {
-	public var description: String {
+	@inlinable public var description: String {
 		return __NSStringFromRiskCardType(self)
 	}
 }
 
 extension RKGameState: CustomStringConvertible, CustomDebugStringConvertible {
-	public var description: String {
+	@inlinable public var description: String {
 		return __RKGameStateInfo(self)
 	}
 	
-	public var debugDescription: String {
+	@inlinable public var debugDescription: String {
 		return __NSStringFromGameState(self)
 	}
 }

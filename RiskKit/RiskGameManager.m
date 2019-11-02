@@ -163,10 +163,8 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     [tmp2 removeFromSuperview];
     [tmp1 addSubview:tmp2 positioned:NSWindowBelow relativeTo:nil];
     
-#ifdef __APPLE_CPP__
     // We don't want to have to validate the items like we do menu items.
     [attackMethodPopup setAutoenablesItems:NO];
-#endif
 }
 
 //----------------------------------------------------------------------
@@ -257,13 +255,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (BOOL) validateMenuItem:(NSMenuItem *)menuCell
 {
-    SEL action;
-    BOOL valid;
-    NSInteger tag;
-    
-    valid = NO;
-    action = menuCell.action;
-    tag = menuCell.tag;
+    SEL action = menuCell.action;
+    BOOL valid = NO;
+    NSInteger tag = menuCell.tag;
     
     if (action == @selector (showPlayerConsole:))
     {
@@ -283,9 +277,6 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 }
 
 //----------------------------------------------------------------------
-
-// Set the country name in the map view.  Forward event to current player.
-// This is the delegate method of RiskMapView.
 
 - (void) mouseDown:(NSEvent *)theEvent inCountry:(RKCountry *)aCountry
 {
@@ -312,7 +303,6 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     mapView.countryArray = world.allCountries.allObjects;
     
-    SNRelease (armyPlacementValidator);
     armyPlacementValidator = [[RKArmyPlacementValidator alloc] initWithRiskWorld:world];
 }
 

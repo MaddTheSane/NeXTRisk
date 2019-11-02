@@ -131,13 +131,12 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
         if (aDecoder.allowsKeyedCoding && [aDecoder containsValueForKey:kContinentsKey]) {
             NSMutableArray *tmpCards = [NSMutableArray array];
             
-            NSMutableDictionary *countryDictionary;
+            NSMutableDictionary *countryDictionary = [[NSMutableDictionary alloc] init];
             continents = [[aDecoder decodeObjectOfClasses:[NSSet setWithObjects:[NSDictionary class], [NSString class], [RKContinent class], nil] forKey:kContinentsKey] copy];
             
             [self _buildAllCountries];
             
             // Set up country dictionary keyed on name
-            countryDictionary = [[NSMutableDictionary alloc] init];
             for (RKCountry *country1 in allCountries)
             {
                 countryDictionary[country1.countryName] = country1;
