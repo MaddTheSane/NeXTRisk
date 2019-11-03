@@ -22,6 +22,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void)actuallyCreateGame;
 - (void)selectInitialCountryDistributionWithTag:(NSInteger)theTag;
 - (NSInteger)selectedInitialCountryDistribution;
+- (NSString *)playerNameForNumber:(RKPlayer)playerNum;
 @end
 
 @implementation NewGameController
@@ -364,7 +365,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     for (l = 1; l < 7; l++)
     {
-        name = [[playerNameForm cellAtIndex:l - 1] stringValue];
+        name = [self playerNameForNumber:l];
         
         player = nil;
         switch (ps[l])
@@ -444,12 +445,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     [[self thisConfiguration] writeDefaults];
     
     // And then save the player names and types.
-    [defaults setObject:[[playerNameForm cellAtIndex:0] stringValue] forKey:DK_DefaultPlayer1Name];
-    [defaults setObject:[[playerNameForm cellAtIndex:1] stringValue] forKey:DK_DefaultPlayer2Name];
-    [defaults setObject:[[playerNameForm cellAtIndex:2] stringValue] forKey:DK_DefaultPlayer3Name];
-    [defaults setObject:[[playerNameForm cellAtIndex:3] stringValue] forKey:DK_DefaultPlayer4Name];
-    [defaults setObject:[[playerNameForm cellAtIndex:4] stringValue] forKey:DK_DefaultPlayer5Name];
-    [defaults setObject:[[playerNameForm cellAtIndex:5] stringValue] forKey:DK_DefaultPlayer6Name];
+    [defaults setObject:player1NameField.stringValue forKey:DK_DefaultPlayer1Name];
+    [defaults setObject:player2NameField.stringValue forKey:DK_DefaultPlayer2Name];
+    [defaults setObject:player3NameField.stringValue forKey:DK_DefaultPlayer3Name];
+    [defaults setObject:player4NameField.stringValue forKey:DK_DefaultPlayer4Name];
+    [defaults setObject:player5NameField.stringValue forKey:DK_DefaultPlayer5Name];
+    [defaults setObject:player6NameField.stringValue forKey:DK_DefaultPlayer6Name];
     
     [defaults setObject:player1TypePopup.title forKey:DK_DefaultPlayer1Type];
     [defaults setObject:player2TypePopup.title forKey:DK_DefaultPlayer2Type];
@@ -473,22 +474,22 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     defaults = [NSUserDefaults standardUserDefaults];
     
     tmp = [defaults stringForKey:DK_DefaultPlayer1Name];
-    [[playerNameForm cellAtIndex:0] setStringValue:tmp];
+    player1NameField.stringValue = tmp;
     
     tmp = [defaults stringForKey:DK_DefaultPlayer2Name];
-    [[playerNameForm cellAtIndex:1] setStringValue:tmp];
+    player2NameField.stringValue = tmp;
     
     tmp = [defaults stringForKey:DK_DefaultPlayer3Name];
-    [[playerNameForm cellAtIndex:2] setStringValue:tmp];
+    player3NameField.stringValue = tmp;
     
     tmp = [defaults stringForKey:DK_DefaultPlayer4Name];
-    [[playerNameForm cellAtIndex:3] setStringValue:tmp];
+    player4NameField.stringValue = tmp;
     
     tmp = [defaults stringForKey:DK_DefaultPlayer5Name];
-    [[playerNameForm cellAtIndex:4] setStringValue:tmp];
+    player5NameField.stringValue = tmp;
     
     tmp = [defaults stringForKey:DK_DefaultPlayer6Name];
-    [[playerNameForm cellAtIndex:5] setStringValue:tmp];
+    player6NameField.stringValue = tmp;
     
     //----------------------------------------
     
@@ -694,4 +695,38 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 {
     //do nothing.
 }
+
+- (NSString *)playerNameForNumber:(RKPlayer)playerNum
+{
+    switch (playerNum) {
+        case 1:
+            return player1NameField.stringValue;
+            break;
+            
+        case 2:
+            return player2NameField.stringValue;
+            break;
+            
+        case 3:
+            return player3NameField.stringValue;
+            break;
+            
+        case 4:
+            return player4NameField.stringValue;
+            break;
+            
+        case 5:
+            return player5NameField.stringValue;
+            break;
+            
+        case 6:
+            return player6NameField.stringValue;
+            break;
+            
+        default:
+            break;
+    }
+    return nil;
+}
+
 @end

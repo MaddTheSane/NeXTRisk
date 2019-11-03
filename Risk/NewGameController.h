@@ -17,7 +17,12 @@
 {
     IBOutlet NSWindow *newGamePanel;
 
-    IBOutlet NSForm *playerNameForm;
+    IBOutlet NSTextField *player1NameField;
+    IBOutlet NSTextField *player2NameField;
+    IBOutlet NSTextField *player3NameField;
+    IBOutlet NSTextField *player4NameField;
+    IBOutlet NSTextField *player5NameField;
+    IBOutlet NSTextField *player6NameField;
 
     IBOutlet NSColorWell *player1ColorWell;
     IBOutlet NSColorWell *player2ColorWell;
@@ -33,9 +38,9 @@
     IBOutlet NSPopUpButton *player5TypePopup;
     IBOutlet NSPopUpButton *player6TypePopup;
 
-    //IBOutlet NSMatrix *initialCountryDistributionMatrix;
     IBOutlet NSButton *initialCountryDistributionPlayerChoice;
     IBOutlet NSButton *initialCountryDistributionRandom;
+    
     IBOutlet NSMatrix *initialArmyPlacementMatrix;
     IBOutlet NSMatrix *cardRedemptionMatrix;
     IBOutlet NSMatrix *fortifyRuleMatrix;
