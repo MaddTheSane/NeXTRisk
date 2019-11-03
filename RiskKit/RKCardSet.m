@@ -13,17 +13,14 @@ RCSID ("$Id: CardSet.m,v 1.2 1997/12/15 07:43:42 nygard Exp $");
 
 // Put nils at end of list.  Minimize use of wildcards.
 
-NSComparisonResult compareCardSetValues (id object1, id object2, void *context)
+NSComparisonResult RKCompareCardSetValues (id object1, id object2, void *context)
 {
     NSComparisonResult result;
-    RKPlayer number;
-    RKCardSet *cardSet1, *cardSet2;
+    RKPlayer number = (RKPlayer)context;
+    RKCardSet *cardSet1 = object1;
+    RKCardSet *cardSet2 = object2;
     NSInteger wildcardCount1, wildcardCount2;
     NSInteger countryCount1, countryCount2;
-    
-    number = (RKPlayer)context;
-    cardSet1 = object1;
-    cardSet2 = object2;
     
     if (cardSet1 == nil && cardSet2 == nil)
     {

@@ -315,7 +315,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
     
     for (RKCardSet *cardSet in allSets)
     {
-        if (compareCardSetValues (cardSet, bestSet, (void *)playerNumber) == NSOrderedAscending)
+        if (RKCompareCardSetValues (cardSet, bestSet, (void *)playerNumber) == NSOrderedAscending)
             bestSet = cardSet;
     }
     
