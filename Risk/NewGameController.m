@@ -20,6 +20,8 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 @interface NewGameController ()
 - (void)actuallyCreateGame;
+- (void)selectInitialCountryDistributionWithTag:(NSInteger)theTag;
+- (NSInteger)selectedInitialCountryDistribution;
 @end
 
 @implementation NewGameController
@@ -532,7 +534,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
     }
     
-    [initialCountryDistributionMatrix selectCellWithTag:index];
+    [self selectInitialCountryDistributionWithTag:index];
     
     switch (oldConfiguration.initialArmyPlacement)
     {
@@ -609,7 +611,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     thisConfiguration = [RKGameConfiguration defaultConfiguration];
     
-    index = initialCountryDistributionMatrix.selectedRow;
+    index = self.selectedInitialCountryDistribution;
     if (index < 0 || index > 1)
         index = 0;
     thisConfiguration.initialCountryDistribution = distribution[index];
@@ -669,4 +671,27 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         [boardSetup setColor:player6ColorWell.color forPlayer:6];
 }
 
+#pragma mark - initial country distribution stuff
+
+- (void)selectInitialCountryDistributionWithTag:(NSInteger)theTag
+{
+    for (NSButton *button in @[initialCountryDistributionPlayerChoice, initialCountryDistributionRandom]) {
+        button.state = button.tag == theTag ? NSControlStateValueOn : NSControlStateValueOff;
+    }
+}
+
+- (NSInteger)selectedInitialCountryDistribution
+{
+    for (NSButton *button in @[initialCountryDistributionPlayerChoice, initialCountryDistributionRandom]) {
+        if (button.state == NSControlStateValueOn) {
+            return button.tag;
+        }
+    }
+    return NSNotFound;
+}
+
+- (IBAction)dummyChangeInitialCountryDistribution:(id)sender
+{
+    //do nothing.
+}
 @end

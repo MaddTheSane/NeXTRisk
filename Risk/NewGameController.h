@@ -33,7 +33,9 @@
     IBOutlet NSPopUpButton *player5TypePopup;
     IBOutlet NSPopUpButton *player6TypePopup;
 
-    IBOutlet NSMatrix *initialCountryDistributionMatrix;
+    //IBOutlet NSMatrix *initialCountryDistributionMatrix;
+    IBOutlet NSButton *initialCountryDistributionPlayerChoice;
+    IBOutlet NSButton *initialCountryDistributionRandom;
     IBOutlet NSMatrix *initialArmyPlacementMatrix;
     IBOutlet NSMatrix *cardRedemptionMatrix;
     IBOutlet NSMatrix *fortifyRuleMatrix;
@@ -71,6 +73,8 @@
 
 - (IBAction) acceptAction:(id)sender;
 - (IBAction) cancelAction:(id)sender;
+
+- (IBAction)dummyChangeInitialCountryDistribution:(id)sender;
 
 - (void) createNewGame;
 
