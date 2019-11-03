@@ -342,7 +342,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     if (playerCount < 2)
     {
-        NSRunAlertPanel (@"New Game", @"At least two players have to play.", @"OK", nil, nil);
+        NSAlert *alert = [NSAlert new];
+        alert.messageText = @"New Game";
+        alert.informativeText = @"At least two players have to play.";
+        [alert runModal];
         return;
     }
     

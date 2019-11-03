@@ -124,7 +124,7 @@ static NSImage *_boardBackingImage = nil;
         //NSPoint aPoint = NSMakePoint (0, 0);
         //[boardBackingImage setSize:[self bounds].size]; // May want to make the image per instance (not per class)
         //[boardBackingImage compositeToPoint:aPoint operation:NSCompositeCopy];
-        [boardBackingImage drawAtPoint:rect.origin fromRect:rect operation:NSCompositeCopy fraction:1];
+        [boardBackingImage drawAtPoint:rect.origin fromRect:rect operation:NSCompositingOperationCopy fraction:1];
     }
 }
 

@@ -1856,7 +1856,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
                 // Use notification instead, and the brain can do the alert panel.
                 
                 // And make gameState == gs_game_over...
-                NSRunAlertPanel (@"Victory", @"Winner was %@.", @"OK", nil, nil, players[winner].playerName);
+                NSAlert *alert = [NSAlert new];
+                alert.messageText = @"Victory";
+                alert.informativeText = [NSString stringWithFormat:@"Winner was %@.", players[winner].playerName];
+                [alert runModal];
                 
                 [self playerHasWon:winner];
                 break;

@@ -30,7 +30,7 @@ static NSTextFieldCell *_textCell = nil;
         [_textCell setBezeled:NO];
         [_textCell setBordered:NO];
         _textCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
-        _textCell.alignment = NSCenterTextAlignment;
+        _textCell.alignment = NSTextAlignmentCenter;
         [_textCell setEditable:NO];
         [_textCell setSelectable:NO];
         _textCell.textColor = [NSColor blackColor];
@@ -87,8 +87,8 @@ static NSTextFieldCell *_textCell = nil;
     
     NSRect boundsRect = self.bounds;
 
-    //[[NSColor lightGrayColor] set];
-    //NSRectFill (boundsRect);
+    [[NSColor controlColor] set];
+    NSRectFill (boundsRect);
     
     int playerCount = [gameManager activePlayerCount];
     

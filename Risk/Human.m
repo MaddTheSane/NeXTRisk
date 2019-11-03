@@ -72,9 +72,9 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
         case RKGameStatePlaceArmies:
         case RKGameStateMoveAttackingArmies:
         case RKGameStatePlaceFortifyingArmies:
-            if (flags & NSShiftKeyMask)
+            if (flags & NSEventModifierFlagShift)
                 count = 5;
-            else if (flags & NSCommandKeyMask)
+            else if (flags & NSEventModifierFlagCommand)
                 count = placeArmyCount;
             else
                 count = 1;
@@ -114,7 +114,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
                 
                 NSAssert (attackingCountry != nil, @"attacking country not set.");
                 
-                moveFlag = (flags & NSShiftKeyMask) ? YES : NO;
+                moveFlag = (flags & NSEventModifierFlagShift) ? YES : NO;
                 
                 if ([attackingCountry isAdjacentToCountry:aCountry] == YES)
                 {

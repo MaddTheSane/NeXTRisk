@@ -39,7 +39,7 @@ static NSTextFieldCell *_armyCell = nil;
         _armyCell.backgroundColor = [NSColor whiteColor];
         [_armyCell setBezeled:NO];
         _armyCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
-        _armyCell.alignment = NSCenterTextAlignment;
+        _armyCell.alignment = NSTextAlignmentCenter;
         [_armyCell setEditable:NO];
         [_armyCell setSelectable:NO];
         [_armyCell setBordered:YES];

@@ -21,10 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
     //NSRect shapeBounds;
 }
 
-+ (instancetype)countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_SWIFT_UNAVAILABLE("Use init(userPath:armyCellPoint:) instead") DEPRECATED_ATTRIBUTE;
++ (instancetype)countryShapeWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_SWIFT_UNAVAILABLE("Use init(userPath:armyCellPoint:) instead") DEPRECATED_MSG_ATTRIBUTE("SNUserPath is deprecated. aUserPath will be converted into an NSBeziarPath.");
 + (instancetype)countryShapeWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_SWIFT_UNAVAILABLE("Use init(bezierPath:armyCellPoint:) instead");
 
-- (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint DEPRECATED_MSG_ATTRIBUTE("SNUserPath is deprecated.");
+- (instancetype)initWithUserPath:(SNUserPath *)aUserPath armyCellPoint:(NSPoint)aPoint DEPRECATED_MSG_ATTRIBUTE("SNUserPath is deprecated. aUserPath will be converted into an NSBeziarPath.");
 - (instancetype)initWithBezierPath:(NSBezierPath *)aUserPath armyCellPoint:(NSPoint)aPoint NS_DESIGNATED_INITIALIZER;
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 

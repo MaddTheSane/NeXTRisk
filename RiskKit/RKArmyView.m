@@ -118,21 +118,21 @@ static struct image_names class_images[] =
     imageSize = _tenImage.size;
     for (i = 0; i < tens; i++)
     {
-        [_tenImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+        [_tenImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1];
         point.x += imageSize.width + INTERSPACE;
     }
     
     imageSize = _fiveImage.size;
     for (i = 0; i < fives; i++)
     {
-        [_fiveImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+        [_fiveImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1];
         point.x += imageSize.width + INTERSPACE;
     }
     
     imageSize = _soldierImage.size;
     for (i = 0; i < ones; i++)
     {
-        [_soldierImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+        [_soldierImage drawAtPoint:point fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1];
         point.x += imageSize.width + INTERSPACE;
     }
 }
