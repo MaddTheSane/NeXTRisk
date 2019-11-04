@@ -66,13 +66,13 @@ public class Chaos: RiskPlayer {
 
 
 	/// place all armies in random countries with `-placeArmies:`.
-	public override func placeInitialArmies(_ count: Int32) {
+	public override func placeInitialArmies(_ count: RKArmyCount) {
 		placeArmies(count)
 	}
 
 	//MARK: Regular turn phases
 
-	public override func placeArmies(_ count: Int32) {
+	public override func placeArmies(_ count: RKArmyCount) {
 		//myCountries = [[self myCountriesWithHostileNeighborsAndCapableOfAttack:NO] allObjects];
 		let ourCountries = countries(withAllOptions: .withEnemyNeighbors, from: self.ourCountries)
 		let countryCount = ourCountries.count
@@ -108,7 +108,7 @@ public class Chaos: RiskPlayer {
 	}
 
 	/// Move forward half of the remaining armies.
-	public override func moveAttackingArmies(_ count: Int32, between source: RKCountry, _ destination: RKCountry) {
+	public override func moveAttackingArmies(_ count: RKArmyCount, between source: RKCountry, _ destination: RKCountry) {
 		// Move half the armies to destination
 		// For odd count, leave extra army in the source country.
 		let tmp = count / 2;
@@ -141,7 +141,7 @@ public class Chaos: RiskPlayer {
 
 	/// Try to find a friendly neighbor who has unfriendly neighbors
 	/// Otherwise, pick random country.
-	public override func placeFortifyingArmies(_ count: Int32, from source: RKCountry) {
+	public override func placeFortifyingArmies(_ count: RKArmyCount, from source: RKCountry) {
 		var destination: RKCountry?
 		
 		let ourNeighborCountries = source.ourNeighborCountries

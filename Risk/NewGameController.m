@@ -23,6 +23,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void)selectInitialCountryDistributionWithTag:(NSInteger)theTag;
 - (NSInteger)selectedInitialCountryDistribution;
 - (NSString *)playerNameForNumber:(RKPlayer)playerNum;
+- (NSInteger)selectedInitialArmyPlacement;
+- (void)selectInitialArmyPlacementWithTag:(NSInteger)theTag;
+- (NSInteger)selectedCardRedemption;
+- (void)selectCardRedemptionWithTag:(NSInteger)theTag;
+- (NSInteger)selectedFortifyRule;
+- (void)selectFortifyRuleWithTag:(NSInteger)theTag;
 @end
 
 @implementation NewGameController
@@ -469,7 +475,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     NSUserDefaults *defaults;
     RKGameConfiguration *oldConfiguration;
     NSString *tmp;
-    int index;
+    NSInteger index;
     
     defaults = [NSUserDefaults standardUserDefaults];
     
@@ -553,7 +559,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
     }
     
-    [initialArmyPlacementMatrix selectCellWithTag:index];
+    [self selectInitialArmyPlacementWithTag:index];
     
     switch (oldConfiguration.cardSetRedemption)
     {
@@ -571,7 +577,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
     }
     
-    [cardRedemptionMatrix selectCellWithTag:index];
+    [self selectCardRedemptionWithTag:index];
     
     switch (oldConfiguration.fortifyRule)
     {
@@ -593,7 +599,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
     }
     
-    [fortifyRuleMatrix selectCellWithTag:index];
+    [self selectFortifyRuleWithTag:index];
     
     // And finally update the intial armies textfield
     [self recalculateInitialArmies:self];
@@ -617,17 +623,17 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
         index = 0;
     thisConfiguration.initialCountryDistribution = distribution[index];
     
-    index = initialArmyPlacementMatrix.selectedRow;
+    index = [self selectedInitialArmyPlacement];
     if (index < 0 || index > 2)
         index = 0;
     thisConfiguration.initialArmyPlacement = placement[index];
     
-    index = cardRedemptionMatrix.selectedRow;
+    index = [self selectedCardRedemption];
     if (index < 0 || index > 2)
         index = 0;
     thisConfiguration.cardSetRedemption = redemption[index];
     
-    index = fortifyRuleMatrix.selectedRow;
+    index = [self selectedFortifyRule];
     if (index < 0 || index > 3)
         index = 0;
     thisConfiguration.fortifyRule = rule[index];
@@ -696,6 +702,20 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     //do nothing.
 }
 
+- (IBAction)dummyChangeInitialArmyPlacement:(id)sender
+{
+    //do nothing.
+}
+
+- (IBAction)dummyChangeCardSetRedemption:(id)sender
+{
+    //do nothing.
+}
+- (IBAction)dummyChangeFortifyRules:(id)sender
+{
+    //do nothing.
+}
+
 - (NSString *)playerNameForNumber:(RKPlayer)playerNum
 {
     switch (playerNum) {
@@ -727,6 +747,57 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             break;
     }
     return nil;
+}
+
+- (NSInteger)selectedInitialArmyPlacement
+{
+    for (NSButton *button in @[initialArmyPlacementByOnes, initialArmyPlacementByThrees, initialArmyPlacementByFives]) {
+        if (button.state == NSControlStateValueOn) {
+            return button.tag;
+        }
+    }
+    return NSNotFound;
+}
+
+- (void)selectInitialArmyPlacementWithTag:(NSInteger)theTag
+{
+    for (NSButton *button in @[initialArmyPlacementByOnes, initialArmyPlacementByThrees, initialArmyPlacementByFives]) {
+        button.state = button.tag == theTag ? NSControlStateValueOn : NSControlStateValueOff;
+    }
+}
+
+- (NSInteger)selectedCardRedemption
+{
+    for (NSButton *button in @[cardRedemptionButton1, cardRedemptionButton2, cardRedemptionButton3]) {
+        if (button.state == NSControlStateValueOn) {
+            return button.tag;
+        }
+    }
+    return NSNotFound;
+}
+
+- (void)selectCardRedemptionWithTag:(NSInteger)theTag
+{
+    for (NSButton *button in @[cardRedemptionButton1, cardRedemptionButton2, cardRedemptionButton3]) {
+        button.state = button.tag == theTag ? NSControlStateValueOn : NSControlStateValueOff;
+    }
+}
+
+- (NSInteger)selectedFortifyRule
+{
+    for (NSButton *button in @[fortifyRuleButton1, fortifyRuleButton2, fortifyRuleButton3, fortifyRuleButton4]) {
+        if (button.state == NSControlStateValueOn) {
+            return button.tag;
+        }
+    }
+    return NSNotFound;
+}
+
+- (void)selectFortifyRuleWithTag:(NSInteger)theTag
+{
+    for (NSButton *button in @[fortifyRuleButton1, fortifyRuleButton2, fortifyRuleButton3, fortifyRuleButton4]) {
+        button.state = button.tag == theTag ? NSControlStateValueOn : NSControlStateValueOff;
+    }
 }
 
 @end

@@ -41,9 +41,18 @@
     IBOutlet NSButton *initialCountryDistributionPlayerChoice;
     IBOutlet NSButton *initialCountryDistributionRandom;
     
-    IBOutlet NSMatrix *initialArmyPlacementMatrix;
-    IBOutlet NSMatrix *cardRedemptionMatrix;
-    IBOutlet NSMatrix *fortifyRuleMatrix;
+    IBOutlet NSButton *initialArmyPlacementByOnes;
+    IBOutlet NSButton *initialArmyPlacementByThrees;
+    IBOutlet NSButton *initialArmyPlacementByFives;
+    
+    IBOutlet NSButton *cardRedemptionButton1;
+    IBOutlet NSButton *cardRedemptionButton2;
+    IBOutlet NSButton *cardRedemptionButton3;
+
+    IBOutlet NSButton *fortifyRuleButton1;
+    IBOutlet NSButton *fortifyRuleButton2;
+    IBOutlet NSButton *fortifyRuleButton3;
+    IBOutlet NSButton *fortifyRuleButton4;
 
     IBOutlet NSTextField *initialArmyCountTextfield;
 
@@ -80,6 +89,9 @@
 - (IBAction) cancelAction:(id)sender;
 
 - (IBAction)dummyChangeInitialCountryDistribution:(id)sender;
+- (IBAction)dummyChangeInitialArmyPlacement:(id)sender;
+- (IBAction)dummyChangeCardSetRedemption:(id)sender;
+- (IBAction)dummyChangeFortifyRules:(id)sender;
 
 - (void) createNewGame;
 
