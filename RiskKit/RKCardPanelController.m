@@ -216,14 +216,10 @@ static struct image_names class_images[] =
 
 - (IBAction) doneAction:(id)sender
 {
-    NSEnumerator *cardSetEnumerator;
-    RKCardSet *cardSet;
-    
     // Go through list of sets, and instruct the game manager to turn
     // in those card sets on behalf of the player.
     
-    cardSetEnumerator = [cardSets objectEnumerator];
-    while (cardSet = [cardSetEnumerator nextObject])
+    for (RKCardSet *cardSet in cardSets)
     {
         [gameManager turnInCardSet:cardSet forPlayerNumber:currentPlayerNumber];
     }

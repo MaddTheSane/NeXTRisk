@@ -142,13 +142,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (BOOL) bordersAnotherContinent
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    BOOL flag;
+    BOOL flag = NO;
     
-    flag = NO;
-    countryEnumerator = [neighborCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in neighborCountries)
     {
         if ([country.continentName isEqualToString:continentName] == NO)
         {
@@ -294,17 +290,12 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (NSSet *) ourNeighborCountries
 {
-    NSMutableSet *ourNeighborCountries;
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
+    NSMutableSet *ourNeighborCountries = [NSMutableSet set];
     
-    ourNeighborCountries = [NSMutableSet set];
-    countryEnumerator = [self.neighborCountries objectEnumerator];
-    
-    while (country = [countryEnumerator nextObject])
-    {
-        if (country.playerNumber == playerNumber)
+    for (RKCountry *country in self.neighborCountries) {
+        if (country.playerNumber == playerNumber) {
             [ourNeighborCountries addObject:country];
+        }
     }
     
     return ourNeighborCountries;
@@ -338,17 +329,12 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (NSSet *) enemyNeighborCountries
 {
-    NSMutableSet *enemyNeighborCountries;
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
+    NSMutableSet *enemyNeighborCountries = [NSMutableSet set];
     
-    enemyNeighborCountries = [NSMutableSet set];
-    countryEnumerator = [self.neighborCountries objectEnumerator];
-    
-    while (country = [countryEnumerator nextObject])
-    {
-        if (country.playerNumber != playerNumber)
+    for (RKCountry *country in self.neighborCountries) {
+        if (country.playerNumber != playerNumber) {
             [enemyNeighborCountries addObject:country];
+        }
     }
     
     return enemyNeighborCountries;
@@ -358,13 +344,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (int) enemyNeighborTroopCount
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    int count;
+    int count = 0;
     
-    count = 0;
-    countryEnumerator = [[self enemyNeighborCountries] objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in [self enemyNeighborCountries])
     {
         count += country.troopCount;
     }
@@ -376,13 +358,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (int) ourNeighborTroopCount
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    int count;
+    int count = 0;
     
-    count = 0;
-    countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in [self ourNeighborCountries])
     {
         count += country.troopCount;
     }
@@ -396,13 +374,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (BOOL) hasEnemyNeighbors
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    BOOL flag;
+    BOOL flag = NO;
     
-    flag = NO;
-    countryEnumerator = [neighborCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in neighborCountries)
     {
         if (country.playerNumber != playerNumber)
         {
@@ -418,13 +392,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (BOOL) hasFriendlyNeighborsWithEnemyNeighbors
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    BOOL flag;
+    BOOL flag = NO;
     
-    flag = NO;
-    countryEnumerator = [[self ourNeighborCountries] objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in [self ourNeighborCountries])
     {
         if (country.hasEnemyNeighbors == YES)
         {
@@ -454,13 +424,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (BOOL) surroundedByPlayerNumber:(RKPlayer)number
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    BOOL flag;
+    BOOL flag = YES;
     
-    flag = YES;
-    countryEnumerator = [self.neighborCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in self.neighborCountries)
     {
         if (country.playerNumber != number)
         {
@@ -476,13 +442,9 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 
 - (BOOL) hasEnemyNeighborsExcludingCountry:(RKCountry *)excludedCountry
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    BOOL flag;
+    BOOL flag = NO;
     
-    flag = NO;
-    countryEnumerator = [neighborCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in neighborCountries)
     {
         if (country != excludedCountry && country.playerNumber != playerNumber)
         {

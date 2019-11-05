@@ -357,14 +357,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (void) startNewGame
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    
     NSAssert ([self gameInProgress] == NO, @"Game already in progress.");
     
-    countryEnumerator = [world.allCountries objectEnumerator];
     [mapView.window disableFlushWindow];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in world.allCountries)
     {
         country.playerNumber = 0;
     }
@@ -375,6 +371,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     // Set up card and discard decks.
     cardDeck = [world.cards mutableCopy];
+    discardDeck = [[NSMutableSet alloc] init];
     
     nextCardSetValue = 4;
 }
@@ -1756,16 +1753,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (void) transferCardsFromPlayer:(RiskPlayer *)source toPlayer:(RiskPlayer *)destination
 {
-    NSArray *cardArray;
-    NSEnumerator *cardEnumerator;
-    RKCard *card;
-    
-    cardArray = [NSArray arrayWithArray:source.playerCards];
-    cardEnumerator = [cardArray objectEnumerator];
+    NSArray *cardArray = [NSArray arrayWithArray:source.playerCards];
     
     //NSLog (@"transfering %d cards.", [cardArray count]);
     
-    while (card = [cardEnumerator nextObject])
+    for (RKCard *card in cardArray)
     {
         [source removeCardFromHand:card];
         [destination addCardToHand:card];
@@ -1805,13 +1797,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (int) totalTroopsForPlayerNumber:(RKPlayer)number
 {
-    NSEnumerator *countryEnumerator;
-    RKCountry *country;
-    int total;
+    int total = 0;
     
-    total = 0;
-    countryEnumerator = [[world countriesForPlayer:number] objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in [world countriesForPlayer:number])
     {
         total += country.troopCount;
     }

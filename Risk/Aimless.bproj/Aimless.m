@@ -681,17 +681,12 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
 
 - (void) willBeginPlacingInitialArmies
 {
-    NSEnumerator *countryEnumerator;
-    RKContinent *best;
-    RKCountry *country;
-    
-    best = [self continentWeAreClosestToControlling];
+    RKContinent *best = [self continentWeAreClosestToControlling];
     [self logMessage:@"The best continent appears to be %@", best.continentName];
     
     initialCountryHeap = [[SNHeap alloc] initUsingFunction:minimumTroops context:NULL];
     
-    countryEnumerator = [best.countries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in best.countries)
     {
         if (country.playerNumber == playerNumber && country.hasEnemyNeighbors == YES)
             [initialCountryHeap insertObject:country];
@@ -1221,7 +1216,6 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
     NSSet *enemies;
     RKCountry *weakest;
     int weakestTroopCount, troopCount;
-    NSEnumerator *countryEnumerator;
     RKAttackResult attackResult;
     
     attackResult.conqueredCountry = NO;
@@ -1246,7 +1240,6 @@ static NSComparisonResult maximumContinentBorder (RKContinent *object1, RKContin
         //weakest = nil;
         weakestTroopCount = 999999;
         enemies = [attacker enemyNeighborCountries];
-        countryEnumerator = [enemies objectEnumerator];
         
         for (RKCountry *country in enemies)
         {

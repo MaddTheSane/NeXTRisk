@@ -85,25 +85,20 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 - (void) chooseCountry
 {
-    NSMutableArray *array;
-    NSArray *unoccupiedCountries;
-    NSEnumerator *countryEnumerator;
+    NSMutableArray *array = [NSMutableArray array];
+    NSArray *unoccupiedCountries = [gameManager unoccupiedCountries];
     RKCountry *country;
     
     // 1. Make a list of unoccupied countries in continents that we don't have a presence.
     // 2. Randomly choose one of these, updating its continent flag
     // 3. Otherwise, randomly pick country
     
-    unoccupiedCountries = [gameManager unoccupiedCountries];
-    
     NSAssert ([unoccupiedCountries count] > 0, @"No unoccupied countries.");
     
-    array = [NSMutableArray array];
-    countryEnumerator = [unoccupiedCountries objectEnumerator];
-    while (country = [countryEnumerator nextObject])
-    {
-        if ([unoccupiedContinents containsObject:country.continentName] == YES)
+    for (RKCountry *country in unoccupiedCountries) {
+        if ([unoccupiedContinents containsObject:country.continentName] == YES) {
             [array addObject:country];
+        }
     }
     
     if (array.count > 0)
@@ -245,17 +240,11 @@ RCSID ("$Id: Chaotic.m,v 1.4 1997/12/15 21:09:48 nygard Exp $");
 
 - (void) placeFortifyingArmies:(int)count fromCountry:(RKCountry *)source
 {
-    NSSet *ourNeighborCountries;
-    NSEnumerator *countryEnumerator;
-    RKCountry *country, *destination;
+    NSSet *ourNeighborCountries = [source ourNeighborCountries];
+    RKCountry *destination = nil;
     NSInteger neighborCount;
     
-    destination = nil;
-    
-    ourNeighborCountries = [source ourNeighborCountries];
-    countryEnumerator = [ourNeighborCountries objectEnumerator];
-    
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in ourNeighborCountries)
     {
         if (country.hasEnemyNeighbors == YES)
         {

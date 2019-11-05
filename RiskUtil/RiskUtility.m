@@ -241,9 +241,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     NSString *fileContents;
     NSScanner *scanner;
     RKCard *riskCard;
-    NSMutableDictionary *countryDictionary;
-    NSEnumerator<RKCountry *> *countryEnumerator;
-    RKCountry *country;
+    NSMutableDictionary *countryDictionary = [NSMutableDictionary dictionary];
     
     DSTART;
     
@@ -253,9 +251,7 @@ RCSID ("$Id: RiskUtility.m,v 1.2 1997/12/09 08:10:23 nygard Exp $");
     array = [NSMutableArray array];
     
     // Set up country dictionary keyed on name
-    countryDictionary = [NSMutableDictionary dictionary];
-    countryEnumerator = [countryArray objectEnumerator];
-    while (country = [countryEnumerator nextObject])
+    for (RKCountry *country in countryArray)
     {
         [countryDictionary setObject:country forKey:[country countryName]];
     }
