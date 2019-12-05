@@ -18,11 +18,12 @@
 		551251E31CC22525000E7A52 /* RiskKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553780A61CC1966300A2C08E /* RiskKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551251E71CC225AE000E7A52 /* RiskUtil.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551251E91CC225AE000E7A52 /* RiskUtil.xib */; };
 		551251EB1CC27D55000E7A52 /* RiskUtil_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 551251EA1CC27D55000E7A52 /* RiskUtil_main.m */; };
+		551361AD239999DA002BA9BF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551361AC239999DA002BA9BF /* Media.xcassets */; };
+		551361AE23999A20002BA9BF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551361AC239999DA002BA9BF /* Media.xcassets */; };
+		551361AF23999A2E002BA9BF /* Map.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */; };
 		5516BDC52367B73600A888BD /* HumanPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5516BDC42367B73600A888BD /* HumanPlayer.swift */; };
-		5516BDD023696ABD00A888BD /* Cards.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5537809B1CC1897500A2C08E /* Cards.xcassets */; };
-		5516BDD123696AE000A888BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55377EB21CC15AC900A2C08E /* Assets.xcassets */; };
 		5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551098101CC563FE00DE6DFE /* RKImages.xcassets */; };
-		5516BDD623696E2500A888BD /* Risk - NeXT Classic.rworld in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5516BDD623696E2500A888BD /* NeXT Classic.rworld in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 5516BDCA23696A9600A888BD /* NeXT Classic.rworld */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5516BDD923696EE600A888BD /* RKArmyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377EC41CC15C2300A2C08E /* RKArmyView.m */; };
 		5516BDDA23696EE600A888BD /* RiskMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55377F5A1CC15C2400A2C08E /* RiskMapView.m */; };
 		5516BDDB23696EE600A888BD /* RKArmyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55377EC31CC15C2300A2C08E /* RKArmyView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -247,7 +248,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				553781021CC21A2E00A2C08E /* ChaoticSwift.riskplayer in Copy PlugIns */,
-				5516BDD623696E2500A888BD /* Risk - NeXT Classic.rworld in Copy PlugIns */,
+				5516BDD623696E2500A888BD /* NeXT Classic.rworld in Copy PlugIns */,
 				553780C81CC1986A00A2C08E /* Aimless.riskplayer in Copy PlugIns */,
 				553780C91CC1986A00A2C08E /* Chaotic.riskplayer in Copy PlugIns */,
 			);
@@ -266,8 +267,9 @@
 		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
+		551361AC239999DA002BA9BF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5516BDC42367B73600A888BD /* HumanPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanPlayer.swift; sourceTree = "<group>"; };
-		5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Risk - NeXT Classic.rworld"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5516BDCA23696A9600A888BD /* NeXT Classic.rworld */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NeXT Classic.rworld"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5516BDCC23696A9600A888BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5516BDEA236AD81F00A888BD /* RiskWorld.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = RiskWorld.data; sourceTree = "<group>"; };
 		55377EA91CC15AC900A2C08E /* Risk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Risk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -583,6 +585,7 @@
 			children = (
 				5516BDEA236AD81F00A888BD /* RiskWorld.data */,
 				5516BDCC23696A9600A888BD /* Info.plist */,
+				551361AC239999DA002BA9BF /* Media.xcassets */,
 			);
 			path = "Risk - NeXT Classic";
 			sourceTree = "<group>";
@@ -613,7 +616,7 @@
 				553780CE1CC1990A00A2C08E /* ChaoticSwift.riskplayer */,
 				551098161CC56F0F00DE6DFE /* Risk World Maker.app */,
 				554AECEE2175B313005F7847 /* Strat.riskplayer */,
-				5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */,
+				5516BDCA23696A9600A888BD /* NeXT Classic.rworld */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -870,9 +873,9 @@
 			productReference = 551098161CC56F0F00DE6DFE /* Risk World Maker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5516BDC923696A9600A888BD /* Risk - NeXT Classic */ = {
+		5516BDC923696A9600A888BD /* NeXT Classic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5516BDCD23696A9600A888BD /* Build configuration list for PBXNativeTarget "Risk - NeXT Classic" */;
+			buildConfigurationList = 5516BDCD23696A9600A888BD /* Build configuration list for PBXNativeTarget "NeXT Classic" */;
 			buildPhases = (
 				5516BDC623696A9600A888BD /* Sources */,
 				5516BDC723696A9600A888BD /* Frameworks */,
@@ -882,9 +885,9 @@
 			);
 			dependencies = (
 			);
-			name = "Risk - NeXT Classic";
+			name = "NeXT Classic";
 			productName = "Risk - NeXT Classic";
-			productReference = 5516BDCA23696A9600A888BD /* Risk - NeXT Classic.rworld */;
+			productReference = 5516BDCA23696A9600A888BD /* NeXT Classic.rworld */;
 			productType = "com.apple.product-type.bundle";
 		};
 		55377EA81CC15AC900A2C08E /* Risk */ = {
@@ -1084,7 +1087,7 @@
 				553780A51CC1966300A2C08E /* RiskKit */,
 				553780CD1CC1990A00A2C08E /* ChaoticSwift */,
 				551098151CC56F0F00DE6DFE /* Risk World Maker */,
-				5516BDC923696A9600A888BD /* Risk - NeXT Classic */,
+				5516BDC923696A9600A888BD /* NeXT Classic */,
 			);
 		};
 /* End PBXProject section */
@@ -1103,8 +1106,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5516BDD123696AE000A888BD /* Assets.xcassets in Resources */,
-				5516BDD023696ABD00A888BD /* Cards.xcassets in Resources */,
+				551361AF23999A2E002BA9BF /* Map.xcassets in Resources */,
+				551361AD239999DA002BA9BF /* Media.xcassets in Resources */,
 				5516BDEB236AD81F00A888BD /* RiskWorld.data in Resources */,
 				5516BDD423696B2700A888BD /* RKImages.xcassets in Resources */,
 			);
@@ -1124,6 +1127,7 @@
 				551251D61CC2229A000E7A52 /* InfoPanel.xib in Resources */,
 				55377FCA1CC15C2400A2C08E /* PreferencePanel.xib in Resources */,
 				55377FBC1CC15C2400A2C08E /* CardPanel.xib in Resources */,
+				551361AE23999A20002BA9BF /* Media.xcassets in Resources */,
 				55377FDE1CC15C2400A2C08E /* NotPlaying.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1319,7 +1323,7 @@
 		};
 		5516BDD823696E2500A888BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5516BDC923696A9600A888BD /* Risk - NeXT Classic */;
+			target = 5516BDC923696A9600A888BD /* NeXT Classic */;
 			targetProxy = 5516BDD723696E2500A888BD /* PBXContainerItemProxy */;
 		};
 		553780AC1CC1966300A2C08E /* PBXTargetDependency */ = {
@@ -1532,7 +1536,7 @@
 				MARKETING_VERSION = 0.99;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.Risk---NeXT-Classic";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.Risk.NeXT-Classic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = rworld;
@@ -1554,7 +1558,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MARKETING_VERSION = 0.99;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.Risk---NeXT-Classic";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.MaddTheSane.Risk.NeXT-Classic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = rworld;
@@ -1919,7 +1923,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5516BDCD23696A9600A888BD /* Build configuration list for PBXNativeTarget "Risk - NeXT Classic" */ = {
+		5516BDCD23696A9600A888BD /* Build configuration list for PBXNativeTarget "NeXT Classic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5516BDCE23696A9600A888BD /* Debug */,

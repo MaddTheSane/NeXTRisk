@@ -41,11 +41,11 @@ extern NSNotificationName const RKGameOverNotification;
     IBOutlet NSColorWell *playerColorWell;
 
     // outlets for interchangeable views in right section of control panel
-    IBOutlet NSView *phaseComputerMove;
-    IBOutlet NSView *phasePlaceArmies;
-    IBOutlet NSView *phaseAttack;
-    IBOutlet NSView *phaseFortify;
-    IBOutlet NSView *phaseChooseCountries;
+    NSView *phaseComputerMove;
+    NSView *phasePlaceArmies;
+    NSView *phaseAttack;
+    NSView *phaseFortify;
+    NSView *phaseChooseCountries;
     NSView *currentPhaseView;
     
     // Place Armies phase
@@ -93,6 +93,12 @@ extern NSNotificationName const RKGameOverNotification;
 
     SNRandom *rng;
 }
+
+@property (strong) IBOutlet NSView *phaseComputerMove;
+@property (strong) IBOutlet NSView *phasePlaceArmies;
+@property (strong) IBOutlet NSView *phaseAttack;
+@property (strong) IBOutlet NSView *phaseFortify;
+@property (strong) IBOutlet NSView *phaseChooseCountries;
 
 - (instancetype)init;
 

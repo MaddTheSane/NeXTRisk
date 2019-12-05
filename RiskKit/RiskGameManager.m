@@ -50,6 +50,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 @synthesize gameState;
 @synthesize currentPlayerNumber;
 @synthesize activePlayerCount;
+@synthesize phaseComputerMove;
+@synthesize phasePlaceArmies;
+@synthesize phaseAttack;
+@synthesize phaseFortify;
+@synthesize phaseChooseCountries;
 
 + (void) initialize
 {
@@ -371,7 +376,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     // Set up card and discard decks.
     cardDeck = [world.cards mutableCopy];
-    discardDeck = [[NSMutableSet alloc] init];
+    discardDeck = [[NSMutableArray alloc] init];
     
     nextCardSetValue = 4;
 }
