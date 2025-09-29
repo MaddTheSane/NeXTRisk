@@ -1,0 +1,186 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"About the Author\"; ObjectID = \"5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "About the Author"
+          }
+        }
+      }
+    },
+    "9.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"About Risk\"; ObjectID = \"9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "About Risk"
+          }
+        }
+      }
+    },
+    "11.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Title\"; ObjectID = \"11\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Title"
+          }
+        }
+      }
+    },
+    "21.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Info\"; ObjectID = \"21\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Info"
+          }
+        }
+      }
+    },
+    "58.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"By Mike Ferris\"; ObjectID = \"58\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "By Mike Ferris"
+          }
+        }
+      }
+    },
+    "59.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Cell\"; ObjectID = \"59\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cell"
+          }
+        }
+      }
+    },
+    "60.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Version\"; ObjectID = \"60\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "61.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Copyright 1993, Stultus Enterprises,  All Rights Reserved.\"; ObjectID = \"61\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright 1993, Stultus Enterprises,  All Rights Reserved."
+          }
+        }
+      }
+    },
+    "62.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Cell\"; ObjectID = \"62\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cell"
+          }
+        }
+      }
+    },
+    "63.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"0.00\"; ObjectID = \"63\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0.00"
+          }
+        }
+      }
+    },
+    "64.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Original version by:\\nMike Ferris <mike@lorax.com>\"; ObjectID = \"64\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Original version by:\nMike Ferris <mike@lorax.com>"
+          }
+        }
+      }
+    },
+    "66.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Openstep version by:\\nSteve Nygard <nygard@telusplanet.net>\"; ObjectID = \"66\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Openstep version by:\nSteve Nygard <nygard@telusplanet.net>"
+          }
+        }
+      }
+    },
+    "68.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Risk\"; ObjectID = \"68\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Risk"
+          }
+        }
+      }
+    },
+    "69.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Risk\"; ObjectID = \"69\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Risk"
+          }
+        }
+      }
+    },
+    "70.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Risk\"; ObjectID = \"70\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Risk"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -264,7 +264,6 @@
 		5510981A1CC56F0F00DE6DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5510981D1CC56F1000DE6DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5510981F1CC56F1000DE6DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		551251D71CC2229A000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InfoPanel.xib; sourceTree = "<group>"; };
 		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
 		551361AC239999DA002BA9BF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -296,14 +295,6 @@
 		55377F091CC15C2300A2C08E /* CPIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = CPIcon.tiff; sourceTree = "<group>"; };
 		55377F0A1CC15C2300A2C08E /* RKDiceInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKDiceInspector.h; sourceTree = "<group>"; };
 		55377F0B1CC15C2300A2C08E /* RKDiceInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKDiceInspector.m; sourceTree = "<group>"; };
-		55377F141CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CardPanel.xib; sourceTree = "<group>"; };
-		55377F181CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = DiceInspector.xib; sourceTree = "<group>"; };
-		55377F1C1CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GameBoard.xib; sourceTree = "<group>"; };
-		55377F241CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = NewGamePanel.xib; sourceTree = "<group>"; };
-		55377F281CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Risk.xib; sourceTree = "<group>"; };
-		55377F2C1CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PlayerConsole.xib; sourceTree = "<group>"; };
-		55377F301CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = PreferencePanel.xib; sourceTree = "<group>"; };
-		55377F361CC15C2300A2C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = WorldInfoPanel.xib; sourceTree = "<group>"; };
 		55377F391CC15C2300A2C08E /* RKGameConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKGameConfiguration.h; sourceTree = "<group>"; };
 		55377F3A1CC15C2300A2C08E /* RKGameConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKGameConfiguration.m; sourceTree = "<group>"; };
 		55377F421CC15C2300A2C08E /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
@@ -406,6 +397,24 @@
 		55E552FD2E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		55E552FF2E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		55E553012E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		55E553032E8B3C19006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DiceInspector.xib; sourceTree = "<group>"; };
+		55E553052E8B3C37006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerConsole.xib; sourceTree = "<group>"; };
+		55E553072E8B3CFE006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CardPanel.xib; sourceTree = "<group>"; };
+		55E553092E8B3D08006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GameBoard.xib; sourceTree = "<group>"; };
+		55E5530B2E8B3D2C006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoPanel.xib; sourceTree = "<group>"; };
+		55E5530D2E8B3D3A006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewGamePanel.xib; sourceTree = "<group>"; };
+		55E5530F2E8B3DDC006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Risk.xib; sourceTree = "<group>"; };
+		55E553112E8B3DE6006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencePanel.xib; sourceTree = "<group>"; };
+		55E553132E8B3DF7006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WorldInfoPanel.xib; sourceTree = "<group>"; };
+		55E553172E8B44BF006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/DiceInspector.xcstrings; sourceTree = "<group>"; };
+		55E553182E8B44BF006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Risk.xcstrings; sourceTree = "<group>"; };
+		55E553192E8B44C0006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/WorldInfoPanel.xcstrings; sourceTree = "<group>"; };
+		55E5531A2E8B44C0006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/GameBoard.xcstrings; sourceTree = "<group>"; };
+		55E5531B2E8B44C0006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/PlayerConsole.xcstrings; sourceTree = "<group>"; };
+		55E5531C2E8B44C0006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/CardPanel.xcstrings; sourceTree = "<group>"; };
+		55E5531D2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/InfoPanel.xcstrings; sourceTree = "<group>"; };
+		55E5531E2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/NewGamePanel.xcstrings; sourceTree = "<group>"; };
+		55E5531F2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/PreferencePanel.xcstrings; sourceTree = "<group>"; };
 		55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAdditions.swift; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
@@ -1067,7 +1076,7 @@
 				};
 			};
 			buildConfigurationList = 55377EA41CC15AC900A2C08E /* Build configuration list for PBXProject "Risk" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1380,7 +1389,8 @@
 		551251D81CC2229A000E7A52 /* InfoPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				551251D71CC2229A000E7A52 /* en */,
+				55E5530B2E8B3D2C006B01D2 /* Base */,
+				55E5531D2E8B44C1006B01D2 /* mul */,
 			);
 			name = InfoPanel.xib;
 			sourceTree = "<group>";
@@ -1396,73 +1406,75 @@
 		55377F131CC15C2300A2C08E /* CardPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F141CC15C2300A2C08E /* en */,
+				55E553072E8B3CFE006B01D2 /* Base */,
+				55E5531C2E8B44C0006B01D2 /* mul */,
 			);
 			name = CardPanel.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		55377F171CC15C2300A2C08E /* DiceInspector.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F181CC15C2300A2C08E /* en */,
+				55E553032E8B3C19006B01D2 /* Base */,
+				55E553172E8B44BF006B01D2 /* mul */,
 			);
 			name = DiceInspector.xib;
-			path = ../Risk/en.lproj;
+			path = ../Risk;
 			sourceTree = "<group>";
 		};
 		55377F1B1CC15C2300A2C08E /* GameBoard.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F1C1CC15C2300A2C08E /* en */,
+				55E553092E8B3D08006B01D2 /* Base */,
+				55E5531A2E8B44C0006B01D2 /* mul */,
 			);
 			name = GameBoard.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		55377F231CC15C2300A2C08E /* NewGamePanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F241CC15C2300A2C08E /* en */,
+				55E5530D2E8B3D3A006B01D2 /* Base */,
+				55E5531E2E8B44C1006B01D2 /* mul */,
 			);
 			name = NewGamePanel.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		55377F271CC15C2300A2C08E /* Risk.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F281CC15C2300A2C08E /* en */,
+				55E5530F2E8B3DDC006B01D2 /* Base */,
+				55E553182E8B44BF006B01D2 /* mul */,
 			);
 			name = Risk.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		55377F2B1CC15C2300A2C08E /* PlayerConsole.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F2C1CC15C2300A2C08E /* en */,
+				55E553052E8B3C37006B01D2 /* Base */,
+				55E5531B2E8B44C0006B01D2 /* mul */,
 			);
 			name = PlayerConsole.xib;
-			path = ../Risk/en.lproj;
+			path = ../Risk;
 			sourceTree = "<group>";
 		};
 		55377F2F1CC15C2300A2C08E /* PreferencePanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F301CC15C2300A2C08E /* en */,
+				55E553112E8B3DE6006B01D2 /* Base */,
+				55E5531F2E8B44C1006B01D2 /* mul */,
 			);
 			name = PreferencePanel.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		55377F351CC15C2300A2C08E /* WorldInfoPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				55377F361CC15C2300A2C08E /* en */,
+				55E553132E8B3DF7006B01D2 /* Base */,
+				55E553192E8B44C0006B01D2 /* mul */,
 			);
 			name = WorldInfoPanel.xib;
-			path = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1475,7 +1487,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Risk World Maker/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1488,7 +1503,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Risk World Maker/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1644,8 +1662,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1657,7 +1676,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
@@ -1671,7 +1693,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Risk/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Risk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Risk/Risk-Bridging-Header.h";
@@ -1689,7 +1714,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = RiskUtil/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
@@ -1707,7 +1735,10 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = RiskUtil/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskUtil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RiskUtil/RiskUtil-Bridging-Header.h";
@@ -1789,7 +1820,11 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = RiskKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1811,7 +1846,11 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = RiskKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.RiskKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1827,7 +1866,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1842,7 +1885,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ChaoticSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.ChaoticSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

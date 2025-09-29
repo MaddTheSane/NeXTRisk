@@ -1,0 +1,174 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "32.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Set to turn in\"; ObjectID = \"32\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Set to turn in"
+          }
+        }
+      }
+    },
+    "37.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Card Panel\"; ObjectID = \"37\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Card Panel"
+          }
+        }
+      }
+    },
+    "44.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Total\"; ObjectID = \"44\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Total"
+          }
+        }
+      }
+    },
+    "127.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Done\"; ObjectID = \"127\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "128.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"You must turn in cards\"; ObjectID = \"128\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You must turn in cards"
+          }
+        }
+      }
+    },
+    "129.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Your Cards\"; ObjectID = \"129\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your Cards"
+          }
+        }
+      }
+    },
+    "130.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Cancel all sets\"; ObjectID = \"130\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel all sets"
+          }
+        }
+      }
+    },
+    "131.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Turn in this set\"; ObjectID = \"131\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn in this set"
+          }
+        }
+      }
+    },
+    "132.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"This set is worth\"; ObjectID = \"132\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "This set is worth"
+          }
+        }
+      }
+    },
+    "133.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"armies.\"; ObjectID = \"133\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "armies."
+          }
+        }
+      }
+    },
+    "134.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"0\"; ObjectID = \"134\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "135.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Armies amassed:\"; ObjectID = \"135\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Armies amassed:"
+          }
+        }
+      }
+    },
+    "136.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"0\"; ObjectID = \"136\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "rwf-3E-rUB.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Button\"; ObjectID = \"rwf-3E-rUB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

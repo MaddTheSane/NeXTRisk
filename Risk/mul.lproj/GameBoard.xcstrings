@@ -1,0 +1,438 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "7.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Risk\"; ObjectID = \"7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Risk"
+          }
+        }
+      }
+    },
+    "12.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Turn Phase\"; ObjectID = \"12\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn Phase"
+          }
+        }
+      }
+    },
+    "13.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Control\"; ObjectID = \"13\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Control"
+          }
+        }
+      }
+    },
+    "20.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Game Status\"; ObjectID = \"20\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Game Status"
+          }
+        }
+      }
+    },
+    "31.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"OtherViews\"; ObjectID = \"31\";",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OtherViews"
+          }
+        }
+      }
+    },
+    "32.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Phase Controls - Attack\"; ObjectID = \"32\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Phase Controls - Attack"
+          }
+        }
+      }
+    },
+    "34.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"End Turn\"; ObjectID = \"34\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "End Turn"
+          }
+        }
+      }
+    },
+    "35.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Fortify\"; ObjectID = \"35\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Fortify"
+          }
+        }
+      }
+    },
+    "37.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"A specific number of times.\"; ObjectID = \"37\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "A specific number of times."
+          }
+        }
+      }
+    },
+    "40.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Phase Controls - Computer's Move\"; ObjectID = \"40\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Phase Controls - Computer's Move"
+          }
+        }
+      }
+    },
+    "44.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Phase Controls - Choose Countries\"; ObjectID = \"44\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Phase Controls - Choose Countries"
+          }
+        }
+      }
+    },
+    "51.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Until a specific number of armies remain.\"; ObjectID = \"51\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Until a specific number of armies remain."
+          }
+        }
+      }
+    },
+    "52.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Phase Controls - Place Armies\"; ObjectID = \"52\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Phase Controls - Place Armies"
+          }
+        }
+      }
+    },
+    "53.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Until unable to continue.\"; ObjectID = \"53\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Until unable to continue."
+          }
+        }
+      }
+    },
+    "54.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Phase Controls - Fortify Position\"; ObjectID = \"54\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Phase Controls - Fortify Position"
+          }
+        }
+      }
+    },
+    "57.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Once only.\"; ObjectID = \"57\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Once only."
+          }
+        }
+      }
+    },
+    "61.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Panel\"; ObjectID = \"61\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Panel"
+          }
+        }
+      }
+    },
+    "152.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"1\"; ObjectID = \"152\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1"
+          }
+        }
+      }
+    },
+    "153.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"20\"; ObjectID = \"153\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "20"
+          }
+        }
+      }
+    },
+    "154.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Attacking from:\"; ObjectID = \"154\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Attacking from:"
+          }
+        }
+      }
+    },
+    "156.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Review Cards\"; ObjectID = \"156\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review Cards"
+          }
+        }
+      }
+    },
+    "157.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click one of your countries to attack from, then an opponent's to attack.\\nHold the shift key down to automatically move all armies on victory.\"; ObjectID = \"157\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click one of your countries to attack from, then an opponent's to attack.\nHold the shift key down to automatically move all armies on victory."
+          }
+        }
+      }
+    },
+    "158.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"2\"; ObjectID = \"158\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2"
+          }
+        }
+      }
+    },
+    "160.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Attack:\"; ObjectID = \"160\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Attack:"
+          }
+        }
+      }
+    },
+    "161.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Computer's Move\\nStand By\"; ObjectID = \"161\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Computer's Move\nStand By"
+          }
+        }
+      }
+    },
+    "162.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click on an unoccupied country to choose it.  The game will proceed when all the coutries are chosen.\"; ObjectID = \"162\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click on an unoccupied country to choose it.  The game will proceed when all the coutries are chosen."
+          }
+        }
+      }
+    },
+    "163.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Turn in Cards\"; ObjectID = \"163\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Turn in Cards"
+          }
+        }
+      }
+    },
+    "164.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"10\"; ObjectID = \"164\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10"
+          }
+        }
+      }
+    },
+    "165.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Armies left to place:\"; ObjectID = \"165\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Armies left to place:"
+          }
+        }
+      }
+    },
+    "166.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click in a country to place an army there. Shift-click to place five armies. Command-click to place all remaining armies.\"; ObjectID = \"166\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click in a country to place an army there. Shift-click to place five armies. Command-click to place all remaining armies."
+          }
+        }
+      }
+    },
+    "167.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Review Cards\"; ObjectID = \"167\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review Cards"
+          }
+        }
+      }
+    },
+    "168.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Inital armies left:\"; ObjectID = \"168\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Inital armies left:"
+          }
+        }
+      }
+    },
+    "169.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"--\"; ObjectID = \"169\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "--"
+          }
+        }
+      }
+    },
+    "170.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Click one of your countries to fortify from it.  Then you may place the armies in any adjacent country which you control.\"; ObjectID = \"170\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click one of your countries to fortify from it.  Then you may place the armies in any adjacent country which you control."
+          }
+        }
+      }
+    },
+    "171.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"End Turn\"; ObjectID = \"171\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "End Turn"
+          }
+        }
+      }
+    },
+    "172.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Review Cards\"; ObjectID = \"172\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review Cards"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//! The \c SNRandom class provides a simple interface for random number
+//! The `SNRandom` class provides a simple interface for random number
 //! generation.  Different algorithms may be implemented by subclassing
 //! and providing a method of seeding, and of generating a long random
 //! number.

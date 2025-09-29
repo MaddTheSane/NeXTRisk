@@ -1,0 +1,126 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "12.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Status View\"; ObjectID = \"12\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Status View"
+          }
+        }
+      }
+    },
+    "16.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Country Borders\"; ObjectID = \"16\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Country Borders"
+          }
+        }
+      }
+    },
+    "20.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Preferences\"; ObjectID = \"20\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Preferences"
+          }
+        }
+      }
+    },
+    "38.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Set\"; ObjectID = \"38\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Set"
+          }
+        }
+      }
+    },
+    "39.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Revert\"; ObjectID = \"39\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Revert"
+          }
+        }
+      }
+    },
+    "40.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Status view shows card set status\"; ObjectID = \"40\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Status view shows card set status"
+          }
+        }
+      }
+    },
+    "42.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"2.0\"; ObjectID = \"42\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2.0"
+          }
+        }
+      }
+    },
+    "43.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Line Width\"; ObjectID = \"43\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Line Width"
+          }
+        }
+      }
+    },
+    "44.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Regular Border Color\"; ObjectID = \"44\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Regular Border Color"
+          }
+        }
+      }
+    },
+    "45.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Selected Border Color\"; ObjectID = \"45\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Selected Border Color"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

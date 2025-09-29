@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A \c RKCountryShape knows how to draw a country -- it's actual shape and
+/// A `RKCountryShape` knows how to draw a country -- it's actual shape and
 /// where to place the army textfield.
 @interface RKCountryShape : NSObject <NSSecureCoding>
 {

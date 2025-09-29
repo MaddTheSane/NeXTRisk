@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Player Console\"; ObjectID = \"5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Player Console"
+          }
+        }
+      }
+    },
+    "25.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Continue\"; ObjectID = \"25\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
+    "26.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Pause for continue\"; ObjectID = \"26\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pause for continue"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

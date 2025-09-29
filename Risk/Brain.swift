@@ -63,7 +63,7 @@ class Brain: NSObject, NSApplicationDelegate {
 		let riskWorld = RiskWorld(default:())
 		gameManager.world = riskWorld
 		
-		loadRiskPlayerBundles();
+		loadRiskPlayerBundles()
 		
 		let flag = defaults.bool(forKey: DK_DMakeActive)
 		

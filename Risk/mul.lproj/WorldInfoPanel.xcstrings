@@ -1,0 +1,78 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"World Info\"; ObjectID = \"5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "World Info"
+          }
+        }
+      }
+    },
+    "9.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Continent Name\"; ObjectID = \"9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continent Name"
+          }
+        }
+      }
+    },
+    "10.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Number of Countries\"; ObjectID = \"10\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Number of Countries"
+          }
+        }
+      }
+    },
+    "11.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Bonus Value\"; ObjectID = \"11\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bonus Value"
+          }
+        }
+      }
+    },
+    "19.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"World Name:\"; ObjectID = \"19\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "World Name:"
+          }
+        }
+      }
+    },
+    "20.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Standard Risk World\"; ObjectID = \"20\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Standard Risk World"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

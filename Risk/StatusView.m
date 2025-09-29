@@ -26,14 +26,14 @@ static NSTextFieldCell *_textCell = nil;
         [self setVersion:StatusView_VERSION];
         
         _textCell = [[NSTextFieldCell alloc] init];
-        _textCell.backgroundColor = [NSColor lightGrayColor];
+        _textCell.backgroundColor = [NSColor textBackgroundColor];
         [_textCell setBezeled:NO];
         [_textCell setBordered:NO];
-        _textCell.font = [NSFont fontWithName:@"Helvetica" size:10.0];
+        _textCell.font = [NSFont systemFontOfSize:10];
         _textCell.alignment = NSTextAlignmentCenter;
         [_textCell setEditable:NO];
         [_textCell setSelectable:NO];
-        _textCell.textColor = [NSColor blackColor];
+        _textCell.textColor = [NSColor labelColor];
     }
 }
 

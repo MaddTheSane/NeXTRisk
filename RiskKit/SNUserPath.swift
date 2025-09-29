@@ -51,7 +51,6 @@ private let SNUserPathOperation_VERSION = 1
 		
 		@objc func encode(with aCoder: NSCoder) {
 			if #available(macOS 10.11, *) {
-				
 				aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead."]))
 			} else {
 				fatalError("We should not be calling \(#function)!")
@@ -171,6 +170,9 @@ private let SNUserPathOperation_VERSION = 1
 	}
 	
 	public func encode(with aCoder: NSCoder) {
+		if #available(macOS 10.11, *) {
+			aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: "SNUserPath can only be decoded. Encode as NSBezierPath instead."]))
+		}
 		aCoder.encode(operations)
 	}
 	

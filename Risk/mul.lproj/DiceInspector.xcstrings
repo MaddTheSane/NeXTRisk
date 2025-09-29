@@ -1,0 +1,234 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "2.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Title\"; ObjectID = \"2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Title"
+          }
+        }
+      }
+    },
+    "26.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Defender\"; ObjectID = \"26\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Defender"
+          }
+        }
+      }
+    },
+    "30.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Attacker\"; ObjectID = \"30\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Attacker"
+          }
+        }
+      }
+    },
+    "36.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Dice Inspector\"; ObjectID = \"36\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dice Inspector"
+          }
+        }
+      }
+    },
+    "67.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Continue\"; ObjectID = \"67\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
+    "68.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Pause for continue\"; ObjectID = \"68\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pause for continue"
+          }
+        }
+      }
+    },
+    "69.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Attack\"; ObjectID = \"69\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Attack"
+          }
+        }
+      }
+    },
+    "70.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"From:\"; ObjectID = \"70\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "From:"
+          }
+        }
+      }
+    },
+    "72.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"with\"; ObjectID = \"72\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "with"
+          }
+        }
+      }
+    },
+    "74.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"armies\"; ObjectID = \"74\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "armies"
+          }
+        }
+      }
+    },
+    "75.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"To:\"; ObjectID = \"75\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "To:"
+          }
+        }
+      }
+    },
+    "77.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"with\"; ObjectID = \"77\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "with"
+          }
+        }
+      }
+    },
+    "79.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"armies\"; ObjectID = \"79\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "armies"
+          }
+        }
+      }
+    },
+    "80.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rolling\"; ObjectID = \"80\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rolling"
+          }
+        }
+      }
+    },
+    "82.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"dice\"; ObjectID = \"82\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dice"
+          }
+        }
+      }
+    },
+    "83.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Using best\"; ObjectID = \"83\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Using best"
+          }
+        }
+      }
+    },
+    "87.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rolling\"; ObjectID = \"87\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rolling"
+          }
+        }
+      }
+    },
+    "89.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"dice\"; ObjectID = \"89\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dice"
+          }
+        }
+      }
+    },
+    "90.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Using best\"; ObjectID = \"90\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Using best"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
