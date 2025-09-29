@@ -1,26 +1,31 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
-\cocoascreenfonts1{\fonttbl\f0\froman\fcharset0 TimesNewRomanPS-BoldMT;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\rtf1\ansi\ansicpg1252\cocoartf2865
+\cocoascreenfonts1\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPS-BoldMT;\f1\froman\fcharset0 TimesNewRomanPSMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
-\margl120\margr120\vieww12800\viewh12940\viewkind0
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+{\info
+{\title The Strat Risk Player}
+{\author Royce Howland}}\margl120\margr120\vieww13420\viewh12940\viewkind0
 \pard\tx480\tx960\tx1440\tx1920\tx2400\tx2880\tx3360\tx3840\tx4320\tx4800\partightenfactor0
 
 \f0\b\fs24 \cf0 The Strat Risk Player
 \f1\b0 \
 \
-Strat tries to be smarter than Chaotic, the sample Risk player Mike Ferris supplied with version 0.95.  The code is in fact based on Chaotic, which I used as the shell for my first player, and just kept mutating until what you've got here.  There are too many details to go into, and I don't want to give away all of the elements of strategy to the idly curious, but here are some general features:\
+Strat tries to be smarter than Chaotic, the sample Risk player Mike Ferris supplied with version 0.95.  The code is in fact based on Chaotic, which I used as the shell for my first player, and just kept mutating until what you\'92ve got here.  There are too many details to go into, and I don\'92t want to give away all of the elements of strategy to the idly curious, but here are some general features:\
 \
+\pard\tx220\tx720\tx960\tx1440\tx1920\tx2400\tx2880\tx3360\tx3840\tx4320\tx4800\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}Will carry out sustained attacks, sometimes in a \'93banzai\'94 mode that stops only when there are no armies left anywhere that can attack anything.  In general, though, attacks stop when the player no longer outnumbers its neighboring enemies.\
+{\listtext	\uc0\u8226 	}Will attempt to eliminate weak players to get their cards.\
+{\listtext	\uc0\u8226 	}Will choose countries (if playing in that mode), reinforce countries, and attack countries based on a bunch of internal \'93desirability\'94 metrics.  This includes logic to make the player go after continents, protect their borders, and try to break other players\'92 continents.\
+{\listtext	\uc0\u8226 	}Will try to move armies that are behind fronts of attack in a direction that makes sense, during the fortify phase.  May hold off an attack if there are nearby friendlies that can be brought in for an extra edge next turn.\
+{\listtext	\uc0\u8226 	}Will try to sensibly divide armies between a victorious attacking country and a country just conquered, to maximize their effectiveness for continued attacks, or for defense.\
 \pard\tx480\tx960\tx1440\tx1920\tx2400\tx2880\tx3360\tx3840\tx4320\tx4800\li500\fi-500\partightenfactor0
-\cf0 \'95	Will carry out sustained attacks, sometimes in a "banzai" mode that stops only when there are no armies left anywhere that can attack anything.  In general, though, attacks stop when the player no longer outnumbers its neighboring enemies.\
-\'95	Will attempt to eliminate weak players to get their cards.\
-\'95	Will choose countries (if playing in that mode), reinforce countries, and attack countries based on a bunch of internal "desirability" metrics.  This includes logic to make the player go after continents, protect their borders, and try to break other players' continents.\
-\'95	Will try to move armies that are behind fronts of attack in a direction that makes sense, during the fortify phase.  May hold off an attack if there are nearby friendlies that can be brought in for an extra edge next turn.\
-\'95	Will try to sensibly divide armies between a victorious attacking country and a country just conquered, to maximize their effectiveness for continued attacks, or for defense.\
-\
+\cf0 \
 \pard\tx500\tx960\tx1440\tx1920\tx2400\tx2880\tx3360\tx3840\tx4320\tx4800\partightenfactor0
-\cf0 I could go on, but why?  Check the source for what's really happening.  There is still much room for improvement, both in terms of making the player do current activities better, and making it do things it doesn't yet do.  Most of the heuristics in the code follow the 80/20 rule: 20% of the work to accomplish 80% of the benefit.  Still, getting that remaining 20% benefit would make a big difference.\
+\cf0 I could go on, but why?  Check the source for what\'92s really happening.  There is still much room for improvement, both in terms of making the player do current activities better, and making it do things it doesn\'92t yet do.  Most of the heuristics in the code follow the 80/20 rule: 20% of the work to accomplish 80% of the benefit.  Still, getting that remaining 20% benefit would make a big difference.\
 \
-Oh, speaking of the source, it's more or less a shambles, for which I apologize to any unfortunate soul who tries to stumble through it.  Nevertheless, I make it freely available in the public domain to all who are curious.  I ask only that if you create any of your own Risk players, that you send me a copy.  I'm trying to improve my players all the time, and it would be nice to have some fresh blood to pit them against.  :~)\
+Oh, speaking of the source, it\'92s more or less a shambles, for which I apologize to any unfortunate soul who tries to stumble through it.  Nevertheless, I make it freely available in the public domain to all who are curious.  I ask only that if you create any of your own Risk players, that you send me a copy.  I\'92m trying to improve my players all the time, and it would be nice to have some fresh blood to pit them against.  :~)\
 \
 I am indebted to Don McGregor, mcgregdr@conan.ie.orst.edu, for writing and releasing the SortedList object which forms the basis of much of the fancy logic used in my players.  As per the GNU copyleft license under which SortedList was released, this player includes all the source to the customized SortedList object it uses.\
 \

@@ -80,11 +80,10 @@ static inline NSInteger SNParentIndex (NSInteger n)
 {
     int l;
     
-    if (data != NULL)
-    {
-        for (l = 0; l < current_size; l++)
-        {
+    if (data != NULL) {
+        for (l = 0; l < current_size; l++) {
             [data[l] autorelease];
+            data[l] = nil;
         }
         
         free (data);
@@ -128,7 +127,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-- (void) insertObject:anObject
+- (void) insertObject:(id)anObject
 {
     NSInteger i;
     id current;
@@ -228,7 +227,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-- (void) heapifyFromObject:anObject
+- (void) heapifyFromObject:(id)anObject
 {
     NSInteger l;
     
@@ -245,7 +244,7 @@ static inline NSInteger SNParentIndex (NSInteger n)
 
 //----------------------------------------------------------------------
 
-- (void) removeObject:anObject
+- (void) removeObject:(id)anObject
 {
     NSInteger l;
     
@@ -269,8 +268,9 @@ static inline NSInteger SNParentIndex (NSInteger n)
     NSInteger l;
     
     array = [NSMutableArray array];
-    for (l = 0; l < current_size; l++)
+    for (l = 0; l < current_size; l++) {
         [array addObject:data[l]];
+    }
     
     return array.description;
 }
