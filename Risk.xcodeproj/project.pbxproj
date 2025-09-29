@@ -127,14 +127,14 @@
 		555C3F83210101DB00DC0019 /* RKWorldDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 555C3F81210101DB00DC0019 /* RKWorldDecoder.m */; };
 		55665FC11D1136C6001980F2 /* RiskPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55665FBF1D11317F001980F2 /* RiskPoint.swift */; };
 		556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */ = {isa = PBXBuildFile; fileRef = 556A65EB1CFF5800005BA899 /* Chaotic.html */; };
-		556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 556A65F11CFF5B38005BA899 /* InfoPlist.strings */; };
 		55A236C5220ECF5D00AFB776 /* SortedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 554AECE32175B220005F7847 /* SortedList.m */; };
 		55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */; };
 		55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
 		55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */; };
-		55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */; };
-		55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */; };
 		55AC2A541D1089C50021814F /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AC2A531D1089C50021814F /* Brain.swift */; };
+		55E552FE2E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55E552FD2E8A5D40006B01D2 /* InfoPlist.xcstrings */; };
+		55E553002E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55E552FF2E8A5D40006B01D2 /* InfoPlist.xcstrings */; };
+		55E553022E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 55E553012E8A5D40006B01D2 /* InfoPlist.xcstrings */; };
 		55F3CF551EA671F600AE4486 /* SwiftAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */; };
 /* End PBXBuildFile section */
 
@@ -398,14 +398,14 @@
 		55665FC61D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCoder+SNUnarchiveHelpers.h"; sourceTree = "<group>"; };
 		55665FC71D1139CF001980F2 /* NSCoder+SNUnarchiveHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCoder+SNUnarchiveHelpers.m"; sourceTree = "<group>"; };
 		556A65EB1CFF5800005BA899 /* Chaotic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Chaotic.html; sourceTree = "<group>"; };
-		556A65F01CFF5B38005BA899 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		55A9C8EA1EAC0FB700D9E7C7 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55A9C8ED1EAC0FBE00D9E7C7 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55A9C8EF1EAC110C00D9E7C7 /* Map.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Map.xcassets; sourceTree = "<group>"; };
 		55AC2A521D1089C50021814F /* Risk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Risk-Bridging-Header.h"; sourceTree = "<group>"; };
 		55AC2A531D1089C50021814F /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; usesTabs = 1; };
+		55E552FD2E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		55E552FF2E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		55E553012E8A5D40006B01D2 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAdditions.swift; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
@@ -678,7 +678,7 @@
 				5537807A1CC1640600A2C08E /* SNHeap.m */,
 				553780731CC1640600A2C08E /* Aimless.rtf */,
 				5537806D1CC1639C00A2C08E /* Info.plist */,
-				55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */,
+				55E552FF2E8A5D40006B01D2 /* InfoPlist.xcstrings */,
 				55A9C8DF1EAC0DCB00D9E7C7 /* Media.xcassets */,
 			);
 			name = Aimless;
@@ -692,7 +692,7 @@
 				553780921CC1655300A2C08E /* Chaotic.m */,
 				553780931CC1655300A2C08E /* Chaotic.rtf */,
 				5537808F1CC1642900A2C08E /* Info.plist */,
-				55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */,
+				55E553012E8A5D40006B01D2 /* InfoPlist.xcstrings */,
 				55A9C8E31EAC0E8200D9E7C7 /* Media.xcassets */,
 			);
 			name = Chaotic;
@@ -744,7 +744,7 @@
 				556A65EB1CFF5800005BA899 /* Chaotic.html */,
 				553780D41CC1993E00A2C08E /* Chaos.swift */,
 				553780D01CC1990A00A2C08E /* Info.plist */,
-				556A65F11CFF5B38005BA899 /* InfoPlist.strings */,
+				55E552FD2E8A5D40006B01D2 /* InfoPlist.xcstrings */,
 			);
 			path = ChaoticSwift;
 			sourceTree = "<group>";
@@ -1150,7 +1150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5537807C1CC1640600A2C08E /* Aimless.rtf in Resources */,
-				55A9C8EC1EAC0FBE00D9E7C7 /* InfoPlist.strings in Resources */,
+				55E553002E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */,
 				55A9C8E01EAC0DCB00D9E7C7 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1160,7 +1160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55A9C8E41EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
-				55A9C8E91EAC0FB700D9E7C7 /* InfoPlist.strings in Resources */,
+				55E553022E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */,
 				553780961CC1655300A2C08E /* Chaotic.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1182,8 +1182,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				556A65EF1CFF5B38005BA899 /* InfoPlist.strings in Resources */,
 				55A9C8E51EAC0E8200D9E7C7 /* Media.xcassets in Resources */,
+				55E552FE2E8A5D40006B01D2 /* InfoPlist.xcstrings in Resources */,
 				556A65EC1CFF5800005BA899 /* Chaotic.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1465,30 +1465,6 @@
 			path = en.lproj;
 			sourceTree = "<group>";
 		};
-		556A65F11CFF5B38005BA899 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				556A65F01CFF5B38005BA899 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		55A9C8EB1EAC0FB700D9E7C7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55A9C8EA1EAC0FB700D9E7C7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		55A9C8EE1EAC0FBE00D9E7C7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55A9C8ED1EAC0FBE00D9E7C7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1500,7 +1476,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Risk World Maker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1514,7 +1489,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Risk World Maker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.maddthesane.Risk-World-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1614,10 +1588,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1666,9 +1641,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1743,7 +1719,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 1997 Steve Nygard. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = Aimless;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Aimless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1757,7 +1736,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Risk/Aimless.bproj/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 1997 Steve Nygard. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = Aimless;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.Aimless;
 				PRODUCT_NAME = "$(TARGET_NAME)";

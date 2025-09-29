@@ -27,8 +27,7 @@
 #import <RiskKit/RiskPlayer.h>
 #import <AppKit/AppKit.h>
 
-typedef NS_ENUM(int, CountryChoiceType)
-{
+typedef NS_ENUM(int, CountryChoiceType) {
     ChooseRandomCountry,
     ChooseRandomContinents,
     ChooseSmallestContinent,
@@ -40,8 +39,7 @@ typedef NS_ENUM(int, CountryChoiceType)
 
 @class SNHeap<ObjectType>, RKContinent;
 
-@interface Aimless : RiskPlayer
-{
+@interface Aimless : RiskPlayer {
     NSMutableSet *unoccupiedContinents;
 
     int attackedCount[7];

@@ -8,66 +8,44 @@
 
 import Foundation
 
-extension RKInitialCountryDistribution: CustomStringConvertible {
-    @inlinable public init(string: String) {
-        self = __RKInitialCountryDistributionFromString(string)
-    }
-    
-	@inlinable public var description: String {
-		return __NSStringFromInitialCountryDistribution(self)
+extension RKInitialCountryDistribution: LosslessStringConvertible {
+	@available(*, deprecated, renamed: "init(_:)")
+	@inlinable public init(string: String) {
+		self = Self(string)
 	}
 }
 
-extension RKInitialArmyPlacement: CustomStringConvertible {
+extension RKInitialArmyPlacement: LosslessStringConvertible {
+	@available(*, deprecated, renamed: "init(_:)")
 	@inlinable public init(string: String) {
-		self = __RKInitialArmyPlacementFromString(string)
-	}
-	
-	@inlinable public var description: String {
-		return __NSStringFromInitialArmyPlacement(self)
+		self = Self(string)
 	}
 }
 
-extension RKCardSetRedemption: CustomStringConvertible {
+extension RKCardSetRedemption: LosslessStringConvertible {
+	@available(*, deprecated, renamed: "init(_:)")
 	@inlinable public init(string: String) {
-		self = __RKCardSetRedemptionFromString(string)
-	}
-	
-	@inlinable public var description: String {
-		return __NSStringFromCardSetRedemption(self)
+		self = Self(string)
 	}
 }
 
-extension RKFortifyRule: CustomStringConvertible {
+extension RKFortifyRule: LosslessStringConvertible {
+	@available(*, deprecated, renamed: "init(_:)")
 	@inlinable public init(string: String) {
-		self = __RKFortifyRuleFromString(string)
-	}
-	
-	@inlinable public var description: String {
-		return __NSStringFromFortifyRule(self)
+		self = Self(string)
 	}
 }
 
 extension RKCardType: CustomStringConvertible {
-	@inlinable public var description: String {
-		return __NSStringFromRiskCardType(self)
-	}
 }
 
 extension RKGameState: CustomStringConvertible, CustomDebugStringConvertible {
-	@inlinable public var description: String {
-		return __RKGameStateInfo(self)
-	}
-	
-	@inlinable public var debugDescription: String {
-		return __NSStringFromGameState(self)
-	}
 }
 
 extension RiskPlayer {
 	/// Appends a formatted string to the console window, if it is visible.
 	/// Subclasses can use this to show debugging information.
-	open func logMessage(_ format: String, _ args: CVarArg...) {
+	public func logMessage(_ format: String, _ args: CVarArg...) {
 		withVaList(args) { (vaList) -> Void in
 			logMessage(format, format: vaList)
 		}
@@ -75,11 +53,11 @@ extension RiskPlayer {
 }
 
 extension SNRandom {
-	open func randomNumberBetween(_ minimum: Int32, _ maximum: Int32) -> Int32 {
+	public func randomNumberBetween(_ minimum: Int32, _ maximum: Int32) -> Int32 {
 		return Int32(randomNumberBetween(Int(minimum), Int(maximum)))
 	}
 	
-	open func randomNumber(withMaximum maximum: Int32) -> Int32 {
+	public func randomNumber(withMaximum maximum: Int32) -> Int32 {
 		return Int32(randomNumber(withMaximum: Int(maximum)))
 	}
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24128" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24128"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -17,14 +17,14 @@
                 <menuItem title="Risk" id="14">
                     <menu key="submenu" title="Risk" id="27">
                         <items>
-                            <menuItem title="About NeXTRisk" id="25">
+                            <menuItem title="About NeXTRisk" secondaryImage="info.circle" catalog="system" id="25">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="info:" target="-1" id="86"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="dM8-kR-1us"/>
-                            <menuItem title="Preferences..." keyEquivalent="," id="10">
+                            <menuItem title="Settings…" secondaryImage="gear" catalog="system" keyEquivalent="," id="10">
                                 <connections>
                                     <action selector="showPreferencePanel:" target="42" id="162"/>
                                 </connections>
@@ -63,13 +63,13 @@
                 <menuItem title="Game" id="65">
                     <menu key="submenu" title="Game" id="56">
                         <items>
-                            <menuItem title="New Game…" keyEquivalent="n" id="59">
+                            <menuItem title="New Game…" secondaryImage="plus" catalog="system" keyEquivalent="n" id="59">
                                 <connections>
                                     <action selector="showNewGamePanel:" target="42" id="66"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="JSI-jn-uku"/>
-                            <menuItem title="Open..." keyEquivalent="o" id="57"/>
+                            <menuItem title="Open..." secondaryImage="arrow.up.right.square" catalog="system" keyEquivalent="o" id="57"/>
                             <menuItem isSeparatorItem="YES" id="edR-t1-F17"/>
                             <menuItem title="Close" keyEquivalent="w" id="64">
                                 <connections>
@@ -77,11 +77,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="rO6-7D-W9Q"/>
-                            <menuItem title="Save" keyEquivalent="s" id="62"/>
-                            <menuItem title="Save As..." keyEquivalent="S" id="60"/>
+                            <menuItem title="Save" secondaryImage="square.and.arrow.down" catalog="system" keyEquivalent="s" id="62"/>
+                            <menuItem title="Save As..." secondaryImage="plus.square.on.square" catalog="system" keyEquivalent="S" id="60"/>
                             <menuItem title="Save To..." id="58"/>
                             <menuItem title="Save All" id="61"/>
-                            <menuItem title="Revert to Saved" id="55"/>
+                            <menuItem title="Revert to Saved" secondaryImage="arrow.uturn.left" catalog="system" id="55"/>
                             <menuItem isSeparatorItem="YES" id="D5R-Gg-J7e"/>
                             <menuItem title="Change Setup…" id="163">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -314,26 +314,26 @@
                 <menuItem title="Tools" id="87">
                     <menu key="submenu" title="Tools" id="89">
                         <items>
-                            <menuItem title="Control Panel…" id="88">
+                            <menuItem title="Control Panel…" secondaryImage="gearshape.2" catalog="system" id="88">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showControlPanel:" target="-1" id="158"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Dice Inspector…" id="92">
+                            <menuItem title="Dice Inspector…" secondaryImage="dice" catalog="system" id="92">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showDiceInspector:" target="-1" id="93"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="World Info…" id="155">
+                            <menuItem title="World Info…" secondaryImage="globe" catalog="system" id="155">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showWorldInfoPanel:" target="-1" id="157"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="KV6-Ha-bN0"/>
-                            <menuItem title="Player 1" tag="1" id="95">
+                            <menuItem title="Player 1" secondaryImage="1.circle" catalog="system" tag="1" id="95">
                                 <menu key="submenu" title="Player 1" id="98">
                                     <items>
                                         <menuItem title="Console…" tag="1" id="143">
@@ -345,7 +345,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 2" tag="2" id="115">
+                            <menuItem title="Player 2" secondaryImage="2.circle" catalog="system" tag="2" id="115">
                                 <menu key="submenu" title="Player 2" id="117">
                                     <items>
                                         <menuItem title="Console…" tag="2" id="118">
@@ -357,7 +357,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 3" tag="3" id="119">
+                            <menuItem title="Player 3" secondaryImage="3.circle" catalog="system" tag="3" id="119">
                                 <menu key="submenu" title="Player 3" id="121">
                                     <items>
                                         <menuItem title="Console…" tag="3" id="122">
@@ -369,7 +369,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 4" tag="4" id="123">
+                            <menuItem title="Player 4" secondaryImage="4.circle" catalog="system" tag="4" id="123">
                                 <menu key="submenu" title="Player 4" id="125">
                                     <items>
                                         <menuItem title="Console…" tag="4" id="126">
@@ -381,7 +381,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 5" tag="5" id="135">
+                            <menuItem title="Player 5" secondaryImage="5.circle" catalog="system" tag="5" id="135">
                                 <menu key="submenu" title="Player 5" id="138">
                                     <items>
                                         <menuItem title="Console…" tag="5" id="136">
@@ -393,7 +393,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Player 6" tag="6" id="139">
+                            <menuItem title="Player 6" secondaryImage="6.circle" catalog="system" tag="6" id="139">
                                 <menu key="submenu" title="Player 6" id="140">
                                     <items>
                                         <menuItem title="Console…" tag="6" id="142">
@@ -444,7 +444,26 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="139" y="154"/>
         </menu>
         <customObject id="42" userLabel="Brain" customClass="Brain" customModule="Risk" customModuleProvider="target"/>
     </objects>
+    <resources>
+        <image name="1.circle" catalog="system" width="15" height="15"/>
+        <image name="2.circle" catalog="system" width="15" height="15"/>
+        <image name="3.circle" catalog="system" width="15" height="15"/>
+        <image name="4.circle" catalog="system" width="15" height="15"/>
+        <image name="5.circle" catalog="system" width="15" height="15"/>
+        <image name="6.circle" catalog="system" width="15" height="15"/>
+        <image name="arrow.up.right.square" catalog="system" width="15" height="14"/>
+        <image name="arrow.uturn.left" catalog="system" width="15" height="14"/>
+        <image name="dice" catalog="system" width="17" height="16"/>
+        <image name="gear" catalog="system" width="17" height="16"/>
+        <image name="gearshape.2" catalog="system" width="20" height="16"/>
+        <image name="globe" catalog="system" width="15" height="15"/>
+        <image name="info.circle" catalog="system" width="15" height="15"/>
+        <image name="plus" catalog="system" width="14" height="13"/>
+        <image name="plus.square.on.square" catalog="system" width="17" height="16"/>
+        <image name="square.and.arrow.down" catalog="system" width="15" height="17"/>
+    </resources>
 </document>

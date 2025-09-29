@@ -22,7 +22,7 @@ private let SNUserPathOperation_VERSION = 1
 /// provide better looking maps, but RiskUtil.app would need to be
 /// able to support them.
 ///
-/// Superceded *completely* by `NSBezierPath`! Use that instead!
+/// Superceded *completely* by `NSBezierPath`! **Use that instead!**
 @objc(SNUserPath) public final class UserPath: NSObject, NSCoding {
 	private static var __doSomethingOnce: () = {
 		UserPath.setVersion(SNUserPath_VERSION)
@@ -50,7 +50,12 @@ private let SNUserPathOperation_VERSION = 1
 		let angle2: Float
 		
 		@objc func encode(with aCoder: NSCoder) {
-			fatalError("We should not be calling \(#function)!")
+			if #available(macOS 10.11, *) {
+				
+				aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead."]))
+			} else {
+				fatalError("We should not be calling \(#function)!")
+			}
 		}
 
 		@objc init?(coder aDecoder: NSCoder) {
@@ -150,7 +155,7 @@ private let SNUserPathOperation_VERSION = 1
 				str = "<SNUserPathOperation: ucache>";
 				
 			@unknown default:
-				str = "<SNUserPathOperation: UNKNOWN>";
+				str = "<SNUserPathOperation: UNKNOWN, raw value \(op.rawValue)>";
 			}
 			
 			return str;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24128" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24128"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,16 +54,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="216" y="155" width="630" height="501"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="6">
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
+            <view key="contentView" misplaced="YES" id="6">
                 <rect key="frame" x="0.0" y="0.0" width="630" height="501"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="135">
-                        <rect key="frame" x="511" y="133" width="96" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="84" id="Bjo-bg-eFX"/>
-                        </constraints>
+                        <rect key="frame" x="534" y="133" width="67" height="24"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="226">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -77,10 +74,13 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="136">
-                        <rect key="frame" x="511" y="100" width="96" height="32"/>
+                        <rect key="frame" x="534" y="97" width="67" height="24"/>
                         <buttonCell key="cell" type="push" title="Accept" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="227">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                         <connections>
                             <action selector="acceptAction:" target="-2" id="208"/>
@@ -88,19 +88,16 @@ Gw
                         </connections>
                     </button>
                     <box title="Players" translatesAutoresizingMaskIntoConstraints="NO" id="167">
-                        <rect key="frame" x="10" y="287" width="610" height="194"/>
+                        <rect key="frame" x="13" y="299" width="604" height="184"/>
                         <view key="contentView" id="bUH-B9-bAq">
-                            <rect key="frame" x="3" y="3" width="604" height="176"/>
+                            <rect key="frame" x="0.0" y="0.0" width="604" height="172"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7">
-                                    <rect key="frame" x="286" y="146" width="203" height="24"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="198" id="aof-hU-V5U"/>
-                                    </constraints>
+                                    <rect key="frame" x="292" y="145" width="198" height="20"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="231">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="8">
                                             <items>
                                                 <menuItem title="None" id="12"/>
@@ -108,13 +105,16 @@ Gw
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="198" id="aof-hU-V5U"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="recalculateInitialArmies:" target="-2" id="209"/>
                                         <outlet property="nextKeyView" destination="28" id="146"/>
                                     </connections>
                                 </popUpButton>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="14">
-                                    <rect key="frame" x="235" y="144" width="41" height="30"/>
+                                    <rect key="frame" x="239" y="140" width="41" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="41" id="G94-xe-NMp"/>
                                         <constraint firstAttribute="height" constant="30" id="MQ5-um-6tt"/>
@@ -126,7 +126,7 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                    <rect key="frame" x="235" y="116" width="41" height="25"/>
+                                    <rect key="frame" x="239" y="113" width="41" height="24"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="playerColorAction:" target="-2" id="220"/>
@@ -134,7 +134,7 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="24">
-                                    <rect key="frame" x="235" y="88" width="41" height="25"/>
+                                    <rect key="frame" x="239" y="86" width="41" height="24"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="playerColorAction:" target="-2" id="221"/>
@@ -142,7 +142,7 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                                    <rect key="frame" x="235" y="61" width="41" height="24"/>
+                                    <rect key="frame" x="239" y="59" width="41" height="24"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="playerColorAction:" target="-2" id="222"/>
@@ -150,7 +150,7 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="26">
-                                    <rect key="frame" x="235" y="33" width="41" height="25"/>
+                                    <rect key="frame" x="239" y="32" width="41" height="24"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="playerColorAction:" target="-2" id="223"/>
@@ -158,7 +158,7 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="27">
-                                    <rect key="frame" x="235" y="5" width="41" height="25"/>
+                                    <rect key="frame" x="239" y="5" width="41" height="24"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <action selector="playerColorAction:" target="-2" id="224"/>
@@ -166,10 +166,10 @@ Gw
                                     </connections>
                                 </colorWell>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="28">
-                                    <rect key="frame" x="286" y="115" width="203" height="25"/>
+                                    <rect key="frame" x="292" y="113" width="198" height="24"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="232">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="32">
                                             <items>
                                                 <menuItem title="None" id="31"/>
@@ -183,10 +183,10 @@ Gw
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                                    <rect key="frame" x="286" y="87" width="203" height="25"/>
+                                    <rect key="frame" x="292" y="86" width="198" height="24"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="233">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="37">
                                             <items>
                                                 <menuItem title="None" id="36"/>
@@ -200,10 +200,10 @@ Gw
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38">
-                                    <rect key="frame" x="286" y="60" width="203" height="25"/>
+                                    <rect key="frame" x="292" y="59" width="198" height="24"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="234">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="42">
                                             <items>
                                                 <menuItem title="None" id="41"/>
@@ -217,10 +217,10 @@ Gw
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="43">
-                                    <rect key="frame" x="286" y="32" width="203" height="25"/>
+                                    <rect key="frame" x="292" y="32" width="198" height="24"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="235">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="47">
                                             <items>
                                                 <menuItem title="None" id="46"/>
@@ -234,10 +234,10 @@ Gw
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                                    <rect key="frame" x="286" y="4" width="203" height="25"/>
+                                    <rect key="frame" x="292" y="5" width="198" height="24"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="236">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
+                                        <font key="font" metaFont="message"/>
                                         <menu key="menu" title="OtherViews" id="52">
                                             <items>
                                                 <menuItem title="None" id="51"/>
@@ -250,8 +250,8 @@ Gw
                                         <outlet property="nextKeyView" destination="0BG-HN-dBw" id="dtG-ng-Idt"/>
                                     </connections>
                                 </popUpButton>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0BG-HN-dBw">
-                                    <rect key="frame" x="499" y="141" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BG-HN-dBw">
+                                    <rect key="frame" x="509" y="141" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="13">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -261,8 +261,8 @@ Gw
                                         <outlet property="nextKeyView" destination="99F-Uk-BkO" id="9sS-C9-CB8"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="99F-Uk-BkO">
-                                    <rect key="frame" x="499" y="111" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="99F-Uk-BkO">
+                                    <rect key="frame" x="509" y="113" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" id="102">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -272,8 +272,8 @@ Gw
                                         <outlet property="nextKeyView" destination="N9r-90-4WA" id="Ron-Td-OAq"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="N9r-90-4WA">
-                                    <rect key="frame" x="499" y="83" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N9r-90-4WA">
+                                    <rect key="frame" x="509" y="86" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" tag="2" imageScaling="proportionallyDown" inset="2" id="103">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -283,8 +283,8 @@ Gw
                                         <outlet property="nextKeyView" destination="LXy-cB-fKI" id="Emu-AW-AXw"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LXy-cB-fKI">
-                                    <rect key="frame" x="499" y="56" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LXy-cB-fKI">
+                                    <rect key="frame" x="509" y="59" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" tag="3" imageScaling="proportionallyDown" inset="2" id="104">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -294,8 +294,8 @@ Gw
                                         <outlet property="nextKeyView" destination="RHb-j0-NIb" id="IO4-W2-591"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RHb-j0-NIb">
-                                    <rect key="frame" x="499" y="28" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RHb-j0-NIb">
+                                    <rect key="frame" x="509" y="32" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" tag="4" imageScaling="proportionallyDown" inset="2" id="105">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -305,8 +305,8 @@ Gw
                                         <outlet property="nextKeyView" destination="u5H-1a-jmx" id="wd0-5e-vbL"/>
                                     </connections>
                                 </button>
-                                <button verticalHuggingPriority="750" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u5H-1a-jmx">
-                                    <rect key="frame" x="499" y="0.0" width="88" height="32"/>
+                                <button tag="-1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u5H-1a-jmx">
+                                    <rect key="frame" x="509" y="5" width="72" height="24"/>
                                     <buttonCell key="cell" type="push" title="About..." bezelStyle="rounded" alignment="center" borderStyle="border" tag="5" imageScaling="proportionallyDown" inset="2" id="106">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -316,16 +316,16 @@ Gw
                                         <outlet property="nextKeyView" destination="nWc-sB-RY0" id="THg-RQ-TQG"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PDv-0l-GWo">
-                                    <rect key="frame" x="30" y="151" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PDv-0l-GWo">
+                                    <rect key="frame" x="30" y="145" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 1:" id="CU0-z9-M71">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-Tc-34Z">
-                                    <rect key="frame" x="93" y="148" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-Tc-34Z">
+                                    <rect key="frame" x="93" y="141" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="FiI-UC-aCi">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -335,16 +335,16 @@ Gw
                                         <outlet property="nextKeyView" destination="r7C-Gy-Ybi" id="iBk-14-BRW"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vCd-WQ-x8C">
-                                    <rect key="frame" x="30" y="121" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vCd-WQ-x8C">
+                                    <rect key="frame" x="30" y="117" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 2:" id="geY-l2-ZG0">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r7C-Gy-Ybi">
-                                    <rect key="frame" x="93" y="118" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r7C-Gy-Ybi">
+                                    <rect key="frame" x="93" y="113" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Sae-hX-3Qm">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -354,16 +354,16 @@ Gw
                                         <outlet property="nextKeyView" destination="IM1-lv-RTl" id="Neq-ry-zeh"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NWr-5p-ELU">
-                                    <rect key="frame" x="30" y="93" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NWr-5p-ELU">
+                                    <rect key="frame" x="30" y="90" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 3:" id="xOo-2W-Kri">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-lv-RTl">
-                                    <rect key="frame" x="93" y="90" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-lv-RTl">
+                                    <rect key="frame" x="93" y="86" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="nGt-xh-mu9">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -373,16 +373,16 @@ Gw
                                         <outlet property="nextKeyView" destination="50D-9t-rS8" id="tDQ-Ce-v7b"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AgB-Sb-dE6">
-                                    <rect key="frame" x="30" y="66" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AgB-Sb-dE6">
+                                    <rect key="frame" x="30" y="63" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 4:" id="EPN-9i-DA3">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50D-9t-rS8">
-                                    <rect key="frame" x="93" y="63" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50D-9t-rS8">
+                                    <rect key="frame" x="93" y="59" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="0Iu-dw-RFO">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -392,16 +392,16 @@ Gw
                                         <outlet property="nextKeyView" destination="MoO-KH-8Ep" id="JIA-vf-Mt3"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4bJ-2x-zlU">
-                                    <rect key="frame" x="30" y="38" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4bJ-2x-zlU">
+                                    <rect key="frame" x="30" y="36" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 5:" id="hKG-fr-nRD">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MoO-KH-8Ep">
-                                    <rect key="frame" x="93" y="35" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MoO-KH-8Ep">
+                                    <rect key="frame" x="93" y="32" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="cJE-1P-IaF">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -411,16 +411,16 @@ Gw
                                         <outlet property="nextKeyView" destination="HJh-vo-VTn" id="1Zc-NQ-uuY"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-s8-V11">
-                                    <rect key="frame" x="30" y="10" width="57" height="16"/>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-s8-V11">
+                                    <rect key="frame" x="30" y="9" width="57" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Player 6:" id="TQX-PX-MLP">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-vo-VTn">
-                                    <rect key="frame" x="93" y="7" width="134" height="21"/>
+                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-vo-VTn">
+                                    <rect key="frame" x="93" y="5" width="138" height="24"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Ah4-ba-hd5">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -532,13 +532,13 @@ Gw
                         </view>
                     </box>
                     <box title="Initial Country Distribution" translatesAutoresizingMaskIntoConstraints="NO" id="169">
-                        <rect key="frame" x="12" y="189" width="162" height="87"/>
+                        <rect key="frame" x="15" y="189" width="153" height="95"/>
                         <view key="contentView" id="F9y-fu-9mz">
-                            <rect key="frame" x="3" y="3" width="156" height="69"/>
+                            <rect key="frame" x="0.0" y="0.0" width="153" height="83"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="nWc-sB-RY0">
-                                    <rect key="frame" x="25" y="45" width="106" height="18"/>
+                                    <rect key="frame" x="25" y="61" width="103" height="14"/>
                                     <buttonCell key="cell" type="radio" title="Player's Choose" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="163">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -549,7 +549,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="mDT-HF-zBj">
-                                    <rect key="frame" x="25" y="23" width="106" height="18"/>
+                                    <rect key="frame" x="25" y="39" width="103" height="14"/>
                                     <buttonCell key="cell" type="radio" title="Random" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="162">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -572,13 +572,13 @@ Gw
                         </view>
                     </box>
                     <box title="Initial Army Placement" translatesAutoresizingMaskIntoConstraints="NO" id="171">
-                        <rect key="frame" x="176" y="189" width="141" height="87"/>
+                        <rect key="frame" x="176" y="189" width="132" height="95"/>
                         <view key="contentView" id="SdO-LG-kpB">
-                            <rect key="frame" x="3" y="3" width="135" height="69"/>
+                            <rect key="frame" x="0.0" y="0.0" width="132" height="83"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="182">
-                                    <rect key="frame" x="20" y="12" width="14" height="46"/>
+                                    <rect key="frame" x="20" y="19" width="14" height="46"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="46" id="DG1-92-lr5"/>
                                         <constraint firstAttribute="width" constant="14" id="LTV-U5-zYc"/>
@@ -586,7 +586,7 @@ Gw
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Soldier" id="237"/>
                                 </imageView>
                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="ZeD-z0-6u6">
-                                    <rect key="frame" x="51" y="50" width="66" height="18"/>
+                                    <rect key="frame" x="53" y="66" width="62" height="14"/>
                                     <buttonCell key="cell" type="radio" title="By Ones" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="62">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -597,7 +597,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="WEM-Kd-nZo">
-                                    <rect key="frame" x="51" y="28" width="75" height="18"/>
+                                    <rect key="frame" x="53" y="44" width="71" height="14"/>
                                     <buttonCell key="cell" type="radio" title="By Threes" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="63">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -608,7 +608,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="OTT-gq-gGO">
-                                    <rect key="frame" x="51" y="6" width="66" height="18"/>
+                                    <rect key="frame" x="53" y="22" width="62" height="14"/>
                                     <buttonCell key="cell" type="radio" title="By Fives" imagePosition="left" alignment="left" controlSize="small" tag="2" inset="2" id="70">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -621,25 +621,28 @@ Gw
                             </subviews>
                             <constraints>
                                 <constraint firstItem="ZeD-z0-6u6" firstAttribute="top" secondItem="SdO-LG-kpB" secondAttribute="top" constant="3" id="0z6-W3-kpo"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WEM-Kd-nZo" secondAttribute="trailing" constant="8" id="5IQ-GQ-uQS"/>
                                 <constraint firstItem="OTT-gq-gGO" firstAttribute="leading" secondItem="ZeD-z0-6u6" secondAttribute="leading" id="FZl-rv-lbw"/>
                                 <constraint firstItem="182" firstAttribute="centerY" secondItem="SdO-LG-kpB" secondAttribute="centerY" id="Hgc-zM-dIn"/>
                                 <constraint firstItem="182" firstAttribute="leading" secondItem="SdO-LG-kpB" secondAttribute="leading" constant="20" symbolic="YES" id="L0M-CO-yVO"/>
                                 <constraint firstItem="ZeD-z0-6u6" firstAttribute="leading" secondItem="182" secondAttribute="trailing" constant="19" id="POt-dl-AeM"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OTT-gq-gGO" secondAttribute="bottom" constant="8" id="aV3-Co-X4b"/>
                                 <constraint firstItem="WEM-Kd-nZo" firstAttribute="top" secondItem="ZeD-z0-6u6" secondAttribute="bottom" constant="8" symbolic="YES" id="cPS-54-Ndo"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OTT-gq-gGO" secondAttribute="trailing" constant="17" id="g2x-Qm-Gvf"/>
                                 <constraint firstItem="WEM-Kd-nZo" firstAttribute="leading" secondItem="ZeD-z0-6u6" secondAttribute="leading" id="h5C-s3-sdI"/>
                                 <constraint firstItem="OTT-gq-gGO" firstAttribute="top" secondItem="WEM-Kd-nZo" secondAttribute="bottom" constant="8" symbolic="YES" id="kXb-qU-KBA"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZeD-z0-6u6" secondAttribute="trailing" constant="17" id="rXv-Bc-AXj"/>
                             </constraints>
                         </view>
                     </box>
                     <box title="Card Set Redemption" translatesAutoresizingMaskIntoConstraints="NO" id="173">
-                        <rect key="frame" x="319" y="189" width="212" height="87"/>
+                        <rect key="frame" x="316" y="189" width="205" height="95"/>
                         <view key="contentView" id="rfj-FZ-Xbz">
-                            <rect key="frame" x="3" y="3" width="206" height="69"/>
+                            <rect key="frame" x="0.0" y="0.0" width="205" height="83"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="180">
-                                    <rect key="frame" x="20" y="10" width="38" height="49"/>
+                                    <rect key="frame" x="20" y="17" width="38" height="49"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="38" id="5Ga-jT-9SJ"/>
                                         <constraint firstAttribute="height" constant="49" id="KEv-rA-aFV"/>
@@ -647,7 +650,7 @@ Gw
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LittleCardBack" id="238"/>
                                 </imageView>
                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="Jso-jl-ZOO">
-                                    <rect key="frame" x="64" y="50" width="106" height="18"/>
+                                    <rect key="frame" x="66" y="52" width="101" height="28"/>
                                     <buttonCell key="cell" type="radio" title="4,5,5,5,5,5,5,5..." imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="65">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -658,7 +661,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="YmZ-lm-48S">
-                                    <rect key="frame" x="64" y="28" width="114" height="18"/>
+                                    <rect key="frame" x="66" y="30" width="109" height="14"/>
                                     <buttonCell key="cell" type="radio" title="4,5,6,7,8,9,10,11..." imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="66">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -669,7 +672,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="ysY-jl-cqJ">
-                                    <rect key="frame" x="64" y="6" width="135" height="18"/>
+                                    <rect key="frame" x="66" y="8" width="131" height="14"/>
                                     <buttonCell key="cell" type="radio" title="4,6,8,10,12,15,20,25..." imagePosition="left" alignment="left" controlSize="small" tag="2" inset="2" id="71">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -697,13 +700,13 @@ Gw
                         </view>
                     </box>
                     <box title="Fortify Rules" translatesAutoresizingMaskIntoConstraints="NO" id="175">
-                        <rect key="frame" x="11" y="67" width="451" height="112"/>
+                        <rect key="frame" x="14" y="69" width="444" height="106"/>
                         <view key="contentView" id="xnO-Bk-6RK">
-                            <rect key="frame" x="3" y="3" width="445" height="94"/>
+                            <rect key="frame" x="0.0" y="0.0" width="444" height="94"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="5sF-Uh-t0h">
-                                    <rect key="frame" x="18" y="71" width="367" height="18"/>
+                                    <rect key="frame" x="20" y="73" width="363" height="14"/>
                                     <buttonCell key="cell" type="radio" title="From one source to one neighboring destination (strict Risk rules)" imagePosition="left" alignment="left" controlSize="small" scrollable="YES" lineBreakMode="clipping" state="on" inset="2" id="68">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -714,7 +717,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vhg-X6-gGf">
-                                    <rect key="frame" x="18" y="49" width="288" height="18"/>
+                                    <rect key="frame" x="20" y="51" width="284" height="14"/>
                                     <buttonCell key="cell" type="radio" title="From one source to many neighboring destinations" imagePosition="left" alignment="left" controlSize="small" scrollable="YES" lineBreakMode="clipping" tag="1" inset="2" id="69">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -725,7 +728,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="sba-da-7oB">
-                                    <rect key="frame" x="18" y="27" width="394" height="18"/>
+                                    <rect key="frame" x="20" y="29" width="390" height="14"/>
                                     <buttonCell key="cell" type="radio" title="From many sources to many neighboring destinations (Mac Risk Rules)" imagePosition="left" alignment="left" controlSize="small" scrollable="YES" lineBreakMode="clipping" tag="2" inset="2" id="72">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -736,7 +739,7 @@ Gw
                                     </connections>
                                 </button>
                                 <button tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="GLa-hv-xmj">
-                                    <rect key="frame" x="18" y="5" width="408" height="18"/>
+                                    <rect key="frame" x="20" y="7" width="404" height="14"/>
                                     <buttonCell key="cell" type="radio" title="From many sources to many connected destinations (alternate Risk rules)" imagePosition="left" alignment="left" controlSize="small" scrollable="YES" lineBreakMode="clipping" tag="3" inset="2" id="73">
                                         <behavior key="behavior" pushIn="YES" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -766,12 +769,12 @@ Gw
                         <font key="titleFont" metaFont="smallSystemBold"/>
                     </box>
                     <box title="Initial Armies" translatesAutoresizingMaskIntoConstraints="NO" id="177">
-                        <rect key="frame" x="9" y="13" width="612" height="42"/>
+                        <rect key="frame" x="12" y="17" width="606" height="36"/>
                         <view key="contentView" id="dJl-I6-XhZ">
-                            <rect key="frame" x="3" y="3" width="606" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="606" height="24"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77">
+                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77">
                                     <rect key="frame" x="80" y="5" width="210" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="With the current setup you will receive" id="239">
                                         <font key="font" metaFont="smallSystem"/>
@@ -779,7 +782,7 @@ Gw
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
+                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
                                     <rect key="frame" x="316" y="5" width="201" height="14"/>
                                     <textFieldCell key="cell" alignment="center" title="armies at the beginning of the game." id="240">
                                         <font key="font" metaFont="smallSystem"/>
@@ -787,7 +790,7 @@ Gw
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="79">
+                                <textField focusRingType="none" verticalHuggingPriority="750" preferredMaxLayoutWidth="30" translatesAutoresizingMaskIntoConstraints="NO" id="79">
                                     <rect key="frame" x="286" y="5" width="34" height="14"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="Wzp-nA-swo"/>
@@ -852,12 +855,12 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="262" y="148" width="418" height="284"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="948"/>
             <view key="contentView" id="111">
                 <rect key="frame" x="0.0" y="0.0" width="418" height="284"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="112">
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="112">
                         <rect key="frame" x="84" y="217" width="323" height="37"/>
                         <textFieldCell key="cell" alignment="left" title="Player Type" id="228">
                             <font key="font" size="30" name="Times-Roman"/>
@@ -866,17 +869,17 @@ Gw
                         </textFieldCell>
                     </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="114">
-                        <rect key="frame" x="20" y="61" width="378" height="137"/>
+                        <rect key="frame" x="20" y="64" width="378" height="134"/>
                         <clipView key="contentView" drawsBackground="NO" id="OLh-I0-zba">
-                            <rect key="frame" x="1" y="1" width="376" height="135"/>
+                            <rect key="frame" x="1" y="1" width="376" height="132"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="115">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="132"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="375" height="135"/>
+                                    <size key="minSize" width="376" height="132"/>
                                     <size key="maxSize" width="378" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
@@ -887,19 +890,19 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="249">
-                            <rect key="frame" x="361" y="1" width="16" height="135"/>
+                            <rect key="frame" x="360" y="1" width="17" height="132"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="116">
-                        <rect key="frame" x="332" y="13" width="72" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="nzb-OW-jdS"/>
-                        </constraints>
+                        <rect key="frame" x="338" y="20" width="60" height="24"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="230">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="nzb-OW-jdS"/>
+                        </constraints>
                         <connections>
                             <action selector="aboutStopAction:" target="-2" id="207"/>
                         </connections>

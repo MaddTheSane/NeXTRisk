@@ -18,6 +18,7 @@
 #import "SortedList.h"
 #import <RiskKit/RKCountry.h>
 #import <RiskKit/RiskPlayer.h>
+#include "PlayerCode.h"
 
 @implementation StratSortedList
 
@@ -129,7 +130,7 @@
 	// Basic score, based on how many enemy armies there are.  Normally,
 	// we want to attack stronger enemies, but if we haven't taken a
 	// country yet this turn, weaker enemies are more attractive targets.
-	if ([riskPlayer takenACountry])
+	if ([(Strat*)riskPlayer takenACountry])
 		score = [thisCountry troopCount];
 	else
 		score = -[thisCountry troopCount];
@@ -138,7 +139,7 @@
 	// Small per country penalty to make it more attractive to attack
 	// players with fewer countries.
 	enpl = [thisCountry playerNumber];
-	countries = [riskPlayer playersCountries:enpl];
+	countries = [(Strat*)riskPlayer playersCountries:enpl];
 	cc = [countries count];
 	if (cc <= 3)
 		score += 400 * (4 - cc);
@@ -146,18 +147,18 @@
 		score -= 5 * cc;
 
 	// Penalty for having enemy neighbors.
-	score -= [riskPlayer enemyArmiesAround:thisCountry];
+	score -= [(Strat*)riskPlayer enemyArmiesAround:thisCountry];
 
 	// Further penalty for having several neighboring enemy countries,
 	// regardless of their strength.  But add a big-time bonus if any
 	// of them are near extinction (the nearer, the bigger); also a
 	// small per country penalty to make it more attractive to attack
 	// enemies who have enemy neighbors with fewer countries.
-	countries = [riskPlayer enemyNeighborsTo:thisCountry];
+	countries = [(Strat*)riskPlayer enemyNeighborsTo:thisCountry];
 	if (countries != nil) {
 		cc = [countries count];
 		for (i = 0; i < cc; i++) {
-			morecountries = [riskPlayer playersCountries:[[countries objectAt:i] player]];
+			morecountries = [(Strat*)riskPlayer playersCountries:[[countries objectAtIndex:i] player]];
 			morecc = [morecountries count];
 			[morecountries free];
 			if (morecc <= 3)
@@ -170,21 +171,21 @@
 	}
 
 	// Bonus for having friendly neighbors.
-	score += [riskPlayer friendlyArmiesAround:thisCountry];
+	score += [(Strat*)riskPlayer friendlyArmiesAround:thisCountry];
 
 	// Further bonus for having several neighboring friendly countries,
 	// regardless of their strength.  Slightly higher per country bonus
 	// than is the per country penalty for enemy neighbors, making us
 	// more inclined to attack where we have a larger presence.
-	countries = [riskPlayer friendlyNeighborsTo:thisCountry];
+	countries = [(Strat*)riskPlayer friendlyNeighborsTo:thisCountry];
 	cc = [countries count];
 	[countries free];
 	score += 25 * cc;
 
 	// Another bonus if the country is on the same continent as the
 	// attacking country.
-	cont = [riskPlayer continentOfCountry:[riskPlayer countryOfAttack]];
-	encont = [riskPlayer continentOfCountry:thisCountry];
+	cont = [(Strat*)riskPlayer continentOfCountry:[riskPlayer countryOfAttack]];
+	encont = [(Strat*)riskPlayer continentOfCountry:thisCountry];
 	if (encont == cont)
 		score += 25;
 
@@ -192,9 +193,9 @@
 	// completely possessed by an enemy player.  We wanna bust the
 	// continent, if possible.
 	if (encont != cont) {
-		countries = [riskPlayer countriesInContinent:encont];
+		countries = [(Strat*)riskPlayer countriesInContinent:encont];
 		for (i = 0; i < [countries count]; i++) {
-			if ([[countries objectAt:i] player] != enpl) {
+			if ([[countries objectAtIndex:i] player] != enpl) {
 				bust = NO;
 				break;
 			}
@@ -229,18 +230,18 @@
 
 	// Sanity check.  If no enemy armies surround thisCountry, don't
 	// bother reinforcing.
-	if ([riskPlayer enemyArmiesAround:thisCountry] == 0)
+	if ([(Strat*)riskPlayer enemyArmiesAround:thisCountry] == 0)
 		return 0;
 
 	// Basic score based on the percentage of this continent possessed
 	// by us.  This makes us tend to go after continents where we have
 	// a stronger presence.
-	mycont = [riskPlayer continentOfCountry:thisCountry];
-	mypl = [thisCountry player];
-	countries = [riskPlayer countriesInContinent:mycont];
+	mycont = [(Strat*)riskPlayer continentOfCountry:thisCountry];
+	mypl = [thisCountry playerNumber];
+	countries = [(Strat*)riskPlayer countriesInContinent:mycont];
 	cc = [countries count];
 	for (i = 0; i < cc; i++) {
-		if ([[countries objectAt:i] player] == mypl)
+		if ([[countries objectAtIndex:i] playerNumber] == mypl)
 			numfr++;
 	}
 	[countries free];
@@ -252,21 +253,21 @@
 	// number of entry/exit points on the continent, and the number
 	// of neighboring countries on other continents.
 	score -= cc * 5;
-	score -= [riskPlayer exitsOfContinent:mycont] * 5;
-	score -= [riskPlayer neighborsOfContinent:mycont] * 5;
+	score -= [(Strat*)riskPlayer exitsOfContinent:mycont] * 5;
+	score -= [(Strat*)riskPlayer neighborsOfContinent:mycont] * 5;
 
 	// Add the fudge factor bonus for the continent.
-	score += [riskPlayer fudgeOfContinent:mycont];
+	score += [(Strat*)riskPlayer fudgeOfContinent:mycont];
 
 	// Bonus/penalty score, based on the ratio of surrounding enemy
 	// armies to armies in the country itself.  If we outnumber the
 	// enemies more than 25%, apply a penalty, else apply a bonus.
-	if ([thisCountry armies] >= ([riskPlayer enemyArmiesAround:thisCountry] + 1) * 1.25) {
+	if ([thisCountry armies] >= ([(Strat*)riskPlayer enemyArmiesAround:thisCountry] + 1) * 1.25) {
 		score -= (double)[thisCountry armies] /
-				(double)[riskPlayer enemyArmiesAround:thisCountry] * 25;
+				(double)[(Strat*)riskPlayer enemyArmiesAround:thisCountry] * 25;
 	}
 	else {
-		score += ((double)[riskPlayer enemyArmiesAround:thisCountry] + 1) /
+		score += ((double)[(Strat*)riskPlayer enemyArmiesAround:thisCountry] + 1) /
 				(double)[thisCountry armies] * 25;
 	}
 
@@ -275,14 +276,14 @@
 	// a larger presence.  Big bonus for having neighboring friendlies
 	// on another continent that we mostly/completely possess; we want to
 	// protect this point.
-	countries = [riskPlayer friendlyNeighborsTo:thisCountry];
+	countries = [(Strat*)riskPlayer friendlyNeighborsTo:thisCountry];
 	if (countries != nil) {
 		cc = [countries count];
 		score += 5 * cc;
 		for (i = 0; i < cc; i++) {
-			cont = [riskPlayer continentOfCountry:[countries objectAt:i]];
+			cont = [(Strat*)riskPlayer continentOfCountry:[countries objectAtIndex:i]];
 			if (cont != mycont &&
-					[riskPlayer ourPercentageOfContinent:cont] >= 0.75)
+					[(Strat*)riskPlayer ourPercentageOfContinent:cont] >= 0.75)
 				score += 200;
 		}
 		[countries free];
@@ -635,7 +636,7 @@
 }
 
 
-- insertionSort;
+- (void)insertionSort;
 {
   /*-----------------------------------------------------------
      do a simple insertion sort.  This is good for files that
@@ -669,7 +670,7 @@
 	
    }
    
- return self;
+ return;
 }
 
 -copy

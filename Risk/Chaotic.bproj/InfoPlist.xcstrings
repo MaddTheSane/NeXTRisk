@@ -1,0 +1,43 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Chaotic"
+          }
+        }
+      }
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright © 1997 Mike Ferris, Steve Nygard; 2016 C.W. Betts. All rights reserved."
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "RKPlayerTypeName" : {
+      "comment" : "InfoPlist.strings\n  Risk\n\n  Created by C.W. Betts on 4/22/17.\n  Copyright © 2017 C.W. Betts. All rights reserved.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaotic"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

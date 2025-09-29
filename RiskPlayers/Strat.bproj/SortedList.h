@@ -33,18 +33,18 @@ typedef NS_ENUM(NSInteger, SSSortOrder) {
 	//type of calculation to use in ordering objects
 
 typedef NS_ENUM(NSInteger, SSSortType) {
-    SSSortCountryByArmies				= 0,
-    SSSortEnemyAttackAbility		    = 1,
+    SSSortCountryByArmies				    = 0,
+    SSSortEnemyAttackAbility		        = 1,
     SSSortCountryByTacticalAdvantageWeak	= 2,
     SSSortCountryByTacticalAdvantageStrong	= 3,
-    SSSortPlayerByCountries			    = 4,
-    SSSortCountryByReinforcePriority    = 5
+    SSSortPlayerByCountries			        = 4,
+    SSSortCountryByReinforcePriority        = 5
 };
 
 @interface StratSortedList: NSMutableArray <NSMutableCopying>
 {  
-  SSSortOrder	sortOrder;	//ascending or descending
-  BOOL	caseSensitive;	//case sensitive string ordering or not
+  SSSortOrder	sortOrder;	    //ascending or descending
+  BOOL	caseSensitive;	        //case sensitive string ordering or not
   SSSortType	keySortType;	//type of sort to do on objects
   RiskPlayer	*riskPlayer;	//the player object on whose behalf we're working
 }
@@ -62,14 +62,14 @@ typedef NS_ENUM(NSInteger, SSSortType) {
 //! type of key sort
 @property (nonatomic) SSSortType keySortType;
 
-- printKeyValues;			//useful for debugging
+- (void)printKeyValues;			//useful for debugging
 
 - (void)addObject:anObject;			//slap a new object into list
 - (void)addObjectIfAbsent:anObject;		//override of List method 
 - (NSComparisonResult)compare:thisObject to:thatObject;//compare operator on keys
 - (BOOL)isEqual:anObject;		//similar to List op
 
-- insertionSort;
+- (void)insertionSort;
 
 
 /*--------------------------------------

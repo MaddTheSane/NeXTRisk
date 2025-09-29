@@ -13,14 +13,22 @@
 - (float)decodeFloatWithoutKey
 {
 	float toRet;
-	[self decodeValueOfObjCType:@encode (float) at:&toRet];
+	if (@available(macOS 10.13, *)) {
+		[self decodeValueOfObjCType:@encode (float) at:&toRet size:sizeof(toRet)];
+	} else {
+		[self decodeValueOfObjCType:@encode (float) at:&toRet];
+	}
 	return toRet;
 }
 
 - (DPSUserPathOp)decodeUserPathOpWithoutKey
 {
 	DPSUserPathOp toRet;
-	[self decodeValueOfObjCType:@encode (DPSUserPathOp) at:&toRet];
+	if (@available(macOS 10.13, *)) {
+		[self decodeValueOfObjCType:@encode (DPSUserPathOp) at:&toRet size:sizeof(toRet)];
+	} else {
+		[self decodeValueOfObjCType:@encode (DPSUserPathOp) at:&toRet];
+	}
 	return toRet;
 }
 

@@ -9,6 +9,7 @@
 #import "PlayerCode.h"
 #import "SortedList.h"
 #import <AppKit/AppKit.h>
+#import <RiskKit/RKCountry.h>
 
 #define rearguard()	(2 * ((gameTurn / 4) + 1))
 
@@ -348,7 +349,7 @@
 	[scountries setKeySortType:SSSortEnemyAttackAbility];
 
 	for (i=0; i<[countries count]; i++)
-		[scountries addObject:[countries objectAt:i]];
+		[scountries addObject:[countries objectAtIndex:i]];
 
 //	[scountries printKeyValues];
 

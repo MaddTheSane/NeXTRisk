@@ -100,8 +100,7 @@ typedef NS_ENUM(int, RKArmyPlacementType)
     RKArmyPlacementAnyConnectedCountry
 };
 
-typedef struct RKAttackResult
-{
+typedef struct RKAttackResult {
     BOOL conqueredCountry;
     BOOL phaseChanged;
 } RKAttackResult;
@@ -110,19 +109,19 @@ extern RKArmyCount RKInitialArmyCountForPlayers(int playerCount) NS_SWIFT_NAME(i
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern RKInitialCountryDistribution RKInitialCountryDistributionFromString(NSString *str) NS_REFINED_FOR_SWIFT;
-extern RKInitialArmyPlacement RKInitialArmyPlacementFromString(NSString *str) NS_REFINED_FOR_SWIFT;
-extern RKCardSetRedemption RKCardSetRedemptionFromString(NSString *str) NS_REFINED_FOR_SWIFT;
-extern RKFortifyRule RKFortifyRuleFromString(NSString *str) NS_REFINED_FOR_SWIFT;
+extern RKInitialCountryDistribution RKInitialCountryDistributionFromString(NSString *str) NS_SWIFT_NAME(RKInitialCountryDistribution.init(_:));
+extern RKInitialArmyPlacement RKInitialArmyPlacementFromString(NSString *str) NS_SWIFT_NAME(RKInitialArmyPlacement.init(_:));
+extern RKCardSetRedemption RKCardSetRedemptionFromString(NSString *str) NS_SWIFT_NAME(RKCardSetRedemption.init(_:));
+extern RKFortifyRule RKFortifyRuleFromString(NSString *str) NS_SWIFT_NAME(RKFortifyRule.init(_:));
 
-extern NSString *NSStringFromInitialCountryDistribution(RKInitialCountryDistribution countryDistribution) NS_REFINED_FOR_SWIFT;
-extern NSString *NSStringFromInitialArmyPlacement(RKInitialArmyPlacement armyPlacement) NS_REFINED_FOR_SWIFT;
-extern NSString *NSStringFromCardSetRedemption(RKCardSetRedemption cardSetRedemption) NS_REFINED_FOR_SWIFT;
-extern NSString *NSStringFromFortifyRule(RKFortifyRule fortifyRule) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromInitialCountryDistribution(RKInitialCountryDistribution countryDistribution) NS_SWIFT_NAME(getter:RKInitialCountryDistribution.description(self:));
+extern NSString *NSStringFromInitialArmyPlacement(RKInitialArmyPlacement armyPlacement) NS_SWIFT_NAME(getter:RKInitialArmyPlacement.description(self:));
+extern NSString *NSStringFromCardSetRedemption(RKCardSetRedemption cardSetRedemption) NS_SWIFT_NAME(getter:RKCardSetRedemption.description(self:));
+extern NSString *NSStringFromFortifyRule(RKFortifyRule fortifyRule) NS_SWIFT_NAME(getter:RKFortifyRule.description(self:));
 
-extern NSString *NSStringFromRiskCardType(RKCardType cardType) NS_REFINED_FOR_SWIFT;
-extern NSString *NSStringFromGameState(RKGameState gameState) NS_REFINED_FOR_SWIFT;
-extern NSString *RKGameStateInfo(RKGameState gameState) NS_REFINED_FOR_SWIFT;
+extern NSString *NSStringFromRiskCardType(RKCardType cardType) NS_SWIFT_NAME(getter:RKCardType.description(self:));
+extern NSString *NSStringFromGameState(RKGameState gameState) NS_SWIFT_NAME(getter:RKGameState.debugDescription(self:));
+extern NSString *RKGameStateInfo(RKGameState gameState) NS_SWIFT_NAME(getter:RKGameState.description(self:));
 
 NS_ASSUME_NONNULL_END
 
