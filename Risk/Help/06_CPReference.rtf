@@ -1,6 +1,6 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2865
-\cocoascreenfonts1\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;\f1\fnil\fcharset0 LucidaGrande;\f2\froman\fcharset0 TimesNewRomanPS-ItalicMT;
-}
+\cocoascreenfonts1\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;\f1\froman\fcharset0 TimesNewRomanPS-ItalicMT;\f2\fnil\fcharset0 LucidaGrande;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 {\info
@@ -19,43 +19,49 @@ Computer Player Reference\
 \
 It has undergone some changes since version 0.97.  This should make it easier to make conformant computer players.  See the Chaotic player's subproject for a good example of a computer player bundle. \
 \
-All players are subclasses of RiskPlayer (or a subclass of RiskPlayer).  Each computer player resides in its own directory inside the Risk app wrapper.  The computer players that come with Risk are no different from your own.  The directory's name must end in \'93.riskplayer\'94.  Inside this directory is at least a Mach-O file and \
+All players are subclasses of RiskPlayer (or a subclass of RiskPlayer).  Each computer player resides in its own directory inside the Risk app wrapper.  The computer players that come with Risk are no different from your own.  The directory's name must end in \'93.riskplayer\'94.  Inside this directory is at least a Mach-O file and an Info.plist file.\
 \
 At launch, Risk searches its app wrapper.  It dynamically loads all object files it can find that are specified by the CFBundleExecutable key in the Info.plist of player bundles.  Other files such as .nib files can be put in the directory as well if you need them.  See the Chaotic.riskplayer directory in the Risk distribution for an example of how this works.\
 \
-There is no longer a Diagnostic computer player.  Instead, the RiskPlayer class provides a console window for writing messages, with a switch to force the player to pause until the continue button is pressed (much like the Dice Inspector panel.)  The console panel for each player may be shown by selecting the Tools 
-\f1 \uc0\u9656 
-\f0  Player 
-\f2\i N
+There is no longer a Diagnostic computer player.  Instead, the RiskPlayer class provides a console window for writing messages, with a switch to force the player to pause until the continue button is pressed (much like the Dice Inspector panel.)  The console panel for each player may be shown by selecting the Tools \uc0\u9656  Player 
+\f1\i N
 \f0\i0  
-\f1 \uc0\u9656 
+\f2 \uc0\u9656 
 \f0  Console\'85 menu item.  Messages don't appear in the console until the console is shown on screen for the first time.\
 \
-Some auxiliary files are used by Risk if they are specified in the Info.plist file.  When someone chooses \'93About\'85\'94 from the Setup Panel, an about panel is brought up.  If an image is specified by the RKPlayerIcon key in the .plist file, that image is shown in the top left part of the panel.  If an RTF or HTML file is specified by the RKAboutPlayerFile key in the .plist file, this is loaded into the NSScrollView.  The image file will be scaled to a 48 by 48 icon like an app icon.\
+Some auxiliary files are used by Risk if they are specified in the Info.plist file.  When someone chooses \'93About\'85\'94 from the Setup Panel, an about panel is brought up.  If an image is specified by the RKPlayerIcon key in the .plist file, that image is shown in the top left part of the panel.  If an RTF or HTML file is specified by the RKAboutPlayerFile key in the .plist file, this is loaded into the NSScrollView.  The image file will be scaled to a 48 by 48 icon.\
 \
 For example, this is a part of the Info.plist file for the Chaotic player:\
 \
-\{\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
+
+\f3 \cf0 \{\
 	RKSuperClass = RiskPlayer;\
 	RKPlayerTypeName = Chaotic;\
 	RKAboutPlayerFile = Chaotic.rtf;\
 	RKPlayerIcon = Chaotic.tiff;\
 \}\
-\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
+
+\f0 \cf0 \
 \
 The RiskPlayer class implements several utility methods which you will use in your own code, as well as defining the methods that you must implement.  See the source code for RiskPlayer for a description of each of the methods.\
 \
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
 
-\fs36 Supplied Utilities\
+\fs36 \cf0 Supplied Utilities\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
 
-\fs24 \
+\fs24 \cf0 \
 The RiskPlayer class has several methods which are not meant to be overridden.  These methods are utilities for interacting with Risk and finding out certain things about the game status.  The RiskGameManager has methods that must be called during game play.  The RiskWorld, Continent and Country classes also have some useful methods.  RiskCard and CardSet should be the only other classes you need to know about.\
 \pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\partightenfactor0
 \cf0 \
 \pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
 
 \fs36 \cf0 Pitfalls and Gotchas\
+\pard\tx1140\tx2300\tx3440\tx4600\tx5760\tx6900\tx8060\tx9200\tx10360\tx11520\fi360\partightenfactor0
 
-\fs24 \
+\fs24 \cf0 \
 The current API does a bit more to restrict cheating or simple errors by computer players, but they can still directly manipulate the assorted objects to their advantage.  A disadvantage to this is that the checks are simply assertions, which could halt the game if they fail, say for an incomplete computer player.\
-Another consideration is that not returning from any method you implement will cause Risk to hang.}
+Another consideration is that not returning from any method you implement will cause Risk to hang.\
+}
