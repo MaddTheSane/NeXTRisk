@@ -39,19 +39,15 @@ static struct image_names class_images[] =
 
 + (void) initialize
 {
-    if (self == [RKCardPanelController class])
-    {
+    if (self == [RKCardPanelController class]) {
         [self setVersion:CardPanelController_VERSION];
         
-        if ([NSBundle bundleForClass:self] == nil)
-        {
+        if ([NSBundle bundleForClass:self] == nil) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector (loadClassImages)
                                                          name:NSApplicationDidFinishLaunchingNotification
                                                        object:NSApp];
-        }
-        else
-        {
+        } else {
             [self loadClassImages];
         }
     }
@@ -61,14 +57,12 @@ static struct image_names class_images[] =
 
 + (void) loadClassImages
 {
-    if (self == [RKCardPanelController class])
-    {
+    if (self == [RKCardPanelController class]) {
         NSBundle *thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");
         
         // load class images
-        for (int l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
-        {
+        for (int l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++) {
             NSString *imagePath = (__bridge NSString * _Nonnull)(class_images[l].i_name);
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
@@ -93,8 +87,7 @@ static struct image_names class_images[] =
         NSArray *tmpArr;
         BOOL loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
         nibObjs = tmpArr;
-        if (loaded == NO)
-        {
+        if (loaded == NO) {
             NSLog (@"Could not load %@.", nibFile);
             return nil;
         }
@@ -122,25 +115,21 @@ static struct image_names class_images[] =
     
     index = handMatrix.selectedColumn;
     
-    if (index != -1 && canTurnInCards == YES && setMatrixCount < 3 )
-    {
+    if (index != -1 && canTurnInCards == YES && setMatrixCount < 3 ) {
         cell = [handMatrix cellAtRow:0 column:index];
         
         // if there is room in the box and they didn't click on an empty cell
-        if (cell.image == _cardBackImage)
-        {
+        if (cell.image == _cardBackImage) {
             return;
         }
         
-        if (setMatrixCount == 2)
-        {
+        if (setMatrixCount == 2) {
             RKCard *lastCard;
             
             lastCard = playerCards[index];
             
             // check to see if this one will make a third
-            if ([RKCardSet isValidCardSet:currentSet[0]:currentSet[1]:lastCard] == NO)
-            {
+            if ([RKCardSet isValidCardSet:currentSet[0]:currentSet[1]:lastCard] == NO) {
                 NSBeep();
                 return;
             }
@@ -164,8 +153,7 @@ static struct image_names class_images[] =
         [handStarMatrix setNeedsDisplay:YES];
         [setStarMatrix setNeedsDisplay:YES];
         
-        if (setMatrixCount == 3)
-        {
+        if (setMatrixCount == 3) {
             [turnInButton setEnabled:YES];
         }
     }
@@ -181,13 +169,11 @@ static struct image_names class_images[] =
     index = setMatrix.selectedColumn;
     
     // put it back up above
-    if (index >= 0 && index < setMatrixCount)
-    {
+    if (index >= 0 && index < setMatrixCount) {
         [[handMatrix cellAtRow:0 column:currentIndices[index]] setImage:currentSet[index].image];
         
         // move the others back a step
-        for (l = index; l < setMatrixCount - 1; l++)
-        {
+        for (l = index; l < setMatrixCount - 1; l++) {
             [[setMatrix cellAtRow:0 column:l] setImage:[[setMatrix cellAtRow:0 column:l + 1] image]];
             [[setStarMatrix cellAtRow:0 column:l] setImage:[[setStarMatrix cellAtRow:0 column:l + 1] image]];
             currentSet[l] = currentSet[l + 1];
@@ -206,8 +192,7 @@ static struct image_names class_images[] =
         [setStarMatrix setNeedsDisplay:YES];
     }
     
-    if (setMatrixCount < 3)
-    {
+    if (setMatrixCount < 3) {
         [turnInButton setEnabled:NO];
     }
 }
@@ -219,8 +204,7 @@ static struct image_names class_images[] =
     // Go through list of sets, and instruct the game manager to turn
     // in those card sets on behalf of the player.
     
-    for (RKCardSet *cardSet in cardSets)
-    {
+    for (RKCardSet *cardSet in cardSets) {
         [gameManager turnInCardSet:cardSet forPlayerNumber:currentPlayerNumber];
     }
     
@@ -248,13 +232,11 @@ static struct image_names class_images[] =
     RKCardSet *cardSet;
     int l;
     
-    if (setMatrixCount == 3)
-    {
+    if (setMatrixCount == 3) {
         cardSet = [RKCardSet cardSet:currentSet[0]:currentSet[1]:currentSet[2]];
         NSAssert (cardSet != nil, @"Invalid card set.");
         
-        for (l = 0; l < 3; l++)
-        {
+        for (l = 0; l < 3; l++) {
             currentSet[l] = nil;
             currentIndices[l] = -1;
             [[setMatrix cellAtRow:0 column:l] setImage:nil];
@@ -279,15 +261,17 @@ static struct image_names class_images[] =
 
 - (void) enableButtons
 {
-    if (canTurnInCards == YES && playerCards.count - (cardSets.count * 3) > 4)
+    if (canTurnInCards == YES && playerCards.count - (cardSets.count * 3) > 4) {
         [doneButton setEnabled:NO];
-    else
+    } else {
         [doneButton setEnabled:YES];
+    }
     
-    if (cardSets.count > 0)
+    if (cardSets.count > 0) {
         [cancelButton setEnabled:YES];
-    else
+    } else {
         [cancelButton setEnabled:NO];
+    }
 }
 
 //----------------------------------------------------------------------
@@ -316,18 +300,17 @@ static struct image_names class_images[] =
     [superView setFrameSize:boundsRect.size]; // -setBounds: is ineffective..
     [superView setNeedsDisplay:YES];
     
-    for (l = 0; l < cardCount; l++)
-    {
+    for (l = 0; l < cardCount; l++) {
         card = playerCards[l];
         [[handMatrix cellAtRow:0 column:l] setImage:card.image];
-        if (card.country.playerNumber == currentPlayerNumber)
+        if (card.country.playerNumber == currentPlayerNumber) {
             [[handStarMatrix cellAtRow:0 column:l] setImage:_littleStarImage];
-        else
+        } else {
             [[handStarMatrix cellAtRow:0 column:l] setImage:nil];
+        }
     }
     
-    for (l = 0; l < 3; l++)
-    {
+    for (l = 0; l < 3; l++) {
         [[setMatrix cellAtRow:0 column:l] setImage:nil];
         [[setStarMatrix cellAtRow:0 column:l] setImage:nil];
     }
@@ -337,12 +320,9 @@ static struct image_names class_images[] =
     
     [turnInButton setEnabled:NO];
     
-    if (cardCount > 4 && canTurnInCards == YES)
-    {
-        forceTextField.stringValue = @"You must turn in cards.";
-    }
-    else
-    {
+    if (cardCount > 4 && canTurnInCards == YES) {
+        forceTextField.stringValue = NSLocalizedStringFromTableInBundle(@"You must turn in cards.", @"Localizable", [NSBundle bundleForClass:[self class]], @"You must turn in cards.");
+    } else {
         forceTextField.stringValue = @"";
     }
     

@@ -81,14 +81,19 @@ class Brain: NSObject, NSApplicationDelegate {
 		var loadedBundles = [String: Bundle]()
 		
 		guard let pluginURL = mainBundle.builtInPlugInsURL,
-			let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) else {
-				let alert = NSAlert()
-				alert.messageText = "Plug-ins not found!"
-				alert.informativeText = "A.I. plug-ins were not found. Only local human players are allowed!"
-				alert.alertStyle = .critical
-				alert.runModal()
-				
-				return
+			  let URLEnum = FileManager.default.enumerator(at: pluginURL, includingPropertiesForKeys: nil, options: [.skipsPackageDescendants, .skipsHiddenFiles]) else {
+			let alert = NSAlert()
+			if #available(macOS 12, *) {
+				alert.messageText = String(localized: "Plug-ins not found!", comment: "Plug-ins not found!")
+				alert.informativeText = String(localized: "A.I. plug-ins were not found. Only local human players are allowed!", comment: "A.I. plug-ins were not found. Only local human players are allowed!")
+			} else {
+				alert.messageText = NSLocalizedString("Plug-ins not found!", comment: "Plug-ins not found!")
+				alert.informativeText = NSLocalizedString("A.I. plug-ins were not found. Only local human players are allowed!", comment: "A.I. plug-ins were not found. Only local human players are allowed!")
+			}
+			alert.alertStyle = .critical
+			alert.runModal()
+			
+			return
 		}
 		
 		//NSLog (@"resource paths: %@", resourcePaths);

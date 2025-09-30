@@ -247,8 +247,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (IBAction) showWorldInfoPanel:(id)sender
 {
-    if (worldInfoController == nil)
-    {
+    if (worldInfoController == nil) {
         worldInfoController = [[RKWorldInfoController alloc] init];
         [worldInfoController setWorld:world];
     }
@@ -264,17 +263,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     BOOL valid = NO;
     NSInteger tag = menuCell.tag;
     
-    if (action == @selector (showPlayerConsole:))
-    {
+    if (action == @selector (showPlayerConsole:)) {
         NSAssert (tag > 0 && tag < MAX_PLAYERS, @"Tag for player number out of range.");
         
         if (players[tag] != nil)
             valid = YES;
-    }
-    else if (action == @selector (showControlPanel:)
-             || action == @selector (showDiceInspector:)
-             || action == @selector (showWorldInfoPanel:))
-    {
+    } else if (action == @selector (showControlPanel:)
+               || action == @selector (showDiceInspector:)
+               || action == @selector (showWorldInfoPanel:)) {
         valid = YES;
     }
     
@@ -287,8 +283,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 {
     countryNameTextField.stringValue = aCountry.countryName;
     
-    if (players[currentPlayerNumber] != nil)
+    if (players[currentPlayerNumber] != nil) {
         [players[currentPlayerNumber] mouseDown:theEvent inCountry:aCountry];
+    }
 }
 
 //======================================================================
@@ -352,8 +349,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     tag = [sender tag];
     NSAssert (tag > 0 && tag < MAX_PLAYERS, @"Tag for player number out of range.");
     
-    if (players[tag] != nil)
+    if (players[tag] != nil) {
         [players[tag] showConsolePanel:self];
+    }
 }
 
 //======================================================================
@@ -365,8 +363,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     NSAssert ([self gameInProgress] == NO, @"Game already in progress.");
     
     [mapView.window disableFlushWindow];
-    for (RKCountry *country in world.allCountries)
-    {
+    for (RKCountry *country in world.allCountries) {
         country.playerNumber = 0;
     }
     //[mapView display]; // This is because drawCountry: doesn't draw the background... and it probably should.
@@ -441,8 +438,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     SNRelease (cardDeck);
     [discardDeck removeAllObjects];
     
-    if (currentPhaseView != nil)
-    {
+    if (currentPhaseView != nil) {
         [currentPhaseView removeFromSuperview];
         currentPhaseView = nil;
     }
@@ -465,8 +461,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 - (void) enteringChooseCountriesPhase
 {
     currentPlayerNumber = 0;
-    while ([self nextActivePlayer] == NO)
-    {
+    while ([self nextActivePlayer] == NO) {
         [players[currentPlayerNumber] willBeginChoosingCountries];
     }
 }
@@ -476,8 +471,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 - (void) leavingChooseCountriesPhase
 {
     currentPlayerNumber = 0;
-    while ([self nextActivePlayer] == NO)
-    {
+    while ([self nextActivePlayer] == NO) {
         [players[currentPlayerNumber] willEndChoosingCountries];
     }
 }
@@ -487,8 +481,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 - (void) enteringInitialArmyPlacementPhase
 {
     currentPlayerNumber = 0;
-    while ([self nextActivePlayer] == NO)
-    {
+    while ([self nextActivePlayer] == NO) {
         [players[currentPlayerNumber] willBeginPlacingInitialArmies];
     }
 }
@@ -498,8 +491,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 - (void) leavingInitialArmyPlacementPhase
 {
     currentPlayerNumber = 0;
-    while ([self nextActivePlayer] == NO)
-    {
+    while ([self nextActivePlayer] == NO) {
         [players[currentPlayerNumber] willEndPlacingInitialArmies];
     }
 }
@@ -535,18 +527,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     // 3. Initiate the phase.
     
     // Determine next phase.
-    switch (gameState)
-    {
+    switch (gameState) {
         case RKGameStateEstablishingGame:
             gameState = RKGameStateChoosingCountries;
-            if (configuration.initialCountryDistribution == RKInitialCountryDistributionRandomlyChosen)
-            {
+            if (configuration.initialCountryDistribution == RKInitialCountryDistributionRandomlyChosen) {
                 [self randomlyChooseCountriesForActivePlayers];
                 gameState = RKGameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
-            }
-            else
-            {
+            } else {
                 [self enteringChooseCountriesPhase];
             }
             
@@ -555,13 +543,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             break;
             
         case RKGameStateChoosingCountries:
-            if ([self unoccupiedCountries].count > 0)
-            {
+            if ([self unoccupiedCountries].count > 0) {
                 [mapView selectCountry:nil];
                 [self nextActivePlayer];
-            }
-            else
-            {
+            } else {
                 [self leavingChooseCountriesPhase];
                 gameState = RKGameStatePlaceInitialArmies;
                 [self enteringInitialArmyPlacementPhase];
@@ -573,13 +558,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             
         case RKGameStatePlaceInitialArmies:
             [mapView selectCountry:nil];
-            if ([self nextActivePlayer] == YES)
-            {
+            if ([self nextActivePlayer] == YES) {
                 initialArmyCount -= configuration.armyPlacementCount;
             }
             //NSLog (@"initial army count: %d", initialArmyCount);
-            if (initialArmyCount < 1)
-            {
+            if (initialArmyCount < 1) {
                 [self leavingInitialArmyPlacementPhase];
                 gameState = RKGameStatePlaceArmies;
                 currentPlayerNumber = 0;
@@ -590,16 +573,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             break;
             
         case RKGameStatePlaceArmies:
-            if (armiesLeftToPlace > 0)
-            {
+            if (armiesLeftToPlace > 0) {
                 NSLog (@"Player %ld has %d unplaced armies.", (long)currentPlayerNumber, armiesLeftToPlace);
             }
             gameState = RKGameStateAttack;
             break;
             
         case RKGameStateAttack:
-            if (playerHasConqueredCountry == YES)
-            {
+            if (playerHasConqueredCountry == YES) {
                 // Deal a card to the player.
                 [self dealCardToPlayerNumber:currentPlayerNumber];
             }
@@ -610,14 +591,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             
         case RKGameStateMoveAttackingArmies:
             // Go back to the attack phase:
-            if (players[currentPlayerNumber].playerCards.count > 4)
-            {
+            if (players[currentPlayerNumber].playerCards.count > 4) {
                 // Force the player to turn in cards.
                 gameState = RKGameStatePlaceArmies;
                 [self setArmiesLeftToPlace:0];
-            }
-            else
-            {
+            } else {
                 gameState = RKGameStateAttack;
             }
             break;
@@ -625,8 +603,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         case RKGameStateFortify:
             tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
             //NSLog (@"Fortify->next, Player %d: armies before = %d, armies now = %d", currentPlayerNumber, armiesBefore, tmp);
-            if (armiesBefore != tmp)
-            {
+            if (armiesBefore != tmp) {
                 NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
             }
             [players[currentPlayerNumber] willEndTurn];
@@ -638,12 +615,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             
         case RKGameStatePlaceFortifyingArmies:
             fortifyRule = configuration.fortifyRule;
-            if (fortifyRule == RKFortifyRuleOneToOneNeighbor || fortifyRule == RKFortifyRuleOneToManyNeighbors)
-            {
+            if (fortifyRule == RKFortifyRuleOneToOneNeighbor || fortifyRule == RKFortifyRuleOneToManyNeighbors) {
                 tmp = [self totalTroopsForPlayerNumber:currentPlayerNumber];
                 //NSLog (@"PlaceFortify->next, Player %d: armies before = %d, armies now = %d",currentPlayerNumber, armiesBefore, tmp);
-                if (armiesBefore != tmp)
-                {
+                if (armiesBefore != tmp) {
                     NSLog (@"!!Player %ld: armies before = %d, armies now = %d", (long)currentPlayerNumber, armiesBefore, tmp);
                 }
                 [players[currentPlayerNumber] willEndTurn];
@@ -651,9 +626,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
                 [self nextActivePlayer];
                 [players[currentPlayerNumber] willBeginTurn];
                 [self setArmiesLeftToPlace:[self earnedArmyCountForPlayer:currentPlayerNumber]];
-            }
-            else
-            {
+            } else {
                 gameState = RKGameStateFortify;
             }
             break;
@@ -672,8 +645,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     //    currentPhaseView = nil;
     //}
     
-    if (activePlayerCount < 2)
-    {
+    if (activePlayerCount < 2) {
         //NSLog (@"Will not continue with game...");
         return;
     }
@@ -683,14 +655,12 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     //[controlPanel makeMainWindow];
     
-    if (players[currentPlayerNumber].interactive == YES)
-    {
+    if (players[currentPlayerNumber].interactive == YES) {
         [mapView.window makeKeyWindow];
     }
     
     // Update phase controls for this new phase:
-    switch (gameState)
-    {
+    switch (gameState) {
         case RKGameStateChoosingCountries:
             newPhaseView = (isInteractivePlayer == YES) ? phaseChooseCountries : phaseComputerMove;
             break;
@@ -702,17 +672,19 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             initialArmiesLeftTextField.intValue = initialArmyCount;
             
             count = configuration.armyPlacementCount;
-            if (initialArmyCount < count)
+            if (initialArmyCount < count) {
                 count = initialArmyCount;
+            }
             [self setArmiesLeftToPlace:count];
             
             [armyPlacementValidator placeInAnyCountryForPlayerNumber:currentPlayerNumber];
             
             // You can always review your cards, even if you have none.
-            if ([players[currentPlayerNumber] canTurnInCardSet] == YES)
+            if ([players[currentPlayerNumber] canTurnInCardSet] == YES) {
                 [turnInCardsButton setEnabled:YES];
-            else
+            } else {
                 [turnInCardsButton setEnabled:NO];
+            }
             
             break;
             
@@ -724,10 +696,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             [armyPlacementValidator placeInAnyCountryForPlayerNumber:currentPlayerNumber];
             
             // You can always review your cards, even if you have none.
-            if ([players[currentPlayerNumber] canTurnInCardSet] == YES)
+            if ([players[currentPlayerNumber] canTurnInCardSet] == YES) {
                 [turnInCardsButton setEnabled:YES];
-            else
+            } else {
                 [turnInCardsButton setEnabled:NO];
+            }
             break;
             
         case RKGameStateAttack:
@@ -753,8 +726,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     [self updatePhaseBox];
     
-    if (newPhaseView != nil)
-    {
+    if (newPhaseView != nil) {
         if (!currentPhaseView) {
             [controlPanel.contentView addSubview:newPhaseView];
             [newPhaseView setFrameOrigin:NSMakePoint (281, 8)];
@@ -768,19 +740,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         [newPhaseView setNeedsDisplay:YES];
         [statusView setNeedsDisplay:YES];
         //[controlPanel display]; // And this in turn will redisplay the status view.
-    }
-    else
-    {
+    } else {
         [self _logGameState];
     }
     
-    if (activePlayerCount > 1)
-    {
+    if (activePlayerCount > 1) {
         // Prevent deep recursion:
         [self performSelector:@selector (executeCurrentPhase:) withObject:self afterDelay:0];
-    }
-    else
-    {
+    } else {
         //NSLog (@"The game should be over...");
     }
 }
@@ -793,8 +760,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     //[self _logGameState];
     
     // Initiate next phase
-    switch (gameState)
-    {
+    switch (gameState) {
         case RKGameStateChoosingCountries:
             [players[currentPlayerNumber] chooseCountry];
             break;
@@ -806,13 +772,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         case RKGameStatePlaceArmies:
             [self resetMovableArmiesForPlayerNumber:currentPlayerNumber];
             //NSLog (@"current player: %d, count: %d", currentPlayerNumber, [[players[currentPlayerNumber] playerCards] count]);
-            if (players[currentPlayerNumber].playerCards.count > 4)
-            {
+            if (players[currentPlayerNumber].playerCards.count > 4) {
                 [players[currentPlayerNumber] mustTurnInCards];
                 [self automaticallyTurnInCardsForPlayerNumber:currentPlayerNumber];
-            }
-            else
-            {
+            } else {
                 [players[currentPlayerNumber] mayTurnInCards];
             }
             [players[currentPlayerNumber] placeArmies:armiesLeftToPlace];
@@ -864,13 +827,11 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     }
     NSLog (@"currentPlayerNumber: %d", currentPlayerNumber);
 #endif
-    do
-    {
+    do {
         currentPlayerNumber = (currentPlayerNumber + 1) % MAX_PLAYERS;
         if (currentPlayerNumber == 0)
             wrappedFlag = YES;
-    }
-    while (--limit > 0 && playersActive[currentPlayerNumber] == NO);
+    } while (--limit > 0 && playersActive[currentPlayerNumber] == NO);
     
     //NSLog (@"limit: %d", limit);
     NSAssert (limit != 0, @"No active players.");
@@ -899,8 +860,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     AssertGameState2 (RKGameStateAttack, RKGameStateFortify);
     
     [self endTurn];
-    if (gameState == RKGameStateFortify)
+    if (gameState == RKGameStateFortify) {
         [self endTurn];
+    }
 }
 
 //----------------------------------------------------------------------
@@ -928,8 +890,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     source.troopCount = 0;
     [mapView drawCountry:source];
     
-    if (currentPhaseView != nil)
-    {
+    if (currentPhaseView != nil) {
         [currentPhaseView removeFromSuperview];
         currentPhaseView = nil;
     }
@@ -945,13 +906,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     [self setArmiesLeftToPlace:count];
     
     // You can always review your cards, even if you have none.
-    if ([players[currentPlayerNumber] canTurnInCardSet] == YES)
+    if ([players[currentPlayerNumber] canTurnInCardSet] == YES) {
         [turnInCardsButton setEnabled:YES];
-    else
+    } else {
         [turnInCardsButton setEnabled:NO];
+    }
     
     [controlPanel.contentView addSubview:newPhaseView];
-    [newPhaseView setFrameOrigin:NSMakePoint (281, 8)];
+    [newPhaseView setFrameOrigin:NSMakePoint(281, 8)];
     currentPhaseView = newPhaseView;
     [newPhaseView setNeedsDisplay:YES];
     
@@ -971,16 +933,16 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     AssertGameState (RKGameStateFortify);
     int count = source.movableTroopCount;
     
-    if (count < 1)
+    if (count < 1) {
         return;
+    }
     
     gameState = RKGameStatePlaceFortifyingArmies;
     
     // Need to base this on current fortify rule
     
     RKFortifyRule fortifyRule = configuration.fortifyRule;
-    switch (fortifyRule)
-    {
+    switch (fortifyRule) {
         case RKFortifyRuleOneToOneNeighbor:
             //NSLog (@"1:1");
             [armyPlacementValidator placeInOneNeighborOfCountry:source forPlayerNumber:currentPlayerNumber];
@@ -1009,8 +971,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     source.troopCount = source.unmovableTroopCount;
     [mapView drawCountry:source];
     
-    if (currentPhaseView != nil)
-    {
+    if (currentPhaseView != nil) {
         [currentPhaseView removeFromSuperview];
         currentPhaseView = nil;
     }
@@ -1077,8 +1038,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     countries = [world countriesForPlayer:number];
     
-    for (RKCountry *country in countries)
-    {
+    for (RKCountry *country in countries) {
         [country resetUnmovableTroops];
     }
 }
@@ -1099,8 +1059,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     valid = NO;
     
-    if (country.playerNumber == 0)
-    {
+    if (country.playerNumber == 0) {
         country.playerNumber = number;
         valid = YES;
     }
@@ -1116,10 +1075,10 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     NSMutableArray *array;
     
     array = [NSMutableArray array];
-    for (RKCountry *country in world.allCountries)
-    {
-        if (country.playerNumber == 0)
+    for (RKCountry *country in world.allCountries) {
+        if (country.playerNumber == 0) {
             [array addObject:country];
+        }
     }
     
     return array;
@@ -1138,8 +1097,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     currentPlayerNumber = 0;
     array = [NSMutableArray arrayWithArray:world.allCountries.allObjects];
     count = array.count;
-    while (count > 0)
-    {
+    while (count > 0) {
         [self nextActivePlayer];
         index = [rng randomNumberModulo:count];
         country = array[index];
@@ -1161,11 +1119,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     NSAssert2 (count <= armiesLeftToPlace, @"Tried to place too many(%d) armies.  max: %d ", count, armiesLeftToPlace);
     
     okay = [armyPlacementValidator validatePlacement:country];
-    if (okay == YES)
-    {
+    if (okay == YES) {
         [armyPlacementValidator placeArmies:count inCountry:country];
-        if (gameState == RKGameStatePlaceFortifyingArmies)
-        {
+        if (gameState == RKGameStatePlaceFortifyingArmies) {
             [country addUnmovableTroopCount:count];
         }
         armiesLeftToPlace -= count;
@@ -1191,8 +1147,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     attackResult.conqueredCountry = NO;
     
-    while (attackResult.conqueredCountry == NO && attacker.troopCount > 0)
-    {
+    while (attackResult.conqueredCountry == NO && attacker.troopCount > 0) {
         attackResult = [self attackOnceFromCountry:attacker toCountry:defender moveAllArmiesUponVictory:moveFlag];
     }
     
@@ -1210,8 +1165,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     attackResult.conqueredCountry = NO;
     
-    while (count-- > 0 && attackResult.conqueredCountry == NO && attacker.troopCount > 0)
-    {
+    while (count-- > 0 && attackResult.conqueredCountry == NO && attacker.troopCount > 0) {
         attackResult = [self attackOnceFromCountry:attacker toCountry:defender moveAllArmiesUponVictory:moveFlag];
     }
     
@@ -1231,8 +1185,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     count = MAX (count, 0);
     
-    while (attackResult.conqueredCountry == NO && attacker.troopCount > count)
-    {
+    while (attackResult.conqueredCountry == NO && attacker.troopCount > count) {
         attackResult = [self attackOnceFromCountry:attacker toCountry:defender moveAllArmiesUponVictory:moveFlag];
     }
     
@@ -1286,8 +1239,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     diceRoll = [self rollDiceWithAttackerArmies:attacker.troopCount defenderArmies:defender.troopCount];
     // return YES if we won -- enter GameStateMoveAttackingArmies state
     
-    if (diceInspector != nil && diceInspector.panelOnScreen == YES)
-    {
+    if (diceInspector != nil && diceInspector.panelOnScreen == YES) {
         [diceInspector showAttackFromCountry:attacker
                                    toCountry:defender
                                     withDice:diceRoll];
@@ -1296,24 +1248,22 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     compareCount = MIN (diceRoll.attackerDieCount, diceRoll.defenderDieCount);
     attackerLosses = 0;
     defenderLosses = 0;
-    for (l = 0; l < compareCount; l++)
-    {
-        if (diceRoll.attackerDice[l] > diceRoll.defenderDice[l])
+    for (l = 0; l < compareCount; l++) {
+        if (diceRoll.attackerDice[l] > diceRoll.defenderDice[l]) {
             defenderLosses++;
-        else
+        } else {
             attackerLosses++;
+        }
     }
     
-    if (attackerLosses > 0)
-    {
+    if (attackerLosses > 0) {
         [attacker addTroops:-attackerLosses];
         [mapView drawCountry:attacker];
     }
     
     [players[defendingPlayerNumber] playerNumber:attackingPlayerNumber attackedCountry:defender];
     
-    if (defenderLosses > 0)
-    {
+    if (defenderLosses > 0) {
         [defender addTroops:-defenderLosses];
         [mapView drawCountry:defender];
         
@@ -1321,8 +1271,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         // How do we adjust for same effect, since we allow countries with troopCount == 0?
         
         // Defender doesn't lose until troopCount < 0...
-        if (defender.troopCount < 0)
-        {
+        if (defender.troopCount < 0) {
             [players[defendingPlayerNumber] playerNumber:attackingPlayerNumber capturedCountry:defender];
             defender.playerNumber = attackingPlayerNumber;
             defender.troopCount = 0;
@@ -1330,31 +1279,25 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
             attackResult.conqueredCountry = YES;
             
             // Now, check to see if that was the last country of the defender.
-            if ([world countriesForPlayer:defendingPlayerNumber].count == 0)
-            {
+            if ([world countriesForPlayer:defendingPlayerNumber].count == 0) {
                 [self transferCardsFromPlayer:players[defendingPlayerNumber] toPlayer:players[attackingPlayerNumber]];
                 isGameOver = [self checkForEndOfPlayerNumber:defendingPlayerNumber];
                 // And, check to see if activePlayerCount == 1
                 // Perhaps delay until after armies moved...
             }
             
-            if (isGameOver == NO)
-            {
-                if (moveFlag == YES)
-                {
+            if (isGameOver == NO) {
+                if (moveFlag == YES) {
                     defender.troopCount = attacker.troopCount;
                     attacker.troopCount = 0;
                     [mapView drawCountry:attacker]; // May no longer need with removal of ARMY class...
                     [mapView drawCountry:defender];
                     
-                    if (players[attackingPlayerNumber].playerCards.count > 4)
-                    {
+                    if (players[attackingPlayerNumber].playerCards.count > 4) {
                         // And make sure we're back in the place armies phase...
                         [self forceCurrentPlayerToTurnInCards];
                     }
-                }
-                else
-                {
+                } else {
                     [self moveAttackingArmies:diceRoll.attackerDieCount between:attacker:defender];
                 }
             }
@@ -1384,8 +1327,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     count = ([world countriesForPlayer:number].count / 3) + [world continentBonusArmiesForPlayer:number];
     
-    if (count < 3)
+    if (count < 3) {
         count = 3;
+    }
     
     return (int)count;
 }
@@ -1411,55 +1355,45 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     diceRoll.defenderDieCount = (defenderArmies == 0) ? 1 : 2;
     
     // Roll dice and fill unused dice with 0 so that we can sort them.
-    for (l = 0; l < diceRoll.attackerDieCount; l++)
+    for (l = 0; l < diceRoll.attackerDieCount; l++) {
         diceRoll.attackerDice[l] = (int)[rng rollDieWithSides:6];
-    for (l = diceRoll.attackerDieCount; l < 3; l++)
+    }
+    for (l = diceRoll.attackerDieCount; l < 3; l++) {
         diceRoll.attackerDice[l] = 0;
+    }
     
-    for (l = 0; l < diceRoll.defenderDieCount; l++)
+    for (l = 0; l < diceRoll.defenderDieCount; l++) {
         diceRoll.defenderDice[l] = (int)[rng rollDieWithSides:6];
-    for (l = diceRoll.defenderDieCount; l < 2; l++)
+    }
+    for (l = diceRoll.defenderDieCount; l < 2; l++) {
         diceRoll.defenderDice[l] = 0;
+    }
     
     // sort the arrays
-    if ((diceRoll.attackerDice[0] >= diceRoll.attackerDice[1]) && (diceRoll.attackerDice[0] >= diceRoll.attackerDice[2]))
-    {
+    if ((diceRoll.attackerDice[0] >= diceRoll.attackerDice[1]) && (diceRoll.attackerDice[0] >= diceRoll.attackerDice[2])) {
         temp1 = diceRoll.attackerDice[0];
-        if (diceRoll.attackerDice[1] >= diceRoll.attackerDice[2])
-        {
+        if (diceRoll.attackerDice[1] >= diceRoll.attackerDice[2]) {
             temp2 = diceRoll.attackerDice[1];
             temp3 = diceRoll.attackerDice[2];
-        }
-        else
-        {
+        } else {
             temp2 = diceRoll.attackerDice[2];
             temp3 = diceRoll.attackerDice[1];
         }
-    }
-    else if ((diceRoll.attackerDice[1] >= diceRoll.attackerDice[0]) && (diceRoll.attackerDice[1] >= diceRoll.attackerDice[2]))
-    {
+    } else if ((diceRoll.attackerDice[1] >= diceRoll.attackerDice[0]) && (diceRoll.attackerDice[1] >= diceRoll.attackerDice[2])) {
         temp1 = diceRoll.attackerDice[1];
-        if (diceRoll.attackerDice[0] >= diceRoll.attackerDice[2])
-        {
+        if (diceRoll.attackerDice[0] >= diceRoll.attackerDice[2]) {
             temp2 = diceRoll.attackerDice[0];
             temp3 = diceRoll.attackerDice[2];
-        }
-        else
-        {
+        } else {
             temp2 = diceRoll.attackerDice[2];
             temp3 = diceRoll.attackerDice[0];
         }
-    }
-    else if ((diceRoll.attackerDice[2] >= diceRoll.attackerDice[0]) && (diceRoll.attackerDice[2] >= diceRoll.attackerDice[1]))
-    {
+    } else if ((diceRoll.attackerDice[2] >= diceRoll.attackerDice[0]) && (diceRoll.attackerDice[2] >= diceRoll.attackerDice[1])) {
         temp1 = diceRoll.attackerDice[2];
-        if (diceRoll.attackerDice[0] >= diceRoll.attackerDice[1])
-        {
+        if (diceRoll.attackerDice[0] >= diceRoll.attackerDice[1]) {
             temp2 = diceRoll.attackerDice[0];
             temp3 = diceRoll.attackerDice[1];
-        }
-        else
-        {
+        } else {
             temp2 = diceRoll.attackerDice[1];
             temp3 = diceRoll.attackerDice[0];
         }
@@ -1467,8 +1401,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     diceRoll.attackerDice[0] = temp1;
     diceRoll.attackerDice[1] = temp2;
     diceRoll.attackerDice[2] = temp3;
-    if (diceRoll.defenderDice[1] > diceRoll.defenderDice[0])
-    {
+    if (diceRoll.defenderDice[1] > diceRoll.defenderDice[0]) {
         temp1 = diceRoll.defenderDice[1];
         diceRoll.defenderDice[1] = diceRoll.defenderDice[0];
         diceRoll.defenderDice[0] = temp1;
@@ -1497,8 +1430,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     attackMethod = players[number].attackMethod;
     attackMethodValue = players[number].attackMethodValue;
     
-    switch (attackMethod)
-    {
+    switch (attackMethod) {
         case RKAttackMethodMultipleTimes:
             index = 1;
             break;
@@ -1552,12 +1484,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (IBAction) attackMethodAction:(id)sender
 {
-    if (sender == methodCountSlider)
-    {
+    if (sender == methodCountSlider) {
         [methodCountTextField takeIntValueFrom:sender];
-    }
-    else if (sender == methodCountTextField)
-    {
+    } else if (sender == methodCountTextField) {
         [methodCountSlider takeIntValueFrom:sender];
     }
     
@@ -1596,14 +1525,14 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     NSInteger index, count;
     
     count = cardDeck.count;
-    if (count == 0)
-    {
+    if (count == 0) {
         [self _recycleDiscardedCards];
         count = cardDeck.count;
     }
     
-    if (count == 0)
+    if (count == 0) {
         return;
+    }
     //NSAssert (count != 0, @"Ran out of cards!");
     
     index = [rng randomNumberModulo:count];
@@ -1622,19 +1551,19 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     int nextValue;
     
     cardSetRedemption = configuration.cardSetRedemption;
-    switch (cardSetRedemption)
-    {
+    switch (cardSetRedemption) {
         case RKCardSetRedemptionIncreaseByOne:
             nextValue = currentValue + 1;
             break;
             
         case RKCardSetRedemptionIncreaseByFive:
-            if (currentValue < 12)
+            if (currentValue < 12) {
                 nextValue = currentValue + 2;
-            else if (currentValue == 12)
+            } else if (currentValue == 12) {
                 nextValue = 15;
-            else
+            } else {
                 nextValue = currentValue + 5;
+            }
             break;
             
         case RKCardSetRedemptionRemainConstant:
@@ -1669,14 +1598,12 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     // Add number of armies to currently available armies for placement.
     // Add bonus armies to those card countries that we control.
     
-    if (cardSet != nil)
-    {
+    if (cardSet != nil) {
         //NSLog (@"turning in this card set: %@", cardSet);
         
         card = cardSet.card1;
         country = card.country;
-        if (country.playerNumber == number)
-        {
+        if (country.playerNumber == number) {
             [country addTroops:2];
             [mapView drawCountry:country];
         }
@@ -1685,8 +1612,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         
         card = cardSet.card2;
         country = card.country;
-        if (country.playerNumber == number)
-        {
+        if (country.playerNumber == number) {
             [country addTroops:2];
             [mapView drawCountry:country];
         }
@@ -1695,8 +1621,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
         
         card = cardSet.card3;
         country = card.country;
-        if (country.playerNumber == number)
-        {
+        if (country.playerNumber == number) {
             [country addTroops:2];
             [mapView drawCountry:country];
         }
@@ -1731,12 +1656,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     [self _loadCardPanel];
     [cardPanelController runCardPanel:YES forPlayer:players[currentPlayerNumber]];
     
-    if ([players[currentPlayerNumber] canTurnInCardSet] == YES)
-    {
+    if ([players[currentPlayerNumber] canTurnInCardSet] == YES) {
         [turnInCardsButton setEnabled:YES];
-    }
-    else
-    {
+    } else {
         [turnInCardsButton setEnabled:NO];
     }
 }
@@ -1747,8 +1669,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 {
     RKCardSet *cardSet;
     
-    while (players[number].playerCards.count > 4)
-    {
+    while (players[number].playerCards.count > 4) {
         cardSet = [players[number] bestSet];
         [self turnInCardSet:cardSet forPlayerNumber:number];
     }
@@ -1762,8 +1683,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     //NSLog (@"transfering %d cards.", [cardArray count]);
     
-    for (RKCard *card in cardArray)
-    {
+    for (RKCard *card in cardArray) {
         [source removeCardFromHand:card];
         [destination addCardToHand:card];
     }
@@ -1775,8 +1695,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (void) _loadCardPanel
 {
-    if (cardPanelController == nil)
-    {
+    if (cardPanelController == nil) {
         cardPanelController = [[RKCardPanelController alloc] init];
         [cardPanelController setGameManager:self];
     }
@@ -1786,15 +1705,12 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (void) updatePhaseBox
 {
-    if (players[currentPlayerNumber].interactive == YES)
-    {
+    if (players[currentPlayerNumber].interactive == YES) {
         infoTextField.stringValue = RKGameStateInfo (gameState);
         phaseTextField.stringValue = NSStringFromGameState (gameState);
-    }
-    else
-    {
-        phaseTextField.stringValue = @"Computer Move";
-        infoTextField.stringValue = @"The computer player named above is moving, please wait.";
+    } else {
+        phaseTextField.stringValue = NSLocalizedStringFromTableInBundle(@"Computer Move", @"Localizable", [NSBundle bundleForClass:[self class]], @"Computer Move");
+        infoTextField.stringValue = NSLocalizedStringFromTableInBundle(@"The computer player named above is moving, please wait.", @"Localizable", [NSBundle bundleForClass:[self class]], @"The computer player named above is moving, please wait.");
     }
 }
 
@@ -1804,8 +1720,7 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 {
     int total = 0;
     
-    for (RKCountry *country in [world countriesForPlayer:number])
-    {
+    for (RKCountry *country in [world countriesForPlayer:number]) {
         total += country.troopCount;
     }
     
@@ -1816,8 +1731,9 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
 
 - (void) defaultsChanged:(NSNotification *)aNotification
 {
-    if (currentPlayerNumber > 0)
+    if (currentPlayerNumber > 0) {
         playerColorWell.color = [[RKBoardSetup instance] colorForPlayer:currentPlayerNumber];
+    }
 }
 
 //======================================================================
@@ -1831,27 +1747,22 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     
     isGameOver = NO;
     
-    if ([world countriesForPlayer:number].count == 0)
-    {
+    if ([world countriesForPlayer:number].count == 0) {
         [self playerHasLost:number];
-        if (activePlayerCount < 2)
-        {
+        if (activePlayerCount < 2) {
             isGameOver = YES;
         }
     }
     
-    if (isGameOver == YES)
-    {
-        for (winner = 1; winner < MAX_PLAYERS; winner++)
-        {
-            if (playersActive[winner] == YES)
-            {
+    if (isGameOver == YES) {
+        for (winner = 1; winner < MAX_PLAYERS; winner++) {
+            if (playersActive[winner] == YES) {
                 // Use notification instead, and the brain can do the alert panel.
                 
                 // And make gameState == gs_game_over...
                 NSAlert *alert = [NSAlert new];
-                alert.messageText = @"Victory";
-                alert.informativeText = [NSString stringWithFormat:@"Winner was %@.", players[winner].playerName];
+                alert.messageText = NSLocalizedStringFromTableInBundle(@"Victory", @"Localizable", [NSBundle bundleForClass:[self class]], @"Victory");
+                alert.informativeText = [NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Winner was %@.", @"Localizable", [NSBundle bundleForClass:[self class]], @"Winner was %@."), players[winner].playerName];
                 [alert runModal];
                 
                 [self playerHasWon:winner];
@@ -1892,16 +1803,13 @@ NSString *const RKGameOverNotification = @"RGMGameOverNotification";
     NSArray *itemArray;
     NSMenuItem *menuItem;
     
-    if (playersActive[number] == YES)
-    {
+    if (playersActive[number] == YES) {
         playersActive[number] = NO;
         
-        if (players[number] != nil)
-        {
+        if (players[number] != nil) {
             playerMenu = players[number].playerToolMenu;
             itemArray = playerMenu.itemArray;
-            while (itemArray.count > 1)
-            {
+            while (itemArray.count > 1) {
                 menuItem = itemArray.lastObject;
                 //NSLog (@"removing item: %@", [menuItem title]);
                 [playerMenu removeItem:menuItem];

@@ -376,10 +376,8 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 {
     BOOL flag = NO;
     
-    for (RKCountry *country in neighborCountries)
-    {
-        if (country.playerNumber != playerNumber)
-        {
+    for (RKCountry *country in neighborCountries) {
+        if (country.playerNumber != playerNumber) {
             flag = YES;
             break;
         }
@@ -394,10 +392,8 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 {
     BOOL flag = NO;
     
-    for (RKCountry *country in [self ourNeighborCountries])
-    {
-        if (country.hasEnemyNeighbors == YES)
-        {
+    for (RKCountry *country in [self ourNeighborCountries]) {
+        if (country.hasEnemyNeighbors == YES) {
             flag = YES;
             break;
         }
@@ -426,10 +422,8 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 {
     BOOL flag = YES;
     
-    for (RKCountry *country in self.neighborCountries)
-    {
-        if (country.playerNumber != number)
-        {
+    for (RKCountry *country in self.neighborCountries) {
+        if (country.playerNumber != number) {
             flag = NO;
             break;
         }
@@ -444,10 +438,8 @@ NSString *const RKCountryUpdatedNotification = @ "CountryUpdatedNotification";
 {
     BOOL flag = NO;
     
-    for (RKCountry *country in neighborCountries)
-    {
-        if (country != excludedCountry && country.playerNumber != playerNumber)
-        {
+    for (RKCountry *country in neighborCountries) {
+        if (country != excludedCountry && country.playerNumber != playerNumber) {
             flag = YES;
             break;
         }

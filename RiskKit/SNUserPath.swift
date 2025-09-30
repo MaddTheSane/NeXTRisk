@@ -15,11 +15,11 @@ private let SNUserPathOperation_VERSION = 1
 /// using them for drawing or hit detection.  The bounding box
 /// calculations are incomplete, but work with straight lines.
 ///
-/// The `MiscKit` provides a more complete implementation.  Under Rhapsody
-/// this will probably move towards using the `NSBezierPath` path.
+/// The `MiscKit` provides a more complete implementation.  Under macOS,
+/// this will move towards using the `NSBezierPath` path.
 ///
 /// Note that this means curved paths could be easily supported to
-/// provide better looking maps, but RiskUtil.app would need to be
+/// provide better looking maps, but **RiskUtil.app** would need to be
 /// able to support them.
 ///
 /// Superceded *completely* by `NSBezierPath`! **Use that instead!**
@@ -51,7 +51,7 @@ private let SNUserPathOperation_VERSION = 1
 		
 		@objc func encode(with aCoder: NSCoder) {
 			if #available(macOS 10.11, *) {
-				aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead."]))
+				aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("SNUserPathOperation can only be decoded. Encode as NSBezierPath instead.", bundle: Bundle(for: Self.self) , comment: "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead.")]))
 			} else {
 				fatalError("We should not be calling \(#function)!")
 			}
@@ -171,7 +171,7 @@ private let SNUserPathOperation_VERSION = 1
 	
 	public func encode(with aCoder: NSCoder) {
 		if #available(macOS 10.11, *) {
-			aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: "SNUserPath can only be decoded. Encode as NSBezierPath instead."]))
+			aCoder.failWithError(CocoaError(.featureUnsupported, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("SNUserPath can only be decoded. Encode as an NSBezierPath instead.", bundle: Bundle(for: Self.self) , comment: "SNUserPath can only be decoded. Encode as an NSBezierPath instead.")]))
 		}
 		aCoder.encode(operations)
 	}

@@ -112,10 +112,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) showNewGamePanel
 {
     runningAsPreferences = NO;
-    newGamePanel.title = @"New Game";
-    acceptButton.title = @"Accept";
+    newGamePanel.title = NSLocalizedString(@"New Game", @"New Game");
+    acceptButton.title = NSLocalizedString(@"Accept", @"Accept");
     acceptButton.keyEquivalent = @"";
-    cancelButton.title = @"Cancel";
+    cancelButton.title = NSLocalizedString(@"Cancel", @"Cancel");
     [newGamePanel makeKeyAndOrderFront:self];
 }
 
@@ -124,10 +124,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 - (void) showGameSetupPanel
 {
     runningAsPreferences = YES;
-    newGamePanel.title = @"New Game Setup";
-    acceptButton.title = @"Set";
+    newGamePanel.title = NSLocalizedString(@"New Game Setup", @"New Game Setup");
+    acceptButton.title = NSLocalizedString(@"Set", @"Set");
     acceptButton.keyEquivalent = @"\r";
-    cancelButton.title = @"Revert";
+    cancelButton.title = NSLocalizedString(@"Revert", @"Revert");
     [self takePreferencesFromCurrent];
     [newGamePanel makeKeyAndOrderFront:self];
 }
@@ -185,7 +185,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     {
         case 0: // None
             aboutPlayerImageView.image = nil;
-            aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. Not Playing", tag + 1];
+            aboutPlayerNameTextfield.stringValue = [NSString localizedStringWithFormat:NSLocalizedString(@"%ld. Not Playing", @"%ld. Not Playing"), tag + 1];
             rtfPath = [thisBundle URLForResource:@"NotPlaying" withExtension:@"rtf"];
             if (rtfPath != nil)
             {
@@ -228,7 +228,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             aboutPlayerImageView.image = image;
             
             playerTypeName = playerBundleInfo[@"RKPlayerTypeName"];
-            aboutPlayerNameTextfield.stringValue = [NSString stringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
+            aboutPlayerNameTextfield.stringValue = [NSString localizedStringWithFormat:@"%ld. %@", tag + 1, playerTypeName];
             
             rtfPath = [playerBundle URLForResource:playerBundleInfo[@"RKAboutPlayerFile"] withExtension:nil];
             if (rtfPath != nil)
@@ -281,12 +281,9 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
             playerCount++;
     }
     
-    if (playerCount > 1)
-    {
+    if (playerCount > 1) {
         initialArmyCountTextfield.intValue = RKInitialArmyCountForPlayers (playerCount);
-    }
-    else
-    {
+    } else {
         initialArmyCountTextfield.stringValue = @"--";
     }
 }
@@ -295,13 +292,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (IBAction) acceptAction:(id)sender
 {
-    if (runningAsPreferences == YES)
-    {
+    if (runningAsPreferences == YES) {
         //[boardSetup writePlayerColorDefaults];
         [self writeDefaults];
-    }
-    else
-    {
+    } else {
         [self createNewGame];
     }
 }
@@ -310,13 +304,10 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
 
 - (IBAction) cancelAction:(id)sender
 {
-    if (runningAsPreferences == YES)
-    {
+    if (runningAsPreferences == YES) {
         //[boardSetup revertPlayerColorsToDefaults];
         [self revertToDefaults];
-    }
-    else
-    {
+    }  else {
         [newGamePanel orderOut:self];
     }
 }
@@ -343,17 +334,16 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     ps[6] = player6TypePopup.indexOfSelectedItem;
     
     playerCount = 0;
-    for (l = 1; l < 7; l++)
-    {
-        if (ps[l] != 0)
+    for (l = 1; l < 7; l++) {
+        if (ps[l] != 0) {
             playerCount++;
+        }
     }
     
-    if (playerCount < 2)
-    {
+    if (playerCount < 2) {
         NSAlert *alert = [NSAlert new];
-        alert.messageText = @"New Game";
-        alert.informativeText = @"At least two players have to play.";
+        alert.messageText = NSLocalizedString(@"New Game", @"New Game");
+        alert.informativeText = NSLocalizedString(@"At least two players have to play.", @"At least two players have to play.");
         [alert runModal];
         return;
     }
@@ -369,13 +359,11 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     riskPlayerBundles = [brain riskPlayerBundles];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    for (l = 1; l < 7; l++)
-    {
+    for (l = 1; l < 7; l++) {
         name = [self playerNameForNumber:l];
         
         player = nil;
-        switch (ps[l])
-        {
+        switch (ps[l]) {
             case 0: // None
                 break;
                 
@@ -393,12 +381,12 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
                 break;
         }
         
-        if (player != nil)
-        {
+        if (player != nil) {
             [gameManager addPlayer:player number:l];
             showPlayerConsole = [defaults boolForKey:[NSString stringWithFormat:@"ShowPlayer%dConsole", l]];
-            if (showPlayerConsole == YES)
+            if (showPlayerConsole == YES) {
                 [player showConsolePanel:self];
+            }
         }
     }
     
@@ -423,16 +411,18 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     if ([gameManager gameInProgress] == YES)
     {
         NSAlert *alert = [NSAlert new];
-        alert.messageText = @"New Game";
-        alert.informativeText = @"There is already a game starting or in progess.";
-        [alert addButtonWithTitle:@"Cancel"];
-        [alert addButtonWithTitle:@"Start new game"];
+        alert.messageText = NSLocalizedString(@"New Game", @"New Game");
+        alert.informativeText = NSLocalizedString(@"There is already a game starting or in progess.", @"There is already a game starting or in progess.");
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel")];
+        NSButton *destructive = [alert addButtonWithTitle:NSLocalizedString(@"Start new game", @"Start new game")];
+        if (@available(macOS 11.0, *)) {
+            destructive.hasDestructiveAction = YES;
+        }
         [alert beginSheetModalForWindow:newGamePanel completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == NSAlertSecondButtonReturn) {
                 [gameManager stopGame];
                 [self actuallyCreateGame];
             }
-            
         }];
     } else {
         [self actuallyCreateGame];
@@ -529,8 +519,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     // Now the game configuration rules.
     oldConfiguration = [RKGameConfiguration defaultConfiguration];
     
-    switch (oldConfiguration.initialCountryDistribution)
-    {
+    switch (oldConfiguration.initialCountryDistribution) {
         case RKInitialCountryDistributionRandomlyChosen:
             index = 1;
             break;
@@ -543,8 +532,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     [self selectInitialCountryDistributionWithTag:index];
     
-    switch (oldConfiguration.initialArmyPlacement)
-    {
+    switch (oldConfiguration.initialArmyPlacement) {
         case RKInitialArmyPlaceByThrees:
             index = 1;
             break;
@@ -561,8 +549,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     [self selectInitialArmyPlacementWithTag:index];
     
-    switch (oldConfiguration.cardSetRedemption)
-    {
+    switch (oldConfiguration.cardSetRedemption) {
         case RKCardSetRedemptionIncreaseByOne:
             index = 1;
             break;
@@ -579,8 +566,7 @@ RCSID ("$Id: NewGameController.m,v 1.2 1997/12/15 07:43:57 nygard Exp $");
     
     [self selectCardRedemptionWithTag:index];
     
-    switch (oldConfiguration.fortifyRule)
-    {
+    switch (oldConfiguration.fortifyRule) {
         case RKFortifyRuleOneToManyNeighbors:
             index = 1;
             break;

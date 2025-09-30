@@ -1,0 +1,138 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%ld. Not Playing" : {
+      "comment" : "%ld. Not Playing",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld. Not Playing"
+          }
+        }
+      }
+    },
+    "A.I. plug-ins were not found. Only local human players are allowed!" : {
+      "comment" : "A.I. plug-ins were not found. Only local human players are allowed!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI plug-ins were not found. Only local human players are allowed!"
+          }
+        }
+      }
+    },
+    "Accept" : {
+      "comment" : "Accept",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accept"
+          }
+        }
+      }
+    },
+    "At least two players have to play." : {
+      "comment" : "At least two players have to play.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least two players have to play."
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Cancel",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "New Game" : {
+      "comment" : "New Game",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Game"
+          }
+        }
+      }
+    },
+    "New Game Setup" : {
+      "comment" : "New Game Setup",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Game Setup"
+          }
+        }
+      }
+    },
+    "Plug-ins not found!" : {
+      "comment" : "Plug-ins not found!",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plug-ins not found!"
+          }
+        }
+      }
+    },
+    "Revert" : {
+      "comment" : "Revert",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revert"
+          }
+        }
+      }
+    },
+    "Set" : {
+      "comment" : "Set",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set"
+          }
+        }
+      }
+    },
+    "Start new game" : {
+      "comment" : "Start new game",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start new game"
+          }
+        }
+      }
+    },
+    "There is already a game starting or in progess." : {
+      "comment" : "There is already a game starting or in progess.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is already a game starting or in progess."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -25,32 +23,12 @@
 			<true/>
 		</dict>
 	</array>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.99</string>
 	<key>CFBundleSignature</key>
 	<string>Risk</string>
-	<key>CFBundleVersion</key>
-	<string>0.99</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 1997 Mike Ferris, Steve Nygard; 2016 C.W. Betts. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string>Risk</string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -62,6 +40,11 @@
 			<string>Risk Player</string>
 			<key>UTTypeIconFile</key>
 			<string>CPIcon</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>Player</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.mikeferris.risk.player</string>
 			<key>UTTypeTagSpecification</key>
@@ -72,9 +55,9 @@
 				</array>
 			</dict>
 		</dict>
-        </array>
-        <key>UTImportedTypeDeclarations</key>
-        <array>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
@@ -82,6 +65,11 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Risk World Setting</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>World</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.github.MaddTheSane.Risk.world</string>
 			<key>UTTypeTagSpecification</key>

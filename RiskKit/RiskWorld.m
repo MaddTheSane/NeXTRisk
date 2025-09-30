@@ -241,10 +241,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 
 - (void) _connectCountries
 {
-    if (countryNeighbors != nil)
-    {
-        for (RKNeighbor *neighbor in countryNeighbors)
-        {
+    if (countryNeighbors != nil) {
+        for (RKNeighbor *neighbor in countryNeighbors) {
             RKCountry *country1 = neighbor.country1;
             RKCountry *country2 = neighbor.country2;
             [country1 setAdjacentToCountry:country2];
@@ -258,10 +256,8 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
 // Remove adjacency dependencies.
 - (void) _disconnectCountries
 {
-    if (allCountries != nil)
-    {
-        for (RKCountry *country in allCountries)
-        {
+    if (allCountries != nil) {
+        for (RKCountry *country in allCountries) {
             [country resetAdjacentCountries];
         }
     }
@@ -293,8 +289,7 @@ RCSID ("$Id: RiskWorld.m,v 1.3 1997/12/15 07:44:15 nygard Exp $");
     int bonus = 0;
     
     continentEnumerator = [continents objectEnumerator];
-    for (RKContinent *continent in continentEnumerator)
-    {
+    for (RKContinent *continent in continentEnumerator) {
         bonus += [continent bonusArmiesForPlayer:number];
     }
     

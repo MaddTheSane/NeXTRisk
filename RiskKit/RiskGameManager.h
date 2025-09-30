@@ -16,7 +16,7 @@ extern NSNotificationName const RKGameOverNotification;
 @class RiskWorld, RiskPlayer, RKGameConfiguration, RKCountry, RiskMapView, StatusView, RKArmyView, RKCardPanelController;
 @class RKCard, RKArmyPlacementValidator, RKCardSet, RKDiceInspector, RKWorldInfoController, SNRandom;
 
-//! The \c RiskGameManager controls most of the game play.  It notifies
+//! The `RiskGameManager` controls most of the game play.  It notifies
 //! the players of the various phases of game play, and does some
 //! checking of messages to try to limit invalid actions by players (or
 //! some cheating.)

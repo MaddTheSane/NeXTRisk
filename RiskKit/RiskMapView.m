@@ -29,19 +29,15 @@ static NSImage *_boardBackingImage = nil;
 + (void) initialize
 // set our version
 {
-    if (self == [RiskMapView class])
-    {
+    if (self == [RiskMapView class]) {
         [self setVersion:RiskMapView_VERSION];
         
-        if ([NSBundle bundleForClass:self] == nil)
-        {
+        if ([NSBundle bundleForClass:self] == nil) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector (loadClassImages)
                                                          name:NSApplicationDidFinishLaunchingNotification
                                                        object:NSApp];
-        }
-        else
-        {
+        } else {
             [self loadClassImages];
         }
     }
@@ -182,13 +178,10 @@ static NSImage *_boardBackingImage = nil;
     
     hit = NO;
     countryEnumerator = [countryArray objectEnumerator];
-    while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
-    {
+    while (hit == NO && (country = [countryEnumerator nextObject]) != nil) {
         hit = [country pointInCountry:[self convertPoint:theEvent.locationInWindow fromView:nil]];
-        if (hit == YES)
-        {
-            if (delegate != nil && [delegate respondsToSelector:@selector (mouseDown:inCountry:)] == YES)
-            {
+        if (hit == YES) {
+            if (delegate != nil && [delegate respondsToSelector:@selector (mouseDown:inCountry:)] == YES) {
                 [delegate mouseDown:theEvent inCountry:country];
             }
         }
@@ -205,13 +198,10 @@ static NSImage *_boardBackingImage = nil;
     
     hit = NO;
     countryEnumerator = [countryArray objectEnumerator];
-    while (hit == NO && (country = [countryEnumerator nextObject]) != nil)
-    {
+    while (hit == NO && (country = [countryEnumerator nextObject]) != nil) {
         hit = [country pointInCountry:[self convertPoint:theEvent.locationInWindow fromView:nil]];
-        if (hit == YES)
-        {
-            if (delegate != nil && [delegate respondsToSelector:@selector (mouseUp:inCountry:)] == YES)
-            {
+        if (hit == YES) {
+            if (delegate != nil && [delegate respondsToSelector:@selector (mouseUp:inCountry:)] == YES) {
                 [delegate mouseUp:theEvent inCountry:country];
             }
         }
@@ -294,13 +284,11 @@ static NSImage *_boardBackingImage = nil;
     tmp = selectedCountry;
     selectedCountry = aCountry;
     
-    if (tmp != nil)
-    {
+    if (tmp != nil) {
         [self drawCountry:tmp];
     }
     
-    if (selectedCountry != nil)
-    {
+    if (selectedCountry != nil) {
         [self drawCountry:selectedCountry];
     }
 }

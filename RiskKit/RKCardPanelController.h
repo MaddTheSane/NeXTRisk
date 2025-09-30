@@ -11,13 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RKCard, RiskPlayer, RiskGameManager;
 
-//! The \c RKCardPanelController provides interactive Risk players with an
+//! The \c `RKCardPanelController` provides interactive Risk players with an
 //! interface for reviewing their hand and choosing card sets to turn
 //! in.  It will force the player to turn in cards when they are able to
 //! and have more than four cards in their hand.
 //!
 //! The cards are not turned in until all sets have been chosen.  The
-//! \c RiskPlayer is notified about the number of extra armies for each
+//! ``RiskPlayer`` is notified about the number of extra armies for each
 //! set turned in.
 @interface RKCardPanelController : NSObject
 {

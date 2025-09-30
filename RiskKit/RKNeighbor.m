@@ -17,8 +17,7 @@ RCSID ("$Id: RiskNeighbor.m,v 1.2 1997/12/15 07:44:08 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RKNeighbor class])
-    {
+    if (self == [RKNeighbor class]) {
         [self setVersion:RiskNeighbor_VERSION];
     }
 }

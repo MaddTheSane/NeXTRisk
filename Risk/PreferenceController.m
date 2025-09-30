@@ -38,15 +38,15 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
         nibFile = @"PreferencePanel";
         loaded = [[NSBundle mainBundle] loadNibNamed:nibFile owner:self topLevelObjects:&tmpBundle];
         nibObjs = tmpBundle;
-        if (loaded == NO)
-        {
+        if (loaded == NO) {
             NSLog (@"Could not load %@.", nibFile);
             return nil;
         }
         
         okay = [preferencePanel setFrameAutosaveName:preferencePanel.title];
-        if (okay == NO)
+        if (okay == NO) {
             NSLog (@"Could not set frame autosave name of Preference panel.");
+        }
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector (boardSetupChanged:)
@@ -119,15 +119,12 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
     
     newLineWidth = [sender floatValue];
     
-    if (sender == borderWidthSlider)
-    {
+    if (sender == borderWidthSlider) {
         borderWidthTextField.floatValue = newLineWidth;
         borderWidthLineView.lineWidth = newLineWidth;
         [RKBoardSetup instance].borderWidth = newLineWidth;
         [preferencePanel setDocumentEdited:YES];
-    }
-    else
-    {
+    } else {
         borderWidthSlider.floatValue = newLineWidth;
         borderWidthLineView.lineWidth = newLineWidth;
         [RKBoardSetup instance].borderWidth = newLineWidth;
@@ -139,13 +136,10 @@ RCSID ("$Id: PreferenceController.m,v 1.2 1997/12/15 07:43:59 nygard Exp $");
 
 - (IBAction) borderColorAction:(id)sender
 {
-    if (sender == regularBorderWell)
-    {
+    if (sender == regularBorderWell) {
         [RKBoardSetup instance].regularBorderColor = regularBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
-    }
-    else if (sender == selectedBorderWell)
-    {
+    } else if (sender == selectedBorderWell) {
         [RKBoardSetup instance].selectedBorderColor = selectedBorderWell.color;
         [preferencePanel setDocumentEdited:YES];
     }

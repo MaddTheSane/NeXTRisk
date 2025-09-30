@@ -20,8 +20,7 @@ RCSID ("$Id: RiskCard.m,v 1.2 1997/12/15 07:44:02 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RKCard class])
-    {
+    if (self == [RKCard class]) {
         [self setVersion:RiskCard_VERSION];
     }
 }

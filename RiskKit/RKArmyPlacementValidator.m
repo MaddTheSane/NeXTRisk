@@ -19,8 +19,7 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RKArmyPlacementValidator class])
-    {
+    if (self == [RKArmyPlacementValidator class]) {
         [self setVersion:ArmyPlacementValidator_VERSION];
     }
 }
@@ -143,12 +142,9 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
     
     NSAssert ([target playerNumber] != 0, @"Expected army to be in target country.");
     
-    if (target.playerNumber != playerNumber)
-    {
+    if (target.playerNumber != playerNumber) {
         valid = NO;
-    }
-    else
-    {
+    } else {
         valid = [primaryCountries member:target] != nil || [secondaryCountries member:target] != nil;
     }
     
@@ -161,15 +157,13 @@ RCSID ("$Id: ArmyPlacementValidator.m,v 1.2 1997/12/15 07:43:36 nygard Exp $");
 {
     BOOL valid = [self validatePlacement:target];
     
-    if (valid == YES)
-    {
+    if (valid == YES) {
         // Place the armies
         NSAssert ([target playerNumber] != 0, @"Expected army to be in target country.");
         
         [target addTroops:count];
         
-        if (armyPlacementType == RKArmyPlacementOneNeighborCountry && [secondaryCountries member:target] != nil)
-        {
+        if (armyPlacementType == RKArmyPlacementOneNeighborCountry && [secondaryCountries member:target] != nil) {
             [primaryCountries addObject:target];
             [secondaryCountries removeAllObjects];
         }

@@ -37,8 +37,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RiskPlayer class])
-    {
+    if (self == [RiskPlayer class]) {
         [self setVersion:RiskPlayer_VERSION];
     }
 }
@@ -69,8 +68,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 
 - (void) dealloc
 {
-    if (consoleWindow != nil)
-    {
+    if (consoleWindow != nil) {
         // What happens to a window that is already closed when it gets this message?
         [consoleWindow setReleasedWhenClosed:YES];
         [continueButton setEnabled:NO];
@@ -363,7 +361,7 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
         
         NSAssert1 (loaded == YES, @"Could not load %@.", nibFile);
         
-        consoleWindow.title = [NSString stringWithFormat:@"Player %ld Console", (long)playerNumber];
+        consoleWindow.title = [NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Player %ld Console", @"Localizable", [NSBundle bundleForClass:[self class]], @"Player %ld Console"), (long)playerNumber];
     }
     
     [consoleWindow orderFront:self];
@@ -415,12 +413,9 @@ RCSID ("$Id: RiskPlayer.m,v 1.7 1997/12/15 21:09:43 nygard Exp $");
 {
     [NSApp stopModal];
     
-    if ([sender state] == 1)
-    {
+    if ([sender state] == 1) {
         [continueButton setEnabled:YES];
-    }
-    else
-    {
+    } else {
         [continueButton setEnabled:NO];
     }
 }

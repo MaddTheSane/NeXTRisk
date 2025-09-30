@@ -92,8 +92,7 @@ static NSTextFieldCell *_textCell = nil;
     
     int playerCount = [gameManager activePlayerCount];
     
-    if (playerCount == 0 || [gameManager gameInProgress] == NO)
-    {
+    if (playerCount == 0 || [gameManager gameInProgress] == NO) {
         return;
     }
     
@@ -110,12 +109,10 @@ static NSTextFieldCell *_textCell = nil;
     textRect.size.height = TEXTHEIGHT;
     int offset = 0;
     
-    for (int l = 0; l < 6; l++)
-    {
+    for (int l = 0; l < 6; l++) {
         RKPlayer number = 1 + ((l + currentPlayer - 1) % 6);
         
-        if ([gameManager isPlayerActive:number] == YES)
-        {
+        if ([gameManager isPlayerActive:number] == YES) {
             // draw his entry
             boxRect.origin.y = ((offset + 1) * INTERSPACE) + (offset * boxHeight);
             NSDrawWhiteBezel (boxRect, boundsRect);
@@ -125,8 +122,7 @@ static NSTextFieldCell *_textCell = nil;
             (offset * boxHeight) +
             ((boxHeight - TEXTHEIGHT) / 2);
             
-            if (showCardSetCounts == YES)
-            {
+            if (showCardSetCounts == YES) {
                 RiskPlayer *player = [gameManager playerNumber:number];
                 NSInteger count = player.playerCards.count;
                 

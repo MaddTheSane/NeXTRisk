@@ -18,8 +18,7 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 
 + (void) initialize
 {
-    if (self == [RKGameConfiguration class])
-    {
+    if (self == [RKGameConfiguration class]) {
         [self setVersion:GameConfiguration_VERSION];
     }
     
@@ -67,8 +66,7 @@ RCSID ("$Id: GameConfiguration.m,v 1.2 1997/12/15 07:43:51 nygard Exp $");
 {
     int count;
     
-    switch (initialArmyPlacement)
-    {
+    switch (initialArmyPlacement) {
         case RKInitialArmyPlaceByOnes:
             count = 1;
             break;

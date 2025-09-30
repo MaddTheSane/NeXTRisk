@@ -193,8 +193,9 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 - (void) moveAttackingArmies:(int)count between:(RKCountry *)source :(RKCountry *)destination
 {
     placeArmyCount = count;
-    if (placeArmyCount == 0)
+    if (placeArmyCount == 0) {
         [self turnDone];
+    }
 }
 
 //----------------------------------------------------------------------
@@ -217,8 +218,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 
 - (void) playerNumber:(RKPlayer)number capturedCountry:(RKCountry *)capturedCountry
 {
-    if (capturedCountry == attackingCountry)
-    {
+    if (capturedCountry == attackingCountry) {
         SNRelease (attackingCountry);
     }
 }
@@ -235,8 +235,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 {
     RKAttackResult attackResult;
     
-    switch (attackMethod)
-    {
+    switch (attackMethod) {
         case RKAttackMethodUntilUnableToContinue:
             attackResult = [gameManager attackUntilUnableToContinueFromCountry:attacker
                                                                      toCountry:defender
@@ -264,8 +263,9 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
                                      moveAllArmiesUponVictory:moveFlag];
     }
     
-    if (attackResult.conqueredCountry == YES)
+    if (attackResult.conqueredCountry == YES) {
         [self setAttackingCountry:defender];
+    }
     
     return attackResult;
 }
@@ -275,8 +275,7 @@ RCSID ("$Id: Human.m,v 1.4 1997/12/15 07:43:53 nygard Exp $");
 - (void) setAttackingCountry:(RKCountry *)attacker
 {
     SNRelease (attackingCountry);
-    if (attacker != nil)
-    {
+    if (attacker != nil) {
         attackingCountry = attacker;
         
         [gameManager setAttackingFromCountryName:attackingCountry.countryName];

@@ -180,8 +180,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSArray *newOrder;
     
-    if (continents != nil)
-    {
+    if (continents != nil) {
         newOrder = [continents sortedArrayUsingFunction:WIOrderContinentsByName context:NULL];
         continents = newOrder;
         [continentTable reloadData];
@@ -194,8 +193,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSArray *newOrder;
     
-    if (continents != nil)
-    {
+    if (continents != nil) {
         newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent *_Nonnull obj1, RKContinent *_Nonnull obj2) {
             NSComparisonResult result;
             //NSInteger count1, count2;
@@ -229,8 +227,7 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSArray *newOrder;
     
-    if (continents != nil)
-    {
+    if (continents != nil) {
         newOrder = [continents sortedArrayUsingComparator:^NSComparisonResult(RKContinent * _Nonnull obj1, RKContinent * _Nonnull obj2) {
             NSComparisonResult result;
             
@@ -263,16 +260,11 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSString *identifier = continentTable.tableColumns[continentTable.clickedColumn].identifier;
     
-    if ([identifier isEqualToString:@"ContinentName"])
-    {
+    if ([identifier isEqualToString:@"ContinentName"]) {
         [self orderByName];
-    }
-    else if ([identifier isEqualToString:@"CountryCount"])
-    {
+    } else if ([identifier isEqualToString:@"CountryCount"]) {
         [self orderByCountryCount];
-    }
-    else if ([identifier isEqualToString:@"BonusValue"])
-    {
+    } else if ([identifier isEqualToString:@"BonusValue"]) {
         [self orderByBonusValue];
     }
 }
@@ -285,8 +277,9 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
 {
     NSInteger count = 0;
     
-    if (continents != nil)
+    if (continents != nil) {
         count = continents.count;
+    }
     
     return count;
 }
@@ -301,16 +294,11 @@ NSInteger WIOrderContinentsByBonusValue (id object1, id object2, void *context)
     
     //NSParameterAssert (rowIndex >= 0 && rowIndex < [mes count]);
     
-    if ([identifier isEqualToString:@"ContinentName"])
-    {
+    if ([identifier isEqualToString:@"ContinentName"]) {
         value = target.continentName;
-    }
-    else if ([identifier isEqualToString:@"CountryCount"])
-    {
+    } else if ([identifier isEqualToString:@"CountryCount"]) {
         value = @(target.countries.count);
-    }
-    else if ([identifier isEqualToString:@"BonusValue"])
-    {
+    } else if ([identifier isEqualToString:@"BonusValue"]) {
         value = @(target.continentBonus);
     }
     

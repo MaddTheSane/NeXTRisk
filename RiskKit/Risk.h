@@ -8,8 +8,7 @@
 #import <Foundation/NSObjCRuntime.h>
 #import <RiskKit/SNUtility.h>
 
-typedef NS_ENUM(int, RiskContinent)
-{
+typedef NS_ENUM(int, RiskContinent) {
     RiskContinentUnknown = -1,
     RiskContinentSouthAmerica,
     RiskContinentNorthAmerica,
@@ -22,16 +21,14 @@ typedef NS_ENUM(int, RiskContinent)
 typedef int RKArmyCount;
 typedef NSInteger RKPlayer;
 
-typedef NS_ENUM(int, RKCardType)
-{
+typedef NS_ENUM(int, RKCardType) {
     RKCardWildcard,
     RKCardSoldier,
     RKCardCannon,
     RKCardCavalry
 };
 
-typedef NS_ENUM(int, RKGameState)
-{
+typedef NS_ENUM(int, RKGameState) {
     RKGameStateNone,
     RKGameStateEstablishingGame,
     RKGameStateChoosingCountries,
@@ -47,52 +44,45 @@ typedef NS_ENUM(int, RKGameState)
 // Game configuration
 //======================================================================
 
-typedef NS_ENUM(int, RKInitialCountryDistribution)
-{
+typedef NS_ENUM(int, RKInitialCountryDistribution) {
     RKInitialCountryDistributionPlayerChosen,
     RKInitialCountryDistributionRandomlyChosen
 };
 
-typedef NS_ENUM(int, RKInitialArmyPlacement)
-{
+typedef NS_ENUM(int, RKInitialArmyPlacement) {
     RKInitialArmyPlaceByOnes,
     RKInitialArmyPlaceByThrees,
     RKInitialArmyPlaceByFives
 };
 
-typedef NS_ENUM(int, RKCardSetRedemption)
-{
+typedef NS_ENUM(int, RKCardSetRedemption) {
     RKCardSetRedemptionRemainConstant,
     RKCardSetRedemptionIncreaseByOne,
     RKCardSetRedemptionIncreaseByFive
 };
 
-typedef NS_ENUM(int, RKFortifyRule)
-{
+typedef NS_ENUM(int, RKFortifyRule) {
     RKFortifyRuleOneToOneNeighbor,
     RKFortifyRuleOneToManyNeighbors,
     RKFortifyRuleManyToManyNeighbors,
     RKFortifyRuleManyToManyConnected
 };
 
-typedef struct RKDiceRoll
-{
+typedef struct RKDiceRoll {
     int attackerDieCount;
     int attackerDice[3];
     int defenderDieCount;
     int defenderDice[2];
 } RKDiceRoll;
 
-typedef NS_ENUM(int, RKAttackMethod)
-{
+typedef NS_ENUM(int, RKAttackMethod) {
     RKAttackMethodOnce,
     RKAttackMethodMultipleTimes,
     RKAttackMethodUntilArmiesRemain,
     RKAttackMethodUntilUnableToContinue
 };
 
-typedef NS_ENUM(int, RKArmyPlacementType)
-{
+typedef NS_ENUM(int, RKArmyPlacementType) {
     RKArmyPlacementAnyCountry,
     RKArmyPlacementTwoCountries,
     RKArmyPlacementOneNeighborCountry,
@@ -122,6 +112,9 @@ extern NSString *NSStringFromFortifyRule(RKFortifyRule fortifyRule) NS_SWIFT_NAM
 extern NSString *NSStringFromRiskCardType(RKCardType cardType) NS_SWIFT_NAME(getter:RKCardType.description(self:));
 extern NSString *NSStringFromGameState(RKGameState gameState) NS_SWIFT_NAME(getter:RKGameState.debugDescription(self:));
 extern NSString *RKGameStateInfo(RKGameState gameState) NS_SWIFT_NAME(getter:RKGameState.description(self:));
+
+extern NSString *RKGameStateLocalizedInfo(RKGameState gameState);
+extern NSString *NSLocalizedStringFromGameState(RKGameState gameState);
 
 NS_ASSUME_NONNULL_END
 

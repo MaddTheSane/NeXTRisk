@@ -62,8 +62,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 + (id)instance
 {
-    if (_instance == nil)
-    {
+    if (_instance == nil) {
         _instance = [[RKBoardSetup alloc] init];
     }
     
@@ -197,8 +196,7 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 {
     //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    for (int l = 1; l < 7; l++)
-    {
+    for (int l = 1; l < 7; l++) {
         SNRelease (playerColors[l]);
     }
     
@@ -250,8 +248,9 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) setRegularBorderColor:(NSColor *)newColor
 {
-    if ([newColor isEqual:regularBorderColor])
+    if ([newColor isEqual:regularBorderColor]) {
         return;
+    }
     
     regularBorderColor = newColor;
     
@@ -263,8 +262,9 @@ NSData *RKDefaultsDataForColor (NSColor *color)
 
 - (void) setSelectedBorderColor:(NSColor *)newColor
 {
-    if ([newColor isEqual:selectedBorderColor])
+    if ([newColor isEqual:selectedBorderColor]) {
         return;
+    }
     
     selectedBorderColor = newColor;
     

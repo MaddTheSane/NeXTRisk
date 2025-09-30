@@ -41,19 +41,15 @@ static struct image_names class_images[] =
 
 + (void) initialize
 {
-    if (self == [RKDiceInspector class])
-    {
+    if (self == [RKDiceInspector class]) {
         [self setVersion:DiceInspector_VERSION];
         
-        if ([NSBundle bundleForClass:self] == nil)
-        {
+        if ([NSBundle bundleForClass:self] == nil) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector (loadClassImages)
                                                          name:NSApplicationDidFinishLaunchingNotification
                                                        object:NSApp];
-        }
-        else
-        {
+        } else {
             [self loadClassImages];
         }
     }
@@ -63,14 +59,12 @@ static struct image_names class_images[] =
 
 + (void) loadClassImages
 {
-    if (self == [RKDiceInspector class])
-    {
+    if (self == [RKDiceInspector class]) {
         NSBundle *thisBundle = [NSBundle bundleForClass:self];
         NSAssert (thisBundle != nil, @"Could not get bundle.");
         
         // load class images
-        for (int l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++)
-        {
+        for (int l = 0; l < sizeof (class_images) / sizeof (struct image_names); l++) {
             NSString *imagePath = (__bridge NSString *)(class_images[l].i_name);
             //imagePath = [thisBundle pathForImageResource:class_images[l].i_name];
             //NSAssert1 (imagePath != nil, @"Could not find image: '%@'", class_images[l].i_name);
@@ -98,8 +92,7 @@ static struct image_names class_images[] =
         nibFile = @"DiceInspector";
         loaded = [[NSBundle bundleForClass:[self class]] loadNibNamed:nibFile owner:self topLevelObjects:&tmpArr];
         nibObjs = tmpArr;
-        if (loaded == NO)
-        {
+        if (loaded == NO) {
             NSLog (@"Could not load %@.", nibFile);
             return nil;
         }
@@ -138,8 +131,7 @@ static struct image_names class_images[] =
 {
     NSImage *image;
     
-    switch (value)
-    {
+    switch (value) {
         case 1:
             image = _die1Image;
             break;
@@ -229,12 +221,9 @@ static struct image_names class_images[] =
 {
     [NSApp stopModal];
     
-    if ([sender state] == 1)
-    {
+    if ([sender state] == 1) {
         [continueButton setEnabled:YES];
-    }
-    else
-    {
+    } else {
         [continueButton setEnabled:NO];
     }
 }

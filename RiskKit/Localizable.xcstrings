@@ -1,0 +1,292 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "<Unknown>, %d" : {
+      "comment" : "<Unknown>, %d",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<Unknown>, %d"
+          }
+        }
+      }
+    },
+    "Attack" : {
+      "comment" : "Attack",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attack"
+          }
+        }
+      }
+    },
+    "Attack opponent's countries which border on your own countries." : {
+      "comment" : "Attack opponent's countries which border on your own countries.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attack opponent’s countries which border on your own countries."
+          }
+        }
+      }
+    },
+    "Before play begins, take turns choosing the countries on the board." : {
+      "comment" : "Before play begins, take turns choosing the countries on the board.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before play begins, take turns choosing the countries on the board."
+          }
+        }
+      }
+    },
+    "Begin your turn by placing new armies and possibly turning in cards." : {
+      "comment" : "Begin your turn by placing new armies and possibly turning in cards.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin your turn by placing new armies and possibly turning in cards."
+          }
+        }
+      }
+    },
+    "Choose Countries" : {
+      "comment" : "Choose Countries",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Countries"
+          }
+        }
+      }
+    },
+    "Computer Move" : {
+      "comment" : "Computer Move",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Computer Move"
+          }
+        }
+      }
+    },
+    "Establishing Game" : {
+      "comment" : "Establishing Game",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establishing Game"
+          }
+        }
+      }
+    },
+    "Establishing game..." : {
+      "comment" : "Establishing game...",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establishing game…"
+          }
+        }
+      }
+    },
+    "Fortify Position" : {
+      "comment" : "Fortify Position",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortify Position"
+          }
+        }
+      }
+    },
+    "Fortify the armies into the source country or any neighboring countries you control." : {
+      "comment" : "Fortify the armies into the source country or any neighboring countries you control.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortify the armies into the source country or any neighboring countries you control."
+          }
+        }
+      }
+    },
+    "Fortify your position at the end of your move by shifting armies." : {
+      "comment" : "Fortify your position at the end of your move by shifting armies.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortify your position at the end of your move by shifting armies."
+          }
+        }
+      }
+    },
+    "Move Attacking Armies" : {
+      "comment" : "Move Attacking Armies",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move Attacking Armies"
+          }
+        }
+      }
+    },
+    "No game" : {
+      "comment" : "No game",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No game"
+          }
+        }
+      }
+    },
+    "No game..." : {
+      "comment" : "No game...",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No game…"
+          }
+        }
+      }
+    },
+    "Place Armies" : {
+      "comment" : "Place Armies",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place Armies"
+          }
+        }
+      }
+    },
+    "Place Fortifying Armies" : {
+      "comment" : "Place Fortifying Armies",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place Fortifying Armies"
+          }
+        }
+      }
+    },
+    "Place Initial Armies" : {
+      "comment" : "Place Initial Armies",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place Initial Armies"
+          }
+        }
+      }
+    },
+    "Player %ld Console" : {
+      "comment" : "Player %ld Console",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Player %ld Console"
+          }
+        }
+      }
+    },
+    "SNUserPath can only be decoded. Encode as an NSBezierPath instead." : {
+      "comment" : "SNUserPath can only be decoded. Encode as an NSBezierPath instead.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SNUserPath can only be decoded. Encode as an NSBezierPath instead."
+          }
+        }
+      }
+    },
+    "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead." : {
+      "comment" : "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SNUserPathOperation can only be decoded. Encode as NSBezierPath instead."
+          }
+        }
+      }
+    },
+    "The computer player named above is moving, please wait." : {
+      "comment" : "The computer player named above is moving, please wait.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The computer player named above is moving, please wait."
+          }
+        }
+      }
+    },
+    "The game begins by players taking turns placing their initial armies a few at a time." : {
+      "comment" : "The game begins by players taking turns placing their initial armies a few at a time.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The game begins by players taking turns placing their initial armies a few at a time."
+          }
+        }
+      }
+    },
+    "Victory" : {
+      "comment" : "Victory",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Victory"
+          }
+        }
+      }
+    },
+    "Winner was %@." : {
+      "comment" : "Winner was %@.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winner was %@."
+          }
+        }
+      }
+    },
+    "You must turn in cards." : {
+      "comment" : "You must turn in cards.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must turn in cards."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
