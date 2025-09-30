@@ -83,7 +83,8 @@
             "value" : "2.0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "43.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Line Width\"; ObjectID = \"43\";",

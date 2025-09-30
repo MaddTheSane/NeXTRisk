@@ -50,12 +50,11 @@
       }
     },
     "13.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"13\";",
-      "extractionState" : "extracted_with_value",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"13\";",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "About..."
           }
         }
@@ -277,13 +276,13 @@
       }
     },
     "66.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"4,5,6,7,8,9,10,11...\"; ObjectID = \"66\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"4,5,6,7,8,9,10,11…\"; ObjectID = \"66\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "4,5,6,7,8,9,10,11..."
+            "value" : "4,5,6,7,8,9,10,11…"
           }
         }
       }
@@ -325,13 +324,13 @@
       }
     },
     "71.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"4,6,8,10,12,15,20,25...\"; ObjectID = \"71\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"4,6,8,10,12,15,20,25…\"; ObjectID = \"71\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "4,6,8,10,12,15,20,25..."
+            "value" : "4,6,8,10,12,15,20,25…"
           }
         }
       }
@@ -361,61 +360,61 @@
       }
     },
     "102.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"102\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"102\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About..."
+            "value" : "About…"
           }
         }
       }
     },
     "103.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"103\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"103\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About..."
+            "value" : "About…"
           }
         }
       }
     },
     "104.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"104\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"104\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About..."
+            "value" : "About…"
           }
         }
       }
     },
     "105.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"105\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"105\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About..."
+            "value" : "About…"
           }
         }
       }
     },
     "106.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"About...\"; ObjectID = \"106\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"About…\"; ObjectID = \"106\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "About..."
+            "value" : "About…"
           }
         }
       }

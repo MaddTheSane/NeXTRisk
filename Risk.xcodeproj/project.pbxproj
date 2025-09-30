@@ -264,7 +264,6 @@
 		5510981A1CC56F0F00DE6DFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5510981D1CC56F1000DE6DFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5510981F1CC56F1000DE6DFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		551251E81CC225AE000E7A52 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RiskUtil.xib; sourceTree = "<group>"; };
 		551251EA1CC27D55000E7A52 /* RiskUtil_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiskUtil_main.m; sourceTree = "<group>"; };
 		551361AC239999DA002BA9BF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5516BDC42367B73600A888BD /* HumanPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanPlayer.swift; sourceTree = "<group>"; };
@@ -415,6 +414,9 @@
 		55E5531D2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/InfoPanel.xcstrings; sourceTree = "<group>"; };
 		55E5531E2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/NewGamePanel.xcstrings; sourceTree = "<group>"; };
 		55E5531F2E8B44C1006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/PreferencePanel.xcstrings; sourceTree = "<group>"; };
+		55E553202E8BAF1B006B01D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RiskUtil.xib; sourceTree = "<group>"; };
+		55E553222E8BAF33006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
+		55E553232E8BAF33006B01D2 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/RiskUtil.xcstrings; sourceTree = "<group>"; };
 		55F3CF541EA671F600AE4486 /* SwiftAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAdditions.swift; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
@@ -1382,6 +1384,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5510981D1CC56F1000DE6DFE /* Base */,
+				55E553222E8BAF33006B01D2 /* mul */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -1398,7 +1401,8 @@
 		551251E91CC225AE000E7A52 /* RiskUtil.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				551251E81CC225AE000E7A52 /* en */,
+				55E553202E8BAF1B006B01D2 /* Base */,
+				55E553232E8BAF33006B01D2 /* mul */,
 			);
 			name = RiskUtil.xib;
 			sourceTree = "<group>";
@@ -1606,6 +1610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1659,6 +1664,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;

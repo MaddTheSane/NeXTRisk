@@ -119,7 +119,8 @@
             "value" : "0.00"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "64.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Original version by:\\nMike Ferris <mike@lorax.com>\"; ObjectID = \"64\";",

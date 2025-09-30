@@ -69,7 +69,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="JSI-jn-uku"/>
-                            <menuItem title="Open..." secondaryImage="arrow.up.right.square" catalog="system" keyEquivalent="o" id="57"/>
+                            <menuItem title="Open…" secondaryImage="arrow.up.right.square" catalog="system" keyEquivalent="o" id="57"/>
                             <menuItem isSeparatorItem="YES" id="edR-t1-F17"/>
                             <menuItem title="Close" keyEquivalent="w" id="64">
                                 <connections>
@@ -78,8 +78,8 @@
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="rO6-7D-W9Q"/>
                             <menuItem title="Save" secondaryImage="square.and.arrow.down" catalog="system" keyEquivalent="s" id="62"/>
-                            <menuItem title="Save As..." secondaryImage="plus.square.on.square" catalog="system" keyEquivalent="S" id="60"/>
-                            <menuItem title="Save To..." id="58"/>
+                            <menuItem title="Save As…" secondaryImage="plus.square.on.square" catalog="system" keyEquivalent="S" id="60"/>
+                            <menuItem title="Save To…" id="58"/>
                             <menuItem title="Save All" id="61"/>
                             <menuItem title="Revert to Saved" secondaryImage="arrow.uturn.left" catalog="system" id="55"/>
                             <menuItem isSeparatorItem="YES" id="D5R-Gg-J7e"/>

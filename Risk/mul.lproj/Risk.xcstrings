@@ -218,25 +218,25 @@
       }
     },
     "57.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Open...\"; ObjectID = \"57\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open…\"; ObjectID = \"57\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Open..."
+            "value" : "Open…"
           }
         }
       }
     },
     "58.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Save To...\"; ObjectID = \"58\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Save To…\"; ObjectID = \"58\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Save To..."
+            "value" : "Save To…"
           }
         }
       }
@@ -254,13 +254,13 @@
       }
     },
     "60.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Save As...\"; ObjectID = \"60\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Save As…\"; ObjectID = \"60\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Save As..."
+            "value" : "Save As…"
           }
         }
       }

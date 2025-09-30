@@ -20,7 +20,7 @@
                         <items>
                             <menuItem title="About RiskUtil" id="25" userLabel="About RiskUtil"/>
                             <menuItem isSeparatorItem="YES" id="HxY-3D-o9B"/>
-                            <menuItem title="Preferences..." keyEquivalent=";" id="10"/>
+                            <menuItem title="Preferences…" keyEquivalent=";" id="10"/>
                             <menuItem isSeparatorItem="YES" id="j3X-S6-7uQ"/>
                             <menuItem title="Services" id="9">
                                 <menu key="submenu" title="Services" systemMenu="services" id="18"/>

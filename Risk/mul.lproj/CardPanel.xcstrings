@@ -131,7 +131,8 @@
             "value" : "0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "135.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Armies amassed:\"; ObjectID = \"135\";",
@@ -155,7 +156,8 @@
             "value" : "0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "rwf-3E-rUB.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Button\"; ObjectID = \"rwf-3E-rUB\";",

@@ -215,7 +215,8 @@
             "value" : "1"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "153.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"20\"; ObjectID = \"153\";",
@@ -227,7 +228,8 @@
             "value" : "20"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "154.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Attacking from:\"; ObjectID = \"154\";",
@@ -275,7 +277,8 @@
             "value" : "2"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "160.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Attack:\"; ObjectID = \"160\";",
@@ -335,7 +338,8 @@
             "value" : "10"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "165.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Armies left to place:\"; ObjectID = \"165\";",
@@ -395,7 +399,8 @@
             "value" : "--"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "170.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Click one of your countries to fortify from it.  Then you may place the armies in any adjacent country which you control.\"; ObjectID = \"170\";",
